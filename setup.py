@@ -4,7 +4,7 @@ with open("README.md", "r") as fh:
     long_description = fh.read()
 
 package_name = "dbtlabs_proto_public"
-package_version = "v1.0.285"
+package_version = "v1.0.286"
 
 setuptools.setup(
     name=package_name,
