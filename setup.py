@@ -4,7 +4,7 @@ with open("README.md", "r") as fh:
     long_description = fh.read()
 
 package_name = "dbt-protos"
-package_version = "v1.0.291"
+package_version = "v1.0.292"
 
 setuptools.setup(
     name=package_name,
@@ -22,7 +22,7 @@ setuptools.setup(
     classifiers=[
         "Programming Language :: Python :: 3",
         "Operating System :: OS Independent",
-        "License :: OSI Approved :: Apache-2.0",
+        "License :: OSI Approved :: Apache Software License",
     ],
     python_requires=">=3.6",
 )
