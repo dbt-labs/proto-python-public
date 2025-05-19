@@ -2072,6 +2072,44 @@ class DeprecationsSummaryMsg(google.protobuf.message.Message):
 global___DeprecationsSummaryMsg = DeprecationsSummaryMsg
 
 @typing.final
+class CustomOutputPathInSourceFreshnessDeprecation(google.protobuf.message.Message):
+    """D029"""
+
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
+    PATH_FIELD_NUMBER: builtins.int
+    path: builtins.str
+    def __init__(
+        self,
+        *,
+        path: builtins.str = ...,
+    ) -> None: ...
+    def ClearField(self, field_name: typing.Literal["path", b"path"]) -> None: ...
+
+global___CustomOutputPathInSourceFreshnessDeprecation = CustomOutputPathInSourceFreshnessDeprecation
+
+@typing.final
+class CustomOutputPathInSourceFreshnessDeprecationMsg(google.protobuf.message.Message):
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
+    INFO_FIELD_NUMBER: builtins.int
+    DATA_FIELD_NUMBER: builtins.int
+    @property
+    def info(self) -> global___CoreEventInfo: ...
+    @property
+    def data(self) -> global___CustomOutputPathInSourceFreshnessDeprecation: ...
+    def __init__(
+        self,
+        *,
+        info: global___CoreEventInfo | None = ...,
+        data: global___CustomOutputPathInSourceFreshnessDeprecation | None = ...,
+    ) -> None: ...
+    def HasField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> builtins.bool: ...
+    def ClearField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> None: ...
+
+global___CustomOutputPathInSourceFreshnessDeprecationMsg = CustomOutputPathInSourceFreshnessDeprecationMsg
+
+@typing.final
 class DeprecatedModel(google.protobuf.message.Message):
     """I065"""
 
