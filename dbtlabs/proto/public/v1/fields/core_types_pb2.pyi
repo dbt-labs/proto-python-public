@@ -2110,6 +2110,50 @@ class CustomOutputPathInSourceFreshnessDeprecationMsg(google.protobuf.message.Me
 global___CustomOutputPathInSourceFreshnessDeprecationMsg = CustomOutputPathInSourceFreshnessDeprecationMsg
 
 @typing.final
+class PropertyMovedToConfigDeprecation(google.protobuf.message.Message):
+    """D030"""
+
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
+    KEY_FIELD_NUMBER: builtins.int
+    FILE_FIELD_NUMBER: builtins.int
+    KEY_PATH_FIELD_NUMBER: builtins.int
+    key: builtins.str
+    file: builtins.str
+    key_path: builtins.str
+    def __init__(
+        self,
+        *,
+        key: builtins.str = ...,
+        file: builtins.str = ...,
+        key_path: builtins.str = ...,
+    ) -> None: ...
+    def ClearField(self, field_name: typing.Literal["file", b"file", "key", b"key", "key_path", b"key_path"]) -> None: ...
+
+global___PropertyMovedToConfigDeprecation = PropertyMovedToConfigDeprecation
+
+@typing.final
+class PropertyMovedToConfigDeprecationMsg(google.protobuf.message.Message):
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
+    INFO_FIELD_NUMBER: builtins.int
+    DATA_FIELD_NUMBER: builtins.int
+    @property
+    def info(self) -> global___CoreEventInfo: ...
+    @property
+    def data(self) -> global___PropertyMovedToConfigDeprecation: ...
+    def __init__(
+        self,
+        *,
+        info: global___CoreEventInfo | None = ...,
+        data: global___PropertyMovedToConfigDeprecation | None = ...,
+    ) -> None: ...
+    def HasField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> builtins.bool: ...
+    def ClearField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> None: ...
+
+global___PropertyMovedToConfigDeprecationMsg = PropertyMovedToConfigDeprecationMsg
+
+@typing.final
 class DeprecatedModel(google.protobuf.message.Message):
     """I065"""
 
