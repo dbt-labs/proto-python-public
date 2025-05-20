@@ -8679,6 +8679,54 @@ class ResourceReportMsg(google.protobuf.message.Message):
 global___ResourceReportMsg = ResourceReportMsg
 
 @typing.final
+class ObservabilityMetric(google.protobuf.message.Message):
+    """Z052"""
+
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
+    LABEL_FIELD_NUMBER: builtins.int
+    VALUE_FIELD_NUMBER: builtins.int
+    TAGS_FIELD_NUMBER: builtins.int
+    DEBUG_MESSAGE_FIELD_NUMBER: builtins.int
+    label: builtins.str
+    value: builtins.float
+    debug_message: builtins.str
+    @property
+    def tags(self) -> google.protobuf.internal.containers.RepeatedScalarFieldContainer[builtins.str]: ...
+    def __init__(
+        self,
+        *,
+        label: builtins.str = ...,
+        value: builtins.float = ...,
+        tags: collections.abc.Iterable[builtins.str] | None = ...,
+        debug_message: builtins.str = ...,
+    ) -> None: ...
+    def ClearField(self, field_name: typing.Literal["debug_message", b"debug_message", "label", b"label", "tags", b"tags", "value", b"value"]) -> None: ...
+
+global___ObservabilityMetric = ObservabilityMetric
+
+@typing.final
+class ObservabilityMetricMsg(google.protobuf.message.Message):
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
+    INFO_FIELD_NUMBER: builtins.int
+    DATA_FIELD_NUMBER: builtins.int
+    @property
+    def info(self) -> global___CoreEventInfo: ...
+    @property
+    def data(self) -> global___ObservabilityMetric: ...
+    def __init__(
+        self,
+        *,
+        info: global___CoreEventInfo | None = ...,
+        data: global___ObservabilityMetric | None = ...,
+    ) -> None: ...
+    def HasField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> builtins.bool: ...
+    def ClearField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> None: ...
+
+global___ObservabilityMetricMsg = ObservabilityMetricMsg
+
+@typing.final
 class ArtifactUploadError(google.protobuf.message.Message):
     """Z061"""
 
