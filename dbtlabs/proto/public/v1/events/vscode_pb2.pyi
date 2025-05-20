@@ -4,7 +4,7 @@ isort:skip_file
 """
 
 import builtins
-import dbtlabs.proto.private.v1.events.vortex_pb2
+import dbtlabs.proto.public.v1.events.vortex_pb2
 import dbtlabs.proto.public.v1.fields.vscode_types_pb2
 import google.protobuf.descriptor
 import google.protobuf.message
@@ -38,7 +38,7 @@ class ExtensionActivated(google.protobuf.message.Message):
     init_duration_ms: builtins.int
     """duration of the initialization in milliseconds"""
     @property
-    def enrichment(self) -> dbtlabs.proto.private.v1.events.vortex_pb2.VortexMessageEnrichment: ...
+    def enrichment(self) -> dbtlabs.proto.public.v1.events.vortex_pb2.VortexMessageEnrichment: ...
     @property
     def editor(self) -> dbtlabs.proto.public.v1.fields.vscode_types_pb2.Editor: ...
     @property
@@ -46,7 +46,7 @@ class ExtensionActivated(google.protobuf.message.Message):
     def __init__(
         self,
         *,
-        enrichment: dbtlabs.proto.private.v1.events.vortex_pb2.VortexMessageEnrichment | None = ...,
+        enrichment: dbtlabs.proto.public.v1.events.vortex_pb2.VortexMessageEnrichment | None = ...,
         editor: dbtlabs.proto.public.v1.fields.vscode_types_pb2.Editor | None = ...,
         user: dbtlabs.proto.public.v1.fields.vscode_types_pb2.User | None = ...,
         os_name: builtins.str = ...,
@@ -81,7 +81,7 @@ class ExtensionLspCompile(google.protobuf.message.Message):
     dbt_version: builtins.str
     """the version of dbt used in the project"""
     @property
-    def enrichment(self) -> dbtlabs.proto.private.v1.events.vortex_pb2.VortexMessageEnrichment: ...
+    def enrichment(self) -> dbtlabs.proto.public.v1.events.vortex_pb2.VortexMessageEnrichment: ...
     @property
     def editor(self) -> dbtlabs.proto.public.v1.fields.vscode_types_pb2.Editor: ...
     @property
@@ -89,7 +89,7 @@ class ExtensionLspCompile(google.protobuf.message.Message):
     def __init__(
         self,
         *,
-        enrichment: dbtlabs.proto.private.v1.events.vortex_pb2.VortexMessageEnrichment | None = ...,
+        enrichment: dbtlabs.proto.public.v1.events.vortex_pb2.VortexMessageEnrichment | None = ...,
         editor: dbtlabs.proto.public.v1.fields.vscode_types_pb2.Editor | None = ...,
         user: dbtlabs.proto.public.v1.fields.vscode_types_pb2.User | None = ...,
         project_id: builtins.str = ...,
