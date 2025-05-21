@@ -2154,6 +2154,47 @@ class PropertyMovedToConfigDeprecationMsg(google.protobuf.message.Message):
 global___PropertyMovedToConfigDeprecationMsg = PropertyMovedToConfigDeprecationMsg
 
 @typing.final
+class WEOIncludeExcludeDeprecation(google.protobuf.message.Message):
+    """D031"""
+
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
+    FOUND_INCLUDE_FIELD_NUMBER: builtins.int
+    FOUND_EXCLUDE_FIELD_NUMBER: builtins.int
+    found_include: builtins.bool
+    found_exclude: builtins.bool
+    def __init__(
+        self,
+        *,
+        found_include: builtins.bool = ...,
+        found_exclude: builtins.bool = ...,
+    ) -> None: ...
+    def ClearField(self, field_name: typing.Literal["found_exclude", b"found_exclude", "found_include", b"found_include"]) -> None: ...
+
+global___WEOIncludeExcludeDeprecation = WEOIncludeExcludeDeprecation
+
+@typing.final
+class WEOIncludeExcludeDeprecationMsg(google.protobuf.message.Message):
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
+    INFO_FIELD_NUMBER: builtins.int
+    DATA_FIELD_NUMBER: builtins.int
+    @property
+    def info(self) -> global___CoreEventInfo: ...
+    @property
+    def data(self) -> global___WEOIncludeExcludeDeprecation: ...
+    def __init__(
+        self,
+        *,
+        info: global___CoreEventInfo | None = ...,
+        data: global___WEOIncludeExcludeDeprecation | None = ...,
+    ) -> None: ...
+    def HasField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> builtins.bool: ...
+    def ClearField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> None: ...
+
+global___WEOIncludeExcludeDeprecationMsg = WEOIncludeExcludeDeprecationMsg
+
+@typing.final
 class DeprecatedModel(google.protobuf.message.Message):
     """I065"""
 
