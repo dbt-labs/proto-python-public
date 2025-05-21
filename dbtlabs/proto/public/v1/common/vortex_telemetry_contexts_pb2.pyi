@@ -4,7 +4,6 @@ isort:skip_file
 """
 
 import builtins
-import dbtlabs.proto.public.v1.events.vortex_pb2
 import google.protobuf.descriptor
 import google.protobuf.message
 import typing
@@ -15,7 +14,6 @@ DESCRIPTOR: google.protobuf.descriptor.FileDescriptor
 class VortexTelemetryDbtCloudContext(google.protobuf.message.Message):
     DESCRIPTOR: google.protobuf.descriptor.Descriptor
 
-    ENRICHMENT_FIELD_NUMBER: builtins.int
     EVENT_ID_FIELD_NUMBER: builtins.int
     FEATURE_FIELD_NUMBER: builtins.int
     SNOWPLOW_DOMAIN_SESSION_ID_FIELD_NUMBER: builtins.int
@@ -51,14 +49,9 @@ class VortexTelemetryDbtCloudContext(google.protobuf.message.Message):
     """dbt Cloud environment ID"""
     dbt_cloud_user_id: builtins.str
     """dbt Cloud user ID"""
-    @property
-    def enrichment(self) -> dbtlabs.proto.public.v1.events.vortex_pb2.VortexMessageEnrichment:
-        """Server enrichment"""
-
     def __init__(
         self,
         *,
-        enrichment: dbtlabs.proto.public.v1.events.vortex_pb2.VortexMessageEnrichment | None = ...,
         event_id: builtins.str = ...,
         feature: builtins.str = ...,
         snowplow_domain_session_id: builtins.str = ...,
@@ -71,7 +64,6 @@ class VortexTelemetryDbtCloudContext(google.protobuf.message.Message):
         dbt_cloud_environment_id: builtins.str = ...,
         dbt_cloud_user_id: builtins.str = ...,
     ) -> None: ...
-    def HasField(self, field_name: typing.Literal["enrichment", b"enrichment"]) -> builtins.bool: ...
-    def ClearField(self, field_name: typing.Literal["dbt_cloud_account_id", b"dbt_cloud_account_id", "dbt_cloud_account_identifier", b"dbt_cloud_account_identifier", "dbt_cloud_environment_id", b"dbt_cloud_environment_id", "dbt_cloud_project_id", b"dbt_cloud_project_id", "dbt_cloud_user_id", b"dbt_cloud_user_id", "enrichment", b"enrichment", "event_id", b"event_id", "feature", b"feature", "referrer_url", b"referrer_url", "session_id", b"session_id", "snowplow_domain_session_id", b"snowplow_domain_session_id", "snowplow_domain_user_id", b"snowplow_domain_user_id"]) -> None: ...
+    def ClearField(self, field_name: typing.Literal["dbt_cloud_account_id", b"dbt_cloud_account_id", "dbt_cloud_account_identifier", b"dbt_cloud_account_identifier", "dbt_cloud_environment_id", b"dbt_cloud_environment_id", "dbt_cloud_project_id", b"dbt_cloud_project_id", "dbt_cloud_user_id", b"dbt_cloud_user_id", "event_id", b"event_id", "feature", b"feature", "referrer_url", b"referrer_url", "session_id", b"session_id", "snowplow_domain_session_id", b"snowplow_domain_session_id", "snowplow_domain_user_id", b"snowplow_domain_user_id"]) -> None: ...
 
 global___VortexTelemetryDbtCloudContext = VortexTelemetryDbtCloudContext
