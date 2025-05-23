@@ -2195,6 +2195,39 @@ class WEOIncludeExcludeDeprecationMsg(google.protobuf.message.Message):
 global___WEOIncludeExcludeDeprecationMsg = WEOIncludeExcludeDeprecationMsg
 
 @typing.final
+class ModelParamUsageDeprecation(google.protobuf.message.Message):
+    """D032"""
+
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
+    def __init__(
+        self,
+    ) -> None: ...
+
+global___ModelParamUsageDeprecation = ModelParamUsageDeprecation
+
+@typing.final
+class ModelParamUsageDeprecationMsg(google.protobuf.message.Message):
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
+    INFO_FIELD_NUMBER: builtins.int
+    DATA_FIELD_NUMBER: builtins.int
+    @property
+    def info(self) -> global___CoreEventInfo: ...
+    @property
+    def data(self) -> global___ModelParamUsageDeprecation: ...
+    def __init__(
+        self,
+        *,
+        info: global___CoreEventInfo | None = ...,
+        data: global___ModelParamUsageDeprecation | None = ...,
+    ) -> None: ...
+    def HasField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> builtins.bool: ...
+    def ClearField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> None: ...
+
+global___ModelParamUsageDeprecationMsg = ModelParamUsageDeprecationMsg
+
+@typing.final
 class DeprecatedModel(google.protobuf.message.Message):
     """I065"""
 
