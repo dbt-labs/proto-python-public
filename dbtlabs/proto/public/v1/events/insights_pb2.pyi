@@ -491,3 +491,24 @@ class HandoffOpenModelInCatalog(google.protobuf.message.Message):
     def ClearField(self, field_name: typing.Literal["ctx", b"ctx", "enrichment", b"enrichment"]) -> None: ...
 
 global___HandoffOpenModelInCatalog = HandoffOpenModelInCatalog
+
+@typing.final
+class Acknowledge2025LaunchTrialBanner(google.protobuf.message.Message):
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
+    ENRICHMENT_FIELD_NUMBER: builtins.int
+    CTX_FIELD_NUMBER: builtins.int
+    @property
+    def enrichment(self) -> dbtlabs.proto.public.v1.events.vortex_pb2.VortexMessageEnrichment: ...
+    @property
+    def ctx(self) -> dbtlabs.proto.public.v1.common.vortex_telemetry_contexts_pb2.VortexTelemetryDbtCloudContext: ...
+    def __init__(
+        self,
+        *,
+        enrichment: dbtlabs.proto.public.v1.events.vortex_pb2.VortexMessageEnrichment | None = ...,
+        ctx: dbtlabs.proto.public.v1.common.vortex_telemetry_contexts_pb2.VortexTelemetryDbtCloudContext | None = ...,
+    ) -> None: ...
+    def HasField(self, field_name: typing.Literal["ctx", b"ctx", "enrichment", b"enrichment"]) -> builtins.bool: ...
+    def ClearField(self, field_name: typing.Literal["ctx", b"ctx", "enrichment", b"enrichment"]) -> None: ...
+
+global___Acknowledge2025LaunchTrialBanner = Acknowledge2025LaunchTrialBanner
