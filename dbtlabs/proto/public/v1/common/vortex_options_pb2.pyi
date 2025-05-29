@@ -38,6 +38,8 @@ class _VortexIcebergNamespaceEnumTypeWrapper(google.protobuf.internal.enum_type_
     """
     VORTEX_ICEBERG_NAMESPACE_MANTLE: _VortexIcebergNamespace.ValueType  # 5
     """owner: Zeeshan Qureshi"""
+    VORTEX_ICEBERG_NAMESPACE_CODEX: _VortexIcebergNamespace.ValueType  # 6
+    """owner: Vadim Rybak"""
 
 class VortexIcebergNamespace(_VortexIcebergNamespace, metaclass=_VortexIcebergNamespaceEnumTypeWrapper):
     """the set of valid namespaces in the iceberg catalog."""
@@ -56,6 +58,8 @@ This is strictly for dead letter queue events and internal use only.
 """
 VORTEX_ICEBERG_NAMESPACE_MANTLE: VortexIcebergNamespace.ValueType  # 5
 """owner: Zeeshan Qureshi"""
+VORTEX_ICEBERG_NAMESPACE_CODEX: VortexIcebergNamespace.ValueType  # 6
+"""owner: Vadim Rybak"""
 global___VortexIcebergNamespace = VortexIcebergNamespace
 
 VORTEX_NAMESPACE_FIELD_NUMBER: builtins.int
