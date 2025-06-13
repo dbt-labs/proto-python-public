@@ -2228,6 +2228,72 @@ class ModelParamUsageDeprecationMsg(google.protobuf.message.Message):
 global___ModelParamUsageDeprecationMsg = ModelParamUsageDeprecationMsg
 
 @typing.final
+class ResourceTypesParamUsageDeprecation(google.protobuf.message.Message):
+    """D033"""
+
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
+    def __init__(
+        self,
+    ) -> None: ...
+
+global___ResourceTypesParamUsageDeprecation = ResourceTypesParamUsageDeprecation
+
+@typing.final
+class ResourceTypesParamUsageDeprecationMsg(google.protobuf.message.Message):
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
+    INFO_FIELD_NUMBER: builtins.int
+    DATA_FIELD_NUMBER: builtins.int
+    @property
+    def info(self) -> global___CoreEventInfo: ...
+    @property
+    def data(self) -> global___ResourceTypesParamUsageDeprecation: ...
+    def __init__(
+        self,
+        *,
+        info: global___CoreEventInfo | None = ...,
+        data: global___ResourceTypesParamUsageDeprecation | None = ...,
+    ) -> None: ...
+    def HasField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> builtins.bool: ...
+    def ClearField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> None: ...
+
+global___ResourceTypesParamUsageDeprecationMsg = ResourceTypesParamUsageDeprecationMsg
+
+@typing.final
+class ModulesItertoolsUsageDeprecation(google.protobuf.message.Message):
+    """D034"""
+
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
+    def __init__(
+        self,
+    ) -> None: ...
+
+global___ModulesItertoolsUsageDeprecation = ModulesItertoolsUsageDeprecation
+
+@typing.final
+class ModulesItertoolsUsageDeprecationMsg(google.protobuf.message.Message):
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
+    INFO_FIELD_NUMBER: builtins.int
+    DATA_FIELD_NUMBER: builtins.int
+    @property
+    def info(self) -> global___CoreEventInfo: ...
+    @property
+    def data(self) -> global___ModulesItertoolsUsageDeprecation: ...
+    def __init__(
+        self,
+        *,
+        info: global___CoreEventInfo | None = ...,
+        data: global___ModulesItertoolsUsageDeprecation | None = ...,
+    ) -> None: ...
+    def HasField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> builtins.bool: ...
+    def ClearField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> None: ...
+
+global___ModulesItertoolsUsageDeprecationMsg = ModulesItertoolsUsageDeprecationMsg
+
+@typing.final
 class DeprecatedModel(google.protobuf.message.Message):
     """I065"""
 
