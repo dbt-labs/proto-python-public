@@ -5,10 +5,49 @@ isort:skip_file
 
 import builtins
 import google.protobuf.descriptor
+import google.protobuf.internal.enum_type_wrapper
 import google.protobuf.message
+import sys
 import typing
 
+if sys.version_info >= (3, 10):
+    import typing as typing_extensions
+else:
+    import typing_extensions
+
 DESCRIPTOR: google.protobuf.descriptor.FileDescriptor
+
+class _UserState:
+    ValueType = typing.NewType("ValueType", builtins.int)
+    V: typing_extensions.TypeAlias = ValueType
+
+class _UserStateEnumTypeWrapper(google.protobuf.internal.enum_type_wrapper._EnumTypeWrapper[_UserState.ValueType], builtins.type):
+    DESCRIPTOR: google.protobuf.descriptor.EnumDescriptor
+    USER_STATE_UNREGISTERED: _UserState.ValueType  # 0
+    """User is not registered"""
+    USER_STATE_REGISTERED: _UserState.ValueType  # 1
+    """User is registered but not verified"""
+    USER_STATE_VERIFIED: _UserState.ValueType  # 2
+    """User is registered and verified"""
+    USER_STATE_EXPIRED: _UserState.ValueType  # 3
+    """User's registration has expired"""
+    USER_STATE_VERIFICATION_ERROR: _UserState.ValueType  # 4
+    """Error occurred during verification"""
+
+class UserState(_UserState, metaclass=_UserStateEnumTypeWrapper):
+    """User state enum"""
+
+USER_STATE_UNREGISTERED: UserState.ValueType  # 0
+"""User is not registered"""
+USER_STATE_REGISTERED: UserState.ValueType  # 1
+"""User is registered but not verified"""
+USER_STATE_VERIFIED: UserState.ValueType  # 2
+"""User is registered and verified"""
+USER_STATE_EXPIRED: UserState.ValueType  # 3
+"""User's registration has expired"""
+USER_STATE_VERIFICATION_ERROR: UserState.ValueType  # 4
+"""Error occurred during verification"""
+global___UserState = UserState
 
 @typing.final
 class User(google.protobuf.message.Message):

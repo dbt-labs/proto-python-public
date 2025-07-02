@@ -101,3 +101,32 @@ class ExtensionLspCompile(google.protobuf.message.Message):
     def ClearField(self, field_name: typing.Literal["adapter_type", b"adapter_type", "adapter_unique_id", b"adapter_unique_id", "dbt_version", b"dbt_version", "editor", b"editor", "enrichment", b"enrichment", "project_id", b"project_id", "user", b"user"]) -> None: ...
 
 global___ExtensionLspCompile = ExtensionLspCompile
+
+@typing.final
+class ExtensionUserStateChange(google.protobuf.message.Message):
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
+    ENRICHMENT_FIELD_NUMBER: builtins.int
+    EDITOR_FIELD_NUMBER: builtins.int
+    USER_FIELD_NUMBER: builtins.int
+    CHANGED_TO_STATE_FIELD_NUMBER: builtins.int
+    changed_to_state: dbtlabs.proto.public.v1.fields.vscode_types_pb2.UserState.ValueType
+    """the state the user changed to"""
+    @property
+    def enrichment(self) -> dbtlabs.proto.public.v1.events.vortex_pb2.VortexMessageEnrichment: ...
+    @property
+    def editor(self) -> dbtlabs.proto.public.v1.fields.vscode_types_pb2.Editor: ...
+    @property
+    def user(self) -> dbtlabs.proto.public.v1.fields.vscode_types_pb2.User: ...
+    def __init__(
+        self,
+        *,
+        enrichment: dbtlabs.proto.public.v1.events.vortex_pb2.VortexMessageEnrichment | None = ...,
+        editor: dbtlabs.proto.public.v1.fields.vscode_types_pb2.Editor | None = ...,
+        user: dbtlabs.proto.public.v1.fields.vscode_types_pb2.User | None = ...,
+        changed_to_state: dbtlabs.proto.public.v1.fields.vscode_types_pb2.UserState.ValueType = ...,
+    ) -> None: ...
+    def HasField(self, field_name: typing.Literal["editor", b"editor", "enrichment", b"enrichment", "user", b"user"]) -> builtins.bool: ...
+    def ClearField(self, field_name: typing.Literal["changed_to_state", b"changed_to_state", "editor", b"editor", "enrichment", b"enrichment", "user", b"user"]) -> None: ...
+
+global___ExtensionUserStateChange = ExtensionUserStateChange
