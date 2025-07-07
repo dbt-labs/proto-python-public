@@ -2335,6 +2335,47 @@ class SourceOverrideDeprecationMsg(google.protobuf.message.Message):
 global___SourceOverrideDeprecationMsg = SourceOverrideDeprecationMsg
 
 @typing.final
+class EnvironmentVariableNamespaceDeprecation(google.protobuf.message.Message):
+    """D036"""
+
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
+    ENV_VAR_FIELD_NUMBER: builtins.int
+    RESERVED_PREFIX_FIELD_NUMBER: builtins.int
+    env_var: builtins.str
+    reserved_prefix: builtins.str
+    def __init__(
+        self,
+        *,
+        env_var: builtins.str = ...,
+        reserved_prefix: builtins.str = ...,
+    ) -> None: ...
+    def ClearField(self, field_name: typing.Literal["env_var", b"env_var", "reserved_prefix", b"reserved_prefix"]) -> None: ...
+
+global___EnvironmentVariableNamespaceDeprecation = EnvironmentVariableNamespaceDeprecation
+
+@typing.final
+class EnvironmentVariableNamespaceDeprecationMsg(google.protobuf.message.Message):
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
+    INFO_FIELD_NUMBER: builtins.int
+    DATA_FIELD_NUMBER: builtins.int
+    @property
+    def info(self) -> global___CoreEventInfo: ...
+    @property
+    def data(self) -> global___EnvironmentVariableNamespaceDeprecation: ...
+    def __init__(
+        self,
+        *,
+        info: global___CoreEventInfo | None = ...,
+        data: global___EnvironmentVariableNamespaceDeprecation | None = ...,
+    ) -> None: ...
+    def HasField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> builtins.bool: ...
+    def ClearField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> None: ...
+
+global___EnvironmentVariableNamespaceDeprecationMsg = EnvironmentVariableNamespaceDeprecationMsg
+
+@typing.final
 class DeprecatedModel(google.protobuf.message.Message):
     """I065"""
 
