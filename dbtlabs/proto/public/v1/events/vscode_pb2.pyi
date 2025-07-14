@@ -25,6 +25,9 @@ class ExtensionActivated(google.protobuf.message.Message):
     INIT_ERROR_FIELD_NUMBER: builtins.int
     INIT_ERROR_DETAIL_FIELD_NUMBER: builtins.int
     INIT_DURATION_MS_FIELD_NUMBER: builtins.int
+    IS_LSP_INSTALLED_FIELD_NUMBER: builtins.int
+    IS_FUSION_INSTALLED_FIELD_NUMBER: builtins.int
+    DBT_VERSION_FIELD_NUMBER: builtins.int
     os_name: builtins.str
     """os name"""
     os_version: builtins.str
@@ -37,6 +40,12 @@ class ExtensionActivated(google.protobuf.message.Message):
     """detailed error message, if an error occurred at initialization"""
     init_duration_ms: builtins.int
     """duration of the initialization in milliseconds"""
+    is_lsp_installed: builtins.bool
+    """does the user have LSP installed"""
+    is_fusion_installed: builtins.bool
+    """does the user have fusion installed"""
+    dbt_version: builtins.str
+    """the version of dbt used in the project"""
     @property
     def enrichment(self) -> dbtlabs.proto.public.v1.events.vortex_pb2.VortexMessageEnrichment: ...
     @property
@@ -55,9 +64,12 @@ class ExtensionActivated(google.protobuf.message.Message):
         init_error: builtins.str = ...,
         init_error_detail: builtins.str = ...,
         init_duration_ms: builtins.int = ...,
+        is_lsp_installed: builtins.bool = ...,
+        is_fusion_installed: builtins.bool = ...,
+        dbt_version: builtins.str = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["editor", b"editor", "enrichment", b"enrichment", "user", b"user"]) -> builtins.bool: ...
-    def ClearField(self, field_name: typing.Literal["editor", b"editor", "enrichment", b"enrichment", "init_duration_ms", b"init_duration_ms", "init_error", b"init_error", "init_error_detail", b"init_error_detail", "init_success", b"init_success", "os_name", b"os_name", "os_version", b"os_version", "user", b"user"]) -> None: ...
+    def ClearField(self, field_name: typing.Literal["dbt_version", b"dbt_version", "editor", b"editor", "enrichment", b"enrichment", "init_duration_ms", b"init_duration_ms", "init_error", b"init_error", "init_error_detail", b"init_error_detail", "init_success", b"init_success", "is_fusion_installed", b"is_fusion_installed", "is_lsp_installed", b"is_lsp_installed", "os_name", b"os_name", "os_version", b"os_version", "user", b"user"]) -> None: ...
 
 global___ExtensionActivated = ExtensionActivated
 
