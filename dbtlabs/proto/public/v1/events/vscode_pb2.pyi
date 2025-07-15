@@ -4,9 +4,11 @@ isort:skip_file
 """
 
 import builtins
+import collections.abc
 import dbtlabs.proto.public.v1.events.vortex_pb2
 import dbtlabs.proto.public.v1.fields.vscode_types_pb2
 import google.protobuf.descriptor
+import google.protobuf.internal.containers
 import google.protobuf.message
 import typing
 
@@ -84,6 +86,8 @@ class ExtensionLspCompile(google.protobuf.message.Message):
     ADAPTER_TYPE_FIELD_NUMBER: builtins.int
     ADAPTER_UNIQUE_ID_FIELD_NUMBER: builtins.int
     DBT_VERSION_FIELD_NUMBER: builtins.int
+    COMPILE_SUCCESS_FIELD_NUMBER: builtins.int
+    ERRORS_FIELD_NUMBER: builtins.int
     project_id: builtins.str
     """this is the hash of the project's name, used for anonymized telemetry"""
     adapter_type: builtins.str
@@ -92,12 +96,16 @@ class ExtensionLspCompile(google.protobuf.message.Message):
     """the unique id of the adapter used in the active profile eg. md5(hostname)"""
     dbt_version: builtins.str
     """the version of dbt used in the project"""
+    compile_success: builtins.bool
+    """Indicates whether the compile was successful"""
     @property
     def enrichment(self) -> dbtlabs.proto.public.v1.events.vortex_pb2.VortexMessageEnrichment: ...
     @property
     def editor(self) -> dbtlabs.proto.public.v1.fields.vscode_types_pb2.Editor: ...
     @property
     def user(self) -> dbtlabs.proto.public.v1.fields.vscode_types_pb2.User: ...
+    @property
+    def errors(self) -> google.protobuf.internal.containers.RepeatedCompositeFieldContainer[dbtlabs.proto.public.v1.fields.vscode_types_pb2.CompileError]: ...
     def __init__(
         self,
         *,
@@ -108,9 +116,11 @@ class ExtensionLspCompile(google.protobuf.message.Message):
         adapter_type: builtins.str = ...,
         adapter_unique_id: builtins.str = ...,
         dbt_version: builtins.str = ...,
+        compile_success: builtins.bool = ...,
+        errors: collections.abc.Iterable[dbtlabs.proto.public.v1.fields.vscode_types_pb2.CompileError] | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["editor", b"editor", "enrichment", b"enrichment", "user", b"user"]) -> builtins.bool: ...
-    def ClearField(self, field_name: typing.Literal["adapter_type", b"adapter_type", "adapter_unique_id", b"adapter_unique_id", "dbt_version", b"dbt_version", "editor", b"editor", "enrichment", b"enrichment", "project_id", b"project_id", "user", b"user"]) -> None: ...
+    def ClearField(self, field_name: typing.Literal["adapter_type", b"adapter_type", "adapter_unique_id", b"adapter_unique_id", "compile_success", b"compile_success", "dbt_version", b"dbt_version", "editor", b"editor", "enrichment", b"enrichment", "errors", b"errors", "project_id", b"project_id", "user", b"user"]) -> None: ...
 
 global___ExtensionLspCompile = ExtensionLspCompile
 

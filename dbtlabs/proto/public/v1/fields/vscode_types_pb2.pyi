@@ -116,3 +116,23 @@ class Editor(google.protobuf.message.Message):
     def ClearField(self, field_name: typing.Literal["editor_name", b"editor_name", "editor_version", b"editor_version", "extension_version", b"extension_version", "mac_machine_id", b"mac_machine_id", "machine_id", b"machine_id", "session_id", b"session_id"]) -> None: ...
 
 global___Editor = Editor
+
+@typing.final
+class CompileError(google.protobuf.message.Message):
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
+    MESSAGE_FIELD_NUMBER: builtins.int
+    CODE_FIELD_NUMBER: builtins.int
+    message: builtins.str
+    """Error message"""
+    code: builtins.int
+    """Error codes: https://github.com/dbt-labs/fs/blob/main/fs/sa/crates/dbt-common/src/error/codes.rs"""
+    def __init__(
+        self,
+        *,
+        message: builtins.str = ...,
+        code: builtins.int = ...,
+    ) -> None: ...
+    def ClearField(self, field_name: typing.Literal["code", b"code", "message", b"message"]) -> None: ...
+
+global___CompileError = CompileError
