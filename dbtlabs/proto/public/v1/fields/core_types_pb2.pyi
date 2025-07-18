@@ -2420,6 +2420,44 @@ class MissingPlusPrefixDeprecationMsg(google.protobuf.message.Message):
 global___MissingPlusPrefixDeprecationMsg = MissingPlusPrefixDeprecationMsg
 
 @typing.final
+class ArgsPropertyInGenericTestDeprecation(google.protobuf.message.Message):
+    """D038"""
+
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
+    FILE_FIELD_NUMBER: builtins.int
+    file: builtins.str
+    def __init__(
+        self,
+        *,
+        file: builtins.str = ...,
+    ) -> None: ...
+    def ClearField(self, field_name: typing.Literal["file", b"file"]) -> None: ...
+
+global___ArgsPropertyInGenericTestDeprecation = ArgsPropertyInGenericTestDeprecation
+
+@typing.final
+class ArgsPropertyInGenericTestDeprecationMsg(google.protobuf.message.Message):
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
+    INFO_FIELD_NUMBER: builtins.int
+    DATA_FIELD_NUMBER: builtins.int
+    @property
+    def info(self) -> global___CoreEventInfo: ...
+    @property
+    def data(self) -> global___ArgsPropertyInGenericTestDeprecation: ...
+    def __init__(
+        self,
+        *,
+        info: global___CoreEventInfo | None = ...,
+        data: global___ArgsPropertyInGenericTestDeprecation | None = ...,
+    ) -> None: ...
+    def HasField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> builtins.bool: ...
+    def ClearField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> None: ...
+
+global___ArgsPropertyInGenericTestDeprecationMsg = ArgsPropertyInGenericTestDeprecationMsg
+
+@typing.final
 class DeprecatedModel(google.protobuf.message.Message):
     """I065"""
 
