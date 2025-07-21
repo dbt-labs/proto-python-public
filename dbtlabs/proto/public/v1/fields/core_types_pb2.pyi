@@ -2421,7 +2421,7 @@ global___MissingPlusPrefixDeprecationMsg = MissingPlusPrefixDeprecationMsg
 
 @typing.final
 class ArgsPropertyInGenericTestDeprecation(google.protobuf.message.Message):
-    """D038"""
+    """unused"""
 
     DESCRIPTOR: google.protobuf.descriptor.Descriptor
 
@@ -2456,6 +2456,44 @@ class ArgsPropertyInGenericTestDeprecationMsg(google.protobuf.message.Message):
     def ClearField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> None: ...
 
 global___ArgsPropertyInGenericTestDeprecationMsg = ArgsPropertyInGenericTestDeprecationMsg
+
+@typing.final
+class ArgumentsPropertyInGenericTestDeprecation(google.protobuf.message.Message):
+    """D038"""
+
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
+    TEST_NAME_FIELD_NUMBER: builtins.int
+    test_name: builtins.str
+    def __init__(
+        self,
+        *,
+        test_name: builtins.str = ...,
+    ) -> None: ...
+    def ClearField(self, field_name: typing.Literal["test_name", b"test_name"]) -> None: ...
+
+global___ArgumentsPropertyInGenericTestDeprecation = ArgumentsPropertyInGenericTestDeprecation
+
+@typing.final
+class ArgumentsPropertyInGenericTestDeprecationMsg(google.protobuf.message.Message):
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
+    INFO_FIELD_NUMBER: builtins.int
+    DATA_FIELD_NUMBER: builtins.int
+    @property
+    def info(self) -> global___CoreEventInfo: ...
+    @property
+    def data(self) -> global___ArgumentsPropertyInGenericTestDeprecation: ...
+    def __init__(
+        self,
+        *,
+        info: global___CoreEventInfo | None = ...,
+        data: global___ArgumentsPropertyInGenericTestDeprecation | None = ...,
+    ) -> None: ...
+    def HasField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> builtins.bool: ...
+    def ClearField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> None: ...
+
+global___ArgumentsPropertyInGenericTestDeprecationMsg = ArgumentsPropertyInGenericTestDeprecationMsg
 
 @typing.final
 class DeprecatedModel(google.protobuf.message.Message):
