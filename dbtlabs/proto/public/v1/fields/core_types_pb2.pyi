@@ -2496,6 +2496,44 @@ class ArgumentsPropertyInGenericTestDeprecationMsg(google.protobuf.message.Messa
 global___ArgumentsPropertyInGenericTestDeprecationMsg = ArgumentsPropertyInGenericTestDeprecationMsg
 
 @typing.final
+class MissingArgumentsPropertyInGenericTestDeprecation(google.protobuf.message.Message):
+    """D039"""
+
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
+    TEST_NAME_FIELD_NUMBER: builtins.int
+    test_name: builtins.str
+    def __init__(
+        self,
+        *,
+        test_name: builtins.str = ...,
+    ) -> None: ...
+    def ClearField(self, field_name: typing.Literal["test_name", b"test_name"]) -> None: ...
+
+global___MissingArgumentsPropertyInGenericTestDeprecation = MissingArgumentsPropertyInGenericTestDeprecation
+
+@typing.final
+class MissingArgumentsPropertyInGenericTestDeprecationMsg(google.protobuf.message.Message):
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
+    INFO_FIELD_NUMBER: builtins.int
+    DATA_FIELD_NUMBER: builtins.int
+    @property
+    def info(self) -> global___CoreEventInfo: ...
+    @property
+    def data(self) -> global___MissingArgumentsPropertyInGenericTestDeprecation: ...
+    def __init__(
+        self,
+        *,
+        info: global___CoreEventInfo | None = ...,
+        data: global___MissingArgumentsPropertyInGenericTestDeprecation | None = ...,
+    ) -> None: ...
+    def HasField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> builtins.bool: ...
+    def ClearField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> None: ...
+
+global___MissingArgumentsPropertyInGenericTestDeprecationMsg = MissingArgumentsPropertyInGenericTestDeprecationMsg
+
+@typing.final
 class DeprecatedModel(google.protobuf.message.Message):
     """I065"""
 
