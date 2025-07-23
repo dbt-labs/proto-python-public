@@ -49,6 +49,26 @@ USER_STATE_VERIFICATION_ERROR: UserState.ValueType  # 4
 """Error occurred during verification"""
 global___UserState = UserState
 
+class _CompileType:
+    ValueType = typing.NewType("ValueType", builtins.int)
+    V: typing_extensions.TypeAlias = ValueType
+
+class _CompileTypeEnumTypeWrapper(google.protobuf.internal.enum_type_wrapper._EnumTypeWrapper[_CompileType.ValueType], builtins.type):
+    DESCRIPTOR: google.protobuf.descriptor.EnumDescriptor
+    FULL: _CompileType.ValueType  # 0
+    """Full compile"""
+    SPECULATIVE: _CompileType.ValueType  # 1
+    """Speculative compile"""
+
+class CompileType(_CompileType, metaclass=_CompileTypeEnumTypeWrapper):
+    """Compile type enum"""
+
+FULL: CompileType.ValueType  # 0
+"""Full compile"""
+SPECULATIVE: CompileType.ValueType  # 1
+"""Speculative compile"""
+global___CompileType = CompileType
+
 @typing.final
 class User(google.protobuf.message.Message):
     """User information"""
