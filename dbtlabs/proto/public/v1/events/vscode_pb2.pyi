@@ -339,3 +339,61 @@ class ExtensionUsedBuildMenu(google.protobuf.message.Message):
     def ClearField(self, field_name: typing.Literal["editor", b"editor", "enrichment", b"enrichment", "selected_command", b"selected_command", "user", b"user"]) -> None: ...
 
 global___ExtensionUsedBuildMenu = ExtensionUsedBuildMenu
+
+@typing.final
+class ExtensionGetSupportPopupShown(google.protobuf.message.Message):
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
+    ENRICHMENT_FIELD_NUMBER: builtins.int
+    EDITOR_FIELD_NUMBER: builtins.int
+    USER_FIELD_NUMBER: builtins.int
+    SUPPORT_TYPE_FIELD_NUMBER: builtins.int
+    support_type: builtins.str
+    """the type of support being offered"""
+    @property
+    def enrichment(self) -> dbtlabs.proto.public.v1.events.vortex_pb2.VortexMessageEnrichment: ...
+    @property
+    def editor(self) -> dbtlabs.proto.public.v1.fields.vscode_types_pb2.Editor: ...
+    @property
+    def user(self) -> dbtlabs.proto.public.v1.fields.vscode_types_pb2.User: ...
+    def __init__(
+        self,
+        *,
+        enrichment: dbtlabs.proto.public.v1.events.vortex_pb2.VortexMessageEnrichment | None = ...,
+        editor: dbtlabs.proto.public.v1.fields.vscode_types_pb2.Editor | None = ...,
+        user: dbtlabs.proto.public.v1.fields.vscode_types_pb2.User | None = ...,
+        support_type: builtins.str = ...,
+    ) -> None: ...
+    def HasField(self, field_name: typing.Literal["editor", b"editor", "enrichment", b"enrichment", "user", b"user"]) -> builtins.bool: ...
+    def ClearField(self, field_name: typing.Literal["editor", b"editor", "enrichment", b"enrichment", "support_type", b"support_type", "user", b"user"]) -> None: ...
+
+global___ExtensionGetSupportPopupShown = ExtensionGetSupportPopupShown
+
+@typing.final
+class ExtensionGetSupportClicked(google.protobuf.message.Message):
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
+    ENRICHMENT_FIELD_NUMBER: builtins.int
+    EDITOR_FIELD_NUMBER: builtins.int
+    USER_FIELD_NUMBER: builtins.int
+    SUPPORT_TYPE_FIELD_NUMBER: builtins.int
+    support_type: builtins.str
+    """the type of support that was clicked"""
+    @property
+    def enrichment(self) -> dbtlabs.proto.public.v1.events.vortex_pb2.VortexMessageEnrichment: ...
+    @property
+    def editor(self) -> dbtlabs.proto.public.v1.fields.vscode_types_pb2.Editor: ...
+    @property
+    def user(self) -> dbtlabs.proto.public.v1.fields.vscode_types_pb2.User: ...
+    def __init__(
+        self,
+        *,
+        enrichment: dbtlabs.proto.public.v1.events.vortex_pb2.VortexMessageEnrichment | None = ...,
+        editor: dbtlabs.proto.public.v1.fields.vscode_types_pb2.Editor | None = ...,
+        user: dbtlabs.proto.public.v1.fields.vscode_types_pb2.User | None = ...,
+        support_type: builtins.str = ...,
+    ) -> None: ...
+    def HasField(self, field_name: typing.Literal["editor", b"editor", "enrichment", b"enrichment", "user", b"user"]) -> builtins.bool: ...
+    def ClearField(self, field_name: typing.Literal["editor", b"editor", "enrichment", b"enrichment", "support_type", b"support_type", "user", b"user"]) -> None: ...
+
+global___ExtensionGetSupportClicked = ExtensionGetSupportClicked
