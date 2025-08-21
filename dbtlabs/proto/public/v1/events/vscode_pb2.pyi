@@ -91,6 +91,7 @@ class ExtensionLspCompile(google.protobuf.message.Message):
     DURATION_MS_FIELD_NUMBER: builtins.int
     COMPILE_TYPE_FIELD_NUMBER: builtins.int
     MODELS_COUNT_FIELD_NUMBER: builtins.int
+    USER_INITIATED_FIELD_NUMBER: builtins.int
     project_id: builtins.str
     """this is the hash of the project's name, used for anonymized telemetry"""
     adapter_type: builtins.str
@@ -107,6 +108,8 @@ class ExtensionLspCompile(google.protobuf.message.Message):
     """the type of compile"""
     models_count: builtins.int
     """project models count"""
+    user_initiated: builtins.bool
+    """True if the compile was triggered by a user action (ie. saving a file)"""
     @property
     def enrichment(self) -> dbtlabs.proto.public.v1.events.vortex_pb2.VortexMessageEnrichment: ...
     @property
@@ -130,9 +133,10 @@ class ExtensionLspCompile(google.protobuf.message.Message):
         duration_ms: builtins.int = ...,
         compile_type: dbtlabs.proto.public.v1.fields.vscode_types_pb2.CompileType.ValueType = ...,
         models_count: builtins.int = ...,
+        user_initiated: builtins.bool = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["editor", b"editor", "enrichment", b"enrichment", "user", b"user"]) -> builtins.bool: ...
-    def ClearField(self, field_name: typing.Literal["adapter_type", b"adapter_type", "adapter_unique_id", b"adapter_unique_id", "compile_success", b"compile_success", "compile_type", b"compile_type", "dbt_version", b"dbt_version", "duration_ms", b"duration_ms", "editor", b"editor", "enrichment", b"enrichment", "errors", b"errors", "models_count", b"models_count", "project_id", b"project_id", "user", b"user"]) -> None: ...
+    def ClearField(self, field_name: typing.Literal["adapter_type", b"adapter_type", "adapter_unique_id", b"adapter_unique_id", "compile_success", b"compile_success", "compile_type", b"compile_type", "dbt_version", b"dbt_version", "duration_ms", b"duration_ms", "editor", b"editor", "enrichment", b"enrichment", "errors", b"errors", "models_count", b"models_count", "project_id", b"project_id", "user", b"user", "user_initiated", b"user_initiated"]) -> None: ...
 
 global___ExtensionLspCompile = ExtensionLspCompile
 
