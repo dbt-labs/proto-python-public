@@ -69,6 +69,29 @@ SPECULATIVE: CompileType.ValueType  # 1
 """Speculative compile"""
 global___CompileType = CompileType
 
+class _CompileCause:
+    ValueType = typing.NewType("ValueType", builtins.int)
+    V: typing_extensions.TypeAlias = ValueType
+
+class _CompileCauseEnumTypeWrapper(google.protobuf.internal.enum_type_wrapper._EnumTypeWrapper[_CompileCause.ValueType], builtins.type):
+    DESCRIPTOR: google.protobuf.descriptor.EnumDescriptor
+    COMPILE_CAUSE_DID_SAVE: _CompileCause.ValueType  # 0
+    """Compile was caused by a user saving a file"""
+    COMPILE_CAUSE_COMPILE_LSP_COMMAND: _CompileCause.ValueType  # 1
+    """Compile was caused by an expliict compile command sent to the LSP"""
+    COMPILE_CAUSE_REFRESH_SOURCES: _CompileCause.ValueType  # 2
+    """Compile was caused by a request to refresh sources for a project"""
+
+class CompileCause(_CompileCause, metaclass=_CompileCauseEnumTypeWrapper): ...
+
+COMPILE_CAUSE_DID_SAVE: CompileCause.ValueType  # 0
+"""Compile was caused by a user saving a file"""
+COMPILE_CAUSE_COMPILE_LSP_COMMAND: CompileCause.ValueType  # 1
+"""Compile was caused by an expliict compile command sent to the LSP"""
+COMPILE_CAUSE_REFRESH_SOURCES: CompileCause.ValueType  # 2
+"""Compile was caused by a request to refresh sources for a project"""
+global___CompileCause = CompileCause
+
 @typing.final
 class User(google.protobuf.message.Message):
     """User information"""
