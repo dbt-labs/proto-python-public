@@ -28,6 +28,7 @@ class LogMessage(google.protobuf.message.Message):
     FILE_FIELD_NUMBER: builtins.int
     LINE_FIELD_NUMBER: builtins.int
     PHASE_FIELD_NUMBER: builtins.int
+    PACKAGE_NAME_FIELD_NUMBER: builtins.int
     code: builtins.int
     """Optional fusion error/warning code"""
     dbt_core_event_code: builtins.str
@@ -40,11 +41,13 @@ class LogMessage(google.protobuf.message.Message):
     this field should be set to the node's unique FQN.
     """
     file: builtins.str
-    """File name where the span was created."""
+    """Fusion source code file name where the log was created. Only available in debug builds."""
     line: builtins.int
-    """Line number in the file where the span was created."""
+    """Fusion source code file line number where the log was created. Only available in debug builds."""
     phase: dbtlabs.proto.public.v1.events.fusion.phase.phase_pb2.ExecutionPhase.ValueType
-    """Execution phase context (if known) where this log was emitted."""
+    """Execution phase (if known) during which this log was emitted."""
+    package_name: builtins.str
+    """Package name of the project dependency for which this log was emitted. Not set for the root project."""
     def __init__(
         self,
         *,
@@ -56,9 +59,10 @@ class LogMessage(google.protobuf.message.Message):
         file: builtins.str | None = ...,
         line: builtins.int | None = ...,
         phase: dbtlabs.proto.public.v1.events.fusion.phase.phase_pb2.ExecutionPhase.ValueType | None = ...,
+        package_name: builtins.str | None = ...,
     ) -> None: ...
-    def HasField(self, field_name: typing.Literal["_code", b"_code", "_dbt_core_event_code", b"_dbt_core_event_code", "_file", b"_file", "_line", b"_line", "_phase", b"_phase", "_unique_id", b"_unique_id", "code", b"code", "dbt_core_event_code", b"dbt_core_event_code", "file", b"file", "line", b"line", "phase", b"phase", "unique_id", b"unique_id"]) -> builtins.bool: ...
-    def ClearField(self, field_name: typing.Literal["_code", b"_code", "_dbt_core_event_code", b"_dbt_core_event_code", "_file", b"_file", "_line", b"_line", "_phase", b"_phase", "_unique_id", b"_unique_id", "code", b"code", "dbt_core_event_code", b"dbt_core_event_code", "file", b"file", "line", b"line", "original_severity_number", b"original_severity_number", "original_severity_text", b"original_severity_text", "phase", b"phase", "unique_id", b"unique_id"]) -> None: ...
+    def HasField(self, field_name: typing.Literal["_code", b"_code", "_dbt_core_event_code", b"_dbt_core_event_code", "_file", b"_file", "_line", b"_line", "_package_name", b"_package_name", "_phase", b"_phase", "_unique_id", b"_unique_id", "code", b"code", "dbt_core_event_code", b"dbt_core_event_code", "file", b"file", "line", b"line", "package_name", b"package_name", "phase", b"phase", "unique_id", b"unique_id"]) -> builtins.bool: ...
+    def ClearField(self, field_name: typing.Literal["_code", b"_code", "_dbt_core_event_code", b"_dbt_core_event_code", "_file", b"_file", "_line", b"_line", "_package_name", b"_package_name", "_phase", b"_phase", "_unique_id", b"_unique_id", "code", b"code", "dbt_core_event_code", b"dbt_core_event_code", "file", b"file", "line", b"line", "original_severity_number", b"original_severity_number", "original_severity_text", b"original_severity_text", "package_name", b"package_name", "phase", b"phase", "unique_id", b"unique_id"]) -> None: ...
     @typing.overload
     def WhichOneof(self, oneof_group: typing.Literal["_code", b"_code"]) -> typing.Literal["code"] | None: ...
     @typing.overload
@@ -67,6 +71,8 @@ class LogMessage(google.protobuf.message.Message):
     def WhichOneof(self, oneof_group: typing.Literal["_file", b"_file"]) -> typing.Literal["file"] | None: ...
     @typing.overload
     def WhichOneof(self, oneof_group: typing.Literal["_line", b"_line"]) -> typing.Literal["line"] | None: ...
+    @typing.overload
+    def WhichOneof(self, oneof_group: typing.Literal["_package_name", b"_package_name"]) -> typing.Literal["package_name"] | None: ...
     @typing.overload
     def WhichOneof(self, oneof_group: typing.Literal["_phase", b"_phase"]) -> typing.Literal["phase"] | None: ...
     @typing.overload

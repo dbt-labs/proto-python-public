@@ -36,6 +36,8 @@ class _ExecutionPhaseEnumTypeWrapper(google.protobuf.internal.enum_type_wrapper.
     """Parsing and macro name resolution of all dbt files"""
     EXECUTION_PHASE_SCHEDULE: _ExecutionPhase.ValueType  # 40
     """Schedule nodes based on selection criteria and dependencies."""
+    EXECUTION_PHASE_COMPARE: _ExecutionPhase.ValueType  # 45
+    """Run dbt-compare macros against selected nodes"""
     EXECUTION_PHASE_INIT_ADAPTER: _ExecutionPhase.ValueType  # 50
     """Initializing the adapter (warehouse connection and configuration)"""
     EXECUTION_PHASE_DEFER_HYDRATION: _ExecutionPhase.ValueType  # 60
@@ -78,6 +80,8 @@ EXECUTION_PHASE_PARSE: ExecutionPhase.ValueType  # 30
 """Parsing and macro name resolution of all dbt files"""
 EXECUTION_PHASE_SCHEDULE: ExecutionPhase.ValueType  # 40
 """Schedule nodes based on selection criteria and dependencies."""
+EXECUTION_PHASE_COMPARE: ExecutionPhase.ValueType  # 45
+"""Run dbt-compare macros against selected nodes"""
 EXECUTION_PHASE_INIT_ADAPTER: ExecutionPhase.ValueType  # 50
 """Initializing the adapter (warehouse connection and configuration)"""
 EXECUTION_PHASE_DEFER_HYDRATION: ExecutionPhase.ValueType  # 60
