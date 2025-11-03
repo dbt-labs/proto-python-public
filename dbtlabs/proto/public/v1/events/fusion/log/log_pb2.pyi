@@ -79,3 +79,73 @@ class LogMessage(google.protobuf.message.Message):
     def WhichOneof(self, oneof_group: typing.Literal["_unique_id", b"_unique_id"]) -> typing.Literal["unique_id"] | None: ...
 
 global___LogMessage = LogMessage
+
+@typing.final
+class UserLogMessage(google.protobuf.message.Message):
+    """Event emitted when user explicitly logs messages via jinja's print() or log() functions.
+    This event maps to dbt-core's JinjaLogInfo (I061-I063) events.
+    """
+
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
+    IS_PRINT_FIELD_NUMBER: builtins.int
+    DBT_CORE_EVENT_CODE_FIELD_NUMBER: builtins.int
+    UNIQUE_ID_FIELD_NUMBER: builtins.int
+    PHASE_FIELD_NUMBER: builtins.int
+    PACKAGE_NAME_FIELD_NUMBER: builtins.int
+    LINE_FIELD_NUMBER: builtins.int
+    COLUMN_FIELD_NUMBER: builtins.int
+    RELATIVE_PATH_FIELD_NUMBER: builtins.int
+    is_print: builtins.bool
+    """True if this message was emitted via print(), false if via log()"""
+    dbt_core_event_code: builtins.str
+    """Legacy dbt-core event code:
+    - "I062" (JinjaLogInfo) for log info level
+    - "I063" (JinjaLogDebug) for log debug level
+    - "I061" (JinjaLogWarning) for log warning level
+    - "Z052" (PrintEvent) for print statements
+    """
+    unique_id: builtins.str
+    """If this log message is emitted in the context of a specific node,
+    this field should be set to the node's unique FQN.
+    """
+    phase: dbtlabs.proto.public.v1.events.fusion.phase.phase_pb2.ExecutionPhase.ValueType
+    """Execution phase (if known) during which this log was emitted."""
+    package_name: builtins.str
+    """Package name (project or dependency) from which this log was emitted."""
+    line: builtins.int
+    """Location within the SQL/Jinja file where print() or log() was called.
+    Line number (1-indexed) of the print/log call in the SQL file.
+    """
+    column: builtins.int
+    """Column number (0-indexed) of the print/log call in the SQL file."""
+    relative_path: builtins.str
+    """Relative path to the SQL file containing the print/log call."""
+    def __init__(
+        self,
+        *,
+        is_print: builtins.bool = ...,
+        dbt_core_event_code: builtins.str = ...,
+        unique_id: builtins.str | None = ...,
+        phase: dbtlabs.proto.public.v1.events.fusion.phase.phase_pb2.ExecutionPhase.ValueType | None = ...,
+        package_name: builtins.str | None = ...,
+        line: builtins.int | None = ...,
+        column: builtins.int | None = ...,
+        relative_path: builtins.str | None = ...,
+    ) -> None: ...
+    def HasField(self, field_name: typing.Literal["_column", b"_column", "_line", b"_line", "_package_name", b"_package_name", "_phase", b"_phase", "_relative_path", b"_relative_path", "_unique_id", b"_unique_id", "column", b"column", "line", b"line", "package_name", b"package_name", "phase", b"phase", "relative_path", b"relative_path", "unique_id", b"unique_id"]) -> builtins.bool: ...
+    def ClearField(self, field_name: typing.Literal["_column", b"_column", "_line", b"_line", "_package_name", b"_package_name", "_phase", b"_phase", "_relative_path", b"_relative_path", "_unique_id", b"_unique_id", "column", b"column", "dbt_core_event_code", b"dbt_core_event_code", "is_print", b"is_print", "line", b"line", "package_name", b"package_name", "phase", b"phase", "relative_path", b"relative_path", "unique_id", b"unique_id"]) -> None: ...
+    @typing.overload
+    def WhichOneof(self, oneof_group: typing.Literal["_column", b"_column"]) -> typing.Literal["column"] | None: ...
+    @typing.overload
+    def WhichOneof(self, oneof_group: typing.Literal["_line", b"_line"]) -> typing.Literal["line"] | None: ...
+    @typing.overload
+    def WhichOneof(self, oneof_group: typing.Literal["_package_name", b"_package_name"]) -> typing.Literal["package_name"] | None: ...
+    @typing.overload
+    def WhichOneof(self, oneof_group: typing.Literal["_phase", b"_phase"]) -> typing.Literal["phase"] | None: ...
+    @typing.overload
+    def WhichOneof(self, oneof_group: typing.Literal["_relative_path", b"_relative_path"]) -> typing.Literal["relative_path"] | None: ...
+    @typing.overload
+    def WhichOneof(self, oneof_group: typing.Literal["_unique_id", b"_unique_id"]) -> typing.Literal["unique_id"] | None: ...
+
+global___UserLogMessage = UserLogMessage
