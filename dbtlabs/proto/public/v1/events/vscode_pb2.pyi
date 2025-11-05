@@ -642,6 +642,9 @@ class ExtensionCompareViewed(google.protobuf.message.Message):
     ENRICHMENT_FIELD_NUMBER: builtins.int
     EDITOR_FIELD_NUMBER: builtins.int
     USER_FIELD_NUMBER: builtins.int
+    DBT_LOCAL_COOKIE_USER_ID_FIELD_NUMBER: builtins.int
+    dbt_local_cookie_user_id: builtins.str
+    """the anonymous user id stored at ~/.dbt/.user.yml"""
     @property
     def enrichment(self) -> dbtlabs.proto.public.v1.events.vortex_pb2.VortexMessageEnrichment: ...
     @property
@@ -654,9 +657,10 @@ class ExtensionCompareViewed(google.protobuf.message.Message):
         enrichment: dbtlabs.proto.public.v1.events.vortex_pb2.VortexMessageEnrichment | None = ...,
         editor: dbtlabs.proto.public.v1.fields.vscode_types_pb2.Editor | None = ...,
         user: dbtlabs.proto.public.v1.fields.vscode_types_pb2.User | None = ...,
+        dbt_local_cookie_user_id: builtins.str = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["editor", b"editor", "enrichment", b"enrichment", "user", b"user"]) -> builtins.bool: ...
-    def ClearField(self, field_name: typing.Literal["editor", b"editor", "enrichment", b"enrichment", "user", b"user"]) -> None: ...
+    def ClearField(self, field_name: typing.Literal["dbt_local_cookie_user_id", b"dbt_local_cookie_user_id", "editor", b"editor", "enrichment", b"enrichment", "user", b"user"]) -> None: ...
 
 global___ExtensionCompareViewed = ExtensionCompareViewed
 
@@ -668,8 +672,11 @@ class ExtensionCompareStarted(google.protobuf.message.Message):
     EDITOR_FIELD_NUMBER: builtins.int
     USER_FIELD_NUMBER: builtins.int
     COMPARE_ID_FIELD_NUMBER: builtins.int
+    DBT_LOCAL_COOKIE_USER_ID_FIELD_NUMBER: builtins.int
     compare_id: builtins.str
     """anonymized identifier for this compare session"""
+    dbt_local_cookie_user_id: builtins.str
+    """the anonymous user id stored at ~/.dbt/.user.yml"""
     @property
     def enrichment(self) -> dbtlabs.proto.public.v1.events.vortex_pb2.VortexMessageEnrichment: ...
     @property
@@ -683,9 +690,10 @@ class ExtensionCompareStarted(google.protobuf.message.Message):
         editor: dbtlabs.proto.public.v1.fields.vscode_types_pb2.Editor | None = ...,
         user: dbtlabs.proto.public.v1.fields.vscode_types_pb2.User | None = ...,
         compare_id: builtins.str = ...,
+        dbt_local_cookie_user_id: builtins.str = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["editor", b"editor", "enrichment", b"enrichment", "user", b"user"]) -> builtins.bool: ...
-    def ClearField(self, field_name: typing.Literal["compare_id", b"compare_id", "editor", b"editor", "enrichment", b"enrichment", "user", b"user"]) -> None: ...
+    def ClearField(self, field_name: typing.Literal["compare_id", b"compare_id", "dbt_local_cookie_user_id", b"dbt_local_cookie_user_id", "editor", b"editor", "enrichment", b"enrichment", "user", b"user"]) -> None: ...
 
 global___ExtensionCompareStarted = ExtensionCompareStarted
 
@@ -700,6 +708,7 @@ class ExtensionCompareFinished(google.protobuf.message.Message):
     DURATION_MS_FIELD_NUMBER: builtins.int
     COMPARE_SUCCESS_FIELD_NUMBER: builtins.int
     FAILURE_REASON_FIELD_NUMBER: builtins.int
+    DBT_LOCAL_COOKIE_USER_ID_FIELD_NUMBER: builtins.int
     compare_id: builtins.str
     """anonymized identifier for this compare session"""
     duration_ms: builtins.int
@@ -708,6 +717,8 @@ class ExtensionCompareFinished(google.protobuf.message.Message):
     """whether the compare operation completed successfully"""
     failure_reason: builtins.str
     """sanitized description of the failure, if any"""
+    dbt_local_cookie_user_id: builtins.str
+    """the anonymous user id stored at ~/.dbt/.user.yml"""
     @property
     def enrichment(self) -> dbtlabs.proto.public.v1.events.vortex_pb2.VortexMessageEnrichment: ...
     @property
@@ -724,8 +735,9 @@ class ExtensionCompareFinished(google.protobuf.message.Message):
         duration_ms: builtins.int = ...,
         compare_success: builtins.bool = ...,
         failure_reason: builtins.str = ...,
+        dbt_local_cookie_user_id: builtins.str = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["editor", b"editor", "enrichment", b"enrichment", "user", b"user"]) -> builtins.bool: ...
-    def ClearField(self, field_name: typing.Literal["compare_id", b"compare_id", "compare_success", b"compare_success", "duration_ms", b"duration_ms", "editor", b"editor", "enrichment", b"enrichment", "failure_reason", b"failure_reason", "user", b"user"]) -> None: ...
+    def ClearField(self, field_name: typing.Literal["compare_id", b"compare_id", "compare_success", b"compare_success", "dbt_local_cookie_user_id", b"dbt_local_cookie_user_id", "duration_ms", b"duration_ms", "editor", b"editor", "enrichment", b"enrichment", "failure_reason", b"failure_reason", "user", b"user"]) -> None: ...
 
 global___ExtensionCompareFinished = ExtensionCompareFinished
