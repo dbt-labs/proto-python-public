@@ -60,14 +60,14 @@ VORTEX_ICEBERG_NAMESPACE_MANTLE: VortexIcebergNamespace.ValueType  # 5
 """owner: Zeeshan Qureshi"""
 VORTEX_ICEBERG_NAMESPACE_CODEX: VortexIcebergNamespace.ValueType  # 6
 """owner: Vadim Rybak"""
-global___VortexIcebergNamespace = VortexIcebergNamespace
+Global___VortexIcebergNamespace: typing_extensions.TypeAlias = VortexIcebergNamespace
 
 VORTEX_NAMESPACE_FIELD_NUMBER: builtins.int
 VORTEX_TABLE_NAME_FIELD_NUMBER: builtins.int
 VORTEX_PARTITION_FIELD_FIELD_NUMBER: builtins.int
 VORTEX_WRITE_TO_ICEBERG_FIELD_NUMBER: builtins.int
 VORTEX_ENABLED_FIELD_NUMBER: builtins.int
-vortex_namespace: google.protobuf.internal.extension_dict._ExtensionFieldDescriptor[google.protobuf.descriptor_pb2.MessageOptions, global___VortexIcebergNamespace.ValueType]
+vortex_namespace: google.protobuf.internal.extension_dict._ExtensionFieldDescriptor[google.protobuf.descriptor_pb2.MessageOptions, Global___VortexIcebergNamespace.ValueType]
 """the namespace to write within the iceberg catalog. it must
 be one of the valid values above. adding a new namespace
 requires an approval from the vortex team.

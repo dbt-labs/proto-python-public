@@ -35,7 +35,7 @@ class HandoffFrom(_HandoffFrom, metaclass=_HandoffFromEnumTypeWrapper):
 
 HANDOFF_FROM_UNSPECIFIED: HandoffFrom.ValueType  # 0
 HANDOFF_FROM_CATALOG: HandoffFrom.ValueType  # 1
-global___HandoffFrom = HandoffFrom
+Global___HandoffFrom: typing_extensions.TypeAlias = HandoffFrom
 
 class _HandoffTo:
     ValueType = typing.NewType("ValueType", builtins.int)
@@ -56,7 +56,7 @@ HANDOFF_TO_CATALOG: HandoffTo.ValueType  # 1
 HANDOFF_TO_IDE: HandoffTo.ValueType  # 2
 HANDOFF_TO_CANVAS: HandoffTo.ValueType  # 3
 HANDOFF_TO_INSIGHTS: HandoffTo.ValueType  # 4
-global___HandoffTo = HandoffTo
+Global___HandoffTo: typing_extensions.TypeAlias = HandoffTo
 
 class _HandoffAssetType:
     ValueType = typing.NewType("ValueType", builtins.int)
@@ -85,7 +85,7 @@ HANDOFF_ASSET_TYPE_DBT_METRIC: HandoffAssetType.ValueType  # 5
 HANDOFF_ASSET_TYPE_DBT_SAVED_QUERY: HandoffAssetType.ValueType  # 6
 HANDOFF_ASSET_TYPE_DATA_WAREHOUSE_TABLE: HandoffAssetType.ValueType  # 7
 HANDOFF_ASSET_TYPE_DATA_WAREHOUSE_VIEW: HandoffAssetType.ValueType  # 8
-global___HandoffAssetType = HandoffAssetType
+Global___HandoffAssetType: typing_extensions.TypeAlias = HandoffAssetType
 
 @typing.final
 class Handoff(google.protobuf.message.Message):
@@ -133,4 +133,4 @@ class Handoff(google.protobuf.message.Message):
     def HasField(self, field_name: typing.Literal["context", b"context", "enrichment", b"enrichment"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["asset_type", b"asset_type", "context", b"context", "enrichment", b"enrichment", "handoff_action", b"handoff_action", "handoff_from", b"handoff_from", "handoff_to", b"handoff_to", "is_final_handoff_action", b"is_final_handoff_action"]) -> None: ...
 
-global___Handoff = Handoff
+Global___Handoff: typing_extensions.TypeAlias = Handoff

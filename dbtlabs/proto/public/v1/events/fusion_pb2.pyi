@@ -65,7 +65,7 @@ SUCCESS: OnboardingScreen.ValueType  # 14
 AGENTIC_AUTOFIX: OnboardingScreen.ValueType  # 15
 TRY_AGENTIC_AUTOFIX: OnboardingScreen.ValueType  # 16
 DOWNLOAD_AGENTS_MD: OnboardingScreen.ValueType  # 17
-global___OnboardingScreen = OnboardingScreen
+Global___OnboardingScreen: typing_extensions.TypeAlias = OnboardingScreen
 
 class _OnboardingAction:
     ValueType = typing.NewType("ValueType", builtins.int)
@@ -102,7 +102,7 @@ STEP_COMPLETED: OnboardingAction.ValueType  # 5
 """checkpoint reached (use success)"""
 STEP_FAILED: OnboardingAction.ValueType  # 6
 """explicit failure"""
-global___OnboardingAction = OnboardingAction
+Global___OnboardingAction: typing_extensions.TypeAlias = OnboardingAction
 
 @typing.final
 class AdapterInfo(google.protobuf.message.Message):
@@ -159,7 +159,7 @@ class AdapterInfo(google.protobuf.message.Message):
     def HasField(self, field_name: typing.Literal["enrichment", b"enrichment"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["adapter_type", b"adapter_type", "adapter_unique_id", b"adapter_unique_id", "enrichment", b"enrichment", "event_id", b"event_id", "invocation_id", b"invocation_id"]) -> None: ...
 
-global___AdapterInfo = AdapterInfo
+Global___AdapterInfo: typing_extensions.TypeAlias = AdapterInfo
 
 @typing.final
 class AdapterInfoV2(google.protobuf.message.Message):
@@ -236,7 +236,7 @@ class AdapterInfoV2(google.protobuf.message.Message):
     def HasField(self, field_name: typing.Literal["enrichment", b"enrichment"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["adapter_name", b"adapter_name", "adapter_version", b"adapter_version", "base_adapter_version", b"base_adapter_version", "enrichment", b"enrichment", "event_id", b"event_id", "model_adapter_details", b"model_adapter_details", "run_model_id", b"run_model_id"]) -> None: ...
 
-global___AdapterInfoV2 = AdapterInfoV2
+Global___AdapterInfoV2: typing_extensions.TypeAlias = AdapterInfoV2
 
 @typing.final
 class Invocation(google.protobuf.message.Message):
@@ -329,7 +329,7 @@ class Invocation(google.protobuf.message.Message):
     def HasField(self, field_name: typing.Literal["enrichment", b"enrichment"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["command", b"command", "enrichment", b"enrichment", "event_id", b"event_id", "git_commit_sha", b"git_commit_sha", "invocation_id", b"invocation_id", "progress", b"progress", "project_id", b"project_id", "result_type", b"result_type", "user_id", b"user_id", "version", b"version"]) -> None: ...
 
-global___Invocation = Invocation
+Global___Invocation: typing_extensions.TypeAlias = Invocation
 
 @typing.final
 class InvocationEnv(google.protobuf.message.Message):
@@ -372,7 +372,7 @@ class InvocationEnv(google.protobuf.message.Message):
     def HasField(self, field_name: typing.Literal["enrichment", b"enrichment"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["enrichment", b"enrichment", "environment", b"environment", "event_id", b"event_id", "invocation_id", b"invocation_id"]) -> None: ...
 
-global___InvocationEnv = InvocationEnv
+Global___InvocationEnv: typing_extensions.TypeAlias = InvocationEnv
 
 @typing.final
 class PackageInstall(google.protobuf.message.Message):
@@ -424,7 +424,7 @@ class PackageInstall(google.protobuf.message.Message):
     def HasField(self, field_name: typing.Literal["enrichment", b"enrichment"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["enrichment", b"enrichment", "event_id", b"event_id", "invocation_id", b"invocation_id", "name", b"name", "source", b"source", "version", b"version"]) -> None: ...
 
-global___PackageInstall = PackageInstall
+Global___PackageInstall: typing_extensions.TypeAlias = PackageInstall
 
 @typing.final
 class ResourceCounts(google.protobuf.message.Message):
@@ -516,7 +516,7 @@ class ResourceCounts(google.protobuf.message.Message):
     def HasField(self, field_name: typing.Literal["enrichment", b"enrichment"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["analyses", b"analyses", "enrichment", b"enrichment", "event_id", b"event_id", "exposures", b"exposures", "groups", b"groups", "invocation_id", b"invocation_id", "macros", b"macros", "metrics", b"metrics", "models", b"models", "operations", b"operations", "saved_queries", b"saved_queries", "seeds", b"seeds", "semantic_models", b"semantic_models", "snapshots", b"snapshots", "sources", b"sources", "tests", b"tests", "unit_tests", b"unit_tests"]) -> None: ...
 
-global___ResourceCounts = ResourceCounts
+Global___ResourceCounts: typing_extensions.TypeAlias = ResourceCounts
 
 @typing.final
 class RunModel(google.protobuf.message.Message):
@@ -633,7 +633,7 @@ class RunModel(google.protobuf.message.Message):
     def HasField(self, field_name: typing.Literal["enrichment", b"enrichment"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["access", b"access", "contract_enforced", b"contract_enforced", "enrichment", b"enrichment", "event_id", b"event_id", "execution_time", b"execution_time", "has_group", b"has_group", "hashed_contents", b"hashed_contents", "index", b"index", "invocation_id", b"invocation_id", "language", b"language", "model_id", b"model_id", "model_incremental_strategy", b"model_incremental_strategy", "model_materialization", b"model_materialization", "resource_type", b"resource_type", "run_model_id", b"run_model_id", "run_skipped", b"run_skipped", "run_skipped_reason", b"run_skipped_reason", "run_status", b"run_status", "total", b"total", "versioned", b"versioned"]) -> None: ...
 
-global___RunModel = RunModel
+Global___RunModel: typing_extensions.TypeAlias = RunModel
 
 @typing.final
 class Onboarding(google.protobuf.message.Message):
@@ -654,11 +654,11 @@ class Onboarding(google.protobuf.message.Message):
     """Globally unique identifier for the fusion invocation.
     Required.
     """
-    screen: global___OnboardingScreen.ValueType
+    screen: Global___OnboardingScreen.ValueType
     """Onboarding semantics.
     Which screen/step
     """
-    action: global___OnboardingAction.ValueType
+    action: Global___OnboardingAction.ValueType
     """What happened on that screen"""
     success: builtins.bool
     """Only for RUN_FINISHED/STEP_COMPLETED; ignored otherwise"""
@@ -677,12 +677,12 @@ class Onboarding(google.protobuf.message.Message):
         enrichment: dbtlabs.proto.public.v1.events.vortex_pb2.VortexMessageEnrichment | None = ...,
         event_id: builtins.str = ...,
         invocation_id: builtins.str = ...,
-        screen: global___OnboardingScreen.ValueType = ...,
-        action: global___OnboardingAction.ValueType = ...,
+        screen: Global___OnboardingScreen.ValueType = ...,
+        action: Global___OnboardingAction.ValueType = ...,
         success: builtins.bool = ...,
         user_id: builtins.str = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["enrichment", b"enrichment"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["action", b"action", "enrichment", b"enrichment", "event_id", b"event_id", "invocation_id", b"invocation_id", "screen", b"screen", "success", b"success", "user_id", b"user_id"]) -> None: ...
 
-global___Onboarding = Onboarding
+Global___Onboarding: typing_extensions.TypeAlias = Onboarding

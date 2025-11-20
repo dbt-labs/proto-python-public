@@ -48,7 +48,7 @@ If set, `node_error_type` with also be set to indicate the type of error.
 """
 QUERY_OUTCOME_CANCELED: QueryOutcome.ValueType  # 3
 """Query was canceled (e.g. user-initiated cancellation)."""
-global___QueryOutcome = QueryOutcome
+Global___QueryOutcome: typing_extensions.TypeAlias = QueryOutcome
 
 @typing.final
 class QueryExecuted(google.protobuf.message.Message):
@@ -77,7 +77,7 @@ class QueryExecuted(google.protobuf.message.Message):
     """Database provided query ID for the executed query, if available."""
     unique_id: builtins.str
     """unique_id of the node that generated this query. Some queries may not be associated with a single node."""
-    query_outcome: global___QueryOutcome.ValueType
+    query_outcome: Global___QueryOutcome.ValueType
     """Outcome for this query execution."""
     phase: dbtlabs.proto.public.v1.events.fusion.phase.phase_pb2.ExecutionPhase.ValueType
     """Execution phase during which this query was evaluated, if available"""
@@ -99,7 +99,7 @@ class QueryExecuted(google.protobuf.message.Message):
         query_description: builtins.str | None = ...,
         query_id: builtins.str | None = ...,
         unique_id: builtins.str | None = ...,
-        query_outcome: global___QueryOutcome.ValueType = ...,
+        query_outcome: Global___QueryOutcome.ValueType = ...,
         phase: dbtlabs.proto.public.v1.events.fusion.phase.phase_pb2.ExecutionPhase.ValueType | None = ...,
         query_error_adapter_message: builtins.str | None = ...,
         query_error_vendor_code: builtins.int | None = ...,
@@ -120,4 +120,4 @@ class QueryExecuted(google.protobuf.message.Message):
     @typing.overload
     def WhichOneof(self, oneof_group: typing.Literal["_unique_id", b"_unique_id"]) -> typing.Literal["unique_id"] | None: ...
 
-global___QueryExecuted = QueryExecuted
+Global___QueryExecuted: typing_extensions.TypeAlias = QueryExecuted

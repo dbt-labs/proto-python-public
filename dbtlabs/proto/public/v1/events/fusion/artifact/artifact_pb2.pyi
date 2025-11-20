@@ -35,7 +35,7 @@ ARTIFACT_TYPE_UNSPECIFIED: ArtifactType.ValueType  # 0
 ARTIFACT_TYPE_MANIFEST: ArtifactType.ValueType  # 1
 ARTIFACT_TYPE_SEMANTIC_MANIFEST: ArtifactType.ValueType  # 2
 ARTIFACT_TYPE_CATALOG: ArtifactType.ValueType  # 3
-global___ArtifactType = ArtifactType
+Global___ArtifactType: typing_extensions.TypeAlias = ArtifactType
 
 @typing.final
 class ArtifactWritten(google.protobuf.message.Message):
@@ -47,14 +47,14 @@ class ArtifactWritten(google.protobuf.message.Message):
     ARTIFACT_TYPE_FIELD_NUMBER: builtins.int
     relative_path: builtins.str
     """The path to the artifact relative to the project root."""
-    artifact_type: global___ArtifactType.ValueType
+    artifact_type: Global___ArtifactType.ValueType
     """Type of the artifact written."""
     def __init__(
         self,
         *,
         relative_path: builtins.str = ...,
-        artifact_type: global___ArtifactType.ValueType = ...,
+        artifact_type: Global___ArtifactType.ValueType = ...,
     ) -> None: ...
     def ClearField(self, field_name: typing.Literal["artifact_type", b"artifact_type", "relative_path", b"relative_path"]) -> None: ...
 
-global___ArtifactWritten = ArtifactWritten
+Global___ArtifactWritten: typing_extensions.TypeAlias = ArtifactWritten

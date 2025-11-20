@@ -10,7 +10,13 @@ import google.protobuf.descriptor
 import google.protobuf.internal.containers
 import google.protobuf.message
 import google.protobuf.timestamp_pb2
+import sys
 import typing
+
+if sys.version_info >= (3, 10):
+    import typing as typing_extensions
+else:
+    import typing_extensions
 
 DESCRIPTOR: google.protobuf.descriptor.FileDescriptor
 
@@ -63,7 +69,7 @@ class VortexMessage(google.protobuf.message.Message):
     def HasField(self, field_name: typing.Literal["any", b"any", "vortex_backend_processed_at", b"vortex_backend_processed_at", "vortex_backend_received_at", b"vortex_backend_received_at", "vortex_client_sent_at", b"vortex_client_sent_at", "vortex_event_created_at", b"vortex_event_created_at"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["any", b"any", "vortex_backend_processed_at", b"vortex_backend_processed_at", "vortex_backend_received_at", b"vortex_backend_received_at", "vortex_client_sent_at", b"vortex_client_sent_at", "vortex_event_created_at", b"vortex_event_created_at"]) -> None: ...
 
-global___VortexMessage = VortexMessage
+Global___VortexMessage: typing_extensions.TypeAlias = VortexMessage
 
 @typing.final
 class VortexMessageBatch(google.protobuf.message.Message):
@@ -82,7 +88,7 @@ class VortexMessageBatch(google.protobuf.message.Message):
     library.
     """
     @property
-    def payload(self) -> google.protobuf.internal.containers.RepeatedCompositeFieldContainer[global___VortexMessage]:
+    def payload(self) -> google.protobuf.internal.containers.RepeatedCompositeFieldContainer[Global___VortexMessage]:
         """the data that was sent to vortex originally. it is retained
         here so that consumers can re-construct the original message
         exactly as they sent it. clients will construct this from
@@ -98,11 +104,11 @@ class VortexMessageBatch(google.protobuf.message.Message):
         self,
         *,
         request_id: builtins.str = ...,
-        payload: collections.abc.Iterable[global___VortexMessage] | None = ...,
+        payload: collections.abc.Iterable[Global___VortexMessage] | None = ...,
     ) -> None: ...
     def ClearField(self, field_name: typing.Literal["payload", b"payload", "request_id", b"request_id"]) -> None: ...
 
-global___VortexMessageBatch = VortexMessageBatch
+Global___VortexMessageBatch: typing_extensions.TypeAlias = VortexMessageBatch
 
 @typing.final
 class VortexDeadLetterMessage(google.protobuf.message.Message):
@@ -134,7 +140,7 @@ class VortexDeadLetterMessage(google.protobuf.message.Message):
     ) -> None: ...
     def ClearField(self, field_name: typing.Literal["reason", b"reason", "type_url", b"type_url", "value", b"value", "value_bytes", b"value_bytes"]) -> None: ...
 
-global___VortexDeadLetterMessage = VortexDeadLetterMessage
+Global___VortexDeadLetterMessage: typing_extensions.TypeAlias = VortexDeadLetterMessage
 
 @typing.final
 class VortexMessageEnrichment(google.protobuf.message.Message):
@@ -148,28 +154,28 @@ class VortexMessageEnrichment(google.protobuf.message.Message):
     CLIENT_PLATFORM_FIELD_NUMBER: builtins.int
     USER_AGENT_FIELD_NUMBER: builtins.int
     @property
-    def client_ip(self) -> global___VortexClientIp:
+    def client_ip(self) -> Global___VortexClientIp:
         """IP address and proxy information of the client"""
 
     @property
-    def client_platform(self) -> global___VortexClientPlatform:
+    def client_platform(self) -> Global___VortexClientPlatform:
         """Information about the client platform, including service, client, and library versions"""
 
     @property
-    def user_agent(self) -> global___VortexUserAgent:
+    def user_agent(self) -> Global___VortexUserAgent:
         """User agent information for web-based events"""
 
     def __init__(
         self,
         *,
-        client_ip: global___VortexClientIp | None = ...,
-        client_platform: global___VortexClientPlatform | None = ...,
-        user_agent: global___VortexUserAgent | None = ...,
+        client_ip: Global___VortexClientIp | None = ...,
+        client_platform: Global___VortexClientPlatform | None = ...,
+        user_agent: Global___VortexUserAgent | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["client_ip", b"client_ip", "client_platform", b"client_platform", "user_agent", b"user_agent"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["client_ip", b"client_ip", "client_platform", b"client_platform", "user_agent", b"user_agent"]) -> None: ...
 
-global___VortexMessageEnrichment = VortexMessageEnrichment
+Global___VortexMessageEnrichment: typing_extensions.TypeAlias = VortexMessageEnrichment
 
 @typing.final
 class VortexClientIp(google.protobuf.message.Message):
@@ -183,7 +189,7 @@ class VortexClientIp(google.protobuf.message.Message):
     proxy: builtins.bool
     """Whether the IP address is from a proxy service"""
     @property
-    def geo(self) -> global___VortexGeolocation:
+    def geo(self) -> Global___VortexGeolocation:
         """Geographic location information for this IP address"""
 
     def __init__(
@@ -191,12 +197,12 @@ class VortexClientIp(google.protobuf.message.Message):
         *,
         ip: builtins.str = ...,
         proxy: builtins.bool = ...,
-        geo: global___VortexGeolocation | None = ...,
+        geo: Global___VortexGeolocation | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["geo", b"geo"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["geo", b"geo", "ip", b"ip", "proxy", b"proxy"]) -> None: ...
 
-global___VortexClientIp = VortexClientIp
+Global___VortexClientIp: typing_extensions.TypeAlias = VortexClientIp
 
 @typing.final
 class VortexGeolocation(google.protobuf.message.Message):
@@ -232,7 +238,7 @@ class VortexGeolocation(google.protobuf.message.Message):
     ) -> None: ...
     def ClearField(self, field_name: typing.Literal["city", b"city", "continent", b"continent", "country", b"country", "latitude", b"latitude", "longitude", b"longitude", "timezone", b"timezone"]) -> None: ...
 
-global___VortexGeolocation = VortexGeolocation
+Global___VortexGeolocation: typing_extensions.TypeAlias = VortexGeolocation
 
 @typing.final
 class VortexClientPlatform(google.protobuf.message.Message):
@@ -277,7 +283,7 @@ class VortexClientPlatform(google.protobuf.message.Message):
     ) -> None: ...
     def ClearField(self, field_name: typing.Literal["client", b"client", "client_version", b"client_version", "dbt_proto_library", b"dbt_proto_library", "dbt_proto_library_version", b"dbt_proto_library_version", "raw", b"raw", "service", b"service", "service_version", b"service_version"]) -> None: ...
 
-global___VortexClientPlatform = VortexClientPlatform
+Global___VortexClientPlatform: typing_extensions.TypeAlias = VortexClientPlatform
 
 @typing.final
 class VortexUserAgent(google.protobuf.message.Message):
@@ -319,4 +325,4 @@ class VortexUserAgent(google.protobuf.message.Message):
     ) -> None: ...
     def ClearField(self, field_name: typing.Literal["browser", b"browser", "browser_version", b"browser_version", "device", b"device", "device_type", b"device_type", "os", b"os", "os_version", b"os_version", "raw", b"raw"]) -> None: ...
 
-global___VortexUserAgent = VortexUserAgent
+Global___VortexUserAgent: typing_extensions.TypeAlias = VortexUserAgent

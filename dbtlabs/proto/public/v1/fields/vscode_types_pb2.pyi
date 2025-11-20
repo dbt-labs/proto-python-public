@@ -47,7 +47,7 @@ USER_STATE_EXPIRED: UserState.ValueType  # 3
 """User's registration has expired"""
 USER_STATE_VERIFICATION_ERROR: UserState.ValueType  # 4
 """Error occurred during verification"""
-global___UserState = UserState
+Global___UserState: typing_extensions.TypeAlias = UserState
 
 class _CompileType:
     ValueType = typing.NewType("ValueType", builtins.int)
@@ -67,7 +67,7 @@ FULL: CompileType.ValueType  # 0
 """Full compile"""
 SPECULATIVE: CompileType.ValueType  # 1
 """Speculative compile"""
-global___CompileType = CompileType
+Global___CompileType: typing_extensions.TypeAlias = CompileType
 
 class _CompileCause:
     ValueType = typing.NewType("ValueType", builtins.int)
@@ -90,7 +90,7 @@ COMPILE_CAUSE_COMPILE_LSP_COMMAND: CompileCause.ValueType  # 1
 """Compile was caused by an expliict compile command sent to the LSP"""
 COMPILE_CAUSE_REFRESH_SOURCES: CompileCause.ValueType  # 2
 """Compile was caused by a request to refresh sources for a project"""
-global___CompileCause = CompileCause
+Global___CompileCause: typing_extensions.TypeAlias = CompileCause
 
 @typing.final
 class User(google.protobuf.message.Message):
@@ -120,7 +120,7 @@ class User(google.protobuf.message.Message):
     ) -> None: ...
     def ClearField(self, field_name: typing.Literal["credentials_source", b"credentials_source", "dbt_cloud_hostname", b"dbt_cloud_hostname", "dbt_cloud_user_id", b"dbt_cloud_user_id", "registration_state", b"registration_state"]) -> None: ...
 
-global___User = User
+Global___User: typing_extensions.TypeAlias = User
 
 @typing.final
 class Editor(google.protobuf.message.Message):
@@ -158,7 +158,7 @@ class Editor(google.protobuf.message.Message):
     ) -> None: ...
     def ClearField(self, field_name: typing.Literal["editor_name", b"editor_name", "editor_version", b"editor_version", "extension_version", b"extension_version", "mac_machine_id", b"mac_machine_id", "machine_id", b"machine_id", "session_id", b"session_id"]) -> None: ...
 
-global___Editor = Editor
+Global___Editor: typing_extensions.TypeAlias = Editor
 
 @typing.final
 class CompileError(google.protobuf.message.Message):
@@ -178,4 +178,4 @@ class CompileError(google.protobuf.message.Message):
     ) -> None: ...
     def ClearField(self, field_name: typing.Literal["code", b"code", "message", b"message"]) -> None: ...
 
-global___CompileError = CompileError
+Global___CompileError: typing_extensions.TypeAlias = CompileError

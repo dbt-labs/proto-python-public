@@ -10,7 +10,13 @@ import dbtlabs.proto.public.v1.fields.vscode_types_pb2
 import google.protobuf.descriptor
 import google.protobuf.internal.containers
 import google.protobuf.message
+import sys
 import typing
+
+if sys.version_info >= (3, 10):
+    import typing as typing_extensions
+else:
+    import typing_extensions
 
 DESCRIPTOR: google.protobuf.descriptor.FileDescriptor
 
@@ -85,7 +91,7 @@ class ExtensionActivated(google.protobuf.message.Message):
     def HasField(self, field_name: typing.Literal["editor", b"editor", "enrichment", b"enrichment", "user", b"user"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["adapter_type", b"adapter_type", "dbt_local_cookie_user_id", b"dbt_local_cookie_user_id", "dbt_version", b"dbt_version", "editor", b"editor", "enrichment", b"enrichment", "init_duration_ms", b"init_duration_ms", "init_error", b"init_error", "init_error_detail", b"init_error_detail", "init_success", b"init_success", "is_fusion_installed", b"is_fusion_installed", "is_lsp_installed", b"is_lsp_installed", "models_count", b"models_count", "os_name", b"os_name", "os_version", b"os_version", "user", b"user"]) -> None: ...
 
-global___ExtensionActivated = ExtensionActivated
+Global___ExtensionActivated: typing_extensions.TypeAlias = ExtensionActivated
 
 @typing.final
 class ExtensionLspCompile(google.protobuf.message.Message):
@@ -158,7 +164,7 @@ class ExtensionLspCompile(google.protobuf.message.Message):
     def HasField(self, field_name: typing.Literal["editor", b"editor", "enrichment", b"enrichment", "user", b"user"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["adapter_type", b"adapter_type", "adapter_unique_id", b"adapter_unique_id", "compile_cause", b"compile_cause", "compile_success", b"compile_success", "compile_type", b"compile_type", "dbt_local_cookie_user_id", b"dbt_local_cookie_user_id", "dbt_version", b"dbt_version", "duration_ms", b"duration_ms", "editor", b"editor", "enrichment", b"enrichment", "errors", b"errors", "models_count", b"models_count", "project_id", b"project_id", "user", b"user", "user_initiated", b"user_initiated"]) -> None: ...
 
-global___ExtensionLspCompile = ExtensionLspCompile
+Global___ExtensionLspCompile: typing_extensions.TypeAlias = ExtensionLspCompile
 
 @typing.final
 class ExtensionUserStateChange(google.protobuf.message.Message):
@@ -191,7 +197,7 @@ class ExtensionUserStateChange(google.protobuf.message.Message):
     def HasField(self, field_name: typing.Literal["editor", b"editor", "enrichment", b"enrichment", "user", b"user"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["changed_to_state", b"changed_to_state", "dbt_local_cookie_user_id", b"dbt_local_cookie_user_id", "editor", b"editor", "enrichment", b"enrichment", "user", b"user"]) -> None: ...
 
-global___ExtensionUserStateChange = ExtensionUserStateChange
+Global___ExtensionUserStateChange: typing_extensions.TypeAlias = ExtensionUserStateChange
 
 @typing.final
 class ExtensionCtePreview(google.protobuf.message.Message):
@@ -220,7 +226,7 @@ class ExtensionCtePreview(google.protobuf.message.Message):
     def HasField(self, field_name: typing.Literal["editor", b"editor", "enrichment", b"enrichment", "user", b"user"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["dbt_local_cookie_user_id", b"dbt_local_cookie_user_id", "editor", b"editor", "enrichment", b"enrichment", "user", b"user"]) -> None: ...
 
-global___ExtensionCtePreview = ExtensionCtePreview
+Global___ExtensionCtePreview: typing_extensions.TypeAlias = ExtensionCtePreview
 
 @typing.final
 class ExtensionLineageTabClicked(google.protobuf.message.Message):
@@ -249,7 +255,7 @@ class ExtensionLineageTabClicked(google.protobuf.message.Message):
     def HasField(self, field_name: typing.Literal["editor", b"editor", "enrichment", b"enrichment", "user", b"user"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["dbt_local_cookie_user_id", b"dbt_local_cookie_user_id", "editor", b"editor", "enrichment", b"enrichment", "user", b"user"]) -> None: ...
 
-global___ExtensionLineageTabClicked = ExtensionLineageTabClicked
+Global___ExtensionLineageTabClicked: typing_extensions.TypeAlias = ExtensionLineageTabClicked
 
 @typing.final
 class ExtensionColumnLineage(google.protobuf.message.Message):
@@ -278,7 +284,7 @@ class ExtensionColumnLineage(google.protobuf.message.Message):
     def HasField(self, field_name: typing.Literal["editor", b"editor", "enrichment", b"enrichment", "user", b"user"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["dbt_local_cookie_user_id", b"dbt_local_cookie_user_id", "editor", b"editor", "enrichment", b"enrichment", "user", b"user"]) -> None: ...
 
-global___ExtensionColumnLineage = ExtensionColumnLineage
+Global___ExtensionColumnLineage: typing_extensions.TypeAlias = ExtensionColumnLineage
 
 @typing.final
 class ExtensionShowCompiledFile(google.protobuf.message.Message):
@@ -307,7 +313,7 @@ class ExtensionShowCompiledFile(google.protobuf.message.Message):
     def HasField(self, field_name: typing.Literal["editor", b"editor", "enrichment", b"enrichment", "user", b"user"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["dbt_local_cookie_user_id", b"dbt_local_cookie_user_id", "editor", b"editor", "enrichment", b"enrichment", "user", b"user"]) -> None: ...
 
-global___ExtensionShowCompiledFile = ExtensionShowCompiledFile
+Global___ExtensionShowCompiledFile: typing_extensions.TypeAlias = ExtensionShowCompiledFile
 
 @typing.final
 class ExtensionModelRename(google.protobuf.message.Message):
@@ -336,7 +342,7 @@ class ExtensionModelRename(google.protobuf.message.Message):
     def HasField(self, field_name: typing.Literal["editor", b"editor", "enrichment", b"enrichment", "user", b"user"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["dbt_local_cookie_user_id", b"dbt_local_cookie_user_id", "editor", b"editor", "enrichment", b"enrichment", "user", b"user"]) -> None: ...
 
-global___ExtensionModelRename = ExtensionModelRename
+Global___ExtensionModelRename: typing_extensions.TypeAlias = ExtensionModelRename
 
 @typing.final
 class ExtensionColumnRename(google.protobuf.message.Message):
@@ -365,7 +371,7 @@ class ExtensionColumnRename(google.protobuf.message.Message):
     def HasField(self, field_name: typing.Literal["editor", b"editor", "enrichment", b"enrichment", "user", b"user"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["dbt_local_cookie_user_id", b"dbt_local_cookie_user_id", "editor", b"editor", "enrichment", b"enrichment", "user", b"user"]) -> None: ...
 
-global___ExtensionColumnRename = ExtensionColumnRename
+Global___ExtensionColumnRename: typing_extensions.TypeAlias = ExtensionColumnRename
 
 @typing.final
 class ExtensionUsedBuildMenu(google.protobuf.message.Message):
@@ -398,7 +404,7 @@ class ExtensionUsedBuildMenu(google.protobuf.message.Message):
     def HasField(self, field_name: typing.Literal["editor", b"editor", "enrichment", b"enrichment", "user", b"user"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["dbt_local_cookie_user_id", b"dbt_local_cookie_user_id", "editor", b"editor", "enrichment", b"enrichment", "selected_command", b"selected_command", "user", b"user"]) -> None: ...
 
-global___ExtensionUsedBuildMenu = ExtensionUsedBuildMenu
+Global___ExtensionUsedBuildMenu: typing_extensions.TypeAlias = ExtensionUsedBuildMenu
 
 @typing.final
 class ExtensionGetSupportPopupShown(google.protobuf.message.Message):
@@ -431,7 +437,7 @@ class ExtensionGetSupportPopupShown(google.protobuf.message.Message):
     def HasField(self, field_name: typing.Literal["editor", b"editor", "enrichment", b"enrichment", "user", b"user"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["dbt_local_cookie_user_id", b"dbt_local_cookie_user_id", "editor", b"editor", "enrichment", b"enrichment", "support_type", b"support_type", "user", b"user"]) -> None: ...
 
-global___ExtensionGetSupportPopupShown = ExtensionGetSupportPopupShown
+Global___ExtensionGetSupportPopupShown: typing_extensions.TypeAlias = ExtensionGetSupportPopupShown
 
 @typing.final
 class ExtensionGetSupportClicked(google.protobuf.message.Message):
@@ -464,7 +470,7 @@ class ExtensionGetSupportClicked(google.protobuf.message.Message):
     def HasField(self, field_name: typing.Literal["editor", b"editor", "enrichment", b"enrichment", "user", b"user"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["dbt_local_cookie_user_id", b"dbt_local_cookie_user_id", "editor", b"editor", "enrichment", b"enrichment", "support_type", b"support_type", "user", b"user"]) -> None: ...
 
-global___ExtensionGetSupportClicked = ExtensionGetSupportClicked
+Global___ExtensionGetSupportClicked: typing_extensions.TypeAlias = ExtensionGetSupportClicked
 
 @typing.final
 class ExtensionGetSupportFormShown(google.protobuf.message.Message):
@@ -497,7 +503,7 @@ class ExtensionGetSupportFormShown(google.protobuf.message.Message):
     def HasField(self, field_name: typing.Literal["editor", b"editor", "enrichment", b"enrichment", "user", b"user"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["dbt_local_cookie_user_id", b"dbt_local_cookie_user_id", "editor", b"editor", "enrichment", b"enrichment", "support_type", b"support_type", "user", b"user"]) -> None: ...
 
-global___ExtensionGetSupportFormShown = ExtensionGetSupportFormShown
+Global___ExtensionGetSupportFormShown: typing_extensions.TypeAlias = ExtensionGetSupportFormShown
 
 @typing.final
 class ExtensionGetSupportUnverifiedNoticeShown(google.protobuf.message.Message):
@@ -530,7 +536,7 @@ class ExtensionGetSupportUnverifiedNoticeShown(google.protobuf.message.Message):
     def HasField(self, field_name: typing.Literal["editor", b"editor", "enrichment", b"enrichment", "user", b"user"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["dbt_local_cookie_user_id", b"dbt_local_cookie_user_id", "editor", b"editor", "enrichment", b"enrichment", "support_type", b"support_type", "user", b"user"]) -> None: ...
 
-global___ExtensionGetSupportUnverifiedNoticeShown = ExtensionGetSupportUnverifiedNoticeShown
+Global___ExtensionGetSupportUnverifiedNoticeShown: typing_extensions.TypeAlias = ExtensionGetSupportUnverifiedNoticeShown
 
 @typing.final
 class ExtensionGetSupportFormSubmitted(google.protobuf.message.Message):
@@ -567,7 +573,7 @@ class ExtensionGetSupportFormSubmitted(google.protobuf.message.Message):
     def HasField(self, field_name: typing.Literal["editor", b"editor", "enrichment", b"enrichment", "user", b"user"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["dbt_local_cookie_user_id", b"dbt_local_cookie_user_id", "editor", b"editor", "enrichment", b"enrichment", "success", b"success", "support_type", b"support_type", "user", b"user"]) -> None: ...
 
-global___ExtensionGetSupportFormSubmitted = ExtensionGetSupportFormSubmitted
+Global___ExtensionGetSupportFormSubmitted: typing_extensions.TypeAlias = ExtensionGetSupportFormSubmitted
 
 @typing.final
 class ExtensionGetSupportFormCancelled(google.protobuf.message.Message):
@@ -600,7 +606,7 @@ class ExtensionGetSupportFormCancelled(google.protobuf.message.Message):
     def HasField(self, field_name: typing.Literal["editor", b"editor", "enrichment", b"enrichment", "user", b"user"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["dbt_local_cookie_user_id", b"dbt_local_cookie_user_id", "editor", b"editor", "enrichment", b"enrichment", "support_type", b"support_type", "user", b"user"]) -> None: ...
 
-global___ExtensionGetSupportFormCancelled = ExtensionGetSupportFormCancelled
+Global___ExtensionGetSupportFormCancelled: typing_extensions.TypeAlias = ExtensionGetSupportFormCancelled
 
 @typing.final
 class ExtensionGetSupportPanelClosed(google.protobuf.message.Message):
@@ -633,7 +639,7 @@ class ExtensionGetSupportPanelClosed(google.protobuf.message.Message):
     def HasField(self, field_name: typing.Literal["editor", b"editor", "enrichment", b"enrichment", "user", b"user"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["dbt_local_cookie_user_id", b"dbt_local_cookie_user_id", "editor", b"editor", "enrichment", b"enrichment", "support_type", b"support_type", "user", b"user"]) -> None: ...
 
-global___ExtensionGetSupportPanelClosed = ExtensionGetSupportPanelClosed
+Global___ExtensionGetSupportPanelClosed: typing_extensions.TypeAlias = ExtensionGetSupportPanelClosed
 
 @typing.final
 class ExtensionCompareViewed(google.protobuf.message.Message):
@@ -666,7 +672,7 @@ class ExtensionCompareViewed(google.protobuf.message.Message):
     def HasField(self, field_name: typing.Literal["editor", b"editor", "enrichment", b"enrichment", "user", b"user"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["dbt_local_cookie_user_id", b"dbt_local_cookie_user_id", "editor", b"editor", "enrichment", b"enrichment", "event_id", b"event_id", "user", b"user"]) -> None: ...
 
-global___ExtensionCompareViewed = ExtensionCompareViewed
+Global___ExtensionCompareViewed: typing_extensions.TypeAlias = ExtensionCompareViewed
 
 @typing.final
 class ExtensionCompareStarted(google.protobuf.message.Message):
@@ -703,7 +709,7 @@ class ExtensionCompareStarted(google.protobuf.message.Message):
     def HasField(self, field_name: typing.Literal["editor", b"editor", "enrichment", b"enrichment", "user", b"user"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["compare_id", b"compare_id", "dbt_local_cookie_user_id", b"dbt_local_cookie_user_id", "editor", b"editor", "enrichment", b"enrichment", "event_id", b"event_id", "user", b"user"]) -> None: ...
 
-global___ExtensionCompareStarted = ExtensionCompareStarted
+Global___ExtensionCompareStarted: typing_extensions.TypeAlias = ExtensionCompareStarted
 
 @typing.final
 class ExtensionCompareFinished(google.protobuf.message.Message):
@@ -752,4 +758,4 @@ class ExtensionCompareFinished(google.protobuf.message.Message):
     def HasField(self, field_name: typing.Literal["editor", b"editor", "enrichment", b"enrichment", "user", b"user"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["compare_id", b"compare_id", "compare_success", b"compare_success", "dbt_local_cookie_user_id", b"dbt_local_cookie_user_id", "duration_ms", b"duration_ms", "editor", b"editor", "enrichment", b"enrichment", "event_id", b"event_id", "failure_reason", b"failure_reason", "user", b"user"]) -> None: ...
 
-global___ExtensionCompareFinished = ExtensionCompareFinished
+Global___ExtensionCompareFinished: typing_extensions.TypeAlias = ExtensionCompareFinished

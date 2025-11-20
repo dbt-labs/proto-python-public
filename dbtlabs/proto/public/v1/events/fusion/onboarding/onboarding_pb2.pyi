@@ -7,7 +7,13 @@ import builtins
 import dbtlabs.proto.public.v1.events.fusion_pb2
 import google.protobuf.descriptor
 import google.protobuf.message
+import sys
 import typing
+
+if sys.version_info >= (3, 10):
+    import typing as typing_extensions
+else:
+    import typing_extensions
 
 DESCRIPTOR: google.protobuf.descriptor.FileDescriptor
 
@@ -27,4 +33,4 @@ class OnboardingScreenShown(google.protobuf.message.Message):
     ) -> None: ...
     def ClearField(self, field_name: typing.Literal["screen", b"screen"]) -> None: ...
 
-global___OnboardingScreenShown = OnboardingScreenShown
+Global___OnboardingScreenShown: typing_extensions.TypeAlias = OnboardingScreenShown

@@ -40,4 +40,4 @@ SEVERITY_NUMBER_DEBUG: SeverityNumber.ValueType  # 5
 SEVERITY_NUMBER_INFO: SeverityNumber.ValueType  # 9
 SEVERITY_NUMBER_WARN: SeverityNumber.ValueType  # 13
 SEVERITY_NUMBER_ERROR: SeverityNumber.ValueType  # 17
-global___SeverityNumber = SeverityNumber
+Global___SeverityNumber: typing_extensions.TypeAlias = SeverityNumber

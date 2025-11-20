@@ -6,7 +6,13 @@ isort:skip_file
 import builtins
 import google.protobuf.descriptor
 import google.protobuf.message
+import sys
 import typing
+
+if sys.version_info >= (3, 10):
+    import typing as typing_extensions
+else:
+    import typing_extensions
 
 DESCRIPTOR: google.protobuf.descriptor.FileDescriptor
 
@@ -36,4 +42,4 @@ class PackageUpdate(google.protobuf.message.Message):
     def ClearField(self, field_name: typing.Literal["_exe_path", b"_exe_path", "exe_path", b"exe_path", "package", b"package", "version", b"version"]) -> None: ...
     def WhichOneof(self, oneof_group: typing.Literal["_exe_path", b"_exe_path"]) -> typing.Literal["exe_path"] | None: ...
 
-global___PackageUpdate = PackageUpdate
+Global___PackageUpdate: typing_extensions.TypeAlias = PackageUpdate

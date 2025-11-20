@@ -6,7 +6,13 @@ isort:skip_file
 import builtins
 import google.protobuf.descriptor
 import google.protobuf.message
+import sys
 import typing
+
+if sys.version_info >= (3, 10):
+    import typing as typing_extensions
+else:
+    import typing_extensions
 
 DESCRIPTOR: google.protobuf.descriptor.FileDescriptor
 
@@ -66,4 +72,4 @@ class VortexTelemetryDbtCloudContext(google.protobuf.message.Message):
     ) -> None: ...
     def ClearField(self, field_name: typing.Literal["dbt_cloud_account_id", b"dbt_cloud_account_id", "dbt_cloud_account_identifier", b"dbt_cloud_account_identifier", "dbt_cloud_environment_id", b"dbt_cloud_environment_id", "dbt_cloud_project_id", b"dbt_cloud_project_id", "dbt_cloud_user_id", b"dbt_cloud_user_id", "event_id", b"event_id", "feature", b"feature", "referrer_url", b"referrer_url", "session_id", b"session_id", "snowplow_domain_session_id", b"snowplow_domain_session_id", "snowplow_domain_user_id", b"snowplow_domain_user_id"]) -> None: ...
 
-global___VortexTelemetryDbtCloudContext = VortexTelemetryDbtCloudContext
+Global___VortexTelemetryDbtCloudContext: typing_extensions.TypeAlias = VortexTelemetryDbtCloudContext

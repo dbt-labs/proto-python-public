@@ -43,7 +43,7 @@ SHOW_DATA_OUTPUT_FORMAT_TSV: ShowDataOutputFormat.ValueType  # 3
 SHOW_DATA_OUTPUT_FORMAT_JSON: ShowDataOutputFormat.ValueType  # 4
 SHOW_DATA_OUTPUT_FORMAT_NDJSON: ShowDataOutputFormat.ValueType  # 5
 SHOW_DATA_OUTPUT_FORMAT_YML: ShowDataOutputFormat.ValueType  # 6
-global___ShowDataOutputFormat = ShowDataOutputFormat
+Global___ShowDataOutputFormat: typing_extensions.TypeAlias = ShowDataOutputFormat
 
 @typing.final
 class ShowDataOutput(google.protobuf.message.Message):
@@ -60,7 +60,7 @@ class ShowDataOutput(google.protobuf.message.Message):
     UNIQUE_ID_FIELD_NUMBER: builtins.int
     COLUMNS_FIELD_NUMBER: builtins.int
     DBT_CORE_EVENT_CODE_FIELD_NUMBER: builtins.int
-    output_format: global___ShowDataOutputFormat.ValueType
+    output_format: Global___ShowDataOutputFormat.ValueType
     """Format of the output"""
     content: builtins.str
     """The data in the specified format (e.g., pretty-printed table)"""
@@ -81,7 +81,7 @@ class ShowDataOutput(google.protobuf.message.Message):
     def __init__(
         self,
         *,
-        output_format: global___ShowDataOutputFormat.ValueType = ...,
+        output_format: Global___ShowDataOutputFormat.ValueType = ...,
         content: builtins.str = ...,
         node_name: builtins.str = ...,
         is_inline: builtins.bool = ...,
@@ -93,4 +93,4 @@ class ShowDataOutput(google.protobuf.message.Message):
     def ClearField(self, field_name: typing.Literal["_unique_id", b"_unique_id", "columns", b"columns", "content", b"content", "dbt_core_event_code", b"dbt_core_event_code", "is_inline", b"is_inline", "node_name", b"node_name", "output_format", b"output_format", "unique_id", b"unique_id"]) -> None: ...
     def WhichOneof(self, oneof_group: typing.Literal["_unique_id", b"_unique_id"]) -> typing.Literal["unique_id"] | None: ...
 
-global___ShowDataOutput = ShowDataOutput
+Global___ShowDataOutput: typing_extensions.TypeAlias = ShowDataOutput

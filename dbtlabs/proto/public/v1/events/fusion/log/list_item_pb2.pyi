@@ -37,7 +37,7 @@ LIST_OUTPUT_FORMAT_JSON: ListOutputFormat.ValueType  # 1
 LIST_OUTPUT_FORMAT_SELECTOR: ListOutputFormat.ValueType  # 2
 LIST_OUTPUT_FORMAT_NAME: ListOutputFormat.ValueType  # 3
 LIST_OUTPUT_FORMAT_PATH: ListOutputFormat.ValueType  # 4
-global___ListOutputFormat = ListOutputFormat
+Global___ListOutputFormat: typing_extensions.TypeAlias = ListOutputFormat
 
 @typing.final
 class ListItemOutput(google.protobuf.message.Message):
@@ -50,7 +50,7 @@ class ListItemOutput(google.protobuf.message.Message):
     OUTPUT_FORMAT_FIELD_NUMBER: builtins.int
     CONTENT_FIELD_NUMBER: builtins.int
     UNIQUE_ID_FIELD_NUMBER: builtins.int
-    output_format: global___ListOutputFormat.ValueType
+    output_format: Global___ListOutputFormat.ValueType
     """Format of the output"""
     content: builtins.str
     """The actual content of the list item being displayed"""
@@ -59,7 +59,7 @@ class ListItemOutput(google.protobuf.message.Message):
     def __init__(
         self,
         *,
-        output_format: global___ListOutputFormat.ValueType = ...,
+        output_format: Global___ListOutputFormat.ValueType = ...,
         content: builtins.str = ...,
         unique_id: builtins.str | None = ...,
     ) -> None: ...
@@ -67,4 +67,4 @@ class ListItemOutput(google.protobuf.message.Message):
     def ClearField(self, field_name: typing.Literal["_unique_id", b"_unique_id", "content", b"content", "output_format", b"output_format", "unique_id", b"unique_id"]) -> None: ...
     def WhichOneof(self, oneof_group: typing.Literal["_unique_id", b"_unique_id"]) -> typing.Literal["unique_id"] | None: ...
 
-global___ListItemOutput = ListItemOutput
+Global___ListItemOutput: typing_extensions.TypeAlias = ListItemOutput

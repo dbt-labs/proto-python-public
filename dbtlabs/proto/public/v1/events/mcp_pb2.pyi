@@ -10,7 +10,13 @@ import dbtlabs.proto.public.v1.events.vortex_pb2
 import google.protobuf.descriptor
 import google.protobuf.internal.containers
 import google.protobuf.message
+import sys
 import typing
+
+if sys.version_info >= (3, 10):
+    import typing as typing_extensions
+else:
+    import typing_extensions
 
 DESCRIPTOR: google.protobuf.descriptor.FileDescriptor
 
@@ -129,4 +135,4 @@ class ToolCalled(google.protobuf.message.Message):
     def HasField(self, field_name: typing.Literal["ctx", b"ctx", "enrichment", b"enrichment"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["arguments", b"arguments", "authentication_method", b"authentication_method", "ctx", b"ctx", "dbt_cloud_environment_id_dev", b"dbt_cloud_environment_id_dev", "dbt_cloud_environment_id_prod", b"dbt_cloud_environment_id_prod", "dbt_cloud_user_id", b"dbt_cloud_user_id", "dbt_mcp_version", b"dbt_mcp_version", "disabled_tools", b"disabled_tools", "disabled_toolsets", b"disabled_toolsets", "end_time_ms", b"end_time_ms", "enrichment", b"enrichment", "error_message", b"error_message", "event_id", b"event_id", "host", b"host", "local_user_id", b"local_user_id", "multicell_account_prefix", b"multicell_account_prefix", "start_time_ms", b"start_time_ms", "tool_name", b"tool_name", "trace_id", b"trace_id", "user_agent", b"user_agent"]) -> None: ...
 
-global___ToolCalled = ToolCalled
+Global___ToolCalled: typing_extensions.TypeAlias = ToolCalled
