@@ -2545,17 +2545,23 @@ class DuplicateNameDistinctNodeTypesDeprecation(google.protobuf.message.Message)
 
     DESCRIPTOR: google.protobuf.descriptor.Descriptor
 
-    NAME_FIELD_NUMBER: builtins.int
+    RESOURCE_NAME_FIELD_NUMBER: builtins.int
     PACKAGE_NAME_FIELD_NUMBER: builtins.int
-    name: builtins.str
+    UNIQUE_ID1_FIELD_NUMBER: builtins.int
+    UNIQUE_ID2_FIELD_NUMBER: builtins.int
+    resource_name: builtins.str
     package_name: builtins.str
+    unique_id1: builtins.str
+    unique_id2: builtins.str
     def __init__(
         self,
         *,
-        name: builtins.str = ...,
+        resource_name: builtins.str = ...,
         package_name: builtins.str = ...,
+        unique_id1: builtins.str = ...,
+        unique_id2: builtins.str = ...,
     ) -> None: ...
-    def ClearField(self, field_name: typing.Literal["name", b"name", "package_name", b"package_name"]) -> None: ...
+    def ClearField(self, field_name: typing.Literal["package_name", b"package_name", "resource_name", b"resource_name", "unique_id1", b"unique_id1", "unique_id2", b"unique_id2"]) -> None: ...
 
 Global___DuplicateNameDistinctNodeTypesDeprecation: typing_extensions.TypeAlias = DuplicateNameDistinctNodeTypesDeprecation
 
