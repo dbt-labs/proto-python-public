@@ -218,6 +218,7 @@ class Invocation(google.protobuf.message.Message):
     EVAL_ARGS_FIELD_NUMBER: builtins.int
     PROCESS_INFO_FIELD_NUMBER: builtins.int
     METRICS_FIELD_NUMBER: builtins.int
+    PARENT_SPAN_ID_FIELD_NUMBER: builtins.int
     invocation_id: builtins.str
     """UUID string for the invocation id, either as passed in via args or generated (UUIDv7 in that case).
     Note, that `trace_id` is the same value stored as bytes and generally preferred
@@ -225,6 +226,10 @@ class Invocation(google.protobuf.message.Message):
     """
     raw_command: builtins.str
     """Raw command string as executed."""
+    parent_span_id: builtins.int
+    """Optional parent span ID for trace correlation.
+    This allows linking this invocation to an external trace.
+    """
     @property
     def eval_args(self) -> Global___InvocationEvalArgs:
         """Structured evaluation arguments."""
@@ -245,8 +250,10 @@ class Invocation(google.protobuf.message.Message):
         eval_args: Global___InvocationEvalArgs | None = ...,
         process_info: dbtlabs.proto.public.v1.events.fusion.process.process_pb2.Process | None = ...,
         metrics: Global___InvocationMetrics | None = ...,
+        parent_span_id: builtins.int | None = ...,
     ) -> None: ...
-    def HasField(self, field_name: typing.Literal["eval_args", b"eval_args", "metrics", b"metrics", "process_info", b"process_info"]) -> builtins.bool: ...
-    def ClearField(self, field_name: typing.Literal["eval_args", b"eval_args", "invocation_id", b"invocation_id", "metrics", b"metrics", "process_info", b"process_info", "raw_command", b"raw_command"]) -> None: ...
+    def HasField(self, field_name: typing.Literal["_parent_span_id", b"_parent_span_id", "eval_args", b"eval_args", "metrics", b"metrics", "parent_span_id", b"parent_span_id", "process_info", b"process_info"]) -> builtins.bool: ...
+    def ClearField(self, field_name: typing.Literal["_parent_span_id", b"_parent_span_id", "eval_args", b"eval_args", "invocation_id", b"invocation_id", "metrics", b"metrics", "parent_span_id", b"parent_span_id", "process_info", b"process_info", "raw_command", b"raw_command"]) -> None: ...
+    def WhichOneof(self, oneof_group: typing.Literal["_parent_span_id", b"_parent_span_id"]) -> typing.Literal["parent_span_id"] | None: ...
 
 Global___Invocation: typing_extensions.TypeAlias = Invocation
