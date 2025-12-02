@@ -413,7 +413,7 @@ class RunQuery(google.protobuf.message.Message):
     DESCRIPTOR: google.protobuf.descriptor.Descriptor
 
     ENRICHMENT_FIELD_NUMBER: builtins.int
-    CONTEXT_FIELD_NUMBER: builtins.int
+    CTX_FIELD_NUMBER: builtins.int
     SQL_FIELD_NUMBER: builtins.int
     ERROR_FIELD_NUMBER: builtins.int
     sql: builtins.str
@@ -421,17 +421,17 @@ class RunQuery(google.protobuf.message.Message):
     @property
     def enrichment(self) -> dbtlabs.proto.public.v1.events.vortex_pb2.VortexMessageEnrichment: ...
     @property
-    def context(self) -> dbtlabs.proto.public.v1.common.vortex_telemetry_contexts_pb2.VortexTelemetryDbtCloudContext: ...
+    def ctx(self) -> dbtlabs.proto.public.v1.common.vortex_telemetry_contexts_pb2.VortexTelemetryDbtCloudContext: ...
     def __init__(
         self,
         *,
         enrichment: dbtlabs.proto.public.v1.events.vortex_pb2.VortexMessageEnrichment | None = ...,
-        context: dbtlabs.proto.public.v1.common.vortex_telemetry_contexts_pb2.VortexTelemetryDbtCloudContext | None = ...,
+        ctx: dbtlabs.proto.public.v1.common.vortex_telemetry_contexts_pb2.VortexTelemetryDbtCloudContext | None = ...,
         sql: builtins.str = ...,
         error: builtins.str = ...,
     ) -> None: ...
-    def HasField(self, field_name: typing.Literal["context", b"context", "enrichment", b"enrichment"]) -> builtins.bool: ...
-    def ClearField(self, field_name: typing.Literal["context", b"context", "enrichment", b"enrichment", "error", b"error", "sql", b"sql"]) -> None: ...
+    def HasField(self, field_name: typing.Literal["ctx", b"ctx", "enrichment", b"enrichment"]) -> builtins.bool: ...
+    def ClearField(self, field_name: typing.Literal["ctx", b"ctx", "enrichment", b"enrichment", "error", b"error", "sql", b"sql"]) -> None: ...
 
 Global___RunQuery: typing_extensions.TypeAlias = RunQuery
 
