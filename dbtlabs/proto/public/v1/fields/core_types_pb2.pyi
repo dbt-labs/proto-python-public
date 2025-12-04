@@ -4351,6 +4351,50 @@ class InvalidMacroAnnotationMsg(google.protobuf.message.Message):
 Global___InvalidMacroAnnotationMsg: typing_extensions.TypeAlias = InvalidMacroAnnotationMsg
 
 @typing.final
+class PackageNodeDependsOnRootProjectNode(google.protobuf.message.Message):
+    """I077"""
+
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
+    NODE_NAME_FIELD_NUMBER: builtins.int
+    PACKAGE_NAME_FIELD_NUMBER: builtins.int
+    ROOT_PROJECT_UNIQUE_ID_FIELD_NUMBER: builtins.int
+    node_name: builtins.str
+    package_name: builtins.str
+    root_project_unique_id: builtins.str
+    def __init__(
+        self,
+        *,
+        node_name: builtins.str = ...,
+        package_name: builtins.str = ...,
+        root_project_unique_id: builtins.str = ...,
+    ) -> None: ...
+    def ClearField(self, field_name: typing.Literal["node_name", b"node_name", "package_name", b"package_name", "root_project_unique_id", b"root_project_unique_id"]) -> None: ...
+
+Global___PackageNodeDependsOnRootProjectNode: typing_extensions.TypeAlias = PackageNodeDependsOnRootProjectNode
+
+@typing.final
+class PackageNodeDependsOnRootProjectNodeMsg(google.protobuf.message.Message):
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
+    INFO_FIELD_NUMBER: builtins.int
+    DATA_FIELD_NUMBER: builtins.int
+    @property
+    def info(self) -> Global___CoreEventInfo: ...
+    @property
+    def data(self) -> Global___PackageNodeDependsOnRootProjectNode: ...
+    def __init__(
+        self,
+        *,
+        info: Global___CoreEventInfo | None = ...,
+        data: Global___PackageNodeDependsOnRootProjectNode | None = ...,
+    ) -> None: ...
+    def HasField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> builtins.bool: ...
+    def ClearField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> None: ...
+
+Global___PackageNodeDependsOnRootProjectNodeMsg: typing_extensions.TypeAlias = PackageNodeDependsOnRootProjectNodeMsg
+
+@typing.final
 class GitSparseCheckoutSubdirectory(google.protobuf.message.Message):
     """M - Deps generation
 
