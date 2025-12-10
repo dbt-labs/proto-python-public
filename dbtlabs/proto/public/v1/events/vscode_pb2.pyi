@@ -759,3 +759,287 @@ class ExtensionCompareFinished(google.protobuf.message.Message):
     def ClearField(self, field_name: typing.Literal["compare_id", b"compare_id", "compare_success", b"compare_success", "dbt_local_cookie_user_id", b"dbt_local_cookie_user_id", "duration_ms", b"duration_ms", "editor", b"editor", "enrichment", b"enrichment", "event_id", b"event_id", "failure_reason", b"failure_reason", "user", b"user"]) -> None: ...
 
 Global___ExtensionCompareFinished: typing_extensions.TypeAlias = ExtensionCompareFinished
+
+@typing.final
+class ExtensionRegistrationMessageDismissed(google.protobuf.message.Message):
+    """Emited if the user dismiss a message prompting them to register the extension?"""
+
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
+    ENRICHMENT_FIELD_NUMBER: builtins.int
+    EDITOR_FIELD_NUMBER: builtins.int
+    USER_FIELD_NUMBER: builtins.int
+    DBT_LOCAL_COOKIE_USER_ID_FIELD_NUMBER: builtins.int
+    EVENT_ID_FIELD_NUMBER: builtins.int
+    dbt_local_cookie_user_id: builtins.str
+    """the anonymous user id stored at ~/.dbt/.user.yml"""
+    event_id: builtins.str
+    """UUID to uniquely identify the event"""
+    @property
+    def enrichment(self) -> dbtlabs.proto.public.v1.events.vortex_pb2.VortexMessageEnrichment: ...
+    @property
+    def editor(self) -> dbtlabs.proto.public.v1.fields.vscode_types_pb2.Editor: ...
+    @property
+    def user(self) -> dbtlabs.proto.public.v1.fields.vscode_types_pb2.User: ...
+    def __init__(
+        self,
+        *,
+        enrichment: dbtlabs.proto.public.v1.events.vortex_pb2.VortexMessageEnrichment | None = ...,
+        editor: dbtlabs.proto.public.v1.fields.vscode_types_pb2.Editor | None = ...,
+        user: dbtlabs.proto.public.v1.fields.vscode_types_pb2.User | None = ...,
+        dbt_local_cookie_user_id: builtins.str = ...,
+        event_id: builtins.str = ...,
+    ) -> None: ...
+    def HasField(self, field_name: typing.Literal["editor", b"editor", "enrichment", b"enrichment", "user", b"user"]) -> builtins.bool: ...
+    def ClearField(self, field_name: typing.Literal["dbt_local_cookie_user_id", b"dbt_local_cookie_user_id", "editor", b"editor", "enrichment", b"enrichment", "event_id", b"event_id", "user", b"user"]) -> None: ...
+
+Global___ExtensionRegistrationMessageDismissed: typing_extensions.TypeAlias = ExtensionRegistrationMessageDismissed
+
+@typing.final
+class ExtensionRegisterStarted(google.protobuf.message.Message):
+    """Emitted if the user starts the registration flow. There are several UI affordances to do this."""
+
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
+    ENRICHMENT_FIELD_NUMBER: builtins.int
+    EDITOR_FIELD_NUMBER: builtins.int
+    USER_FIELD_NUMBER: builtins.int
+    DBT_LOCAL_COOKIE_USER_ID_FIELD_NUMBER: builtins.int
+    EVENT_ID_FIELD_NUMBER: builtins.int
+    TRIGGER_METHOD_FIELD_NUMBER: builtins.int
+    CORRELATION_ID_FIELD_NUMBER: builtins.int
+    dbt_local_cookie_user_id: builtins.str
+    """the anonymous user id stored at ~/.dbt/.user.yml"""
+    event_id: builtins.str
+    """UUID to uniquely identify the event"""
+    trigger_method: dbtlabs.proto.public.v1.fields.vscode_types_pb2.RegistrationTriggerMethod.ValueType
+    """which registration path will be used"""
+    correlation_id: builtins.str
+    """identifier to correlate related registration events"""
+    @property
+    def enrichment(self) -> dbtlabs.proto.public.v1.events.vortex_pb2.VortexMessageEnrichment: ...
+    @property
+    def editor(self) -> dbtlabs.proto.public.v1.fields.vscode_types_pb2.Editor: ...
+    @property
+    def user(self) -> dbtlabs.proto.public.v1.fields.vscode_types_pb2.User: ...
+    def __init__(
+        self,
+        *,
+        enrichment: dbtlabs.proto.public.v1.events.vortex_pb2.VortexMessageEnrichment | None = ...,
+        editor: dbtlabs.proto.public.v1.fields.vscode_types_pb2.Editor | None = ...,
+        user: dbtlabs.proto.public.v1.fields.vscode_types_pb2.User | None = ...,
+        dbt_local_cookie_user_id: builtins.str = ...,
+        event_id: builtins.str = ...,
+        trigger_method: dbtlabs.proto.public.v1.fields.vscode_types_pb2.RegistrationTriggerMethod.ValueType = ...,
+        correlation_id: builtins.str = ...,
+    ) -> None: ...
+    def HasField(self, field_name: typing.Literal["editor", b"editor", "enrichment", b"enrichment", "user", b"user"]) -> builtins.bool: ...
+    def ClearField(self, field_name: typing.Literal["correlation_id", b"correlation_id", "dbt_local_cookie_user_id", b"dbt_local_cookie_user_id", "editor", b"editor", "enrichment", b"enrichment", "event_id", b"event_id", "trigger_method", b"trigger_method", "user", b"user"]) -> None: ...
+
+Global___ExtensionRegisterStarted: typing_extensions.TypeAlias = ExtensionRegisterStarted
+
+@typing.final
+class ExtensionRegistrationUrlAttempted(google.protobuf.message.Message):
+    """In vscode, extensions cannot automatically open external URLs
+    Instead, vscode shows the user a modal with the URL
+    The user can pick Open, Trust Domain, Copy, or Cancel
+    Open or Trust Domain result in the URL opening, and url_opened will be true
+    Cancel or Copy result in url_opened false
+    If the user copied the URL, they may paste it into a browser to continue registration
+    """
+
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
+    ENRICHMENT_FIELD_NUMBER: builtins.int
+    EDITOR_FIELD_NUMBER: builtins.int
+    USER_FIELD_NUMBER: builtins.int
+    DBT_LOCAL_COOKIE_USER_ID_FIELD_NUMBER: builtins.int
+    EVENT_ID_FIELD_NUMBER: builtins.int
+    URL_OPENED_FIELD_NUMBER: builtins.int
+    OAUTH_PARAMS_INCLUDED_FIELD_NUMBER: builtins.int
+    CORRELATION_ID_FIELD_NUMBER: builtins.int
+    dbt_local_cookie_user_id: builtins.str
+    """the anonymous user id stored at ~/.dbt/.user.yml"""
+    event_id: builtins.str
+    """UUID to uniquely identify the event"""
+    url_opened: builtins.bool
+    """whether the user opened the URL (Open/Trust = true, Cancel/Copy = false)"""
+    oauth_params_included: builtins.bool
+    """whether oauth parameters were included in the URL"""
+    correlation_id: builtins.str
+    """identifier to correlate related registration events (matches RegisterClicked)"""
+    @property
+    def enrichment(self) -> dbtlabs.proto.public.v1.events.vortex_pb2.VortexMessageEnrichment: ...
+    @property
+    def editor(self) -> dbtlabs.proto.public.v1.fields.vscode_types_pb2.Editor: ...
+    @property
+    def user(self) -> dbtlabs.proto.public.v1.fields.vscode_types_pb2.User: ...
+    def __init__(
+        self,
+        *,
+        enrichment: dbtlabs.proto.public.v1.events.vortex_pb2.VortexMessageEnrichment | None = ...,
+        editor: dbtlabs.proto.public.v1.fields.vscode_types_pb2.Editor | None = ...,
+        user: dbtlabs.proto.public.v1.fields.vscode_types_pb2.User | None = ...,
+        dbt_local_cookie_user_id: builtins.str = ...,
+        event_id: builtins.str = ...,
+        url_opened: builtins.bool = ...,
+        oauth_params_included: builtins.bool = ...,
+        correlation_id: builtins.str = ...,
+    ) -> None: ...
+    def HasField(self, field_name: typing.Literal["editor", b"editor", "enrichment", b"enrichment", "user", b"user"]) -> builtins.bool: ...
+    def ClearField(self, field_name: typing.Literal["correlation_id", b"correlation_id", "dbt_local_cookie_user_id", b"dbt_local_cookie_user_id", "editor", b"editor", "enrichment", b"enrichment", "event_id", b"event_id", "oauth_params_included", b"oauth_params_included", "url_opened", b"url_opened", "user", b"user"]) -> None: ...
+
+Global___ExtensionRegistrationUrlAttempted: typing_extensions.TypeAlias = ExtensionRegistrationUrlAttempted
+
+@typing.final
+class ExtensionRegistrationCompleted(google.protobuf.message.Message):
+    """Emitted when the user successfully completes registration"""
+
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
+    ENRICHMENT_FIELD_NUMBER: builtins.int
+    EDITOR_FIELD_NUMBER: builtins.int
+    USER_FIELD_NUMBER: builtins.int
+    DBT_LOCAL_COOKIE_USER_ID_FIELD_NUMBER: builtins.int
+    EVENT_ID_FIELD_NUMBER: builtins.int
+    REGISTRATION_METHOD_FIELD_NUMBER: builtins.int
+    DURATION_MS_FIELD_NUMBER: builtins.int
+    CORRELATION_ID_FIELD_NUMBER: builtins.int
+    dbt_local_cookie_user_id: builtins.str
+    """the anonymous user id stored at ~/.dbt/.user.yml"""
+    event_id: builtins.str
+    """UUID to uniquely identify the event"""
+    registration_method: dbtlabs.proto.public.v1.fields.vscode_types_pb2.RegistrationMethod.ValueType
+    """the actual registration method used"""
+    duration_ms: builtins.int
+    """duration of the registration flow in milliseconds"""
+    correlation_id: builtins.str
+    """identifier to correlate related registration events (matches RegisterClicked)"""
+    @property
+    def enrichment(self) -> dbtlabs.proto.public.v1.events.vortex_pb2.VortexMessageEnrichment: ...
+    @property
+    def editor(self) -> dbtlabs.proto.public.v1.fields.vscode_types_pb2.Editor: ...
+    @property
+    def user(self) -> dbtlabs.proto.public.v1.fields.vscode_types_pb2.User: ...
+    def __init__(
+        self,
+        *,
+        enrichment: dbtlabs.proto.public.v1.events.vortex_pb2.VortexMessageEnrichment | None = ...,
+        editor: dbtlabs.proto.public.v1.fields.vscode_types_pb2.Editor | None = ...,
+        user: dbtlabs.proto.public.v1.fields.vscode_types_pb2.User | None = ...,
+        dbt_local_cookie_user_id: builtins.str = ...,
+        event_id: builtins.str = ...,
+        registration_method: dbtlabs.proto.public.v1.fields.vscode_types_pb2.RegistrationMethod.ValueType = ...,
+        duration_ms: builtins.int = ...,
+        correlation_id: builtins.str = ...,
+    ) -> None: ...
+    def HasField(self, field_name: typing.Literal["editor", b"editor", "enrichment", b"enrichment", "user", b"user"]) -> builtins.bool: ...
+    def ClearField(self, field_name: typing.Literal["correlation_id", b"correlation_id", "dbt_local_cookie_user_id", b"dbt_local_cookie_user_id", "duration_ms", b"duration_ms", "editor", b"editor", "enrichment", b"enrichment", "event_id", b"event_id", "registration_method", b"registration_method", "user", b"user"]) -> None: ...
+
+Global___ExtensionRegistrationCompleted: typing_extensions.TypeAlias = ExtensionRegistrationCompleted
+
+@typing.final
+class ExtensionRegistrationTimedOut(google.protobuf.message.Message):
+    """Once a user starts registration, they must complete it within 10 minutes
+    After 10 minutes, the auth server shuts down and we emit this event
+    """
+
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
+    ENRICHMENT_FIELD_NUMBER: builtins.int
+    EDITOR_FIELD_NUMBER: builtins.int
+    USER_FIELD_NUMBER: builtins.int
+    DBT_LOCAL_COOKIE_USER_ID_FIELD_NUMBER: builtins.int
+    EVENT_ID_FIELD_NUMBER: builtins.int
+    TRIGGER_METHOD_FIELD_NUMBER: builtins.int
+    TIMEOUT_DURATION_MS_FIELD_NUMBER: builtins.int
+    CORRELATION_ID_FIELD_NUMBER: builtins.int
+    dbt_local_cookie_user_id: builtins.str
+    """the anonymous user id stored at ~/.dbt/.user.yml"""
+    event_id: builtins.str
+    """UUID to uniquely identify the event"""
+    trigger_method: dbtlabs.proto.public.v1.fields.vscode_types_pb2.RegistrationTriggerMethod.ValueType
+    """the registration trigger method that timed out (dbt_cloud.yml or web)"""
+    timeout_duration_ms: builtins.int
+    """duration until timeout in milliseconds"""
+    correlation_id: builtins.str
+    """identifier to correlate related registration events (matches RegisterClicked)"""
+    @property
+    def enrichment(self) -> dbtlabs.proto.public.v1.events.vortex_pb2.VortexMessageEnrichment: ...
+    @property
+    def editor(self) -> dbtlabs.proto.public.v1.fields.vscode_types_pb2.Editor: ...
+    @property
+    def user(self) -> dbtlabs.proto.public.v1.fields.vscode_types_pb2.User: ...
+    def __init__(
+        self,
+        *,
+        enrichment: dbtlabs.proto.public.v1.events.vortex_pb2.VortexMessageEnrichment | None = ...,
+        editor: dbtlabs.proto.public.v1.fields.vscode_types_pb2.Editor | None = ...,
+        user: dbtlabs.proto.public.v1.fields.vscode_types_pb2.User | None = ...,
+        dbt_local_cookie_user_id: builtins.str = ...,
+        event_id: builtins.str = ...,
+        trigger_method: dbtlabs.proto.public.v1.fields.vscode_types_pb2.RegistrationTriggerMethod.ValueType = ...,
+        timeout_duration_ms: builtins.int = ...,
+        correlation_id: builtins.str = ...,
+    ) -> None: ...
+    def HasField(self, field_name: typing.Literal["editor", b"editor", "enrichment", b"enrichment", "user", b"user"]) -> builtins.bool: ...
+    def ClearField(self, field_name: typing.Literal["correlation_id", b"correlation_id", "dbt_local_cookie_user_id", b"dbt_local_cookie_user_id", "editor", b"editor", "enrichment", b"enrichment", "event_id", b"event_id", "timeout_duration_ms", b"timeout_duration_ms", "trigger_method", b"trigger_method", "user", b"user"]) -> None: ...
+
+Global___ExtensionRegistrationTimedOut: typing_extensions.TypeAlias = ExtensionRegistrationTimedOut
+
+@typing.final
+class ExtensionRegistrationErrored(google.protobuf.message.Message):
+    """Emitted when an error occurs during registration
+    These are most likely to be caused by issues in code (bugs, unanticipated cases, regressiones)
+    """
+
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
+    ENRICHMENT_FIELD_NUMBER: builtins.int
+    EDITOR_FIELD_NUMBER: builtins.int
+    USER_FIELD_NUMBER: builtins.int
+    DBT_LOCAL_COOKIE_USER_ID_FIELD_NUMBER: builtins.int
+    EVENT_ID_FIELD_NUMBER: builtins.int
+    REGISTRATION_METHOD_FIELD_NUMBER: builtins.int
+    ERROR_TYPE_FIELD_NUMBER: builtins.int
+    ERROR_MESSAGE_FIELD_NUMBER: builtins.int
+    DURATION_MS_FIELD_NUMBER: builtins.int
+    CORRELATION_ID_FIELD_NUMBER: builtins.int
+    dbt_local_cookie_user_id: builtins.str
+    """the anonymous user id stored at ~/.dbt/.user.yml"""
+    event_id: builtins.str
+    """UUID to uniquely identify the event"""
+    registration_method: dbtlabs.proto.public.v1.fields.vscode_types_pb2.RegistrationMethod.ValueType
+    """the registration method that errored (use UNSPECIFIED if not yet known)"""
+    error_type: builtins.str
+    """type/category of error that occurred"""
+    error_message: builtins.str
+    """sanitized error message (no PII)"""
+    duration_ms: builtins.int
+    """duration until error in milliseconds"""
+    correlation_id: builtins.str
+    """identifier to correlate related registration events (matches RegisterClicked)"""
+    @property
+    def enrichment(self) -> dbtlabs.proto.public.v1.events.vortex_pb2.VortexMessageEnrichment: ...
+    @property
+    def editor(self) -> dbtlabs.proto.public.v1.fields.vscode_types_pb2.Editor: ...
+    @property
+    def user(self) -> dbtlabs.proto.public.v1.fields.vscode_types_pb2.User: ...
+    def __init__(
+        self,
+        *,
+        enrichment: dbtlabs.proto.public.v1.events.vortex_pb2.VortexMessageEnrichment | None = ...,
+        editor: dbtlabs.proto.public.v1.fields.vscode_types_pb2.Editor | None = ...,
+        user: dbtlabs.proto.public.v1.fields.vscode_types_pb2.User | None = ...,
+        dbt_local_cookie_user_id: builtins.str = ...,
+        event_id: builtins.str = ...,
+        registration_method: dbtlabs.proto.public.v1.fields.vscode_types_pb2.RegistrationMethod.ValueType = ...,
+        error_type: builtins.str = ...,
+        error_message: builtins.str = ...,
+        duration_ms: builtins.int = ...,
+        correlation_id: builtins.str = ...,
+    ) -> None: ...
+    def HasField(self, field_name: typing.Literal["editor", b"editor", "enrichment", b"enrichment", "user", b"user"]) -> builtins.bool: ...
+    def ClearField(self, field_name: typing.Literal["correlation_id", b"correlation_id", "dbt_local_cookie_user_id", b"dbt_local_cookie_user_id", "duration_ms", b"duration_ms", "editor", b"editor", "enrichment", b"enrichment", "error_message", b"error_message", "error_type", b"error_type", "event_id", b"event_id", "registration_method", b"registration_method", "user", b"user"]) -> None: ...
+
+Global___ExtensionRegistrationErrored: typing_extensions.TypeAlias = ExtensionRegistrationErrored

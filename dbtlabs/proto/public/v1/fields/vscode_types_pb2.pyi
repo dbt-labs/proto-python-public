@@ -92,6 +92,54 @@ COMPILE_CAUSE_REFRESH_SOURCES: CompileCause.ValueType  # 2
 """Compile was caused by a request to refresh sources for a project"""
 Global___CompileCause: typing_extensions.TypeAlias = CompileCause
 
+class _RegistrationTriggerMethod:
+    ValueType = typing.NewType("ValueType", builtins.int)
+    V: typing_extensions.TypeAlias = ValueType
+
+class _RegistrationTriggerMethodEnumTypeWrapper(google.protobuf.internal.enum_type_wrapper._EnumTypeWrapper[_RegistrationTriggerMethod.ValueType], builtins.type):
+    DESCRIPTOR: google.protobuf.descriptor.EnumDescriptor
+    REGISTRATION_TRIGGER_METHOD_UNSPECIFIED: _RegistrationTriggerMethod.ValueType  # 0
+    REGISTRATION_TRIGGER_METHOD_DBT_CLOUD_YML: _RegistrationTriggerMethod.ValueType  # 1
+    """Registration will use credentials from dbt_cloud.yml file"""
+    REGISTRATION_TRIGGER_METHOD_WEB: _RegistrationTriggerMethod.ValueType  # 2
+    """Registration will proceed via web browser"""
+
+class RegistrationTriggerMethod(_RegistrationTriggerMethod, metaclass=_RegistrationTriggerMethodEnumTypeWrapper):
+    """How registration was triggered/determined at click time"""
+
+REGISTRATION_TRIGGER_METHOD_UNSPECIFIED: RegistrationTriggerMethod.ValueType  # 0
+REGISTRATION_TRIGGER_METHOD_DBT_CLOUD_YML: RegistrationTriggerMethod.ValueType  # 1
+"""Registration will use credentials from dbt_cloud.yml file"""
+REGISTRATION_TRIGGER_METHOD_WEB: RegistrationTriggerMethod.ValueType  # 2
+"""Registration will proceed via web browser"""
+Global___RegistrationTriggerMethod: typing_extensions.TypeAlias = RegistrationTriggerMethod
+
+class _RegistrationMethod:
+    ValueType = typing.NewType("ValueType", builtins.int)
+    V: typing_extensions.TypeAlias = ValueType
+
+class _RegistrationMethodEnumTypeWrapper(google.protobuf.internal.enum_type_wrapper._EnumTypeWrapper[_RegistrationMethod.ValueType], builtins.type):
+    DESCRIPTOR: google.protobuf.descriptor.EnumDescriptor
+    REGISTRATION_METHOD_UNSPECIFIED: _RegistrationMethod.ValueType  # 0
+    REGISTRATION_METHOD_DBT_CLOUD_YML: _RegistrationMethod.ValueType  # 1
+    """Registration completed using dbt_cloud.yml file"""
+    REGISTRATION_METHOD_OAUTH: _RegistrationMethod.ValueType  # 2
+    """Registration completed via OAuth flow (web)"""
+    REGISTRATION_METHOD_REGISTRATION_CODE: _RegistrationMethod.ValueType  # 3
+    """Registration completed via registration code flow (web)"""
+
+class RegistrationMethod(_RegistrationMethod, metaclass=_RegistrationMethodEnumTypeWrapper):
+    """Actual registration method used (known at completion/error)"""
+
+REGISTRATION_METHOD_UNSPECIFIED: RegistrationMethod.ValueType  # 0
+REGISTRATION_METHOD_DBT_CLOUD_YML: RegistrationMethod.ValueType  # 1
+"""Registration completed using dbt_cloud.yml file"""
+REGISTRATION_METHOD_OAUTH: RegistrationMethod.ValueType  # 2
+"""Registration completed via OAuth flow (web)"""
+REGISTRATION_METHOD_REGISTRATION_CODE: RegistrationMethod.ValueType  # 3
+"""Registration completed via registration code flow (web)"""
+Global___RegistrationMethod: typing_extensions.TypeAlias = RegistrationMethod
+
 @typing.final
 class User(google.protobuf.message.Message):
     """User information"""
