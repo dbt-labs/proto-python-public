@@ -152,6 +152,44 @@ class BehaviorChangeEventMsg(google.protobuf.message.Message):
 Global___BehaviorChangeEventMsg: typing_extensions.TypeAlias = BehaviorChangeEventMsg
 
 @typing.final
+class GetMetaKeyDeprecation(google.protobuf.message.Message):
+    """D041"""
+
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
+    META_KEY_FIELD_NUMBER: builtins.int
+    meta_key: builtins.str
+    def __init__(
+        self,
+        *,
+        meta_key: builtins.str = ...,
+    ) -> None: ...
+    def ClearField(self, field_name: typing.Literal["meta_key", b"meta_key"]) -> None: ...
+
+Global___GetMetaKeyDeprecation: typing_extensions.TypeAlias = GetMetaKeyDeprecation
+
+@typing.final
+class GetMetaKeyDeprecationMsg(google.protobuf.message.Message):
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
+    INFO_FIELD_NUMBER: builtins.int
+    DATA_FIELD_NUMBER: builtins.int
+    @property
+    def info(self) -> Global___EventInfo: ...
+    @property
+    def data(self) -> Global___GetMetaKeyDeprecation: ...
+    def __init__(
+        self,
+        *,
+        info: Global___EventInfo | None = ...,
+        data: Global___GetMetaKeyDeprecation | None = ...,
+    ) -> None: ...
+    def HasField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> builtins.bool: ...
+    def ClearField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> None: ...
+
+Global___GetMetaKeyDeprecationMsg: typing_extensions.TypeAlias = GetMetaKeyDeprecationMsg
+
+@typing.final
 class RetryExternalCall(google.protobuf.message.Message):
     """M - Deps generation
 

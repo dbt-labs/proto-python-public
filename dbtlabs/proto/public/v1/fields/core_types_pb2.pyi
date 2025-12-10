@@ -2588,7 +2588,10 @@ Global___DuplicateNameDistinctNodeTypesDeprecationMsg: typing_extensions.TypeAli
 
 @typing.final
 class DeprecatedModel(google.protobuf.message.Message):
-    """I065"""
+    """D041 -- used in dbt_common
+
+    I065
+    """
 
     DESCRIPTOR: google.protobuf.descriptor.Descriptor
 
