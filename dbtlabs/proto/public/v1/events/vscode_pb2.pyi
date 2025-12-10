@@ -905,6 +905,9 @@ class ExtensionRegistrationCompleted(google.protobuf.message.Message):
     REGISTRATION_METHOD_FIELD_NUMBER: builtins.int
     DURATION_MS_FIELD_NUMBER: builtins.int
     CORRELATION_ID_FIELD_NUMBER: builtins.int
+    ACCOUNT_ID_FIELD_NUMBER: builtins.int
+    USER_ID_FIELD_NUMBER: builtins.int
+    ACCOUNT_HOST_FIELD_NUMBER: builtins.int
     dbt_local_cookie_user_id: builtins.str
     """the anonymous user id stored at ~/.dbt/.user.yml"""
     event_id: builtins.str
@@ -915,6 +918,12 @@ class ExtensionRegistrationCompleted(google.protobuf.message.Message):
     """duration of the registration flow in milliseconds"""
     correlation_id: builtins.str
     """identifier to correlate related registration events (matches RegisterClicked)"""
+    account_id: builtins.str
+    """dbt Cloud account ID the user registered with"""
+    user_id: builtins.str
+    """dbt Cloud user ID for the registered user"""
+    account_host: builtins.str
+    """dbt Cloud hostname (e.g., cloud.getdbt.com)"""
     @property
     def enrichment(self) -> dbtlabs.proto.public.v1.events.vortex_pb2.VortexMessageEnrichment: ...
     @property
@@ -932,9 +941,12 @@ class ExtensionRegistrationCompleted(google.protobuf.message.Message):
         registration_method: dbtlabs.proto.public.v1.fields.vscode_types_pb2.RegistrationMethod.ValueType = ...,
         duration_ms: builtins.int = ...,
         correlation_id: builtins.str = ...,
+        account_id: builtins.str = ...,
+        user_id: builtins.str = ...,
+        account_host: builtins.str = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["editor", b"editor", "enrichment", b"enrichment", "user", b"user"]) -> builtins.bool: ...
-    def ClearField(self, field_name: typing.Literal["correlation_id", b"correlation_id", "dbt_local_cookie_user_id", b"dbt_local_cookie_user_id", "duration_ms", b"duration_ms", "editor", b"editor", "enrichment", b"enrichment", "event_id", b"event_id", "registration_method", b"registration_method", "user", b"user"]) -> None: ...
+    def ClearField(self, field_name: typing.Literal["account_host", b"account_host", "account_id", b"account_id", "correlation_id", b"correlation_id", "dbt_local_cookie_user_id", b"dbt_local_cookie_user_id", "duration_ms", b"duration_ms", "editor", b"editor", "enrichment", b"enrichment", "event_id", b"event_id", "registration_method", b"registration_method", "user", b"user", "user_id", b"user_id"]) -> None: ...
 
 Global___ExtensionRegistrationCompleted: typing_extensions.TypeAlias = ExtensionRegistrationCompleted
 
