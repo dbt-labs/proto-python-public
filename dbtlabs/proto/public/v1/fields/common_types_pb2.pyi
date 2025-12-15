@@ -272,6 +272,47 @@ class RecordRetryExceptionMsg(google.protobuf.message.Message):
 Global___RecordRetryExceptionMsg: typing_extensions.TypeAlias = RecordRetryExceptionMsg
 
 @typing.final
+class GetMetaKeyWarning(google.protobuf.message.Message):
+    """Q - Node execution
+
+    Q047
+    """
+
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
+    META_KEY_FIELD_NUMBER: builtins.int
+    meta_key: builtins.str
+    def __init__(
+        self,
+        *,
+        meta_key: builtins.str = ...,
+    ) -> None: ...
+    def ClearField(self, field_name: typing.Literal["meta_key", b"meta_key"]) -> None: ...
+
+Global___GetMetaKeyWarning: typing_extensions.TypeAlias = GetMetaKeyWarning
+
+@typing.final
+class GetMetaKeyWarningMsg(google.protobuf.message.Message):
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
+    INFO_FIELD_NUMBER: builtins.int
+    DATA_FIELD_NUMBER: builtins.int
+    @property
+    def info(self) -> Global___EventInfo: ...
+    @property
+    def data(self) -> Global___GetMetaKeyWarning: ...
+    def __init__(
+        self,
+        *,
+        info: Global___EventInfo | None = ...,
+        data: Global___GetMetaKeyWarning | None = ...,
+    ) -> None: ...
+    def HasField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> builtins.bool: ...
+    def ClearField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> None: ...
+
+Global___GetMetaKeyWarningMsg: typing_extensions.TypeAlias = GetMetaKeyWarningMsg
+
+@typing.final
 class SystemCouldNotWrite(google.protobuf.message.Message):
     """Z - Misc
 
