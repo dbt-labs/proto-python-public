@@ -2587,11 +2587,87 @@ class DuplicateNameDistinctNodeTypesDeprecationMsg(google.protobuf.message.Messa
 Global___DuplicateNameDistinctNodeTypesDeprecationMsg: typing_extensions.TypeAlias = DuplicateNameDistinctNodeTypesDeprecationMsg
 
 @typing.final
-class DeprecatedModel(google.protobuf.message.Message):
+class TimeDimensionsRequireGranularityDeprecation(google.protobuf.message.Message):
     """D041 -- used in dbt_common
 
-    I065
+    D042
     """
+
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
+    MSG_FIELD_NUMBER: builtins.int
+    msg: builtins.str
+    def __init__(
+        self,
+        *,
+        msg: builtins.str = ...,
+    ) -> None: ...
+    def ClearField(self, field_name: typing.Literal["msg", b"msg"]) -> None: ...
+
+Global___TimeDimensionsRequireGranularityDeprecation: typing_extensions.TypeAlias = TimeDimensionsRequireGranularityDeprecation
+
+@typing.final
+class TimeDimensionsRequireGranularityDeprecationMsg(google.protobuf.message.Message):
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
+    INFO_FIELD_NUMBER: builtins.int
+    DATA_FIELD_NUMBER: builtins.int
+    @property
+    def info(self) -> Global___CoreEventInfo: ...
+    @property
+    def data(self) -> Global___TimeDimensionsRequireGranularityDeprecation: ...
+    def __init__(
+        self,
+        *,
+        info: Global___CoreEventInfo | None = ...,
+        data: Global___TimeDimensionsRequireGranularityDeprecation | None = ...,
+    ) -> None: ...
+    def HasField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> builtins.bool: ...
+    def ClearField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> None: ...
+
+Global___TimeDimensionsRequireGranularityDeprecationMsg: typing_extensions.TypeAlias = TimeDimensionsRequireGranularityDeprecationMsg
+
+@typing.final
+class GenericSemanticLayerDeprecation(google.protobuf.message.Message):
+    """D043"""
+
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
+    MSG_FIELD_NUMBER: builtins.int
+    msg: builtins.str
+    def __init__(
+        self,
+        *,
+        msg: builtins.str = ...,
+    ) -> None: ...
+    def ClearField(self, field_name: typing.Literal["msg", b"msg"]) -> None: ...
+
+Global___GenericSemanticLayerDeprecation: typing_extensions.TypeAlias = GenericSemanticLayerDeprecation
+
+@typing.final
+class GenericSemanticLayerDeprecationMsg(google.protobuf.message.Message):
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
+    INFO_FIELD_NUMBER: builtins.int
+    DATA_FIELD_NUMBER: builtins.int
+    @property
+    def info(self) -> Global___CoreEventInfo: ...
+    @property
+    def data(self) -> Global___GenericSemanticLayerDeprecation: ...
+    def __init__(
+        self,
+        *,
+        info: Global___CoreEventInfo | None = ...,
+        data: Global___GenericSemanticLayerDeprecation | None = ...,
+    ) -> None: ...
+    def HasField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> builtins.bool: ...
+    def ClearField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> None: ...
+
+Global___GenericSemanticLayerDeprecationMsg: typing_extensions.TypeAlias = GenericSemanticLayerDeprecationMsg
+
+@typing.final
+class DeprecatedModel(google.protobuf.message.Message):
+    """I065"""
 
     DESCRIPTOR: google.protobuf.descriptor.Descriptor
 
