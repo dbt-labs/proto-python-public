@@ -220,3 +220,45 @@ class ProgressMessage(google.protobuf.message.Message):
     def WhichOneof(self, oneof_group: typing.Literal["_unique_id", b"_unique_id"]) -> typing.Literal["unique_id"] | None: ...
 
 Global___ProgressMessage: typing_extensions.TypeAlias = ProgressMessage
+
+@typing.final
+class StateModifiedDiff(google.protobuf.message.Message):
+    """Event emitted when comparing nodes/configs for state modification details."""
+
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
+    UNIQUE_ID_FIELD_NUMBER: builtins.int
+    NODE_TYPE_OR_CATEGORY_FIELD_NUMBER: builtins.int
+    CHECK_FIELD_NUMBER: builtins.int
+    SELF_VALUE_FIELD_NUMBER: builtins.int
+    OTHER_VALUE_FIELD_NUMBER: builtins.int
+    unique_id: builtins.str
+    """If this log message is emitted in the context of a specific node,
+    this field should be set to the node's unique id.
+    """
+    node_type_or_category: builtins.str
+    """Node type or comparison category being evaluated."""
+    check: builtins.str
+    """Name of the specific comparison check."""
+    self_value: builtins.str
+    """Optional self/other values for the failed check."""
+    other_value: builtins.str
+    def __init__(
+        self,
+        *,
+        unique_id: builtins.str | None = ...,
+        node_type_or_category: builtins.str = ...,
+        check: builtins.str = ...,
+        self_value: builtins.str | None = ...,
+        other_value: builtins.str | None = ...,
+    ) -> None: ...
+    def HasField(self, field_name: typing.Literal["_other_value", b"_other_value", "_self_value", b"_self_value", "_unique_id", b"_unique_id", "other_value", b"other_value", "self_value", b"self_value", "unique_id", b"unique_id"]) -> builtins.bool: ...
+    def ClearField(self, field_name: typing.Literal["_other_value", b"_other_value", "_self_value", b"_self_value", "_unique_id", b"_unique_id", "check", b"check", "node_type_or_category", b"node_type_or_category", "other_value", b"other_value", "self_value", b"self_value", "unique_id", b"unique_id"]) -> None: ...
+    @typing.overload
+    def WhichOneof(self, oneof_group: typing.Literal["_other_value", b"_other_value"]) -> typing.Literal["other_value"] | None: ...
+    @typing.overload
+    def WhichOneof(self, oneof_group: typing.Literal["_self_value", b"_self_value"]) -> typing.Literal["self_value"] | None: ...
+    @typing.overload
+    def WhichOneof(self, oneof_group: typing.Literal["_unique_id", b"_unique_id"]) -> typing.Literal["unique_id"] | None: ...
+
+Global___StateModifiedDiff: typing_extensions.TypeAlias = StateModifiedDiff

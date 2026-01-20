@@ -42,6 +42,8 @@ class _ExecutionPhaseEnumTypeWrapper(google.protobuf.internal.enum_type_wrapper.
     """Initializing the adapter (warehouse connection and configuration)"""
     EXECUTION_PHASE_DEFER_HYDRATION: _ExecutionPhase.ValueType  # 60
     """Handling deferral. Fetching state source schemas from remote, hydrating relation, and schema cache"""
+    EXECUTION_PHASE_SCHEMA_HYDRATION: _ExecutionPhase.ValueType  # 65
+    """Hydration of schemas for static analysis"""
     EXECUTION_PHASE_TASK_GRAPH_BUILD: _ExecutionPhase.ValueType  # 70
     """Building the task graph from the schedule"""
     EXECUTION_PHASE_NODE_CACHE_HYDRATION: _ExecutionPhase.ValueType  # 80
@@ -86,6 +88,8 @@ EXECUTION_PHASE_INIT_ADAPTER: ExecutionPhase.ValueType  # 50
 """Initializing the adapter (warehouse connection and configuration)"""
 EXECUTION_PHASE_DEFER_HYDRATION: ExecutionPhase.ValueType  # 60
 """Handling deferral. Fetching state source schemas from remote, hydrating relation, and schema cache"""
+EXECUTION_PHASE_SCHEMA_HYDRATION: ExecutionPhase.ValueType  # 65
+"""Hydration of schemas for static analysis"""
 EXECUTION_PHASE_TASK_GRAPH_BUILD: ExecutionPhase.ValueType  # 70
 """Building the task graph from the schedule"""
 EXECUTION_PHASE_NODE_CACHE_HYDRATION: ExecutionPhase.ValueType  # 80

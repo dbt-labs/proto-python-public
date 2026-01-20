@@ -27,6 +27,7 @@ class _ArtifactTypeEnumTypeWrapper(google.protobuf.internal.enum_type_wrapper._E
     ARTIFACT_TYPE_MANIFEST: _ArtifactType.ValueType  # 1
     ARTIFACT_TYPE_SEMANTIC_MANIFEST: _ArtifactType.ValueType  # 2
     ARTIFACT_TYPE_CATALOG: _ArtifactType.ValueType  # 3
+    ARTIFACT_TYPE_SOURCES: _ArtifactType.ValueType  # 4
 
 class ArtifactType(_ArtifactType, metaclass=_ArtifactTypeEnumTypeWrapper):
     """Known artifact types written by dbt"""
@@ -35,6 +36,7 @@ ARTIFACT_TYPE_UNSPECIFIED: ArtifactType.ValueType  # 0
 ARTIFACT_TYPE_MANIFEST: ArtifactType.ValueType  # 1
 ARTIFACT_TYPE_SEMANTIC_MANIFEST: ArtifactType.ValueType  # 2
 ARTIFACT_TYPE_CATALOG: ArtifactType.ValueType  # 3
+ARTIFACT_TYPE_SOURCES: ArtifactType.ValueType  # 4
 Global___ArtifactType: typing_extensions.TypeAlias = ArtifactType
 
 @typing.final
