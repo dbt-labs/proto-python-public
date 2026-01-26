@@ -94,6 +94,67 @@ class ExtensionActivated(google.protobuf.message.Message):
 Global___ExtensionActivated: typing_extensions.TypeAlias = ExtensionActivated
 
 @typing.final
+class ExtensionLspCompileStart(google.protobuf.message.Message):
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
+    ENRICHMENT_FIELD_NUMBER: builtins.int
+    EDITOR_FIELD_NUMBER: builtins.int
+    USER_FIELD_NUMBER: builtins.int
+    PROJECT_ID_FIELD_NUMBER: builtins.int
+    ADAPTER_TYPE_FIELD_NUMBER: builtins.int
+    ADAPTER_UNIQUE_ID_FIELD_NUMBER: builtins.int
+    DBT_VERSION_FIELD_NUMBER: builtins.int
+    COMPILE_TYPE_FIELD_NUMBER: builtins.int
+    USER_INITIATED_FIELD_NUMBER: builtins.int
+    COMPILE_CAUSE_FIELD_NUMBER: builtins.int
+    DBT_LOCAL_COOKIE_USER_ID_FIELD_NUMBER: builtins.int
+    EVENT_ID_FIELD_NUMBER: builtins.int
+    project_id: builtins.str
+    """this is the hash of the project's name, used for anonymized telemetry"""
+    adapter_type: builtins.str
+    """the type of adapter used in the project (snowflake, bigquery, etc)"""
+    adapter_unique_id: builtins.str
+    """the unique id of the adapter used in the active profile eg. md5(hostname)"""
+    dbt_version: builtins.str
+    """the version of dbt used in the project"""
+    compile_type: dbtlabs.proto.public.v1.fields.vscode_types_pb2.CompileType.ValueType
+    """the type of compile"""
+    user_initiated: builtins.bool
+    """True if the compile was triggered by a user action (ie. saving a file)"""
+    compile_cause: dbtlabs.proto.public.v1.fields.vscode_types_pb2.CompileCause.ValueType
+    """The event that triggered the compile"""
+    dbt_local_cookie_user_id: builtins.str
+    """the anonymous user id stored at ~/.dbt/.user.yml"""
+    event_id: builtins.str
+    """UUID to uniquely identify the event"""
+    @property
+    def enrichment(self) -> dbtlabs.proto.public.v1.events.vortex_pb2.VortexMessageEnrichment: ...
+    @property
+    def editor(self) -> dbtlabs.proto.public.v1.fields.vscode_types_pb2.Editor: ...
+    @property
+    def user(self) -> dbtlabs.proto.public.v1.fields.vscode_types_pb2.User: ...
+    def __init__(
+        self,
+        *,
+        enrichment: dbtlabs.proto.public.v1.events.vortex_pb2.VortexMessageEnrichment | None = ...,
+        editor: dbtlabs.proto.public.v1.fields.vscode_types_pb2.Editor | None = ...,
+        user: dbtlabs.proto.public.v1.fields.vscode_types_pb2.User | None = ...,
+        project_id: builtins.str = ...,
+        adapter_type: builtins.str = ...,
+        adapter_unique_id: builtins.str = ...,
+        dbt_version: builtins.str = ...,
+        compile_type: dbtlabs.proto.public.v1.fields.vscode_types_pb2.CompileType.ValueType = ...,
+        user_initiated: builtins.bool = ...,
+        compile_cause: dbtlabs.proto.public.v1.fields.vscode_types_pb2.CompileCause.ValueType = ...,
+        dbt_local_cookie_user_id: builtins.str = ...,
+        event_id: builtins.str = ...,
+    ) -> None: ...
+    def HasField(self, field_name: typing.Literal["editor", b"editor", "enrichment", b"enrichment", "user", b"user"]) -> builtins.bool: ...
+    def ClearField(self, field_name: typing.Literal["adapter_type", b"adapter_type", "adapter_unique_id", b"adapter_unique_id", "compile_cause", b"compile_cause", "compile_type", b"compile_type", "dbt_local_cookie_user_id", b"dbt_local_cookie_user_id", "dbt_version", b"dbt_version", "editor", b"editor", "enrichment", b"enrichment", "event_id", b"event_id", "project_id", b"project_id", "user", b"user", "user_initiated", b"user_initiated"]) -> None: ...
+
+Global___ExtensionLspCompileStart: typing_extensions.TypeAlias = ExtensionLspCompileStart
+
+@typing.final
 class ExtensionLspCompile(google.protobuf.message.Message):
     DESCRIPTOR: google.protobuf.descriptor.Descriptor
 
