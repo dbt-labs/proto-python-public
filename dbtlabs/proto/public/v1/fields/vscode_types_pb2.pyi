@@ -33,6 +33,8 @@ class _UserStateEnumTypeWrapper(google.protobuf.internal.enum_type_wrapper._Enum
     """User's registration has expired"""
     USER_STATE_VERIFICATION_ERROR: _UserState.ValueType  # 4
     """Error occurred during verification"""
+    USER_STATE_SESSION_EXPIRED: _UserState.ValueType  # 5
+    """Error occurred during verification"""
 
 class UserState(_UserState, metaclass=_UserStateEnumTypeWrapper):
     """User state enum"""
@@ -46,6 +48,8 @@ USER_STATE_VERIFIED: UserState.ValueType  # 2
 USER_STATE_EXPIRED: UserState.ValueType  # 3
 """User's registration has expired"""
 USER_STATE_VERIFICATION_ERROR: UserState.ValueType  # 4
+"""Error occurred during verification"""
+USER_STATE_SESSION_EXPIRED: UserState.ValueType  # 5
 """Error occurred during verification"""
 Global___UserState: typing_extensions.TypeAlias = UserState
 
