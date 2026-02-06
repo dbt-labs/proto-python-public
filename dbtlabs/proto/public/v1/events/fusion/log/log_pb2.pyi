@@ -35,6 +35,12 @@ class LogMessage(google.protobuf.message.Message):
     LINE_FIELD_NUMBER: builtins.int
     PHASE_FIELD_NUMBER: builtins.int
     PACKAGE_NAME_FIELD_NUMBER: builtins.int
+    RELATIVE_PATH_FIELD_NUMBER: builtins.int
+    CODE_LINE_FIELD_NUMBER: builtins.int
+    CODE_COLUMN_FIELD_NUMBER: builtins.int
+    EXPANDED_RELATIVE_PATH_FIELD_NUMBER: builtins.int
+    EXPANDED_LINE_FIELD_NUMBER: builtins.int
+    EXPANDED_COLUMN_FIELD_NUMBER: builtins.int
     code: builtins.int
     """Optional fusion error/warning code"""
     dbt_core_event_code: builtins.str
@@ -54,6 +60,16 @@ class LogMessage(google.protobuf.message.Message):
     """Execution phase (if known) during which this log was emitted."""
     package_name: builtins.str
     """Package name of the project dependency for which this log was emitted. Not set for the root project."""
+    relative_path: builtins.str
+    """Relative path to the project file where this log message originated."""
+    code_line: builtins.int
+    """1-indexed line number in the project file where this log message originated."""
+    code_column: builtins.int
+    """0-indexed column number in the project file where this log message originated."""
+    expanded_relative_path: builtins.str
+    """Optional expanded (compiled) file location for this log message."""
+    expanded_line: builtins.int
+    expanded_column: builtins.int
     def __init__(
         self,
         *,
@@ -66,13 +82,29 @@ class LogMessage(google.protobuf.message.Message):
         line: builtins.int | None = ...,
         phase: dbtlabs.proto.public.v1.events.fusion.phase.phase_pb2.ExecutionPhase.ValueType | None = ...,
         package_name: builtins.str | None = ...,
+        relative_path: builtins.str | None = ...,
+        code_line: builtins.int | None = ...,
+        code_column: builtins.int | None = ...,
+        expanded_relative_path: builtins.str | None = ...,
+        expanded_line: builtins.int | None = ...,
+        expanded_column: builtins.int | None = ...,
     ) -> None: ...
-    def HasField(self, field_name: typing.Literal["_code", b"_code", "_dbt_core_event_code", b"_dbt_core_event_code", "_file", b"_file", "_line", b"_line", "_package_name", b"_package_name", "_phase", b"_phase", "_unique_id", b"_unique_id", "code", b"code", "dbt_core_event_code", b"dbt_core_event_code", "file", b"file", "line", b"line", "package_name", b"package_name", "phase", b"phase", "unique_id", b"unique_id"]) -> builtins.bool: ...
-    def ClearField(self, field_name: typing.Literal["_code", b"_code", "_dbt_core_event_code", b"_dbt_core_event_code", "_file", b"_file", "_line", b"_line", "_package_name", b"_package_name", "_phase", b"_phase", "_unique_id", b"_unique_id", "code", b"code", "dbt_core_event_code", b"dbt_core_event_code", "file", b"file", "line", b"line", "original_severity_number", b"original_severity_number", "original_severity_text", b"original_severity_text", "package_name", b"package_name", "phase", b"phase", "unique_id", b"unique_id"]) -> None: ...
+    def HasField(self, field_name: typing.Literal["_code", b"_code", "_code_column", b"_code_column", "_code_line", b"_code_line", "_dbt_core_event_code", b"_dbt_core_event_code", "_expanded_column", b"_expanded_column", "_expanded_line", b"_expanded_line", "_expanded_relative_path", b"_expanded_relative_path", "_file", b"_file", "_line", b"_line", "_package_name", b"_package_name", "_phase", b"_phase", "_relative_path", b"_relative_path", "_unique_id", b"_unique_id", "code", b"code", "code_column", b"code_column", "code_line", b"code_line", "dbt_core_event_code", b"dbt_core_event_code", "expanded_column", b"expanded_column", "expanded_line", b"expanded_line", "expanded_relative_path", b"expanded_relative_path", "file", b"file", "line", b"line", "package_name", b"package_name", "phase", b"phase", "relative_path", b"relative_path", "unique_id", b"unique_id"]) -> builtins.bool: ...
+    def ClearField(self, field_name: typing.Literal["_code", b"_code", "_code_column", b"_code_column", "_code_line", b"_code_line", "_dbt_core_event_code", b"_dbt_core_event_code", "_expanded_column", b"_expanded_column", "_expanded_line", b"_expanded_line", "_expanded_relative_path", b"_expanded_relative_path", "_file", b"_file", "_line", b"_line", "_package_name", b"_package_name", "_phase", b"_phase", "_relative_path", b"_relative_path", "_unique_id", b"_unique_id", "code", b"code", "code_column", b"code_column", "code_line", b"code_line", "dbt_core_event_code", b"dbt_core_event_code", "expanded_column", b"expanded_column", "expanded_line", b"expanded_line", "expanded_relative_path", b"expanded_relative_path", "file", b"file", "line", b"line", "original_severity_number", b"original_severity_number", "original_severity_text", b"original_severity_text", "package_name", b"package_name", "phase", b"phase", "relative_path", b"relative_path", "unique_id", b"unique_id"]) -> None: ...
     @typing.overload
     def WhichOneof(self, oneof_group: typing.Literal["_code", b"_code"]) -> typing.Literal["code"] | None: ...
     @typing.overload
+    def WhichOneof(self, oneof_group: typing.Literal["_code_column", b"_code_column"]) -> typing.Literal["code_column"] | None: ...
+    @typing.overload
+    def WhichOneof(self, oneof_group: typing.Literal["_code_line", b"_code_line"]) -> typing.Literal["code_line"] | None: ...
+    @typing.overload
     def WhichOneof(self, oneof_group: typing.Literal["_dbt_core_event_code", b"_dbt_core_event_code"]) -> typing.Literal["dbt_core_event_code"] | None: ...
+    @typing.overload
+    def WhichOneof(self, oneof_group: typing.Literal["_expanded_column", b"_expanded_column"]) -> typing.Literal["expanded_column"] | None: ...
+    @typing.overload
+    def WhichOneof(self, oneof_group: typing.Literal["_expanded_line", b"_expanded_line"]) -> typing.Literal["expanded_line"] | None: ...
+    @typing.overload
+    def WhichOneof(self, oneof_group: typing.Literal["_expanded_relative_path", b"_expanded_relative_path"]) -> typing.Literal["expanded_relative_path"] | None: ...
     @typing.overload
     def WhichOneof(self, oneof_group: typing.Literal["_file", b"_file"]) -> typing.Literal["file"] | None: ...
     @typing.overload
@@ -81,6 +113,8 @@ class LogMessage(google.protobuf.message.Message):
     def WhichOneof(self, oneof_group: typing.Literal["_package_name", b"_package_name"]) -> typing.Literal["package_name"] | None: ...
     @typing.overload
     def WhichOneof(self, oneof_group: typing.Literal["_phase", b"_phase"]) -> typing.Literal["phase"] | None: ...
+    @typing.overload
+    def WhichOneof(self, oneof_group: typing.Literal["_relative_path", b"_relative_path"]) -> typing.Literal["relative_path"] | None: ...
     @typing.overload
     def WhichOneof(self, oneof_group: typing.Literal["_unique_id", b"_unique_id"]) -> typing.Literal["unique_id"] | None: ...
 
