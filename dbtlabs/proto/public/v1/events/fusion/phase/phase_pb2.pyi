@@ -63,6 +63,10 @@ class _ExecutionPhaseEnumTypeWrapper(google.protobuf.internal.enum_type_wrapper.
     """Analysis of individual node lineages"""
     EXECUTION_PHASE_DEBUG: _ExecutionPhase.ValueType  # 140
     """Debugging connection correctness and availability to the warehouse"""
+    EXECUTION_PHASE_ON_RUN_START: _ExecutionPhase.ValueType  # 150
+    """Executing on-run-start hooks at the start of supported dbt commands"""
+    EXECUTION_PHASE_ON_RUN_END: _ExecutionPhase.ValueType  # 160
+    """Executing on-run-end hooks at the end of supported dbt commands"""
 
 class ExecutionPhase(_ExecutionPhase, metaclass=_ExecutionPhaseEnumTypeWrapper):
     """A superset of all possible phases across all dbt commands.
@@ -109,6 +113,10 @@ EXECUTION_PHASE_LINEAGE: ExecutionPhase.ValueType  # 130
 """Analysis of individual node lineages"""
 EXECUTION_PHASE_DEBUG: ExecutionPhase.ValueType  # 140
 """Debugging connection correctness and availability to the warehouse"""
+EXECUTION_PHASE_ON_RUN_START: ExecutionPhase.ValueType  # 150
+"""Executing on-run-start hooks at the start of supported dbt commands"""
+EXECUTION_PHASE_ON_RUN_END: ExecutionPhase.ValueType  # 160
+"""Executing on-run-end hooks at the end of supported dbt commands"""
 Global___ExecutionPhase: typing_extensions.TypeAlias = ExecutionPhase
 
 @typing.final
@@ -124,14 +132,14 @@ class PhaseExecuted(google.protobuf.message.Message):
     phase: Global___ExecutionPhase.ValueType
     """The current phase of execution."""
     node_count_total: builtins.int
-    """Optional count of total individual nodes within the phase (when applicable)."""
+    """Optional count of total individual items within the phase (nodes or hooks)."""
     node_count_skipped: builtins.int
-    """Optional count of skipped nodes within the phase (when applicable).
-    Skipped means `node_outcome` was set to `NODE_OUTCOME_SKIPPED`.
+    """Optional count of skipped items within the phase.
+    Skipped means NODE_OUTCOME_SKIPPED for node phases and HOOK_OUTCOME_SKIPPED for hook phases.
     """
     node_count_error: builtins.int
-    """Optional count of errored nodes within the phase (when applicable).
-    Error means `node_outcome` was set to `NODE_OUTCOME_ERROR`.
+    """Optional count of errored items within the phase.
+    Error means NODE_OUTCOME_ERROR for node phases and HOOK_OUTCOME_ERROR for hook phases.
     """
     def __init__(
         self,
