@@ -17,6 +17,40 @@ else:
 DESCRIPTOR: google.protobuf.descriptor.FileDescriptor
 
 @typing.final
+class CompiledCode(google.protobuf.message.Message):
+    """Log event that carries compiled SQL for a project node.
+
+    `sql` may contain user data and may be scrubbed when sensitive telemetry
+    collection is disabled.
+    """
+
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
+    RELATIVE_PATH_FIELD_NUMBER: builtins.int
+    SQL_FIELD_NUMBER: builtins.int
+    UNIQUE_ID_FIELD_NUMBER: builtins.int
+    NODE_NAME_FIELD_NUMBER: builtins.int
+    relative_path: builtins.str
+    """Path to the compiled SQL file, relative to project root (`in_dir`)."""
+    sql: builtins.str
+    """Compiled SQL text. May be scrubbed."""
+    unique_id: builtins.str
+    """Globally unique dbt node identifier."""
+    node_name: builtins.str
+    """Display node name for compatibility output."""
+    def __init__(
+        self,
+        *,
+        relative_path: builtins.str = ...,
+        sql: builtins.str = ...,
+        unique_id: builtins.str = ...,
+        node_name: builtins.str = ...,
+    ) -> None: ...
+    def ClearField(self, field_name: typing.Literal["node_name", b"node_name", "relative_path", b"relative_path", "sql", b"sql", "unique_id", b"unique_id"]) -> None: ...
+
+Global___CompiledCode: typing_extensions.TypeAlias = CompiledCode
+
+@typing.final
 class CompiledCodeInline(google.protobuf.message.Message):
     """Log event that carries inline compiled SQL code."""
 
