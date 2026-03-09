@@ -44,6 +44,8 @@ class _OnboardingScreenEnumTypeWrapper(google.protobuf.internal.enum_type_wrappe
     AGENTIC_AUTOFIX: _OnboardingScreen.ValueType  # 15
     TRY_AGENTIC_AUTOFIX: _OnboardingScreen.ValueType  # 16
     DOWNLOAD_AGENTS_MD: _OnboardingScreen.ValueType  # 17
+    COMPILE_SA_BASELINE: _OnboardingScreen.ValueType  # 18
+    COMPILE_SA_BASELINE_SUCCESS: _OnboardingScreen.ValueType  # 19
 
 class OnboardingScreen(_OnboardingScreen, metaclass=_OnboardingScreenEnumTypeWrapper): ...
 
@@ -65,6 +67,8 @@ SUCCESS: OnboardingScreen.ValueType  # 14
 AGENTIC_AUTOFIX: OnboardingScreen.ValueType  # 15
 TRY_AGENTIC_AUTOFIX: OnboardingScreen.ValueType  # 16
 DOWNLOAD_AGENTS_MD: OnboardingScreen.ValueType  # 17
+COMPILE_SA_BASELINE: OnboardingScreen.ValueType  # 18
+COMPILE_SA_BASELINE_SUCCESS: OnboardingScreen.ValueType  # 19
 Global___OnboardingScreen: typing_extensions.TypeAlias = OnboardingScreen
 
 class _OnboardingAction:
