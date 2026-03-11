@@ -9492,3 +9492,41 @@ class ArtifactUploadSkippedMsg(google.protobuf.message.Message):
     def ClearField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> None: ...
 
 Global___ArtifactUploadSkippedMsg: typing_extensions.TypeAlias = ArtifactUploadSkippedMsg
+
+@typing.final
+class SelectExcludeIgnoredWithSelectorWarning(google.protobuf.message.Message):
+    """Z064"""
+
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
+    MSG_FIELD_NUMBER: builtins.int
+    msg: builtins.str
+    def __init__(
+        self,
+        *,
+        msg: builtins.str = ...,
+    ) -> None: ...
+    def ClearField(self, field_name: typing.Literal["msg", b"msg"]) -> None: ...
+
+Global___SelectExcludeIgnoredWithSelectorWarning: typing_extensions.TypeAlias = SelectExcludeIgnoredWithSelectorWarning
+
+@typing.final
+class SelectExcludeIgnoredWithSelectorWarningMsg(google.protobuf.message.Message):
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
+    INFO_FIELD_NUMBER: builtins.int
+    DATA_FIELD_NUMBER: builtins.int
+    @property
+    def info(self) -> Global___CoreEventInfo: ...
+    @property
+    def data(self) -> Global___SelectExcludeIgnoredWithSelectorWarning: ...
+    def __init__(
+        self,
+        *,
+        info: Global___CoreEventInfo | None = ...,
+        data: Global___SelectExcludeIgnoredWithSelectorWarning | None = ...,
+    ) -> None: ...
+    def HasField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> builtins.bool: ...
+    def ClearField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> None: ...
+
+Global___SelectExcludeIgnoredWithSelectorWarningMsg: typing_extensions.TypeAlias = SelectExcludeIgnoredWithSelectorWarningMsg
