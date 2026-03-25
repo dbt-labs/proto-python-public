@@ -118,6 +118,38 @@ REGISTRATION_TRIGGER_METHOD_WEB: RegistrationTriggerMethod.ValueType  # 2
 """Registration will proceed via web browser"""
 Global___RegistrationTriggerMethod: typing_extensions.TypeAlias = RegistrationTriggerMethod
 
+class _CompareFailureMode:
+    ValueType = typing.NewType("ValueType", builtins.int)
+    V: typing_extensions.TypeAlias = ValueType
+
+class _CompareFailureModeEnumTypeWrapper(google.protobuf.internal.enum_type_wrapper._EnumTypeWrapper[_CompareFailureMode.ValueType], builtins.type):
+    DESCRIPTOR: google.protobuf.descriptor.EnumDescriptor
+    COMPARE_FAILURE_MODE_UNSPECIFIED: _CompareFailureMode.ValueType  # 0
+    """Default/unspecified"""
+    COMPARE_FAILURE_MODE_NO_STATE_CONFIGURED: _CompareFailureMode.ValueType  # 1
+    """No state manifest configured (missing --state, --defer-state, or dbt Cloud auth)"""
+    COMPARE_FAILURE_MODE_COMPARE_SUBCOMMAND_DOES_NOT_EXIST: _CompareFailureMode.ValueType  # 2
+    """The compare subcommand is not available (e.g. not licensed)"""
+    COMPARE_FAILURE_MODE_BUILD_FAILED: _CompareFailureMode.ValueType  # 3
+    """The model build step failed before compare could run"""
+    COMPARE_FAILURE_MODE_OTHER: _CompareFailureMode.ValueType  # 4
+    """Any other unexpected failure"""
+
+class CompareFailureMode(_CompareFailureMode, metaclass=_CompareFailureModeEnumTypeWrapper):
+    """Categorizes how a compare operation failed"""
+
+COMPARE_FAILURE_MODE_UNSPECIFIED: CompareFailureMode.ValueType  # 0
+"""Default/unspecified"""
+COMPARE_FAILURE_MODE_NO_STATE_CONFIGURED: CompareFailureMode.ValueType  # 1
+"""No state manifest configured (missing --state, --defer-state, or dbt Cloud auth)"""
+COMPARE_FAILURE_MODE_COMPARE_SUBCOMMAND_DOES_NOT_EXIST: CompareFailureMode.ValueType  # 2
+"""The compare subcommand is not available (e.g. not licensed)"""
+COMPARE_FAILURE_MODE_BUILD_FAILED: CompareFailureMode.ValueType  # 3
+"""The model build step failed before compare could run"""
+COMPARE_FAILURE_MODE_OTHER: CompareFailureMode.ValueType  # 4
+"""Any other unexpected failure"""
+Global___CompareFailureMode: typing_extensions.TypeAlias = CompareFailureMode
+
 class _RegistrationMethod:
     ValueType = typing.NewType("ValueType", builtins.int)
     V: typing_extensions.TypeAlias = ValueType

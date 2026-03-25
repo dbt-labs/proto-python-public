@@ -785,6 +785,8 @@ class ExtensionCompareFinished(google.protobuf.message.Message):
     FAILURE_REASON_FIELD_NUMBER: builtins.int
     DBT_LOCAL_COOKIE_USER_ID_FIELD_NUMBER: builtins.int
     EVENT_ID_FIELD_NUMBER: builtins.int
+    FAILURE_MODE_FIELD_NUMBER: builtins.int
+    ERROR_MESSAGE_FIELD_NUMBER: builtins.int
     compare_id: builtins.str
     """anonymized identifier for this compare session"""
     duration_ms: builtins.int
@@ -792,11 +794,15 @@ class ExtensionCompareFinished(google.protobuf.message.Message):
     compare_success: builtins.bool
     """whether the compare operation completed successfully"""
     failure_reason: builtins.str
-    """sanitized description of the failure, if any"""
+    """Deprecated: use failure_mode and error_message instead"""
     dbt_local_cookie_user_id: builtins.str
     """the anonymous user id stored at ~/.dbt/.user.yml"""
     event_id: builtins.str
     """UUID to uniquely identify the event"""
+    failure_mode: dbtlabs.proto.public.v1.fields.vscode_types_pb2.CompareFailureMode.ValueType
+    """categorizes the type of failure that occurred"""
+    error_message: builtins.str
+    """detailed error message or logs from the failed operation"""
     @property
     def enrichment(self) -> dbtlabs.proto.public.v1.events.vortex_pb2.VortexMessageEnrichment: ...
     @property
@@ -815,9 +821,11 @@ class ExtensionCompareFinished(google.protobuf.message.Message):
         failure_reason: builtins.str = ...,
         dbt_local_cookie_user_id: builtins.str = ...,
         event_id: builtins.str = ...,
+        failure_mode: dbtlabs.proto.public.v1.fields.vscode_types_pb2.CompareFailureMode.ValueType = ...,
+        error_message: builtins.str = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["editor", b"editor", "enrichment", b"enrichment", "user", b"user"]) -> builtins.bool: ...
-    def ClearField(self, field_name: typing.Literal["compare_id", b"compare_id", "compare_success", b"compare_success", "dbt_local_cookie_user_id", b"dbt_local_cookie_user_id", "duration_ms", b"duration_ms", "editor", b"editor", "enrichment", b"enrichment", "event_id", b"event_id", "failure_reason", b"failure_reason", "user", b"user"]) -> None: ...
+    def ClearField(self, field_name: typing.Literal["compare_id", b"compare_id", "compare_success", b"compare_success", "dbt_local_cookie_user_id", b"dbt_local_cookie_user_id", "duration_ms", b"duration_ms", "editor", b"editor", "enrichment", b"enrichment", "error_message", b"error_message", "event_id", b"event_id", "failure_mode", b"failure_mode", "failure_reason", b"failure_reason", "user", b"user"]) -> None: ...
 
 Global___ExtensionCompareFinished: typing_extensions.TypeAlias = ExtensionCompareFinished
 
