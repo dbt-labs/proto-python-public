@@ -186,6 +186,7 @@ class User(google.protobuf.message.Message):
     DBT_CLOUD_USER_ID_FIELD_NUMBER: builtins.int
     DBT_CLOUD_HOSTNAME_FIELD_NUMBER: builtins.int
     REGISTRATION_STATE_FIELD_NUMBER: builtins.int
+    DBT_CLOUD_ACCOUNT_IDENTIFIER_FIELD_NUMBER: builtins.int
     credentials_source: builtins.str
     """source used to get credentials for the user (dbt_cloud.yml, web)"""
     dbt_cloud_user_id: builtins.str
@@ -194,6 +195,8 @@ class User(google.protobuf.message.Message):
     """dbt cloud hostname, can be null if the user is not registered"""
     registration_state: builtins.str
     """registration state as reported by the vscode extension"""
+    dbt_cloud_account_identifier: builtins.str
+    """dbt cloud account identifier (globally unique, starts with "act_")"""
     def __init__(
         self,
         *,
@@ -201,8 +204,9 @@ class User(google.protobuf.message.Message):
         dbt_cloud_user_id: builtins.str = ...,
         dbt_cloud_hostname: builtins.str = ...,
         registration_state: builtins.str = ...,
+        dbt_cloud_account_identifier: builtins.str = ...,
     ) -> None: ...
-    def ClearField(self, field_name: typing.Literal["credentials_source", b"credentials_source", "dbt_cloud_hostname", b"dbt_cloud_hostname", "dbt_cloud_user_id", b"dbt_cloud_user_id", "registration_state", b"registration_state"]) -> None: ...
+    def ClearField(self, field_name: typing.Literal["credentials_source", b"credentials_source", "dbt_cloud_account_identifier", b"dbt_cloud_account_identifier", "dbt_cloud_hostname", b"dbt_cloud_hostname", "dbt_cloud_user_id", b"dbt_cloud_user_id", "registration_state", b"registration_state"]) -> None: ...
 
 Global___User: typing_extensions.TypeAlias = User
 
