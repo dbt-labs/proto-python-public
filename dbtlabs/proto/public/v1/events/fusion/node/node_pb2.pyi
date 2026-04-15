@@ -308,6 +308,27 @@ SOURCE_FRESHNESS_OUTCOME_OUTCOME_FAILED: SourceFreshnessOutcome.ValueType  # 2
 """Freshness exceeded error threshold."""
 Global___SourceFreshnessOutcome: typing_extensions.TypeAlias = SourceFreshnessOutcome
 
+class _NodeWarningOutcome:
+    ValueType = typing.NewType("ValueType", builtins.int)
+    V: typing_extensions.TypeAlias = ValueType
+
+class _NodeWarningOutcomeEnumTypeWrapper(google.protobuf.internal.enum_type_wrapper._EnumTypeWrapper[_NodeWarningOutcome.ValueType], builtins.type):
+    DESCRIPTOR: google.protobuf.descriptor.EnumDescriptor
+    NODE_WARNING_OUTCOME_UNSPECIFIED: _NodeWarningOutcome.ValueType  # 0
+    NODE_WARNING_OUTCOME_NO_WARNINGS: _NodeWarningOutcome.ValueType  # 1
+    NODE_WARNING_OUTCOME_WITH_WARNINGS: _NodeWarningOutcome.ValueType  # 2
+
+class NodeWarningOutcome(_NodeWarningOutcome, metaclass=_NodeWarningOutcomeEnumTypeWrapper):
+    """Second-level outcome indicating whether a successfully-completed non-test node produced warnings.
+    Analogous to TestOutcome for test nodes. Warnings are already emitted individually as LogMessages;
+    this field exists only to signal the presence of warnings at the outcome level.
+    """
+
+NODE_WARNING_OUTCOME_UNSPECIFIED: NodeWarningOutcome.ValueType  # 0
+NODE_WARNING_OUTCOME_NO_WARNINGS: NodeWarningOutcome.ValueType  # 1
+NODE_WARNING_OUTCOME_WITH_WARNINGS: NodeWarningOutcome.ValueType  # 2
+Global___NodeWarningOutcome: typing_extensions.TypeAlias = NodeWarningOutcome
+
 @typing.final
 class TestEvaluationDetail(google.protobuf.message.Message):
     DESCRIPTOR: google.protobuf.descriptor.Descriptor
@@ -403,6 +424,26 @@ class NodeSkipUpstreamDetail(google.protobuf.message.Message):
 Global___NodeSkipUpstreamDetail: typing_extensions.TypeAlias = NodeSkipUpstreamDetail
 
 @typing.final
+class NodeEvaluationDetail(google.protobuf.message.Message):
+    """Non-test node specific outcome details for a successful evaluation.
+    node_warning_outcome is always set (non-UNSPECIFIED) for new records; UNSPECIFIED only
+    appears in records written before this field existed (backward compat).
+    """
+
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
+    NODE_WARNING_OUTCOME_FIELD_NUMBER: builtins.int
+    node_warning_outcome: Global___NodeWarningOutcome.ValueType
+    def __init__(
+        self,
+        *,
+        node_warning_outcome: Global___NodeWarningOutcome.ValueType = ...,
+    ) -> None: ...
+    def ClearField(self, field_name: typing.Literal["node_warning_outcome", b"node_warning_outcome"]) -> None: ...
+
+Global___NodeEvaluationDetail: typing_extensions.TypeAlias = NodeEvaluationDetail
+
+@typing.final
 class NodeEvaluated(google.protobuf.message.Message):
     DESCRIPTOR: google.protobuf.descriptor.Descriptor
 
@@ -428,6 +469,7 @@ class NodeEvaluated(google.protobuf.message.Message):
     NODE_TEST_DETAIL_FIELD_NUMBER: builtins.int
     NODE_FRESHNESS_OUTCOME_FIELD_NUMBER: builtins.int
     NODE_SKIP_UPSTREAM_DETAIL_FIELD_NUMBER: builtins.int
+    NODE_EVALUATION_DETAIL_FIELD_NUMBER: builtins.int
     DBT_CORE_EVENT_CODE_FIELD_NUMBER: builtins.int
     ROWS_AFFECTED_FIELD_NUMBER: builtins.int
     unique_id: builtins.str
@@ -504,6 +546,12 @@ class NodeEvaluated(google.protobuf.message.Message):
         Present when node_skip_reason == NODE_SKIP_REASON_UPSTREAM.
         """
 
+    @property
+    def node_evaluation_detail(self) -> Global___NodeEvaluationDetail:
+        """Non-test node specific outcome details.
+        Present for non test / unit test / source node types when node_outcome == NODE_OUTCOME_SUCCESS.
+        """
+
     def __init__(
         self,
         *,
@@ -529,11 +577,12 @@ class NodeEvaluated(google.protobuf.message.Message):
         node_test_detail: Global___TestEvaluationDetail | None = ...,
         node_freshness_outcome: Global___SourceFreshnessDetail | None = ...,
         node_skip_upstream_detail: Global___NodeSkipUpstreamDetail | None = ...,
+        node_evaluation_detail: Global___NodeEvaluationDetail | None = ...,
         dbt_core_event_code: builtins.str | None = ...,
         rows_affected: builtins.int | None = ...,
     ) -> None: ...
-    def HasField(self, field_name: typing.Literal["_custom_materialization", b"_custom_materialization", "_database", b"_database", "_dbt_core_event_code", b"_dbt_core_event_code", "_defined_at_col", b"_defined_at_col", "_defined_at_line", b"_defined_at_line", "_identifier", b"_identifier", "_materialization", b"_materialization", "_node_cancel_reason", b"_node_cancel_reason", "_node_error_type", b"_node_error_type", "_node_skip_reason", b"_node_skip_reason", "_rows_affected", b"_rows_affected", "_sao_enabled", b"_sao_enabled", "_schema", b"_schema", "custom_materialization", b"custom_materialization", "database", b"database", "dbt_core_event_code", b"dbt_core_event_code", "defined_at_col", b"defined_at_col", "defined_at_line", b"defined_at_line", "identifier", b"identifier", "materialization", b"materialization", "node_cache_detail", b"node_cache_detail", "node_cancel_reason", b"node_cancel_reason", "node_error_type", b"node_error_type", "node_freshness_outcome", b"node_freshness_outcome", "node_outcome_detail", b"node_outcome_detail", "node_skip_reason", b"node_skip_reason", "node_skip_upstream_detail", b"node_skip_upstream_detail", "node_test_detail", b"node_test_detail", "rows_affected", b"rows_affected", "sao_enabled", b"sao_enabled", "schema", b"schema"]) -> builtins.bool: ...
-    def ClearField(self, field_name: typing.Literal["_custom_materialization", b"_custom_materialization", "_database", b"_database", "_dbt_core_event_code", b"_dbt_core_event_code", "_defined_at_col", b"_defined_at_col", "_defined_at_line", b"_defined_at_line", "_identifier", b"_identifier", "_materialization", b"_materialization", "_node_cancel_reason", b"_node_cancel_reason", "_node_error_type", b"_node_error_type", "_node_skip_reason", b"_node_skip_reason", "_rows_affected", b"_rows_affected", "_sao_enabled", b"_sao_enabled", "_schema", b"_schema", "custom_materialization", b"custom_materialization", "database", b"database", "dbt_core_event_code", b"dbt_core_event_code", "defined_at_col", b"defined_at_col", "defined_at_line", b"defined_at_line", "identifier", b"identifier", "materialization", b"materialization", "name", b"name", "node_cache_detail", b"node_cache_detail", "node_cancel_reason", b"node_cancel_reason", "node_checksum", b"node_checksum", "node_error_type", b"node_error_type", "node_freshness_outcome", b"node_freshness_outcome", "node_outcome", b"node_outcome", "node_outcome_detail", b"node_outcome_detail", "node_skip_reason", b"node_skip_reason", "node_skip_upstream_detail", b"node_skip_upstream_detail", "node_test_detail", b"node_test_detail", "node_type", b"node_type", "phase", b"phase", "relative_path", b"relative_path", "rows_affected", b"rows_affected", "sao_enabled", b"sao_enabled", "schema", b"schema", "unique_id", b"unique_id"]) -> None: ...
+    def HasField(self, field_name: typing.Literal["_custom_materialization", b"_custom_materialization", "_database", b"_database", "_dbt_core_event_code", b"_dbt_core_event_code", "_defined_at_col", b"_defined_at_col", "_defined_at_line", b"_defined_at_line", "_identifier", b"_identifier", "_materialization", b"_materialization", "_node_cancel_reason", b"_node_cancel_reason", "_node_error_type", b"_node_error_type", "_node_skip_reason", b"_node_skip_reason", "_rows_affected", b"_rows_affected", "_sao_enabled", b"_sao_enabled", "_schema", b"_schema", "custom_materialization", b"custom_materialization", "database", b"database", "dbt_core_event_code", b"dbt_core_event_code", "defined_at_col", b"defined_at_col", "defined_at_line", b"defined_at_line", "identifier", b"identifier", "materialization", b"materialization", "node_cache_detail", b"node_cache_detail", "node_cancel_reason", b"node_cancel_reason", "node_error_type", b"node_error_type", "node_evaluation_detail", b"node_evaluation_detail", "node_freshness_outcome", b"node_freshness_outcome", "node_outcome_detail", b"node_outcome_detail", "node_skip_reason", b"node_skip_reason", "node_skip_upstream_detail", b"node_skip_upstream_detail", "node_test_detail", b"node_test_detail", "rows_affected", b"rows_affected", "sao_enabled", b"sao_enabled", "schema", b"schema"]) -> builtins.bool: ...
+    def ClearField(self, field_name: typing.Literal["_custom_materialization", b"_custom_materialization", "_database", b"_database", "_dbt_core_event_code", b"_dbt_core_event_code", "_defined_at_col", b"_defined_at_col", "_defined_at_line", b"_defined_at_line", "_identifier", b"_identifier", "_materialization", b"_materialization", "_node_cancel_reason", b"_node_cancel_reason", "_node_error_type", b"_node_error_type", "_node_skip_reason", b"_node_skip_reason", "_rows_affected", b"_rows_affected", "_sao_enabled", b"_sao_enabled", "_schema", b"_schema", "custom_materialization", b"custom_materialization", "database", b"database", "dbt_core_event_code", b"dbt_core_event_code", "defined_at_col", b"defined_at_col", "defined_at_line", b"defined_at_line", "identifier", b"identifier", "materialization", b"materialization", "name", b"name", "node_cache_detail", b"node_cache_detail", "node_cancel_reason", b"node_cancel_reason", "node_checksum", b"node_checksum", "node_error_type", b"node_error_type", "node_evaluation_detail", b"node_evaluation_detail", "node_freshness_outcome", b"node_freshness_outcome", "node_outcome", b"node_outcome", "node_outcome_detail", b"node_outcome_detail", "node_skip_reason", b"node_skip_reason", "node_skip_upstream_detail", b"node_skip_upstream_detail", "node_test_detail", b"node_test_detail", "node_type", b"node_type", "phase", b"phase", "relative_path", b"relative_path", "rows_affected", b"rows_affected", "sao_enabled", b"sao_enabled", "schema", b"schema", "unique_id", b"unique_id"]) -> None: ...
     @typing.overload
     def WhichOneof(self, oneof_group: typing.Literal["_custom_materialization", b"_custom_materialization"]) -> typing.Literal["custom_materialization"] | None: ...
     @typing.overload
@@ -561,7 +610,7 @@ class NodeEvaluated(google.protobuf.message.Message):
     @typing.overload
     def WhichOneof(self, oneof_group: typing.Literal["_schema", b"_schema"]) -> typing.Literal["schema"] | None: ...
     @typing.overload
-    def WhichOneof(self, oneof_group: typing.Literal["node_outcome_detail", b"node_outcome_detail"]) -> typing.Literal["node_cache_detail", "node_test_detail", "node_freshness_outcome", "node_skip_upstream_detail"] | None: ...
+    def WhichOneof(self, oneof_group: typing.Literal["node_outcome_detail", b"node_outcome_detail"]) -> typing.Literal["node_cache_detail", "node_test_detail", "node_freshness_outcome", "node_skip_upstream_detail", "node_evaluation_detail"] | None: ...
 
 Global___NodeEvaluated: typing_extensions.TypeAlias = NodeEvaluated
 
@@ -596,6 +645,7 @@ class NodeProcessed(google.protobuf.message.Message):
     NODE_TEST_DETAIL_FIELD_NUMBER: builtins.int
     NODE_FRESHNESS_OUTCOME_FIELD_NUMBER: builtins.int
     NODE_SKIP_UPSTREAM_DETAIL_FIELD_NUMBER: builtins.int
+    NODE_EVALUATION_DETAIL_FIELD_NUMBER: builtins.int
     DBT_CORE_EVENT_CODE_FIELD_NUMBER: builtins.int
     DURATION_MS_FIELD_NUMBER: builtins.int
     IN_SELECTION_FIELD_NUMBER: builtins.int
@@ -690,6 +740,12 @@ class NodeProcessed(google.protobuf.message.Message):
         Present when node_skip_reason == NODE_SKIP_REASON_UPSTREAM.
         """
 
+    @property
+    def node_evaluation_detail(self) -> Global___NodeEvaluationDetail:
+        """Non-test node specific outcome details.
+        Present for non test / unit test / source node types when node_outcome == NODE_OUTCOME_SUCCESS.
+        """
+
     def __init__(
         self,
         *,
@@ -716,14 +772,15 @@ class NodeProcessed(google.protobuf.message.Message):
         node_test_detail: Global___TestEvaluationDetail | None = ...,
         node_freshness_outcome: Global___SourceFreshnessDetail | None = ...,
         node_skip_upstream_detail: Global___NodeSkipUpstreamDetail | None = ...,
+        node_evaluation_detail: Global___NodeEvaluationDetail | None = ...,
         dbt_core_event_code: builtins.str = ...,
         duration_ms: builtins.int | None = ...,
         in_selection: builtins.bool = ...,
         rows_affected: builtins.int | None = ...,
         group: builtins.str | None = ...,
     ) -> None: ...
-    def HasField(self, field_name: typing.Literal["_custom_materialization", b"_custom_materialization", "_database", b"_database", "_defined_at_col", b"_defined_at_col", "_defined_at_line", b"_defined_at_line", "_duration_ms", b"_duration_ms", "_group", b"_group", "_identifier", b"_identifier", "_materialization", b"_materialization", "_node_cancel_reason", b"_node_cancel_reason", "_node_error_type", b"_node_error_type", "_node_skip_reason", b"_node_skip_reason", "_rows_affected", b"_rows_affected", "_sao_enabled", b"_sao_enabled", "_schema", b"_schema", "_source_name", b"_source_name", "custom_materialization", b"custom_materialization", "database", b"database", "defined_at_col", b"defined_at_col", "defined_at_line", b"defined_at_line", "duration_ms", b"duration_ms", "group", b"group", "identifier", b"identifier", "materialization", b"materialization", "node_cache_detail", b"node_cache_detail", "node_cancel_reason", b"node_cancel_reason", "node_error_type", b"node_error_type", "node_freshness_outcome", b"node_freshness_outcome", "node_outcome_detail", b"node_outcome_detail", "node_skip_reason", b"node_skip_reason", "node_skip_upstream_detail", b"node_skip_upstream_detail", "node_test_detail", b"node_test_detail", "rows_affected", b"rows_affected", "sao_enabled", b"sao_enabled", "schema", b"schema", "source_name", b"source_name"]) -> builtins.bool: ...
-    def ClearField(self, field_name: typing.Literal["_custom_materialization", b"_custom_materialization", "_database", b"_database", "_defined_at_col", b"_defined_at_col", "_defined_at_line", b"_defined_at_line", "_duration_ms", b"_duration_ms", "_group", b"_group", "_identifier", b"_identifier", "_materialization", b"_materialization", "_node_cancel_reason", b"_node_cancel_reason", "_node_error_type", b"_node_error_type", "_node_skip_reason", b"_node_skip_reason", "_rows_affected", b"_rows_affected", "_sao_enabled", b"_sao_enabled", "_schema", b"_schema", "_source_name", b"_source_name", "custom_materialization", b"custom_materialization", "database", b"database", "dbt_core_event_code", b"dbt_core_event_code", "defined_at_col", b"defined_at_col", "defined_at_line", b"defined_at_line", "duration_ms", b"duration_ms", "group", b"group", "identifier", b"identifier", "in_selection", b"in_selection", "last_phase", b"last_phase", "materialization", b"materialization", "name", b"name", "node_cache_detail", b"node_cache_detail", "node_cancel_reason", b"node_cancel_reason", "node_checksum", b"node_checksum", "node_error_type", b"node_error_type", "node_freshness_outcome", b"node_freshness_outcome", "node_outcome", b"node_outcome", "node_outcome_detail", b"node_outcome_detail", "node_skip_reason", b"node_skip_reason", "node_skip_upstream_detail", b"node_skip_upstream_detail", "node_test_detail", b"node_test_detail", "node_type", b"node_type", "relative_path", b"relative_path", "rows_affected", b"rows_affected", "sao_enabled", b"sao_enabled", "schema", b"schema", "source_name", b"source_name", "unique_id", b"unique_id"]) -> None: ...
+    def HasField(self, field_name: typing.Literal["_custom_materialization", b"_custom_materialization", "_database", b"_database", "_defined_at_col", b"_defined_at_col", "_defined_at_line", b"_defined_at_line", "_duration_ms", b"_duration_ms", "_group", b"_group", "_identifier", b"_identifier", "_materialization", b"_materialization", "_node_cancel_reason", b"_node_cancel_reason", "_node_error_type", b"_node_error_type", "_node_skip_reason", b"_node_skip_reason", "_rows_affected", b"_rows_affected", "_sao_enabled", b"_sao_enabled", "_schema", b"_schema", "_source_name", b"_source_name", "custom_materialization", b"custom_materialization", "database", b"database", "defined_at_col", b"defined_at_col", "defined_at_line", b"defined_at_line", "duration_ms", b"duration_ms", "group", b"group", "identifier", b"identifier", "materialization", b"materialization", "node_cache_detail", b"node_cache_detail", "node_cancel_reason", b"node_cancel_reason", "node_error_type", b"node_error_type", "node_evaluation_detail", b"node_evaluation_detail", "node_freshness_outcome", b"node_freshness_outcome", "node_outcome_detail", b"node_outcome_detail", "node_skip_reason", b"node_skip_reason", "node_skip_upstream_detail", b"node_skip_upstream_detail", "node_test_detail", b"node_test_detail", "rows_affected", b"rows_affected", "sao_enabled", b"sao_enabled", "schema", b"schema", "source_name", b"source_name"]) -> builtins.bool: ...
+    def ClearField(self, field_name: typing.Literal["_custom_materialization", b"_custom_materialization", "_database", b"_database", "_defined_at_col", b"_defined_at_col", "_defined_at_line", b"_defined_at_line", "_duration_ms", b"_duration_ms", "_group", b"_group", "_identifier", b"_identifier", "_materialization", b"_materialization", "_node_cancel_reason", b"_node_cancel_reason", "_node_error_type", b"_node_error_type", "_node_skip_reason", b"_node_skip_reason", "_rows_affected", b"_rows_affected", "_sao_enabled", b"_sao_enabled", "_schema", b"_schema", "_source_name", b"_source_name", "custom_materialization", b"custom_materialization", "database", b"database", "dbt_core_event_code", b"dbt_core_event_code", "defined_at_col", b"defined_at_col", "defined_at_line", b"defined_at_line", "duration_ms", b"duration_ms", "group", b"group", "identifier", b"identifier", "in_selection", b"in_selection", "last_phase", b"last_phase", "materialization", b"materialization", "name", b"name", "node_cache_detail", b"node_cache_detail", "node_cancel_reason", b"node_cancel_reason", "node_checksum", b"node_checksum", "node_error_type", b"node_error_type", "node_evaluation_detail", b"node_evaluation_detail", "node_freshness_outcome", b"node_freshness_outcome", "node_outcome", b"node_outcome", "node_outcome_detail", b"node_outcome_detail", "node_skip_reason", b"node_skip_reason", "node_skip_upstream_detail", b"node_skip_upstream_detail", "node_test_detail", b"node_test_detail", "node_type", b"node_type", "relative_path", b"relative_path", "rows_affected", b"rows_affected", "sao_enabled", b"sao_enabled", "schema", b"schema", "source_name", b"source_name", "unique_id", b"unique_id"]) -> None: ...
     @typing.overload
     def WhichOneof(self, oneof_group: typing.Literal["_custom_materialization", b"_custom_materialization"]) -> typing.Literal["custom_materialization"] | None: ...
     @typing.overload
@@ -755,6 +812,6 @@ class NodeProcessed(google.protobuf.message.Message):
     @typing.overload
     def WhichOneof(self, oneof_group: typing.Literal["_source_name", b"_source_name"]) -> typing.Literal["source_name"] | None: ...
     @typing.overload
-    def WhichOneof(self, oneof_group: typing.Literal["node_outcome_detail", b"node_outcome_detail"]) -> typing.Literal["node_cache_detail", "node_test_detail", "node_freshness_outcome", "node_skip_upstream_detail"] | None: ...
+    def WhichOneof(self, oneof_group: typing.Literal["node_outcome_detail", b"node_outcome_detail"]) -> typing.Literal["node_cache_detail", "node_test_detail", "node_freshness_outcome", "node_skip_upstream_detail", "node_evaluation_detail"] | None: ...
 
 Global___NodeProcessed: typing_extensions.TypeAlias = NodeProcessed
