@@ -2704,6 +2704,45 @@ class GenerateSchemaNameNullValueDeprecationMsg(google.protobuf.message.Message)
 Global___GenerateSchemaNameNullValueDeprecationMsg: typing_extensions.TypeAlias = GenerateSchemaNameNullValueDeprecationMsg
 
 @typing.final
+class UnknownFlagsDeprecation(google.protobuf.message.Message):
+    """D045"""
+
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
+    FLAG_NAMES_FIELD_NUMBER: builtins.int
+    @property
+    def flag_names(self) -> google.protobuf.internal.containers.RepeatedScalarFieldContainer[builtins.str]: ...
+    def __init__(
+        self,
+        *,
+        flag_names: collections.abc.Iterable[builtins.str] | None = ...,
+    ) -> None: ...
+    def ClearField(self, field_name: typing.Literal["flag_names", b"flag_names"]) -> None: ...
+
+Global___UnknownFlagsDeprecation: typing_extensions.TypeAlias = UnknownFlagsDeprecation
+
+@typing.final
+class UnknownFlagsDeprecationMsg(google.protobuf.message.Message):
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
+    INFO_FIELD_NUMBER: builtins.int
+    DATA_FIELD_NUMBER: builtins.int
+    @property
+    def info(self) -> Global___CoreEventInfo: ...
+    @property
+    def data(self) -> Global___UnknownFlagsDeprecation: ...
+    def __init__(
+        self,
+        *,
+        info: Global___CoreEventInfo | None = ...,
+        data: Global___UnknownFlagsDeprecation | None = ...,
+    ) -> None: ...
+    def HasField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> builtins.bool: ...
+    def ClearField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> None: ...
+
+Global___UnknownFlagsDeprecationMsg: typing_extensions.TypeAlias = UnknownFlagsDeprecationMsg
+
+@typing.final
 class DeprecatedModel(google.protobuf.message.Message):
     """I065"""
 
