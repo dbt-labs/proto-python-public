@@ -348,6 +348,63 @@ class ExtensionColumnLineage(google.protobuf.message.Message):
 Global___ExtensionColumnLineage: typing_extensions.TypeAlias = ExtensionColumnLineage
 
 @typing.final
+class ExtensionLineageInteraction(google.protobuf.message.Message):
+    """Emitted when the user interacts with the lineage panel (node click, context menu action,
+    grain switch, or toolbar action). A single event covers all interaction types; distinguish
+    between them via `interaction_type`.
+    """
+
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
+    ENRICHMENT_FIELD_NUMBER: builtins.int
+    EDITOR_FIELD_NUMBER: builtins.int
+    USER_FIELD_NUMBER: builtins.int
+    DBT_LOCAL_COOKIE_USER_ID_FIELD_NUMBER: builtins.int
+    INTERACTION_TYPE_FIELD_NUMBER: builtins.int
+    GRAIN_FIELD_NUMBER: builtins.int
+    RESOURCE_TYPE_FIELD_NUMBER: builtins.int
+    LENS_FIELD_NUMBER: builtins.int
+    dbt_local_cookie_user_id: builtins.str
+    """the anonymous user id stored at ~/.dbt/.user.yml"""
+    interaction_type: dbtlabs.proto.public.v1.fields.vscode_types_pb2.LineageInteractionType.ValueType
+    """which kind of interaction the user performed"""
+    grain: dbtlabs.proto.public.v1.fields.vscode_types_pb2.LineageGrain.ValueType
+    """grain active in the panel when the interaction was initiated.
+    For LINEAGE_INTERACTION_TYPE_SWITCH_TO_* interactions, this is the
+    source (from) grain, not the destination. Analytics can derive the
+    destination from interaction_type.
+    """
+    resource_type: builtins.str
+    """dbt resource_type for the target node, when applicable
+    (model, source, seed, snapshot, exposure, metric, etc.).
+    Free string so new dbt resource types don't require a proto bump.
+    """
+    lens: builtins.str
+    """selected lens value; set only when interaction_type == LINEAGE_INTERACTION_TYPE_LENS_CHANGED"""
+    @property
+    def enrichment(self) -> dbtlabs.proto.public.v1.events.vortex_pb2.VortexMessageEnrichment: ...
+    @property
+    def editor(self) -> dbtlabs.proto.public.v1.fields.vscode_types_pb2.Editor: ...
+    @property
+    def user(self) -> dbtlabs.proto.public.v1.fields.vscode_types_pb2.User: ...
+    def __init__(
+        self,
+        *,
+        enrichment: dbtlabs.proto.public.v1.events.vortex_pb2.VortexMessageEnrichment | None = ...,
+        editor: dbtlabs.proto.public.v1.fields.vscode_types_pb2.Editor | None = ...,
+        user: dbtlabs.proto.public.v1.fields.vscode_types_pb2.User | None = ...,
+        dbt_local_cookie_user_id: builtins.str = ...,
+        interaction_type: dbtlabs.proto.public.v1.fields.vscode_types_pb2.LineageInteractionType.ValueType = ...,
+        grain: dbtlabs.proto.public.v1.fields.vscode_types_pb2.LineageGrain.ValueType = ...,
+        resource_type: builtins.str = ...,
+        lens: builtins.str = ...,
+    ) -> None: ...
+    def HasField(self, field_name: typing.Literal["editor", b"editor", "enrichment", b"enrichment", "user", b"user"]) -> builtins.bool: ...
+    def ClearField(self, field_name: typing.Literal["dbt_local_cookie_user_id", b"dbt_local_cookie_user_id", "editor", b"editor", "enrichment", b"enrichment", "grain", b"grain", "interaction_type", b"interaction_type", "lens", b"lens", "resource_type", b"resource_type", "user", b"user"]) -> None: ...
+
+Global___ExtensionLineageInteraction: typing_extensions.TypeAlias = ExtensionLineageInteraction
+
+@typing.final
 class ExtensionShowCompiledFile(google.protobuf.message.Message):
     DESCRIPTOR: google.protobuf.descriptor.Descriptor
 

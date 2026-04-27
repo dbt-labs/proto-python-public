@@ -176,6 +176,106 @@ REGISTRATION_METHOD_REGISTRATION_CODE: RegistrationMethod.ValueType  # 3
 """Registration completed via registration code flow (web)"""
 Global___RegistrationMethod: typing_extensions.TypeAlias = RegistrationMethod
 
+class _LineageInteractionType:
+    ValueType = typing.NewType("ValueType", builtins.int)
+    V: typing_extensions.TypeAlias = ValueType
+
+class _LineageInteractionTypeEnumTypeWrapper(google.protobuf.internal.enum_type_wrapper._EnumTypeWrapper[_LineageInteractionType.ValueType], builtins.type):
+    DESCRIPTOR: google.protobuf.descriptor.EnumDescriptor
+    LINEAGE_INTERACTION_TYPE_UNSPECIFIED: _LineageInteractionType.ValueType  # 0
+    LINEAGE_INTERACTION_TYPE_SELECT_NODE: _LineageInteractionType.ValueType  # 1
+    """Node interactions
+    User single-clicked a node in the graph
+    """
+    LINEAGE_INTERACTION_TYPE_OPEN_FILE: _LineageInteractionType.ValueType  # 2
+    """User opened the file backing a node (double-click or context menu)"""
+    LINEAGE_INTERACTION_TYPE_REFOCUS_ON_NODE: _LineageInteractionType.ValueType  # 3
+    """User refocused the graph on a specific node"""
+    LINEAGE_INTERACTION_TYPE_SHOW_UPSTREAM: _LineageInteractionType.ValueType  # 4
+    """User requested upstream-only view for a node"""
+    LINEAGE_INTERACTION_TYPE_SHOW_DOWNSTREAM: _LineageInteractionType.ValueType  # 5
+    """User requested downstream-only view for a node"""
+    LINEAGE_INTERACTION_TYPE_SWITCH_TO_COLUMN_LINEAGE: _LineageInteractionType.ValueType  # 6
+    """Grain switches
+    User switched from project lineage to column lineage
+    """
+    LINEAGE_INTERACTION_TYPE_SWITCH_TO_PROJECT_LINEAGE: _LineageInteractionType.ValueType  # 7
+    """User switched back from column lineage to project lineage"""
+    LINEAGE_INTERACTION_TYPE_SELECTOR_APPLIED: _LineageInteractionType.ValueType  # 8
+    """Toolbar actions
+    User applied a custom selector from the toolbar
+    """
+    LINEAGE_INTERACTION_TYPE_LENS_CHANGED: _LineageInteractionType.ValueType  # 9
+    """User changed the active lens"""
+    LINEAGE_INTERACTION_TYPE_LEGEND_TOGGLED: _LineageInteractionType.ValueType  # 10
+    """User toggled the legend panel"""
+    LINEAGE_INTERACTION_TYPE_ZOOM_IN: _LineageInteractionType.ValueType  # 11
+    """User zoomed in via the toolbar"""
+    LINEAGE_INTERACTION_TYPE_ZOOM_OUT: _LineageInteractionType.ValueType  # 12
+    """User zoomed out via the toolbar"""
+    LINEAGE_INTERACTION_TYPE_RESET_VIEW: _LineageInteractionType.ValueType  # 13
+    """User reset the graph view to fit"""
+
+class LineageInteractionType(_LineageInteractionType, metaclass=_LineageInteractionTypeEnumTypeWrapper):
+    """Type of user interaction within the lineage panel"""
+
+LINEAGE_INTERACTION_TYPE_UNSPECIFIED: LineageInteractionType.ValueType  # 0
+LINEAGE_INTERACTION_TYPE_SELECT_NODE: LineageInteractionType.ValueType  # 1
+"""Node interactions
+User single-clicked a node in the graph
+"""
+LINEAGE_INTERACTION_TYPE_OPEN_FILE: LineageInteractionType.ValueType  # 2
+"""User opened the file backing a node (double-click or context menu)"""
+LINEAGE_INTERACTION_TYPE_REFOCUS_ON_NODE: LineageInteractionType.ValueType  # 3
+"""User refocused the graph on a specific node"""
+LINEAGE_INTERACTION_TYPE_SHOW_UPSTREAM: LineageInteractionType.ValueType  # 4
+"""User requested upstream-only view for a node"""
+LINEAGE_INTERACTION_TYPE_SHOW_DOWNSTREAM: LineageInteractionType.ValueType  # 5
+"""User requested downstream-only view for a node"""
+LINEAGE_INTERACTION_TYPE_SWITCH_TO_COLUMN_LINEAGE: LineageInteractionType.ValueType  # 6
+"""Grain switches
+User switched from project lineage to column lineage
+"""
+LINEAGE_INTERACTION_TYPE_SWITCH_TO_PROJECT_LINEAGE: LineageInteractionType.ValueType  # 7
+"""User switched back from column lineage to project lineage"""
+LINEAGE_INTERACTION_TYPE_SELECTOR_APPLIED: LineageInteractionType.ValueType  # 8
+"""Toolbar actions
+User applied a custom selector from the toolbar
+"""
+LINEAGE_INTERACTION_TYPE_LENS_CHANGED: LineageInteractionType.ValueType  # 9
+"""User changed the active lens"""
+LINEAGE_INTERACTION_TYPE_LEGEND_TOGGLED: LineageInteractionType.ValueType  # 10
+"""User toggled the legend panel"""
+LINEAGE_INTERACTION_TYPE_ZOOM_IN: LineageInteractionType.ValueType  # 11
+"""User zoomed in via the toolbar"""
+LINEAGE_INTERACTION_TYPE_ZOOM_OUT: LineageInteractionType.ValueType  # 12
+"""User zoomed out via the toolbar"""
+LINEAGE_INTERACTION_TYPE_RESET_VIEW: LineageInteractionType.ValueType  # 13
+"""User reset the graph view to fit"""
+Global___LineageInteractionType: typing_extensions.TypeAlias = LineageInteractionType
+
+class _LineageGrain:
+    ValueType = typing.NewType("ValueType", builtins.int)
+    V: typing_extensions.TypeAlias = ValueType
+
+class _LineageGrainEnumTypeWrapper(google.protobuf.internal.enum_type_wrapper._EnumTypeWrapper[_LineageGrain.ValueType], builtins.type):
+    DESCRIPTOR: google.protobuf.descriptor.EnumDescriptor
+    LINEAGE_GRAIN_UNSPECIFIED: _LineageGrain.ValueType  # 0
+    LINEAGE_GRAIN_PROJECT: _LineageGrain.ValueType  # 1
+    """Project-level lineage (nodes are dbt resources)"""
+    LINEAGE_GRAIN_COLUMN: _LineageGrain.ValueType  # 2
+    """Column-level lineage"""
+
+class LineageGrain(_LineageGrain, metaclass=_LineageGrainEnumTypeWrapper):
+    """Current grain shown in the lineage panel"""
+
+LINEAGE_GRAIN_UNSPECIFIED: LineageGrain.ValueType  # 0
+LINEAGE_GRAIN_PROJECT: LineageGrain.ValueType  # 1
+"""Project-level lineage (nodes are dbt resources)"""
+LINEAGE_GRAIN_COLUMN: LineageGrain.ValueType  # 2
+"""Column-level lineage"""
+Global___LineageGrain: typing_extensions.TypeAlias = LineageGrain
+
 @typing.final
 class User(google.protobuf.message.Message):
     """User information"""
