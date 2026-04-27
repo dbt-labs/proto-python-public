@@ -176,6 +176,32 @@ REGISTRATION_METHOD_REGISTRATION_CODE: RegistrationMethod.ValueType  # 3
 """Registration completed via registration code flow (web)"""
 Global___RegistrationMethod: typing_extensions.TypeAlias = RegistrationMethod
 
+class _ModelDocsEnrichmentOutcome:
+    ValueType = typing.NewType("ValueType", builtins.int)
+    V: typing_extensions.TypeAlias = ValueType
+
+class _ModelDocsEnrichmentOutcomeEnumTypeWrapper(google.protobuf.internal.enum_type_wrapper._EnumTypeWrapper[_ModelDocsEnrichmentOutcome.ValueType], builtins.type):
+    DESCRIPTOR: google.protobuf.descriptor.EnumDescriptor
+    MODEL_DOCS_ENRICHMENT_OUTCOME_UNSPECIFIED: _ModelDocsEnrichmentOutcome.ValueType  # 0
+    MODEL_DOCS_ENRICHMENT_OUTCOME_SUCCEEDED: _ModelDocsEnrichmentOutcome.ValueType  # 1
+    MODEL_DOCS_ENRICHMENT_OUTCOME_SKIPPED_NO_MANIFEST: _ModelDocsEnrichmentOutcome.ValueType  # 2
+    MODEL_DOCS_ENRICHMENT_OUTCOME_SKIPPED_NO_CREDENTIALS: _ModelDocsEnrichmentOutcome.ValueType  # 3
+    MODEL_DOCS_ENRICHMENT_OUTCOME_FAILED_PROJECT_RESOLUTION: _ModelDocsEnrichmentOutcome.ValueType  # 4
+    MODEL_DOCS_ENRICHMENT_OUTCOME_FAILED_OTHER: _ModelDocsEnrichmentOutcome.ValueType  # 5
+
+class ModelDocsEnrichmentOutcome(_ModelDocsEnrichmentOutcome, metaclass=_ModelDocsEnrichmentOutcomeEnumTypeWrapper):
+    """Outcome of a Model Docs panel cloud-enrichment attempt.
+    One value is emitted per ExtensionModelDocsEnrichmentCompleted event.
+    """
+
+MODEL_DOCS_ENRICHMENT_OUTCOME_UNSPECIFIED: ModelDocsEnrichmentOutcome.ValueType  # 0
+MODEL_DOCS_ENRICHMENT_OUTCOME_SUCCEEDED: ModelDocsEnrichmentOutcome.ValueType  # 1
+MODEL_DOCS_ENRICHMENT_OUTCOME_SKIPPED_NO_MANIFEST: ModelDocsEnrichmentOutcome.ValueType  # 2
+MODEL_DOCS_ENRICHMENT_OUTCOME_SKIPPED_NO_CREDENTIALS: ModelDocsEnrichmentOutcome.ValueType  # 3
+MODEL_DOCS_ENRICHMENT_OUTCOME_FAILED_PROJECT_RESOLUTION: ModelDocsEnrichmentOutcome.ValueType  # 4
+MODEL_DOCS_ENRICHMENT_OUTCOME_FAILED_OTHER: ModelDocsEnrichmentOutcome.ValueType  # 5
+Global___ModelDocsEnrichmentOutcome: typing_extensions.TypeAlias = ModelDocsEnrichmentOutcome
+
 class _LineageInteractionType:
     ValueType = typing.NewType("ValueType", builtins.int)
     V: typing_extensions.TypeAlias = ValueType
