@@ -302,6 +302,80 @@ LINEAGE_GRAIN_COLUMN: LineageGrain.ValueType  # 2
 """Column-level lineage"""
 Global___LineageGrain: typing_extensions.TypeAlias = LineageGrain
 
+class _GetStartedStepId:
+    ValueType = typing.NewType("ValueType", builtins.int)
+    V: typing_extensions.TypeAlias = ValueType
+
+class _GetStartedStepIdEnumTypeWrapper(google.protobuf.internal.enum_type_wrapper._EnumTypeWrapper[_GetStartedStepId.ValueType], builtins.type):
+    DESCRIPTOR: google.protobuf.descriptor.EnumDescriptor
+    GET_STARTED_STEP_ID_UNSPECIFIED: _GetStartedStepId.ValueType  # 0
+    GET_STARTED_STEP_ID_INSTALL_FUSION: _GetStartedStepId.ValueType  # 1
+    GET_STARTED_STEP_ID_OPEN_PROJECT: _GetStartedStepId.ValueType  # 2
+    GET_STARTED_STEP_ID_CHECK_COMPATIBILITY: _GetStartedStepId.ValueType  # 3
+    GET_STARTED_STEP_ID_REGISTER: _GetStartedStepId.ValueType  # 4
+
+class GetStartedStepId(_GetStartedStepId, metaclass=_GetStartedStepIdEnumTypeWrapper):
+    """Step in the Get Started onboarding panel"""
+
+GET_STARTED_STEP_ID_UNSPECIFIED: GetStartedStepId.ValueType  # 0
+GET_STARTED_STEP_ID_INSTALL_FUSION: GetStartedStepId.ValueType  # 1
+GET_STARTED_STEP_ID_OPEN_PROJECT: GetStartedStepId.ValueType  # 2
+GET_STARTED_STEP_ID_CHECK_COMPATIBILITY: GetStartedStepId.ValueType  # 3
+GET_STARTED_STEP_ID_REGISTER: GetStartedStepId.ValueType  # 4
+Global___GetStartedStepId: typing_extensions.TypeAlias = GetStartedStepId
+
+class _GetStartedStepStatus:
+    ValueType = typing.NewType("ValueType", builtins.int)
+    V: typing_extensions.TypeAlias = ValueType
+
+class _GetStartedStepStatusEnumTypeWrapper(google.protobuf.internal.enum_type_wrapper._EnumTypeWrapper[_GetStartedStepStatus.ValueType], builtins.type):
+    DESCRIPTOR: google.protobuf.descriptor.EnumDescriptor
+    GET_STARTED_STEP_STATUS_UNSPECIFIED: _GetStartedStepStatus.ValueType  # 0
+    GET_STARTED_STEP_STATUS_PENDING: _GetStartedStepStatus.ValueType  # 1
+    GET_STARTED_STEP_STATUS_IN_PROGRESS: _GetStartedStepStatus.ValueType  # 2
+    GET_STARTED_STEP_STATUS_COMPLETED: _GetStartedStepStatus.ValueType  # 3
+
+class GetStartedStepStatus(_GetStartedStepStatus, metaclass=_GetStartedStepStatusEnumTypeWrapper):
+    """Status of a Get Started onboarding step"""
+
+GET_STARTED_STEP_STATUS_UNSPECIFIED: GetStartedStepStatus.ValueType  # 0
+GET_STARTED_STEP_STATUS_PENDING: GetStartedStepStatus.ValueType  # 1
+GET_STARTED_STEP_STATUS_IN_PROGRESS: GetStartedStepStatus.ValueType  # 2
+GET_STARTED_STEP_STATUS_COMPLETED: GetStartedStepStatus.ValueType  # 3
+Global___GetStartedStepStatus: typing_extensions.TypeAlias = GetStartedStepStatus
+
+class _GetStartedInteractionType:
+    ValueType = typing.NewType("ValueType", builtins.int)
+    V: typing_extensions.TypeAlias = ValueType
+
+class _GetStartedInteractionTypeEnumTypeWrapper(google.protobuf.internal.enum_type_wrapper._EnumTypeWrapper[_GetStartedInteractionType.ValueType], builtins.type):
+    DESCRIPTOR: google.protobuf.descriptor.EnumDescriptor
+    GET_STARTED_INTERACTION_TYPE_UNSPECIFIED: _GetStartedInteractionType.ValueType  # 0
+    GET_STARTED_INTERACTION_TYPE_INSTALL_FUSION_CLICKED: _GetStartedInteractionType.ValueType  # 1
+    """CTA clicks"""
+    GET_STARTED_INTERACTION_TYPE_OPEN_PROJECT_CLICKED: _GetStartedInteractionType.ValueType  # 2
+    GET_STARTED_INTERACTION_TYPE_CHECK_COMPATIBILITY_CLICKED: _GetStartedInteractionType.ValueType  # 3
+    GET_STARTED_INTERACTION_TYPE_REGISTER_NOW_CLICKED: _GetStartedInteractionType.ValueType  # 4
+    GET_STARTED_INTERACTION_TYPE_MIGRATE_WITH_AGENT_CLICKED: _GetStartedInteractionType.ValueType  # 5
+    GET_STARTED_INTERACTION_TYPE_STEP_COMPLETED: _GetStartedInteractionType.ValueType  # 6
+    """Step state transitions"""
+    GET_STARTED_INTERACTION_TYPE_ALL_STEPS_COMPLETED: _GetStartedInteractionType.ValueType  # 7
+
+class GetStartedInteractionType(_GetStartedInteractionType, metaclass=_GetStartedInteractionTypeEnumTypeWrapper):
+    """Type of interaction with the Get Started onboarding panel"""
+
+GET_STARTED_INTERACTION_TYPE_UNSPECIFIED: GetStartedInteractionType.ValueType  # 0
+GET_STARTED_INTERACTION_TYPE_INSTALL_FUSION_CLICKED: GetStartedInteractionType.ValueType  # 1
+"""CTA clicks"""
+GET_STARTED_INTERACTION_TYPE_OPEN_PROJECT_CLICKED: GetStartedInteractionType.ValueType  # 2
+GET_STARTED_INTERACTION_TYPE_CHECK_COMPATIBILITY_CLICKED: GetStartedInteractionType.ValueType  # 3
+GET_STARTED_INTERACTION_TYPE_REGISTER_NOW_CLICKED: GetStartedInteractionType.ValueType  # 4
+GET_STARTED_INTERACTION_TYPE_MIGRATE_WITH_AGENT_CLICKED: GetStartedInteractionType.ValueType  # 5
+GET_STARTED_INTERACTION_TYPE_STEP_COMPLETED: GetStartedInteractionType.ValueType  # 6
+"""Step state transitions"""
+GET_STARTED_INTERACTION_TYPE_ALL_STEPS_COMPLETED: GetStartedInteractionType.ValueType  # 7
+Global___GetStartedInteractionType: typing_extensions.TypeAlias = GetStartedInteractionType
+
 @typing.final
 class User(google.protobuf.message.Message):
     """User information"""

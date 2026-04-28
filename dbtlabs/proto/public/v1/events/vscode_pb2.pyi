@@ -1390,3 +1390,58 @@ class ExtensionModelDocsViewInDbtClicked(google.protobuf.message.Message):
     def ClearField(self, field_name: typing.Literal["correlation_id", b"correlation_id", "dbt_local_cookie_user_id", b"dbt_local_cookie_user_id", "editor", b"editor", "enrichment", b"enrichment", "project_id", b"project_id", "user", b"user"]) -> None: ...
 
 Global___ExtensionModelDocsViewInDbtClicked: typing_extensions.TypeAlias = ExtensionModelDocsViewInDbtClicked
+
+@typing.final
+class ExtensionGetStartedInteraction(google.protobuf.message.Message):
+    """Emitted when the user interacts with the Get Started onboarding panel:
+    either clicking a CTA or transitioning a step's status (including completing all steps).
+    """
+
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
+    ENRICHMENT_FIELD_NUMBER: builtins.int
+    EDITOR_FIELD_NUMBER: builtins.int
+    USER_FIELD_NUMBER: builtins.int
+    DBT_LOCAL_COOKIE_USER_ID_FIELD_NUMBER: builtins.int
+    EVENT_ID_FIELD_NUMBER: builtins.int
+    INTERACTION_TYPE_FIELD_NUMBER: builtins.int
+    STEP_ID_FIELD_NUMBER: builtins.int
+    CURRENT_STEP_STATUS_FIELD_NUMBER: builtins.int
+    STEPS_COMPLETED_COUNT_FIELD_NUMBER: builtins.int
+    dbt_local_cookie_user_id: builtins.str
+    """the anonymous user id stored at ~/.dbt/.user.yml"""
+    event_id: builtins.str
+    """UUID to uniquely identify the event"""
+    interaction_type: dbtlabs.proto.public.v1.fields.vscode_types_pb2.GetStartedInteractionType.ValueType
+    """type of interaction (CTA click or step transition)"""
+    step_id: dbtlabs.proto.public.v1.fields.vscode_types_pb2.GetStartedStepId.ValueType
+    """step the interaction targets; UNSPECIFIED for ALL_STEPS_COMPLETED
+    and MIGRATE_WITH_AGENT_CLICKED (the migrate CTA is not itself one of the four steps)
+    """
+    current_step_status: dbtlabs.proto.public.v1.fields.vscode_types_pb2.GetStartedStepStatus.ValueType
+    """status of step_id at the time of the event"""
+    steps_completed_count: builtins.int
+    """count of steps with status=COMPLETED at the time of the event (0–4)"""
+    @property
+    def enrichment(self) -> dbtlabs.proto.public.v1.events.vortex_pb2.VortexMessageEnrichment: ...
+    @property
+    def editor(self) -> dbtlabs.proto.public.v1.fields.vscode_types_pb2.Editor: ...
+    @property
+    def user(self) -> dbtlabs.proto.public.v1.fields.vscode_types_pb2.User: ...
+    def __init__(
+        self,
+        *,
+        enrichment: dbtlabs.proto.public.v1.events.vortex_pb2.VortexMessageEnrichment | None = ...,
+        editor: dbtlabs.proto.public.v1.fields.vscode_types_pb2.Editor | None = ...,
+        user: dbtlabs.proto.public.v1.fields.vscode_types_pb2.User | None = ...,
+        dbt_local_cookie_user_id: builtins.str = ...,
+        event_id: builtins.str = ...,
+        interaction_type: dbtlabs.proto.public.v1.fields.vscode_types_pb2.GetStartedInteractionType.ValueType = ...,
+        step_id: dbtlabs.proto.public.v1.fields.vscode_types_pb2.GetStartedStepId.ValueType = ...,
+        current_step_status: dbtlabs.proto.public.v1.fields.vscode_types_pb2.GetStartedStepStatus.ValueType = ...,
+        steps_completed_count: builtins.int = ...,
+    ) -> None: ...
+    def HasField(self, field_name: typing.Literal["editor", b"editor", "enrichment", b"enrichment", "user", b"user"]) -> builtins.bool: ...
+    def ClearField(self, field_name: typing.Literal["current_step_status", b"current_step_status", "dbt_local_cookie_user_id", b"dbt_local_cookie_user_id", "editor", b"editor", "enrichment", b"enrichment", "event_id", b"event_id", "interaction_type", b"interaction_type", "step_id", b"step_id", "steps_completed_count", b"steps_completed_count", "user", b"user"]) -> None: ...
+
+Global___ExtensionGetStartedInteraction: typing_extensions.TypeAlias = ExtensionGetStartedInteraction
