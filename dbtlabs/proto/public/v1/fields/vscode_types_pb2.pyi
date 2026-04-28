@@ -376,6 +376,92 @@ GET_STARTED_INTERACTION_TYPE_STEP_COMPLETED: GetStartedInteractionType.ValueType
 GET_STARTED_INTERACTION_TYPE_ALL_STEPS_COMPLETED: GetStartedInteractionType.ValueType  # 7
 Global___GetStartedInteractionType: typing_extensions.TypeAlias = GetStartedInteractionType
 
+class _QueryCompletionStatus:
+    ValueType = typing.NewType("ValueType", builtins.int)
+    V: typing_extensions.TypeAlias = ValueType
+
+class _QueryCompletionStatusEnumTypeWrapper(google.protobuf.internal.enum_type_wrapper._EnumTypeWrapper[_QueryCompletionStatus.ValueType], builtins.type):
+    DESCRIPTOR: google.protobuf.descriptor.EnumDescriptor
+    QUERY_COMPLETION_STATUS_UNSPECIFIED: _QueryCompletionStatus.ValueType  # 0
+    QUERY_COMPLETION_STATUS_SUCCESS: _QueryCompletionStatus.ValueType  # 1
+    """Query ran and returned results without errors."""
+    QUERY_COMPLETION_STATUS_FAILED: _QueryCompletionStatus.ValueType  # 2
+    """Query ran but returned an error."""
+    QUERY_COMPLETION_STATUS_CANCELLED: _QueryCompletionStatus.ValueType  # 3
+    """User cancelled the query before it completed."""
+    QUERY_COMPLETION_STATUS_INVALID: _QueryCompletionStatus.ValueType  # 4
+    """Query never ran because the target file is invalid (e.g., not part of an open dbt project)."""
+
+class QueryCompletionStatus(_QueryCompletionStatus, metaclass=_QueryCompletionStatusEnumTypeWrapper):
+    """Status of a Query Results panel query at completion."""
+
+QUERY_COMPLETION_STATUS_UNSPECIFIED: QueryCompletionStatus.ValueType  # 0
+QUERY_COMPLETION_STATUS_SUCCESS: QueryCompletionStatus.ValueType  # 1
+"""Query ran and returned results without errors."""
+QUERY_COMPLETION_STATUS_FAILED: QueryCompletionStatus.ValueType  # 2
+"""Query ran but returned an error."""
+QUERY_COMPLETION_STATUS_CANCELLED: QueryCompletionStatus.ValueType  # 3
+"""User cancelled the query before it completed."""
+QUERY_COMPLETION_STATUS_INVALID: QueryCompletionStatus.ValueType  # 4
+"""Query never ran because the target file is invalid (e.g., not part of an open dbt project)."""
+Global___QueryCompletionStatus: typing_extensions.TypeAlias = QueryCompletionStatus
+
+class _QueryOrigin:
+    ValueType = typing.NewType("ValueType", builtins.int)
+    V: typing_extensions.TypeAlias = ValueType
+
+class _QueryOriginEnumTypeWrapper(google.protobuf.internal.enum_type_wrapper._EnumTypeWrapper[_QueryOrigin.ValueType], builtins.type):
+    DESCRIPTOR: google.protobuf.descriptor.EnumDescriptor
+    QUERY_ORIGIN_UNSPECIFIED: _QueryOrigin.ValueType  # 0
+    QUERY_ORIGIN_PREVIEW_FILE: _QueryOrigin.ValueType  # 1
+    """Triggered by Preview File on a model/SQL file."""
+    QUERY_ORIGIN_PREVIEW_CTE: _QueryOrigin.ValueType  # 2
+    """Triggered by Preview CTE within a model."""
+
+class QueryOrigin(_QueryOrigin, metaclass=_QueryOriginEnumTypeWrapper):
+    """Which entry point initiated a Query Results panel query."""
+
+QUERY_ORIGIN_UNSPECIFIED: QueryOrigin.ValueType  # 0
+QUERY_ORIGIN_PREVIEW_FILE: QueryOrigin.ValueType  # 1
+"""Triggered by Preview File on a model/SQL file."""
+QUERY_ORIGIN_PREVIEW_CTE: QueryOrigin.ValueType  # 2
+"""Triggered by Preview CTE within a model."""
+Global___QueryOrigin: typing_extensions.TypeAlias = QueryOrigin
+
+class _QueryResultInteractionType:
+    ValueType = typing.NewType("ValueType", builtins.int)
+    V: typing_extensions.TypeAlias = ValueType
+
+class _QueryResultInteractionTypeEnumTypeWrapper(google.protobuf.internal.enum_type_wrapper._EnumTypeWrapper[_QueryResultInteractionType.ValueType], builtins.type):
+    DESCRIPTOR: google.protobuf.descriptor.EnumDescriptor
+    QUERY_RESULT_INTERACTION_TYPE_UNSPECIFIED: _QueryResultInteractionType.ValueType  # 0
+    QUERY_RESULT_INTERACTION_TYPE_SORT: _QueryResultInteractionType.ValueType  # 1
+    """User sorted the result table by clicking a column header."""
+    QUERY_RESULT_INTERACTION_TYPE_COPY_CELL: _QueryResultInteractionType.ValueType  # 2
+    """User copied a single cell value via context menu."""
+    QUERY_RESULT_INTERACTION_TYPE_COPY_ALL_CSV: _QueryResultInteractionType.ValueType  # 3
+    """User copied the entire result set as CSV."""
+    QUERY_RESULT_INTERACTION_TYPE_OPEN_IN_EDITOR: _QueryResultInteractionType.ValueType  # 4
+    """User opened the result set in a new editor tab."""
+    QUERY_RESULT_INTERACTION_TYPE_SCROLL: _QueryResultInteractionType.ValueType  # 5
+    """First scroll within a single result set (subsequent scrolls are not reported)."""
+
+class QueryResultInteractionType(_QueryResultInteractionType, metaclass=_QueryResultInteractionTypeEnumTypeWrapper):
+    """Type of user interaction with the Query Results panel after results render."""
+
+QUERY_RESULT_INTERACTION_TYPE_UNSPECIFIED: QueryResultInteractionType.ValueType  # 0
+QUERY_RESULT_INTERACTION_TYPE_SORT: QueryResultInteractionType.ValueType  # 1
+"""User sorted the result table by clicking a column header."""
+QUERY_RESULT_INTERACTION_TYPE_COPY_CELL: QueryResultInteractionType.ValueType  # 2
+"""User copied a single cell value via context menu."""
+QUERY_RESULT_INTERACTION_TYPE_COPY_ALL_CSV: QueryResultInteractionType.ValueType  # 3
+"""User copied the entire result set as CSV."""
+QUERY_RESULT_INTERACTION_TYPE_OPEN_IN_EDITOR: QueryResultInteractionType.ValueType  # 4
+"""User opened the result set in a new editor tab."""
+QUERY_RESULT_INTERACTION_TYPE_SCROLL: QueryResultInteractionType.ValueType  # 5
+"""First scroll within a single result set (subsequent scrolls are not reported)."""
+Global___QueryResultInteractionType: typing_extensions.TypeAlias = QueryResultInteractionType
+
 @typing.final
 class User(google.protobuf.message.Message):
     """User information"""

@@ -1445,3 +1445,160 @@ class ExtensionGetStartedInteraction(google.protobuf.message.Message):
     def ClearField(self, field_name: typing.Literal["current_step_status", b"current_step_status", "dbt_local_cookie_user_id", b"dbt_local_cookie_user_id", "editor", b"editor", "enrichment", b"enrichment", "event_id", b"event_id", "interaction_type", b"interaction_type", "step_id", b"step_id", "steps_completed_count", b"steps_completed_count", "user", b"user"]) -> None: ...
 
 Global___ExtensionGetStartedInteraction: typing_extensions.TypeAlias = ExtensionGetStartedInteraction
+
+@typing.final
+class ExtensionQueryStarted(google.protobuf.message.Message):
+    """Emitted when a query begins in the Query Results panel.
+    Pairs with ExtensionQueryCompleted via query_id.
+    """
+
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
+    ENRICHMENT_FIELD_NUMBER: builtins.int
+    EDITOR_FIELD_NUMBER: builtins.int
+    USER_FIELD_NUMBER: builtins.int
+    DBT_LOCAL_COOKIE_USER_ID_FIELD_NUMBER: builtins.int
+    QUERY_ID_FIELD_NUMBER: builtins.int
+    QUERY_ORIGIN_FIELD_NUMBER: builtins.int
+    ADAPTER_TYPE_FIELD_NUMBER: builtins.int
+    PROJECT_ID_FIELD_NUMBER: builtins.int
+    dbt_local_cookie_user_id: builtins.str
+    """the anonymous user id stored at ~/.dbt/.user.yml"""
+    query_id: builtins.str
+    """UUID identifying this query lifecycle; matches ExtensionQueryCompleted.query_id and
+    ExtensionQueryResultInteracted.query_id for the same result set.
+    """
+    query_origin: dbtlabs.proto.public.v1.fields.vscode_types_pb2.QueryOrigin.ValueType
+    """which entry point started the query"""
+    adapter_type: builtins.str
+    """adapter type used in the active profile (snowflake, bigquery, etc.)"""
+    project_id: builtins.str
+    """md5 hash of the dbt project name (anonymized); same md5(project_name) used by compile events"""
+    @property
+    def enrichment(self) -> dbtlabs.proto.public.v1.events.vortex_pb2.VortexMessageEnrichment: ...
+    @property
+    def editor(self) -> dbtlabs.proto.public.v1.fields.vscode_types_pb2.Editor: ...
+    @property
+    def user(self) -> dbtlabs.proto.public.v1.fields.vscode_types_pb2.User: ...
+    def __init__(
+        self,
+        *,
+        enrichment: dbtlabs.proto.public.v1.events.vortex_pb2.VortexMessageEnrichment | None = ...,
+        editor: dbtlabs.proto.public.v1.fields.vscode_types_pb2.Editor | None = ...,
+        user: dbtlabs.proto.public.v1.fields.vscode_types_pb2.User | None = ...,
+        dbt_local_cookie_user_id: builtins.str = ...,
+        query_id: builtins.str = ...,
+        query_origin: dbtlabs.proto.public.v1.fields.vscode_types_pb2.QueryOrigin.ValueType = ...,
+        adapter_type: builtins.str = ...,
+        project_id: builtins.str = ...,
+    ) -> None: ...
+    def HasField(self, field_name: typing.Literal["editor", b"editor", "enrichment", b"enrichment", "user", b"user"]) -> builtins.bool: ...
+    def ClearField(self, field_name: typing.Literal["adapter_type", b"adapter_type", "dbt_local_cookie_user_id", b"dbt_local_cookie_user_id", "editor", b"editor", "enrichment", b"enrichment", "project_id", b"project_id", "query_id", b"query_id", "query_origin", b"query_origin", "user", b"user"]) -> None: ...
+
+Global___ExtensionQueryStarted: typing_extensions.TypeAlias = ExtensionQueryStarted
+
+@typing.final
+class ExtensionQueryCompleted(google.protobuf.message.Message):
+    """Emitted when a query in the Query Results panel finishes (success, failure, cancellation,
+    or invalid target). Pairs with ExtensionQueryStarted via query_id.
+    """
+
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
+    ENRICHMENT_FIELD_NUMBER: builtins.int
+    EDITOR_FIELD_NUMBER: builtins.int
+    USER_FIELD_NUMBER: builtins.int
+    DBT_LOCAL_COOKIE_USER_ID_FIELD_NUMBER: builtins.int
+    QUERY_ID_FIELD_NUMBER: builtins.int
+    QUERY_ORIGIN_FIELD_NUMBER: builtins.int
+    ADAPTER_TYPE_FIELD_NUMBER: builtins.int
+    PROJECT_ID_FIELD_NUMBER: builtins.int
+    DURATION_MS_FIELD_NUMBER: builtins.int
+    ROW_COUNT_FIELD_NUMBER: builtins.int
+    STATUS_FIELD_NUMBER: builtins.int
+    ERROR_MESSAGE_FIELD_NUMBER: builtins.int
+    dbt_local_cookie_user_id: builtins.str
+    """the anonymous user id stored at ~/.dbt/.user.yml"""
+    query_id: builtins.str
+    """UUID identifying this query lifecycle; matches ExtensionQueryStarted.query_id."""
+    query_origin: dbtlabs.proto.public.v1.fields.vscode_types_pb2.QueryOrigin.ValueType
+    """which entry point started the query"""
+    adapter_type: builtins.str
+    """adapter type used in the active profile (snowflake, bigquery, etc.)"""
+    project_id: builtins.str
+    """md5 hash of the dbt project name (anonymized)"""
+    duration_ms: builtins.int
+    """wall-clock duration from start to completion in milliseconds"""
+    row_count: builtins.int
+    """number of rows returned; 0 on non-success"""
+    status: dbtlabs.proto.public.v1.fields.vscode_types_pb2.QueryCompletionStatus.ValueType
+    """outcome of the query"""
+    error_message: builtins.str
+    """sanitized error message (max 512 chars, newlines stripped); empty on success/cancel/invalid"""
+    @property
+    def enrichment(self) -> dbtlabs.proto.public.v1.events.vortex_pb2.VortexMessageEnrichment: ...
+    @property
+    def editor(self) -> dbtlabs.proto.public.v1.fields.vscode_types_pb2.Editor: ...
+    @property
+    def user(self) -> dbtlabs.proto.public.v1.fields.vscode_types_pb2.User: ...
+    def __init__(
+        self,
+        *,
+        enrichment: dbtlabs.proto.public.v1.events.vortex_pb2.VortexMessageEnrichment | None = ...,
+        editor: dbtlabs.proto.public.v1.fields.vscode_types_pb2.Editor | None = ...,
+        user: dbtlabs.proto.public.v1.fields.vscode_types_pb2.User | None = ...,
+        dbt_local_cookie_user_id: builtins.str = ...,
+        query_id: builtins.str = ...,
+        query_origin: dbtlabs.proto.public.v1.fields.vscode_types_pb2.QueryOrigin.ValueType = ...,
+        adapter_type: builtins.str = ...,
+        project_id: builtins.str = ...,
+        duration_ms: builtins.int = ...,
+        row_count: builtins.int = ...,
+        status: dbtlabs.proto.public.v1.fields.vscode_types_pb2.QueryCompletionStatus.ValueType = ...,
+        error_message: builtins.str = ...,
+    ) -> None: ...
+    def HasField(self, field_name: typing.Literal["editor", b"editor", "enrichment", b"enrichment", "user", b"user"]) -> builtins.bool: ...
+    def ClearField(self, field_name: typing.Literal["adapter_type", b"adapter_type", "dbt_local_cookie_user_id", b"dbt_local_cookie_user_id", "duration_ms", b"duration_ms", "editor", b"editor", "enrichment", b"enrichment", "error_message", b"error_message", "project_id", b"project_id", "query_id", b"query_id", "query_origin", b"query_origin", "row_count", b"row_count", "status", b"status", "user", b"user"]) -> None: ...
+
+Global___ExtensionQueryCompleted: typing_extensions.TypeAlias = ExtensionQueryCompleted
+
+@typing.final
+class ExtensionQueryResultInteracted(google.protobuf.message.Message):
+    """Emitted when a user interacts with the Query Results panel after results render.
+    Correlates to a specific result set via query_id.
+    """
+
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
+    ENRICHMENT_FIELD_NUMBER: builtins.int
+    EDITOR_FIELD_NUMBER: builtins.int
+    USER_FIELD_NUMBER: builtins.int
+    DBT_LOCAL_COOKIE_USER_ID_FIELD_NUMBER: builtins.int
+    QUERY_ID_FIELD_NUMBER: builtins.int
+    INTERACTION_TYPE_FIELD_NUMBER: builtins.int
+    dbt_local_cookie_user_id: builtins.str
+    """the anonymous user id stored at ~/.dbt/.user.yml"""
+    query_id: builtins.str
+    """UUID identifying the active result set; matches ExtensionQueryStarted.query_id."""
+    interaction_type: dbtlabs.proto.public.v1.fields.vscode_types_pb2.QueryResultInteractionType.ValueType
+    """which kind of interaction the user performed"""
+    @property
+    def enrichment(self) -> dbtlabs.proto.public.v1.events.vortex_pb2.VortexMessageEnrichment: ...
+    @property
+    def editor(self) -> dbtlabs.proto.public.v1.fields.vscode_types_pb2.Editor: ...
+    @property
+    def user(self) -> dbtlabs.proto.public.v1.fields.vscode_types_pb2.User: ...
+    def __init__(
+        self,
+        *,
+        enrichment: dbtlabs.proto.public.v1.events.vortex_pb2.VortexMessageEnrichment | None = ...,
+        editor: dbtlabs.proto.public.v1.fields.vscode_types_pb2.Editor | None = ...,
+        user: dbtlabs.proto.public.v1.fields.vscode_types_pb2.User | None = ...,
+        dbt_local_cookie_user_id: builtins.str = ...,
+        query_id: builtins.str = ...,
+        interaction_type: dbtlabs.proto.public.v1.fields.vscode_types_pb2.QueryResultInteractionType.ValueType = ...,
+    ) -> None: ...
+    def HasField(self, field_name: typing.Literal["editor", b"editor", "enrichment", b"enrichment", "user", b"user"]) -> builtins.bool: ...
+    def ClearField(self, field_name: typing.Literal["dbt_local_cookie_user_id", b"dbt_local_cookie_user_id", "editor", b"editor", "enrichment", b"enrichment", "interaction_type", b"interaction_type", "query_id", b"query_id", "user", b"user"]) -> None: ...
+
+Global___ExtensionQueryResultInteracted: typing_extensions.TypeAlias = ExtensionQueryResultInteracted
