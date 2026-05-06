@@ -844,6 +844,10 @@ class ExtensionCompareFinished(google.protobuf.message.Message):
     EVENT_ID_FIELD_NUMBER: builtins.int
     FAILURE_MODE_FIELD_NUMBER: builtins.int
     ERROR_MESSAGE_FIELD_NUMBER: builtins.int
+    ARTIFACT_RESULTS_COUNT_FIELD_NUMBER: builtins.int
+    ARTIFACT_HAS_PROJECT_FIELD_NUMBER: builtins.int
+    ARTIFACT_DBT_SCHEMA_VERSION_FIELD_NUMBER: builtins.int
+    ARTIFACT_INVOCATION_ID_FIELD_NUMBER: builtins.int
     compare_id: builtins.str
     """anonymized identifier for this compare session"""
     duration_ms: builtins.int
@@ -860,6 +864,14 @@ class ExtensionCompareFinished(google.protobuf.message.Message):
     """categorizes the type of failure that occurred"""
     error_message: builtins.str
     """detailed error message or logs from the failed operation"""
+    artifact_results_count: builtins.int
+    """number of result rows reported by the compare artifact"""
+    artifact_has_project: builtins.bool
+    """whether the compare artifact contained a project section"""
+    artifact_dbt_schema_version: builtins.str
+    """dbt schema version reported by the compare artifact (e.g., the manifest schema URL/version)"""
+    artifact_invocation_id: builtins.str
+    """invocation_id reported by the compare artifact (correlates to the dbt run that produced it)"""
     @property
     def enrichment(self) -> dbtlabs.proto.public.v1.events.vortex_pb2.VortexMessageEnrichment: ...
     @property
@@ -880,11 +892,63 @@ class ExtensionCompareFinished(google.protobuf.message.Message):
         event_id: builtins.str = ...,
         failure_mode: dbtlabs.proto.public.v1.fields.vscode_types_pb2.CompareFailureMode.ValueType = ...,
         error_message: builtins.str = ...,
+        artifact_results_count: builtins.int = ...,
+        artifact_has_project: builtins.bool = ...,
+        artifact_dbt_schema_version: builtins.str = ...,
+        artifact_invocation_id: builtins.str = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["editor", b"editor", "enrichment", b"enrichment", "user", b"user"]) -> builtins.bool: ...
-    def ClearField(self, field_name: typing.Literal["compare_id", b"compare_id", "compare_success", b"compare_success", "dbt_local_cookie_user_id", b"dbt_local_cookie_user_id", "duration_ms", b"duration_ms", "editor", b"editor", "enrichment", b"enrichment", "error_message", b"error_message", "event_id", b"event_id", "failure_mode", b"failure_mode", "failure_reason", b"failure_reason", "user", b"user"]) -> None: ...
+    def ClearField(self, field_name: typing.Literal["artifact_dbt_schema_version", b"artifact_dbt_schema_version", "artifact_has_project", b"artifact_has_project", "artifact_invocation_id", b"artifact_invocation_id", "artifact_results_count", b"artifact_results_count", "compare_id", b"compare_id", "compare_success", b"compare_success", "dbt_local_cookie_user_id", b"dbt_local_cookie_user_id", "duration_ms", b"duration_ms", "editor", b"editor", "enrichment", b"enrichment", "error_message", b"error_message", "event_id", b"event_id", "failure_mode", b"failure_mode", "failure_reason", b"failure_reason", "user", b"user"]) -> None: ...
 
 Global___ExtensionCompareFinished: typing_extensions.TypeAlias = ExtensionCompareFinished
+
+@typing.final
+class ExtensionCompareRowOpened(google.protobuf.message.Message):
+    """Emitted when the user opens (drills into) a single row in the Compare panel results table.
+    Pairs with ExtensionCompareStarted/Finished via compare_id.
+    """
+
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
+    ENRICHMENT_FIELD_NUMBER: builtins.int
+    EDITOR_FIELD_NUMBER: builtins.int
+    USER_FIELD_NUMBER: builtins.int
+    COMPARE_ID_FIELD_NUMBER: builtins.int
+    DBT_LOCAL_COOKIE_USER_ID_FIELD_NUMBER: builtins.int
+    EVENT_ID_FIELD_NUMBER: builtins.int
+    DIFF_TYPE_FIELD_NUMBER: builtins.int
+    compare_id: builtins.str
+    """anonymized identifier for the compare session this row belongs to"""
+    dbt_local_cookie_user_id: builtins.str
+    """the anonymous user id stored at ~/.dbt/.user.yml"""
+    event_id: builtins.str
+    """UUID to uniquely identify the event"""
+    diff_type: builtins.str
+    """category of diff row that was opened.
+    One of: 'value_diff' | 'added_record' | 'removed_record' | 'non_unique_record' | 'unknown'.
+    Kept as a string for forward-compat (no enum needed today).
+    """
+    @property
+    def enrichment(self) -> dbtlabs.proto.public.v1.events.vortex_pb2.VortexMessageEnrichment: ...
+    @property
+    def editor(self) -> dbtlabs.proto.public.v1.fields.vscode_types_pb2.Editor: ...
+    @property
+    def user(self) -> dbtlabs.proto.public.v1.fields.vscode_types_pb2.User: ...
+    def __init__(
+        self,
+        *,
+        enrichment: dbtlabs.proto.public.v1.events.vortex_pb2.VortexMessageEnrichment | None = ...,
+        editor: dbtlabs.proto.public.v1.fields.vscode_types_pb2.Editor | None = ...,
+        user: dbtlabs.proto.public.v1.fields.vscode_types_pb2.User | None = ...,
+        compare_id: builtins.str = ...,
+        dbt_local_cookie_user_id: builtins.str = ...,
+        event_id: builtins.str = ...,
+        diff_type: builtins.str = ...,
+    ) -> None: ...
+    def HasField(self, field_name: typing.Literal["editor", b"editor", "enrichment", b"enrichment", "user", b"user"]) -> builtins.bool: ...
+    def ClearField(self, field_name: typing.Literal["compare_id", b"compare_id", "dbt_local_cookie_user_id", b"dbt_local_cookie_user_id", "diff_type", b"diff_type", "editor", b"editor", "enrichment", b"enrichment", "event_id", b"event_id", "user", b"user"]) -> None: ...
+
+Global___ExtensionCompareRowOpened: typing_extensions.TypeAlias = ExtensionCompareRowOpened
 
 @typing.final
 class ExtensionRegistrationMessageDismissed(google.protobuf.message.Message):

@@ -134,6 +134,11 @@ class _CompareFailureModeEnumTypeWrapper(google.protobuf.internal.enum_type_wrap
     """The model build step failed before compare could run"""
     COMPARE_FAILURE_MODE_OTHER: _CompareFailureMode.ValueType  # 4
     """Any other unexpected failure"""
+    COMPARE_FAILURE_MODE_EMPTY_RESULTS: _CompareFailureMode.ValueType  # 5
+    """The compare command exited without an error but produced no diff rows.
+    Reported with compare_success = false so analytics can segment empty runs
+    from runs that produced actual diffs; user-facing UX shows a friendly empty panel.
+    """
 
 class CompareFailureMode(_CompareFailureMode, metaclass=_CompareFailureModeEnumTypeWrapper):
     """Categorizes how a compare operation failed"""
@@ -148,6 +153,11 @@ COMPARE_FAILURE_MODE_BUILD_FAILED: CompareFailureMode.ValueType  # 3
 """The model build step failed before compare could run"""
 COMPARE_FAILURE_MODE_OTHER: CompareFailureMode.ValueType  # 4
 """Any other unexpected failure"""
+COMPARE_FAILURE_MODE_EMPTY_RESULTS: CompareFailureMode.ValueType  # 5
+"""The compare command exited without an error but produced no diff rows.
+Reported with compare_success = false so analytics can segment empty runs
+from runs that produced actual diffs; user-facing UX shows a friendly empty panel.
+"""
 Global___CompareFailureMode: typing_extensions.TypeAlias = CompareFailureMode
 
 class _RegistrationMethod:
