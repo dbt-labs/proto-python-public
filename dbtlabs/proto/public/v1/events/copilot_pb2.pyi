@@ -161,6 +161,118 @@ class CopilotGenerationComplete(google.protobuf.message.Message):
 Global___CopilotGenerationComplete: typing_extensions.TypeAlias = CopilotGenerationComplete
 
 @typing.final
+class CopilotLlmCall(google.protobuf.message.Message):
+    """Fired once per LLM call within an agent loop.
+    Allows per-call token and latency attribution when a single copilot_request_id
+    triggers multiple LLM invocations (e.g. a dev agent loop).
+    Links back to the parent CopilotGenerationComplete via copilot_request_id.
+    """
+
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
+    ENRICHMENT_FIELD_NUMBER: builtins.int
+    CTX_FIELD_NUMBER: builtins.int
+    COPILOT_REQUEST_ID_FIELD_NUMBER: builtins.int
+    THREAD_ID_FIELD_NUMBER: builtins.int
+    MODEL_PROVIDER_FIELD_NUMBER: builtins.int
+    MODEL_VERSION_FIELD_NUMBER: builtins.int
+    APP_NAME_FIELD_NUMBER: builtins.int
+    COPILOT_ACTION_FIELD_NUMBER: builtins.int
+    KEY_TYPE_FIELD_NUMBER: builtins.int
+    CALL_INDEX_FIELD_NUMBER: builtins.int
+    TOKENS_INPUT_FIELD_NUMBER: builtins.int
+    TOKENS_OUTPUT_FIELD_NUMBER: builtins.int
+    TOKENS_TOTAL_FIELD_NUMBER: builtins.int
+    LATENCY_MS_FIELD_NUMBER: builtins.int
+    CACHE_CREATION_INPUT_TOKENS_FIELD_NUMBER: builtins.int
+    CACHE_READ_INPUT_TOKENS_FIELD_NUMBER: builtins.int
+    REASONING_OUTPUT_TOKENS_FIELD_NUMBER: builtins.int
+    copilot_request_id: builtins.str
+    """Identifies the parent agent run; foreign key to CopilotGenerationComplete"""
+    thread_id: builtins.str
+    """Conversation thread for multi-turn correlation"""
+    model_provider: builtins.str
+    """LLM provider (e.g. "openai", "azure_openai", "anthropic")"""
+    model_version: builtins.str
+    """Model identifier (e.g. "gpt-4o", "claude-sonnet-4-20250514")"""
+    app_name: builtins.str
+    """Client application name (e.g. "studio", "vscode", "cloud-cli")"""
+    copilot_action: builtins.str
+    """Which Copilot action this call belongs to (e.g. "run_langgraph_agent")"""
+    key_type: builtins.str
+    """API key type used for this call. String representation of the
+    DbtCopilotGenerationComplete.KeyType enum (private proto); valid values
+    are the same as CopilotGenerationComplete.key_type documented above.
+    Enums are not yet handled properly in Vortex, so the enum name is
+    serialised to a string at the call site rather than using an enum field.
+    """
+    call_index: builtins.int
+    """Zero-based index of this LLM call within the agent loop"""
+    tokens_input: builtins.int
+    """Input tokens sent to the LLM for this call"""
+    tokens_output: builtins.int
+    """Output tokens received from the LLM for this call"""
+    tokens_total: builtins.int
+    """Total tokens (input + output)"""
+    latency_ms: builtins.int
+    """Latency of this specific LLM call in milliseconds"""
+    cache_creation_input_tokens: builtins.int
+    """Input tokens where prompt cache was created (cache miss, Anthropic)"""
+    cache_read_input_tokens: builtins.int
+    """Input tokens served from prompt cache (cache hit)"""
+    reasoning_output_tokens: builtins.int
+    """Chain-of-thought tokens not included in the response"""
+    @property
+    def enrichment(self) -> dbtlabs.proto.public.v1.events.vortex_pb2.VortexMessageEnrichment:
+        """Server enrichment for this event"""
+
+    @property
+    def ctx(self) -> dbtlabs.proto.public.v1.common.vortex_telemetry_contexts_pb2.VortexTelemetryDbtCloudContext:
+        """dbt Cloud context (account_id, user_id, project_id, etc.)"""
+
+    def __init__(
+        self,
+        *,
+        enrichment: dbtlabs.proto.public.v1.events.vortex_pb2.VortexMessageEnrichment | None = ...,
+        ctx: dbtlabs.proto.public.v1.common.vortex_telemetry_contexts_pb2.VortexTelemetryDbtCloudContext | None = ...,
+        copilot_request_id: builtins.str = ...,
+        thread_id: builtins.str = ...,
+        model_provider: builtins.str = ...,
+        model_version: builtins.str = ...,
+        app_name: builtins.str = ...,
+        copilot_action: builtins.str = ...,
+        key_type: builtins.str = ...,
+        call_index: builtins.int | None = ...,
+        tokens_input: builtins.int | None = ...,
+        tokens_output: builtins.int | None = ...,
+        tokens_total: builtins.int | None = ...,
+        latency_ms: builtins.int | None = ...,
+        cache_creation_input_tokens: builtins.int | None = ...,
+        cache_read_input_tokens: builtins.int | None = ...,
+        reasoning_output_tokens: builtins.int | None = ...,
+    ) -> None: ...
+    def HasField(self, field_name: typing.Literal["_cache_creation_input_tokens", b"_cache_creation_input_tokens", "_cache_read_input_tokens", b"_cache_read_input_tokens", "_call_index", b"_call_index", "_latency_ms", b"_latency_ms", "_reasoning_output_tokens", b"_reasoning_output_tokens", "_tokens_input", b"_tokens_input", "_tokens_output", b"_tokens_output", "_tokens_total", b"_tokens_total", "cache_creation_input_tokens", b"cache_creation_input_tokens", "cache_read_input_tokens", b"cache_read_input_tokens", "call_index", b"call_index", "ctx", b"ctx", "enrichment", b"enrichment", "latency_ms", b"latency_ms", "reasoning_output_tokens", b"reasoning_output_tokens", "tokens_input", b"tokens_input", "tokens_output", b"tokens_output", "tokens_total", b"tokens_total"]) -> builtins.bool: ...
+    def ClearField(self, field_name: typing.Literal["_cache_creation_input_tokens", b"_cache_creation_input_tokens", "_cache_read_input_tokens", b"_cache_read_input_tokens", "_call_index", b"_call_index", "_latency_ms", b"_latency_ms", "_reasoning_output_tokens", b"_reasoning_output_tokens", "_tokens_input", b"_tokens_input", "_tokens_output", b"_tokens_output", "_tokens_total", b"_tokens_total", "app_name", b"app_name", "cache_creation_input_tokens", b"cache_creation_input_tokens", "cache_read_input_tokens", b"cache_read_input_tokens", "call_index", b"call_index", "copilot_action", b"copilot_action", "copilot_request_id", b"copilot_request_id", "ctx", b"ctx", "enrichment", b"enrichment", "key_type", b"key_type", "latency_ms", b"latency_ms", "model_provider", b"model_provider", "model_version", b"model_version", "reasoning_output_tokens", b"reasoning_output_tokens", "thread_id", b"thread_id", "tokens_input", b"tokens_input", "tokens_output", b"tokens_output", "tokens_total", b"tokens_total"]) -> None: ...
+    @typing.overload
+    def WhichOneof(self, oneof_group: typing.Literal["_cache_creation_input_tokens", b"_cache_creation_input_tokens"]) -> typing.Literal["cache_creation_input_tokens"] | None: ...
+    @typing.overload
+    def WhichOneof(self, oneof_group: typing.Literal["_cache_read_input_tokens", b"_cache_read_input_tokens"]) -> typing.Literal["cache_read_input_tokens"] | None: ...
+    @typing.overload
+    def WhichOneof(self, oneof_group: typing.Literal["_call_index", b"_call_index"]) -> typing.Literal["call_index"] | None: ...
+    @typing.overload
+    def WhichOneof(self, oneof_group: typing.Literal["_latency_ms", b"_latency_ms"]) -> typing.Literal["latency_ms"] | None: ...
+    @typing.overload
+    def WhichOneof(self, oneof_group: typing.Literal["_reasoning_output_tokens", b"_reasoning_output_tokens"]) -> typing.Literal["reasoning_output_tokens"] | None: ...
+    @typing.overload
+    def WhichOneof(self, oneof_group: typing.Literal["_tokens_input", b"_tokens_input"]) -> typing.Literal["tokens_input"] | None: ...
+    @typing.overload
+    def WhichOneof(self, oneof_group: typing.Literal["_tokens_output", b"_tokens_output"]) -> typing.Literal["tokens_output"] | None: ...
+    @typing.overload
+    def WhichOneof(self, oneof_group: typing.Literal["_tokens_total", b"_tokens_total"]) -> typing.Literal["tokens_total"] | None: ...
+
+Global___CopilotLlmCall: typing_extensions.TypeAlias = CopilotLlmCall
+
+@typing.final
 class CopilotUserAcceptance(google.protobuf.message.Message):
     """Possible values for CopilotUserAcceptance.response_type:
       "accepted"  - user accepted the suggestion as-is
