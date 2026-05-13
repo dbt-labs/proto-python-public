@@ -4551,6 +4551,50 @@ class PackageNodeDependsOnRootProjectNodeMsg(google.protobuf.message.Message):
 Global___PackageNodeDependsOnRootProjectNodeMsg: typing_extensions.TypeAlias = PackageNodeDependsOnRootProjectNodeMsg
 
 @typing.final
+class MFConverterIssue(google.protobuf.message.Message):
+    """I078"""
+
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
+    ISSUE_TYPE_FIELD_NUMBER: builtins.int
+    ELEMENT_NAME_FIELD_NUMBER: builtins.int
+    CONVERTER_NAME_FIELD_NUMBER: builtins.int
+    issue_type: builtins.str
+    element_name: builtins.str
+    converter_name: builtins.str
+    def __init__(
+        self,
+        *,
+        issue_type: builtins.str = ...,
+        element_name: builtins.str = ...,
+        converter_name: builtins.str = ...,
+    ) -> None: ...
+    def ClearField(self, field_name: typing.Literal["converter_name", b"converter_name", "element_name", b"element_name", "issue_type", b"issue_type"]) -> None: ...
+
+Global___MFConverterIssue: typing_extensions.TypeAlias = MFConverterIssue
+
+@typing.final
+class MFConverterIssueMsg(google.protobuf.message.Message):
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
+    INFO_FIELD_NUMBER: builtins.int
+    DATA_FIELD_NUMBER: builtins.int
+    @property
+    def info(self) -> Global___CoreEventInfo: ...
+    @property
+    def data(self) -> Global___MFConverterIssue: ...
+    def __init__(
+        self,
+        *,
+        info: Global___CoreEventInfo | None = ...,
+        data: Global___MFConverterIssue | None = ...,
+    ) -> None: ...
+    def HasField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> builtins.bool: ...
+    def ClearField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> None: ...
+
+Global___MFConverterIssueMsg: typing_extensions.TypeAlias = MFConverterIssueMsg
+
+@typing.final
 class GitSparseCheckoutSubdirectory(google.protobuf.message.Message):
     """M - Deps generation
 
