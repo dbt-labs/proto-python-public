@@ -7,13 +7,7 @@ import builtins
 import dbtlabs.proto.public.v1.events.vortex_pb2
 import google.protobuf.descriptor
 import google.protobuf.message
-import sys
 import typing
-
-if sys.version_info >= (3, 10):
-    import typing as typing_extensions
-else:
-    import typing_extensions
 
 DESCRIPTOR: google.protobuf.descriptor.FileDescriptor
 
@@ -107,7 +101,7 @@ class DbtIndexInvocation(google.protobuf.message.Message):
     def HasField(self, field_name: typing.Literal["enrichment", b"enrichment"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["account_host", b"account_host", "account_id", b"account_id", "account_identifier", b"account_identifier", "adapter_type", b"adapter_type", "cloud_project_id", b"cloud_project_id", "command", b"command", "dbt_version", b"dbt_version", "enrichment", b"enrichment", "event_id", b"event_id", "execution_time_ms", b"execution_time_ms", "invocation_id", b"invocation_id", "os", b"os", "progress", b"progress", "project_id", b"project_id", "project_name", b"project_name", "result_type", b"result_type", "user_id", b"user_id", "version", b"version"]) -> None: ...
 
-Global___DbtIndexInvocation: typing_extensions.TypeAlias = DbtIndexInvocation
+global___DbtIndexInvocation = DbtIndexInvocation
 
 @typing.final
 class DbtIndexResourceCounts(google.protobuf.message.Message):
@@ -182,7 +176,7 @@ class DbtIndexResourceCounts(google.protobuf.message.Message):
     def HasField(self, field_name: typing.Literal["enrichment", b"enrichment"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["enrichment", b"enrichment", "event_id", b"event_id", "exposures", b"exposures", "groups", b"groups", "has_catalog", b"has_catalog", "has_run_results", b"has_run_results", "invocation_id", b"invocation_id", "metrics", b"metrics", "models", b"models", "seeds", b"seeds", "semantic_models", b"semantic_models", "snapshots", b"snapshots", "sources", b"sources", "tests", b"tests"]) -> None: ...
 
-Global___DbtIndexResourceCounts: typing_extensions.TypeAlias = DbtIndexResourceCounts
+global___DbtIndexResourceCounts = DbtIndexResourceCounts
 
 @typing.final
 class DbtIndexToolCall(google.protobuf.message.Message):
@@ -225,4 +219,4 @@ class DbtIndexToolCall(google.protobuf.message.Message):
     def HasField(self, field_name: typing.Literal["enrichment", b"enrichment"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["enrichment", b"enrichment", "event_id", b"event_id", "execution_time_ms", b"execution_time_ms", "invocation_id", b"invocation_id", "is_error", b"is_error", "tool_name", b"tool_name"]) -> None: ...
 
-Global___DbtIndexToolCall: typing_extensions.TypeAlias = DbtIndexToolCall
+global___DbtIndexToolCall = DbtIndexToolCall

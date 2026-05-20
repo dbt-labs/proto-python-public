@@ -39,7 +39,7 @@ PACKAGE_TYPE_GIT: PackageType.ValueType  # 2
 PACKAGE_TYPE_LOCAL: PackageType.ValueType  # 3
 PACKAGE_TYPE_PRIVATE: PackageType.ValueType  # 4
 PACKAGE_TYPE_TARBALL: PackageType.ValueType  # 5
-Global___PackageType: typing_extensions.TypeAlias = PackageType
+global___PackageType = PackageType
 
 @typing.final
 class DepsAddPackage(google.protobuf.message.Message):
@@ -55,7 +55,7 @@ class DepsAddPackage(google.protobuf.message.Message):
     DBT_CORE_EVENT_CODE_FIELD_NUMBER: builtins.int
     package_name: builtins.str
     """The name of the package that was installed"""
-    package_type: Global___PackageType.ValueType
+    package_type: global___PackageType.ValueType
     """The type of the package source"""
     package_version: builtins.str
     """Optional version of the package (for hub packages, this is semantic version; for git/private, this is commit SHA)"""
@@ -65,7 +65,7 @@ class DepsAddPackage(google.protobuf.message.Message):
         self,
         *,
         package_name: builtins.str = ...,
-        package_type: Global___PackageType.ValueType = ...,
+        package_type: global___PackageType.ValueType = ...,
         package_version: builtins.str | None = ...,
         dbt_core_event_code: builtins.str = ...,
     ) -> None: ...
@@ -73,7 +73,7 @@ class DepsAddPackage(google.protobuf.message.Message):
     def ClearField(self, field_name: typing.Literal["_package_version", b"_package_version", "dbt_core_event_code", b"dbt_core_event_code", "package_name", b"package_name", "package_type", b"package_type", "package_version", b"package_version"]) -> None: ...
     def WhichOneof(self, oneof_group: typing.Literal["_package_version", b"_package_version"]) -> typing.Literal["package_version"] | None: ...
 
-Global___DepsAddPackage: typing_extensions.TypeAlias = DepsAddPackage
+global___DepsAddPackage = DepsAddPackage
 
 @typing.final
 class DepsPackageInstalled(google.protobuf.message.Message):
@@ -91,7 +91,7 @@ class DepsPackageInstalled(google.protobuf.message.Message):
     DBT_CORE_EVENT_CODE_FIELD_NUMBER: builtins.int
     package_name: builtins.str
     """The name of the package that was installed. The name may not be known at span start."""
-    package_type: Global___PackageType.ValueType
+    package_type: global___PackageType.ValueType
     """The type of the package source"""
     package_version: builtins.str
     """Optional version of the package (for hub packages, this is semantic version; for git/private, this is commit SHA)"""
@@ -103,7 +103,7 @@ class DepsPackageInstalled(google.protobuf.message.Message):
         self,
         *,
         package_name: builtins.str | None = ...,
-        package_type: Global___PackageType.ValueType = ...,
+        package_type: global___PackageType.ValueType = ...,
         package_version: builtins.str | None = ...,
         package_url_or_path: builtins.str | None = ...,
         dbt_core_event_code: builtins.str = ...,
@@ -117,7 +117,7 @@ class DepsPackageInstalled(google.protobuf.message.Message):
     @typing.overload
     def WhichOneof(self, oneof_group: typing.Literal["_package_version", b"_package_version"]) -> typing.Literal["package_version"] | None: ...
 
-Global___DepsPackageInstalled: typing_extensions.TypeAlias = DepsPackageInstalled
+global___DepsPackageInstalled = DepsPackageInstalled
 
 @typing.final
 class DepsAllPackagesInstalled(google.protobuf.message.Message):
@@ -137,4 +137,4 @@ class DepsAllPackagesInstalled(google.protobuf.message.Message):
     ) -> None: ...
     def ClearField(self, field_name: typing.Literal["package_count", b"package_count"]) -> None: ...
 
-Global___DepsAllPackagesInstalled: typing_extensions.TypeAlias = DepsAllPackagesInstalled
+global___DepsAllPackagesInstalled = DepsAllPackagesInstalled

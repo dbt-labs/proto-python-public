@@ -6,13 +6,7 @@ isort:skip_file
 import builtins
 import google.protobuf.descriptor
 import google.protobuf.message
-import sys
 import typing
-
-if sys.version_info >= (3, 10):
-    import typing as typing_extensions
-else:
-    import typing_extensions
 
 DESCRIPTOR: google.protobuf.descriptor.FileDescriptor
 
@@ -55,7 +49,7 @@ class GenericOpExecuted(google.protobuf.message.Message):
     def ClearField(self, field_name: typing.Literal["_item_count_total", b"_item_count_total", "display_action", b"display_action", "item_count_total", b"item_count_total", "operation_id", b"operation_id"]) -> None: ...
     def WhichOneof(self, oneof_group: typing.Literal["_item_count_total", b"_item_count_total"]) -> typing.Literal["item_count_total"] | None: ...
 
-Global___GenericOpExecuted: typing_extensions.TypeAlias = GenericOpExecuted
+global___GenericOpExecuted = GenericOpExecuted
 
 @typing.final
 class GenericOpItemProcessed(google.protobuf.message.Message):
@@ -99,4 +93,4 @@ class GenericOpItemProcessed(google.protobuf.message.Message):
     ) -> None: ...
     def ClearField(self, field_name: typing.Literal["display_in_progress_action", b"display_in_progress_action", "display_on_success_action", b"display_on_success_action", "operation_id", b"operation_id", "target", b"target"]) -> None: ...
 
-Global___GenericOpItemProcessed: typing_extensions.TypeAlias = GenericOpItemProcessed
+global___GenericOpItemProcessed = GenericOpItemProcessed

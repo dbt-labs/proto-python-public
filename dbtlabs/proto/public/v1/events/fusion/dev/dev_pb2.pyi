@@ -8,13 +8,7 @@ import collections.abc
 import google.protobuf.descriptor
 import google.protobuf.internal.containers
 import google.protobuf.message
-import sys
 import typing
-
-if sys.version_info >= (3, 10):
-    import typing as typing_extensions
-else:
-    import typing_extensions
 
 DESCRIPTOR: google.protobuf.descriptor.FileDescriptor
 
@@ -44,7 +38,7 @@ class DebugValue(google.protobuf.message.Message):
     def ClearField(self, field_name: typing.Literal["bool", b"bool", "bytes", b"bytes", "float64", b"float64", "string", b"string", "value", b"value"]) -> None: ...
     def WhichOneof(self, oneof_group: typing.Literal["value", b"value"]) -> typing.Literal["float64", "bool", "string", "bytes"] | None: ...
 
-Global___DebugValue: typing_extensions.TypeAlias = DebugValue
+global___DebugValue = DebugValue
 
 @typing.final
 class CallTrace(google.protobuf.message.Message):
@@ -62,12 +56,12 @@ class CallTrace(google.protobuf.message.Message):
         VALUE_FIELD_NUMBER: builtins.int
         key: builtins.str
         @property
-        def value(self) -> Global___DebugValue: ...
+        def value(self) -> global___DebugValue: ...
         def __init__(
             self,
             *,
             key: builtins.str = ...,
-            value: Global___DebugValue | None = ...,
+            value: global___DebugValue | None = ...,
         ) -> None: ...
         def HasField(self, field_name: typing.Literal["value", b"value"]) -> builtins.bool: ...
         def ClearField(self, field_name: typing.Literal["key", b"key", "value", b"value"]) -> None: ...
@@ -83,7 +77,7 @@ class CallTrace(google.protobuf.message.Message):
     line: builtins.int
     """Line number in the file where the span was created."""
     @property
-    def extra(self) -> google.protobuf.internal.containers.MessageMap[builtins.str, Global___DebugValue]:
+    def extra(self) -> google.protobuf.internal.containers.MessageMap[builtins.str, global___DebugValue]:
         """Arbitrary extra structured data."""
 
     def __init__(
@@ -92,7 +86,7 @@ class CallTrace(google.protobuf.message.Message):
         name: builtins.str = ...,
         file: builtins.str | None = ...,
         line: builtins.int | None = ...,
-        extra: collections.abc.Mapping[builtins.str, Global___DebugValue] | None = ...,
+        extra: collections.abc.Mapping[builtins.str, global___DebugValue] | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["_file", b"_file", "_line", b"_line", "file", b"file", "line", b"line"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["_file", b"_file", "_line", b"_line", "extra", b"extra", "file", b"file", "line", b"line", "name", b"name"]) -> None: ...
@@ -101,7 +95,7 @@ class CallTrace(google.protobuf.message.Message):
     @typing.overload
     def WhichOneof(self, oneof_group: typing.Literal["_line", b"_line"]) -> typing.Literal["line"] | None: ...
 
-Global___CallTrace: typing_extensions.TypeAlias = CallTrace
+global___CallTrace = CallTrace
 
 @typing.final
 class Unknown(google.protobuf.message.Message):
@@ -129,4 +123,4 @@ class Unknown(google.protobuf.message.Message):
     ) -> None: ...
     def ClearField(self, field_name: typing.Literal["file", b"file", "line", b"line", "name", b"name"]) -> None: ...
 
-Global___Unknown: typing_extensions.TypeAlias = Unknown
+global___Unknown = Unknown

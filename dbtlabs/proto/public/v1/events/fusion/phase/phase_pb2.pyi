@@ -117,7 +117,7 @@ EXECUTION_PHASE_ON_RUN_START: ExecutionPhase.ValueType  # 150
 """Executing on-run-start hooks at the start of supported dbt commands"""
 EXECUTION_PHASE_ON_RUN_END: ExecutionPhase.ValueType  # 160
 """Executing on-run-end hooks at the end of supported dbt commands"""
-Global___ExecutionPhase: typing_extensions.TypeAlias = ExecutionPhase
+global___ExecutionPhase = ExecutionPhase
 
 @typing.final
 class PhaseExecuted(google.protobuf.message.Message):
@@ -129,7 +129,7 @@ class PhaseExecuted(google.protobuf.message.Message):
     NODE_COUNT_TOTAL_FIELD_NUMBER: builtins.int
     NODE_COUNT_SKIPPED_FIELD_NUMBER: builtins.int
     NODE_COUNT_ERROR_FIELD_NUMBER: builtins.int
-    phase: Global___ExecutionPhase.ValueType
+    phase: global___ExecutionPhase.ValueType
     """The current phase of execution."""
     node_count_total: builtins.int
     """Optional count of total individual items within the phase (nodes or hooks)."""
@@ -144,7 +144,7 @@ class PhaseExecuted(google.protobuf.message.Message):
     def __init__(
         self,
         *,
-        phase: Global___ExecutionPhase.ValueType = ...,
+        phase: global___ExecutionPhase.ValueType = ...,
         node_count_total: builtins.int | None = ...,
         node_count_skipped: builtins.int | None = ...,
         node_count_error: builtins.int | None = ...,
@@ -158,4 +158,4 @@ class PhaseExecuted(google.protobuf.message.Message):
     @typing.overload
     def WhichOneof(self, oneof_group: typing.Literal["_node_count_total", b"_node_count_total"]) -> typing.Literal["node_count_total"] | None: ...
 
-Global___PhaseExecuted: typing_extensions.TypeAlias = PhaseExecuted
+global___PhaseExecuted = PhaseExecuted

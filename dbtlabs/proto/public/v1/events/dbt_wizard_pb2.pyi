@@ -7,13 +7,7 @@ import builtins
 import dbtlabs.proto.public.v1.events.vortex_pb2
 import google.protobuf.descriptor
 import google.protobuf.message
-import sys
 import typing
-
-if sys.version_info >= (3, 10):
-    import typing as typing_extensions
-else:
-    import typing_extensions
 
 DESCRIPTOR: google.protobuf.descriptor.FileDescriptor
 
@@ -96,7 +90,7 @@ class DbtWizardSession(google.protobuf.message.Message):
     def HasField(self, field_name: typing.Literal["enrichment", b"enrichment"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["account_id", b"account_id", "account_identifier", b"account_identifier", "arch", b"arch", "duration_ms", b"duration_ms", "enrichment", b"enrichment", "event_id", b"event_id", "model", b"model", "os", b"os", "progress", b"progress", "result_type", b"result_type", "session_id", b"session_id", "session_source", b"session_source", "total_tokens", b"total_tokens", "turn_count", b"turn_count", "user_id", b"user_id", "version", b"version"]) -> None: ...
 
-Global___DbtWizardSession: typing_extensions.TypeAlias = DbtWizardSession
+global___DbtWizardSession = DbtWizardSession
 
 @typing.final
 class DbtWizardTurn(google.protobuf.message.Message):
@@ -167,7 +161,7 @@ class DbtWizardTurn(google.protobuf.message.Message):
     def HasField(self, field_name: typing.Literal["enrichment", b"enrichment"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["cached_input_tokens", b"cached_input_tokens", "collaboration_mode", b"collaboration_mode", "duration_ms", b"duration_ms", "enrichment", b"enrichment", "event_id", b"event_id", "input_tokens", b"input_tokens", "is_first_turn", b"is_first_turn", "model", b"model", "output_tokens", b"output_tokens", "reasoning_output_tokens", b"reasoning_output_tokens", "session_id", b"session_id", "status", b"status", "tool_call_count", b"tool_call_count", "total_tokens", b"total_tokens", "turn_id", b"turn_id"]) -> None: ...
 
-Global___DbtWizardTurn: typing_extensions.TypeAlias = DbtWizardTurn
+global___DbtWizardTurn = DbtWizardTurn
 
 @typing.final
 class DbtWizardToolUse(google.protobuf.message.Message):
@@ -214,4 +208,4 @@ class DbtWizardToolUse(google.protobuf.message.Message):
     def HasField(self, field_name: typing.Literal["enrichment", b"enrichment"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["enrichment", b"enrichment", "event_id", b"event_id", "execution_time_ms", b"execution_time_ms", "is_error", b"is_error", "session_id", b"session_id", "tool_name", b"tool_name", "tool_type", b"tool_type", "turn_id", b"turn_id"]) -> None: ...
 
-Global___DbtWizardToolUse: typing_extensions.TypeAlias = DbtWizardToolUse
+global___DbtWizardToolUse = DbtWizardToolUse

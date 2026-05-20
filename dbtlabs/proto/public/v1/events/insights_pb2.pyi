@@ -8,13 +8,7 @@ import dbtlabs.proto.public.v1.common.vortex_telemetry_contexts_pb2
 import dbtlabs.proto.public.v1.events.vortex_pb2
 import google.protobuf.descriptor
 import google.protobuf.message
-import sys
 import typing
-
-if sys.version_info >= (3, 10):
-    import typing as typing_extensions
-else:
-    import typing_extensions
 
 DESCRIPTOR: google.protobuf.descriptor.FileDescriptor
 
@@ -37,7 +31,7 @@ class PageLoad(google.protobuf.message.Message):
     def HasField(self, field_name: typing.Literal["ctx", b"ctx", "enrichment", b"enrichment"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["ctx", b"ctx", "enrichment", b"enrichment"]) -> None: ...
 
-Global___PageLoad: typing_extensions.TypeAlias = PageLoad
+global___PageLoad = PageLoad
 
 @typing.final
 class CatalogLiteOpen(google.protobuf.message.Message):
@@ -58,7 +52,7 @@ class CatalogLiteOpen(google.protobuf.message.Message):
     def HasField(self, field_name: typing.Literal["ctx", b"ctx", "enrichment", b"enrichment"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["ctx", b"ctx", "enrichment", b"enrichment"]) -> None: ...
 
-Global___CatalogLiteOpen: typing_extensions.TypeAlias = CatalogLiteOpen
+global___CatalogLiteOpen = CatalogLiteOpen
 
 @typing.final
 class QueryHistoryOpen(google.protobuf.message.Message):
@@ -79,7 +73,7 @@ class QueryHistoryOpen(google.protobuf.message.Message):
     def HasField(self, field_name: typing.Literal["ctx", b"ctx", "enrichment", b"enrichment"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["ctx", b"ctx", "enrichment", b"enrichment"]) -> None: ...
 
-Global___QueryHistoryOpen: typing_extensions.TypeAlias = QueryHistoryOpen
+global___QueryHistoryOpen = QueryHistoryOpen
 
 @typing.final
 class BookmarksOpen(google.protobuf.message.Message):
@@ -100,7 +94,7 @@ class BookmarksOpen(google.protobuf.message.Message):
     def HasField(self, field_name: typing.Literal["ctx", b"ctx", "enrichment", b"enrichment"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["ctx", b"ctx", "enrichment", b"enrichment"]) -> None: ...
 
-Global___BookmarksOpen: typing_extensions.TypeAlias = BookmarksOpen
+global___BookmarksOpen = BookmarksOpen
 
 @typing.final
 class BookmarksOpenDetails(google.protobuf.message.Message):
@@ -121,7 +115,7 @@ class BookmarksOpenDetails(google.protobuf.message.Message):
     def HasField(self, field_name: typing.Literal["ctx", b"ctx", "enrichment", b"enrichment"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["ctx", b"ctx", "enrichment", b"enrichment"]) -> None: ...
 
-Global___BookmarksOpenDetails: typing_extensions.TypeAlias = BookmarksOpenDetails
+global___BookmarksOpenDetails = BookmarksOpenDetails
 
 @typing.final
 class BookmarksEditDetails(google.protobuf.message.Message):
@@ -142,7 +136,7 @@ class BookmarksEditDetails(google.protobuf.message.Message):
     def HasField(self, field_name: typing.Literal["ctx", b"ctx", "enrichment", b"enrichment"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["ctx", b"ctx", "enrichment", b"enrichment"]) -> None: ...
 
-Global___BookmarksEditDetails: typing_extensions.TypeAlias = BookmarksEditDetails
+global___BookmarksEditDetails = BookmarksEditDetails
 
 @typing.final
 class VersionHistoryOpen(google.protobuf.message.Message):
@@ -163,7 +157,7 @@ class VersionHistoryOpen(google.protobuf.message.Message):
     def HasField(self, field_name: typing.Literal["ctx", b"ctx", "enrichment", b"enrichment"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["ctx", b"ctx", "enrichment", b"enrichment"]) -> None: ...
 
-Global___VersionHistoryOpen: typing_extensions.TypeAlias = VersionHistoryOpen
+global___VersionHistoryOpen = VersionHistoryOpen
 
 @typing.final
 class CopilotOpen(google.protobuf.message.Message):
@@ -184,7 +178,7 @@ class CopilotOpen(google.protobuf.message.Message):
     def HasField(self, field_name: typing.Literal["ctx", b"ctx", "enrichment", b"enrichment"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["ctx", b"ctx", "enrichment", b"enrichment"]) -> None: ...
 
-Global___CopilotOpen: typing_extensions.TypeAlias = CopilotOpen
+global___CopilotOpen = CopilotOpen
 
 @typing.final
 class CopilotCreateChat(google.protobuf.message.Message):
@@ -205,7 +199,7 @@ class CopilotCreateChat(google.protobuf.message.Message):
     def HasField(self, field_name: typing.Literal["ctx", b"ctx", "enrichment", b"enrichment"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["ctx", b"ctx", "enrichment", b"enrichment"]) -> None: ...
 
-Global___CopilotCreateChat: typing_extensions.TypeAlias = CopilotCreateChat
+global___CopilotCreateChat = CopilotCreateChat
 
 @typing.final
 class CopilotAddCode(google.protobuf.message.Message):
@@ -229,7 +223,7 @@ class CopilotAddCode(google.protobuf.message.Message):
     def HasField(self, field_name: typing.Literal["ctx", b"ctx", "enrichment", b"enrichment"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["copilot_request_id", b"copilot_request_id", "ctx", b"ctx", "enrichment", b"enrichment"]) -> None: ...
 
-Global___CopilotAddCode: typing_extensions.TypeAlias = CopilotAddCode
+global___CopilotAddCode = CopilotAddCode
 
 @typing.final
 class CopilotFeedbackGood(google.protobuf.message.Message):
@@ -253,7 +247,7 @@ class CopilotFeedbackGood(google.protobuf.message.Message):
     def HasField(self, field_name: typing.Literal["ctx", b"ctx", "enrichment", b"enrichment"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["copilot_request_id", b"copilot_request_id", "ctx", b"ctx", "enrichment", b"enrichment"]) -> None: ...
 
-Global___CopilotFeedbackGood: typing_extensions.TypeAlias = CopilotFeedbackGood
+global___CopilotFeedbackGood = CopilotFeedbackGood
 
 @typing.final
 class CopilotFeedbackBad(google.protobuf.message.Message):
@@ -277,7 +271,7 @@ class CopilotFeedbackBad(google.protobuf.message.Message):
     def HasField(self, field_name: typing.Literal["ctx", b"ctx", "enrichment", b"enrichment"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["copilot_request_id", b"copilot_request_id", "ctx", b"ctx", "enrichment", b"enrichment"]) -> None: ...
 
-Global___CopilotFeedbackBad: typing_extensions.TypeAlias = CopilotFeedbackBad
+global___CopilotFeedbackBad = CopilotFeedbackBad
 
 @typing.final
 class ChartsOpen(google.protobuf.message.Message):
@@ -298,7 +292,7 @@ class ChartsOpen(google.protobuf.message.Message):
     def HasField(self, field_name: typing.Literal["ctx", b"ctx", "enrichment", b"enrichment"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["ctx", b"ctx", "enrichment", b"enrichment"]) -> None: ...
 
-Global___ChartsOpen: typing_extensions.TypeAlias = ChartsOpen
+global___ChartsOpen = ChartsOpen
 
 @typing.final
 class ChartsConfigOpen(google.protobuf.message.Message):
@@ -319,7 +313,7 @@ class ChartsConfigOpen(google.protobuf.message.Message):
     def HasField(self, field_name: typing.Literal["ctx", b"ctx", "enrichment", b"enrichment"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["ctx", b"ctx", "enrichment", b"enrichment"]) -> None: ...
 
-Global___ChartsConfigOpen: typing_extensions.TypeAlias = ChartsConfigOpen
+global___ChartsConfigOpen = ChartsConfigOpen
 
 @typing.final
 class ShareCreateLink(google.protobuf.message.Message):
@@ -340,7 +334,7 @@ class ShareCreateLink(google.protobuf.message.Message):
     def HasField(self, field_name: typing.Literal["ctx", b"ctx", "enrichment", b"enrichment"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["ctx", b"ctx", "enrichment", b"enrichment"]) -> None: ...
 
-Global___ShareCreateLink: typing_extensions.TypeAlias = ShareCreateLink
+global___ShareCreateLink = ShareCreateLink
 
 @typing.final
 class ShareOpenLink(google.protobuf.message.Message):
@@ -361,7 +355,7 @@ class ShareOpenLink(google.protobuf.message.Message):
     def HasField(self, field_name: typing.Literal["ctx", b"ctx", "enrichment", b"enrichment"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["ctx", b"ctx", "enrichment", b"enrichment"]) -> None: ...
 
-Global___ShareOpenLink: typing_extensions.TypeAlias = ShareOpenLink
+global___ShareOpenLink = ShareOpenLink
 
 @typing.final
 class ShareCopyToNewQuery(google.protobuf.message.Message):
@@ -382,7 +376,7 @@ class ShareCopyToNewQuery(google.protobuf.message.Message):
     def HasField(self, field_name: typing.Literal["ctx", b"ctx", "enrichment", b"enrichment"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["ctx", b"ctx", "enrichment", b"enrichment"]) -> None: ...
 
-Global___ShareCopyToNewQuery: typing_extensions.TypeAlias = ShareCopyToNewQuery
+global___ShareCopyToNewQuery = ShareCopyToNewQuery
 
 @typing.final
 class CsvDownload(google.protobuf.message.Message):
@@ -406,7 +400,7 @@ class CsvDownload(google.protobuf.message.Message):
     def HasField(self, field_name: typing.Literal["ctx", b"ctx", "enrichment", b"enrichment"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["ctx", b"ctx", "enrichment", b"enrichment", "file_size_bytes", b"file_size_bytes"]) -> None: ...
 
-Global___CsvDownload: typing_extensions.TypeAlias = CsvDownload
+global___CsvDownload = CsvDownload
 
 @typing.final
 class RunQuery(google.protobuf.message.Message):
@@ -433,7 +427,7 @@ class RunQuery(google.protobuf.message.Message):
     def HasField(self, field_name: typing.Literal["ctx", b"ctx", "enrichment", b"enrichment"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["ctx", b"ctx", "enrichment", b"enrichment", "error", b"error", "sql", b"sql"]) -> None: ...
 
-Global___RunQuery: typing_extensions.TypeAlias = RunQuery
+global___RunQuery = RunQuery
 
 @typing.final
 class HandoffOpenSqlInStudio(google.protobuf.message.Message):
@@ -454,7 +448,7 @@ class HandoffOpenSqlInStudio(google.protobuf.message.Message):
     def HasField(self, field_name: typing.Literal["ctx", b"ctx", "enrichment", b"enrichment"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["ctx", b"ctx", "enrichment", b"enrichment"]) -> None: ...
 
-Global___HandoffOpenSqlInStudio: typing_extensions.TypeAlias = HandoffOpenSqlInStudio
+global___HandoffOpenSqlInStudio = HandoffOpenSqlInStudio
 
 @typing.final
 class HandoffOpenSqlInCanvas(google.protobuf.message.Message):
@@ -475,7 +469,7 @@ class HandoffOpenSqlInCanvas(google.protobuf.message.Message):
     def HasField(self, field_name: typing.Literal["ctx", b"ctx", "enrichment", b"enrichment"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["ctx", b"ctx", "enrichment", b"enrichment"]) -> None: ...
 
-Global___HandoffOpenSqlInCanvas: typing_extensions.TypeAlias = HandoffOpenSqlInCanvas
+global___HandoffOpenSqlInCanvas = HandoffOpenSqlInCanvas
 
 @typing.final
 class HandoffOpenModelInCatalog(google.protobuf.message.Message):
@@ -496,7 +490,7 @@ class HandoffOpenModelInCatalog(google.protobuf.message.Message):
     def HasField(self, field_name: typing.Literal["ctx", b"ctx", "enrichment", b"enrichment"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["ctx", b"ctx", "enrichment", b"enrichment"]) -> None: ...
 
-Global___HandoffOpenModelInCatalog: typing_extensions.TypeAlias = HandoffOpenModelInCatalog
+global___HandoffOpenModelInCatalog = HandoffOpenModelInCatalog
 
 @typing.final
 class Acknowledge2025LaunchTrialBanner(google.protobuf.message.Message):
@@ -517,4 +511,4 @@ class Acknowledge2025LaunchTrialBanner(google.protobuf.message.Message):
     def HasField(self, field_name: typing.Literal["ctx", b"ctx", "enrichment", b"enrichment"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["ctx", b"ctx", "enrichment", b"enrichment"]) -> None: ...
 
-Global___Acknowledge2025LaunchTrialBanner: typing_extensions.TypeAlias = Acknowledge2025LaunchTrialBanner
+global___Acknowledge2025LaunchTrialBanner = Acknowledge2025LaunchTrialBanner

@@ -8,13 +8,7 @@ import dbtlabs.proto.public.v1.events.fusion.compat.otlp_pb2
 import dbtlabs.proto.public.v1.events.fusion.phase.phase_pb2
 import google.protobuf.descriptor
 import google.protobuf.message
-import sys
 import typing
-
-if sys.version_info >= (3, 10):
-    import typing as typing_extensions
-else:
-    import typing_extensions
 
 DESCRIPTOR: google.protobuf.descriptor.FileDescriptor
 
@@ -118,7 +112,7 @@ class LogMessage(google.protobuf.message.Message):
     @typing.overload
     def WhichOneof(self, oneof_group: typing.Literal["_unique_id", b"_unique_id"]) -> typing.Literal["unique_id"] | None: ...
 
-Global___LogMessage: typing_extensions.TypeAlias = LogMessage
+global___LogMessage = LogMessage
 
 @typing.final
 class UserLogMessage(google.protobuf.message.Message):
@@ -188,7 +182,7 @@ class UserLogMessage(google.protobuf.message.Message):
     @typing.overload
     def WhichOneof(self, oneof_group: typing.Literal["_unique_id", b"_unique_id"]) -> typing.Literal["unique_id"] | None: ...
 
-Global___UserLogMessage: typing_extensions.TypeAlias = UserLogMessage
+global___UserLogMessage = UserLogMessage
 
 @typing.final
 class ProgressMessage(google.protobuf.message.Message):
@@ -253,7 +247,7 @@ class ProgressMessage(google.protobuf.message.Message):
     @typing.overload
     def WhichOneof(self, oneof_group: typing.Literal["_unique_id", b"_unique_id"]) -> typing.Literal["unique_id"] | None: ...
 
-Global___ProgressMessage: typing_extensions.TypeAlias = ProgressMessage
+global___ProgressMessage = ProgressMessage
 
 @typing.final
 class StateModifiedDiff(google.protobuf.message.Message):
@@ -295,4 +289,4 @@ class StateModifiedDiff(google.protobuf.message.Message):
     @typing.overload
     def WhichOneof(self, oneof_group: typing.Literal["_unique_id", b"_unique_id"]) -> typing.Literal["unique_id"] | None: ...
 
-Global___StateModifiedDiff: typing_extensions.TypeAlias = StateModifiedDiff
+global___StateModifiedDiff = StateModifiedDiff

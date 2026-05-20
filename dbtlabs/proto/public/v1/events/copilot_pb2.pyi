@@ -8,13 +8,7 @@ import dbtlabs.proto.public.v1.common.vortex_telemetry_contexts_pb2
 import dbtlabs.proto.public.v1.events.vortex_pb2
 import google.protobuf.descriptor
 import google.protobuf.message
-import sys
 import typing
-
-if sys.version_info >= (3, 10):
-    import typing as typing_extensions
-else:
-    import typing_extensions
 
 DESCRIPTOR: google.protobuf.descriptor.FileDescriptor
 
@@ -158,7 +152,7 @@ class CopilotGenerationComplete(google.protobuf.message.Message):
     @typing.overload
     def WhichOneof(self, oneof_group: typing.Literal["_tokens_total", b"_tokens_total"]) -> typing.Literal["tokens_total"] | None: ...
 
-Global___CopilotGenerationComplete: typing_extensions.TypeAlias = CopilotGenerationComplete
+global___CopilotGenerationComplete = CopilotGenerationComplete
 
 @typing.final
 class CopilotLlmCall(google.protobuf.message.Message):
@@ -270,7 +264,7 @@ class CopilotLlmCall(google.protobuf.message.Message):
     @typing.overload
     def WhichOneof(self, oneof_group: typing.Literal["_tokens_total", b"_tokens_total"]) -> typing.Literal["tokens_total"] | None: ...
 
-Global___CopilotLlmCall: typing_extensions.TypeAlias = CopilotLlmCall
+global___CopilotLlmCall = CopilotLlmCall
 
 @typing.final
 class CopilotUserAcceptance(google.protobuf.message.Message):
@@ -289,12 +283,15 @@ class CopilotUserAcceptance(google.protobuf.message.Message):
     COPILOT_REQUEST_ID_FIELD_NUMBER: builtins.int
     THREAD_ID_FIELD_NUMBER: builtins.int
     RESPONSE_TYPE_FIELD_NUMBER: builtins.int
+    FEEDBACK_TEXT_FIELD_NUMBER: builtins.int
     copilot_request_id: builtins.str
     """The generation request this acceptance responds to"""
     thread_id: builtins.str
     """Conversation thread for multi-turn correlation"""
     response_type: builtins.str
     """User's decision; see response_type values documented above"""
+    feedback_text: builtins.str
+    """Optional free-text feedback comment from the user. Unset when no feedback provided."""
     @property
     def enrichment(self) -> dbtlabs.proto.public.v1.events.vortex_pb2.VortexMessageEnrichment:
         """Server enrichment for this event"""
@@ -311,8 +308,10 @@ class CopilotUserAcceptance(google.protobuf.message.Message):
         copilot_request_id: builtins.str = ...,
         thread_id: builtins.str = ...,
         response_type: builtins.str = ...,
+        feedback_text: builtins.str | None = ...,
     ) -> None: ...
-    def HasField(self, field_name: typing.Literal["ctx", b"ctx", "enrichment", b"enrichment"]) -> builtins.bool: ...
-    def ClearField(self, field_name: typing.Literal["copilot_request_id", b"copilot_request_id", "ctx", b"ctx", "enrichment", b"enrichment", "response_type", b"response_type", "thread_id", b"thread_id"]) -> None: ...
+    def HasField(self, field_name: typing.Literal["_feedback_text", b"_feedback_text", "ctx", b"ctx", "enrichment", b"enrichment", "feedback_text", b"feedback_text"]) -> builtins.bool: ...
+    def ClearField(self, field_name: typing.Literal["_feedback_text", b"_feedback_text", "copilot_request_id", b"copilot_request_id", "ctx", b"ctx", "enrichment", b"enrichment", "feedback_text", b"feedback_text", "response_type", b"response_type", "thread_id", b"thread_id"]) -> None: ...
+    def WhichOneof(self, oneof_group: typing.Literal["_feedback_text", b"_feedback_text"]) -> typing.Literal["feedback_text"] | None: ...
 
-Global___CopilotUserAcceptance: typing_extensions.TypeAlias = CopilotUserAcceptance
+global___CopilotUserAcceptance = CopilotUserAcceptance
