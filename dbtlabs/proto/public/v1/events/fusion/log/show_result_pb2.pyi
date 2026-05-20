@@ -33,7 +33,7 @@ class ShowResultOutputFormat(_ShowResultOutputFormat, metaclass=_ShowResultOutpu
 SHOW_RESULT_OUTPUT_FORMAT_UNSPECIFIED: ShowResultOutputFormat.ValueType  # 0
 SHOW_RESULT_OUTPUT_FORMAT_TEXT: ShowResultOutputFormat.ValueType  # 1
 """Pretty-printed text format suitable for terminal display."""
-Global___ShowResultOutputFormat: typing_extensions.TypeAlias = ShowResultOutputFormat
+global___ShowResultOutputFormat = ShowResultOutputFormat
 
 @typing.final
 class ShowResult(google.protobuf.message.Message):
@@ -48,7 +48,7 @@ class ShowResult(google.protobuf.message.Message):
     RESULT_TYPE_FIELD_NUMBER: builtins.int
     TITLE_FIELD_NUMBER: builtins.int
     UNIQUE_ID_FIELD_NUMBER: builtins.int
-    output_format: Global___ShowResultOutputFormat.ValueType
+    output_format: global___ShowResultOutputFormat.ValueType
     """Format of the output content."""
     content: builtins.str
     """The content to display in the specified format."""
@@ -67,7 +67,7 @@ class ShowResult(google.protobuf.message.Message):
     def __init__(
         self,
         *,
-        output_format: Global___ShowResultOutputFormat.ValueType = ...,
+        output_format: global___ShowResultOutputFormat.ValueType = ...,
         content: builtins.str = ...,
         result_type: builtins.str = ...,
         title: builtins.str = ...,
@@ -77,4 +77,4 @@ class ShowResult(google.protobuf.message.Message):
     def ClearField(self, field_name: typing.Literal["_unique_id", b"_unique_id", "content", b"content", "output_format", b"output_format", "result_type", b"result_type", "title", b"title", "unique_id", b"unique_id"]) -> None: ...
     def WhichOneof(self, oneof_group: typing.Literal["_unique_id", b"_unique_id"]) -> typing.Literal["unique_id"] | None: ...
 
-Global___ShowResult: typing_extensions.TypeAlias = ShowResult
+global___ShowResult = ShowResult

@@ -10,13 +10,7 @@ import google.protobuf.internal.containers
 import google.protobuf.message
 import google.protobuf.struct_pb2
 import google.protobuf.timestamp_pb2
-import sys
 import typing
-
-if sys.version_info >= (3, 10):
-    import typing as typing_extensions
-else:
-    import typing_extensions
 
 DESCRIPTOR: google.protobuf.descriptor.FileDescriptor
 
@@ -81,7 +75,7 @@ class CoreEventInfo(google.protobuf.message.Message):
     def HasField(self, field_name: typing.Literal["ts", b"ts"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["category", b"category", "code", b"code", "extra", b"extra", "invocation_id", b"invocation_id", "level", b"level", "msg", b"msg", "name", b"name", "pid", b"pid", "thread", b"thread", "ts", b"ts"]) -> None: ...
 
-Global___CoreEventInfo: typing_extensions.TypeAlias = CoreEventInfo
+global___CoreEventInfo = CoreEventInfo
 
 @typing.final
 class NodeRelation(google.protobuf.message.Message):
@@ -107,7 +101,7 @@ class NodeRelation(google.protobuf.message.Message):
     ) -> None: ...
     def ClearField(self, field_name: typing.Literal["alias", b"alias", "database", b"database", "relation_name", b"relation_name", "schema", b"schema"]) -> None: ...
 
-Global___NodeRelation: typing_extensions.TypeAlias = NodeRelation
+global___NodeRelation = NodeRelation
 
 @typing.final
 class NodeInfo(google.protobuf.message.Message):
@@ -138,7 +132,7 @@ class NodeInfo(google.protobuf.message.Message):
     @property
     def meta(self) -> google.protobuf.struct_pb2.Struct: ...
     @property
-    def node_relation(self) -> Global___NodeRelation: ...
+    def node_relation(self) -> global___NodeRelation: ...
     def __init__(
         self,
         *,
@@ -151,13 +145,13 @@ class NodeInfo(google.protobuf.message.Message):
         node_started_at: builtins.str = ...,
         node_finished_at: builtins.str = ...,
         meta: google.protobuf.struct_pb2.Struct | None = ...,
-        node_relation: Global___NodeRelation | None = ...,
+        node_relation: global___NodeRelation | None = ...,
         node_checksum: builtins.str = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["meta", b"meta", "node_relation", b"node_relation"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["materialized", b"materialized", "meta", b"meta", "node_checksum", b"node_checksum", "node_finished_at", b"node_finished_at", "node_name", b"node_name", "node_path", b"node_path", "node_relation", b"node_relation", "node_started_at", b"node_started_at", "node_status", b"node_status", "resource_type", b"resource_type", "unique_id", b"unique_id"]) -> None: ...
 
-Global___NodeInfo: typing_extensions.TypeAlias = NodeInfo
+global___NodeInfo = NodeInfo
 
 @typing.final
 class TimingInfoMsg(google.protobuf.message.Message):
@@ -183,7 +177,7 @@ class TimingInfoMsg(google.protobuf.message.Message):
     def HasField(self, field_name: typing.Literal["completed_at", b"completed_at", "started_at", b"started_at"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["completed_at", b"completed_at", "name", b"name", "started_at", b"started_at"]) -> None: ...
 
-Global___TimingInfoMsg: typing_extensions.TypeAlias = TimingInfoMsg
+global___TimingInfoMsg = TimingInfoMsg
 
 @typing.final
 class RunResultMsg(google.protobuf.message.Message):
@@ -204,7 +198,7 @@ class RunResultMsg(google.protobuf.message.Message):
     execution_time: builtins.float
     num_failures: builtins.int
     @property
-    def timing_info(self) -> google.protobuf.internal.containers.RepeatedCompositeFieldContainer[Global___TimingInfoMsg]: ...
+    def timing_info(self) -> google.protobuf.internal.containers.RepeatedCompositeFieldContainer[global___TimingInfoMsg]: ...
     @property
     def adapter_response(self) -> google.protobuf.struct_pb2.Struct: ...
     def __init__(
@@ -212,7 +206,7 @@ class RunResultMsg(google.protobuf.message.Message):
         *,
         status: builtins.str = ...,
         message: builtins.str = ...,
-        timing_info: collections.abc.Iterable[Global___TimingInfoMsg] | None = ...,
+        timing_info: collections.abc.Iterable[global___TimingInfoMsg] | None = ...,
         thread: builtins.str = ...,
         execution_time: builtins.float = ...,
         adapter_response: google.protobuf.struct_pb2.Struct | None = ...,
@@ -221,7 +215,7 @@ class RunResultMsg(google.protobuf.message.Message):
     def HasField(self, field_name: typing.Literal["adapter_response", b"adapter_response"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["adapter_response", b"adapter_response", "execution_time", b"execution_time", "message", b"message", "num_failures", b"num_failures", "status", b"status", "thread", b"thread", "timing_info", b"timing_info"]) -> None: ...
 
-Global___RunResultMsg: typing_extensions.TypeAlias = RunResultMsg
+global___RunResultMsg = RunResultMsg
 
 @typing.final
 class ColumnType(google.protobuf.message.Message):
@@ -244,7 +238,7 @@ class ColumnType(google.protobuf.message.Message):
     ) -> None: ...
     def ClearField(self, field_name: typing.Literal["column_name", b"column_name", "current_column_type", b"current_column_type", "previous_column_type", b"previous_column_type"]) -> None: ...
 
-Global___ColumnType: typing_extensions.TypeAlias = ColumnType
+global___ColumnType = ColumnType
 
 @typing.final
 class ColumnConstraint(google.protobuf.message.Message):
@@ -267,7 +261,7 @@ class ColumnConstraint(google.protobuf.message.Message):
     ) -> None: ...
     def ClearField(self, field_name: typing.Literal["column_name", b"column_name", "constraint_name", b"constraint_name", "constraint_type", b"constraint_type"]) -> None: ...
 
-Global___ColumnConstraint: typing_extensions.TypeAlias = ColumnConstraint
+global___ColumnConstraint = ColumnConstraint
 
 @typing.final
 class ModelConstraint(google.protobuf.message.Message):
@@ -291,7 +285,7 @@ class ModelConstraint(google.protobuf.message.Message):
     ) -> None: ...
     def ClearField(self, field_name: typing.Literal["columns", b"columns", "constraint_name", b"constraint_name", "constraint_type", b"constraint_type"]) -> None: ...
 
-Global___ModelConstraint: typing_extensions.TypeAlias = ModelConstraint
+global___ModelConstraint = ModelConstraint
 
 @typing.final
 class MainReportVersion(google.protobuf.message.Message):
@@ -314,7 +308,7 @@ class MainReportVersion(google.protobuf.message.Message):
     ) -> None: ...
     def ClearField(self, field_name: typing.Literal["log_version", b"log_version", "version", b"version"]) -> None: ...
 
-Global___MainReportVersion: typing_extensions.TypeAlias = MainReportVersion
+global___MainReportVersion = MainReportVersion
 
 @typing.final
 class MainReportVersionMsg(google.protobuf.message.Message):
@@ -323,19 +317,19 @@ class MainReportVersionMsg(google.protobuf.message.Message):
     INFO_FIELD_NUMBER: builtins.int
     DATA_FIELD_NUMBER: builtins.int
     @property
-    def info(self) -> Global___CoreEventInfo: ...
+    def info(self) -> global___CoreEventInfo: ...
     @property
-    def data(self) -> Global___MainReportVersion: ...
+    def data(self) -> global___MainReportVersion: ...
     def __init__(
         self,
         *,
-        info: Global___CoreEventInfo | None = ...,
-        data: Global___MainReportVersion | None = ...,
+        info: global___CoreEventInfo | None = ...,
+        data: global___MainReportVersion | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> None: ...
 
-Global___MainReportVersionMsg: typing_extensions.TypeAlias = MainReportVersionMsg
+global___MainReportVersionMsg = MainReportVersionMsg
 
 @typing.final
 class MainReportArgs(google.protobuf.message.Message):
@@ -369,7 +363,7 @@ class MainReportArgs(google.protobuf.message.Message):
     ) -> None: ...
     def ClearField(self, field_name: typing.Literal["args", b"args"]) -> None: ...
 
-Global___MainReportArgs: typing_extensions.TypeAlias = MainReportArgs
+global___MainReportArgs = MainReportArgs
 
 @typing.final
 class MainReportArgsMsg(google.protobuf.message.Message):
@@ -378,19 +372,19 @@ class MainReportArgsMsg(google.protobuf.message.Message):
     INFO_FIELD_NUMBER: builtins.int
     DATA_FIELD_NUMBER: builtins.int
     @property
-    def info(self) -> Global___CoreEventInfo: ...
+    def info(self) -> global___CoreEventInfo: ...
     @property
-    def data(self) -> Global___MainReportArgs: ...
+    def data(self) -> global___MainReportArgs: ...
     def __init__(
         self,
         *,
-        info: Global___CoreEventInfo | None = ...,
-        data: Global___MainReportArgs | None = ...,
+        info: global___CoreEventInfo | None = ...,
+        data: global___MainReportArgs | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> None: ...
 
-Global___MainReportArgsMsg: typing_extensions.TypeAlias = MainReportArgsMsg
+global___MainReportArgsMsg = MainReportArgsMsg
 
 @typing.final
 class MainTrackingUserState(google.protobuf.message.Message):
@@ -407,7 +401,7 @@ class MainTrackingUserState(google.protobuf.message.Message):
     ) -> None: ...
     def ClearField(self, field_name: typing.Literal["user_state", b"user_state"]) -> None: ...
 
-Global___MainTrackingUserState: typing_extensions.TypeAlias = MainTrackingUserState
+global___MainTrackingUserState = MainTrackingUserState
 
 @typing.final
 class MainTrackingUserStateMsg(google.protobuf.message.Message):
@@ -416,19 +410,19 @@ class MainTrackingUserStateMsg(google.protobuf.message.Message):
     INFO_FIELD_NUMBER: builtins.int
     DATA_FIELD_NUMBER: builtins.int
     @property
-    def info(self) -> Global___CoreEventInfo: ...
+    def info(self) -> global___CoreEventInfo: ...
     @property
-    def data(self) -> Global___MainTrackingUserState: ...
+    def data(self) -> global___MainTrackingUserState: ...
     def __init__(
         self,
         *,
-        info: Global___CoreEventInfo | None = ...,
-        data: Global___MainTrackingUserState | None = ...,
+        info: global___CoreEventInfo | None = ...,
+        data: global___MainTrackingUserState | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> None: ...
 
-Global___MainTrackingUserStateMsg: typing_extensions.TypeAlias = MainTrackingUserStateMsg
+global___MainTrackingUserStateMsg = MainTrackingUserStateMsg
 
 @typing.final
 class MergedFromState(google.protobuf.message.Message):
@@ -449,7 +443,7 @@ class MergedFromState(google.protobuf.message.Message):
     ) -> None: ...
     def ClearField(self, field_name: typing.Literal["num_merged", b"num_merged", "sample", b"sample"]) -> None: ...
 
-Global___MergedFromState: typing_extensions.TypeAlias = MergedFromState
+global___MergedFromState = MergedFromState
 
 @typing.final
 class MergedFromStateMsg(google.protobuf.message.Message):
@@ -458,19 +452,19 @@ class MergedFromStateMsg(google.protobuf.message.Message):
     INFO_FIELD_NUMBER: builtins.int
     DATA_FIELD_NUMBER: builtins.int
     @property
-    def info(self) -> Global___CoreEventInfo: ...
+    def info(self) -> global___CoreEventInfo: ...
     @property
-    def data(self) -> Global___MergedFromState: ...
+    def data(self) -> global___MergedFromState: ...
     def __init__(
         self,
         *,
-        info: Global___CoreEventInfo | None = ...,
-        data: Global___MergedFromState | None = ...,
+        info: global___CoreEventInfo | None = ...,
+        data: global___MergedFromState | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> None: ...
 
-Global___MergedFromStateMsg: typing_extensions.TypeAlias = MergedFromStateMsg
+global___MergedFromStateMsg = MergedFromStateMsg
 
 @typing.final
 class MissingProfileTarget(google.protobuf.message.Message):
@@ -490,7 +484,7 @@ class MissingProfileTarget(google.protobuf.message.Message):
     ) -> None: ...
     def ClearField(self, field_name: typing.Literal["profile_name", b"profile_name", "target_name", b"target_name"]) -> None: ...
 
-Global___MissingProfileTarget: typing_extensions.TypeAlias = MissingProfileTarget
+global___MissingProfileTarget = MissingProfileTarget
 
 @typing.final
 class MissingProfileTargetMsg(google.protobuf.message.Message):
@@ -499,19 +493,19 @@ class MissingProfileTargetMsg(google.protobuf.message.Message):
     INFO_FIELD_NUMBER: builtins.int
     DATA_FIELD_NUMBER: builtins.int
     @property
-    def info(self) -> Global___CoreEventInfo: ...
+    def info(self) -> global___CoreEventInfo: ...
     @property
-    def data(self) -> Global___MissingProfileTarget: ...
+    def data(self) -> global___MissingProfileTarget: ...
     def __init__(
         self,
         *,
-        info: Global___CoreEventInfo | None = ...,
-        data: Global___MissingProfileTarget | None = ...,
+        info: global___CoreEventInfo | None = ...,
+        data: global___MissingProfileTarget | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> None: ...
 
-Global___MissingProfileTargetMsg: typing_extensions.TypeAlias = MissingProfileTargetMsg
+global___MissingProfileTargetMsg = MissingProfileTargetMsg
 
 @typing.final
 class InvalidOptionYAML(google.protobuf.message.Message):
@@ -531,7 +525,7 @@ class InvalidOptionYAML(google.protobuf.message.Message):
     ) -> None: ...
     def ClearField(self, field_name: typing.Literal["option_name", b"option_name"]) -> None: ...
 
-Global___InvalidOptionYAML: typing_extensions.TypeAlias = InvalidOptionYAML
+global___InvalidOptionYAML = InvalidOptionYAML
 
 @typing.final
 class InvalidOptionYAMLMsg(google.protobuf.message.Message):
@@ -540,19 +534,19 @@ class InvalidOptionYAMLMsg(google.protobuf.message.Message):
     INFO_FIELD_NUMBER: builtins.int
     DATA_FIELD_NUMBER: builtins.int
     @property
-    def info(self) -> Global___CoreEventInfo: ...
+    def info(self) -> global___CoreEventInfo: ...
     @property
-    def data(self) -> Global___InvalidOptionYAML: ...
+    def data(self) -> global___InvalidOptionYAML: ...
     def __init__(
         self,
         *,
-        info: Global___CoreEventInfo | None = ...,
-        data: Global___InvalidOptionYAML | None = ...,
+        info: global___CoreEventInfo | None = ...,
+        data: global___InvalidOptionYAML | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> None: ...
 
-Global___InvalidOptionYAMLMsg: typing_extensions.TypeAlias = InvalidOptionYAMLMsg
+global___InvalidOptionYAMLMsg = InvalidOptionYAMLMsg
 
 @typing.final
 class LogDbtProjectError(google.protobuf.message.Message):
@@ -569,7 +563,7 @@ class LogDbtProjectError(google.protobuf.message.Message):
     ) -> None: ...
     def ClearField(self, field_name: typing.Literal["exc", b"exc"]) -> None: ...
 
-Global___LogDbtProjectError: typing_extensions.TypeAlias = LogDbtProjectError
+global___LogDbtProjectError = LogDbtProjectError
 
 @typing.final
 class LogDbtProjectErrorMsg(google.protobuf.message.Message):
@@ -578,19 +572,19 @@ class LogDbtProjectErrorMsg(google.protobuf.message.Message):
     INFO_FIELD_NUMBER: builtins.int
     DATA_FIELD_NUMBER: builtins.int
     @property
-    def info(self) -> Global___CoreEventInfo: ...
+    def info(self) -> global___CoreEventInfo: ...
     @property
-    def data(self) -> Global___LogDbtProjectError: ...
+    def data(self) -> global___LogDbtProjectError: ...
     def __init__(
         self,
         *,
-        info: Global___CoreEventInfo | None = ...,
-        data: Global___LogDbtProjectError | None = ...,
+        info: global___CoreEventInfo | None = ...,
+        data: global___LogDbtProjectError | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> None: ...
 
-Global___LogDbtProjectErrorMsg: typing_extensions.TypeAlias = LogDbtProjectErrorMsg
+global___LogDbtProjectErrorMsg = LogDbtProjectErrorMsg
 
 @typing.final
 class LogDbtProfileError(google.protobuf.message.Message):
@@ -614,7 +608,7 @@ class LogDbtProfileError(google.protobuf.message.Message):
     ) -> None: ...
     def ClearField(self, field_name: typing.Literal["exc", b"exc", "profiles", b"profiles"]) -> None: ...
 
-Global___LogDbtProfileError: typing_extensions.TypeAlias = LogDbtProfileError
+global___LogDbtProfileError = LogDbtProfileError
 
 @typing.final
 class LogDbtProfileErrorMsg(google.protobuf.message.Message):
@@ -623,19 +617,19 @@ class LogDbtProfileErrorMsg(google.protobuf.message.Message):
     INFO_FIELD_NUMBER: builtins.int
     DATA_FIELD_NUMBER: builtins.int
     @property
-    def info(self) -> Global___CoreEventInfo: ...
+    def info(self) -> global___CoreEventInfo: ...
     @property
-    def data(self) -> Global___LogDbtProfileError: ...
+    def data(self) -> global___LogDbtProfileError: ...
     def __init__(
         self,
         *,
-        info: Global___CoreEventInfo | None = ...,
-        data: Global___LogDbtProfileError | None = ...,
+        info: global___CoreEventInfo | None = ...,
+        data: global___LogDbtProfileError | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> None: ...
 
-Global___LogDbtProfileErrorMsg: typing_extensions.TypeAlias = LogDbtProfileErrorMsg
+global___LogDbtProfileErrorMsg = LogDbtProfileErrorMsg
 
 @typing.final
 class StarterProjectPath(google.protobuf.message.Message):
@@ -655,7 +649,7 @@ class StarterProjectPath(google.protobuf.message.Message):
     ) -> None: ...
     def ClearField(self, field_name: typing.Literal["dir", b"dir"]) -> None: ...
 
-Global___StarterProjectPath: typing_extensions.TypeAlias = StarterProjectPath
+global___StarterProjectPath = StarterProjectPath
 
 @typing.final
 class StarterProjectPathMsg(google.protobuf.message.Message):
@@ -664,19 +658,19 @@ class StarterProjectPathMsg(google.protobuf.message.Message):
     INFO_FIELD_NUMBER: builtins.int
     DATA_FIELD_NUMBER: builtins.int
     @property
-    def info(self) -> Global___CoreEventInfo: ...
+    def info(self) -> global___CoreEventInfo: ...
     @property
-    def data(self) -> Global___StarterProjectPath: ...
+    def data(self) -> global___StarterProjectPath: ...
     def __init__(
         self,
         *,
-        info: Global___CoreEventInfo | None = ...,
-        data: Global___StarterProjectPath | None = ...,
+        info: global___CoreEventInfo | None = ...,
+        data: global___StarterProjectPath | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> None: ...
 
-Global___StarterProjectPathMsg: typing_extensions.TypeAlias = StarterProjectPathMsg
+global___StarterProjectPathMsg = StarterProjectPathMsg
 
 @typing.final
 class ConfigFolderDirectory(google.protobuf.message.Message):
@@ -693,7 +687,7 @@ class ConfigFolderDirectory(google.protobuf.message.Message):
     ) -> None: ...
     def ClearField(self, field_name: typing.Literal["dir", b"dir"]) -> None: ...
 
-Global___ConfigFolderDirectory: typing_extensions.TypeAlias = ConfigFolderDirectory
+global___ConfigFolderDirectory = ConfigFolderDirectory
 
 @typing.final
 class ConfigFolderDirectoryMsg(google.protobuf.message.Message):
@@ -702,19 +696,19 @@ class ConfigFolderDirectoryMsg(google.protobuf.message.Message):
     INFO_FIELD_NUMBER: builtins.int
     DATA_FIELD_NUMBER: builtins.int
     @property
-    def info(self) -> Global___CoreEventInfo: ...
+    def info(self) -> global___CoreEventInfo: ...
     @property
-    def data(self) -> Global___ConfigFolderDirectory: ...
+    def data(self) -> global___ConfigFolderDirectory: ...
     def __init__(
         self,
         *,
-        info: Global___CoreEventInfo | None = ...,
-        data: Global___ConfigFolderDirectory | None = ...,
+        info: global___CoreEventInfo | None = ...,
+        data: global___ConfigFolderDirectory | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> None: ...
 
-Global___ConfigFolderDirectoryMsg: typing_extensions.TypeAlias = ConfigFolderDirectoryMsg
+global___ConfigFolderDirectoryMsg = ConfigFolderDirectoryMsg
 
 @typing.final
 class NoSampleProfileFound(google.protobuf.message.Message):
@@ -731,7 +725,7 @@ class NoSampleProfileFound(google.protobuf.message.Message):
     ) -> None: ...
     def ClearField(self, field_name: typing.Literal["adapter", b"adapter"]) -> None: ...
 
-Global___NoSampleProfileFound: typing_extensions.TypeAlias = NoSampleProfileFound
+global___NoSampleProfileFound = NoSampleProfileFound
 
 @typing.final
 class NoSampleProfileFoundMsg(google.protobuf.message.Message):
@@ -740,19 +734,19 @@ class NoSampleProfileFoundMsg(google.protobuf.message.Message):
     INFO_FIELD_NUMBER: builtins.int
     DATA_FIELD_NUMBER: builtins.int
     @property
-    def info(self) -> Global___CoreEventInfo: ...
+    def info(self) -> global___CoreEventInfo: ...
     @property
-    def data(self) -> Global___NoSampleProfileFound: ...
+    def data(self) -> global___NoSampleProfileFound: ...
     def __init__(
         self,
         *,
-        info: Global___CoreEventInfo | None = ...,
-        data: Global___NoSampleProfileFound | None = ...,
+        info: global___CoreEventInfo | None = ...,
+        data: global___NoSampleProfileFound | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> None: ...
 
-Global___NoSampleProfileFoundMsg: typing_extensions.TypeAlias = NoSampleProfileFoundMsg
+global___NoSampleProfileFoundMsg = NoSampleProfileFoundMsg
 
 @typing.final
 class ProfileWrittenWithSample(google.protobuf.message.Message):
@@ -772,7 +766,7 @@ class ProfileWrittenWithSample(google.protobuf.message.Message):
     ) -> None: ...
     def ClearField(self, field_name: typing.Literal["name", b"name", "path", b"path"]) -> None: ...
 
-Global___ProfileWrittenWithSample: typing_extensions.TypeAlias = ProfileWrittenWithSample
+global___ProfileWrittenWithSample = ProfileWrittenWithSample
 
 @typing.final
 class ProfileWrittenWithSampleMsg(google.protobuf.message.Message):
@@ -781,19 +775,19 @@ class ProfileWrittenWithSampleMsg(google.protobuf.message.Message):
     INFO_FIELD_NUMBER: builtins.int
     DATA_FIELD_NUMBER: builtins.int
     @property
-    def info(self) -> Global___CoreEventInfo: ...
+    def info(self) -> global___CoreEventInfo: ...
     @property
-    def data(self) -> Global___ProfileWrittenWithSample: ...
+    def data(self) -> global___ProfileWrittenWithSample: ...
     def __init__(
         self,
         *,
-        info: Global___CoreEventInfo | None = ...,
-        data: Global___ProfileWrittenWithSample | None = ...,
+        info: global___CoreEventInfo | None = ...,
+        data: global___ProfileWrittenWithSample | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> None: ...
 
-Global___ProfileWrittenWithSampleMsg: typing_extensions.TypeAlias = ProfileWrittenWithSampleMsg
+global___ProfileWrittenWithSampleMsg = ProfileWrittenWithSampleMsg
 
 @typing.final
 class ProfileWrittenWithTargetTemplateYAML(google.protobuf.message.Message):
@@ -813,7 +807,7 @@ class ProfileWrittenWithTargetTemplateYAML(google.protobuf.message.Message):
     ) -> None: ...
     def ClearField(self, field_name: typing.Literal["name", b"name", "path", b"path"]) -> None: ...
 
-Global___ProfileWrittenWithTargetTemplateYAML: typing_extensions.TypeAlias = ProfileWrittenWithTargetTemplateYAML
+global___ProfileWrittenWithTargetTemplateYAML = ProfileWrittenWithTargetTemplateYAML
 
 @typing.final
 class ProfileWrittenWithTargetTemplateYAMLMsg(google.protobuf.message.Message):
@@ -822,19 +816,19 @@ class ProfileWrittenWithTargetTemplateYAMLMsg(google.protobuf.message.Message):
     INFO_FIELD_NUMBER: builtins.int
     DATA_FIELD_NUMBER: builtins.int
     @property
-    def info(self) -> Global___CoreEventInfo: ...
+    def info(self) -> global___CoreEventInfo: ...
     @property
-    def data(self) -> Global___ProfileWrittenWithTargetTemplateYAML: ...
+    def data(self) -> global___ProfileWrittenWithTargetTemplateYAML: ...
     def __init__(
         self,
         *,
-        info: Global___CoreEventInfo | None = ...,
-        data: Global___ProfileWrittenWithTargetTemplateYAML | None = ...,
+        info: global___CoreEventInfo | None = ...,
+        data: global___ProfileWrittenWithTargetTemplateYAML | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> None: ...
 
-Global___ProfileWrittenWithTargetTemplateYAMLMsg: typing_extensions.TypeAlias = ProfileWrittenWithTargetTemplateYAMLMsg
+global___ProfileWrittenWithTargetTemplateYAMLMsg = ProfileWrittenWithTargetTemplateYAMLMsg
 
 @typing.final
 class ProfileWrittenWithProjectTemplateYAML(google.protobuf.message.Message):
@@ -854,7 +848,7 @@ class ProfileWrittenWithProjectTemplateYAML(google.protobuf.message.Message):
     ) -> None: ...
     def ClearField(self, field_name: typing.Literal["name", b"name", "path", b"path"]) -> None: ...
 
-Global___ProfileWrittenWithProjectTemplateYAML: typing_extensions.TypeAlias = ProfileWrittenWithProjectTemplateYAML
+global___ProfileWrittenWithProjectTemplateYAML = ProfileWrittenWithProjectTemplateYAML
 
 @typing.final
 class ProfileWrittenWithProjectTemplateYAMLMsg(google.protobuf.message.Message):
@@ -863,19 +857,19 @@ class ProfileWrittenWithProjectTemplateYAMLMsg(google.protobuf.message.Message):
     INFO_FIELD_NUMBER: builtins.int
     DATA_FIELD_NUMBER: builtins.int
     @property
-    def info(self) -> Global___CoreEventInfo: ...
+    def info(self) -> global___CoreEventInfo: ...
     @property
-    def data(self) -> Global___ProfileWrittenWithProjectTemplateYAML: ...
+    def data(self) -> global___ProfileWrittenWithProjectTemplateYAML: ...
     def __init__(
         self,
         *,
-        info: Global___CoreEventInfo | None = ...,
-        data: Global___ProfileWrittenWithProjectTemplateYAML | None = ...,
+        info: global___CoreEventInfo | None = ...,
+        data: global___ProfileWrittenWithProjectTemplateYAML | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> None: ...
 
-Global___ProfileWrittenWithProjectTemplateYAMLMsg: typing_extensions.TypeAlias = ProfileWrittenWithProjectTemplateYAMLMsg
+global___ProfileWrittenWithProjectTemplateYAMLMsg = ProfileWrittenWithProjectTemplateYAMLMsg
 
 @typing.final
 class SettingUpProfile(google.protobuf.message.Message):
@@ -887,7 +881,7 @@ class SettingUpProfile(google.protobuf.message.Message):
         self,
     ) -> None: ...
 
-Global___SettingUpProfile: typing_extensions.TypeAlias = SettingUpProfile
+global___SettingUpProfile = SettingUpProfile
 
 @typing.final
 class SettingUpProfileMsg(google.protobuf.message.Message):
@@ -896,19 +890,19 @@ class SettingUpProfileMsg(google.protobuf.message.Message):
     INFO_FIELD_NUMBER: builtins.int
     DATA_FIELD_NUMBER: builtins.int
     @property
-    def info(self) -> Global___CoreEventInfo: ...
+    def info(self) -> global___CoreEventInfo: ...
     @property
-    def data(self) -> Global___SettingUpProfile: ...
+    def data(self) -> global___SettingUpProfile: ...
     def __init__(
         self,
         *,
-        info: Global___CoreEventInfo | None = ...,
-        data: Global___SettingUpProfile | None = ...,
+        info: global___CoreEventInfo | None = ...,
+        data: global___SettingUpProfile | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> None: ...
 
-Global___SettingUpProfileMsg: typing_extensions.TypeAlias = SettingUpProfileMsg
+global___SettingUpProfileMsg = SettingUpProfileMsg
 
 @typing.final
 class InvalidProfileTemplateYAML(google.protobuf.message.Message):
@@ -920,7 +914,7 @@ class InvalidProfileTemplateYAML(google.protobuf.message.Message):
         self,
     ) -> None: ...
 
-Global___InvalidProfileTemplateYAML: typing_extensions.TypeAlias = InvalidProfileTemplateYAML
+global___InvalidProfileTemplateYAML = InvalidProfileTemplateYAML
 
 @typing.final
 class InvalidProfileTemplateYAMLMsg(google.protobuf.message.Message):
@@ -929,19 +923,19 @@ class InvalidProfileTemplateYAMLMsg(google.protobuf.message.Message):
     INFO_FIELD_NUMBER: builtins.int
     DATA_FIELD_NUMBER: builtins.int
     @property
-    def info(self) -> Global___CoreEventInfo: ...
+    def info(self) -> global___CoreEventInfo: ...
     @property
-    def data(self) -> Global___InvalidProfileTemplateYAML: ...
+    def data(self) -> global___InvalidProfileTemplateYAML: ...
     def __init__(
         self,
         *,
-        info: Global___CoreEventInfo | None = ...,
-        data: Global___InvalidProfileTemplateYAML | None = ...,
+        info: global___CoreEventInfo | None = ...,
+        data: global___InvalidProfileTemplateYAML | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> None: ...
 
-Global___InvalidProfileTemplateYAMLMsg: typing_extensions.TypeAlias = InvalidProfileTemplateYAMLMsg
+global___InvalidProfileTemplateYAMLMsg = InvalidProfileTemplateYAMLMsg
 
 @typing.final
 class ProjectNameAlreadyExists(google.protobuf.message.Message):
@@ -958,7 +952,7 @@ class ProjectNameAlreadyExists(google.protobuf.message.Message):
     ) -> None: ...
     def ClearField(self, field_name: typing.Literal["name", b"name"]) -> None: ...
 
-Global___ProjectNameAlreadyExists: typing_extensions.TypeAlias = ProjectNameAlreadyExists
+global___ProjectNameAlreadyExists = ProjectNameAlreadyExists
 
 @typing.final
 class ProjectNameAlreadyExistsMsg(google.protobuf.message.Message):
@@ -967,19 +961,19 @@ class ProjectNameAlreadyExistsMsg(google.protobuf.message.Message):
     INFO_FIELD_NUMBER: builtins.int
     DATA_FIELD_NUMBER: builtins.int
     @property
-    def info(self) -> Global___CoreEventInfo: ...
+    def info(self) -> global___CoreEventInfo: ...
     @property
-    def data(self) -> Global___ProjectNameAlreadyExists: ...
+    def data(self) -> global___ProjectNameAlreadyExists: ...
     def __init__(
         self,
         *,
-        info: Global___CoreEventInfo | None = ...,
-        data: Global___ProjectNameAlreadyExists | None = ...,
+        info: global___CoreEventInfo | None = ...,
+        data: global___ProjectNameAlreadyExists | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> None: ...
 
-Global___ProjectNameAlreadyExistsMsg: typing_extensions.TypeAlias = ProjectNameAlreadyExistsMsg
+global___ProjectNameAlreadyExistsMsg = ProjectNameAlreadyExistsMsg
 
 @typing.final
 class ProjectCreated(google.protobuf.message.Message):
@@ -1002,7 +996,7 @@ class ProjectCreated(google.protobuf.message.Message):
     ) -> None: ...
     def ClearField(self, field_name: typing.Literal["docs_url", b"docs_url", "project_name", b"project_name", "slack_url", b"slack_url"]) -> None: ...
 
-Global___ProjectCreated: typing_extensions.TypeAlias = ProjectCreated
+global___ProjectCreated = ProjectCreated
 
 @typing.final
 class ProjectCreatedMsg(google.protobuf.message.Message):
@@ -1011,19 +1005,19 @@ class ProjectCreatedMsg(google.protobuf.message.Message):
     INFO_FIELD_NUMBER: builtins.int
     DATA_FIELD_NUMBER: builtins.int
     @property
-    def info(self) -> Global___CoreEventInfo: ...
+    def info(self) -> global___CoreEventInfo: ...
     @property
-    def data(self) -> Global___ProjectCreated: ...
+    def data(self) -> global___ProjectCreated: ...
     def __init__(
         self,
         *,
-        info: Global___CoreEventInfo | None = ...,
-        data: Global___ProjectCreated | None = ...,
+        info: global___CoreEventInfo | None = ...,
+        data: global___ProjectCreated | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> None: ...
 
-Global___ProjectCreatedMsg: typing_extensions.TypeAlias = ProjectCreatedMsg
+global___ProjectCreatedMsg = ProjectCreatedMsg
 
 @typing.final
 class PackageRedirectDeprecation(google.protobuf.message.Message):
@@ -1046,7 +1040,7 @@ class PackageRedirectDeprecation(google.protobuf.message.Message):
     ) -> None: ...
     def ClearField(self, field_name: typing.Literal["new_name", b"new_name", "old_name", b"old_name"]) -> None: ...
 
-Global___PackageRedirectDeprecation: typing_extensions.TypeAlias = PackageRedirectDeprecation
+global___PackageRedirectDeprecation = PackageRedirectDeprecation
 
 @typing.final
 class PackageRedirectDeprecationMsg(google.protobuf.message.Message):
@@ -1055,19 +1049,19 @@ class PackageRedirectDeprecationMsg(google.protobuf.message.Message):
     INFO_FIELD_NUMBER: builtins.int
     DATA_FIELD_NUMBER: builtins.int
     @property
-    def info(self) -> Global___CoreEventInfo: ...
+    def info(self) -> global___CoreEventInfo: ...
     @property
-    def data(self) -> Global___PackageRedirectDeprecation: ...
+    def data(self) -> global___PackageRedirectDeprecation: ...
     def __init__(
         self,
         *,
-        info: Global___CoreEventInfo | None = ...,
-        data: Global___PackageRedirectDeprecation | None = ...,
+        info: global___CoreEventInfo | None = ...,
+        data: global___PackageRedirectDeprecation | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> None: ...
 
-Global___PackageRedirectDeprecationMsg: typing_extensions.TypeAlias = PackageRedirectDeprecationMsg
+global___PackageRedirectDeprecationMsg = PackageRedirectDeprecationMsg
 
 @typing.final
 class PackageInstallPathDeprecation(google.protobuf.message.Message):
@@ -1079,7 +1073,7 @@ class PackageInstallPathDeprecation(google.protobuf.message.Message):
         self,
     ) -> None: ...
 
-Global___PackageInstallPathDeprecation: typing_extensions.TypeAlias = PackageInstallPathDeprecation
+global___PackageInstallPathDeprecation = PackageInstallPathDeprecation
 
 @typing.final
 class PackageInstallPathDeprecationMsg(google.protobuf.message.Message):
@@ -1088,19 +1082,19 @@ class PackageInstallPathDeprecationMsg(google.protobuf.message.Message):
     INFO_FIELD_NUMBER: builtins.int
     DATA_FIELD_NUMBER: builtins.int
     @property
-    def info(self) -> Global___CoreEventInfo: ...
+    def info(self) -> global___CoreEventInfo: ...
     @property
-    def data(self) -> Global___PackageInstallPathDeprecation: ...
+    def data(self) -> global___PackageInstallPathDeprecation: ...
     def __init__(
         self,
         *,
-        info: Global___CoreEventInfo | None = ...,
-        data: Global___PackageInstallPathDeprecation | None = ...,
+        info: global___CoreEventInfo | None = ...,
+        data: global___PackageInstallPathDeprecation | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> None: ...
 
-Global___PackageInstallPathDeprecationMsg: typing_extensions.TypeAlias = PackageInstallPathDeprecationMsg
+global___PackageInstallPathDeprecationMsg = PackageInstallPathDeprecationMsg
 
 @typing.final
 class ConfigSourcePathDeprecation(google.protobuf.message.Message):
@@ -1120,7 +1114,7 @@ class ConfigSourcePathDeprecation(google.protobuf.message.Message):
     ) -> None: ...
     def ClearField(self, field_name: typing.Literal["deprecated_path", b"deprecated_path", "exp_path", b"exp_path"]) -> None: ...
 
-Global___ConfigSourcePathDeprecation: typing_extensions.TypeAlias = ConfigSourcePathDeprecation
+global___ConfigSourcePathDeprecation = ConfigSourcePathDeprecation
 
 @typing.final
 class ConfigSourcePathDeprecationMsg(google.protobuf.message.Message):
@@ -1129,19 +1123,19 @@ class ConfigSourcePathDeprecationMsg(google.protobuf.message.Message):
     INFO_FIELD_NUMBER: builtins.int
     DATA_FIELD_NUMBER: builtins.int
     @property
-    def info(self) -> Global___CoreEventInfo: ...
+    def info(self) -> global___CoreEventInfo: ...
     @property
-    def data(self) -> Global___ConfigSourcePathDeprecation: ...
+    def data(self) -> global___ConfigSourcePathDeprecation: ...
     def __init__(
         self,
         *,
-        info: Global___CoreEventInfo | None = ...,
-        data: Global___ConfigSourcePathDeprecation | None = ...,
+        info: global___CoreEventInfo | None = ...,
+        data: global___ConfigSourcePathDeprecation | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> None: ...
 
-Global___ConfigSourcePathDeprecationMsg: typing_extensions.TypeAlias = ConfigSourcePathDeprecationMsg
+global___ConfigSourcePathDeprecationMsg = ConfigSourcePathDeprecationMsg
 
 @typing.final
 class ConfigDataPathDeprecation(google.protobuf.message.Message):
@@ -1161,7 +1155,7 @@ class ConfigDataPathDeprecation(google.protobuf.message.Message):
     ) -> None: ...
     def ClearField(self, field_name: typing.Literal["deprecated_path", b"deprecated_path", "exp_path", b"exp_path"]) -> None: ...
 
-Global___ConfigDataPathDeprecation: typing_extensions.TypeAlias = ConfigDataPathDeprecation
+global___ConfigDataPathDeprecation = ConfigDataPathDeprecation
 
 @typing.final
 class ConfigDataPathDeprecationMsg(google.protobuf.message.Message):
@@ -1170,19 +1164,19 @@ class ConfigDataPathDeprecationMsg(google.protobuf.message.Message):
     INFO_FIELD_NUMBER: builtins.int
     DATA_FIELD_NUMBER: builtins.int
     @property
-    def info(self) -> Global___CoreEventInfo: ...
+    def info(self) -> global___CoreEventInfo: ...
     @property
-    def data(self) -> Global___ConfigDataPathDeprecation: ...
+    def data(self) -> global___ConfigDataPathDeprecation: ...
     def __init__(
         self,
         *,
-        info: Global___CoreEventInfo | None = ...,
-        data: Global___ConfigDataPathDeprecation | None = ...,
+        info: global___CoreEventInfo | None = ...,
+        data: global___ConfigDataPathDeprecation | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> None: ...
 
-Global___ConfigDataPathDeprecationMsg: typing_extensions.TypeAlias = ConfigDataPathDeprecationMsg
+global___ConfigDataPathDeprecationMsg = ConfigDataPathDeprecationMsg
 
 @typing.final
 class MetricAttributesRenamed(google.protobuf.message.Message):
@@ -1199,7 +1193,7 @@ class MetricAttributesRenamed(google.protobuf.message.Message):
     ) -> None: ...
     def ClearField(self, field_name: typing.Literal["metric_name", b"metric_name"]) -> None: ...
 
-Global___MetricAttributesRenamed: typing_extensions.TypeAlias = MetricAttributesRenamed
+global___MetricAttributesRenamed = MetricAttributesRenamed
 
 @typing.final
 class MetricAttributesRenamedMsg(google.protobuf.message.Message):
@@ -1208,19 +1202,19 @@ class MetricAttributesRenamedMsg(google.protobuf.message.Message):
     INFO_FIELD_NUMBER: builtins.int
     DATA_FIELD_NUMBER: builtins.int
     @property
-    def info(self) -> Global___CoreEventInfo: ...
+    def info(self) -> global___CoreEventInfo: ...
     @property
-    def data(self) -> Global___MetricAttributesRenamed: ...
+    def data(self) -> global___MetricAttributesRenamed: ...
     def __init__(
         self,
         *,
-        info: Global___CoreEventInfo | None = ...,
-        data: Global___MetricAttributesRenamed | None = ...,
+        info: global___CoreEventInfo | None = ...,
+        data: global___MetricAttributesRenamed | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> None: ...
 
-Global___MetricAttributesRenamedMsg: typing_extensions.TypeAlias = MetricAttributesRenamedMsg
+global___MetricAttributesRenamedMsg = MetricAttributesRenamedMsg
 
 @typing.final
 class ExposureNameDeprecation(google.protobuf.message.Message):
@@ -1237,7 +1231,7 @@ class ExposureNameDeprecation(google.protobuf.message.Message):
     ) -> None: ...
     def ClearField(self, field_name: typing.Literal["exposure", b"exposure"]) -> None: ...
 
-Global___ExposureNameDeprecation: typing_extensions.TypeAlias = ExposureNameDeprecation
+global___ExposureNameDeprecation = ExposureNameDeprecation
 
 @typing.final
 class ExposureNameDeprecationMsg(google.protobuf.message.Message):
@@ -1246,19 +1240,19 @@ class ExposureNameDeprecationMsg(google.protobuf.message.Message):
     INFO_FIELD_NUMBER: builtins.int
     DATA_FIELD_NUMBER: builtins.int
     @property
-    def info(self) -> Global___CoreEventInfo: ...
+    def info(self) -> global___CoreEventInfo: ...
     @property
-    def data(self) -> Global___ExposureNameDeprecation: ...
+    def data(self) -> global___ExposureNameDeprecation: ...
     def __init__(
         self,
         *,
-        info: Global___CoreEventInfo | None = ...,
-        data: Global___ExposureNameDeprecation | None = ...,
+        info: global___CoreEventInfo | None = ...,
+        data: global___ExposureNameDeprecation | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> None: ...
 
-Global___ExposureNameDeprecationMsg: typing_extensions.TypeAlias = ExposureNameDeprecationMsg
+global___ExposureNameDeprecationMsg = ExposureNameDeprecationMsg
 
 @typing.final
 class InternalDeprecation(google.protobuf.message.Message):
@@ -1284,7 +1278,7 @@ class InternalDeprecation(google.protobuf.message.Message):
     ) -> None: ...
     def ClearField(self, field_name: typing.Literal["name", b"name", "reason", b"reason", "suggested_action", b"suggested_action", "version", b"version"]) -> None: ...
 
-Global___InternalDeprecation: typing_extensions.TypeAlias = InternalDeprecation
+global___InternalDeprecation = InternalDeprecation
 
 @typing.final
 class InternalDeprecationMsg(google.protobuf.message.Message):
@@ -1293,19 +1287,19 @@ class InternalDeprecationMsg(google.protobuf.message.Message):
     INFO_FIELD_NUMBER: builtins.int
     DATA_FIELD_NUMBER: builtins.int
     @property
-    def info(self) -> Global___CoreEventInfo: ...
+    def info(self) -> global___CoreEventInfo: ...
     @property
-    def data(self) -> Global___InternalDeprecation: ...
+    def data(self) -> global___InternalDeprecation: ...
     def __init__(
         self,
         *,
-        info: Global___CoreEventInfo | None = ...,
-        data: Global___InternalDeprecation | None = ...,
+        info: global___CoreEventInfo | None = ...,
+        data: global___InternalDeprecation | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> None: ...
 
-Global___InternalDeprecationMsg: typing_extensions.TypeAlias = InternalDeprecationMsg
+global___InternalDeprecationMsg = InternalDeprecationMsg
 
 @typing.final
 class EnvironmentVariableRenamed(google.protobuf.message.Message):
@@ -1325,7 +1319,7 @@ class EnvironmentVariableRenamed(google.protobuf.message.Message):
     ) -> None: ...
     def ClearField(self, field_name: typing.Literal["new_name", b"new_name", "old_name", b"old_name"]) -> None: ...
 
-Global___EnvironmentVariableRenamed: typing_extensions.TypeAlias = EnvironmentVariableRenamed
+global___EnvironmentVariableRenamed = EnvironmentVariableRenamed
 
 @typing.final
 class EnvironmentVariableRenamedMsg(google.protobuf.message.Message):
@@ -1334,19 +1328,19 @@ class EnvironmentVariableRenamedMsg(google.protobuf.message.Message):
     INFO_FIELD_NUMBER: builtins.int
     DATA_FIELD_NUMBER: builtins.int
     @property
-    def info(self) -> Global___CoreEventInfo: ...
+    def info(self) -> global___CoreEventInfo: ...
     @property
-    def data(self) -> Global___EnvironmentVariableRenamed: ...
+    def data(self) -> global___EnvironmentVariableRenamed: ...
     def __init__(
         self,
         *,
-        info: Global___CoreEventInfo | None = ...,
-        data: Global___EnvironmentVariableRenamed | None = ...,
+        info: global___CoreEventInfo | None = ...,
+        data: global___EnvironmentVariableRenamed | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> None: ...
 
-Global___EnvironmentVariableRenamedMsg: typing_extensions.TypeAlias = EnvironmentVariableRenamedMsg
+global___EnvironmentVariableRenamedMsg = EnvironmentVariableRenamedMsg
 
 @typing.final
 class ConfigLogPathDeprecation(google.protobuf.message.Message):
@@ -1363,7 +1357,7 @@ class ConfigLogPathDeprecation(google.protobuf.message.Message):
     ) -> None: ...
     def ClearField(self, field_name: typing.Literal["deprecated_path", b"deprecated_path"]) -> None: ...
 
-Global___ConfigLogPathDeprecation: typing_extensions.TypeAlias = ConfigLogPathDeprecation
+global___ConfigLogPathDeprecation = ConfigLogPathDeprecation
 
 @typing.final
 class ConfigLogPathDeprecationMsg(google.protobuf.message.Message):
@@ -1372,19 +1366,19 @@ class ConfigLogPathDeprecationMsg(google.protobuf.message.Message):
     INFO_FIELD_NUMBER: builtins.int
     DATA_FIELD_NUMBER: builtins.int
     @property
-    def info(self) -> Global___CoreEventInfo: ...
+    def info(self) -> global___CoreEventInfo: ...
     @property
-    def data(self) -> Global___ConfigLogPathDeprecation: ...
+    def data(self) -> global___ConfigLogPathDeprecation: ...
     def __init__(
         self,
         *,
-        info: Global___CoreEventInfo | None = ...,
-        data: Global___ConfigLogPathDeprecation | None = ...,
+        info: global___CoreEventInfo | None = ...,
+        data: global___ConfigLogPathDeprecation | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> None: ...
 
-Global___ConfigLogPathDeprecationMsg: typing_extensions.TypeAlias = ConfigLogPathDeprecationMsg
+global___ConfigLogPathDeprecationMsg = ConfigLogPathDeprecationMsg
 
 @typing.final
 class ConfigTargetPathDeprecation(google.protobuf.message.Message):
@@ -1401,7 +1395,7 @@ class ConfigTargetPathDeprecation(google.protobuf.message.Message):
     ) -> None: ...
     def ClearField(self, field_name: typing.Literal["deprecated_path", b"deprecated_path"]) -> None: ...
 
-Global___ConfigTargetPathDeprecation: typing_extensions.TypeAlias = ConfigTargetPathDeprecation
+global___ConfigTargetPathDeprecation = ConfigTargetPathDeprecation
 
 @typing.final
 class ConfigTargetPathDeprecationMsg(google.protobuf.message.Message):
@@ -1410,19 +1404,19 @@ class ConfigTargetPathDeprecationMsg(google.protobuf.message.Message):
     INFO_FIELD_NUMBER: builtins.int
     DATA_FIELD_NUMBER: builtins.int
     @property
-    def info(self) -> Global___CoreEventInfo: ...
+    def info(self) -> global___CoreEventInfo: ...
     @property
-    def data(self) -> Global___ConfigTargetPathDeprecation: ...
+    def data(self) -> global___ConfigTargetPathDeprecation: ...
     def __init__(
         self,
         *,
-        info: Global___CoreEventInfo | None = ...,
-        data: Global___ConfigTargetPathDeprecation | None = ...,
+        info: global___CoreEventInfo | None = ...,
+        data: global___ConfigTargetPathDeprecation | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> None: ...
 
-Global___ConfigTargetPathDeprecationMsg: typing_extensions.TypeAlias = ConfigTargetPathDeprecationMsg
+global___ConfigTargetPathDeprecationMsg = ConfigTargetPathDeprecationMsg
 
 @typing.final
 class TestsConfigDeprecation(google.protobuf.message.Message):
@@ -1442,7 +1436,7 @@ class TestsConfigDeprecation(google.protobuf.message.Message):
     ) -> None: ...
     def ClearField(self, field_name: typing.Literal["deprecated_path", b"deprecated_path", "exp_path", b"exp_path"]) -> None: ...
 
-Global___TestsConfigDeprecation: typing_extensions.TypeAlias = TestsConfigDeprecation
+global___TestsConfigDeprecation = TestsConfigDeprecation
 
 @typing.final
 class TestsConfigDeprecationMsg(google.protobuf.message.Message):
@@ -1451,19 +1445,19 @@ class TestsConfigDeprecationMsg(google.protobuf.message.Message):
     INFO_FIELD_NUMBER: builtins.int
     DATA_FIELD_NUMBER: builtins.int
     @property
-    def info(self) -> Global___CoreEventInfo: ...
+    def info(self) -> global___CoreEventInfo: ...
     @property
-    def data(self) -> Global___TestsConfigDeprecation: ...
+    def data(self) -> global___TestsConfigDeprecation: ...
     def __init__(
         self,
         *,
-        info: Global___CoreEventInfo | None = ...,
-        data: Global___TestsConfigDeprecation | None = ...,
+        info: global___CoreEventInfo | None = ...,
+        data: global___TestsConfigDeprecation | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> None: ...
 
-Global___TestsConfigDeprecationMsg: typing_extensions.TypeAlias = TestsConfigDeprecationMsg
+global___TestsConfigDeprecationMsg = TestsConfigDeprecationMsg
 
 @typing.final
 class ProjectFlagsMovedDeprecation(google.protobuf.message.Message):
@@ -1475,7 +1469,7 @@ class ProjectFlagsMovedDeprecation(google.protobuf.message.Message):
         self,
     ) -> None: ...
 
-Global___ProjectFlagsMovedDeprecation: typing_extensions.TypeAlias = ProjectFlagsMovedDeprecation
+global___ProjectFlagsMovedDeprecation = ProjectFlagsMovedDeprecation
 
 @typing.final
 class ProjectFlagsMovedDeprecationMsg(google.protobuf.message.Message):
@@ -1484,19 +1478,19 @@ class ProjectFlagsMovedDeprecationMsg(google.protobuf.message.Message):
     INFO_FIELD_NUMBER: builtins.int
     DATA_FIELD_NUMBER: builtins.int
     @property
-    def info(self) -> Global___CoreEventInfo: ...
+    def info(self) -> global___CoreEventInfo: ...
     @property
-    def data(self) -> Global___ProjectFlagsMovedDeprecation: ...
+    def data(self) -> global___ProjectFlagsMovedDeprecation: ...
     def __init__(
         self,
         *,
-        info: Global___CoreEventInfo | None = ...,
-        data: Global___ProjectFlagsMovedDeprecation | None = ...,
+        info: global___CoreEventInfo | None = ...,
+        data: global___ProjectFlagsMovedDeprecation | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> None: ...
 
-Global___ProjectFlagsMovedDeprecationMsg: typing_extensions.TypeAlias = ProjectFlagsMovedDeprecationMsg
+global___ProjectFlagsMovedDeprecationMsg = ProjectFlagsMovedDeprecationMsg
 
 @typing.final
 class SpacesInResourceNameDeprecation(google.protobuf.message.Message):
@@ -1516,7 +1510,7 @@ class SpacesInResourceNameDeprecation(google.protobuf.message.Message):
     ) -> None: ...
     def ClearField(self, field_name: typing.Literal["level", b"level", "unique_id", b"unique_id"]) -> None: ...
 
-Global___SpacesInResourceNameDeprecation: typing_extensions.TypeAlias = SpacesInResourceNameDeprecation
+global___SpacesInResourceNameDeprecation = SpacesInResourceNameDeprecation
 
 @typing.final
 class SpacesInResourceNameDeprecationMsg(google.protobuf.message.Message):
@@ -1525,19 +1519,19 @@ class SpacesInResourceNameDeprecationMsg(google.protobuf.message.Message):
     INFO_FIELD_NUMBER: builtins.int
     DATA_FIELD_NUMBER: builtins.int
     @property
-    def info(self) -> Global___CoreEventInfo: ...
+    def info(self) -> global___CoreEventInfo: ...
     @property
-    def data(self) -> Global___SpacesInResourceNameDeprecation: ...
+    def data(self) -> global___SpacesInResourceNameDeprecation: ...
     def __init__(
         self,
         *,
-        info: Global___CoreEventInfo | None = ...,
-        data: Global___SpacesInResourceNameDeprecation | None = ...,
+        info: global___CoreEventInfo | None = ...,
+        data: global___SpacesInResourceNameDeprecation | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> None: ...
 
-Global___SpacesInResourceNameDeprecationMsg: typing_extensions.TypeAlias = SpacesInResourceNameDeprecationMsg
+global___SpacesInResourceNameDeprecationMsg = SpacesInResourceNameDeprecationMsg
 
 @typing.final
 class ResourceNamesWithSpacesDeprecation(google.protobuf.message.Message):
@@ -1560,7 +1554,7 @@ class ResourceNamesWithSpacesDeprecation(google.protobuf.message.Message):
     ) -> None: ...
     def ClearField(self, field_name: typing.Literal["count_invalid_names", b"count_invalid_names", "level", b"level", "show_debug_hint", b"show_debug_hint"]) -> None: ...
 
-Global___ResourceNamesWithSpacesDeprecation: typing_extensions.TypeAlias = ResourceNamesWithSpacesDeprecation
+global___ResourceNamesWithSpacesDeprecation = ResourceNamesWithSpacesDeprecation
 
 @typing.final
 class ResourceNamesWithSpacesDeprecationMsg(google.protobuf.message.Message):
@@ -1569,19 +1563,19 @@ class ResourceNamesWithSpacesDeprecationMsg(google.protobuf.message.Message):
     INFO_FIELD_NUMBER: builtins.int
     DATA_FIELD_NUMBER: builtins.int
     @property
-    def info(self) -> Global___CoreEventInfo: ...
+    def info(self) -> global___CoreEventInfo: ...
     @property
-    def data(self) -> Global___ResourceNamesWithSpacesDeprecation: ...
+    def data(self) -> global___ResourceNamesWithSpacesDeprecation: ...
     def __init__(
         self,
         *,
-        info: Global___CoreEventInfo | None = ...,
-        data: Global___ResourceNamesWithSpacesDeprecation | None = ...,
+        info: global___CoreEventInfo | None = ...,
+        data: global___ResourceNamesWithSpacesDeprecation | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> None: ...
 
-Global___ResourceNamesWithSpacesDeprecationMsg: typing_extensions.TypeAlias = ResourceNamesWithSpacesDeprecationMsg
+global___ResourceNamesWithSpacesDeprecationMsg = ResourceNamesWithSpacesDeprecationMsg
 
 @typing.final
 class PackageMaterializationOverrideDeprecation(google.protobuf.message.Message):
@@ -1601,7 +1595,7 @@ class PackageMaterializationOverrideDeprecation(google.protobuf.message.Message)
     ) -> None: ...
     def ClearField(self, field_name: typing.Literal["materialization_name", b"materialization_name", "package_name", b"package_name"]) -> None: ...
 
-Global___PackageMaterializationOverrideDeprecation: typing_extensions.TypeAlias = PackageMaterializationOverrideDeprecation
+global___PackageMaterializationOverrideDeprecation = PackageMaterializationOverrideDeprecation
 
 @typing.final
 class PackageMaterializationOverrideDeprecationMsg(google.protobuf.message.Message):
@@ -1610,19 +1604,19 @@ class PackageMaterializationOverrideDeprecationMsg(google.protobuf.message.Messa
     INFO_FIELD_NUMBER: builtins.int
     DATA_FIELD_NUMBER: builtins.int
     @property
-    def info(self) -> Global___CoreEventInfo: ...
+    def info(self) -> global___CoreEventInfo: ...
     @property
-    def data(self) -> Global___PackageMaterializationOverrideDeprecation: ...
+    def data(self) -> global___PackageMaterializationOverrideDeprecation: ...
     def __init__(
         self,
         *,
-        info: Global___CoreEventInfo | None = ...,
-        data: Global___PackageMaterializationOverrideDeprecation | None = ...,
+        info: global___CoreEventInfo | None = ...,
+        data: global___PackageMaterializationOverrideDeprecation | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> None: ...
 
-Global___PackageMaterializationOverrideDeprecationMsg: typing_extensions.TypeAlias = PackageMaterializationOverrideDeprecationMsg
+global___PackageMaterializationOverrideDeprecationMsg = PackageMaterializationOverrideDeprecationMsg
 
 @typing.final
 class SourceFreshnessProjectHooksNotRun(google.protobuf.message.Message):
@@ -1634,7 +1628,7 @@ class SourceFreshnessProjectHooksNotRun(google.protobuf.message.Message):
         self,
     ) -> None: ...
 
-Global___SourceFreshnessProjectHooksNotRun: typing_extensions.TypeAlias = SourceFreshnessProjectHooksNotRun
+global___SourceFreshnessProjectHooksNotRun = SourceFreshnessProjectHooksNotRun
 
 @typing.final
 class SourceFreshnessProjectHooksNotRunMsg(google.protobuf.message.Message):
@@ -1643,19 +1637,19 @@ class SourceFreshnessProjectHooksNotRunMsg(google.protobuf.message.Message):
     INFO_FIELD_NUMBER: builtins.int
     DATA_FIELD_NUMBER: builtins.int
     @property
-    def info(self) -> Global___CoreEventInfo: ...
+    def info(self) -> global___CoreEventInfo: ...
     @property
-    def data(self) -> Global___SourceFreshnessProjectHooksNotRun: ...
+    def data(self) -> global___SourceFreshnessProjectHooksNotRun: ...
     def __init__(
         self,
         *,
-        info: Global___CoreEventInfo | None = ...,
-        data: Global___SourceFreshnessProjectHooksNotRun | None = ...,
+        info: global___CoreEventInfo | None = ...,
+        data: global___SourceFreshnessProjectHooksNotRun | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> None: ...
 
-Global___SourceFreshnessProjectHooksNotRunMsg: typing_extensions.TypeAlias = SourceFreshnessProjectHooksNotRunMsg
+global___SourceFreshnessProjectHooksNotRunMsg = SourceFreshnessProjectHooksNotRunMsg
 
 @typing.final
 class MFTimespineWithoutYamlConfigurationDeprecation(google.protobuf.message.Message):
@@ -1667,7 +1661,7 @@ class MFTimespineWithoutYamlConfigurationDeprecation(google.protobuf.message.Mes
         self,
     ) -> None: ...
 
-Global___MFTimespineWithoutYamlConfigurationDeprecation: typing_extensions.TypeAlias = MFTimespineWithoutYamlConfigurationDeprecation
+global___MFTimespineWithoutYamlConfigurationDeprecation = MFTimespineWithoutYamlConfigurationDeprecation
 
 @typing.final
 class MFTimespineWithoutYamlConfigurationDeprecationMsg(google.protobuf.message.Message):
@@ -1676,19 +1670,19 @@ class MFTimespineWithoutYamlConfigurationDeprecationMsg(google.protobuf.message.
     INFO_FIELD_NUMBER: builtins.int
     DATA_FIELD_NUMBER: builtins.int
     @property
-    def info(self) -> Global___CoreEventInfo: ...
+    def info(self) -> global___CoreEventInfo: ...
     @property
-    def data(self) -> Global___MFTimespineWithoutYamlConfigurationDeprecation: ...
+    def data(self) -> global___MFTimespineWithoutYamlConfigurationDeprecation: ...
     def __init__(
         self,
         *,
-        info: Global___CoreEventInfo | None = ...,
-        data: Global___MFTimespineWithoutYamlConfigurationDeprecation | None = ...,
+        info: global___CoreEventInfo | None = ...,
+        data: global___MFTimespineWithoutYamlConfigurationDeprecation | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> None: ...
 
-Global___MFTimespineWithoutYamlConfigurationDeprecationMsg: typing_extensions.TypeAlias = MFTimespineWithoutYamlConfigurationDeprecationMsg
+global___MFTimespineWithoutYamlConfigurationDeprecationMsg = MFTimespineWithoutYamlConfigurationDeprecationMsg
 
 @typing.final
 class MFCumulativeTypeParamsDeprecation(google.protobuf.message.Message):
@@ -1700,7 +1694,7 @@ class MFCumulativeTypeParamsDeprecation(google.protobuf.message.Message):
         self,
     ) -> None: ...
 
-Global___MFCumulativeTypeParamsDeprecation: typing_extensions.TypeAlias = MFCumulativeTypeParamsDeprecation
+global___MFCumulativeTypeParamsDeprecation = MFCumulativeTypeParamsDeprecation
 
 @typing.final
 class MFCumulativeTypeParamsDeprecationMsg(google.protobuf.message.Message):
@@ -1709,19 +1703,19 @@ class MFCumulativeTypeParamsDeprecationMsg(google.protobuf.message.Message):
     INFO_FIELD_NUMBER: builtins.int
     DATA_FIELD_NUMBER: builtins.int
     @property
-    def info(self) -> Global___CoreEventInfo: ...
+    def info(self) -> global___CoreEventInfo: ...
     @property
-    def data(self) -> Global___MFCumulativeTypeParamsDeprecation: ...
+    def data(self) -> global___MFCumulativeTypeParamsDeprecation: ...
     def __init__(
         self,
         *,
-        info: Global___CoreEventInfo | None = ...,
-        data: Global___MFCumulativeTypeParamsDeprecation | None = ...,
+        info: global___CoreEventInfo | None = ...,
+        data: global___MFCumulativeTypeParamsDeprecation | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> None: ...
 
-Global___MFCumulativeTypeParamsDeprecationMsg: typing_extensions.TypeAlias = MFCumulativeTypeParamsDeprecationMsg
+global___MFCumulativeTypeParamsDeprecationMsg = MFCumulativeTypeParamsDeprecationMsg
 
 @typing.final
 class MicrobatchMacroOutsideOfBatchesDeprecation(google.protobuf.message.Message):
@@ -1733,7 +1727,7 @@ class MicrobatchMacroOutsideOfBatchesDeprecation(google.protobuf.message.Message
         self,
     ) -> None: ...
 
-Global___MicrobatchMacroOutsideOfBatchesDeprecation: typing_extensions.TypeAlias = MicrobatchMacroOutsideOfBatchesDeprecation
+global___MicrobatchMacroOutsideOfBatchesDeprecation = MicrobatchMacroOutsideOfBatchesDeprecation
 
 @typing.final
 class MicrobatchMacroOutsideOfBatchesDeprecationMsg(google.protobuf.message.Message):
@@ -1742,19 +1736,19 @@ class MicrobatchMacroOutsideOfBatchesDeprecationMsg(google.protobuf.message.Mess
     INFO_FIELD_NUMBER: builtins.int
     DATA_FIELD_NUMBER: builtins.int
     @property
-    def info(self) -> Global___CoreEventInfo: ...
+    def info(self) -> global___CoreEventInfo: ...
     @property
-    def data(self) -> Global___MicrobatchMacroOutsideOfBatchesDeprecation: ...
+    def data(self) -> global___MicrobatchMacroOutsideOfBatchesDeprecation: ...
     def __init__(
         self,
         *,
-        info: Global___CoreEventInfo | None = ...,
-        data: Global___MicrobatchMacroOutsideOfBatchesDeprecation | None = ...,
+        info: global___CoreEventInfo | None = ...,
+        data: global___MicrobatchMacroOutsideOfBatchesDeprecation | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> None: ...
 
-Global___MicrobatchMacroOutsideOfBatchesDeprecationMsg: typing_extensions.TypeAlias = MicrobatchMacroOutsideOfBatchesDeprecationMsg
+global___MicrobatchMacroOutsideOfBatchesDeprecationMsg = MicrobatchMacroOutsideOfBatchesDeprecationMsg
 
 @typing.final
 class GenericJSONSchemaValidationDeprecation(google.protobuf.message.Message):
@@ -1780,7 +1774,7 @@ class GenericJSONSchemaValidationDeprecation(google.protobuf.message.Message):
     ) -> None: ...
     def ClearField(self, field_name: typing.Literal["file", b"file", "key_path", b"key_path", "violation", b"violation"]) -> None: ...
 
-Global___GenericJSONSchemaValidationDeprecation: typing_extensions.TypeAlias = GenericJSONSchemaValidationDeprecation
+global___GenericJSONSchemaValidationDeprecation = GenericJSONSchemaValidationDeprecation
 
 @typing.final
 class GenericJSONSchemaValidationDeprecationMsg(google.protobuf.message.Message):
@@ -1789,19 +1783,19 @@ class GenericJSONSchemaValidationDeprecationMsg(google.protobuf.message.Message)
     INFO_FIELD_NUMBER: builtins.int
     DATA_FIELD_NUMBER: builtins.int
     @property
-    def info(self) -> Global___CoreEventInfo: ...
+    def info(self) -> global___CoreEventInfo: ...
     @property
-    def data(self) -> Global___GenericJSONSchemaValidationDeprecation: ...
+    def data(self) -> global___GenericJSONSchemaValidationDeprecation: ...
     def __init__(
         self,
         *,
-        info: Global___CoreEventInfo | None = ...,
-        data: Global___GenericJSONSchemaValidationDeprecation | None = ...,
+        info: global___CoreEventInfo | None = ...,
+        data: global___GenericJSONSchemaValidationDeprecation | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> None: ...
 
-Global___GenericJSONSchemaValidationDeprecationMsg: typing_extensions.TypeAlias = GenericJSONSchemaValidationDeprecationMsg
+global___GenericJSONSchemaValidationDeprecationMsg = GenericJSONSchemaValidationDeprecationMsg
 
 @typing.final
 class UnexpectedJinjaBlockDeprecation(google.protobuf.message.Message):
@@ -1821,7 +1815,7 @@ class UnexpectedJinjaBlockDeprecation(google.protobuf.message.Message):
     ) -> None: ...
     def ClearField(self, field_name: typing.Literal["file", b"file", "msg", b"msg"]) -> None: ...
 
-Global___UnexpectedJinjaBlockDeprecation: typing_extensions.TypeAlias = UnexpectedJinjaBlockDeprecation
+global___UnexpectedJinjaBlockDeprecation = UnexpectedJinjaBlockDeprecation
 
 @typing.final
 class UnexpectedJinjaBlockDeprecationMsg(google.protobuf.message.Message):
@@ -1830,19 +1824,19 @@ class UnexpectedJinjaBlockDeprecationMsg(google.protobuf.message.Message):
     INFO_FIELD_NUMBER: builtins.int
     DATA_FIELD_NUMBER: builtins.int
     @property
-    def info(self) -> Global___CoreEventInfo: ...
+    def info(self) -> global___CoreEventInfo: ...
     @property
-    def data(self) -> Global___UnexpectedJinjaBlockDeprecation: ...
+    def data(self) -> global___UnexpectedJinjaBlockDeprecation: ...
     def __init__(
         self,
         *,
-        info: Global___CoreEventInfo | None = ...,
-        data: Global___UnexpectedJinjaBlockDeprecation | None = ...,
+        info: global___CoreEventInfo | None = ...,
+        data: global___UnexpectedJinjaBlockDeprecation | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> None: ...
 
-Global___UnexpectedJinjaBlockDeprecationMsg: typing_extensions.TypeAlias = UnexpectedJinjaBlockDeprecationMsg
+global___UnexpectedJinjaBlockDeprecationMsg = UnexpectedJinjaBlockDeprecationMsg
 
 @typing.final
 class DuplicateYAMLKeysDeprecation(google.protobuf.message.Message):
@@ -1862,7 +1856,7 @@ class DuplicateYAMLKeysDeprecation(google.protobuf.message.Message):
     ) -> None: ...
     def ClearField(self, field_name: typing.Literal["duplicate_description", b"duplicate_description", "file", b"file"]) -> None: ...
 
-Global___DuplicateYAMLKeysDeprecation: typing_extensions.TypeAlias = DuplicateYAMLKeysDeprecation
+global___DuplicateYAMLKeysDeprecation = DuplicateYAMLKeysDeprecation
 
 @typing.final
 class DuplicateYAMLKeysDeprecationMsg(google.protobuf.message.Message):
@@ -1871,19 +1865,19 @@ class DuplicateYAMLKeysDeprecationMsg(google.protobuf.message.Message):
     INFO_FIELD_NUMBER: builtins.int
     DATA_FIELD_NUMBER: builtins.int
     @property
-    def info(self) -> Global___CoreEventInfo: ...
+    def info(self) -> global___CoreEventInfo: ...
     @property
-    def data(self) -> Global___DuplicateYAMLKeysDeprecation: ...
+    def data(self) -> global___DuplicateYAMLKeysDeprecation: ...
     def __init__(
         self,
         *,
-        info: Global___CoreEventInfo | None = ...,
-        data: Global___DuplicateYAMLKeysDeprecation | None = ...,
+        info: global___CoreEventInfo | None = ...,
+        data: global___DuplicateYAMLKeysDeprecation | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> None: ...
 
-Global___DuplicateYAMLKeysDeprecationMsg: typing_extensions.TypeAlias = DuplicateYAMLKeysDeprecationMsg
+global___DuplicateYAMLKeysDeprecationMsg = DuplicateYAMLKeysDeprecationMsg
 
 @typing.final
 class CustomTopLevelKeyDeprecation(google.protobuf.message.Message):
@@ -1903,7 +1897,7 @@ class CustomTopLevelKeyDeprecation(google.protobuf.message.Message):
     ) -> None: ...
     def ClearField(self, field_name: typing.Literal["file", b"file", "msg", b"msg"]) -> None: ...
 
-Global___CustomTopLevelKeyDeprecation: typing_extensions.TypeAlias = CustomTopLevelKeyDeprecation
+global___CustomTopLevelKeyDeprecation = CustomTopLevelKeyDeprecation
 
 @typing.final
 class CustomTopLevelKeyDeprecationMsg(google.protobuf.message.Message):
@@ -1912,19 +1906,19 @@ class CustomTopLevelKeyDeprecationMsg(google.protobuf.message.Message):
     INFO_FIELD_NUMBER: builtins.int
     DATA_FIELD_NUMBER: builtins.int
     @property
-    def info(self) -> Global___CoreEventInfo: ...
+    def info(self) -> global___CoreEventInfo: ...
     @property
-    def data(self) -> Global___CustomTopLevelKeyDeprecation: ...
+    def data(self) -> global___CustomTopLevelKeyDeprecation: ...
     def __init__(
         self,
         *,
-        info: Global___CoreEventInfo | None = ...,
-        data: Global___CustomTopLevelKeyDeprecation | None = ...,
+        info: global___CoreEventInfo | None = ...,
+        data: global___CustomTopLevelKeyDeprecation | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> None: ...
 
-Global___CustomTopLevelKeyDeprecationMsg: typing_extensions.TypeAlias = CustomTopLevelKeyDeprecationMsg
+global___CustomTopLevelKeyDeprecationMsg = CustomTopLevelKeyDeprecationMsg
 
 @typing.final
 class CustomKeyInConfigDeprecation(google.protobuf.message.Message):
@@ -1947,7 +1941,7 @@ class CustomKeyInConfigDeprecation(google.protobuf.message.Message):
     ) -> None: ...
     def ClearField(self, field_name: typing.Literal["file", b"file", "key", b"key", "key_path", b"key_path"]) -> None: ...
 
-Global___CustomKeyInConfigDeprecation: typing_extensions.TypeAlias = CustomKeyInConfigDeprecation
+global___CustomKeyInConfigDeprecation = CustomKeyInConfigDeprecation
 
 @typing.final
 class CustomKeyInConfigDeprecationMsg(google.protobuf.message.Message):
@@ -1956,19 +1950,19 @@ class CustomKeyInConfigDeprecationMsg(google.protobuf.message.Message):
     INFO_FIELD_NUMBER: builtins.int
     DATA_FIELD_NUMBER: builtins.int
     @property
-    def info(self) -> Global___CoreEventInfo: ...
+    def info(self) -> global___CoreEventInfo: ...
     @property
-    def data(self) -> Global___CustomKeyInConfigDeprecation: ...
+    def data(self) -> global___CustomKeyInConfigDeprecation: ...
     def __init__(
         self,
         *,
-        info: Global___CoreEventInfo | None = ...,
-        data: Global___CustomKeyInConfigDeprecation | None = ...,
+        info: global___CoreEventInfo | None = ...,
+        data: global___CustomKeyInConfigDeprecation | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> None: ...
 
-Global___CustomKeyInConfigDeprecationMsg: typing_extensions.TypeAlias = CustomKeyInConfigDeprecationMsg
+global___CustomKeyInConfigDeprecationMsg = CustomKeyInConfigDeprecationMsg
 
 @typing.final
 class CustomKeyInObjectDeprecation(google.protobuf.message.Message):
@@ -1991,7 +1985,7 @@ class CustomKeyInObjectDeprecation(google.protobuf.message.Message):
     ) -> None: ...
     def ClearField(self, field_name: typing.Literal["file", b"file", "key", b"key", "key_path", b"key_path"]) -> None: ...
 
-Global___CustomKeyInObjectDeprecation: typing_extensions.TypeAlias = CustomKeyInObjectDeprecation
+global___CustomKeyInObjectDeprecation = CustomKeyInObjectDeprecation
 
 @typing.final
 class CustomKeyInObjectDeprecationMsg(google.protobuf.message.Message):
@@ -2000,19 +1994,19 @@ class CustomKeyInObjectDeprecationMsg(google.protobuf.message.Message):
     INFO_FIELD_NUMBER: builtins.int
     DATA_FIELD_NUMBER: builtins.int
     @property
-    def info(self) -> Global___CoreEventInfo: ...
+    def info(self) -> global___CoreEventInfo: ...
     @property
-    def data(self) -> Global___CustomKeyInObjectDeprecation: ...
+    def data(self) -> global___CustomKeyInObjectDeprecation: ...
     def __init__(
         self,
         *,
-        info: Global___CoreEventInfo | None = ...,
-        data: Global___CustomKeyInObjectDeprecation | None = ...,
+        info: global___CoreEventInfo | None = ...,
+        data: global___CustomKeyInObjectDeprecation | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> None: ...
 
-Global___CustomKeyInObjectDeprecationMsg: typing_extensions.TypeAlias = CustomKeyInObjectDeprecationMsg
+global___CustomKeyInObjectDeprecationMsg = CustomKeyInObjectDeprecationMsg
 
 @typing.final
 class DeprecationSummary(google.protobuf.message.Message):
@@ -2035,7 +2029,7 @@ class DeprecationSummary(google.protobuf.message.Message):
     ) -> None: ...
     def ClearField(self, field_name: typing.Literal["event_code", b"event_code", "event_name", b"event_name", "occurrences", b"occurrences"]) -> None: ...
 
-Global___DeprecationSummary: typing_extensions.TypeAlias = DeprecationSummary
+global___DeprecationSummary = DeprecationSummary
 
 @typing.final
 class DeprecationsSummary(google.protobuf.message.Message):
@@ -2045,16 +2039,16 @@ class DeprecationsSummary(google.protobuf.message.Message):
     SHOW_ALL_HINT_FIELD_NUMBER: builtins.int
     show_all_hint: builtins.bool
     @property
-    def summaries(self) -> google.protobuf.internal.containers.RepeatedCompositeFieldContainer[Global___DeprecationSummary]: ...
+    def summaries(self) -> google.protobuf.internal.containers.RepeatedCompositeFieldContainer[global___DeprecationSummary]: ...
     def __init__(
         self,
         *,
-        summaries: collections.abc.Iterable[Global___DeprecationSummary] | None = ...,
+        summaries: collections.abc.Iterable[global___DeprecationSummary] | None = ...,
         show_all_hint: builtins.bool = ...,
     ) -> None: ...
     def ClearField(self, field_name: typing.Literal["show_all_hint", b"show_all_hint", "summaries", b"summaries"]) -> None: ...
 
-Global___DeprecationsSummary: typing_extensions.TypeAlias = DeprecationsSummary
+global___DeprecationsSummary = DeprecationsSummary
 
 @typing.final
 class DeprecationsSummaryMsg(google.protobuf.message.Message):
@@ -2063,19 +2057,19 @@ class DeprecationsSummaryMsg(google.protobuf.message.Message):
     INFO_FIELD_NUMBER: builtins.int
     DATA_FIELD_NUMBER: builtins.int
     @property
-    def info(self) -> Global___CoreEventInfo: ...
+    def info(self) -> global___CoreEventInfo: ...
     @property
-    def data(self) -> Global___DeprecationsSummary: ...
+    def data(self) -> global___DeprecationsSummary: ...
     def __init__(
         self,
         *,
-        info: Global___CoreEventInfo | None = ...,
-        data: Global___DeprecationsSummary | None = ...,
+        info: global___CoreEventInfo | None = ...,
+        data: global___DeprecationsSummary | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> None: ...
 
-Global___DeprecationsSummaryMsg: typing_extensions.TypeAlias = DeprecationsSummaryMsg
+global___DeprecationsSummaryMsg = DeprecationsSummaryMsg
 
 @typing.final
 class CustomOutputPathInSourceFreshnessDeprecation(google.protobuf.message.Message):
@@ -2092,7 +2086,7 @@ class CustomOutputPathInSourceFreshnessDeprecation(google.protobuf.message.Messa
     ) -> None: ...
     def ClearField(self, field_name: typing.Literal["path", b"path"]) -> None: ...
 
-Global___CustomOutputPathInSourceFreshnessDeprecation: typing_extensions.TypeAlias = CustomOutputPathInSourceFreshnessDeprecation
+global___CustomOutputPathInSourceFreshnessDeprecation = CustomOutputPathInSourceFreshnessDeprecation
 
 @typing.final
 class CustomOutputPathInSourceFreshnessDeprecationMsg(google.protobuf.message.Message):
@@ -2101,19 +2095,19 @@ class CustomOutputPathInSourceFreshnessDeprecationMsg(google.protobuf.message.Me
     INFO_FIELD_NUMBER: builtins.int
     DATA_FIELD_NUMBER: builtins.int
     @property
-    def info(self) -> Global___CoreEventInfo: ...
+    def info(self) -> global___CoreEventInfo: ...
     @property
-    def data(self) -> Global___CustomOutputPathInSourceFreshnessDeprecation: ...
+    def data(self) -> global___CustomOutputPathInSourceFreshnessDeprecation: ...
     def __init__(
         self,
         *,
-        info: Global___CoreEventInfo | None = ...,
-        data: Global___CustomOutputPathInSourceFreshnessDeprecation | None = ...,
+        info: global___CoreEventInfo | None = ...,
+        data: global___CustomOutputPathInSourceFreshnessDeprecation | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> None: ...
 
-Global___CustomOutputPathInSourceFreshnessDeprecationMsg: typing_extensions.TypeAlias = CustomOutputPathInSourceFreshnessDeprecationMsg
+global___CustomOutputPathInSourceFreshnessDeprecationMsg = CustomOutputPathInSourceFreshnessDeprecationMsg
 
 @typing.final
 class PropertyMovedToConfigDeprecation(google.protobuf.message.Message):
@@ -2136,7 +2130,7 @@ class PropertyMovedToConfigDeprecation(google.protobuf.message.Message):
     ) -> None: ...
     def ClearField(self, field_name: typing.Literal["file", b"file", "key", b"key", "key_path", b"key_path"]) -> None: ...
 
-Global___PropertyMovedToConfigDeprecation: typing_extensions.TypeAlias = PropertyMovedToConfigDeprecation
+global___PropertyMovedToConfigDeprecation = PropertyMovedToConfigDeprecation
 
 @typing.final
 class PropertyMovedToConfigDeprecationMsg(google.protobuf.message.Message):
@@ -2145,19 +2139,19 @@ class PropertyMovedToConfigDeprecationMsg(google.protobuf.message.Message):
     INFO_FIELD_NUMBER: builtins.int
     DATA_FIELD_NUMBER: builtins.int
     @property
-    def info(self) -> Global___CoreEventInfo: ...
+    def info(self) -> global___CoreEventInfo: ...
     @property
-    def data(self) -> Global___PropertyMovedToConfigDeprecation: ...
+    def data(self) -> global___PropertyMovedToConfigDeprecation: ...
     def __init__(
         self,
         *,
-        info: Global___CoreEventInfo | None = ...,
-        data: Global___PropertyMovedToConfigDeprecation | None = ...,
+        info: global___CoreEventInfo | None = ...,
+        data: global___PropertyMovedToConfigDeprecation | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> None: ...
 
-Global___PropertyMovedToConfigDeprecationMsg: typing_extensions.TypeAlias = PropertyMovedToConfigDeprecationMsg
+global___PropertyMovedToConfigDeprecationMsg = PropertyMovedToConfigDeprecationMsg
 
 @typing.final
 class WEOIncludeExcludeDeprecation(google.protobuf.message.Message):
@@ -2177,7 +2171,7 @@ class WEOIncludeExcludeDeprecation(google.protobuf.message.Message):
     ) -> None: ...
     def ClearField(self, field_name: typing.Literal["found_exclude", b"found_exclude", "found_include", b"found_include"]) -> None: ...
 
-Global___WEOIncludeExcludeDeprecation: typing_extensions.TypeAlias = WEOIncludeExcludeDeprecation
+global___WEOIncludeExcludeDeprecation = WEOIncludeExcludeDeprecation
 
 @typing.final
 class WEOIncludeExcludeDeprecationMsg(google.protobuf.message.Message):
@@ -2186,19 +2180,19 @@ class WEOIncludeExcludeDeprecationMsg(google.protobuf.message.Message):
     INFO_FIELD_NUMBER: builtins.int
     DATA_FIELD_NUMBER: builtins.int
     @property
-    def info(self) -> Global___CoreEventInfo: ...
+    def info(self) -> global___CoreEventInfo: ...
     @property
-    def data(self) -> Global___WEOIncludeExcludeDeprecation: ...
+    def data(self) -> global___WEOIncludeExcludeDeprecation: ...
     def __init__(
         self,
         *,
-        info: Global___CoreEventInfo | None = ...,
-        data: Global___WEOIncludeExcludeDeprecation | None = ...,
+        info: global___CoreEventInfo | None = ...,
+        data: global___WEOIncludeExcludeDeprecation | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> None: ...
 
-Global___WEOIncludeExcludeDeprecationMsg: typing_extensions.TypeAlias = WEOIncludeExcludeDeprecationMsg
+global___WEOIncludeExcludeDeprecationMsg = WEOIncludeExcludeDeprecationMsg
 
 @typing.final
 class ModelParamUsageDeprecation(google.protobuf.message.Message):
@@ -2210,7 +2204,7 @@ class ModelParamUsageDeprecation(google.protobuf.message.Message):
         self,
     ) -> None: ...
 
-Global___ModelParamUsageDeprecation: typing_extensions.TypeAlias = ModelParamUsageDeprecation
+global___ModelParamUsageDeprecation = ModelParamUsageDeprecation
 
 @typing.final
 class ModelParamUsageDeprecationMsg(google.protobuf.message.Message):
@@ -2219,19 +2213,19 @@ class ModelParamUsageDeprecationMsg(google.protobuf.message.Message):
     INFO_FIELD_NUMBER: builtins.int
     DATA_FIELD_NUMBER: builtins.int
     @property
-    def info(self) -> Global___CoreEventInfo: ...
+    def info(self) -> global___CoreEventInfo: ...
     @property
-    def data(self) -> Global___ModelParamUsageDeprecation: ...
+    def data(self) -> global___ModelParamUsageDeprecation: ...
     def __init__(
         self,
         *,
-        info: Global___CoreEventInfo | None = ...,
-        data: Global___ModelParamUsageDeprecation | None = ...,
+        info: global___CoreEventInfo | None = ...,
+        data: global___ModelParamUsageDeprecation | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> None: ...
 
-Global___ModelParamUsageDeprecationMsg: typing_extensions.TypeAlias = ModelParamUsageDeprecationMsg
+global___ModelParamUsageDeprecationMsg = ModelParamUsageDeprecationMsg
 
 @typing.final
 class ResourceTypesParamUsageDeprecation(google.protobuf.message.Message):
@@ -2243,7 +2237,7 @@ class ResourceTypesParamUsageDeprecation(google.protobuf.message.Message):
         self,
     ) -> None: ...
 
-Global___ResourceTypesParamUsageDeprecation: typing_extensions.TypeAlias = ResourceTypesParamUsageDeprecation
+global___ResourceTypesParamUsageDeprecation = ResourceTypesParamUsageDeprecation
 
 @typing.final
 class ResourceTypesParamUsageDeprecationMsg(google.protobuf.message.Message):
@@ -2252,19 +2246,19 @@ class ResourceTypesParamUsageDeprecationMsg(google.protobuf.message.Message):
     INFO_FIELD_NUMBER: builtins.int
     DATA_FIELD_NUMBER: builtins.int
     @property
-    def info(self) -> Global___CoreEventInfo: ...
+    def info(self) -> global___CoreEventInfo: ...
     @property
-    def data(self) -> Global___ResourceTypesParamUsageDeprecation: ...
+    def data(self) -> global___ResourceTypesParamUsageDeprecation: ...
     def __init__(
         self,
         *,
-        info: Global___CoreEventInfo | None = ...,
-        data: Global___ResourceTypesParamUsageDeprecation | None = ...,
+        info: global___CoreEventInfo | None = ...,
+        data: global___ResourceTypesParamUsageDeprecation | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> None: ...
 
-Global___ResourceTypesParamUsageDeprecationMsg: typing_extensions.TypeAlias = ResourceTypesParamUsageDeprecationMsg
+global___ResourceTypesParamUsageDeprecationMsg = ResourceTypesParamUsageDeprecationMsg
 
 @typing.final
 class ModulesItertoolsUsageDeprecation(google.protobuf.message.Message):
@@ -2276,7 +2270,7 @@ class ModulesItertoolsUsageDeprecation(google.protobuf.message.Message):
         self,
     ) -> None: ...
 
-Global___ModulesItertoolsUsageDeprecation: typing_extensions.TypeAlias = ModulesItertoolsUsageDeprecation
+global___ModulesItertoolsUsageDeprecation = ModulesItertoolsUsageDeprecation
 
 @typing.final
 class ModulesItertoolsUsageDeprecationMsg(google.protobuf.message.Message):
@@ -2285,19 +2279,19 @@ class ModulesItertoolsUsageDeprecationMsg(google.protobuf.message.Message):
     INFO_FIELD_NUMBER: builtins.int
     DATA_FIELD_NUMBER: builtins.int
     @property
-    def info(self) -> Global___CoreEventInfo: ...
+    def info(self) -> global___CoreEventInfo: ...
     @property
-    def data(self) -> Global___ModulesItertoolsUsageDeprecation: ...
+    def data(self) -> global___ModulesItertoolsUsageDeprecation: ...
     def __init__(
         self,
         *,
-        info: Global___CoreEventInfo | None = ...,
-        data: Global___ModulesItertoolsUsageDeprecation | None = ...,
+        info: global___CoreEventInfo | None = ...,
+        data: global___ModulesItertoolsUsageDeprecation | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> None: ...
 
-Global___ModulesItertoolsUsageDeprecationMsg: typing_extensions.TypeAlias = ModulesItertoolsUsageDeprecationMsg
+global___ModulesItertoolsUsageDeprecationMsg = ModulesItertoolsUsageDeprecationMsg
 
 @typing.final
 class SourceOverrideDeprecation(google.protobuf.message.Message):
@@ -2317,7 +2311,7 @@ class SourceOverrideDeprecation(google.protobuf.message.Message):
     ) -> None: ...
     def ClearField(self, field_name: typing.Literal["file", b"file", "source_name", b"source_name"]) -> None: ...
 
-Global___SourceOverrideDeprecation: typing_extensions.TypeAlias = SourceOverrideDeprecation
+global___SourceOverrideDeprecation = SourceOverrideDeprecation
 
 @typing.final
 class SourceOverrideDeprecationMsg(google.protobuf.message.Message):
@@ -2326,19 +2320,19 @@ class SourceOverrideDeprecationMsg(google.protobuf.message.Message):
     INFO_FIELD_NUMBER: builtins.int
     DATA_FIELD_NUMBER: builtins.int
     @property
-    def info(self) -> Global___CoreEventInfo: ...
+    def info(self) -> global___CoreEventInfo: ...
     @property
-    def data(self) -> Global___SourceOverrideDeprecation: ...
+    def data(self) -> global___SourceOverrideDeprecation: ...
     def __init__(
         self,
         *,
-        info: Global___CoreEventInfo | None = ...,
-        data: Global___SourceOverrideDeprecation | None = ...,
+        info: global___CoreEventInfo | None = ...,
+        data: global___SourceOverrideDeprecation | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> None: ...
 
-Global___SourceOverrideDeprecationMsg: typing_extensions.TypeAlias = SourceOverrideDeprecationMsg
+global___SourceOverrideDeprecationMsg = SourceOverrideDeprecationMsg
 
 @typing.final
 class EnvironmentVariableNamespaceDeprecation(google.protobuf.message.Message):
@@ -2358,7 +2352,7 @@ class EnvironmentVariableNamespaceDeprecation(google.protobuf.message.Message):
     ) -> None: ...
     def ClearField(self, field_name: typing.Literal["env_var", b"env_var", "reserved_prefix", b"reserved_prefix"]) -> None: ...
 
-Global___EnvironmentVariableNamespaceDeprecation: typing_extensions.TypeAlias = EnvironmentVariableNamespaceDeprecation
+global___EnvironmentVariableNamespaceDeprecation = EnvironmentVariableNamespaceDeprecation
 
 @typing.final
 class EnvironmentVariableNamespaceDeprecationMsg(google.protobuf.message.Message):
@@ -2367,19 +2361,19 @@ class EnvironmentVariableNamespaceDeprecationMsg(google.protobuf.message.Message
     INFO_FIELD_NUMBER: builtins.int
     DATA_FIELD_NUMBER: builtins.int
     @property
-    def info(self) -> Global___CoreEventInfo: ...
+    def info(self) -> global___CoreEventInfo: ...
     @property
-    def data(self) -> Global___EnvironmentVariableNamespaceDeprecation: ...
+    def data(self) -> global___EnvironmentVariableNamespaceDeprecation: ...
     def __init__(
         self,
         *,
-        info: Global___CoreEventInfo | None = ...,
-        data: Global___EnvironmentVariableNamespaceDeprecation | None = ...,
+        info: global___CoreEventInfo | None = ...,
+        data: global___EnvironmentVariableNamespaceDeprecation | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> None: ...
 
-Global___EnvironmentVariableNamespaceDeprecationMsg: typing_extensions.TypeAlias = EnvironmentVariableNamespaceDeprecationMsg
+global___EnvironmentVariableNamespaceDeprecationMsg = EnvironmentVariableNamespaceDeprecationMsg
 
 @typing.final
 class MissingPlusPrefixDeprecation(google.protobuf.message.Message):
@@ -2402,7 +2396,7 @@ class MissingPlusPrefixDeprecation(google.protobuf.message.Message):
     ) -> None: ...
     def ClearField(self, field_name: typing.Literal["file", b"file", "key", b"key", "key_path", b"key_path"]) -> None: ...
 
-Global___MissingPlusPrefixDeprecation: typing_extensions.TypeAlias = MissingPlusPrefixDeprecation
+global___MissingPlusPrefixDeprecation = MissingPlusPrefixDeprecation
 
 @typing.final
 class MissingPlusPrefixDeprecationMsg(google.protobuf.message.Message):
@@ -2411,19 +2405,19 @@ class MissingPlusPrefixDeprecationMsg(google.protobuf.message.Message):
     INFO_FIELD_NUMBER: builtins.int
     DATA_FIELD_NUMBER: builtins.int
     @property
-    def info(self) -> Global___CoreEventInfo: ...
+    def info(self) -> global___CoreEventInfo: ...
     @property
-    def data(self) -> Global___MissingPlusPrefixDeprecation: ...
+    def data(self) -> global___MissingPlusPrefixDeprecation: ...
     def __init__(
         self,
         *,
-        info: Global___CoreEventInfo | None = ...,
-        data: Global___MissingPlusPrefixDeprecation | None = ...,
+        info: global___CoreEventInfo | None = ...,
+        data: global___MissingPlusPrefixDeprecation | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> None: ...
 
-Global___MissingPlusPrefixDeprecationMsg: typing_extensions.TypeAlias = MissingPlusPrefixDeprecationMsg
+global___MissingPlusPrefixDeprecationMsg = MissingPlusPrefixDeprecationMsg
 
 @typing.final
 class ArgsPropertyInGenericTestDeprecation(google.protobuf.message.Message):
@@ -2440,7 +2434,7 @@ class ArgsPropertyInGenericTestDeprecation(google.protobuf.message.Message):
     ) -> None: ...
     def ClearField(self, field_name: typing.Literal["file", b"file"]) -> None: ...
 
-Global___ArgsPropertyInGenericTestDeprecation: typing_extensions.TypeAlias = ArgsPropertyInGenericTestDeprecation
+global___ArgsPropertyInGenericTestDeprecation = ArgsPropertyInGenericTestDeprecation
 
 @typing.final
 class ArgsPropertyInGenericTestDeprecationMsg(google.protobuf.message.Message):
@@ -2449,19 +2443,19 @@ class ArgsPropertyInGenericTestDeprecationMsg(google.protobuf.message.Message):
     INFO_FIELD_NUMBER: builtins.int
     DATA_FIELD_NUMBER: builtins.int
     @property
-    def info(self) -> Global___CoreEventInfo: ...
+    def info(self) -> global___CoreEventInfo: ...
     @property
-    def data(self) -> Global___ArgsPropertyInGenericTestDeprecation: ...
+    def data(self) -> global___ArgsPropertyInGenericTestDeprecation: ...
     def __init__(
         self,
         *,
-        info: Global___CoreEventInfo | None = ...,
-        data: Global___ArgsPropertyInGenericTestDeprecation | None = ...,
+        info: global___CoreEventInfo | None = ...,
+        data: global___ArgsPropertyInGenericTestDeprecation | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> None: ...
 
-Global___ArgsPropertyInGenericTestDeprecationMsg: typing_extensions.TypeAlias = ArgsPropertyInGenericTestDeprecationMsg
+global___ArgsPropertyInGenericTestDeprecationMsg = ArgsPropertyInGenericTestDeprecationMsg
 
 @typing.final
 class ArgumentsPropertyInGenericTestDeprecation(google.protobuf.message.Message):
@@ -2478,7 +2472,7 @@ class ArgumentsPropertyInGenericTestDeprecation(google.protobuf.message.Message)
     ) -> None: ...
     def ClearField(self, field_name: typing.Literal["test_name", b"test_name"]) -> None: ...
 
-Global___ArgumentsPropertyInGenericTestDeprecation: typing_extensions.TypeAlias = ArgumentsPropertyInGenericTestDeprecation
+global___ArgumentsPropertyInGenericTestDeprecation = ArgumentsPropertyInGenericTestDeprecation
 
 @typing.final
 class ArgumentsPropertyInGenericTestDeprecationMsg(google.protobuf.message.Message):
@@ -2487,19 +2481,19 @@ class ArgumentsPropertyInGenericTestDeprecationMsg(google.protobuf.message.Messa
     INFO_FIELD_NUMBER: builtins.int
     DATA_FIELD_NUMBER: builtins.int
     @property
-    def info(self) -> Global___CoreEventInfo: ...
+    def info(self) -> global___CoreEventInfo: ...
     @property
-    def data(self) -> Global___ArgumentsPropertyInGenericTestDeprecation: ...
+    def data(self) -> global___ArgumentsPropertyInGenericTestDeprecation: ...
     def __init__(
         self,
         *,
-        info: Global___CoreEventInfo | None = ...,
-        data: Global___ArgumentsPropertyInGenericTestDeprecation | None = ...,
+        info: global___CoreEventInfo | None = ...,
+        data: global___ArgumentsPropertyInGenericTestDeprecation | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> None: ...
 
-Global___ArgumentsPropertyInGenericTestDeprecationMsg: typing_extensions.TypeAlias = ArgumentsPropertyInGenericTestDeprecationMsg
+global___ArgumentsPropertyInGenericTestDeprecationMsg = ArgumentsPropertyInGenericTestDeprecationMsg
 
 @typing.final
 class MissingArgumentsPropertyInGenericTestDeprecation(google.protobuf.message.Message):
@@ -2516,7 +2510,7 @@ class MissingArgumentsPropertyInGenericTestDeprecation(google.protobuf.message.M
     ) -> None: ...
     def ClearField(self, field_name: typing.Literal["test_name", b"test_name"]) -> None: ...
 
-Global___MissingArgumentsPropertyInGenericTestDeprecation: typing_extensions.TypeAlias = MissingArgumentsPropertyInGenericTestDeprecation
+global___MissingArgumentsPropertyInGenericTestDeprecation = MissingArgumentsPropertyInGenericTestDeprecation
 
 @typing.final
 class MissingArgumentsPropertyInGenericTestDeprecationMsg(google.protobuf.message.Message):
@@ -2525,19 +2519,19 @@ class MissingArgumentsPropertyInGenericTestDeprecationMsg(google.protobuf.messag
     INFO_FIELD_NUMBER: builtins.int
     DATA_FIELD_NUMBER: builtins.int
     @property
-    def info(self) -> Global___CoreEventInfo: ...
+    def info(self) -> global___CoreEventInfo: ...
     @property
-    def data(self) -> Global___MissingArgumentsPropertyInGenericTestDeprecation: ...
+    def data(self) -> global___MissingArgumentsPropertyInGenericTestDeprecation: ...
     def __init__(
         self,
         *,
-        info: Global___CoreEventInfo | None = ...,
-        data: Global___MissingArgumentsPropertyInGenericTestDeprecation | None = ...,
+        info: global___CoreEventInfo | None = ...,
+        data: global___MissingArgumentsPropertyInGenericTestDeprecation | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> None: ...
 
-Global___MissingArgumentsPropertyInGenericTestDeprecationMsg: typing_extensions.TypeAlias = MissingArgumentsPropertyInGenericTestDeprecationMsg
+global___MissingArgumentsPropertyInGenericTestDeprecationMsg = MissingArgumentsPropertyInGenericTestDeprecationMsg
 
 @typing.final
 class DuplicateNameDistinctNodeTypesDeprecation(google.protobuf.message.Message):
@@ -2563,7 +2557,7 @@ class DuplicateNameDistinctNodeTypesDeprecation(google.protobuf.message.Message)
     ) -> None: ...
     def ClearField(self, field_name: typing.Literal["package_name", b"package_name", "resource_name", b"resource_name", "unique_id1", b"unique_id1", "unique_id2", b"unique_id2"]) -> None: ...
 
-Global___DuplicateNameDistinctNodeTypesDeprecation: typing_extensions.TypeAlias = DuplicateNameDistinctNodeTypesDeprecation
+global___DuplicateNameDistinctNodeTypesDeprecation = DuplicateNameDistinctNodeTypesDeprecation
 
 @typing.final
 class DuplicateNameDistinctNodeTypesDeprecationMsg(google.protobuf.message.Message):
@@ -2572,19 +2566,19 @@ class DuplicateNameDistinctNodeTypesDeprecationMsg(google.protobuf.message.Messa
     INFO_FIELD_NUMBER: builtins.int
     DATA_FIELD_NUMBER: builtins.int
     @property
-    def info(self) -> Global___CoreEventInfo: ...
+    def info(self) -> global___CoreEventInfo: ...
     @property
-    def data(self) -> Global___DuplicateNameDistinctNodeTypesDeprecation: ...
+    def data(self) -> global___DuplicateNameDistinctNodeTypesDeprecation: ...
     def __init__(
         self,
         *,
-        info: Global___CoreEventInfo | None = ...,
-        data: Global___DuplicateNameDistinctNodeTypesDeprecation | None = ...,
+        info: global___CoreEventInfo | None = ...,
+        data: global___DuplicateNameDistinctNodeTypesDeprecation | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> None: ...
 
-Global___DuplicateNameDistinctNodeTypesDeprecationMsg: typing_extensions.TypeAlias = DuplicateNameDistinctNodeTypesDeprecationMsg
+global___DuplicateNameDistinctNodeTypesDeprecationMsg = DuplicateNameDistinctNodeTypesDeprecationMsg
 
 @typing.final
 class TimeDimensionsRequireGranularityDeprecation(google.protobuf.message.Message):
@@ -2604,7 +2598,7 @@ class TimeDimensionsRequireGranularityDeprecation(google.protobuf.message.Messag
     ) -> None: ...
     def ClearField(self, field_name: typing.Literal["msg", b"msg"]) -> None: ...
 
-Global___TimeDimensionsRequireGranularityDeprecation: typing_extensions.TypeAlias = TimeDimensionsRequireGranularityDeprecation
+global___TimeDimensionsRequireGranularityDeprecation = TimeDimensionsRequireGranularityDeprecation
 
 @typing.final
 class TimeDimensionsRequireGranularityDeprecationMsg(google.protobuf.message.Message):
@@ -2613,19 +2607,19 @@ class TimeDimensionsRequireGranularityDeprecationMsg(google.protobuf.message.Mes
     INFO_FIELD_NUMBER: builtins.int
     DATA_FIELD_NUMBER: builtins.int
     @property
-    def info(self) -> Global___CoreEventInfo: ...
+    def info(self) -> global___CoreEventInfo: ...
     @property
-    def data(self) -> Global___TimeDimensionsRequireGranularityDeprecation: ...
+    def data(self) -> global___TimeDimensionsRequireGranularityDeprecation: ...
     def __init__(
         self,
         *,
-        info: Global___CoreEventInfo | None = ...,
-        data: Global___TimeDimensionsRequireGranularityDeprecation | None = ...,
+        info: global___CoreEventInfo | None = ...,
+        data: global___TimeDimensionsRequireGranularityDeprecation | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> None: ...
 
-Global___TimeDimensionsRequireGranularityDeprecationMsg: typing_extensions.TypeAlias = TimeDimensionsRequireGranularityDeprecationMsg
+global___TimeDimensionsRequireGranularityDeprecationMsg = TimeDimensionsRequireGranularityDeprecationMsg
 
 @typing.final
 class GenericSemanticLayerDeprecation(google.protobuf.message.Message):
@@ -2642,7 +2636,7 @@ class GenericSemanticLayerDeprecation(google.protobuf.message.Message):
     ) -> None: ...
     def ClearField(self, field_name: typing.Literal["msg", b"msg"]) -> None: ...
 
-Global___GenericSemanticLayerDeprecation: typing_extensions.TypeAlias = GenericSemanticLayerDeprecation
+global___GenericSemanticLayerDeprecation = GenericSemanticLayerDeprecation
 
 @typing.final
 class GenericSemanticLayerDeprecationMsg(google.protobuf.message.Message):
@@ -2651,19 +2645,19 @@ class GenericSemanticLayerDeprecationMsg(google.protobuf.message.Message):
     INFO_FIELD_NUMBER: builtins.int
     DATA_FIELD_NUMBER: builtins.int
     @property
-    def info(self) -> Global___CoreEventInfo: ...
+    def info(self) -> global___CoreEventInfo: ...
     @property
-    def data(self) -> Global___GenericSemanticLayerDeprecation: ...
+    def data(self) -> global___GenericSemanticLayerDeprecation: ...
     def __init__(
         self,
         *,
-        info: Global___CoreEventInfo | None = ...,
-        data: Global___GenericSemanticLayerDeprecation | None = ...,
+        info: global___CoreEventInfo | None = ...,
+        data: global___GenericSemanticLayerDeprecation | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> None: ...
 
-Global___GenericSemanticLayerDeprecationMsg: typing_extensions.TypeAlias = GenericSemanticLayerDeprecationMsg
+global___GenericSemanticLayerDeprecationMsg = GenericSemanticLayerDeprecationMsg
 
 @typing.final
 class GenerateSchemaNameNullValueDeprecation(google.protobuf.message.Message):
@@ -2680,7 +2674,7 @@ class GenerateSchemaNameNullValueDeprecation(google.protobuf.message.Message):
     ) -> None: ...
     def ClearField(self, field_name: typing.Literal["resource_unique_id", b"resource_unique_id"]) -> None: ...
 
-Global___GenerateSchemaNameNullValueDeprecation: typing_extensions.TypeAlias = GenerateSchemaNameNullValueDeprecation
+global___GenerateSchemaNameNullValueDeprecation = GenerateSchemaNameNullValueDeprecation
 
 @typing.final
 class GenerateSchemaNameNullValueDeprecationMsg(google.protobuf.message.Message):
@@ -2689,19 +2683,19 @@ class GenerateSchemaNameNullValueDeprecationMsg(google.protobuf.message.Message)
     INFO_FIELD_NUMBER: builtins.int
     DATA_FIELD_NUMBER: builtins.int
     @property
-    def info(self) -> Global___CoreEventInfo: ...
+    def info(self) -> global___CoreEventInfo: ...
     @property
-    def data(self) -> Global___GenerateSchemaNameNullValueDeprecation: ...
+    def data(self) -> global___GenerateSchemaNameNullValueDeprecation: ...
     def __init__(
         self,
         *,
-        info: Global___CoreEventInfo | None = ...,
-        data: Global___GenerateSchemaNameNullValueDeprecation | None = ...,
+        info: global___CoreEventInfo | None = ...,
+        data: global___GenerateSchemaNameNullValueDeprecation | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> None: ...
 
-Global___GenerateSchemaNameNullValueDeprecationMsg: typing_extensions.TypeAlias = GenerateSchemaNameNullValueDeprecationMsg
+global___GenerateSchemaNameNullValueDeprecationMsg = GenerateSchemaNameNullValueDeprecationMsg
 
 @typing.final
 class UnknownFlagsDeprecation(google.protobuf.message.Message):
@@ -2719,7 +2713,7 @@ class UnknownFlagsDeprecation(google.protobuf.message.Message):
     ) -> None: ...
     def ClearField(self, field_name: typing.Literal["flag_names", b"flag_names"]) -> None: ...
 
-Global___UnknownFlagsDeprecation: typing_extensions.TypeAlias = UnknownFlagsDeprecation
+global___UnknownFlagsDeprecation = UnknownFlagsDeprecation
 
 @typing.final
 class UnknownFlagsDeprecationMsg(google.protobuf.message.Message):
@@ -2728,19 +2722,19 @@ class UnknownFlagsDeprecationMsg(google.protobuf.message.Message):
     INFO_FIELD_NUMBER: builtins.int
     DATA_FIELD_NUMBER: builtins.int
     @property
-    def info(self) -> Global___CoreEventInfo: ...
+    def info(self) -> global___CoreEventInfo: ...
     @property
-    def data(self) -> Global___UnknownFlagsDeprecation: ...
+    def data(self) -> global___UnknownFlagsDeprecation: ...
     def __init__(
         self,
         *,
-        info: Global___CoreEventInfo | None = ...,
-        data: Global___UnknownFlagsDeprecation | None = ...,
+        info: global___CoreEventInfo | None = ...,
+        data: global___UnknownFlagsDeprecation | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> None: ...
 
-Global___UnknownFlagsDeprecationMsg: typing_extensions.TypeAlias = UnknownFlagsDeprecationMsg
+global___UnknownFlagsDeprecationMsg = UnknownFlagsDeprecationMsg
 
 @typing.final
 class DeprecatedModel(google.protobuf.message.Message):
@@ -2763,7 +2757,7 @@ class DeprecatedModel(google.protobuf.message.Message):
     ) -> None: ...
     def ClearField(self, field_name: typing.Literal["deprecation_date", b"deprecation_date", "model_name", b"model_name", "model_version", b"model_version"]) -> None: ...
 
-Global___DeprecatedModel: typing_extensions.TypeAlias = DeprecatedModel
+global___DeprecatedModel = DeprecatedModel
 
 @typing.final
 class DeprecatedModelMsg(google.protobuf.message.Message):
@@ -2772,19 +2766,19 @@ class DeprecatedModelMsg(google.protobuf.message.Message):
     INFO_FIELD_NUMBER: builtins.int
     DATA_FIELD_NUMBER: builtins.int
     @property
-    def info(self) -> Global___CoreEventInfo: ...
+    def info(self) -> global___CoreEventInfo: ...
     @property
-    def data(self) -> Global___DeprecatedModel: ...
+    def data(self) -> global___DeprecatedModel: ...
     def __init__(
         self,
         *,
-        info: Global___CoreEventInfo | None = ...,
-        data: Global___DeprecatedModel | None = ...,
+        info: global___CoreEventInfo | None = ...,
+        data: global___DeprecatedModel | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> None: ...
 
-Global___DeprecatedModelMsg: typing_extensions.TypeAlias = DeprecatedModelMsg
+global___DeprecatedModelMsg = DeprecatedModelMsg
 
 @typing.final
 class InputFileDiffError(google.protobuf.message.Message):
@@ -2807,7 +2801,7 @@ class InputFileDiffError(google.protobuf.message.Message):
     ) -> None: ...
     def ClearField(self, field_name: typing.Literal["category", b"category", "file_id", b"file_id"]) -> None: ...
 
-Global___InputFileDiffError: typing_extensions.TypeAlias = InputFileDiffError
+global___InputFileDiffError = InputFileDiffError
 
 @typing.final
 class InputFileDiffErrorMsg(google.protobuf.message.Message):
@@ -2816,19 +2810,19 @@ class InputFileDiffErrorMsg(google.protobuf.message.Message):
     INFO_FIELD_NUMBER: builtins.int
     DATA_FIELD_NUMBER: builtins.int
     @property
-    def info(self) -> Global___CoreEventInfo: ...
+    def info(self) -> global___CoreEventInfo: ...
     @property
-    def data(self) -> Global___InputFileDiffError: ...
+    def data(self) -> global___InputFileDiffError: ...
     def __init__(
         self,
         *,
-        info: Global___CoreEventInfo | None = ...,
-        data: Global___InputFileDiffError | None = ...,
+        info: global___CoreEventInfo | None = ...,
+        data: global___InputFileDiffError | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> None: ...
 
-Global___InputFileDiffErrorMsg: typing_extensions.TypeAlias = InputFileDiffErrorMsg
+global___InputFileDiffErrorMsg = InputFileDiffErrorMsg
 
 @typing.final
 class InvalidValueForField(google.protobuf.message.Message):
@@ -2851,7 +2845,7 @@ class InvalidValueForField(google.protobuf.message.Message):
     ) -> None: ...
     def ClearField(self, field_name: typing.Literal["field_name", b"field_name", "field_value", b"field_value"]) -> None: ...
 
-Global___InvalidValueForField: typing_extensions.TypeAlias = InvalidValueForField
+global___InvalidValueForField = InvalidValueForField
 
 @typing.final
 class InvalidValueForFieldMsg(google.protobuf.message.Message):
@@ -2860,19 +2854,19 @@ class InvalidValueForFieldMsg(google.protobuf.message.Message):
     INFO_FIELD_NUMBER: builtins.int
     DATA_FIELD_NUMBER: builtins.int
     @property
-    def info(self) -> Global___CoreEventInfo: ...
+    def info(self) -> global___CoreEventInfo: ...
     @property
-    def data(self) -> Global___InvalidValueForField: ...
+    def data(self) -> global___InvalidValueForField: ...
     def __init__(
         self,
         *,
-        info: Global___CoreEventInfo | None = ...,
-        data: Global___InvalidValueForField | None = ...,
+        info: global___CoreEventInfo | None = ...,
+        data: global___InvalidValueForField | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> None: ...
 
-Global___InvalidValueForFieldMsg: typing_extensions.TypeAlias = InvalidValueForFieldMsg
+global___InvalidValueForFieldMsg = InvalidValueForFieldMsg
 
 @typing.final
 class ValidationWarning(google.protobuf.message.Message):
@@ -2895,7 +2889,7 @@ class ValidationWarning(google.protobuf.message.Message):
     ) -> None: ...
     def ClearField(self, field_name: typing.Literal["field_name", b"field_name", "node_name", b"node_name", "resource_type", b"resource_type"]) -> None: ...
 
-Global___ValidationWarning: typing_extensions.TypeAlias = ValidationWarning
+global___ValidationWarning = ValidationWarning
 
 @typing.final
 class ValidationWarningMsg(google.protobuf.message.Message):
@@ -2904,19 +2898,19 @@ class ValidationWarningMsg(google.protobuf.message.Message):
     INFO_FIELD_NUMBER: builtins.int
     DATA_FIELD_NUMBER: builtins.int
     @property
-    def info(self) -> Global___CoreEventInfo: ...
+    def info(self) -> global___CoreEventInfo: ...
     @property
-    def data(self) -> Global___ValidationWarning: ...
+    def data(self) -> global___ValidationWarning: ...
     def __init__(
         self,
         *,
-        info: Global___CoreEventInfo | None = ...,
-        data: Global___ValidationWarning | None = ...,
+        info: global___CoreEventInfo | None = ...,
+        data: global___ValidationWarning | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> None: ...
 
-Global___ValidationWarningMsg: typing_extensions.TypeAlias = ValidationWarningMsg
+global___ValidationWarningMsg = ValidationWarningMsg
 
 @typing.final
 class ParsePerfInfoPath(google.protobuf.message.Message):
@@ -2933,7 +2927,7 @@ class ParsePerfInfoPath(google.protobuf.message.Message):
     ) -> None: ...
     def ClearField(self, field_name: typing.Literal["path", b"path"]) -> None: ...
 
-Global___ParsePerfInfoPath: typing_extensions.TypeAlias = ParsePerfInfoPath
+global___ParsePerfInfoPath = ParsePerfInfoPath
 
 @typing.final
 class ParsePerfInfoPathMsg(google.protobuf.message.Message):
@@ -2942,19 +2936,19 @@ class ParsePerfInfoPathMsg(google.protobuf.message.Message):
     INFO_FIELD_NUMBER: builtins.int
     DATA_FIELD_NUMBER: builtins.int
     @property
-    def info(self) -> Global___CoreEventInfo: ...
+    def info(self) -> global___CoreEventInfo: ...
     @property
-    def data(self) -> Global___ParsePerfInfoPath: ...
+    def data(self) -> global___ParsePerfInfoPath: ...
     def __init__(
         self,
         *,
-        info: Global___CoreEventInfo | None = ...,
-        data: Global___ParsePerfInfoPath | None = ...,
+        info: global___CoreEventInfo | None = ...,
+        data: global___ParsePerfInfoPath | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> None: ...
 
-Global___ParsePerfInfoPathMsg: typing_extensions.TypeAlias = ParsePerfInfoPathMsg
+global___ParsePerfInfoPathMsg = ParsePerfInfoPathMsg
 
 @typing.final
 class PartialParsingErrorProcessingFile(google.protobuf.message.Message):
@@ -2974,7 +2968,7 @@ class PartialParsingErrorProcessingFile(google.protobuf.message.Message):
     ) -> None: ...
     def ClearField(self, field_name: typing.Literal["file", b"file"]) -> None: ...
 
-Global___PartialParsingErrorProcessingFile: typing_extensions.TypeAlias = PartialParsingErrorProcessingFile
+global___PartialParsingErrorProcessingFile = PartialParsingErrorProcessingFile
 
 @typing.final
 class PartialParsingErrorProcessingFileMsg(google.protobuf.message.Message):
@@ -2983,19 +2977,19 @@ class PartialParsingErrorProcessingFileMsg(google.protobuf.message.Message):
     INFO_FIELD_NUMBER: builtins.int
     DATA_FIELD_NUMBER: builtins.int
     @property
-    def info(self) -> Global___CoreEventInfo: ...
+    def info(self) -> global___CoreEventInfo: ...
     @property
-    def data(self) -> Global___PartialParsingErrorProcessingFile: ...
+    def data(self) -> global___PartialParsingErrorProcessingFile: ...
     def __init__(
         self,
         *,
-        info: Global___CoreEventInfo | None = ...,
-        data: Global___PartialParsingErrorProcessingFile | None = ...,
+        info: global___CoreEventInfo | None = ...,
+        data: global___PartialParsingErrorProcessingFile | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> None: ...
 
-Global___PartialParsingErrorProcessingFileMsg: typing_extensions.TypeAlias = PartialParsingErrorProcessingFileMsg
+global___PartialParsingErrorProcessingFileMsg = PartialParsingErrorProcessingFileMsg
 
 @typing.final
 class PartialParsingError(google.protobuf.message.Message):
@@ -3029,7 +3023,7 @@ class PartialParsingError(google.protobuf.message.Message):
     ) -> None: ...
     def ClearField(self, field_name: typing.Literal["exc_info", b"exc_info"]) -> None: ...
 
-Global___PartialParsingError: typing_extensions.TypeAlias = PartialParsingError
+global___PartialParsingError = PartialParsingError
 
 @typing.final
 class PartialParsingErrorMsg(google.protobuf.message.Message):
@@ -3038,19 +3032,19 @@ class PartialParsingErrorMsg(google.protobuf.message.Message):
     INFO_FIELD_NUMBER: builtins.int
     DATA_FIELD_NUMBER: builtins.int
     @property
-    def info(self) -> Global___CoreEventInfo: ...
+    def info(self) -> global___CoreEventInfo: ...
     @property
-    def data(self) -> Global___PartialParsingError: ...
+    def data(self) -> global___PartialParsingError: ...
     def __init__(
         self,
         *,
-        info: Global___CoreEventInfo | None = ...,
-        data: Global___PartialParsingError | None = ...,
+        info: global___CoreEventInfo | None = ...,
+        data: global___PartialParsingError | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> None: ...
 
-Global___PartialParsingErrorMsg: typing_extensions.TypeAlias = PartialParsingErrorMsg
+global___PartialParsingErrorMsg = PartialParsingErrorMsg
 
 @typing.final
 class PartialParsingSkipParsing(google.protobuf.message.Message):
@@ -3062,7 +3056,7 @@ class PartialParsingSkipParsing(google.protobuf.message.Message):
         self,
     ) -> None: ...
 
-Global___PartialParsingSkipParsing: typing_extensions.TypeAlias = PartialParsingSkipParsing
+global___PartialParsingSkipParsing = PartialParsingSkipParsing
 
 @typing.final
 class PartialParsingSkipParsingMsg(google.protobuf.message.Message):
@@ -3071,19 +3065,19 @@ class PartialParsingSkipParsingMsg(google.protobuf.message.Message):
     INFO_FIELD_NUMBER: builtins.int
     DATA_FIELD_NUMBER: builtins.int
     @property
-    def info(self) -> Global___CoreEventInfo: ...
+    def info(self) -> global___CoreEventInfo: ...
     @property
-    def data(self) -> Global___PartialParsingSkipParsing: ...
+    def data(self) -> global___PartialParsingSkipParsing: ...
     def __init__(
         self,
         *,
-        info: Global___CoreEventInfo | None = ...,
-        data: Global___PartialParsingSkipParsing | None = ...,
+        info: global___CoreEventInfo | None = ...,
+        data: global___PartialParsingSkipParsing | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> None: ...
 
-Global___PartialParsingSkipParsingMsg: typing_extensions.TypeAlias = PartialParsingSkipParsingMsg
+global___PartialParsingSkipParsingMsg = PartialParsingSkipParsingMsg
 
 @typing.final
 class UnableToPartialParse(google.protobuf.message.Message):
@@ -3103,7 +3097,7 @@ class UnableToPartialParse(google.protobuf.message.Message):
     ) -> None: ...
     def ClearField(self, field_name: typing.Literal["reason", b"reason"]) -> None: ...
 
-Global___UnableToPartialParse: typing_extensions.TypeAlias = UnableToPartialParse
+global___UnableToPartialParse = UnableToPartialParse
 
 @typing.final
 class UnableToPartialParseMsg(google.protobuf.message.Message):
@@ -3112,19 +3106,19 @@ class UnableToPartialParseMsg(google.protobuf.message.Message):
     INFO_FIELD_NUMBER: builtins.int
     DATA_FIELD_NUMBER: builtins.int
     @property
-    def info(self) -> Global___CoreEventInfo: ...
+    def info(self) -> global___CoreEventInfo: ...
     @property
-    def data(self) -> Global___UnableToPartialParse: ...
+    def data(self) -> global___UnableToPartialParse: ...
     def __init__(
         self,
         *,
-        info: Global___CoreEventInfo | None = ...,
-        data: Global___UnableToPartialParse | None = ...,
+        info: global___CoreEventInfo | None = ...,
+        data: global___UnableToPartialParse | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> None: ...
 
-Global___UnableToPartialParseMsg: typing_extensions.TypeAlias = UnableToPartialParseMsg
+global___UnableToPartialParseMsg = UnableToPartialParseMsg
 
 @typing.final
 class StateCheckVarsHash(google.protobuf.message.Message):
@@ -3153,7 +3147,7 @@ class StateCheckVarsHash(google.protobuf.message.Message):
     ) -> None: ...
     def ClearField(self, field_name: typing.Literal["checksum", b"checksum", "profile", b"profile", "target", b"target", "vars", b"vars", "version", b"version"]) -> None: ...
 
-Global___StateCheckVarsHash: typing_extensions.TypeAlias = StateCheckVarsHash
+global___StateCheckVarsHash = StateCheckVarsHash
 
 @typing.final
 class StateCheckVarsHashMsg(google.protobuf.message.Message):
@@ -3162,19 +3156,19 @@ class StateCheckVarsHashMsg(google.protobuf.message.Message):
     INFO_FIELD_NUMBER: builtins.int
     DATA_FIELD_NUMBER: builtins.int
     @property
-    def info(self) -> Global___CoreEventInfo: ...
+    def info(self) -> global___CoreEventInfo: ...
     @property
-    def data(self) -> Global___StateCheckVarsHash: ...
+    def data(self) -> global___StateCheckVarsHash: ...
     def __init__(
         self,
         *,
-        info: Global___CoreEventInfo | None = ...,
-        data: Global___StateCheckVarsHash | None = ...,
+        info: global___CoreEventInfo | None = ...,
+        data: global___StateCheckVarsHash | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> None: ...
 
-Global___StateCheckVarsHashMsg: typing_extensions.TypeAlias = StateCheckVarsHashMsg
+global___StateCheckVarsHashMsg = StateCheckVarsHashMsg
 
 @typing.final
 class PartialParsingNotEnabled(google.protobuf.message.Message):
@@ -3189,7 +3183,7 @@ class PartialParsingNotEnabled(google.protobuf.message.Message):
         self,
     ) -> None: ...
 
-Global___PartialParsingNotEnabled: typing_extensions.TypeAlias = PartialParsingNotEnabled
+global___PartialParsingNotEnabled = PartialParsingNotEnabled
 
 @typing.final
 class PartialParsingNotEnabledMsg(google.protobuf.message.Message):
@@ -3198,19 +3192,19 @@ class PartialParsingNotEnabledMsg(google.protobuf.message.Message):
     INFO_FIELD_NUMBER: builtins.int
     DATA_FIELD_NUMBER: builtins.int
     @property
-    def info(self) -> Global___CoreEventInfo: ...
+    def info(self) -> global___CoreEventInfo: ...
     @property
-    def data(self) -> Global___PartialParsingNotEnabled: ...
+    def data(self) -> global___PartialParsingNotEnabled: ...
     def __init__(
         self,
         *,
-        info: Global___CoreEventInfo | None = ...,
-        data: Global___PartialParsingNotEnabled | None = ...,
+        info: global___CoreEventInfo | None = ...,
+        data: global___PartialParsingNotEnabled | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> None: ...
 
-Global___PartialParsingNotEnabledMsg: typing_extensions.TypeAlias = PartialParsingNotEnabledMsg
+global___PartialParsingNotEnabledMsg = PartialParsingNotEnabledMsg
 
 @typing.final
 class ParsedFileLoadFailed(google.protobuf.message.Message):
@@ -3233,7 +3227,7 @@ class ParsedFileLoadFailed(google.protobuf.message.Message):
     ) -> None: ...
     def ClearField(self, field_name: typing.Literal["exc", b"exc", "exc_info", b"exc_info", "path", b"path"]) -> None: ...
 
-Global___ParsedFileLoadFailed: typing_extensions.TypeAlias = ParsedFileLoadFailed
+global___ParsedFileLoadFailed = ParsedFileLoadFailed
 
 @typing.final
 class ParsedFileLoadFailedMsg(google.protobuf.message.Message):
@@ -3242,19 +3236,19 @@ class ParsedFileLoadFailedMsg(google.protobuf.message.Message):
     INFO_FIELD_NUMBER: builtins.int
     DATA_FIELD_NUMBER: builtins.int
     @property
-    def info(self) -> Global___CoreEventInfo: ...
+    def info(self) -> global___CoreEventInfo: ...
     @property
-    def data(self) -> Global___ParsedFileLoadFailed: ...
+    def data(self) -> global___ParsedFileLoadFailed: ...
     def __init__(
         self,
         *,
-        info: Global___CoreEventInfo | None = ...,
-        data: Global___ParsedFileLoadFailed | None = ...,
+        info: global___CoreEventInfo | None = ...,
+        data: global___ParsedFileLoadFailed | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> None: ...
 
-Global___ParsedFileLoadFailedMsg: typing_extensions.TypeAlias = ParsedFileLoadFailedMsg
+global___ParsedFileLoadFailedMsg = ParsedFileLoadFailedMsg
 
 @typing.final
 class PartialParsingEnabled(google.protobuf.message.Message):
@@ -3280,7 +3274,7 @@ class PartialParsingEnabled(google.protobuf.message.Message):
     ) -> None: ...
     def ClearField(self, field_name: typing.Literal["added", b"added", "changed", b"changed", "deleted", b"deleted"]) -> None: ...
 
-Global___PartialParsingEnabled: typing_extensions.TypeAlias = PartialParsingEnabled
+global___PartialParsingEnabled = PartialParsingEnabled
 
 @typing.final
 class PartialParsingEnabledMsg(google.protobuf.message.Message):
@@ -3289,19 +3283,19 @@ class PartialParsingEnabledMsg(google.protobuf.message.Message):
     INFO_FIELD_NUMBER: builtins.int
     DATA_FIELD_NUMBER: builtins.int
     @property
-    def info(self) -> Global___CoreEventInfo: ...
+    def info(self) -> global___CoreEventInfo: ...
     @property
-    def data(self) -> Global___PartialParsingEnabled: ...
+    def data(self) -> global___PartialParsingEnabled: ...
     def __init__(
         self,
         *,
-        info: Global___CoreEventInfo | None = ...,
-        data: Global___PartialParsingEnabled | None = ...,
+        info: global___CoreEventInfo | None = ...,
+        data: global___PartialParsingEnabled | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> None: ...
 
-Global___PartialParsingEnabledMsg: typing_extensions.TypeAlias = PartialParsingEnabledMsg
+global___PartialParsingEnabledMsg = PartialParsingEnabledMsg
 
 @typing.final
 class PartialParsingFile(google.protobuf.message.Message):
@@ -3321,7 +3315,7 @@ class PartialParsingFile(google.protobuf.message.Message):
     ) -> None: ...
     def ClearField(self, field_name: typing.Literal["file_id", b"file_id", "operation", b"operation"]) -> None: ...
 
-Global___PartialParsingFile: typing_extensions.TypeAlias = PartialParsingFile
+global___PartialParsingFile = PartialParsingFile
 
 @typing.final
 class PartialParsingFileMsg(google.protobuf.message.Message):
@@ -3330,19 +3324,19 @@ class PartialParsingFileMsg(google.protobuf.message.Message):
     INFO_FIELD_NUMBER: builtins.int
     DATA_FIELD_NUMBER: builtins.int
     @property
-    def info(self) -> Global___CoreEventInfo: ...
+    def info(self) -> global___CoreEventInfo: ...
     @property
-    def data(self) -> Global___PartialParsingFile: ...
+    def data(self) -> global___PartialParsingFile: ...
     def __init__(
         self,
         *,
-        info: Global___CoreEventInfo | None = ...,
-        data: Global___PartialParsingFile | None = ...,
+        info: global___CoreEventInfo | None = ...,
+        data: global___PartialParsingFile | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> None: ...
 
-Global___PartialParsingFileMsg: typing_extensions.TypeAlias = PartialParsingFileMsg
+global___PartialParsingFileMsg = PartialParsingFileMsg
 
 @typing.final
 class InvalidDisabledTargetInTestNode(google.protobuf.message.Message):
@@ -3377,7 +3371,7 @@ class InvalidDisabledTargetInTestNode(google.protobuf.message.Message):
     ) -> None: ...
     def ClearField(self, field_name: typing.Literal["original_file_path", b"original_file_path", "resource_type_title", b"resource_type_title", "target_kind", b"target_kind", "target_name", b"target_name", "target_package", b"target_package", "unique_id", b"unique_id"]) -> None: ...
 
-Global___InvalidDisabledTargetInTestNode: typing_extensions.TypeAlias = InvalidDisabledTargetInTestNode
+global___InvalidDisabledTargetInTestNode = InvalidDisabledTargetInTestNode
 
 @typing.final
 class InvalidDisabledTargetInTestNodeMsg(google.protobuf.message.Message):
@@ -3386,19 +3380,19 @@ class InvalidDisabledTargetInTestNodeMsg(google.protobuf.message.Message):
     INFO_FIELD_NUMBER: builtins.int
     DATA_FIELD_NUMBER: builtins.int
     @property
-    def info(self) -> Global___CoreEventInfo: ...
+    def info(self) -> global___CoreEventInfo: ...
     @property
-    def data(self) -> Global___InvalidDisabledTargetInTestNode: ...
+    def data(self) -> global___InvalidDisabledTargetInTestNode: ...
     def __init__(
         self,
         *,
-        info: Global___CoreEventInfo | None = ...,
-        data: Global___InvalidDisabledTargetInTestNode | None = ...,
+        info: global___CoreEventInfo | None = ...,
+        data: global___InvalidDisabledTargetInTestNode | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> None: ...
 
-Global___InvalidDisabledTargetInTestNodeMsg: typing_extensions.TypeAlias = InvalidDisabledTargetInTestNodeMsg
+global___InvalidDisabledTargetInTestNodeMsg = InvalidDisabledTargetInTestNodeMsg
 
 @typing.final
 class UnusedResourceConfigPath(google.protobuf.message.Message):
@@ -3416,7 +3410,7 @@ class UnusedResourceConfigPath(google.protobuf.message.Message):
     ) -> None: ...
     def ClearField(self, field_name: typing.Literal["unused_config_paths", b"unused_config_paths"]) -> None: ...
 
-Global___UnusedResourceConfigPath: typing_extensions.TypeAlias = UnusedResourceConfigPath
+global___UnusedResourceConfigPath = UnusedResourceConfigPath
 
 @typing.final
 class UnusedResourceConfigPathMsg(google.protobuf.message.Message):
@@ -3425,19 +3419,19 @@ class UnusedResourceConfigPathMsg(google.protobuf.message.Message):
     INFO_FIELD_NUMBER: builtins.int
     DATA_FIELD_NUMBER: builtins.int
     @property
-    def info(self) -> Global___CoreEventInfo: ...
+    def info(self) -> global___CoreEventInfo: ...
     @property
-    def data(self) -> Global___UnusedResourceConfigPath: ...
+    def data(self) -> global___UnusedResourceConfigPath: ...
     def __init__(
         self,
         *,
-        info: Global___CoreEventInfo | None = ...,
-        data: Global___UnusedResourceConfigPath | None = ...,
+        info: global___CoreEventInfo | None = ...,
+        data: global___UnusedResourceConfigPath | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> None: ...
 
-Global___UnusedResourceConfigPathMsg: typing_extensions.TypeAlias = UnusedResourceConfigPathMsg
+global___UnusedResourceConfigPathMsg = UnusedResourceConfigPathMsg
 
 @typing.final
 class SeedIncreased(google.protobuf.message.Message):
@@ -3457,7 +3451,7 @@ class SeedIncreased(google.protobuf.message.Message):
     ) -> None: ...
     def ClearField(self, field_name: typing.Literal["name", b"name", "package_name", b"package_name"]) -> None: ...
 
-Global___SeedIncreased: typing_extensions.TypeAlias = SeedIncreased
+global___SeedIncreased = SeedIncreased
 
 @typing.final
 class SeedIncreasedMsg(google.protobuf.message.Message):
@@ -3466,19 +3460,19 @@ class SeedIncreasedMsg(google.protobuf.message.Message):
     INFO_FIELD_NUMBER: builtins.int
     DATA_FIELD_NUMBER: builtins.int
     @property
-    def info(self) -> Global___CoreEventInfo: ...
+    def info(self) -> global___CoreEventInfo: ...
     @property
-    def data(self) -> Global___SeedIncreased: ...
+    def data(self) -> global___SeedIncreased: ...
     def __init__(
         self,
         *,
-        info: Global___CoreEventInfo | None = ...,
-        data: Global___SeedIncreased | None = ...,
+        info: global___CoreEventInfo | None = ...,
+        data: global___SeedIncreased | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> None: ...
 
-Global___SeedIncreasedMsg: typing_extensions.TypeAlias = SeedIncreasedMsg
+global___SeedIncreasedMsg = SeedIncreasedMsg
 
 @typing.final
 class SeedExceedsLimitSamePath(google.protobuf.message.Message):
@@ -3498,7 +3492,7 @@ class SeedExceedsLimitSamePath(google.protobuf.message.Message):
     ) -> None: ...
     def ClearField(self, field_name: typing.Literal["name", b"name", "package_name", b"package_name"]) -> None: ...
 
-Global___SeedExceedsLimitSamePath: typing_extensions.TypeAlias = SeedExceedsLimitSamePath
+global___SeedExceedsLimitSamePath = SeedExceedsLimitSamePath
 
 @typing.final
 class SeedExceedsLimitSamePathMsg(google.protobuf.message.Message):
@@ -3507,19 +3501,19 @@ class SeedExceedsLimitSamePathMsg(google.protobuf.message.Message):
     INFO_FIELD_NUMBER: builtins.int
     DATA_FIELD_NUMBER: builtins.int
     @property
-    def info(self) -> Global___CoreEventInfo: ...
+    def info(self) -> global___CoreEventInfo: ...
     @property
-    def data(self) -> Global___SeedExceedsLimitSamePath: ...
+    def data(self) -> global___SeedExceedsLimitSamePath: ...
     def __init__(
         self,
         *,
-        info: Global___CoreEventInfo | None = ...,
-        data: Global___SeedExceedsLimitSamePath | None = ...,
+        info: global___CoreEventInfo | None = ...,
+        data: global___SeedExceedsLimitSamePath | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> None: ...
 
-Global___SeedExceedsLimitSamePathMsg: typing_extensions.TypeAlias = SeedExceedsLimitSamePathMsg
+global___SeedExceedsLimitSamePathMsg = SeedExceedsLimitSamePathMsg
 
 @typing.final
 class SeedExceedsLimitAndPathChanged(google.protobuf.message.Message):
@@ -3539,7 +3533,7 @@ class SeedExceedsLimitAndPathChanged(google.protobuf.message.Message):
     ) -> None: ...
     def ClearField(self, field_name: typing.Literal["name", b"name", "package_name", b"package_name"]) -> None: ...
 
-Global___SeedExceedsLimitAndPathChanged: typing_extensions.TypeAlias = SeedExceedsLimitAndPathChanged
+global___SeedExceedsLimitAndPathChanged = SeedExceedsLimitAndPathChanged
 
 @typing.final
 class SeedExceedsLimitAndPathChangedMsg(google.protobuf.message.Message):
@@ -3548,19 +3542,19 @@ class SeedExceedsLimitAndPathChangedMsg(google.protobuf.message.Message):
     INFO_FIELD_NUMBER: builtins.int
     DATA_FIELD_NUMBER: builtins.int
     @property
-    def info(self) -> Global___CoreEventInfo: ...
+    def info(self) -> global___CoreEventInfo: ...
     @property
-    def data(self) -> Global___SeedExceedsLimitAndPathChanged: ...
+    def data(self) -> global___SeedExceedsLimitAndPathChanged: ...
     def __init__(
         self,
         *,
-        info: Global___CoreEventInfo | None = ...,
-        data: Global___SeedExceedsLimitAndPathChanged | None = ...,
+        info: global___CoreEventInfo | None = ...,
+        data: global___SeedExceedsLimitAndPathChanged | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> None: ...
 
-Global___SeedExceedsLimitAndPathChangedMsg: typing_extensions.TypeAlias = SeedExceedsLimitAndPathChangedMsg
+global___SeedExceedsLimitAndPathChangedMsg = SeedExceedsLimitAndPathChangedMsg
 
 @typing.final
 class SeedExceedsLimitChecksumChanged(google.protobuf.message.Message):
@@ -3583,7 +3577,7 @@ class SeedExceedsLimitChecksumChanged(google.protobuf.message.Message):
     ) -> None: ...
     def ClearField(self, field_name: typing.Literal["checksum_name", b"checksum_name", "name", b"name", "package_name", b"package_name"]) -> None: ...
 
-Global___SeedExceedsLimitChecksumChanged: typing_extensions.TypeAlias = SeedExceedsLimitChecksumChanged
+global___SeedExceedsLimitChecksumChanged = SeedExceedsLimitChecksumChanged
 
 @typing.final
 class SeedExceedsLimitChecksumChangedMsg(google.protobuf.message.Message):
@@ -3592,19 +3586,19 @@ class SeedExceedsLimitChecksumChangedMsg(google.protobuf.message.Message):
     INFO_FIELD_NUMBER: builtins.int
     DATA_FIELD_NUMBER: builtins.int
     @property
-    def info(self) -> Global___CoreEventInfo: ...
+    def info(self) -> global___CoreEventInfo: ...
     @property
-    def data(self) -> Global___SeedExceedsLimitChecksumChanged: ...
+    def data(self) -> global___SeedExceedsLimitChecksumChanged: ...
     def __init__(
         self,
         *,
-        info: Global___CoreEventInfo | None = ...,
-        data: Global___SeedExceedsLimitChecksumChanged | None = ...,
+        info: global___CoreEventInfo | None = ...,
+        data: global___SeedExceedsLimitChecksumChanged | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> None: ...
 
-Global___SeedExceedsLimitChecksumChangedMsg: typing_extensions.TypeAlias = SeedExceedsLimitChecksumChangedMsg
+global___SeedExceedsLimitChecksumChangedMsg = SeedExceedsLimitChecksumChangedMsg
 
 @typing.final
 class UnusedTables(google.protobuf.message.Message):
@@ -3622,7 +3616,7 @@ class UnusedTables(google.protobuf.message.Message):
     ) -> None: ...
     def ClearField(self, field_name: typing.Literal["unused_tables", b"unused_tables"]) -> None: ...
 
-Global___UnusedTables: typing_extensions.TypeAlias = UnusedTables
+global___UnusedTables = UnusedTables
 
 @typing.final
 class UnusedTablesMsg(google.protobuf.message.Message):
@@ -3631,19 +3625,19 @@ class UnusedTablesMsg(google.protobuf.message.Message):
     INFO_FIELD_NUMBER: builtins.int
     DATA_FIELD_NUMBER: builtins.int
     @property
-    def info(self) -> Global___CoreEventInfo: ...
+    def info(self) -> global___CoreEventInfo: ...
     @property
-    def data(self) -> Global___UnusedTables: ...
+    def data(self) -> global___UnusedTables: ...
     def __init__(
         self,
         *,
-        info: Global___CoreEventInfo | None = ...,
-        data: Global___UnusedTables | None = ...,
+        info: global___CoreEventInfo | None = ...,
+        data: global___UnusedTables | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> None: ...
 
-Global___UnusedTablesMsg: typing_extensions.TypeAlias = UnusedTablesMsg
+global___UnusedTablesMsg = UnusedTablesMsg
 
 @typing.final
 class WrongResourceSchemaFile(google.protobuf.message.Message):
@@ -3672,7 +3666,7 @@ class WrongResourceSchemaFile(google.protobuf.message.Message):
     ) -> None: ...
     def ClearField(self, field_name: typing.Literal["file_path", b"file_path", "patch_name", b"patch_name", "plural_resource_type", b"plural_resource_type", "resource_type", b"resource_type", "yaml_key", b"yaml_key"]) -> None: ...
 
-Global___WrongResourceSchemaFile: typing_extensions.TypeAlias = WrongResourceSchemaFile
+global___WrongResourceSchemaFile = WrongResourceSchemaFile
 
 @typing.final
 class WrongResourceSchemaFileMsg(google.protobuf.message.Message):
@@ -3681,19 +3675,19 @@ class WrongResourceSchemaFileMsg(google.protobuf.message.Message):
     INFO_FIELD_NUMBER: builtins.int
     DATA_FIELD_NUMBER: builtins.int
     @property
-    def info(self) -> Global___CoreEventInfo: ...
+    def info(self) -> global___CoreEventInfo: ...
     @property
-    def data(self) -> Global___WrongResourceSchemaFile: ...
+    def data(self) -> global___WrongResourceSchemaFile: ...
     def __init__(
         self,
         *,
-        info: Global___CoreEventInfo | None = ...,
-        data: Global___WrongResourceSchemaFile | None = ...,
+        info: global___CoreEventInfo | None = ...,
+        data: global___WrongResourceSchemaFile | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> None: ...
 
-Global___WrongResourceSchemaFileMsg: typing_extensions.TypeAlias = WrongResourceSchemaFileMsg
+global___WrongResourceSchemaFileMsg = WrongResourceSchemaFileMsg
 
 @typing.final
 class NoNodeForYamlKey(google.protobuf.message.Message):
@@ -3716,7 +3710,7 @@ class NoNodeForYamlKey(google.protobuf.message.Message):
     ) -> None: ...
     def ClearField(self, field_name: typing.Literal["file_path", b"file_path", "patch_name", b"patch_name", "yaml_key", b"yaml_key"]) -> None: ...
 
-Global___NoNodeForYamlKey: typing_extensions.TypeAlias = NoNodeForYamlKey
+global___NoNodeForYamlKey = NoNodeForYamlKey
 
 @typing.final
 class NoNodeForYamlKeyMsg(google.protobuf.message.Message):
@@ -3725,19 +3719,19 @@ class NoNodeForYamlKeyMsg(google.protobuf.message.Message):
     INFO_FIELD_NUMBER: builtins.int
     DATA_FIELD_NUMBER: builtins.int
     @property
-    def info(self) -> Global___CoreEventInfo: ...
+    def info(self) -> global___CoreEventInfo: ...
     @property
-    def data(self) -> Global___NoNodeForYamlKey: ...
+    def data(self) -> global___NoNodeForYamlKey: ...
     def __init__(
         self,
         *,
-        info: Global___CoreEventInfo | None = ...,
-        data: Global___NoNodeForYamlKey | None = ...,
+        info: global___CoreEventInfo | None = ...,
+        data: global___NoNodeForYamlKey | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> None: ...
 
-Global___NoNodeForYamlKeyMsg: typing_extensions.TypeAlias = NoNodeForYamlKeyMsg
+global___NoNodeForYamlKeyMsg = NoNodeForYamlKeyMsg
 
 @typing.final
 class MacroNotFoundForPatch(google.protobuf.message.Message):
@@ -3754,7 +3748,7 @@ class MacroNotFoundForPatch(google.protobuf.message.Message):
     ) -> None: ...
     def ClearField(self, field_name: typing.Literal["patch_name", b"patch_name"]) -> None: ...
 
-Global___MacroNotFoundForPatch: typing_extensions.TypeAlias = MacroNotFoundForPatch
+global___MacroNotFoundForPatch = MacroNotFoundForPatch
 
 @typing.final
 class MacroNotFoundForPatchMsg(google.protobuf.message.Message):
@@ -3763,19 +3757,19 @@ class MacroNotFoundForPatchMsg(google.protobuf.message.Message):
     INFO_FIELD_NUMBER: builtins.int
     DATA_FIELD_NUMBER: builtins.int
     @property
-    def info(self) -> Global___CoreEventInfo: ...
+    def info(self) -> global___CoreEventInfo: ...
     @property
-    def data(self) -> Global___MacroNotFoundForPatch: ...
+    def data(self) -> global___MacroNotFoundForPatch: ...
     def __init__(
         self,
         *,
-        info: Global___CoreEventInfo | None = ...,
-        data: Global___MacroNotFoundForPatch | None = ...,
+        info: global___CoreEventInfo | None = ...,
+        data: global___MacroNotFoundForPatch | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> None: ...
 
-Global___MacroNotFoundForPatchMsg: typing_extensions.TypeAlias = MacroNotFoundForPatchMsg
+global___MacroNotFoundForPatchMsg = MacroNotFoundForPatchMsg
 
 @typing.final
 class NodeNotFoundOrDisabled(google.protobuf.message.Message):
@@ -3810,7 +3804,7 @@ class NodeNotFoundOrDisabled(google.protobuf.message.Message):
     ) -> None: ...
     def ClearField(self, field_name: typing.Literal["disabled", b"disabled", "original_file_path", b"original_file_path", "resource_type_title", b"resource_type_title", "target_kind", b"target_kind", "target_name", b"target_name", "target_package", b"target_package", "unique_id", b"unique_id"]) -> None: ...
 
-Global___NodeNotFoundOrDisabled: typing_extensions.TypeAlias = NodeNotFoundOrDisabled
+global___NodeNotFoundOrDisabled = NodeNotFoundOrDisabled
 
 @typing.final
 class NodeNotFoundOrDisabledMsg(google.protobuf.message.Message):
@@ -3819,19 +3813,19 @@ class NodeNotFoundOrDisabledMsg(google.protobuf.message.Message):
     INFO_FIELD_NUMBER: builtins.int
     DATA_FIELD_NUMBER: builtins.int
     @property
-    def info(self) -> Global___CoreEventInfo: ...
+    def info(self) -> global___CoreEventInfo: ...
     @property
-    def data(self) -> Global___NodeNotFoundOrDisabled: ...
+    def data(self) -> global___NodeNotFoundOrDisabled: ...
     def __init__(
         self,
         *,
-        info: Global___CoreEventInfo | None = ...,
-        data: Global___NodeNotFoundOrDisabled | None = ...,
+        info: global___CoreEventInfo | None = ...,
+        data: global___NodeNotFoundOrDisabled | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> None: ...
 
-Global___NodeNotFoundOrDisabledMsg: typing_extensions.TypeAlias = NodeNotFoundOrDisabledMsg
+global___NodeNotFoundOrDisabledMsg = NodeNotFoundOrDisabledMsg
 
 @typing.final
 class JinjaLogWarning(google.protobuf.message.Message):
@@ -3843,17 +3837,17 @@ class JinjaLogWarning(google.protobuf.message.Message):
     MSG_FIELD_NUMBER: builtins.int
     msg: builtins.str
     @property
-    def node_info(self) -> Global___NodeInfo: ...
+    def node_info(self) -> global___NodeInfo: ...
     def __init__(
         self,
         *,
-        node_info: Global___NodeInfo | None = ...,
+        node_info: global___NodeInfo | None = ...,
         msg: builtins.str = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["node_info", b"node_info"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["msg", b"msg", "node_info", b"node_info"]) -> None: ...
 
-Global___JinjaLogWarning: typing_extensions.TypeAlias = JinjaLogWarning
+global___JinjaLogWarning = JinjaLogWarning
 
 @typing.final
 class JinjaLogWarningMsg(google.protobuf.message.Message):
@@ -3862,19 +3856,19 @@ class JinjaLogWarningMsg(google.protobuf.message.Message):
     INFO_FIELD_NUMBER: builtins.int
     DATA_FIELD_NUMBER: builtins.int
     @property
-    def info(self) -> Global___CoreEventInfo: ...
+    def info(self) -> global___CoreEventInfo: ...
     @property
-    def data(self) -> Global___JinjaLogWarning: ...
+    def data(self) -> global___JinjaLogWarning: ...
     def __init__(
         self,
         *,
-        info: Global___CoreEventInfo | None = ...,
-        data: Global___JinjaLogWarning | None = ...,
+        info: global___CoreEventInfo | None = ...,
+        data: global___JinjaLogWarning | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> None: ...
 
-Global___JinjaLogWarningMsg: typing_extensions.TypeAlias = JinjaLogWarningMsg
+global___JinjaLogWarningMsg = JinjaLogWarningMsg
 
 @typing.final
 class JinjaLogInfo(google.protobuf.message.Message):
@@ -3886,17 +3880,17 @@ class JinjaLogInfo(google.protobuf.message.Message):
     MSG_FIELD_NUMBER: builtins.int
     msg: builtins.str
     @property
-    def node_info(self) -> Global___NodeInfo: ...
+    def node_info(self) -> global___NodeInfo: ...
     def __init__(
         self,
         *,
-        node_info: Global___NodeInfo | None = ...,
+        node_info: global___NodeInfo | None = ...,
         msg: builtins.str = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["node_info", b"node_info"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["msg", b"msg", "node_info", b"node_info"]) -> None: ...
 
-Global___JinjaLogInfo: typing_extensions.TypeAlias = JinjaLogInfo
+global___JinjaLogInfo = JinjaLogInfo
 
 @typing.final
 class JinjaLogInfoMsg(google.protobuf.message.Message):
@@ -3905,19 +3899,19 @@ class JinjaLogInfoMsg(google.protobuf.message.Message):
     INFO_FIELD_NUMBER: builtins.int
     DATA_FIELD_NUMBER: builtins.int
     @property
-    def info(self) -> Global___CoreEventInfo: ...
+    def info(self) -> global___CoreEventInfo: ...
     @property
-    def data(self) -> Global___JinjaLogInfo: ...
+    def data(self) -> global___JinjaLogInfo: ...
     def __init__(
         self,
         *,
-        info: Global___CoreEventInfo | None = ...,
-        data: Global___JinjaLogInfo | None = ...,
+        info: global___CoreEventInfo | None = ...,
+        data: global___JinjaLogInfo | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> None: ...
 
-Global___JinjaLogInfoMsg: typing_extensions.TypeAlias = JinjaLogInfoMsg
+global___JinjaLogInfoMsg = JinjaLogInfoMsg
 
 @typing.final
 class JinjaLogDebug(google.protobuf.message.Message):
@@ -3929,17 +3923,17 @@ class JinjaLogDebug(google.protobuf.message.Message):
     MSG_FIELD_NUMBER: builtins.int
     msg: builtins.str
     @property
-    def node_info(self) -> Global___NodeInfo: ...
+    def node_info(self) -> global___NodeInfo: ...
     def __init__(
         self,
         *,
-        node_info: Global___NodeInfo | None = ...,
+        node_info: global___NodeInfo | None = ...,
         msg: builtins.str = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["node_info", b"node_info"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["msg", b"msg", "node_info", b"node_info"]) -> None: ...
 
-Global___JinjaLogDebug: typing_extensions.TypeAlias = JinjaLogDebug
+global___JinjaLogDebug = JinjaLogDebug
 
 @typing.final
 class JinjaLogDebugMsg(google.protobuf.message.Message):
@@ -3948,19 +3942,19 @@ class JinjaLogDebugMsg(google.protobuf.message.Message):
     INFO_FIELD_NUMBER: builtins.int
     DATA_FIELD_NUMBER: builtins.int
     @property
-    def info(self) -> Global___CoreEventInfo: ...
+    def info(self) -> global___CoreEventInfo: ...
     @property
-    def data(self) -> Global___JinjaLogDebug: ...
+    def data(self) -> global___JinjaLogDebug: ...
     def __init__(
         self,
         *,
-        info: Global___CoreEventInfo | None = ...,
-        data: Global___JinjaLogDebug | None = ...,
+        info: global___CoreEventInfo | None = ...,
+        data: global___JinjaLogDebug | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> None: ...
 
-Global___JinjaLogDebugMsg: typing_extensions.TypeAlias = JinjaLogDebugMsg
+global___JinjaLogDebugMsg = JinjaLogDebugMsg
 
 @typing.final
 class UnpinnedRefNewVersionAvailable(google.protobuf.message.Message):
@@ -3978,11 +3972,11 @@ class UnpinnedRefNewVersionAvailable(google.protobuf.message.Message):
     ref_node_version: builtins.str
     ref_max_version: builtins.str
     @property
-    def node_info(self) -> Global___NodeInfo: ...
+    def node_info(self) -> global___NodeInfo: ...
     def __init__(
         self,
         *,
-        node_info: Global___NodeInfo | None = ...,
+        node_info: global___NodeInfo | None = ...,
         ref_node_name: builtins.str = ...,
         ref_node_package: builtins.str = ...,
         ref_node_version: builtins.str = ...,
@@ -3991,7 +3985,7 @@ class UnpinnedRefNewVersionAvailable(google.protobuf.message.Message):
     def HasField(self, field_name: typing.Literal["node_info", b"node_info"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["node_info", b"node_info", "ref_max_version", b"ref_max_version", "ref_node_name", b"ref_node_name", "ref_node_package", b"ref_node_package", "ref_node_version", b"ref_node_version"]) -> None: ...
 
-Global___UnpinnedRefNewVersionAvailable: typing_extensions.TypeAlias = UnpinnedRefNewVersionAvailable
+global___UnpinnedRefNewVersionAvailable = UnpinnedRefNewVersionAvailable
 
 @typing.final
 class UnpinnedRefNewVersionAvailableMsg(google.protobuf.message.Message):
@@ -4000,19 +3994,19 @@ class UnpinnedRefNewVersionAvailableMsg(google.protobuf.message.Message):
     INFO_FIELD_NUMBER: builtins.int
     DATA_FIELD_NUMBER: builtins.int
     @property
-    def info(self) -> Global___CoreEventInfo: ...
+    def info(self) -> global___CoreEventInfo: ...
     @property
-    def data(self) -> Global___UnpinnedRefNewVersionAvailable: ...
+    def data(self) -> global___UnpinnedRefNewVersionAvailable: ...
     def __init__(
         self,
         *,
-        info: Global___CoreEventInfo | None = ...,
-        data: Global___UnpinnedRefNewVersionAvailable | None = ...,
+        info: global___CoreEventInfo | None = ...,
+        data: global___UnpinnedRefNewVersionAvailable | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> None: ...
 
-Global___UnpinnedRefNewVersionAvailableMsg: typing_extensions.TypeAlias = UnpinnedRefNewVersionAvailableMsg
+global___UnpinnedRefNewVersionAvailableMsg = UnpinnedRefNewVersionAvailableMsg
 
 @typing.final
 class UpcomingReferenceDeprecation(google.protobuf.message.Message):
@@ -4044,7 +4038,7 @@ class UpcomingReferenceDeprecation(google.protobuf.message.Message):
     ) -> None: ...
     def ClearField(self, field_name: typing.Literal["model_name", b"model_name", "ref_model_deprecation_date", b"ref_model_deprecation_date", "ref_model_latest_version", b"ref_model_latest_version", "ref_model_name", b"ref_model_name", "ref_model_package", b"ref_model_package", "ref_model_version", b"ref_model_version"]) -> None: ...
 
-Global___UpcomingReferenceDeprecation: typing_extensions.TypeAlias = UpcomingReferenceDeprecation
+global___UpcomingReferenceDeprecation = UpcomingReferenceDeprecation
 
 @typing.final
 class UpcomingReferenceDeprecationMsg(google.protobuf.message.Message):
@@ -4053,19 +4047,19 @@ class UpcomingReferenceDeprecationMsg(google.protobuf.message.Message):
     INFO_FIELD_NUMBER: builtins.int
     DATA_FIELD_NUMBER: builtins.int
     @property
-    def info(self) -> Global___CoreEventInfo: ...
+    def info(self) -> global___CoreEventInfo: ...
     @property
-    def data(self) -> Global___UpcomingReferenceDeprecation: ...
+    def data(self) -> global___UpcomingReferenceDeprecation: ...
     def __init__(
         self,
         *,
-        info: Global___CoreEventInfo | None = ...,
-        data: Global___UpcomingReferenceDeprecation | None = ...,
+        info: global___CoreEventInfo | None = ...,
+        data: global___UpcomingReferenceDeprecation | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> None: ...
 
-Global___UpcomingReferenceDeprecationMsg: typing_extensions.TypeAlias = UpcomingReferenceDeprecationMsg
+global___UpcomingReferenceDeprecationMsg = UpcomingReferenceDeprecationMsg
 
 @typing.final
 class DeprecatedReference(google.protobuf.message.Message):
@@ -4097,7 +4091,7 @@ class DeprecatedReference(google.protobuf.message.Message):
     ) -> None: ...
     def ClearField(self, field_name: typing.Literal["model_name", b"model_name", "ref_model_deprecation_date", b"ref_model_deprecation_date", "ref_model_latest_version", b"ref_model_latest_version", "ref_model_name", b"ref_model_name", "ref_model_package", b"ref_model_package", "ref_model_version", b"ref_model_version"]) -> None: ...
 
-Global___DeprecatedReference: typing_extensions.TypeAlias = DeprecatedReference
+global___DeprecatedReference = DeprecatedReference
 
 @typing.final
 class DeprecatedReferenceMsg(google.protobuf.message.Message):
@@ -4106,19 +4100,19 @@ class DeprecatedReferenceMsg(google.protobuf.message.Message):
     INFO_FIELD_NUMBER: builtins.int
     DATA_FIELD_NUMBER: builtins.int
     @property
-    def info(self) -> Global___CoreEventInfo: ...
+    def info(self) -> global___CoreEventInfo: ...
     @property
-    def data(self) -> Global___DeprecatedReference: ...
+    def data(self) -> global___DeprecatedReference: ...
     def __init__(
         self,
         *,
-        info: Global___CoreEventInfo | None = ...,
-        data: Global___DeprecatedReference | None = ...,
+        info: global___CoreEventInfo | None = ...,
+        data: global___DeprecatedReference | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> None: ...
 
-Global___DeprecatedReferenceMsg: typing_extensions.TypeAlias = DeprecatedReferenceMsg
+global___DeprecatedReferenceMsg = DeprecatedReferenceMsg
 
 @typing.final
 class UnsupportedConstraintMaterialization(google.protobuf.message.Message):
@@ -4135,7 +4129,7 @@ class UnsupportedConstraintMaterialization(google.protobuf.message.Message):
     ) -> None: ...
     def ClearField(self, field_name: typing.Literal["materialized", b"materialized"]) -> None: ...
 
-Global___UnsupportedConstraintMaterialization: typing_extensions.TypeAlias = UnsupportedConstraintMaterialization
+global___UnsupportedConstraintMaterialization = UnsupportedConstraintMaterialization
 
 @typing.final
 class UnsupportedConstraintMaterializationMsg(google.protobuf.message.Message):
@@ -4144,19 +4138,19 @@ class UnsupportedConstraintMaterializationMsg(google.protobuf.message.Message):
     INFO_FIELD_NUMBER: builtins.int
     DATA_FIELD_NUMBER: builtins.int
     @property
-    def info(self) -> Global___CoreEventInfo: ...
+    def info(self) -> global___CoreEventInfo: ...
     @property
-    def data(self) -> Global___UnsupportedConstraintMaterialization: ...
+    def data(self) -> global___UnsupportedConstraintMaterialization: ...
     def __init__(
         self,
         *,
-        info: Global___CoreEventInfo | None = ...,
-        data: Global___UnsupportedConstraintMaterialization | None = ...,
+        info: global___CoreEventInfo | None = ...,
+        data: global___UnsupportedConstraintMaterialization | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> None: ...
 
-Global___UnsupportedConstraintMaterializationMsg: typing_extensions.TypeAlias = UnsupportedConstraintMaterializationMsg
+global___UnsupportedConstraintMaterializationMsg = UnsupportedConstraintMaterializationMsg
 
 @typing.final
 class ParseInlineNodeError(google.protobuf.message.Message):
@@ -4168,17 +4162,17 @@ class ParseInlineNodeError(google.protobuf.message.Message):
     EXC_FIELD_NUMBER: builtins.int
     exc: builtins.str
     @property
-    def node_info(self) -> Global___NodeInfo: ...
+    def node_info(self) -> global___NodeInfo: ...
     def __init__(
         self,
         *,
-        node_info: Global___NodeInfo | None = ...,
+        node_info: global___NodeInfo | None = ...,
         exc: builtins.str = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["node_info", b"node_info"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["exc", b"exc", "node_info", b"node_info"]) -> None: ...
 
-Global___ParseInlineNodeError: typing_extensions.TypeAlias = ParseInlineNodeError
+global___ParseInlineNodeError = ParseInlineNodeError
 
 @typing.final
 class ParseInlineNodeErrorMsg(google.protobuf.message.Message):
@@ -4187,19 +4181,19 @@ class ParseInlineNodeErrorMsg(google.protobuf.message.Message):
     INFO_FIELD_NUMBER: builtins.int
     DATA_FIELD_NUMBER: builtins.int
     @property
-    def info(self) -> Global___CoreEventInfo: ...
+    def info(self) -> global___CoreEventInfo: ...
     @property
-    def data(self) -> Global___ParseInlineNodeError: ...
+    def data(self) -> global___ParseInlineNodeError: ...
     def __init__(
         self,
         *,
-        info: Global___CoreEventInfo | None = ...,
-        data: Global___ParseInlineNodeError | None = ...,
+        info: global___CoreEventInfo | None = ...,
+        data: global___ParseInlineNodeError | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> None: ...
 
-Global___ParseInlineNodeErrorMsg: typing_extensions.TypeAlias = ParseInlineNodeErrorMsg
+global___ParseInlineNodeErrorMsg = ParseInlineNodeErrorMsg
 
 @typing.final
 class SemanticValidationFailure(google.protobuf.message.Message):
@@ -4216,7 +4210,7 @@ class SemanticValidationFailure(google.protobuf.message.Message):
     ) -> None: ...
     def ClearField(self, field_name: typing.Literal["msg", b"msg"]) -> None: ...
 
-Global___SemanticValidationFailure: typing_extensions.TypeAlias = SemanticValidationFailure
+global___SemanticValidationFailure = SemanticValidationFailure
 
 @typing.final
 class SemanticValidationFailureMsg(google.protobuf.message.Message):
@@ -4225,19 +4219,19 @@ class SemanticValidationFailureMsg(google.protobuf.message.Message):
     INFO_FIELD_NUMBER: builtins.int
     DATA_FIELD_NUMBER: builtins.int
     @property
-    def info(self) -> Global___CoreEventInfo: ...
+    def info(self) -> global___CoreEventInfo: ...
     @property
-    def data(self) -> Global___SemanticValidationFailure: ...
+    def data(self) -> global___SemanticValidationFailure: ...
     def __init__(
         self,
         *,
-        info: Global___CoreEventInfo | None = ...,
-        data: Global___SemanticValidationFailure | None = ...,
+        info: global___CoreEventInfo | None = ...,
+        data: global___SemanticValidationFailure | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> None: ...
 
-Global___SemanticValidationFailureMsg: typing_extensions.TypeAlias = SemanticValidationFailureMsg
+global___SemanticValidationFailureMsg = SemanticValidationFailureMsg
 
 @typing.final
 class UnversionedBreakingChange(google.protobuf.message.Message):
@@ -4262,11 +4256,11 @@ class UnversionedBreakingChange(google.protobuf.message.Message):
     @property
     def columns_removed(self) -> google.protobuf.internal.containers.RepeatedScalarFieldContainer[builtins.str]: ...
     @property
-    def column_type_changes(self) -> google.protobuf.internal.containers.RepeatedCompositeFieldContainer[Global___ColumnType]: ...
+    def column_type_changes(self) -> google.protobuf.internal.containers.RepeatedCompositeFieldContainer[global___ColumnType]: ...
     @property
-    def enforced_column_constraint_removed(self) -> google.protobuf.internal.containers.RepeatedCompositeFieldContainer[Global___ColumnConstraint]: ...
+    def enforced_column_constraint_removed(self) -> google.protobuf.internal.containers.RepeatedCompositeFieldContainer[global___ColumnConstraint]: ...
     @property
-    def enforced_model_constraint_removed(self) -> google.protobuf.internal.containers.RepeatedCompositeFieldContainer[Global___ModelConstraint]: ...
+    def enforced_model_constraint_removed(self) -> google.protobuf.internal.containers.RepeatedCompositeFieldContainer[global___ModelConstraint]: ...
     @property
     def materialization_changed(self) -> google.protobuf.internal.containers.RepeatedScalarFieldContainer[builtins.str]: ...
     def __init__(
@@ -4277,14 +4271,14 @@ class UnversionedBreakingChange(google.protobuf.message.Message):
         model_file_path: builtins.str = ...,
         contract_enforced_disabled: builtins.bool = ...,
         columns_removed: collections.abc.Iterable[builtins.str] | None = ...,
-        column_type_changes: collections.abc.Iterable[Global___ColumnType] | None = ...,
-        enforced_column_constraint_removed: collections.abc.Iterable[Global___ColumnConstraint] | None = ...,
-        enforced_model_constraint_removed: collections.abc.Iterable[Global___ModelConstraint] | None = ...,
+        column_type_changes: collections.abc.Iterable[global___ColumnType] | None = ...,
+        enforced_column_constraint_removed: collections.abc.Iterable[global___ColumnConstraint] | None = ...,
+        enforced_model_constraint_removed: collections.abc.Iterable[global___ModelConstraint] | None = ...,
         materialization_changed: collections.abc.Iterable[builtins.str] | None = ...,
     ) -> None: ...
     def ClearField(self, field_name: typing.Literal["breaking_changes", b"breaking_changes", "column_type_changes", b"column_type_changes", "columns_removed", b"columns_removed", "contract_enforced_disabled", b"contract_enforced_disabled", "enforced_column_constraint_removed", b"enforced_column_constraint_removed", "enforced_model_constraint_removed", b"enforced_model_constraint_removed", "materialization_changed", b"materialization_changed", "model_file_path", b"model_file_path", "model_name", b"model_name"]) -> None: ...
 
-Global___UnversionedBreakingChange: typing_extensions.TypeAlias = UnversionedBreakingChange
+global___UnversionedBreakingChange = UnversionedBreakingChange
 
 @typing.final
 class UnversionedBreakingChangeMsg(google.protobuf.message.Message):
@@ -4293,19 +4287,19 @@ class UnversionedBreakingChangeMsg(google.protobuf.message.Message):
     INFO_FIELD_NUMBER: builtins.int
     DATA_FIELD_NUMBER: builtins.int
     @property
-    def info(self) -> Global___CoreEventInfo: ...
+    def info(self) -> global___CoreEventInfo: ...
     @property
-    def data(self) -> Global___UnversionedBreakingChange: ...
+    def data(self) -> global___UnversionedBreakingChange: ...
     def __init__(
         self,
         *,
-        info: Global___CoreEventInfo | None = ...,
-        data: Global___UnversionedBreakingChange | None = ...,
+        info: global___CoreEventInfo | None = ...,
+        data: global___UnversionedBreakingChange | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> None: ...
 
-Global___UnversionedBreakingChangeMsg: typing_extensions.TypeAlias = UnversionedBreakingChangeMsg
+global___UnversionedBreakingChangeMsg = UnversionedBreakingChangeMsg
 
 @typing.final
 class WarnStateTargetEqual(google.protobuf.message.Message):
@@ -4322,7 +4316,7 @@ class WarnStateTargetEqual(google.protobuf.message.Message):
     ) -> None: ...
     def ClearField(self, field_name: typing.Literal["state_path", b"state_path"]) -> None: ...
 
-Global___WarnStateTargetEqual: typing_extensions.TypeAlias = WarnStateTargetEqual
+global___WarnStateTargetEqual = WarnStateTargetEqual
 
 @typing.final
 class WarnStateTargetEqualMsg(google.protobuf.message.Message):
@@ -4331,19 +4325,19 @@ class WarnStateTargetEqualMsg(google.protobuf.message.Message):
     INFO_FIELD_NUMBER: builtins.int
     DATA_FIELD_NUMBER: builtins.int
     @property
-    def info(self) -> Global___CoreEventInfo: ...
+    def info(self) -> global___CoreEventInfo: ...
     @property
-    def data(self) -> Global___WarnStateTargetEqual: ...
+    def data(self) -> global___WarnStateTargetEqual: ...
     def __init__(
         self,
         *,
-        info: Global___CoreEventInfo | None = ...,
-        data: Global___WarnStateTargetEqual | None = ...,
+        info: global___CoreEventInfo | None = ...,
+        data: global___WarnStateTargetEqual | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> None: ...
 
-Global___WarnStateTargetEqualMsg: typing_extensions.TypeAlias = WarnStateTargetEqualMsg
+global___WarnStateTargetEqualMsg = WarnStateTargetEqualMsg
 
 @typing.final
 class FreshnessConfigProblem(google.protobuf.message.Message):
@@ -4360,7 +4354,7 @@ class FreshnessConfigProblem(google.protobuf.message.Message):
     ) -> None: ...
     def ClearField(self, field_name: typing.Literal["msg", b"msg"]) -> None: ...
 
-Global___FreshnessConfigProblem: typing_extensions.TypeAlias = FreshnessConfigProblem
+global___FreshnessConfigProblem = FreshnessConfigProblem
 
 @typing.final
 class FreshnessConfigProblemMsg(google.protobuf.message.Message):
@@ -4369,19 +4363,19 @@ class FreshnessConfigProblemMsg(google.protobuf.message.Message):
     INFO_FIELD_NUMBER: builtins.int
     DATA_FIELD_NUMBER: builtins.int
     @property
-    def info(self) -> Global___CoreEventInfo: ...
+    def info(self) -> global___CoreEventInfo: ...
     @property
-    def data(self) -> Global___FreshnessConfigProblem: ...
+    def data(self) -> global___FreshnessConfigProblem: ...
     def __init__(
         self,
         *,
-        info: Global___CoreEventInfo | None = ...,
-        data: Global___FreshnessConfigProblem | None = ...,
+        info: global___CoreEventInfo | None = ...,
+        data: global___FreshnessConfigProblem | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> None: ...
 
-Global___FreshnessConfigProblemMsg: typing_extensions.TypeAlias = FreshnessConfigProblemMsg
+global___FreshnessConfigProblemMsg = FreshnessConfigProblemMsg
 
 @typing.final
 class MicrobatchModelNoEventTimeInputs(google.protobuf.message.Message):
@@ -4398,7 +4392,7 @@ class MicrobatchModelNoEventTimeInputs(google.protobuf.message.Message):
     ) -> None: ...
     def ClearField(self, field_name: typing.Literal["model_name", b"model_name"]) -> None: ...
 
-Global___MicrobatchModelNoEventTimeInputs: typing_extensions.TypeAlias = MicrobatchModelNoEventTimeInputs
+global___MicrobatchModelNoEventTimeInputs = MicrobatchModelNoEventTimeInputs
 
 @typing.final
 class MicrobatchModelNoEventTimeInputsMsg(google.protobuf.message.Message):
@@ -4407,19 +4401,19 @@ class MicrobatchModelNoEventTimeInputsMsg(google.protobuf.message.Message):
     INFO_FIELD_NUMBER: builtins.int
     DATA_FIELD_NUMBER: builtins.int
     @property
-    def info(self) -> Global___CoreEventInfo: ...
+    def info(self) -> global___CoreEventInfo: ...
     @property
-    def data(self) -> Global___MicrobatchModelNoEventTimeInputs: ...
+    def data(self) -> global___MicrobatchModelNoEventTimeInputs: ...
     def __init__(
         self,
         *,
-        info: Global___CoreEventInfo | None = ...,
-        data: Global___MicrobatchModelNoEventTimeInputs | None = ...,
+        info: global___CoreEventInfo | None = ...,
+        data: global___MicrobatchModelNoEventTimeInputs | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> None: ...
 
-Global___MicrobatchModelNoEventTimeInputsMsg: typing_extensions.TypeAlias = MicrobatchModelNoEventTimeInputsMsg
+global___MicrobatchModelNoEventTimeInputsMsg = MicrobatchModelNoEventTimeInputsMsg
 
 @typing.final
 class InvalidConcurrentBatchesConfig(google.protobuf.message.Message):
@@ -4439,7 +4433,7 @@ class InvalidConcurrentBatchesConfig(google.protobuf.message.Message):
     ) -> None: ...
     def ClearField(self, field_name: typing.Literal["adapter_type", b"adapter_type", "num_models", b"num_models"]) -> None: ...
 
-Global___InvalidConcurrentBatchesConfig: typing_extensions.TypeAlias = InvalidConcurrentBatchesConfig
+global___InvalidConcurrentBatchesConfig = InvalidConcurrentBatchesConfig
 
 @typing.final
 class InvalidConcurrentBatchesConfigMsg(google.protobuf.message.Message):
@@ -4448,19 +4442,19 @@ class InvalidConcurrentBatchesConfigMsg(google.protobuf.message.Message):
     INFO_FIELD_NUMBER: builtins.int
     DATA_FIELD_NUMBER: builtins.int
     @property
-    def info(self) -> Global___CoreEventInfo: ...
+    def info(self) -> global___CoreEventInfo: ...
     @property
-    def data(self) -> Global___InvalidConcurrentBatchesConfig: ...
+    def data(self) -> global___InvalidConcurrentBatchesConfig: ...
     def __init__(
         self,
         *,
-        info: Global___CoreEventInfo | None = ...,
-        data: Global___InvalidConcurrentBatchesConfig | None = ...,
+        info: global___CoreEventInfo | None = ...,
+        data: global___InvalidConcurrentBatchesConfig | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> None: ...
 
-Global___InvalidConcurrentBatchesConfigMsg: typing_extensions.TypeAlias = InvalidConcurrentBatchesConfigMsg
+global___InvalidConcurrentBatchesConfigMsg = InvalidConcurrentBatchesConfigMsg
 
 @typing.final
 class InvalidMacroAnnotation(google.protobuf.message.Message):
@@ -4483,7 +4477,7 @@ class InvalidMacroAnnotation(google.protobuf.message.Message):
     ) -> None: ...
     def ClearField(self, field_name: typing.Literal["macro_file_path", b"macro_file_path", "macro_unique_id", b"macro_unique_id", "msg", b"msg"]) -> None: ...
 
-Global___InvalidMacroAnnotation: typing_extensions.TypeAlias = InvalidMacroAnnotation
+global___InvalidMacroAnnotation = InvalidMacroAnnotation
 
 @typing.final
 class InvalidMacroAnnotationMsg(google.protobuf.message.Message):
@@ -4492,19 +4486,19 @@ class InvalidMacroAnnotationMsg(google.protobuf.message.Message):
     INFO_FIELD_NUMBER: builtins.int
     DATA_FIELD_NUMBER: builtins.int
     @property
-    def info(self) -> Global___CoreEventInfo: ...
+    def info(self) -> global___CoreEventInfo: ...
     @property
-    def data(self) -> Global___InvalidMacroAnnotation: ...
+    def data(self) -> global___InvalidMacroAnnotation: ...
     def __init__(
         self,
         *,
-        info: Global___CoreEventInfo | None = ...,
-        data: Global___InvalidMacroAnnotation | None = ...,
+        info: global___CoreEventInfo | None = ...,
+        data: global___InvalidMacroAnnotation | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> None: ...
 
-Global___InvalidMacroAnnotationMsg: typing_extensions.TypeAlias = InvalidMacroAnnotationMsg
+global___InvalidMacroAnnotationMsg = InvalidMacroAnnotationMsg
 
 @typing.final
 class PackageNodeDependsOnRootProjectNode(google.protobuf.message.Message):
@@ -4527,7 +4521,7 @@ class PackageNodeDependsOnRootProjectNode(google.protobuf.message.Message):
     ) -> None: ...
     def ClearField(self, field_name: typing.Literal["node_name", b"node_name", "package_name", b"package_name", "root_project_unique_id", b"root_project_unique_id"]) -> None: ...
 
-Global___PackageNodeDependsOnRootProjectNode: typing_extensions.TypeAlias = PackageNodeDependsOnRootProjectNode
+global___PackageNodeDependsOnRootProjectNode = PackageNodeDependsOnRootProjectNode
 
 @typing.final
 class PackageNodeDependsOnRootProjectNodeMsg(google.protobuf.message.Message):
@@ -4536,19 +4530,19 @@ class PackageNodeDependsOnRootProjectNodeMsg(google.protobuf.message.Message):
     INFO_FIELD_NUMBER: builtins.int
     DATA_FIELD_NUMBER: builtins.int
     @property
-    def info(self) -> Global___CoreEventInfo: ...
+    def info(self) -> global___CoreEventInfo: ...
     @property
-    def data(self) -> Global___PackageNodeDependsOnRootProjectNode: ...
+    def data(self) -> global___PackageNodeDependsOnRootProjectNode: ...
     def __init__(
         self,
         *,
-        info: Global___CoreEventInfo | None = ...,
-        data: Global___PackageNodeDependsOnRootProjectNode | None = ...,
+        info: global___CoreEventInfo | None = ...,
+        data: global___PackageNodeDependsOnRootProjectNode | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> None: ...
 
-Global___PackageNodeDependsOnRootProjectNodeMsg: typing_extensions.TypeAlias = PackageNodeDependsOnRootProjectNodeMsg
+global___PackageNodeDependsOnRootProjectNodeMsg = PackageNodeDependsOnRootProjectNodeMsg
 
 @typing.final
 class MFConverterIssue(google.protobuf.message.Message):
@@ -4571,7 +4565,7 @@ class MFConverterIssue(google.protobuf.message.Message):
     ) -> None: ...
     def ClearField(self, field_name: typing.Literal["converter_name", b"converter_name", "element_name", b"element_name", "issue_type", b"issue_type"]) -> None: ...
 
-Global___MFConverterIssue: typing_extensions.TypeAlias = MFConverterIssue
+global___MFConverterIssue = MFConverterIssue
 
 @typing.final
 class MFConverterIssueMsg(google.protobuf.message.Message):
@@ -4580,19 +4574,19 @@ class MFConverterIssueMsg(google.protobuf.message.Message):
     INFO_FIELD_NUMBER: builtins.int
     DATA_FIELD_NUMBER: builtins.int
     @property
-    def info(self) -> Global___CoreEventInfo: ...
+    def info(self) -> global___CoreEventInfo: ...
     @property
-    def data(self) -> Global___MFConverterIssue: ...
+    def data(self) -> global___MFConverterIssue: ...
     def __init__(
         self,
         *,
-        info: Global___CoreEventInfo | None = ...,
-        data: Global___MFConverterIssue | None = ...,
+        info: global___CoreEventInfo | None = ...,
+        data: global___MFConverterIssue | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> None: ...
 
-Global___MFConverterIssueMsg: typing_extensions.TypeAlias = MFConverterIssueMsg
+global___MFConverterIssueMsg = MFConverterIssueMsg
 
 @typing.final
 class GitSparseCheckoutSubdirectory(google.protobuf.message.Message):
@@ -4612,7 +4606,7 @@ class GitSparseCheckoutSubdirectory(google.protobuf.message.Message):
     ) -> None: ...
     def ClearField(self, field_name: typing.Literal["subdir", b"subdir"]) -> None: ...
 
-Global___GitSparseCheckoutSubdirectory: typing_extensions.TypeAlias = GitSparseCheckoutSubdirectory
+global___GitSparseCheckoutSubdirectory = GitSparseCheckoutSubdirectory
 
 @typing.final
 class GitSparseCheckoutSubdirectoryMsg(google.protobuf.message.Message):
@@ -4621,19 +4615,19 @@ class GitSparseCheckoutSubdirectoryMsg(google.protobuf.message.Message):
     INFO_FIELD_NUMBER: builtins.int
     DATA_FIELD_NUMBER: builtins.int
     @property
-    def info(self) -> Global___CoreEventInfo: ...
+    def info(self) -> global___CoreEventInfo: ...
     @property
-    def data(self) -> Global___GitSparseCheckoutSubdirectory: ...
+    def data(self) -> global___GitSparseCheckoutSubdirectory: ...
     def __init__(
         self,
         *,
-        info: Global___CoreEventInfo | None = ...,
-        data: Global___GitSparseCheckoutSubdirectory | None = ...,
+        info: global___CoreEventInfo | None = ...,
+        data: global___GitSparseCheckoutSubdirectory | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> None: ...
 
-Global___GitSparseCheckoutSubdirectoryMsg: typing_extensions.TypeAlias = GitSparseCheckoutSubdirectoryMsg
+global___GitSparseCheckoutSubdirectoryMsg = GitSparseCheckoutSubdirectoryMsg
 
 @typing.final
 class GitProgressCheckoutRevision(google.protobuf.message.Message):
@@ -4650,7 +4644,7 @@ class GitProgressCheckoutRevision(google.protobuf.message.Message):
     ) -> None: ...
     def ClearField(self, field_name: typing.Literal["revision", b"revision"]) -> None: ...
 
-Global___GitProgressCheckoutRevision: typing_extensions.TypeAlias = GitProgressCheckoutRevision
+global___GitProgressCheckoutRevision = GitProgressCheckoutRevision
 
 @typing.final
 class GitProgressCheckoutRevisionMsg(google.protobuf.message.Message):
@@ -4659,19 +4653,19 @@ class GitProgressCheckoutRevisionMsg(google.protobuf.message.Message):
     INFO_FIELD_NUMBER: builtins.int
     DATA_FIELD_NUMBER: builtins.int
     @property
-    def info(self) -> Global___CoreEventInfo: ...
+    def info(self) -> global___CoreEventInfo: ...
     @property
-    def data(self) -> Global___GitProgressCheckoutRevision: ...
+    def data(self) -> global___GitProgressCheckoutRevision: ...
     def __init__(
         self,
         *,
-        info: Global___CoreEventInfo | None = ...,
-        data: Global___GitProgressCheckoutRevision | None = ...,
+        info: global___CoreEventInfo | None = ...,
+        data: global___GitProgressCheckoutRevision | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> None: ...
 
-Global___GitProgressCheckoutRevisionMsg: typing_extensions.TypeAlias = GitProgressCheckoutRevisionMsg
+global___GitProgressCheckoutRevisionMsg = GitProgressCheckoutRevisionMsg
 
 @typing.final
 class GitProgressUpdatingExistingDependency(google.protobuf.message.Message):
@@ -4688,7 +4682,7 @@ class GitProgressUpdatingExistingDependency(google.protobuf.message.Message):
     ) -> None: ...
     def ClearField(self, field_name: typing.Literal["dir", b"dir"]) -> None: ...
 
-Global___GitProgressUpdatingExistingDependency: typing_extensions.TypeAlias = GitProgressUpdatingExistingDependency
+global___GitProgressUpdatingExistingDependency = GitProgressUpdatingExistingDependency
 
 @typing.final
 class GitProgressUpdatingExistingDependencyMsg(google.protobuf.message.Message):
@@ -4697,19 +4691,19 @@ class GitProgressUpdatingExistingDependencyMsg(google.protobuf.message.Message):
     INFO_FIELD_NUMBER: builtins.int
     DATA_FIELD_NUMBER: builtins.int
     @property
-    def info(self) -> Global___CoreEventInfo: ...
+    def info(self) -> global___CoreEventInfo: ...
     @property
-    def data(self) -> Global___GitProgressUpdatingExistingDependency: ...
+    def data(self) -> global___GitProgressUpdatingExistingDependency: ...
     def __init__(
         self,
         *,
-        info: Global___CoreEventInfo | None = ...,
-        data: Global___GitProgressUpdatingExistingDependency | None = ...,
+        info: global___CoreEventInfo | None = ...,
+        data: global___GitProgressUpdatingExistingDependency | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> None: ...
 
-Global___GitProgressUpdatingExistingDependencyMsg: typing_extensions.TypeAlias = GitProgressUpdatingExistingDependencyMsg
+global___GitProgressUpdatingExistingDependencyMsg = GitProgressUpdatingExistingDependencyMsg
 
 @typing.final
 class GitProgressPullingNewDependency(google.protobuf.message.Message):
@@ -4726,7 +4720,7 @@ class GitProgressPullingNewDependency(google.protobuf.message.Message):
     ) -> None: ...
     def ClearField(self, field_name: typing.Literal["dir", b"dir"]) -> None: ...
 
-Global___GitProgressPullingNewDependency: typing_extensions.TypeAlias = GitProgressPullingNewDependency
+global___GitProgressPullingNewDependency = GitProgressPullingNewDependency
 
 @typing.final
 class GitProgressPullingNewDependencyMsg(google.protobuf.message.Message):
@@ -4735,19 +4729,19 @@ class GitProgressPullingNewDependencyMsg(google.protobuf.message.Message):
     INFO_FIELD_NUMBER: builtins.int
     DATA_FIELD_NUMBER: builtins.int
     @property
-    def info(self) -> Global___CoreEventInfo: ...
+    def info(self) -> global___CoreEventInfo: ...
     @property
-    def data(self) -> Global___GitProgressPullingNewDependency: ...
+    def data(self) -> global___GitProgressPullingNewDependency: ...
     def __init__(
         self,
         *,
-        info: Global___CoreEventInfo | None = ...,
-        data: Global___GitProgressPullingNewDependency | None = ...,
+        info: global___CoreEventInfo | None = ...,
+        data: global___GitProgressPullingNewDependency | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> None: ...
 
-Global___GitProgressPullingNewDependencyMsg: typing_extensions.TypeAlias = GitProgressPullingNewDependencyMsg
+global___GitProgressPullingNewDependencyMsg = GitProgressPullingNewDependencyMsg
 
 @typing.final
 class GitNothingToDo(google.protobuf.message.Message):
@@ -4764,7 +4758,7 @@ class GitNothingToDo(google.protobuf.message.Message):
     ) -> None: ...
     def ClearField(self, field_name: typing.Literal["sha", b"sha"]) -> None: ...
 
-Global___GitNothingToDo: typing_extensions.TypeAlias = GitNothingToDo
+global___GitNothingToDo = GitNothingToDo
 
 @typing.final
 class GitNothingToDoMsg(google.protobuf.message.Message):
@@ -4773,19 +4767,19 @@ class GitNothingToDoMsg(google.protobuf.message.Message):
     INFO_FIELD_NUMBER: builtins.int
     DATA_FIELD_NUMBER: builtins.int
     @property
-    def info(self) -> Global___CoreEventInfo: ...
+    def info(self) -> global___CoreEventInfo: ...
     @property
-    def data(self) -> Global___GitNothingToDo: ...
+    def data(self) -> global___GitNothingToDo: ...
     def __init__(
         self,
         *,
-        info: Global___CoreEventInfo | None = ...,
-        data: Global___GitNothingToDo | None = ...,
+        info: global___CoreEventInfo | None = ...,
+        data: global___GitNothingToDo | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> None: ...
 
-Global___GitNothingToDoMsg: typing_extensions.TypeAlias = GitNothingToDoMsg
+global___GitNothingToDoMsg = GitNothingToDoMsg
 
 @typing.final
 class GitProgressUpdatedCheckoutRange(google.protobuf.message.Message):
@@ -4805,7 +4799,7 @@ class GitProgressUpdatedCheckoutRange(google.protobuf.message.Message):
     ) -> None: ...
     def ClearField(self, field_name: typing.Literal["end_sha", b"end_sha", "start_sha", b"start_sha"]) -> None: ...
 
-Global___GitProgressUpdatedCheckoutRange: typing_extensions.TypeAlias = GitProgressUpdatedCheckoutRange
+global___GitProgressUpdatedCheckoutRange = GitProgressUpdatedCheckoutRange
 
 @typing.final
 class GitProgressUpdatedCheckoutRangeMsg(google.protobuf.message.Message):
@@ -4814,19 +4808,19 @@ class GitProgressUpdatedCheckoutRangeMsg(google.protobuf.message.Message):
     INFO_FIELD_NUMBER: builtins.int
     DATA_FIELD_NUMBER: builtins.int
     @property
-    def info(self) -> Global___CoreEventInfo: ...
+    def info(self) -> global___CoreEventInfo: ...
     @property
-    def data(self) -> Global___GitProgressUpdatedCheckoutRange: ...
+    def data(self) -> global___GitProgressUpdatedCheckoutRange: ...
     def __init__(
         self,
         *,
-        info: Global___CoreEventInfo | None = ...,
-        data: Global___GitProgressUpdatedCheckoutRange | None = ...,
+        info: global___CoreEventInfo | None = ...,
+        data: global___GitProgressUpdatedCheckoutRange | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> None: ...
 
-Global___GitProgressUpdatedCheckoutRangeMsg: typing_extensions.TypeAlias = GitProgressUpdatedCheckoutRangeMsg
+global___GitProgressUpdatedCheckoutRangeMsg = GitProgressUpdatedCheckoutRangeMsg
 
 @typing.final
 class GitProgressCheckedOutAt(google.protobuf.message.Message):
@@ -4843,7 +4837,7 @@ class GitProgressCheckedOutAt(google.protobuf.message.Message):
     ) -> None: ...
     def ClearField(self, field_name: typing.Literal["end_sha", b"end_sha"]) -> None: ...
 
-Global___GitProgressCheckedOutAt: typing_extensions.TypeAlias = GitProgressCheckedOutAt
+global___GitProgressCheckedOutAt = GitProgressCheckedOutAt
 
 @typing.final
 class GitProgressCheckedOutAtMsg(google.protobuf.message.Message):
@@ -4852,19 +4846,19 @@ class GitProgressCheckedOutAtMsg(google.protobuf.message.Message):
     INFO_FIELD_NUMBER: builtins.int
     DATA_FIELD_NUMBER: builtins.int
     @property
-    def info(self) -> Global___CoreEventInfo: ...
+    def info(self) -> global___CoreEventInfo: ...
     @property
-    def data(self) -> Global___GitProgressCheckedOutAt: ...
+    def data(self) -> global___GitProgressCheckedOutAt: ...
     def __init__(
         self,
         *,
-        info: Global___CoreEventInfo | None = ...,
-        data: Global___GitProgressCheckedOutAt | None = ...,
+        info: global___CoreEventInfo | None = ...,
+        data: global___GitProgressCheckedOutAt | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> None: ...
 
-Global___GitProgressCheckedOutAtMsg: typing_extensions.TypeAlias = GitProgressCheckedOutAtMsg
+global___GitProgressCheckedOutAtMsg = GitProgressCheckedOutAtMsg
 
 @typing.final
 class RegistryProgressGETRequest(google.protobuf.message.Message):
@@ -4881,7 +4875,7 @@ class RegistryProgressGETRequest(google.protobuf.message.Message):
     ) -> None: ...
     def ClearField(self, field_name: typing.Literal["url", b"url"]) -> None: ...
 
-Global___RegistryProgressGETRequest: typing_extensions.TypeAlias = RegistryProgressGETRequest
+global___RegistryProgressGETRequest = RegistryProgressGETRequest
 
 @typing.final
 class RegistryProgressGETRequestMsg(google.protobuf.message.Message):
@@ -4890,19 +4884,19 @@ class RegistryProgressGETRequestMsg(google.protobuf.message.Message):
     INFO_FIELD_NUMBER: builtins.int
     DATA_FIELD_NUMBER: builtins.int
     @property
-    def info(self) -> Global___CoreEventInfo: ...
+    def info(self) -> global___CoreEventInfo: ...
     @property
-    def data(self) -> Global___RegistryProgressGETRequest: ...
+    def data(self) -> global___RegistryProgressGETRequest: ...
     def __init__(
         self,
         *,
-        info: Global___CoreEventInfo | None = ...,
-        data: Global___RegistryProgressGETRequest | None = ...,
+        info: global___CoreEventInfo | None = ...,
+        data: global___RegistryProgressGETRequest | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> None: ...
 
-Global___RegistryProgressGETRequestMsg: typing_extensions.TypeAlias = RegistryProgressGETRequestMsg
+global___RegistryProgressGETRequestMsg = RegistryProgressGETRequestMsg
 
 @typing.final
 class RegistryProgressGETResponse(google.protobuf.message.Message):
@@ -4922,7 +4916,7 @@ class RegistryProgressGETResponse(google.protobuf.message.Message):
     ) -> None: ...
     def ClearField(self, field_name: typing.Literal["resp_code", b"resp_code", "url", b"url"]) -> None: ...
 
-Global___RegistryProgressGETResponse: typing_extensions.TypeAlias = RegistryProgressGETResponse
+global___RegistryProgressGETResponse = RegistryProgressGETResponse
 
 @typing.final
 class RegistryProgressGETResponseMsg(google.protobuf.message.Message):
@@ -4931,19 +4925,19 @@ class RegistryProgressGETResponseMsg(google.protobuf.message.Message):
     INFO_FIELD_NUMBER: builtins.int
     DATA_FIELD_NUMBER: builtins.int
     @property
-    def info(self) -> Global___CoreEventInfo: ...
+    def info(self) -> global___CoreEventInfo: ...
     @property
-    def data(self) -> Global___RegistryProgressGETResponse: ...
+    def data(self) -> global___RegistryProgressGETResponse: ...
     def __init__(
         self,
         *,
-        info: Global___CoreEventInfo | None = ...,
-        data: Global___RegistryProgressGETResponse | None = ...,
+        info: global___CoreEventInfo | None = ...,
+        data: global___RegistryProgressGETResponse | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> None: ...
 
-Global___RegistryProgressGETResponseMsg: typing_extensions.TypeAlias = RegistryProgressGETResponseMsg
+global___RegistryProgressGETResponseMsg = RegistryProgressGETResponseMsg
 
 @typing.final
 class SelectorReportInvalidSelector(google.protobuf.message.Message):
@@ -4966,7 +4960,7 @@ class SelectorReportInvalidSelector(google.protobuf.message.Message):
     ) -> None: ...
     def ClearField(self, field_name: typing.Literal["raw_spec", b"raw_spec", "spec_method", b"spec_method", "valid_selectors", b"valid_selectors"]) -> None: ...
 
-Global___SelectorReportInvalidSelector: typing_extensions.TypeAlias = SelectorReportInvalidSelector
+global___SelectorReportInvalidSelector = SelectorReportInvalidSelector
 
 @typing.final
 class SelectorReportInvalidSelectorMsg(google.protobuf.message.Message):
@@ -4975,19 +4969,19 @@ class SelectorReportInvalidSelectorMsg(google.protobuf.message.Message):
     INFO_FIELD_NUMBER: builtins.int
     DATA_FIELD_NUMBER: builtins.int
     @property
-    def info(self) -> Global___CoreEventInfo: ...
+    def info(self) -> global___CoreEventInfo: ...
     @property
-    def data(self) -> Global___SelectorReportInvalidSelector: ...
+    def data(self) -> global___SelectorReportInvalidSelector: ...
     def __init__(
         self,
         *,
-        info: Global___CoreEventInfo | None = ...,
-        data: Global___SelectorReportInvalidSelector | None = ...,
+        info: global___CoreEventInfo | None = ...,
+        data: global___SelectorReportInvalidSelector | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> None: ...
 
-Global___SelectorReportInvalidSelectorMsg: typing_extensions.TypeAlias = SelectorReportInvalidSelectorMsg
+global___SelectorReportInvalidSelectorMsg = SelectorReportInvalidSelectorMsg
 
 @typing.final
 class DepsNoPackagesFound(google.protobuf.message.Message):
@@ -5002,7 +4996,7 @@ class DepsNoPackagesFound(google.protobuf.message.Message):
         self,
     ) -> None: ...
 
-Global___DepsNoPackagesFound: typing_extensions.TypeAlias = DepsNoPackagesFound
+global___DepsNoPackagesFound = DepsNoPackagesFound
 
 @typing.final
 class DepsNoPackagesFoundMsg(google.protobuf.message.Message):
@@ -5011,19 +5005,19 @@ class DepsNoPackagesFoundMsg(google.protobuf.message.Message):
     INFO_FIELD_NUMBER: builtins.int
     DATA_FIELD_NUMBER: builtins.int
     @property
-    def info(self) -> Global___CoreEventInfo: ...
+    def info(self) -> global___CoreEventInfo: ...
     @property
-    def data(self) -> Global___DepsNoPackagesFound: ...
+    def data(self) -> global___DepsNoPackagesFound: ...
     def __init__(
         self,
         *,
-        info: Global___CoreEventInfo | None = ...,
-        data: Global___DepsNoPackagesFound | None = ...,
+        info: global___CoreEventInfo | None = ...,
+        data: global___DepsNoPackagesFound | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> None: ...
 
-Global___DepsNoPackagesFoundMsg: typing_extensions.TypeAlias = DepsNoPackagesFoundMsg
+global___DepsNoPackagesFoundMsg = DepsNoPackagesFoundMsg
 
 @typing.final
 class DepsStartPackageInstall(google.protobuf.message.Message):
@@ -5040,7 +5034,7 @@ class DepsStartPackageInstall(google.protobuf.message.Message):
     ) -> None: ...
     def ClearField(self, field_name: typing.Literal["package_name", b"package_name"]) -> None: ...
 
-Global___DepsStartPackageInstall: typing_extensions.TypeAlias = DepsStartPackageInstall
+global___DepsStartPackageInstall = DepsStartPackageInstall
 
 @typing.final
 class DepsStartPackageInstallMsg(google.protobuf.message.Message):
@@ -5049,19 +5043,19 @@ class DepsStartPackageInstallMsg(google.protobuf.message.Message):
     INFO_FIELD_NUMBER: builtins.int
     DATA_FIELD_NUMBER: builtins.int
     @property
-    def info(self) -> Global___CoreEventInfo: ...
+    def info(self) -> global___CoreEventInfo: ...
     @property
-    def data(self) -> Global___DepsStartPackageInstall: ...
+    def data(self) -> global___DepsStartPackageInstall: ...
     def __init__(
         self,
         *,
-        info: Global___CoreEventInfo | None = ...,
-        data: Global___DepsStartPackageInstall | None = ...,
+        info: global___CoreEventInfo | None = ...,
+        data: global___DepsStartPackageInstall | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> None: ...
 
-Global___DepsStartPackageInstallMsg: typing_extensions.TypeAlias = DepsStartPackageInstallMsg
+global___DepsStartPackageInstallMsg = DepsStartPackageInstallMsg
 
 @typing.final
 class DepsInstallInfo(google.protobuf.message.Message):
@@ -5078,7 +5072,7 @@ class DepsInstallInfo(google.protobuf.message.Message):
     ) -> None: ...
     def ClearField(self, field_name: typing.Literal["version_name", b"version_name"]) -> None: ...
 
-Global___DepsInstallInfo: typing_extensions.TypeAlias = DepsInstallInfo
+global___DepsInstallInfo = DepsInstallInfo
 
 @typing.final
 class DepsInstallInfoMsg(google.protobuf.message.Message):
@@ -5087,19 +5081,19 @@ class DepsInstallInfoMsg(google.protobuf.message.Message):
     INFO_FIELD_NUMBER: builtins.int
     DATA_FIELD_NUMBER: builtins.int
     @property
-    def info(self) -> Global___CoreEventInfo: ...
+    def info(self) -> global___CoreEventInfo: ...
     @property
-    def data(self) -> Global___DepsInstallInfo: ...
+    def data(self) -> global___DepsInstallInfo: ...
     def __init__(
         self,
         *,
-        info: Global___CoreEventInfo | None = ...,
-        data: Global___DepsInstallInfo | None = ...,
+        info: global___CoreEventInfo | None = ...,
+        data: global___DepsInstallInfo | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> None: ...
 
-Global___DepsInstallInfoMsg: typing_extensions.TypeAlias = DepsInstallInfoMsg
+global___DepsInstallInfoMsg = DepsInstallInfoMsg
 
 @typing.final
 class DepsUpdateAvailable(google.protobuf.message.Message):
@@ -5116,7 +5110,7 @@ class DepsUpdateAvailable(google.protobuf.message.Message):
     ) -> None: ...
     def ClearField(self, field_name: typing.Literal["version_latest", b"version_latest"]) -> None: ...
 
-Global___DepsUpdateAvailable: typing_extensions.TypeAlias = DepsUpdateAvailable
+global___DepsUpdateAvailable = DepsUpdateAvailable
 
 @typing.final
 class DepsUpdateAvailableMsg(google.protobuf.message.Message):
@@ -5125,19 +5119,19 @@ class DepsUpdateAvailableMsg(google.protobuf.message.Message):
     INFO_FIELD_NUMBER: builtins.int
     DATA_FIELD_NUMBER: builtins.int
     @property
-    def info(self) -> Global___CoreEventInfo: ...
+    def info(self) -> global___CoreEventInfo: ...
     @property
-    def data(self) -> Global___DepsUpdateAvailable: ...
+    def data(self) -> global___DepsUpdateAvailable: ...
     def __init__(
         self,
         *,
-        info: Global___CoreEventInfo | None = ...,
-        data: Global___DepsUpdateAvailable | None = ...,
+        info: global___CoreEventInfo | None = ...,
+        data: global___DepsUpdateAvailable | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> None: ...
 
-Global___DepsUpdateAvailableMsg: typing_extensions.TypeAlias = DepsUpdateAvailableMsg
+global___DepsUpdateAvailableMsg = DepsUpdateAvailableMsg
 
 @typing.final
 class DepsUpToDate(google.protobuf.message.Message):
@@ -5149,7 +5143,7 @@ class DepsUpToDate(google.protobuf.message.Message):
         self,
     ) -> None: ...
 
-Global___DepsUpToDate: typing_extensions.TypeAlias = DepsUpToDate
+global___DepsUpToDate = DepsUpToDate
 
 @typing.final
 class DepsUpToDateMsg(google.protobuf.message.Message):
@@ -5158,19 +5152,19 @@ class DepsUpToDateMsg(google.protobuf.message.Message):
     INFO_FIELD_NUMBER: builtins.int
     DATA_FIELD_NUMBER: builtins.int
     @property
-    def info(self) -> Global___CoreEventInfo: ...
+    def info(self) -> global___CoreEventInfo: ...
     @property
-    def data(self) -> Global___DepsUpToDate: ...
+    def data(self) -> global___DepsUpToDate: ...
     def __init__(
         self,
         *,
-        info: Global___CoreEventInfo | None = ...,
-        data: Global___DepsUpToDate | None = ...,
+        info: global___CoreEventInfo | None = ...,
+        data: global___DepsUpToDate | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> None: ...
 
-Global___DepsUpToDateMsg: typing_extensions.TypeAlias = DepsUpToDateMsg
+global___DepsUpToDateMsg = DepsUpToDateMsg
 
 @typing.final
 class DepsListSubdirectory(google.protobuf.message.Message):
@@ -5187,7 +5181,7 @@ class DepsListSubdirectory(google.protobuf.message.Message):
     ) -> None: ...
     def ClearField(self, field_name: typing.Literal["subdirectory", b"subdirectory"]) -> None: ...
 
-Global___DepsListSubdirectory: typing_extensions.TypeAlias = DepsListSubdirectory
+global___DepsListSubdirectory = DepsListSubdirectory
 
 @typing.final
 class DepsListSubdirectoryMsg(google.protobuf.message.Message):
@@ -5196,19 +5190,19 @@ class DepsListSubdirectoryMsg(google.protobuf.message.Message):
     INFO_FIELD_NUMBER: builtins.int
     DATA_FIELD_NUMBER: builtins.int
     @property
-    def info(self) -> Global___CoreEventInfo: ...
+    def info(self) -> global___CoreEventInfo: ...
     @property
-    def data(self) -> Global___DepsListSubdirectory: ...
+    def data(self) -> global___DepsListSubdirectory: ...
     def __init__(
         self,
         *,
-        info: Global___CoreEventInfo | None = ...,
-        data: Global___DepsListSubdirectory | None = ...,
+        info: global___CoreEventInfo | None = ...,
+        data: global___DepsListSubdirectory | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> None: ...
 
-Global___DepsListSubdirectoryMsg: typing_extensions.TypeAlias = DepsListSubdirectoryMsg
+global___DepsListSubdirectoryMsg = DepsListSubdirectoryMsg
 
 @typing.final
 class DepsNotifyUpdatesAvailable(google.protobuf.message.Message):
@@ -5226,7 +5220,7 @@ class DepsNotifyUpdatesAvailable(google.protobuf.message.Message):
     ) -> None: ...
     def ClearField(self, field_name: typing.Literal["packages", b"packages"]) -> None: ...
 
-Global___DepsNotifyUpdatesAvailable: typing_extensions.TypeAlias = DepsNotifyUpdatesAvailable
+global___DepsNotifyUpdatesAvailable = DepsNotifyUpdatesAvailable
 
 @typing.final
 class DepsNotifyUpdatesAvailableMsg(google.protobuf.message.Message):
@@ -5235,19 +5229,19 @@ class DepsNotifyUpdatesAvailableMsg(google.protobuf.message.Message):
     INFO_FIELD_NUMBER: builtins.int
     DATA_FIELD_NUMBER: builtins.int
     @property
-    def info(self) -> Global___CoreEventInfo: ...
+    def info(self) -> global___CoreEventInfo: ...
     @property
-    def data(self) -> Global___DepsNotifyUpdatesAvailable: ...
+    def data(self) -> global___DepsNotifyUpdatesAvailable: ...
     def __init__(
         self,
         *,
-        info: Global___CoreEventInfo | None = ...,
-        data: Global___DepsNotifyUpdatesAvailable | None = ...,
+        info: global___CoreEventInfo | None = ...,
+        data: global___DepsNotifyUpdatesAvailable | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> None: ...
 
-Global___DepsNotifyUpdatesAvailableMsg: typing_extensions.TypeAlias = DepsNotifyUpdatesAvailableMsg
+global___DepsNotifyUpdatesAvailableMsg = DepsNotifyUpdatesAvailableMsg
 
 @typing.final
 class RegistryIndexProgressGETRequest(google.protobuf.message.Message):
@@ -5264,7 +5258,7 @@ class RegistryIndexProgressGETRequest(google.protobuf.message.Message):
     ) -> None: ...
     def ClearField(self, field_name: typing.Literal["url", b"url"]) -> None: ...
 
-Global___RegistryIndexProgressGETRequest: typing_extensions.TypeAlias = RegistryIndexProgressGETRequest
+global___RegistryIndexProgressGETRequest = RegistryIndexProgressGETRequest
 
 @typing.final
 class RegistryIndexProgressGETRequestMsg(google.protobuf.message.Message):
@@ -5273,19 +5267,19 @@ class RegistryIndexProgressGETRequestMsg(google.protobuf.message.Message):
     INFO_FIELD_NUMBER: builtins.int
     DATA_FIELD_NUMBER: builtins.int
     @property
-    def info(self) -> Global___CoreEventInfo: ...
+    def info(self) -> global___CoreEventInfo: ...
     @property
-    def data(self) -> Global___RegistryIndexProgressGETRequest: ...
+    def data(self) -> global___RegistryIndexProgressGETRequest: ...
     def __init__(
         self,
         *,
-        info: Global___CoreEventInfo | None = ...,
-        data: Global___RegistryIndexProgressGETRequest | None = ...,
+        info: global___CoreEventInfo | None = ...,
+        data: global___RegistryIndexProgressGETRequest | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> None: ...
 
-Global___RegistryIndexProgressGETRequestMsg: typing_extensions.TypeAlias = RegistryIndexProgressGETRequestMsg
+global___RegistryIndexProgressGETRequestMsg = RegistryIndexProgressGETRequestMsg
 
 @typing.final
 class RegistryIndexProgressGETResponse(google.protobuf.message.Message):
@@ -5305,7 +5299,7 @@ class RegistryIndexProgressGETResponse(google.protobuf.message.Message):
     ) -> None: ...
     def ClearField(self, field_name: typing.Literal["resp_code", b"resp_code", "url", b"url"]) -> None: ...
 
-Global___RegistryIndexProgressGETResponse: typing_extensions.TypeAlias = RegistryIndexProgressGETResponse
+global___RegistryIndexProgressGETResponse = RegistryIndexProgressGETResponse
 
 @typing.final
 class RegistryIndexProgressGETResponseMsg(google.protobuf.message.Message):
@@ -5314,19 +5308,19 @@ class RegistryIndexProgressGETResponseMsg(google.protobuf.message.Message):
     INFO_FIELD_NUMBER: builtins.int
     DATA_FIELD_NUMBER: builtins.int
     @property
-    def info(self) -> Global___CoreEventInfo: ...
+    def info(self) -> global___CoreEventInfo: ...
     @property
-    def data(self) -> Global___RegistryIndexProgressGETResponse: ...
+    def data(self) -> global___RegistryIndexProgressGETResponse: ...
     def __init__(
         self,
         *,
-        info: Global___CoreEventInfo | None = ...,
-        data: Global___RegistryIndexProgressGETResponse | None = ...,
+        info: global___CoreEventInfo | None = ...,
+        data: global___RegistryIndexProgressGETResponse | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> None: ...
 
-Global___RegistryIndexProgressGETResponseMsg: typing_extensions.TypeAlias = RegistryIndexProgressGETResponseMsg
+global___RegistryIndexProgressGETResponseMsg = RegistryIndexProgressGETResponseMsg
 
 @typing.final
 class RegistryResponseUnexpectedType(google.protobuf.message.Message):
@@ -5343,7 +5337,7 @@ class RegistryResponseUnexpectedType(google.protobuf.message.Message):
     ) -> None: ...
     def ClearField(self, field_name: typing.Literal["response", b"response"]) -> None: ...
 
-Global___RegistryResponseUnexpectedType: typing_extensions.TypeAlias = RegistryResponseUnexpectedType
+global___RegistryResponseUnexpectedType = RegistryResponseUnexpectedType
 
 @typing.final
 class RegistryResponseUnexpectedTypeMsg(google.protobuf.message.Message):
@@ -5352,19 +5346,19 @@ class RegistryResponseUnexpectedTypeMsg(google.protobuf.message.Message):
     INFO_FIELD_NUMBER: builtins.int
     DATA_FIELD_NUMBER: builtins.int
     @property
-    def info(self) -> Global___CoreEventInfo: ...
+    def info(self) -> global___CoreEventInfo: ...
     @property
-    def data(self) -> Global___RegistryResponseUnexpectedType: ...
+    def data(self) -> global___RegistryResponseUnexpectedType: ...
     def __init__(
         self,
         *,
-        info: Global___CoreEventInfo | None = ...,
-        data: Global___RegistryResponseUnexpectedType | None = ...,
+        info: global___CoreEventInfo | None = ...,
+        data: global___RegistryResponseUnexpectedType | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> None: ...
 
-Global___RegistryResponseUnexpectedTypeMsg: typing_extensions.TypeAlias = RegistryResponseUnexpectedTypeMsg
+global___RegistryResponseUnexpectedTypeMsg = RegistryResponseUnexpectedTypeMsg
 
 @typing.final
 class RegistryResponseMissingTopKeys(google.protobuf.message.Message):
@@ -5381,7 +5375,7 @@ class RegistryResponseMissingTopKeys(google.protobuf.message.Message):
     ) -> None: ...
     def ClearField(self, field_name: typing.Literal["response", b"response"]) -> None: ...
 
-Global___RegistryResponseMissingTopKeys: typing_extensions.TypeAlias = RegistryResponseMissingTopKeys
+global___RegistryResponseMissingTopKeys = RegistryResponseMissingTopKeys
 
 @typing.final
 class RegistryResponseMissingTopKeysMsg(google.protobuf.message.Message):
@@ -5390,19 +5384,19 @@ class RegistryResponseMissingTopKeysMsg(google.protobuf.message.Message):
     INFO_FIELD_NUMBER: builtins.int
     DATA_FIELD_NUMBER: builtins.int
     @property
-    def info(self) -> Global___CoreEventInfo: ...
+    def info(self) -> global___CoreEventInfo: ...
     @property
-    def data(self) -> Global___RegistryResponseMissingTopKeys: ...
+    def data(self) -> global___RegistryResponseMissingTopKeys: ...
     def __init__(
         self,
         *,
-        info: Global___CoreEventInfo | None = ...,
-        data: Global___RegistryResponseMissingTopKeys | None = ...,
+        info: global___CoreEventInfo | None = ...,
+        data: global___RegistryResponseMissingTopKeys | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> None: ...
 
-Global___RegistryResponseMissingTopKeysMsg: typing_extensions.TypeAlias = RegistryResponseMissingTopKeysMsg
+global___RegistryResponseMissingTopKeysMsg = RegistryResponseMissingTopKeysMsg
 
 @typing.final
 class RegistryResponseMissingNestedKeys(google.protobuf.message.Message):
@@ -5419,7 +5413,7 @@ class RegistryResponseMissingNestedKeys(google.protobuf.message.Message):
     ) -> None: ...
     def ClearField(self, field_name: typing.Literal["response", b"response"]) -> None: ...
 
-Global___RegistryResponseMissingNestedKeys: typing_extensions.TypeAlias = RegistryResponseMissingNestedKeys
+global___RegistryResponseMissingNestedKeys = RegistryResponseMissingNestedKeys
 
 @typing.final
 class RegistryResponseMissingNestedKeysMsg(google.protobuf.message.Message):
@@ -5428,19 +5422,19 @@ class RegistryResponseMissingNestedKeysMsg(google.protobuf.message.Message):
     INFO_FIELD_NUMBER: builtins.int
     DATA_FIELD_NUMBER: builtins.int
     @property
-    def info(self) -> Global___CoreEventInfo: ...
+    def info(self) -> global___CoreEventInfo: ...
     @property
-    def data(self) -> Global___RegistryResponseMissingNestedKeys: ...
+    def data(self) -> global___RegistryResponseMissingNestedKeys: ...
     def __init__(
         self,
         *,
-        info: Global___CoreEventInfo | None = ...,
-        data: Global___RegistryResponseMissingNestedKeys | None = ...,
+        info: global___CoreEventInfo | None = ...,
+        data: global___RegistryResponseMissingNestedKeys | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> None: ...
 
-Global___RegistryResponseMissingNestedKeysMsg: typing_extensions.TypeAlias = RegistryResponseMissingNestedKeysMsg
+global___RegistryResponseMissingNestedKeysMsg = RegistryResponseMissingNestedKeysMsg
 
 @typing.final
 class RegistryResponseExtraNestedKeys(google.protobuf.message.Message):
@@ -5457,7 +5451,7 @@ class RegistryResponseExtraNestedKeys(google.protobuf.message.Message):
     ) -> None: ...
     def ClearField(self, field_name: typing.Literal["response", b"response"]) -> None: ...
 
-Global___RegistryResponseExtraNestedKeys: typing_extensions.TypeAlias = RegistryResponseExtraNestedKeys
+global___RegistryResponseExtraNestedKeys = RegistryResponseExtraNestedKeys
 
 @typing.final
 class RegistryResponseExtraNestedKeysMsg(google.protobuf.message.Message):
@@ -5466,19 +5460,19 @@ class RegistryResponseExtraNestedKeysMsg(google.protobuf.message.Message):
     INFO_FIELD_NUMBER: builtins.int
     DATA_FIELD_NUMBER: builtins.int
     @property
-    def info(self) -> Global___CoreEventInfo: ...
+    def info(self) -> global___CoreEventInfo: ...
     @property
-    def data(self) -> Global___RegistryResponseExtraNestedKeys: ...
+    def data(self) -> global___RegistryResponseExtraNestedKeys: ...
     def __init__(
         self,
         *,
-        info: Global___CoreEventInfo | None = ...,
-        data: Global___RegistryResponseExtraNestedKeys | None = ...,
+        info: global___CoreEventInfo | None = ...,
+        data: global___RegistryResponseExtraNestedKeys | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> None: ...
 
-Global___RegistryResponseExtraNestedKeysMsg: typing_extensions.TypeAlias = RegistryResponseExtraNestedKeysMsg
+global___RegistryResponseExtraNestedKeysMsg = RegistryResponseExtraNestedKeysMsg
 
 @typing.final
 class DepsSetDownloadDirectory(google.protobuf.message.Message):
@@ -5495,7 +5489,7 @@ class DepsSetDownloadDirectory(google.protobuf.message.Message):
     ) -> None: ...
     def ClearField(self, field_name: typing.Literal["path", b"path"]) -> None: ...
 
-Global___DepsSetDownloadDirectory: typing_extensions.TypeAlias = DepsSetDownloadDirectory
+global___DepsSetDownloadDirectory = DepsSetDownloadDirectory
 
 @typing.final
 class DepsSetDownloadDirectoryMsg(google.protobuf.message.Message):
@@ -5504,19 +5498,19 @@ class DepsSetDownloadDirectoryMsg(google.protobuf.message.Message):
     INFO_FIELD_NUMBER: builtins.int
     DATA_FIELD_NUMBER: builtins.int
     @property
-    def info(self) -> Global___CoreEventInfo: ...
+    def info(self) -> global___CoreEventInfo: ...
     @property
-    def data(self) -> Global___DepsSetDownloadDirectory: ...
+    def data(self) -> global___DepsSetDownloadDirectory: ...
     def __init__(
         self,
         *,
-        info: Global___CoreEventInfo | None = ...,
-        data: Global___DepsSetDownloadDirectory | None = ...,
+        info: global___CoreEventInfo | None = ...,
+        data: global___DepsSetDownloadDirectory | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> None: ...
 
-Global___DepsSetDownloadDirectoryMsg: typing_extensions.TypeAlias = DepsSetDownloadDirectoryMsg
+global___DepsSetDownloadDirectoryMsg = DepsSetDownloadDirectoryMsg
 
 @typing.final
 class DepsUnpinned(google.protobuf.message.Message):
@@ -5536,7 +5530,7 @@ class DepsUnpinned(google.protobuf.message.Message):
     ) -> None: ...
     def ClearField(self, field_name: typing.Literal["git", b"git", "revision", b"revision"]) -> None: ...
 
-Global___DepsUnpinned: typing_extensions.TypeAlias = DepsUnpinned
+global___DepsUnpinned = DepsUnpinned
 
 @typing.final
 class DepsUnpinnedMsg(google.protobuf.message.Message):
@@ -5545,19 +5539,19 @@ class DepsUnpinnedMsg(google.protobuf.message.Message):
     INFO_FIELD_NUMBER: builtins.int
     DATA_FIELD_NUMBER: builtins.int
     @property
-    def info(self) -> Global___CoreEventInfo: ...
+    def info(self) -> global___CoreEventInfo: ...
     @property
-    def data(self) -> Global___DepsUnpinned: ...
+    def data(self) -> global___DepsUnpinned: ...
     def __init__(
         self,
         *,
-        info: Global___CoreEventInfo | None = ...,
-        data: Global___DepsUnpinned | None = ...,
+        info: global___CoreEventInfo | None = ...,
+        data: global___DepsUnpinned | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> None: ...
 
-Global___DepsUnpinnedMsg: typing_extensions.TypeAlias = DepsUnpinnedMsg
+global___DepsUnpinnedMsg = DepsUnpinnedMsg
 
 @typing.final
 class NoNodesForSelectionCriteria(google.protobuf.message.Message):
@@ -5574,7 +5568,7 @@ class NoNodesForSelectionCriteria(google.protobuf.message.Message):
     ) -> None: ...
     def ClearField(self, field_name: typing.Literal["spec_raw", b"spec_raw"]) -> None: ...
 
-Global___NoNodesForSelectionCriteria: typing_extensions.TypeAlias = NoNodesForSelectionCriteria
+global___NoNodesForSelectionCriteria = NoNodesForSelectionCriteria
 
 @typing.final
 class NoNodesForSelectionCriteriaMsg(google.protobuf.message.Message):
@@ -5583,19 +5577,19 @@ class NoNodesForSelectionCriteriaMsg(google.protobuf.message.Message):
     INFO_FIELD_NUMBER: builtins.int
     DATA_FIELD_NUMBER: builtins.int
     @property
-    def info(self) -> Global___CoreEventInfo: ...
+    def info(self) -> global___CoreEventInfo: ...
     @property
-    def data(self) -> Global___NoNodesForSelectionCriteria: ...
+    def data(self) -> global___NoNodesForSelectionCriteria: ...
     def __init__(
         self,
         *,
-        info: Global___CoreEventInfo | None = ...,
-        data: Global___NoNodesForSelectionCriteria | None = ...,
+        info: global___CoreEventInfo | None = ...,
+        data: global___NoNodesForSelectionCriteria | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> None: ...
 
-Global___NoNodesForSelectionCriteriaMsg: typing_extensions.TypeAlias = NoNodesForSelectionCriteriaMsg
+global___NoNodesForSelectionCriteriaMsg = NoNodesForSelectionCriteriaMsg
 
 @typing.final
 class DepsLockUpdating(google.protobuf.message.Message):
@@ -5612,7 +5606,7 @@ class DepsLockUpdating(google.protobuf.message.Message):
     ) -> None: ...
     def ClearField(self, field_name: typing.Literal["lock_filepath", b"lock_filepath"]) -> None: ...
 
-Global___DepsLockUpdating: typing_extensions.TypeAlias = DepsLockUpdating
+global___DepsLockUpdating = DepsLockUpdating
 
 @typing.final
 class DepsLockUpdatingMsg(google.protobuf.message.Message):
@@ -5621,19 +5615,19 @@ class DepsLockUpdatingMsg(google.protobuf.message.Message):
     INFO_FIELD_NUMBER: builtins.int
     DATA_FIELD_NUMBER: builtins.int
     @property
-    def info(self) -> Global___CoreEventInfo: ...
+    def info(self) -> global___CoreEventInfo: ...
     @property
-    def data(self) -> Global___DepsLockUpdating: ...
+    def data(self) -> global___DepsLockUpdating: ...
     def __init__(
         self,
         *,
-        info: Global___CoreEventInfo | None = ...,
-        data: Global___DepsLockUpdating | None = ...,
+        info: global___CoreEventInfo | None = ...,
+        data: global___DepsLockUpdating | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> None: ...
 
-Global___DepsLockUpdatingMsg: typing_extensions.TypeAlias = DepsLockUpdatingMsg
+global___DepsLockUpdatingMsg = DepsLockUpdatingMsg
 
 @typing.final
 class DepsAddPackage(google.protobuf.message.Message):
@@ -5656,7 +5650,7 @@ class DepsAddPackage(google.protobuf.message.Message):
     ) -> None: ...
     def ClearField(self, field_name: typing.Literal["package_name", b"package_name", "packages_filepath", b"packages_filepath", "version", b"version"]) -> None: ...
 
-Global___DepsAddPackage: typing_extensions.TypeAlias = DepsAddPackage
+global___DepsAddPackage = DepsAddPackage
 
 @typing.final
 class DepsAddPackageMsg(google.protobuf.message.Message):
@@ -5665,19 +5659,19 @@ class DepsAddPackageMsg(google.protobuf.message.Message):
     INFO_FIELD_NUMBER: builtins.int
     DATA_FIELD_NUMBER: builtins.int
     @property
-    def info(self) -> Global___CoreEventInfo: ...
+    def info(self) -> global___CoreEventInfo: ...
     @property
-    def data(self) -> Global___DepsAddPackage: ...
+    def data(self) -> global___DepsAddPackage: ...
     def __init__(
         self,
         *,
-        info: Global___CoreEventInfo | None = ...,
-        data: Global___DepsAddPackage | None = ...,
+        info: global___CoreEventInfo | None = ...,
+        data: global___DepsAddPackage | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> None: ...
 
-Global___DepsAddPackageMsg: typing_extensions.TypeAlias = DepsAddPackageMsg
+global___DepsAddPackageMsg = DepsAddPackageMsg
 
 @typing.final
 class DepsFoundDuplicatePackage(google.protobuf.message.Message):
@@ -5711,7 +5705,7 @@ class DepsFoundDuplicatePackage(google.protobuf.message.Message):
     ) -> None: ...
     def ClearField(self, field_name: typing.Literal["removed_package", b"removed_package"]) -> None: ...
 
-Global___DepsFoundDuplicatePackage: typing_extensions.TypeAlias = DepsFoundDuplicatePackage
+global___DepsFoundDuplicatePackage = DepsFoundDuplicatePackage
 
 @typing.final
 class DepsFoundDuplicatePackageMsg(google.protobuf.message.Message):
@@ -5720,19 +5714,19 @@ class DepsFoundDuplicatePackageMsg(google.protobuf.message.Message):
     INFO_FIELD_NUMBER: builtins.int
     DATA_FIELD_NUMBER: builtins.int
     @property
-    def info(self) -> Global___CoreEventInfo: ...
+    def info(self) -> global___CoreEventInfo: ...
     @property
-    def data(self) -> Global___DepsFoundDuplicatePackage: ...
+    def data(self) -> global___DepsFoundDuplicatePackage: ...
     def __init__(
         self,
         *,
-        info: Global___CoreEventInfo | None = ...,
-        data: Global___DepsFoundDuplicatePackage | None = ...,
+        info: global___CoreEventInfo | None = ...,
+        data: global___DepsFoundDuplicatePackage | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> None: ...
 
-Global___DepsFoundDuplicatePackageMsg: typing_extensions.TypeAlias = DepsFoundDuplicatePackageMsg
+global___DepsFoundDuplicatePackageMsg = DepsFoundDuplicatePackageMsg
 
 @typing.final
 class DepsVersionMissing(google.protobuf.message.Message):
@@ -5749,7 +5743,7 @@ class DepsVersionMissing(google.protobuf.message.Message):
     ) -> None: ...
     def ClearField(self, field_name: typing.Literal["source", b"source"]) -> None: ...
 
-Global___DepsVersionMissing: typing_extensions.TypeAlias = DepsVersionMissing
+global___DepsVersionMissing = DepsVersionMissing
 
 @typing.final
 class DepsVersionMissingMsg(google.protobuf.message.Message):
@@ -5758,19 +5752,19 @@ class DepsVersionMissingMsg(google.protobuf.message.Message):
     INFO_FIELD_NUMBER: builtins.int
     DATA_FIELD_NUMBER: builtins.int
     @property
-    def info(self) -> Global___CoreEventInfo: ...
+    def info(self) -> global___CoreEventInfo: ...
     @property
-    def data(self) -> Global___DepsVersionMissing: ...
+    def data(self) -> global___DepsVersionMissing: ...
     def __init__(
         self,
         *,
-        info: Global___CoreEventInfo | None = ...,
-        data: Global___DepsVersionMissing | None = ...,
+        info: global___CoreEventInfo | None = ...,
+        data: global___DepsVersionMissing | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> None: ...
 
-Global___DepsVersionMissingMsg: typing_extensions.TypeAlias = DepsVersionMissingMsg
+global___DepsVersionMissingMsg = DepsVersionMissingMsg
 
 @typing.final
 class DepsScrubbedPackageName(google.protobuf.message.Message):
@@ -5787,7 +5781,7 @@ class DepsScrubbedPackageName(google.protobuf.message.Message):
     ) -> None: ...
     def ClearField(self, field_name: typing.Literal["package_name", b"package_name"]) -> None: ...
 
-Global___DepsScrubbedPackageName: typing_extensions.TypeAlias = DepsScrubbedPackageName
+global___DepsScrubbedPackageName = DepsScrubbedPackageName
 
 @typing.final
 class DepsScrubbedPackageNameMsg(google.protobuf.message.Message):
@@ -5796,19 +5790,19 @@ class DepsScrubbedPackageNameMsg(google.protobuf.message.Message):
     INFO_FIELD_NUMBER: builtins.int
     DATA_FIELD_NUMBER: builtins.int
     @property
-    def info(self) -> Global___CoreEventInfo: ...
+    def info(self) -> global___CoreEventInfo: ...
     @property
-    def data(self) -> Global___DepsScrubbedPackageName: ...
+    def data(self) -> global___DepsScrubbedPackageName: ...
     def __init__(
         self,
         *,
-        info: Global___CoreEventInfo | None = ...,
-        data: Global___DepsScrubbedPackageName | None = ...,
+        info: global___CoreEventInfo | None = ...,
+        data: global___DepsScrubbedPackageName | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> None: ...
 
-Global___DepsScrubbedPackageNameMsg: typing_extensions.TypeAlias = DepsScrubbedPackageNameMsg
+global___DepsScrubbedPackageNameMsg = DepsScrubbedPackageNameMsg
 
 @typing.final
 class ArtifactWritten(google.protobuf.message.Message):
@@ -5831,7 +5825,7 @@ class ArtifactWritten(google.protobuf.message.Message):
     ) -> None: ...
     def ClearField(self, field_name: typing.Literal["artifact_path", b"artifact_path", "artifact_type", b"artifact_type"]) -> None: ...
 
-Global___ArtifactWritten: typing_extensions.TypeAlias = ArtifactWritten
+global___ArtifactWritten = ArtifactWritten
 
 @typing.final
 class ArtifactWrittenMsg(google.protobuf.message.Message):
@@ -5840,19 +5834,19 @@ class ArtifactWrittenMsg(google.protobuf.message.Message):
     INFO_FIELD_NUMBER: builtins.int
     DATA_FIELD_NUMBER: builtins.int
     @property
-    def info(self) -> Global___CoreEventInfo: ...
+    def info(self) -> global___CoreEventInfo: ...
     @property
-    def data(self) -> Global___ArtifactWritten: ...
+    def data(self) -> global___ArtifactWritten: ...
     def __init__(
         self,
         *,
-        info: Global___CoreEventInfo | None = ...,
-        data: Global___ArtifactWritten | None = ...,
+        info: global___CoreEventInfo | None = ...,
+        data: global___ArtifactWritten | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> None: ...
 
-Global___ArtifactWrittenMsg: typing_extensions.TypeAlias = ArtifactWrittenMsg
+global___ArtifactWrittenMsg = ArtifactWrittenMsg
 
 @typing.final
 class RunningOperationCaughtError(google.protobuf.message.Message):
@@ -5872,7 +5866,7 @@ class RunningOperationCaughtError(google.protobuf.message.Message):
     ) -> None: ...
     def ClearField(self, field_name: typing.Literal["exc", b"exc"]) -> None: ...
 
-Global___RunningOperationCaughtError: typing_extensions.TypeAlias = RunningOperationCaughtError
+global___RunningOperationCaughtError = RunningOperationCaughtError
 
 @typing.final
 class RunningOperationCaughtErrorMsg(google.protobuf.message.Message):
@@ -5881,19 +5875,19 @@ class RunningOperationCaughtErrorMsg(google.protobuf.message.Message):
     INFO_FIELD_NUMBER: builtins.int
     DATA_FIELD_NUMBER: builtins.int
     @property
-    def info(self) -> Global___CoreEventInfo: ...
+    def info(self) -> global___CoreEventInfo: ...
     @property
-    def data(self) -> Global___RunningOperationCaughtError: ...
+    def data(self) -> global___RunningOperationCaughtError: ...
     def __init__(
         self,
         *,
-        info: Global___CoreEventInfo | None = ...,
-        data: Global___RunningOperationCaughtError | None = ...,
+        info: global___CoreEventInfo | None = ...,
+        data: global___RunningOperationCaughtError | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> None: ...
 
-Global___RunningOperationCaughtErrorMsg: typing_extensions.TypeAlias = RunningOperationCaughtErrorMsg
+global___RunningOperationCaughtErrorMsg = RunningOperationCaughtErrorMsg
 
 @typing.final
 class CompileComplete(google.protobuf.message.Message):
@@ -5905,7 +5899,7 @@ class CompileComplete(google.protobuf.message.Message):
         self,
     ) -> None: ...
 
-Global___CompileComplete: typing_extensions.TypeAlias = CompileComplete
+global___CompileComplete = CompileComplete
 
 @typing.final
 class CompileCompleteMsg(google.protobuf.message.Message):
@@ -5914,19 +5908,19 @@ class CompileCompleteMsg(google.protobuf.message.Message):
     INFO_FIELD_NUMBER: builtins.int
     DATA_FIELD_NUMBER: builtins.int
     @property
-    def info(self) -> Global___CoreEventInfo: ...
+    def info(self) -> global___CoreEventInfo: ...
     @property
-    def data(self) -> Global___CompileComplete: ...
+    def data(self) -> global___CompileComplete: ...
     def __init__(
         self,
         *,
-        info: Global___CoreEventInfo | None = ...,
-        data: Global___CompileComplete | None = ...,
+        info: global___CoreEventInfo | None = ...,
+        data: global___CompileComplete | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> None: ...
 
-Global___CompileCompleteMsg: typing_extensions.TypeAlias = CompileCompleteMsg
+global___CompileCompleteMsg = CompileCompleteMsg
 
 @typing.final
 class FreshnessCheckComplete(google.protobuf.message.Message):
@@ -5938,7 +5932,7 @@ class FreshnessCheckComplete(google.protobuf.message.Message):
         self,
     ) -> None: ...
 
-Global___FreshnessCheckComplete: typing_extensions.TypeAlias = FreshnessCheckComplete
+global___FreshnessCheckComplete = FreshnessCheckComplete
 
 @typing.final
 class FreshnessCheckCompleteMsg(google.protobuf.message.Message):
@@ -5947,19 +5941,19 @@ class FreshnessCheckCompleteMsg(google.protobuf.message.Message):
     INFO_FIELD_NUMBER: builtins.int
     DATA_FIELD_NUMBER: builtins.int
     @property
-    def info(self) -> Global___CoreEventInfo: ...
+    def info(self) -> global___CoreEventInfo: ...
     @property
-    def data(self) -> Global___FreshnessCheckComplete: ...
+    def data(self) -> global___FreshnessCheckComplete: ...
     def __init__(
         self,
         *,
-        info: Global___CoreEventInfo | None = ...,
-        data: Global___FreshnessCheckComplete | None = ...,
+        info: global___CoreEventInfo | None = ...,
+        data: global___FreshnessCheckComplete | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> None: ...
 
-Global___FreshnessCheckCompleteMsg: typing_extensions.TypeAlias = FreshnessCheckCompleteMsg
+global___FreshnessCheckCompleteMsg = FreshnessCheckCompleteMsg
 
 @typing.final
 class SeedHeader(google.protobuf.message.Message):
@@ -5976,7 +5970,7 @@ class SeedHeader(google.protobuf.message.Message):
     ) -> None: ...
     def ClearField(self, field_name: typing.Literal["header", b"header"]) -> None: ...
 
-Global___SeedHeader: typing_extensions.TypeAlias = SeedHeader
+global___SeedHeader = SeedHeader
 
 @typing.final
 class SeedHeaderMsg(google.protobuf.message.Message):
@@ -5985,19 +5979,19 @@ class SeedHeaderMsg(google.protobuf.message.Message):
     INFO_FIELD_NUMBER: builtins.int
     DATA_FIELD_NUMBER: builtins.int
     @property
-    def info(self) -> Global___CoreEventInfo: ...
+    def info(self) -> global___CoreEventInfo: ...
     @property
-    def data(self) -> Global___SeedHeader: ...
+    def data(self) -> global___SeedHeader: ...
     def __init__(
         self,
         *,
-        info: Global___CoreEventInfo | None = ...,
-        data: Global___SeedHeader | None = ...,
+        info: global___CoreEventInfo | None = ...,
+        data: global___SeedHeader | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> None: ...
 
-Global___SeedHeaderMsg: typing_extensions.TypeAlias = SeedHeaderMsg
+global___SeedHeaderMsg = SeedHeaderMsg
 
 @typing.final
 class SQLRunnerException(google.protobuf.message.Message):
@@ -6014,18 +6008,18 @@ class SQLRunnerException(google.protobuf.message.Message):
     exc: builtins.str
     exc_info: builtins.str
     @property
-    def node_info(self) -> Global___NodeInfo: ...
+    def node_info(self) -> global___NodeInfo: ...
     def __init__(
         self,
         *,
         exc: builtins.str = ...,
         exc_info: builtins.str = ...,
-        node_info: Global___NodeInfo | None = ...,
+        node_info: global___NodeInfo | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["node_info", b"node_info"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["exc", b"exc", "exc_info", b"exc_info", "node_info", b"node_info"]) -> None: ...
 
-Global___SQLRunnerException: typing_extensions.TypeAlias = SQLRunnerException
+global___SQLRunnerException = SQLRunnerException
 
 @typing.final
 class SQLRunnerExceptionMsg(google.protobuf.message.Message):
@@ -6034,19 +6028,19 @@ class SQLRunnerExceptionMsg(google.protobuf.message.Message):
     INFO_FIELD_NUMBER: builtins.int
     DATA_FIELD_NUMBER: builtins.int
     @property
-    def info(self) -> Global___CoreEventInfo: ...
+    def info(self) -> global___CoreEventInfo: ...
     @property
-    def data(self) -> Global___SQLRunnerException: ...
+    def data(self) -> global___SQLRunnerException: ...
     def __init__(
         self,
         *,
-        info: Global___CoreEventInfo | None = ...,
-        data: Global___SQLRunnerException | None = ...,
+        info: global___CoreEventInfo | None = ...,
+        data: global___SQLRunnerException | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> None: ...
 
-Global___SQLRunnerExceptionMsg: typing_extensions.TypeAlias = SQLRunnerExceptionMsg
+global___SQLRunnerExceptionMsg = SQLRunnerExceptionMsg
 
 @typing.final
 class Group(google.protobuf.message.Message):
@@ -6084,7 +6078,7 @@ class Group(google.protobuf.message.Message):
     ) -> None: ...
     def ClearField(self, field_name: typing.Literal["name", b"name", "owner", b"owner", "package_name", b"package_name"]) -> None: ...
 
-Global___Group: typing_extensions.TypeAlias = Group
+global___Group = Group
 
 @typing.final
 class LogTestResult(google.protobuf.message.Message):
@@ -6109,26 +6103,26 @@ class LogTestResult(google.protobuf.message.Message):
     num_failures: builtins.int
     attached_node: builtins.str
     @property
-    def node_info(self) -> Global___NodeInfo: ...
+    def node_info(self) -> global___NodeInfo: ...
     @property
-    def group(self) -> Global___Group: ...
+    def group(self) -> global___Group: ...
     def __init__(
         self,
         *,
-        node_info: Global___NodeInfo | None = ...,
+        node_info: global___NodeInfo | None = ...,
         name: builtins.str = ...,
         status: builtins.str = ...,
         index: builtins.int = ...,
         num_models: builtins.int = ...,
         execution_time: builtins.float = ...,
         num_failures: builtins.int = ...,
-        group: Global___Group | None = ...,
+        group: global___Group | None = ...,
         attached_node: builtins.str = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["group", b"group", "node_info", b"node_info"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["attached_node", b"attached_node", "execution_time", b"execution_time", "group", b"group", "index", b"index", "name", b"name", "node_info", b"node_info", "num_failures", b"num_failures", "num_models", b"num_models", "status", b"status"]) -> None: ...
 
-Global___LogTestResult: typing_extensions.TypeAlias = LogTestResult
+global___LogTestResult = LogTestResult
 
 @typing.final
 class LogTestResultMsg(google.protobuf.message.Message):
@@ -6137,19 +6131,19 @@ class LogTestResultMsg(google.protobuf.message.Message):
     INFO_FIELD_NUMBER: builtins.int
     DATA_FIELD_NUMBER: builtins.int
     @property
-    def info(self) -> Global___CoreEventInfo: ...
+    def info(self) -> global___CoreEventInfo: ...
     @property
-    def data(self) -> Global___LogTestResult: ...
+    def data(self) -> global___LogTestResult: ...
     def __init__(
         self,
         *,
-        info: Global___CoreEventInfo | None = ...,
-        data: Global___LogTestResult | None = ...,
+        info: global___CoreEventInfo | None = ...,
+        data: global___LogTestResult | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> None: ...
 
-Global___LogTestResultMsg: typing_extensions.TypeAlias = LogTestResultMsg
+global___LogTestResultMsg = LogTestResultMsg
 
 @typing.final
 class LogNodeResult(google.protobuf.message.Message):
@@ -6171,11 +6165,11 @@ class LogNodeResult(google.protobuf.message.Message):
     execution_time: builtins.float
     msg: builtins.str
     @property
-    def node_info(self) -> Global___NodeInfo: ...
+    def node_info(self) -> global___NodeInfo: ...
     def __init__(
         self,
         *,
-        node_info: Global___NodeInfo | None = ...,
+        node_info: global___NodeInfo | None = ...,
         description: builtins.str = ...,
         status: builtins.str = ...,
         index: builtins.int = ...,
@@ -6186,7 +6180,7 @@ class LogNodeResult(google.protobuf.message.Message):
     def HasField(self, field_name: typing.Literal["node_info", b"node_info"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["description", b"description", "execution_time", b"execution_time", "index", b"index", "msg", b"msg", "node_info", b"node_info", "status", b"status", "total", b"total"]) -> None: ...
 
-Global___LogNodeResult: typing_extensions.TypeAlias = LogNodeResult
+global___LogNodeResult = LogNodeResult
 
 @typing.final
 class LogNodeResultMsg(google.protobuf.message.Message):
@@ -6195,19 +6189,19 @@ class LogNodeResultMsg(google.protobuf.message.Message):
     INFO_FIELD_NUMBER: builtins.int
     DATA_FIELD_NUMBER: builtins.int
     @property
-    def info(self) -> Global___CoreEventInfo: ...
+    def info(self) -> global___CoreEventInfo: ...
     @property
-    def data(self) -> Global___LogNodeResult: ...
+    def data(self) -> global___LogNodeResult: ...
     def __init__(
         self,
         *,
-        info: Global___CoreEventInfo | None = ...,
-        data: Global___LogNodeResult | None = ...,
+        info: global___CoreEventInfo | None = ...,
+        data: global___LogNodeResult | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> None: ...
 
-Global___LogNodeResultMsg: typing_extensions.TypeAlias = LogNodeResultMsg
+global___LogNodeResultMsg = LogNodeResultMsg
 
 @typing.final
 class LogStartLine(google.protobuf.message.Message):
@@ -6226,11 +6220,11 @@ class LogStartLine(google.protobuf.message.Message):
     index: builtins.int
     total: builtins.int
     @property
-    def node_info(self) -> Global___NodeInfo: ...
+    def node_info(self) -> global___NodeInfo: ...
     def __init__(
         self,
         *,
-        node_info: Global___NodeInfo | None = ...,
+        node_info: global___NodeInfo | None = ...,
         description: builtins.str = ...,
         index: builtins.int = ...,
         total: builtins.int = ...,
@@ -6238,7 +6232,7 @@ class LogStartLine(google.protobuf.message.Message):
     def HasField(self, field_name: typing.Literal["node_info", b"node_info"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["description", b"description", "index", b"index", "node_info", b"node_info", "total", b"total"]) -> None: ...
 
-Global___LogStartLine: typing_extensions.TypeAlias = LogStartLine
+global___LogStartLine = LogStartLine
 
 @typing.final
 class LogStartLineMsg(google.protobuf.message.Message):
@@ -6247,19 +6241,19 @@ class LogStartLineMsg(google.protobuf.message.Message):
     INFO_FIELD_NUMBER: builtins.int
     DATA_FIELD_NUMBER: builtins.int
     @property
-    def info(self) -> Global___CoreEventInfo: ...
+    def info(self) -> global___CoreEventInfo: ...
     @property
-    def data(self) -> Global___LogStartLine: ...
+    def data(self) -> global___LogStartLine: ...
     def __init__(
         self,
         *,
-        info: Global___CoreEventInfo | None = ...,
-        data: Global___LogStartLine | None = ...,
+        info: global___CoreEventInfo | None = ...,
+        data: global___LogStartLine | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> None: ...
 
-Global___LogStartLineMsg: typing_extensions.TypeAlias = LogStartLineMsg
+global___LogStartLineMsg = LogStartLineMsg
 
 @typing.final
 class LogModelResult(google.protobuf.message.Message):
@@ -6280,24 +6274,24 @@ class LogModelResult(google.protobuf.message.Message):
     total: builtins.int
     execution_time: builtins.float
     @property
-    def node_info(self) -> Global___NodeInfo: ...
+    def node_info(self) -> global___NodeInfo: ...
     @property
-    def group(self) -> Global___Group: ...
+    def group(self) -> global___Group: ...
     def __init__(
         self,
         *,
-        node_info: Global___NodeInfo | None = ...,
+        node_info: global___NodeInfo | None = ...,
         description: builtins.str = ...,
         status: builtins.str = ...,
         index: builtins.int = ...,
         total: builtins.int = ...,
         execution_time: builtins.float = ...,
-        group: Global___Group | None = ...,
+        group: global___Group | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["group", b"group", "node_info", b"node_info"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["description", b"description", "execution_time", b"execution_time", "group", b"group", "index", b"index", "node_info", b"node_info", "status", b"status", "total", b"total"]) -> None: ...
 
-Global___LogModelResult: typing_extensions.TypeAlias = LogModelResult
+global___LogModelResult = LogModelResult
 
 @typing.final
 class LogModelResultMsg(google.protobuf.message.Message):
@@ -6306,19 +6300,19 @@ class LogModelResultMsg(google.protobuf.message.Message):
     INFO_FIELD_NUMBER: builtins.int
     DATA_FIELD_NUMBER: builtins.int
     @property
-    def info(self) -> Global___CoreEventInfo: ...
+    def info(self) -> global___CoreEventInfo: ...
     @property
-    def data(self) -> Global___LogModelResult: ...
+    def data(self) -> global___LogModelResult: ...
     def __init__(
         self,
         *,
-        info: Global___CoreEventInfo | None = ...,
-        data: Global___LogModelResult | None = ...,
+        info: global___CoreEventInfo | None = ...,
+        data: global___LogModelResult | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> None: ...
 
-Global___LogModelResultMsg: typing_extensions.TypeAlias = LogModelResultMsg
+global___LogModelResultMsg = LogModelResultMsg
 
 @typing.final
 class LogSnapshotResult(google.protobuf.message.Message):
@@ -6361,15 +6355,15 @@ class LogSnapshotResult(google.protobuf.message.Message):
     execution_time: builtins.float
     result_message: builtins.str
     @property
-    def node_info(self) -> Global___NodeInfo: ...
+    def node_info(self) -> global___NodeInfo: ...
     @property
     def cfg(self) -> google.protobuf.internal.containers.ScalarMap[builtins.str, builtins.str]: ...
     @property
-    def group(self) -> Global___Group: ...
+    def group(self) -> global___Group: ...
     def __init__(
         self,
         *,
-        node_info: Global___NodeInfo | None = ...,
+        node_info: global___NodeInfo | None = ...,
         description: builtins.str = ...,
         status: builtins.str = ...,
         index: builtins.int = ...,
@@ -6377,12 +6371,12 @@ class LogSnapshotResult(google.protobuf.message.Message):
         execution_time: builtins.float = ...,
         cfg: collections.abc.Mapping[builtins.str, builtins.str] | None = ...,
         result_message: builtins.str = ...,
-        group: Global___Group | None = ...,
+        group: global___Group | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["group", b"group", "node_info", b"node_info"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["cfg", b"cfg", "description", b"description", "execution_time", b"execution_time", "group", b"group", "index", b"index", "node_info", b"node_info", "result_message", b"result_message", "status", b"status", "total", b"total"]) -> None: ...
 
-Global___LogSnapshotResult: typing_extensions.TypeAlias = LogSnapshotResult
+global___LogSnapshotResult = LogSnapshotResult
 
 @typing.final
 class LogSnapshotResultMsg(google.protobuf.message.Message):
@@ -6391,19 +6385,19 @@ class LogSnapshotResultMsg(google.protobuf.message.Message):
     INFO_FIELD_NUMBER: builtins.int
     DATA_FIELD_NUMBER: builtins.int
     @property
-    def info(self) -> Global___CoreEventInfo: ...
+    def info(self) -> global___CoreEventInfo: ...
     @property
-    def data(self) -> Global___LogSnapshotResult: ...
+    def data(self) -> global___LogSnapshotResult: ...
     def __init__(
         self,
         *,
-        info: Global___CoreEventInfo | None = ...,
-        data: Global___LogSnapshotResult | None = ...,
+        info: global___CoreEventInfo | None = ...,
+        data: global___LogSnapshotResult | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> None: ...
 
-Global___LogSnapshotResultMsg: typing_extensions.TypeAlias = LogSnapshotResultMsg
+global___LogSnapshotResultMsg = LogSnapshotResultMsg
 
 @typing.final
 class LogSeedResult(google.protobuf.message.Message):
@@ -6428,13 +6422,13 @@ class LogSeedResult(google.protobuf.message.Message):
     schema: builtins.str
     relation: builtins.str
     @property
-    def node_info(self) -> Global___NodeInfo: ...
+    def node_info(self) -> global___NodeInfo: ...
     @property
-    def group(self) -> Global___Group: ...
+    def group(self) -> global___Group: ...
     def __init__(
         self,
         *,
-        node_info: Global___NodeInfo | None = ...,
+        node_info: global___NodeInfo | None = ...,
         status: builtins.str = ...,
         result_message: builtins.str = ...,
         index: builtins.int = ...,
@@ -6442,12 +6436,12 @@ class LogSeedResult(google.protobuf.message.Message):
         execution_time: builtins.float = ...,
         schema: builtins.str = ...,
         relation: builtins.str = ...,
-        group: Global___Group | None = ...,
+        group: global___Group | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["group", b"group", "node_info", b"node_info"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["execution_time", b"execution_time", "group", b"group", "index", b"index", "node_info", b"node_info", "relation", b"relation", "result_message", b"result_message", "schema", b"schema", "status", b"status", "total", b"total"]) -> None: ...
 
-Global___LogSeedResult: typing_extensions.TypeAlias = LogSeedResult
+global___LogSeedResult = LogSeedResult
 
 @typing.final
 class LogSeedResultMsg(google.protobuf.message.Message):
@@ -6456,19 +6450,19 @@ class LogSeedResultMsg(google.protobuf.message.Message):
     INFO_FIELD_NUMBER: builtins.int
     DATA_FIELD_NUMBER: builtins.int
     @property
-    def info(self) -> Global___CoreEventInfo: ...
+    def info(self) -> global___CoreEventInfo: ...
     @property
-    def data(self) -> Global___LogSeedResult: ...
+    def data(self) -> global___LogSeedResult: ...
     def __init__(
         self,
         *,
-        info: Global___CoreEventInfo | None = ...,
-        data: Global___LogSeedResult | None = ...,
+        info: global___CoreEventInfo | None = ...,
+        data: global___LogSeedResult | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> None: ...
 
-Global___LogSeedResultMsg: typing_extensions.TypeAlias = LogSeedResultMsg
+global___LogSeedResultMsg = LogSeedResultMsg
 
 @typing.final
 class LogFreshnessResult(google.protobuf.message.Message):
@@ -6493,12 +6487,12 @@ class LogFreshnessResult(google.protobuf.message.Message):
     source_name: builtins.str
     table_name: builtins.str
     @property
-    def node_info(self) -> Global___NodeInfo: ...
+    def node_info(self) -> global___NodeInfo: ...
     def __init__(
         self,
         *,
         status: builtins.str = ...,
-        node_info: Global___NodeInfo | None = ...,
+        node_info: global___NodeInfo | None = ...,
         index: builtins.int = ...,
         total: builtins.int = ...,
         execution_time: builtins.float = ...,
@@ -6508,7 +6502,7 @@ class LogFreshnessResult(google.protobuf.message.Message):
     def HasField(self, field_name: typing.Literal["node_info", b"node_info"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["execution_time", b"execution_time", "index", b"index", "node_info", b"node_info", "source_name", b"source_name", "status", b"status", "table_name", b"table_name", "total", b"total"]) -> None: ...
 
-Global___LogFreshnessResult: typing_extensions.TypeAlias = LogFreshnessResult
+global___LogFreshnessResult = LogFreshnessResult
 
 @typing.final
 class LogFreshnessResultMsg(google.protobuf.message.Message):
@@ -6517,19 +6511,19 @@ class LogFreshnessResultMsg(google.protobuf.message.Message):
     INFO_FIELD_NUMBER: builtins.int
     DATA_FIELD_NUMBER: builtins.int
     @property
-    def info(self) -> Global___CoreEventInfo: ...
+    def info(self) -> global___CoreEventInfo: ...
     @property
-    def data(self) -> Global___LogFreshnessResult: ...
+    def data(self) -> global___LogFreshnessResult: ...
     def __init__(
         self,
         *,
-        info: Global___CoreEventInfo | None = ...,
-        data: Global___LogFreshnessResult | None = ...,
+        info: global___CoreEventInfo | None = ...,
+        data: global___LogFreshnessResult | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> None: ...
 
-Global___LogFreshnessResultMsg: typing_extensions.TypeAlias = LogFreshnessResultMsg
+global___LogFreshnessResultMsg = LogFreshnessResultMsg
 
 @typing.final
 class LogNodeNoOpResult(google.protobuf.message.Message):
@@ -6549,11 +6543,11 @@ class LogNodeNoOpResult(google.protobuf.message.Message):
     total: builtins.int
     execution_time: builtins.float
     @property
-    def node_info(self) -> Global___NodeInfo: ...
+    def node_info(self) -> global___NodeInfo: ...
     def __init__(
         self,
         *,
-        node_info: Global___NodeInfo | None = ...,
+        node_info: global___NodeInfo | None = ...,
         description: builtins.str = ...,
         status: builtins.str = ...,
         index: builtins.int = ...,
@@ -6563,7 +6557,7 @@ class LogNodeNoOpResult(google.protobuf.message.Message):
     def HasField(self, field_name: typing.Literal["node_info", b"node_info"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["description", b"description", "execution_time", b"execution_time", "index", b"index", "node_info", b"node_info", "status", b"status", "total", b"total"]) -> None: ...
 
-Global___LogNodeNoOpResult: typing_extensions.TypeAlias = LogNodeNoOpResult
+global___LogNodeNoOpResult = LogNodeNoOpResult
 
 @typing.final
 class LogNodeNoOpResultMsg(google.protobuf.message.Message):
@@ -6572,19 +6566,19 @@ class LogNodeNoOpResultMsg(google.protobuf.message.Message):
     INFO_FIELD_NUMBER: builtins.int
     DATA_FIELD_NUMBER: builtins.int
     @property
-    def info(self) -> Global___CoreEventInfo: ...
+    def info(self) -> global___CoreEventInfo: ...
     @property
-    def data(self) -> Global___LogNodeNoOpResult: ...
+    def data(self) -> global___LogNodeNoOpResult: ...
     def __init__(
         self,
         *,
-        info: Global___CoreEventInfo | None = ...,
-        data: Global___LogNodeNoOpResult | None = ...,
+        info: global___CoreEventInfo | None = ...,
+        data: global___LogNodeNoOpResult | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> None: ...
 
-Global___LogNodeNoOpResultMsg: typing_extensions.TypeAlias = LogNodeNoOpResultMsg
+global___LogNodeNoOpResultMsg = LogNodeNoOpResultMsg
 
 @typing.final
 class LogCancelLine(google.protobuf.message.Message):
@@ -6604,7 +6598,7 @@ class LogCancelLine(google.protobuf.message.Message):
     ) -> None: ...
     def ClearField(self, field_name: typing.Literal["conn_name", b"conn_name"]) -> None: ...
 
-Global___LogCancelLine: typing_extensions.TypeAlias = LogCancelLine
+global___LogCancelLine = LogCancelLine
 
 @typing.final
 class LogCancelLineMsg(google.protobuf.message.Message):
@@ -6613,19 +6607,19 @@ class LogCancelLineMsg(google.protobuf.message.Message):
     INFO_FIELD_NUMBER: builtins.int
     DATA_FIELD_NUMBER: builtins.int
     @property
-    def info(self) -> Global___CoreEventInfo: ...
+    def info(self) -> global___CoreEventInfo: ...
     @property
-    def data(self) -> Global___LogCancelLine: ...
+    def data(self) -> global___LogCancelLine: ...
     def __init__(
         self,
         *,
-        info: Global___CoreEventInfo | None = ...,
-        data: Global___LogCancelLine | None = ...,
+        info: global___CoreEventInfo | None = ...,
+        data: global___LogCancelLine | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> None: ...
 
-Global___LogCancelLineMsg: typing_extensions.TypeAlias = LogCancelLineMsg
+global___LogCancelLineMsg = LogCancelLineMsg
 
 @typing.final
 class DefaultSelector(google.protobuf.message.Message):
@@ -6642,7 +6636,7 @@ class DefaultSelector(google.protobuf.message.Message):
     ) -> None: ...
     def ClearField(self, field_name: typing.Literal["name", b"name"]) -> None: ...
 
-Global___DefaultSelector: typing_extensions.TypeAlias = DefaultSelector
+global___DefaultSelector = DefaultSelector
 
 @typing.final
 class DefaultSelectorMsg(google.protobuf.message.Message):
@@ -6651,19 +6645,19 @@ class DefaultSelectorMsg(google.protobuf.message.Message):
     INFO_FIELD_NUMBER: builtins.int
     DATA_FIELD_NUMBER: builtins.int
     @property
-    def info(self) -> Global___CoreEventInfo: ...
+    def info(self) -> global___CoreEventInfo: ...
     @property
-    def data(self) -> Global___DefaultSelector: ...
+    def data(self) -> global___DefaultSelector: ...
     def __init__(
         self,
         *,
-        info: Global___CoreEventInfo | None = ...,
-        data: Global___DefaultSelector | None = ...,
+        info: global___CoreEventInfo | None = ...,
+        data: global___DefaultSelector | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> None: ...
 
-Global___DefaultSelectorMsg: typing_extensions.TypeAlias = DefaultSelectorMsg
+global___DefaultSelectorMsg = DefaultSelectorMsg
 
 @typing.final
 class NodeStart(google.protobuf.message.Message):
@@ -6673,16 +6667,16 @@ class NodeStart(google.protobuf.message.Message):
 
     NODE_INFO_FIELD_NUMBER: builtins.int
     @property
-    def node_info(self) -> Global___NodeInfo: ...
+    def node_info(self) -> global___NodeInfo: ...
     def __init__(
         self,
         *,
-        node_info: Global___NodeInfo | None = ...,
+        node_info: global___NodeInfo | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["node_info", b"node_info"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["node_info", b"node_info"]) -> None: ...
 
-Global___NodeStart: typing_extensions.TypeAlias = NodeStart
+global___NodeStart = NodeStart
 
 @typing.final
 class NodeStartMsg(google.protobuf.message.Message):
@@ -6691,19 +6685,19 @@ class NodeStartMsg(google.protobuf.message.Message):
     INFO_FIELD_NUMBER: builtins.int
     DATA_FIELD_NUMBER: builtins.int
     @property
-    def info(self) -> Global___CoreEventInfo: ...
+    def info(self) -> global___CoreEventInfo: ...
     @property
-    def data(self) -> Global___NodeStart: ...
+    def data(self) -> global___NodeStart: ...
     def __init__(
         self,
         *,
-        info: Global___CoreEventInfo | None = ...,
-        data: Global___NodeStart | None = ...,
+        info: global___CoreEventInfo | None = ...,
+        data: global___NodeStart | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> None: ...
 
-Global___NodeStartMsg: typing_extensions.TypeAlias = NodeStartMsg
+global___NodeStartMsg = NodeStartMsg
 
 @typing.final
 class NodeFinished(google.protobuf.message.Message):
@@ -6714,19 +6708,19 @@ class NodeFinished(google.protobuf.message.Message):
     NODE_INFO_FIELD_NUMBER: builtins.int
     RUN_RESULT_FIELD_NUMBER: builtins.int
     @property
-    def node_info(self) -> Global___NodeInfo: ...
+    def node_info(self) -> global___NodeInfo: ...
     @property
-    def run_result(self) -> Global___RunResultMsg: ...
+    def run_result(self) -> global___RunResultMsg: ...
     def __init__(
         self,
         *,
-        node_info: Global___NodeInfo | None = ...,
-        run_result: Global___RunResultMsg | None = ...,
+        node_info: global___NodeInfo | None = ...,
+        run_result: global___RunResultMsg | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["node_info", b"node_info", "run_result", b"run_result"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["node_info", b"node_info", "run_result", b"run_result"]) -> None: ...
 
-Global___NodeFinished: typing_extensions.TypeAlias = NodeFinished
+global___NodeFinished = NodeFinished
 
 @typing.final
 class NodeFinishedMsg(google.protobuf.message.Message):
@@ -6735,19 +6729,19 @@ class NodeFinishedMsg(google.protobuf.message.Message):
     INFO_FIELD_NUMBER: builtins.int
     DATA_FIELD_NUMBER: builtins.int
     @property
-    def info(self) -> Global___CoreEventInfo: ...
+    def info(self) -> global___CoreEventInfo: ...
     @property
-    def data(self) -> Global___NodeFinished: ...
+    def data(self) -> global___NodeFinished: ...
     def __init__(
         self,
         *,
-        info: Global___CoreEventInfo | None = ...,
-        data: Global___NodeFinished | None = ...,
+        info: global___CoreEventInfo | None = ...,
+        data: global___NodeFinished | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> None: ...
 
-Global___NodeFinishedMsg: typing_extensions.TypeAlias = NodeFinishedMsg
+global___NodeFinishedMsg = NodeFinishedMsg
 
 @typing.final
 class QueryCancelationUnsupported(google.protobuf.message.Message):
@@ -6764,7 +6758,7 @@ class QueryCancelationUnsupported(google.protobuf.message.Message):
     ) -> None: ...
     def ClearField(self, field_name: typing.Literal["type", b"type"]) -> None: ...
 
-Global___QueryCancelationUnsupported: typing_extensions.TypeAlias = QueryCancelationUnsupported
+global___QueryCancelationUnsupported = QueryCancelationUnsupported
 
 @typing.final
 class QueryCancelationUnsupportedMsg(google.protobuf.message.Message):
@@ -6773,19 +6767,19 @@ class QueryCancelationUnsupportedMsg(google.protobuf.message.Message):
     INFO_FIELD_NUMBER: builtins.int
     DATA_FIELD_NUMBER: builtins.int
     @property
-    def info(self) -> Global___CoreEventInfo: ...
+    def info(self) -> global___CoreEventInfo: ...
     @property
-    def data(self) -> Global___QueryCancelationUnsupported: ...
+    def data(self) -> global___QueryCancelationUnsupported: ...
     def __init__(
         self,
         *,
-        info: Global___CoreEventInfo | None = ...,
-        data: Global___QueryCancelationUnsupported | None = ...,
+        info: global___CoreEventInfo | None = ...,
+        data: global___QueryCancelationUnsupported | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> None: ...
 
-Global___QueryCancelationUnsupportedMsg: typing_extensions.TypeAlias = QueryCancelationUnsupportedMsg
+global___QueryCancelationUnsupportedMsg = QueryCancelationUnsupportedMsg
 
 @typing.final
 class ConcurrencyLine(google.protobuf.message.Message):
@@ -6808,7 +6802,7 @@ class ConcurrencyLine(google.protobuf.message.Message):
     ) -> None: ...
     def ClearField(self, field_name: typing.Literal["node_count", b"node_count", "num_threads", b"num_threads", "target_name", b"target_name"]) -> None: ...
 
-Global___ConcurrencyLine: typing_extensions.TypeAlias = ConcurrencyLine
+global___ConcurrencyLine = ConcurrencyLine
 
 @typing.final
 class ConcurrencyLineMsg(google.protobuf.message.Message):
@@ -6817,19 +6811,19 @@ class ConcurrencyLineMsg(google.protobuf.message.Message):
     INFO_FIELD_NUMBER: builtins.int
     DATA_FIELD_NUMBER: builtins.int
     @property
-    def info(self) -> Global___CoreEventInfo: ...
+    def info(self) -> global___CoreEventInfo: ...
     @property
-    def data(self) -> Global___ConcurrencyLine: ...
+    def data(self) -> global___ConcurrencyLine: ...
     def __init__(
         self,
         *,
-        info: Global___CoreEventInfo | None = ...,
-        data: Global___ConcurrencyLine | None = ...,
+        info: global___CoreEventInfo | None = ...,
+        data: global___ConcurrencyLine | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> None: ...
 
-Global___ConcurrencyLineMsg: typing_extensions.TypeAlias = ConcurrencyLineMsg
+global___ConcurrencyLineMsg = ConcurrencyLineMsg
 
 @typing.final
 class WritingInjectedSQLForNode(google.protobuf.message.Message):
@@ -6839,16 +6833,16 @@ class WritingInjectedSQLForNode(google.protobuf.message.Message):
 
     NODE_INFO_FIELD_NUMBER: builtins.int
     @property
-    def node_info(self) -> Global___NodeInfo: ...
+    def node_info(self) -> global___NodeInfo: ...
     def __init__(
         self,
         *,
-        node_info: Global___NodeInfo | None = ...,
+        node_info: global___NodeInfo | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["node_info", b"node_info"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["node_info", b"node_info"]) -> None: ...
 
-Global___WritingInjectedSQLForNode: typing_extensions.TypeAlias = WritingInjectedSQLForNode
+global___WritingInjectedSQLForNode = WritingInjectedSQLForNode
 
 @typing.final
 class WritingInjectedSQLForNodeMsg(google.protobuf.message.Message):
@@ -6857,19 +6851,19 @@ class WritingInjectedSQLForNodeMsg(google.protobuf.message.Message):
     INFO_FIELD_NUMBER: builtins.int
     DATA_FIELD_NUMBER: builtins.int
     @property
-    def info(self) -> Global___CoreEventInfo: ...
+    def info(self) -> global___CoreEventInfo: ...
     @property
-    def data(self) -> Global___WritingInjectedSQLForNode: ...
+    def data(self) -> global___WritingInjectedSQLForNode: ...
     def __init__(
         self,
         *,
-        info: Global___CoreEventInfo | None = ...,
-        data: Global___WritingInjectedSQLForNode | None = ...,
+        info: global___CoreEventInfo | None = ...,
+        data: global___WritingInjectedSQLForNode | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> None: ...
 
-Global___WritingInjectedSQLForNodeMsg: typing_extensions.TypeAlias = WritingInjectedSQLForNodeMsg
+global___WritingInjectedSQLForNodeMsg = WritingInjectedSQLForNodeMsg
 
 @typing.final
 class NodeCompiling(google.protobuf.message.Message):
@@ -6879,16 +6873,16 @@ class NodeCompiling(google.protobuf.message.Message):
 
     NODE_INFO_FIELD_NUMBER: builtins.int
     @property
-    def node_info(self) -> Global___NodeInfo: ...
+    def node_info(self) -> global___NodeInfo: ...
     def __init__(
         self,
         *,
-        node_info: Global___NodeInfo | None = ...,
+        node_info: global___NodeInfo | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["node_info", b"node_info"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["node_info", b"node_info"]) -> None: ...
 
-Global___NodeCompiling: typing_extensions.TypeAlias = NodeCompiling
+global___NodeCompiling = NodeCompiling
 
 @typing.final
 class NodeCompilingMsg(google.protobuf.message.Message):
@@ -6897,19 +6891,19 @@ class NodeCompilingMsg(google.protobuf.message.Message):
     INFO_FIELD_NUMBER: builtins.int
     DATA_FIELD_NUMBER: builtins.int
     @property
-    def info(self) -> Global___CoreEventInfo: ...
+    def info(self) -> global___CoreEventInfo: ...
     @property
-    def data(self) -> Global___NodeCompiling: ...
+    def data(self) -> global___NodeCompiling: ...
     def __init__(
         self,
         *,
-        info: Global___CoreEventInfo | None = ...,
-        data: Global___NodeCompiling | None = ...,
+        info: global___CoreEventInfo | None = ...,
+        data: global___NodeCompiling | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> None: ...
 
-Global___NodeCompilingMsg: typing_extensions.TypeAlias = NodeCompilingMsg
+global___NodeCompilingMsg = NodeCompilingMsg
 
 @typing.final
 class NodeExecuting(google.protobuf.message.Message):
@@ -6919,16 +6913,16 @@ class NodeExecuting(google.protobuf.message.Message):
 
     NODE_INFO_FIELD_NUMBER: builtins.int
     @property
-    def node_info(self) -> Global___NodeInfo: ...
+    def node_info(self) -> global___NodeInfo: ...
     def __init__(
         self,
         *,
-        node_info: Global___NodeInfo | None = ...,
+        node_info: global___NodeInfo | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["node_info", b"node_info"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["node_info", b"node_info"]) -> None: ...
 
-Global___NodeExecuting: typing_extensions.TypeAlias = NodeExecuting
+global___NodeExecuting = NodeExecuting
 
 @typing.final
 class NodeExecutingMsg(google.protobuf.message.Message):
@@ -6937,19 +6931,19 @@ class NodeExecutingMsg(google.protobuf.message.Message):
     INFO_FIELD_NUMBER: builtins.int
     DATA_FIELD_NUMBER: builtins.int
     @property
-    def info(self) -> Global___CoreEventInfo: ...
+    def info(self) -> global___CoreEventInfo: ...
     @property
-    def data(self) -> Global___NodeExecuting: ...
+    def data(self) -> global___NodeExecuting: ...
     def __init__(
         self,
         *,
-        info: Global___CoreEventInfo | None = ...,
-        data: Global___NodeExecuting | None = ...,
+        info: global___CoreEventInfo | None = ...,
+        data: global___NodeExecuting | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> None: ...
 
-Global___NodeExecutingMsg: typing_extensions.TypeAlias = NodeExecutingMsg
+global___NodeExecutingMsg = NodeExecutingMsg
 
 @typing.final
 class LogHookStartLine(google.protobuf.message.Message):
@@ -6965,11 +6959,11 @@ class LogHookStartLine(google.protobuf.message.Message):
     index: builtins.int
     total: builtins.int
     @property
-    def node_info(self) -> Global___NodeInfo: ...
+    def node_info(self) -> global___NodeInfo: ...
     def __init__(
         self,
         *,
-        node_info: Global___NodeInfo | None = ...,
+        node_info: global___NodeInfo | None = ...,
         statement: builtins.str = ...,
         index: builtins.int = ...,
         total: builtins.int = ...,
@@ -6977,7 +6971,7 @@ class LogHookStartLine(google.protobuf.message.Message):
     def HasField(self, field_name: typing.Literal["node_info", b"node_info"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["index", b"index", "node_info", b"node_info", "statement", b"statement", "total", b"total"]) -> None: ...
 
-Global___LogHookStartLine: typing_extensions.TypeAlias = LogHookStartLine
+global___LogHookStartLine = LogHookStartLine
 
 @typing.final
 class LogHookStartLineMsg(google.protobuf.message.Message):
@@ -6986,19 +6980,19 @@ class LogHookStartLineMsg(google.protobuf.message.Message):
     INFO_FIELD_NUMBER: builtins.int
     DATA_FIELD_NUMBER: builtins.int
     @property
-    def info(self) -> Global___CoreEventInfo: ...
+    def info(self) -> global___CoreEventInfo: ...
     @property
-    def data(self) -> Global___LogHookStartLine: ...
+    def data(self) -> global___LogHookStartLine: ...
     def __init__(
         self,
         *,
-        info: Global___CoreEventInfo | None = ...,
-        data: Global___LogHookStartLine | None = ...,
+        info: global___CoreEventInfo | None = ...,
+        data: global___LogHookStartLine | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> None: ...
 
-Global___LogHookStartLineMsg: typing_extensions.TypeAlias = LogHookStartLineMsg
+global___LogHookStartLineMsg = LogHookStartLineMsg
 
 @typing.final
 class LogHookEndLine(google.protobuf.message.Message):
@@ -7018,11 +7012,11 @@ class LogHookEndLine(google.protobuf.message.Message):
     total: builtins.int
     execution_time: builtins.float
     @property
-    def node_info(self) -> Global___NodeInfo: ...
+    def node_info(self) -> global___NodeInfo: ...
     def __init__(
         self,
         *,
-        node_info: Global___NodeInfo | None = ...,
+        node_info: global___NodeInfo | None = ...,
         statement: builtins.str = ...,
         status: builtins.str = ...,
         index: builtins.int = ...,
@@ -7032,7 +7026,7 @@ class LogHookEndLine(google.protobuf.message.Message):
     def HasField(self, field_name: typing.Literal["node_info", b"node_info"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["execution_time", b"execution_time", "index", b"index", "node_info", b"node_info", "statement", b"statement", "status", b"status", "total", b"total"]) -> None: ...
 
-Global___LogHookEndLine: typing_extensions.TypeAlias = LogHookEndLine
+global___LogHookEndLine = LogHookEndLine
 
 @typing.final
 class LogHookEndLineMsg(google.protobuf.message.Message):
@@ -7041,19 +7035,19 @@ class LogHookEndLineMsg(google.protobuf.message.Message):
     INFO_FIELD_NUMBER: builtins.int
     DATA_FIELD_NUMBER: builtins.int
     @property
-    def info(self) -> Global___CoreEventInfo: ...
+    def info(self) -> global___CoreEventInfo: ...
     @property
-    def data(self) -> Global___LogHookEndLine: ...
+    def data(self) -> global___LogHookEndLine: ...
     def __init__(
         self,
         *,
-        info: Global___CoreEventInfo | None = ...,
-        data: Global___LogHookEndLine | None = ...,
+        info: global___CoreEventInfo | None = ...,
+        data: global___LogHookEndLine | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> None: ...
 
-Global___LogHookEndLineMsg: typing_extensions.TypeAlias = LogHookEndLineMsg
+global___LogHookEndLineMsg = LogHookEndLineMsg
 
 @typing.final
 class SkippingDetails(google.protobuf.message.Message):
@@ -7074,24 +7068,24 @@ class SkippingDetails(google.protobuf.message.Message):
     index: builtins.int
     total: builtins.int
     @property
-    def node_info(self) -> Global___NodeInfo: ...
+    def node_info(self) -> global___NodeInfo: ...
     @property
-    def group(self) -> Global___Group: ...
+    def group(self) -> global___Group: ...
     def __init__(
         self,
         *,
-        node_info: Global___NodeInfo | None = ...,
+        node_info: global___NodeInfo | None = ...,
         resource_type: builtins.str = ...,
         schema: builtins.str = ...,
         node_name: builtins.str = ...,
         index: builtins.int = ...,
         total: builtins.int = ...,
-        group: Global___Group | None = ...,
+        group: global___Group | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["group", b"group", "node_info", b"node_info"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["group", b"group", "index", b"index", "node_info", b"node_info", "node_name", b"node_name", "resource_type", b"resource_type", "schema", b"schema", "total", b"total"]) -> None: ...
 
-Global___SkippingDetails: typing_extensions.TypeAlias = SkippingDetails
+global___SkippingDetails = SkippingDetails
 
 @typing.final
 class SkippingDetailsMsg(google.protobuf.message.Message):
@@ -7100,19 +7094,19 @@ class SkippingDetailsMsg(google.protobuf.message.Message):
     INFO_FIELD_NUMBER: builtins.int
     DATA_FIELD_NUMBER: builtins.int
     @property
-    def info(self) -> Global___CoreEventInfo: ...
+    def info(self) -> global___CoreEventInfo: ...
     @property
-    def data(self) -> Global___SkippingDetails: ...
+    def data(self) -> global___SkippingDetails: ...
     def __init__(
         self,
         *,
-        info: Global___CoreEventInfo | None = ...,
-        data: Global___SkippingDetails | None = ...,
+        info: global___CoreEventInfo | None = ...,
+        data: global___SkippingDetails | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> None: ...
 
-Global___SkippingDetailsMsg: typing_extensions.TypeAlias = SkippingDetailsMsg
+global___SkippingDetailsMsg = SkippingDetailsMsg
 
 @typing.final
 class NothingToDo(google.protobuf.message.Message):
@@ -7124,7 +7118,7 @@ class NothingToDo(google.protobuf.message.Message):
         self,
     ) -> None: ...
 
-Global___NothingToDo: typing_extensions.TypeAlias = NothingToDo
+global___NothingToDo = NothingToDo
 
 @typing.final
 class NothingToDoMsg(google.protobuf.message.Message):
@@ -7133,19 +7127,19 @@ class NothingToDoMsg(google.protobuf.message.Message):
     INFO_FIELD_NUMBER: builtins.int
     DATA_FIELD_NUMBER: builtins.int
     @property
-    def info(self) -> Global___CoreEventInfo: ...
+    def info(self) -> global___CoreEventInfo: ...
     @property
-    def data(self) -> Global___NothingToDo: ...
+    def data(self) -> global___NothingToDo: ...
     def __init__(
         self,
         *,
-        info: Global___CoreEventInfo | None = ...,
-        data: Global___NothingToDo | None = ...,
+        info: global___CoreEventInfo | None = ...,
+        data: global___NothingToDo | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> None: ...
 
-Global___NothingToDoMsg: typing_extensions.TypeAlias = NothingToDoMsg
+global___NothingToDoMsg = NothingToDoMsg
 
 @typing.final
 class RunningOperationUncaughtError(google.protobuf.message.Message):
@@ -7162,7 +7156,7 @@ class RunningOperationUncaughtError(google.protobuf.message.Message):
     ) -> None: ...
     def ClearField(self, field_name: typing.Literal["exc", b"exc"]) -> None: ...
 
-Global___RunningOperationUncaughtError: typing_extensions.TypeAlias = RunningOperationUncaughtError
+global___RunningOperationUncaughtError = RunningOperationUncaughtError
 
 @typing.final
 class RunningOperationUncaughtErrorMsg(google.protobuf.message.Message):
@@ -7171,19 +7165,19 @@ class RunningOperationUncaughtErrorMsg(google.protobuf.message.Message):
     INFO_FIELD_NUMBER: builtins.int
     DATA_FIELD_NUMBER: builtins.int
     @property
-    def info(self) -> Global___CoreEventInfo: ...
+    def info(self) -> global___CoreEventInfo: ...
     @property
-    def data(self) -> Global___RunningOperationUncaughtError: ...
+    def data(self) -> global___RunningOperationUncaughtError: ...
     def __init__(
         self,
         *,
-        info: Global___CoreEventInfo | None = ...,
-        data: Global___RunningOperationUncaughtError | None = ...,
+        info: global___CoreEventInfo | None = ...,
+        data: global___RunningOperationUncaughtError | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> None: ...
 
-Global___RunningOperationUncaughtErrorMsg: typing_extensions.TypeAlias = RunningOperationUncaughtErrorMsg
+global___RunningOperationUncaughtErrorMsg = RunningOperationUncaughtErrorMsg
 
 @typing.final
 class EndRunResult(google.protobuf.message.Message):
@@ -7198,13 +7192,13 @@ class EndRunResult(google.protobuf.message.Message):
     elapsed_time: builtins.float
     success: builtins.bool
     @property
-    def results(self) -> google.protobuf.internal.containers.RepeatedCompositeFieldContainer[Global___RunResultMsg]: ...
+    def results(self) -> google.protobuf.internal.containers.RepeatedCompositeFieldContainer[global___RunResultMsg]: ...
     @property
     def generated_at(self) -> google.protobuf.timestamp_pb2.Timestamp: ...
     def __init__(
         self,
         *,
-        results: collections.abc.Iterable[Global___RunResultMsg] | None = ...,
+        results: collections.abc.Iterable[global___RunResultMsg] | None = ...,
         elapsed_time: builtins.float = ...,
         generated_at: google.protobuf.timestamp_pb2.Timestamp | None = ...,
         success: builtins.bool = ...,
@@ -7212,7 +7206,7 @@ class EndRunResult(google.protobuf.message.Message):
     def HasField(self, field_name: typing.Literal["generated_at", b"generated_at"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["elapsed_time", b"elapsed_time", "generated_at", b"generated_at", "results", b"results", "success", b"success"]) -> None: ...
 
-Global___EndRunResult: typing_extensions.TypeAlias = EndRunResult
+global___EndRunResult = EndRunResult
 
 @typing.final
 class EndRunResultMsg(google.protobuf.message.Message):
@@ -7221,19 +7215,19 @@ class EndRunResultMsg(google.protobuf.message.Message):
     INFO_FIELD_NUMBER: builtins.int
     DATA_FIELD_NUMBER: builtins.int
     @property
-    def info(self) -> Global___CoreEventInfo: ...
+    def info(self) -> global___CoreEventInfo: ...
     @property
-    def data(self) -> Global___EndRunResult: ...
+    def data(self) -> global___EndRunResult: ...
     def __init__(
         self,
         *,
-        info: Global___CoreEventInfo | None = ...,
-        data: Global___EndRunResult | None = ...,
+        info: global___CoreEventInfo | None = ...,
+        data: global___EndRunResult | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> None: ...
 
-Global___EndRunResultMsg: typing_extensions.TypeAlias = EndRunResultMsg
+global___EndRunResultMsg = EndRunResultMsg
 
 @typing.final
 class NoNodesSelected(google.protobuf.message.Message):
@@ -7245,7 +7239,7 @@ class NoNodesSelected(google.protobuf.message.Message):
         self,
     ) -> None: ...
 
-Global___NoNodesSelected: typing_extensions.TypeAlias = NoNodesSelected
+global___NoNodesSelected = NoNodesSelected
 
 @typing.final
 class NoNodesSelectedMsg(google.protobuf.message.Message):
@@ -7254,19 +7248,19 @@ class NoNodesSelectedMsg(google.protobuf.message.Message):
     INFO_FIELD_NUMBER: builtins.int
     DATA_FIELD_NUMBER: builtins.int
     @property
-    def info(self) -> Global___CoreEventInfo: ...
+    def info(self) -> global___CoreEventInfo: ...
     @property
-    def data(self) -> Global___NoNodesSelected: ...
+    def data(self) -> global___NoNodesSelected: ...
     def __init__(
         self,
         *,
-        info: Global___CoreEventInfo | None = ...,
-        data: Global___NoNodesSelected | None = ...,
+        info: global___CoreEventInfo | None = ...,
+        data: global___NoNodesSelected | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> None: ...
 
-Global___NoNodesSelectedMsg: typing_extensions.TypeAlias = NoNodesSelectedMsg
+global___NoNodesSelectedMsg = NoNodesSelectedMsg
 
 @typing.final
 class CommandCompleted(google.protobuf.message.Message):
@@ -7294,7 +7288,7 @@ class CommandCompleted(google.protobuf.message.Message):
     def HasField(self, field_name: typing.Literal["completed_at", b"completed_at"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["command", b"command", "completed_at", b"completed_at", "elapsed", b"elapsed", "success", b"success"]) -> None: ...
 
-Global___CommandCompleted: typing_extensions.TypeAlias = CommandCompleted
+global___CommandCompleted = CommandCompleted
 
 @typing.final
 class CommandCompletedMsg(google.protobuf.message.Message):
@@ -7303,19 +7297,19 @@ class CommandCompletedMsg(google.protobuf.message.Message):
     INFO_FIELD_NUMBER: builtins.int
     DATA_FIELD_NUMBER: builtins.int
     @property
-    def info(self) -> Global___CoreEventInfo: ...
+    def info(self) -> global___CoreEventInfo: ...
     @property
-    def data(self) -> Global___CommandCompleted: ...
+    def data(self) -> global___CommandCompleted: ...
     def __init__(
         self,
         *,
-        info: Global___CoreEventInfo | None = ...,
-        data: Global___CommandCompleted | None = ...,
+        info: global___CoreEventInfo | None = ...,
+        data: global___CommandCompleted | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> None: ...
 
-Global___CommandCompletedMsg: typing_extensions.TypeAlias = CommandCompletedMsg
+global___CommandCompletedMsg = CommandCompletedMsg
 
 @typing.final
 class ShowNode(google.protobuf.message.Message):
@@ -7347,7 +7341,7 @@ class ShowNode(google.protobuf.message.Message):
     ) -> None: ...
     def ClearField(self, field_name: typing.Literal["is_inline", b"is_inline", "node_name", b"node_name", "output_format", b"output_format", "preview", b"preview", "quiet", b"quiet", "unique_id", b"unique_id"]) -> None: ...
 
-Global___ShowNode: typing_extensions.TypeAlias = ShowNode
+global___ShowNode = ShowNode
 
 @typing.final
 class ShowNodeMsg(google.protobuf.message.Message):
@@ -7356,19 +7350,19 @@ class ShowNodeMsg(google.protobuf.message.Message):
     INFO_FIELD_NUMBER: builtins.int
     DATA_FIELD_NUMBER: builtins.int
     @property
-    def info(self) -> Global___CoreEventInfo: ...
+    def info(self) -> global___CoreEventInfo: ...
     @property
-    def data(self) -> Global___ShowNode: ...
+    def data(self) -> global___ShowNode: ...
     def __init__(
         self,
         *,
-        info: Global___CoreEventInfo | None = ...,
-        data: Global___ShowNode | None = ...,
+        info: global___CoreEventInfo | None = ...,
+        data: global___ShowNode | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> None: ...
 
-Global___ShowNodeMsg: typing_extensions.TypeAlias = ShowNodeMsg
+global___ShowNodeMsg = ShowNodeMsg
 
 @typing.final
 class CompiledNode(google.protobuf.message.Message):
@@ -7400,7 +7394,7 @@ class CompiledNode(google.protobuf.message.Message):
     ) -> None: ...
     def ClearField(self, field_name: typing.Literal["compiled", b"compiled", "is_inline", b"is_inline", "node_name", b"node_name", "output_format", b"output_format", "quiet", b"quiet", "unique_id", b"unique_id"]) -> None: ...
 
-Global___CompiledNode: typing_extensions.TypeAlias = CompiledNode
+global___CompiledNode = CompiledNode
 
 @typing.final
 class CompiledNodeMsg(google.protobuf.message.Message):
@@ -7409,19 +7403,19 @@ class CompiledNodeMsg(google.protobuf.message.Message):
     INFO_FIELD_NUMBER: builtins.int
     DATA_FIELD_NUMBER: builtins.int
     @property
-    def info(self) -> Global___CoreEventInfo: ...
+    def info(self) -> global___CoreEventInfo: ...
     @property
-    def data(self) -> Global___CompiledNode: ...
+    def data(self) -> global___CompiledNode: ...
     def __init__(
         self,
         *,
-        info: Global___CoreEventInfo | None = ...,
-        data: Global___CompiledNode | None = ...,
+        info: global___CoreEventInfo | None = ...,
+        data: global___CompiledNode | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> None: ...
 
-Global___CompiledNodeMsg: typing_extensions.TypeAlias = CompiledNodeMsg
+global___CompiledNodeMsg = CompiledNodeMsg
 
 @typing.final
 class SnapshotTimestampWarning(google.protobuf.message.Message):
@@ -7441,7 +7435,7 @@ class SnapshotTimestampWarning(google.protobuf.message.Message):
     ) -> None: ...
     def ClearField(self, field_name: typing.Literal["snapshot_time_data_type", b"snapshot_time_data_type", "updated_at_data_type", b"updated_at_data_type"]) -> None: ...
 
-Global___SnapshotTimestampWarning: typing_extensions.TypeAlias = SnapshotTimestampWarning
+global___SnapshotTimestampWarning = SnapshotTimestampWarning
 
 @typing.final
 class SnapshotTimestampWarningMsg(google.protobuf.message.Message):
@@ -7450,19 +7444,19 @@ class SnapshotTimestampWarningMsg(google.protobuf.message.Message):
     INFO_FIELD_NUMBER: builtins.int
     DATA_FIELD_NUMBER: builtins.int
     @property
-    def info(self) -> Global___CoreEventInfo: ...
+    def info(self) -> global___CoreEventInfo: ...
     @property
-    def data(self) -> Global___SnapshotTimestampWarning: ...
+    def data(self) -> global___SnapshotTimestampWarning: ...
     def __init__(
         self,
         *,
-        info: Global___CoreEventInfo | None = ...,
-        data: Global___SnapshotTimestampWarning | None = ...,
+        info: global___CoreEventInfo | None = ...,
+        data: global___SnapshotTimestampWarning | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> None: ...
 
-Global___SnapshotTimestampWarningMsg: typing_extensions.TypeAlias = SnapshotTimestampWarningMsg
+global___SnapshotTimestampWarningMsg = SnapshotTimestampWarningMsg
 
 @typing.final
 class MicrobatchExecutionDebug(google.protobuf.message.Message):
@@ -7479,7 +7473,7 @@ class MicrobatchExecutionDebug(google.protobuf.message.Message):
     ) -> None: ...
     def ClearField(self, field_name: typing.Literal["msg", b"msg"]) -> None: ...
 
-Global___MicrobatchExecutionDebug: typing_extensions.TypeAlias = MicrobatchExecutionDebug
+global___MicrobatchExecutionDebug = MicrobatchExecutionDebug
 
 @typing.final
 class MicrobatchExecutionDebugMsg(google.protobuf.message.Message):
@@ -7488,19 +7482,19 @@ class MicrobatchExecutionDebugMsg(google.protobuf.message.Message):
     INFO_FIELD_NUMBER: builtins.int
     DATA_FIELD_NUMBER: builtins.int
     @property
-    def info(self) -> Global___CoreEventInfo: ...
+    def info(self) -> global___CoreEventInfo: ...
     @property
-    def data(self) -> Global___MicrobatchExecutionDebug: ...
+    def data(self) -> global___MicrobatchExecutionDebug: ...
     def __init__(
         self,
         *,
-        info: Global___CoreEventInfo | None = ...,
-        data: Global___MicrobatchExecutionDebug | None = ...,
+        info: global___CoreEventInfo | None = ...,
+        data: global___MicrobatchExecutionDebug | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> None: ...
 
-Global___MicrobatchExecutionDebugMsg: typing_extensions.TypeAlias = MicrobatchExecutionDebugMsg
+global___MicrobatchExecutionDebugMsg = MicrobatchExecutionDebugMsg
 
 @typing.final
 class LogStartBatch(google.protobuf.message.Message):
@@ -7516,11 +7510,11 @@ class LogStartBatch(google.protobuf.message.Message):
     batch_index: builtins.int
     total_batches: builtins.int
     @property
-    def node_info(self) -> Global___NodeInfo: ...
+    def node_info(self) -> global___NodeInfo: ...
     def __init__(
         self,
         *,
-        node_info: Global___NodeInfo | None = ...,
+        node_info: global___NodeInfo | None = ...,
         description: builtins.str = ...,
         batch_index: builtins.int = ...,
         total_batches: builtins.int = ...,
@@ -7528,7 +7522,7 @@ class LogStartBatch(google.protobuf.message.Message):
     def HasField(self, field_name: typing.Literal["node_info", b"node_info"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["batch_index", b"batch_index", "description", b"description", "node_info", b"node_info", "total_batches", b"total_batches"]) -> None: ...
 
-Global___LogStartBatch: typing_extensions.TypeAlias = LogStartBatch
+global___LogStartBatch = LogStartBatch
 
 @typing.final
 class LogStartBatchMsg(google.protobuf.message.Message):
@@ -7537,19 +7531,19 @@ class LogStartBatchMsg(google.protobuf.message.Message):
     INFO_FIELD_NUMBER: builtins.int
     DATA_FIELD_NUMBER: builtins.int
     @property
-    def info(self) -> Global___CoreEventInfo: ...
+    def info(self) -> global___CoreEventInfo: ...
     @property
-    def data(self) -> Global___LogStartBatch: ...
+    def data(self) -> global___LogStartBatch: ...
     def __init__(
         self,
         *,
-        info: Global___CoreEventInfo | None = ...,
-        data: Global___LogStartBatch | None = ...,
+        info: global___CoreEventInfo | None = ...,
+        data: global___LogStartBatch | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> None: ...
 
-Global___LogStartBatchMsg: typing_extensions.TypeAlias = LogStartBatchMsg
+global___LogStartBatchMsg = LogStartBatchMsg
 
 @typing.final
 class LogBatchResult(google.protobuf.message.Message):
@@ -7570,24 +7564,24 @@ class LogBatchResult(google.protobuf.message.Message):
     total_batches: builtins.int
     execution_time: builtins.float
     @property
-    def node_info(self) -> Global___NodeInfo: ...
+    def node_info(self) -> global___NodeInfo: ...
     @property
-    def group(self) -> Global___Group: ...
+    def group(self) -> global___Group: ...
     def __init__(
         self,
         *,
-        node_info: Global___NodeInfo | None = ...,
+        node_info: global___NodeInfo | None = ...,
         description: builtins.str = ...,
         status: builtins.str = ...,
         batch_index: builtins.int = ...,
         total_batches: builtins.int = ...,
         execution_time: builtins.float = ...,
-        group: Global___Group | None = ...,
+        group: global___Group | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["group", b"group", "node_info", b"node_info"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["batch_index", b"batch_index", "description", b"description", "execution_time", b"execution_time", "group", b"group", "node_info", b"node_info", "status", b"status", "total_batches", b"total_batches"]) -> None: ...
 
-Global___LogBatchResult: typing_extensions.TypeAlias = LogBatchResult
+global___LogBatchResult = LogBatchResult
 
 @typing.final
 class LogBatchResultMsg(google.protobuf.message.Message):
@@ -7596,19 +7590,19 @@ class LogBatchResultMsg(google.protobuf.message.Message):
     INFO_FIELD_NUMBER: builtins.int
     DATA_FIELD_NUMBER: builtins.int
     @property
-    def info(self) -> Global___CoreEventInfo: ...
+    def info(self) -> global___CoreEventInfo: ...
     @property
-    def data(self) -> Global___LogBatchResult: ...
+    def data(self) -> global___LogBatchResult: ...
     def __init__(
         self,
         *,
-        info: Global___CoreEventInfo | None = ...,
-        data: Global___LogBatchResult | None = ...,
+        info: global___CoreEventInfo | None = ...,
+        data: global___LogBatchResult | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> None: ...
 
-Global___LogBatchResultMsg: typing_extensions.TypeAlias = LogBatchResultMsg
+global___LogBatchResultMsg = LogBatchResultMsg
 
 @typing.final
 class LogFunctionResult(google.protobuf.message.Message):
@@ -7629,24 +7623,24 @@ class LogFunctionResult(google.protobuf.message.Message):
     total: builtins.int
     execution_time: builtins.float
     @property
-    def node_info(self) -> Global___NodeInfo: ...
+    def node_info(self) -> global___NodeInfo: ...
     @property
-    def group(self) -> Global___Group: ...
+    def group(self) -> global___Group: ...
     def __init__(
         self,
         *,
-        node_info: Global___NodeInfo | None = ...,
+        node_info: global___NodeInfo | None = ...,
         description: builtins.str = ...,
         status: builtins.str = ...,
         index: builtins.int = ...,
         total: builtins.int = ...,
         execution_time: builtins.float = ...,
-        group: Global___Group | None = ...,
+        group: global___Group | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["group", b"group", "node_info", b"node_info"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["description", b"description", "execution_time", b"execution_time", "group", b"group", "index", b"index", "node_info", b"node_info", "status", b"status", "total", b"total"]) -> None: ...
 
-Global___LogFunctionResult: typing_extensions.TypeAlias = LogFunctionResult
+global___LogFunctionResult = LogFunctionResult
 
 @typing.final
 class LogFunctionResultMsg(google.protobuf.message.Message):
@@ -7655,19 +7649,19 @@ class LogFunctionResultMsg(google.protobuf.message.Message):
     INFO_FIELD_NUMBER: builtins.int
     DATA_FIELD_NUMBER: builtins.int
     @property
-    def info(self) -> Global___CoreEventInfo: ...
+    def info(self) -> global___CoreEventInfo: ...
     @property
-    def data(self) -> Global___LogFunctionResult: ...
+    def data(self) -> global___LogFunctionResult: ...
     def __init__(
         self,
         *,
-        info: Global___CoreEventInfo | None = ...,
-        data: Global___LogFunctionResult | None = ...,
+        info: global___CoreEventInfo | None = ...,
+        data: global___LogFunctionResult | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> None: ...
 
-Global___LogFunctionResultMsg: typing_extensions.TypeAlias = LogFunctionResultMsg
+global___LogFunctionResultMsg = LogFunctionResultMsg
 
 @typing.final
 class LogStartOverload(google.protobuf.message.Message):
@@ -7683,11 +7677,11 @@ class LogStartOverload(google.protobuf.message.Message):
     overload_index: builtins.int
     total_overloads: builtins.int
     @property
-    def node_info(self) -> Global___NodeInfo: ...
+    def node_info(self) -> global___NodeInfo: ...
     def __init__(
         self,
         *,
-        node_info: Global___NodeInfo | None = ...,
+        node_info: global___NodeInfo | None = ...,
         description: builtins.str = ...,
         overload_index: builtins.int = ...,
         total_overloads: builtins.int = ...,
@@ -7695,7 +7689,7 @@ class LogStartOverload(google.protobuf.message.Message):
     def HasField(self, field_name: typing.Literal["node_info", b"node_info"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["description", b"description", "node_info", b"node_info", "overload_index", b"overload_index", "total_overloads", b"total_overloads"]) -> None: ...
 
-Global___LogStartOverload: typing_extensions.TypeAlias = LogStartOverload
+global___LogStartOverload = LogStartOverload
 
 @typing.final
 class LogStartOverloadMsg(google.protobuf.message.Message):
@@ -7704,19 +7698,19 @@ class LogStartOverloadMsg(google.protobuf.message.Message):
     INFO_FIELD_NUMBER: builtins.int
     DATA_FIELD_NUMBER: builtins.int
     @property
-    def info(self) -> Global___CoreEventInfo: ...
+    def info(self) -> global___CoreEventInfo: ...
     @property
-    def data(self) -> Global___LogStartOverload: ...
+    def data(self) -> global___LogStartOverload: ...
     def __init__(
         self,
         *,
-        info: Global___CoreEventInfo | None = ...,
-        data: Global___LogStartOverload | None = ...,
+        info: global___CoreEventInfo | None = ...,
+        data: global___LogStartOverload | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> None: ...
 
-Global___LogStartOverloadMsg: typing_extensions.TypeAlias = LogStartOverloadMsg
+global___LogStartOverloadMsg = LogStartOverloadMsg
 
 @typing.final
 class LogOverloadResult(google.protobuf.message.Message):
@@ -7737,24 +7731,24 @@ class LogOverloadResult(google.protobuf.message.Message):
     total_overloads: builtins.int
     execution_time: builtins.float
     @property
-    def node_info(self) -> Global___NodeInfo: ...
+    def node_info(self) -> global___NodeInfo: ...
     @property
-    def group(self) -> Global___Group: ...
+    def group(self) -> global___Group: ...
     def __init__(
         self,
         *,
-        node_info: Global___NodeInfo | None = ...,
+        node_info: global___NodeInfo | None = ...,
         description: builtins.str = ...,
         status: builtins.str = ...,
         overload_index: builtins.int = ...,
         total_overloads: builtins.int = ...,
         execution_time: builtins.float = ...,
-        group: Global___Group | None = ...,
+        group: global___Group | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["group", b"group", "node_info", b"node_info"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["description", b"description", "execution_time", b"execution_time", "group", b"group", "node_info", b"node_info", "overload_index", b"overload_index", "status", b"status", "total_overloads", b"total_overloads"]) -> None: ...
 
-Global___LogOverloadResult: typing_extensions.TypeAlias = LogOverloadResult
+global___LogOverloadResult = LogOverloadResult
 
 @typing.final
 class LogOverloadResultMsg(google.protobuf.message.Message):
@@ -7763,19 +7757,19 @@ class LogOverloadResultMsg(google.protobuf.message.Message):
     INFO_FIELD_NUMBER: builtins.int
     DATA_FIELD_NUMBER: builtins.int
     @property
-    def info(self) -> Global___CoreEventInfo: ...
+    def info(self) -> global___CoreEventInfo: ...
     @property
-    def data(self) -> Global___LogOverloadResult: ...
+    def data(self) -> global___LogOverloadResult: ...
     def __init__(
         self,
         *,
-        info: Global___CoreEventInfo | None = ...,
-        data: Global___LogOverloadResult | None = ...,
+        info: global___CoreEventInfo | None = ...,
+        data: global___LogOverloadResult | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> None: ...
 
-Global___LogOverloadResultMsg: typing_extensions.TypeAlias = LogOverloadResultMsg
+global___LogOverloadResultMsg = LogOverloadResultMsg
 
 @typing.final
 class CatchableExceptionOnRun(google.protobuf.message.Message):
@@ -7792,18 +7786,18 @@ class CatchableExceptionOnRun(google.protobuf.message.Message):
     exc: builtins.str
     exc_info: builtins.str
     @property
-    def node_info(self) -> Global___NodeInfo: ...
+    def node_info(self) -> global___NodeInfo: ...
     def __init__(
         self,
         *,
-        node_info: Global___NodeInfo | None = ...,
+        node_info: global___NodeInfo | None = ...,
         exc: builtins.str = ...,
         exc_info: builtins.str = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["node_info", b"node_info"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["exc", b"exc", "exc_info", b"exc_info", "node_info", b"node_info"]) -> None: ...
 
-Global___CatchableExceptionOnRun: typing_extensions.TypeAlias = CatchableExceptionOnRun
+global___CatchableExceptionOnRun = CatchableExceptionOnRun
 
 @typing.final
 class CatchableExceptionOnRunMsg(google.protobuf.message.Message):
@@ -7812,19 +7806,19 @@ class CatchableExceptionOnRunMsg(google.protobuf.message.Message):
     INFO_FIELD_NUMBER: builtins.int
     DATA_FIELD_NUMBER: builtins.int
     @property
-    def info(self) -> Global___CoreEventInfo: ...
+    def info(self) -> global___CoreEventInfo: ...
     @property
-    def data(self) -> Global___CatchableExceptionOnRun: ...
+    def data(self) -> global___CatchableExceptionOnRun: ...
     def __init__(
         self,
         *,
-        info: Global___CoreEventInfo | None = ...,
-        data: Global___CatchableExceptionOnRun | None = ...,
+        info: global___CoreEventInfo | None = ...,
+        data: global___CatchableExceptionOnRun | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> None: ...
 
-Global___CatchableExceptionOnRunMsg: typing_extensions.TypeAlias = CatchableExceptionOnRunMsg
+global___CatchableExceptionOnRunMsg = CatchableExceptionOnRunMsg
 
 @typing.final
 class InternalErrorOnRun(google.protobuf.message.Message):
@@ -7838,18 +7832,18 @@ class InternalErrorOnRun(google.protobuf.message.Message):
     build_path: builtins.str
     exc: builtins.str
     @property
-    def node_info(self) -> Global___NodeInfo: ...
+    def node_info(self) -> global___NodeInfo: ...
     def __init__(
         self,
         *,
         build_path: builtins.str = ...,
         exc: builtins.str = ...,
-        node_info: Global___NodeInfo | None = ...,
+        node_info: global___NodeInfo | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["node_info", b"node_info"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["build_path", b"build_path", "exc", b"exc", "node_info", b"node_info"]) -> None: ...
 
-Global___InternalErrorOnRun: typing_extensions.TypeAlias = InternalErrorOnRun
+global___InternalErrorOnRun = InternalErrorOnRun
 
 @typing.final
 class InternalErrorOnRunMsg(google.protobuf.message.Message):
@@ -7858,19 +7852,19 @@ class InternalErrorOnRunMsg(google.protobuf.message.Message):
     INFO_FIELD_NUMBER: builtins.int
     DATA_FIELD_NUMBER: builtins.int
     @property
-    def info(self) -> Global___CoreEventInfo: ...
+    def info(self) -> global___CoreEventInfo: ...
     @property
-    def data(self) -> Global___InternalErrorOnRun: ...
+    def data(self) -> global___InternalErrorOnRun: ...
     def __init__(
         self,
         *,
-        info: Global___CoreEventInfo | None = ...,
-        data: Global___InternalErrorOnRun | None = ...,
+        info: global___CoreEventInfo | None = ...,
+        data: global___InternalErrorOnRun | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> None: ...
 
-Global___InternalErrorOnRunMsg: typing_extensions.TypeAlias = InternalErrorOnRunMsg
+global___InternalErrorOnRunMsg = InternalErrorOnRunMsg
 
 @typing.final
 class GenericExceptionOnRun(google.protobuf.message.Message):
@@ -7886,19 +7880,19 @@ class GenericExceptionOnRun(google.protobuf.message.Message):
     unique_id: builtins.str
     exc: builtins.str
     @property
-    def node_info(self) -> Global___NodeInfo: ...
+    def node_info(self) -> global___NodeInfo: ...
     def __init__(
         self,
         *,
         build_path: builtins.str = ...,
         unique_id: builtins.str = ...,
         exc: builtins.str = ...,
-        node_info: Global___NodeInfo | None = ...,
+        node_info: global___NodeInfo | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["node_info", b"node_info"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["build_path", b"build_path", "exc", b"exc", "node_info", b"node_info", "unique_id", b"unique_id"]) -> None: ...
 
-Global___GenericExceptionOnRun: typing_extensions.TypeAlias = GenericExceptionOnRun
+global___GenericExceptionOnRun = GenericExceptionOnRun
 
 @typing.final
 class GenericExceptionOnRunMsg(google.protobuf.message.Message):
@@ -7907,19 +7901,19 @@ class GenericExceptionOnRunMsg(google.protobuf.message.Message):
     INFO_FIELD_NUMBER: builtins.int
     DATA_FIELD_NUMBER: builtins.int
     @property
-    def info(self) -> Global___CoreEventInfo: ...
+    def info(self) -> global___CoreEventInfo: ...
     @property
-    def data(self) -> Global___GenericExceptionOnRun: ...
+    def data(self) -> global___GenericExceptionOnRun: ...
     def __init__(
         self,
         *,
-        info: Global___CoreEventInfo | None = ...,
-        data: Global___GenericExceptionOnRun | None = ...,
+        info: global___CoreEventInfo | None = ...,
+        data: global___GenericExceptionOnRun | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> None: ...
 
-Global___GenericExceptionOnRunMsg: typing_extensions.TypeAlias = GenericExceptionOnRunMsg
+global___GenericExceptionOnRunMsg = GenericExceptionOnRunMsg
 
 @typing.final
 class NodeConnectionReleaseError(google.protobuf.message.Message):
@@ -7942,7 +7936,7 @@ class NodeConnectionReleaseError(google.protobuf.message.Message):
     ) -> None: ...
     def ClearField(self, field_name: typing.Literal["exc", b"exc", "exc_info", b"exc_info", "node_name", b"node_name"]) -> None: ...
 
-Global___NodeConnectionReleaseError: typing_extensions.TypeAlias = NodeConnectionReleaseError
+global___NodeConnectionReleaseError = NodeConnectionReleaseError
 
 @typing.final
 class NodeConnectionReleaseErrorMsg(google.protobuf.message.Message):
@@ -7951,19 +7945,19 @@ class NodeConnectionReleaseErrorMsg(google.protobuf.message.Message):
     INFO_FIELD_NUMBER: builtins.int
     DATA_FIELD_NUMBER: builtins.int
     @property
-    def info(self) -> Global___CoreEventInfo: ...
+    def info(self) -> global___CoreEventInfo: ...
     @property
-    def data(self) -> Global___NodeConnectionReleaseError: ...
+    def data(self) -> global___NodeConnectionReleaseError: ...
     def __init__(
         self,
         *,
-        info: Global___CoreEventInfo | None = ...,
-        data: Global___NodeConnectionReleaseError | None = ...,
+        info: global___CoreEventInfo | None = ...,
+        data: global___NodeConnectionReleaseError | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> None: ...
 
-Global___NodeConnectionReleaseErrorMsg: typing_extensions.TypeAlias = NodeConnectionReleaseErrorMsg
+global___NodeConnectionReleaseErrorMsg = NodeConnectionReleaseErrorMsg
 
 @typing.final
 class FoundStats(google.protobuf.message.Message):
@@ -7980,7 +7974,7 @@ class FoundStats(google.protobuf.message.Message):
     ) -> None: ...
     def ClearField(self, field_name: typing.Literal["stat_line", b"stat_line"]) -> None: ...
 
-Global___FoundStats: typing_extensions.TypeAlias = FoundStats
+global___FoundStats = FoundStats
 
 @typing.final
 class FoundStatsMsg(google.protobuf.message.Message):
@@ -7989,19 +7983,19 @@ class FoundStatsMsg(google.protobuf.message.Message):
     INFO_FIELD_NUMBER: builtins.int
     DATA_FIELD_NUMBER: builtins.int
     @property
-    def info(self) -> Global___CoreEventInfo: ...
+    def info(self) -> global___CoreEventInfo: ...
     @property
-    def data(self) -> Global___FoundStats: ...
+    def data(self) -> global___FoundStats: ...
     def __init__(
         self,
         *,
-        info: Global___CoreEventInfo | None = ...,
-        data: Global___FoundStats | None = ...,
+        info: global___CoreEventInfo | None = ...,
+        data: global___FoundStats | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> None: ...
 
-Global___FoundStatsMsg: typing_extensions.TypeAlias = FoundStatsMsg
+global___FoundStatsMsg = FoundStatsMsg
 
 @typing.final
 class MainKeyboardInterrupt(google.protobuf.message.Message):
@@ -8016,7 +8010,7 @@ class MainKeyboardInterrupt(google.protobuf.message.Message):
         self,
     ) -> None: ...
 
-Global___MainKeyboardInterrupt: typing_extensions.TypeAlias = MainKeyboardInterrupt
+global___MainKeyboardInterrupt = MainKeyboardInterrupt
 
 @typing.final
 class MainKeyboardInterruptMsg(google.protobuf.message.Message):
@@ -8025,19 +8019,19 @@ class MainKeyboardInterruptMsg(google.protobuf.message.Message):
     INFO_FIELD_NUMBER: builtins.int
     DATA_FIELD_NUMBER: builtins.int
     @property
-    def info(self) -> Global___CoreEventInfo: ...
+    def info(self) -> global___CoreEventInfo: ...
     @property
-    def data(self) -> Global___MainKeyboardInterrupt: ...
+    def data(self) -> global___MainKeyboardInterrupt: ...
     def __init__(
         self,
         *,
-        info: Global___CoreEventInfo | None = ...,
-        data: Global___MainKeyboardInterrupt | None = ...,
+        info: global___CoreEventInfo | None = ...,
+        data: global___MainKeyboardInterrupt | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> None: ...
 
-Global___MainKeyboardInterruptMsg: typing_extensions.TypeAlias = MainKeyboardInterruptMsg
+global___MainKeyboardInterruptMsg = MainKeyboardInterruptMsg
 
 @typing.final
 class MainEncounteredError(google.protobuf.message.Message):
@@ -8054,7 +8048,7 @@ class MainEncounteredError(google.protobuf.message.Message):
     ) -> None: ...
     def ClearField(self, field_name: typing.Literal["exc", b"exc"]) -> None: ...
 
-Global___MainEncounteredError: typing_extensions.TypeAlias = MainEncounteredError
+global___MainEncounteredError = MainEncounteredError
 
 @typing.final
 class MainEncounteredErrorMsg(google.protobuf.message.Message):
@@ -8063,19 +8057,19 @@ class MainEncounteredErrorMsg(google.protobuf.message.Message):
     INFO_FIELD_NUMBER: builtins.int
     DATA_FIELD_NUMBER: builtins.int
     @property
-    def info(self) -> Global___CoreEventInfo: ...
+    def info(self) -> global___CoreEventInfo: ...
     @property
-    def data(self) -> Global___MainEncounteredError: ...
+    def data(self) -> global___MainEncounteredError: ...
     def __init__(
         self,
         *,
-        info: Global___CoreEventInfo | None = ...,
-        data: Global___MainEncounteredError | None = ...,
+        info: global___CoreEventInfo | None = ...,
+        data: global___MainEncounteredError | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> None: ...
 
-Global___MainEncounteredErrorMsg: typing_extensions.TypeAlias = MainEncounteredErrorMsg
+global___MainEncounteredErrorMsg = MainEncounteredErrorMsg
 
 @typing.final
 class MainStackTrace(google.protobuf.message.Message):
@@ -8092,7 +8086,7 @@ class MainStackTrace(google.protobuf.message.Message):
     ) -> None: ...
     def ClearField(self, field_name: typing.Literal["stack_trace", b"stack_trace"]) -> None: ...
 
-Global___MainStackTrace: typing_extensions.TypeAlias = MainStackTrace
+global___MainStackTrace = MainStackTrace
 
 @typing.final
 class MainStackTraceMsg(google.protobuf.message.Message):
@@ -8101,19 +8095,19 @@ class MainStackTraceMsg(google.protobuf.message.Message):
     INFO_FIELD_NUMBER: builtins.int
     DATA_FIELD_NUMBER: builtins.int
     @property
-    def info(self) -> Global___CoreEventInfo: ...
+    def info(self) -> global___CoreEventInfo: ...
     @property
-    def data(self) -> Global___MainStackTrace: ...
+    def data(self) -> global___MainStackTrace: ...
     def __init__(
         self,
         *,
-        info: Global___CoreEventInfo | None = ...,
-        data: Global___MainStackTrace | None = ...,
+        info: global___CoreEventInfo | None = ...,
+        data: global___MainStackTrace | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> None: ...
 
-Global___MainStackTraceMsg: typing_extensions.TypeAlias = MainStackTraceMsg
+global___MainStackTraceMsg = MainStackTraceMsg
 
 @typing.final
 class TimingInfoCollected(google.protobuf.message.Message):
@@ -8127,19 +8121,19 @@ class TimingInfoCollected(google.protobuf.message.Message):
     NODE_INFO_FIELD_NUMBER: builtins.int
     TIMING_INFO_FIELD_NUMBER: builtins.int
     @property
-    def node_info(self) -> Global___NodeInfo: ...
+    def node_info(self) -> global___NodeInfo: ...
     @property
-    def timing_info(self) -> Global___TimingInfoMsg: ...
+    def timing_info(self) -> global___TimingInfoMsg: ...
     def __init__(
         self,
         *,
-        node_info: Global___NodeInfo | None = ...,
-        timing_info: Global___TimingInfoMsg | None = ...,
+        node_info: global___NodeInfo | None = ...,
+        timing_info: global___TimingInfoMsg | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["node_info", b"node_info", "timing_info", b"timing_info"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["node_info", b"node_info", "timing_info", b"timing_info"]) -> None: ...
 
-Global___TimingInfoCollected: typing_extensions.TypeAlias = TimingInfoCollected
+global___TimingInfoCollected = TimingInfoCollected
 
 @typing.final
 class TimingInfoCollectedMsg(google.protobuf.message.Message):
@@ -8148,19 +8142,19 @@ class TimingInfoCollectedMsg(google.protobuf.message.Message):
     INFO_FIELD_NUMBER: builtins.int
     DATA_FIELD_NUMBER: builtins.int
     @property
-    def info(self) -> Global___CoreEventInfo: ...
+    def info(self) -> global___CoreEventInfo: ...
     @property
-    def data(self) -> Global___TimingInfoCollected: ...
+    def data(self) -> global___TimingInfoCollected: ...
     def __init__(
         self,
         *,
-        info: Global___CoreEventInfo | None = ...,
-        data: Global___TimingInfoCollected | None = ...,
+        info: global___CoreEventInfo | None = ...,
+        data: global___TimingInfoCollected | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> None: ...
 
-Global___TimingInfoCollectedMsg: typing_extensions.TypeAlias = TimingInfoCollectedMsg
+global___TimingInfoCollectedMsg = TimingInfoCollectedMsg
 
 @typing.final
 class LogDebugStackTrace(google.protobuf.message.Message):
@@ -8177,7 +8171,7 @@ class LogDebugStackTrace(google.protobuf.message.Message):
     ) -> None: ...
     def ClearField(self, field_name: typing.Literal["exc_info", b"exc_info"]) -> None: ...
 
-Global___LogDebugStackTrace: typing_extensions.TypeAlias = LogDebugStackTrace
+global___LogDebugStackTrace = LogDebugStackTrace
 
 @typing.final
 class LogDebugStackTraceMsg(google.protobuf.message.Message):
@@ -8186,19 +8180,19 @@ class LogDebugStackTraceMsg(google.protobuf.message.Message):
     INFO_FIELD_NUMBER: builtins.int
     DATA_FIELD_NUMBER: builtins.int
     @property
-    def info(self) -> Global___CoreEventInfo: ...
+    def info(self) -> global___CoreEventInfo: ...
     @property
-    def data(self) -> Global___LogDebugStackTrace: ...
+    def data(self) -> global___LogDebugStackTrace: ...
     def __init__(
         self,
         *,
-        info: Global___CoreEventInfo | None = ...,
-        data: Global___LogDebugStackTrace | None = ...,
+        info: global___CoreEventInfo | None = ...,
+        data: global___LogDebugStackTrace | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> None: ...
 
-Global___LogDebugStackTraceMsg: typing_extensions.TypeAlias = LogDebugStackTraceMsg
+global___LogDebugStackTraceMsg = LogDebugStackTraceMsg
 
 @typing.final
 class CheckCleanPath(google.protobuf.message.Message):
@@ -8215,7 +8209,7 @@ class CheckCleanPath(google.protobuf.message.Message):
     ) -> None: ...
     def ClearField(self, field_name: typing.Literal["path", b"path"]) -> None: ...
 
-Global___CheckCleanPath: typing_extensions.TypeAlias = CheckCleanPath
+global___CheckCleanPath = CheckCleanPath
 
 @typing.final
 class CheckCleanPathMsg(google.protobuf.message.Message):
@@ -8224,19 +8218,19 @@ class CheckCleanPathMsg(google.protobuf.message.Message):
     INFO_FIELD_NUMBER: builtins.int
     DATA_FIELD_NUMBER: builtins.int
     @property
-    def info(self) -> Global___CoreEventInfo: ...
+    def info(self) -> global___CoreEventInfo: ...
     @property
-    def data(self) -> Global___CheckCleanPath: ...
+    def data(self) -> global___CheckCleanPath: ...
     def __init__(
         self,
         *,
-        info: Global___CoreEventInfo | None = ...,
-        data: Global___CheckCleanPath | None = ...,
+        info: global___CoreEventInfo | None = ...,
+        data: global___CheckCleanPath | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> None: ...
 
-Global___CheckCleanPathMsg: typing_extensions.TypeAlias = CheckCleanPathMsg
+global___CheckCleanPathMsg = CheckCleanPathMsg
 
 @typing.final
 class ConfirmCleanPath(google.protobuf.message.Message):
@@ -8253,7 +8247,7 @@ class ConfirmCleanPath(google.protobuf.message.Message):
     ) -> None: ...
     def ClearField(self, field_name: typing.Literal["path", b"path"]) -> None: ...
 
-Global___ConfirmCleanPath: typing_extensions.TypeAlias = ConfirmCleanPath
+global___ConfirmCleanPath = ConfirmCleanPath
 
 @typing.final
 class ConfirmCleanPathMsg(google.protobuf.message.Message):
@@ -8262,19 +8256,19 @@ class ConfirmCleanPathMsg(google.protobuf.message.Message):
     INFO_FIELD_NUMBER: builtins.int
     DATA_FIELD_NUMBER: builtins.int
     @property
-    def info(self) -> Global___CoreEventInfo: ...
+    def info(self) -> global___CoreEventInfo: ...
     @property
-    def data(self) -> Global___ConfirmCleanPath: ...
+    def data(self) -> global___ConfirmCleanPath: ...
     def __init__(
         self,
         *,
-        info: Global___CoreEventInfo | None = ...,
-        data: Global___ConfirmCleanPath | None = ...,
+        info: global___CoreEventInfo | None = ...,
+        data: global___ConfirmCleanPath | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> None: ...
 
-Global___ConfirmCleanPathMsg: typing_extensions.TypeAlias = ConfirmCleanPathMsg
+global___ConfirmCleanPathMsg = ConfirmCleanPathMsg
 
 @typing.final
 class ProtectedCleanPath(google.protobuf.message.Message):
@@ -8291,7 +8285,7 @@ class ProtectedCleanPath(google.protobuf.message.Message):
     ) -> None: ...
     def ClearField(self, field_name: typing.Literal["path", b"path"]) -> None: ...
 
-Global___ProtectedCleanPath: typing_extensions.TypeAlias = ProtectedCleanPath
+global___ProtectedCleanPath = ProtectedCleanPath
 
 @typing.final
 class ProtectedCleanPathMsg(google.protobuf.message.Message):
@@ -8300,19 +8294,19 @@ class ProtectedCleanPathMsg(google.protobuf.message.Message):
     INFO_FIELD_NUMBER: builtins.int
     DATA_FIELD_NUMBER: builtins.int
     @property
-    def info(self) -> Global___CoreEventInfo: ...
+    def info(self) -> global___CoreEventInfo: ...
     @property
-    def data(self) -> Global___ProtectedCleanPath: ...
+    def data(self) -> global___ProtectedCleanPath: ...
     def __init__(
         self,
         *,
-        info: Global___CoreEventInfo | None = ...,
-        data: Global___ProtectedCleanPath | None = ...,
+        info: global___CoreEventInfo | None = ...,
+        data: global___ProtectedCleanPath | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> None: ...
 
-Global___ProtectedCleanPathMsg: typing_extensions.TypeAlias = ProtectedCleanPathMsg
+global___ProtectedCleanPathMsg = ProtectedCleanPathMsg
 
 @typing.final
 class FinishedCleanPaths(google.protobuf.message.Message):
@@ -8324,7 +8318,7 @@ class FinishedCleanPaths(google.protobuf.message.Message):
         self,
     ) -> None: ...
 
-Global___FinishedCleanPaths: typing_extensions.TypeAlias = FinishedCleanPaths
+global___FinishedCleanPaths = FinishedCleanPaths
 
 @typing.final
 class FinishedCleanPathsMsg(google.protobuf.message.Message):
@@ -8333,19 +8327,19 @@ class FinishedCleanPathsMsg(google.protobuf.message.Message):
     INFO_FIELD_NUMBER: builtins.int
     DATA_FIELD_NUMBER: builtins.int
     @property
-    def info(self) -> Global___CoreEventInfo: ...
+    def info(self) -> global___CoreEventInfo: ...
     @property
-    def data(self) -> Global___FinishedCleanPaths: ...
+    def data(self) -> global___FinishedCleanPaths: ...
     def __init__(
         self,
         *,
-        info: Global___CoreEventInfo | None = ...,
-        data: Global___FinishedCleanPaths | None = ...,
+        info: global___CoreEventInfo | None = ...,
+        data: global___FinishedCleanPaths | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> None: ...
 
-Global___FinishedCleanPathsMsg: typing_extensions.TypeAlias = FinishedCleanPathsMsg
+global___FinishedCleanPathsMsg = FinishedCleanPathsMsg
 
 @typing.final
 class OpenCommand(google.protobuf.message.Message):
@@ -8365,7 +8359,7 @@ class OpenCommand(google.protobuf.message.Message):
     ) -> None: ...
     def ClearField(self, field_name: typing.Literal["open_cmd", b"open_cmd", "profiles_dir", b"profiles_dir"]) -> None: ...
 
-Global___OpenCommand: typing_extensions.TypeAlias = OpenCommand
+global___OpenCommand = OpenCommand
 
 @typing.final
 class OpenCommandMsg(google.protobuf.message.Message):
@@ -8374,19 +8368,19 @@ class OpenCommandMsg(google.protobuf.message.Message):
     INFO_FIELD_NUMBER: builtins.int
     DATA_FIELD_NUMBER: builtins.int
     @property
-    def info(self) -> Global___CoreEventInfo: ...
+    def info(self) -> global___CoreEventInfo: ...
     @property
-    def data(self) -> Global___OpenCommand: ...
+    def data(self) -> global___OpenCommand: ...
     def __init__(
         self,
         *,
-        info: Global___CoreEventInfo | None = ...,
-        data: Global___OpenCommand | None = ...,
+        info: global___CoreEventInfo | None = ...,
+        data: global___OpenCommand | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> None: ...
 
-Global___OpenCommandMsg: typing_extensions.TypeAlias = OpenCommandMsg
+global___OpenCommandMsg = OpenCommandMsg
 
 @typing.final
 class ServingDocsPort(google.protobuf.message.Message):
@@ -8406,7 +8400,7 @@ class ServingDocsPort(google.protobuf.message.Message):
     ) -> None: ...
     def ClearField(self, field_name: typing.Literal["address", b"address", "port", b"port"]) -> None: ...
 
-Global___ServingDocsPort: typing_extensions.TypeAlias = ServingDocsPort
+global___ServingDocsPort = ServingDocsPort
 
 @typing.final
 class ServingDocsPortMsg(google.protobuf.message.Message):
@@ -8415,19 +8409,19 @@ class ServingDocsPortMsg(google.protobuf.message.Message):
     INFO_FIELD_NUMBER: builtins.int
     DATA_FIELD_NUMBER: builtins.int
     @property
-    def info(self) -> Global___CoreEventInfo: ...
+    def info(self) -> global___CoreEventInfo: ...
     @property
-    def data(self) -> Global___ServingDocsPort: ...
+    def data(self) -> global___ServingDocsPort: ...
     def __init__(
         self,
         *,
-        info: Global___CoreEventInfo | None = ...,
-        data: Global___ServingDocsPort | None = ...,
+        info: global___CoreEventInfo | None = ...,
+        data: global___ServingDocsPort | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> None: ...
 
-Global___ServingDocsPortMsg: typing_extensions.TypeAlias = ServingDocsPortMsg
+global___ServingDocsPortMsg = ServingDocsPortMsg
 
 @typing.final
 class ServingDocsAccessInfo(google.protobuf.message.Message):
@@ -8444,7 +8438,7 @@ class ServingDocsAccessInfo(google.protobuf.message.Message):
     ) -> None: ...
     def ClearField(self, field_name: typing.Literal["port", b"port"]) -> None: ...
 
-Global___ServingDocsAccessInfo: typing_extensions.TypeAlias = ServingDocsAccessInfo
+global___ServingDocsAccessInfo = ServingDocsAccessInfo
 
 @typing.final
 class ServingDocsAccessInfoMsg(google.protobuf.message.Message):
@@ -8453,19 +8447,19 @@ class ServingDocsAccessInfoMsg(google.protobuf.message.Message):
     INFO_FIELD_NUMBER: builtins.int
     DATA_FIELD_NUMBER: builtins.int
     @property
-    def info(self) -> Global___CoreEventInfo: ...
+    def info(self) -> global___CoreEventInfo: ...
     @property
-    def data(self) -> Global___ServingDocsAccessInfo: ...
+    def data(self) -> global___ServingDocsAccessInfo: ...
     def __init__(
         self,
         *,
-        info: Global___CoreEventInfo | None = ...,
-        data: Global___ServingDocsAccessInfo | None = ...,
+        info: global___CoreEventInfo | None = ...,
+        data: global___ServingDocsAccessInfo | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> None: ...
 
-Global___ServingDocsAccessInfoMsg: typing_extensions.TypeAlias = ServingDocsAccessInfoMsg
+global___ServingDocsAccessInfoMsg = ServingDocsAccessInfoMsg
 
 @typing.final
 class ServingDocsExitInfo(google.protobuf.message.Message):
@@ -8477,7 +8471,7 @@ class ServingDocsExitInfo(google.protobuf.message.Message):
         self,
     ) -> None: ...
 
-Global___ServingDocsExitInfo: typing_extensions.TypeAlias = ServingDocsExitInfo
+global___ServingDocsExitInfo = ServingDocsExitInfo
 
 @typing.final
 class ServingDocsExitInfoMsg(google.protobuf.message.Message):
@@ -8486,19 +8480,19 @@ class ServingDocsExitInfoMsg(google.protobuf.message.Message):
     INFO_FIELD_NUMBER: builtins.int
     DATA_FIELD_NUMBER: builtins.int
     @property
-    def info(self) -> Global___CoreEventInfo: ...
+    def info(self) -> global___CoreEventInfo: ...
     @property
-    def data(self) -> Global___ServingDocsExitInfo: ...
+    def data(self) -> global___ServingDocsExitInfo: ...
     def __init__(
         self,
         *,
-        info: Global___CoreEventInfo | None = ...,
-        data: Global___ServingDocsExitInfo | None = ...,
+        info: global___CoreEventInfo | None = ...,
+        data: global___ServingDocsExitInfo | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> None: ...
 
-Global___ServingDocsExitInfoMsg: typing_extensions.TypeAlias = ServingDocsExitInfoMsg
+global___ServingDocsExitInfoMsg = ServingDocsExitInfoMsg
 
 @typing.final
 class RunResultWarning(google.protobuf.message.Message):
@@ -8515,22 +8509,22 @@ class RunResultWarning(google.protobuf.message.Message):
     node_name: builtins.str
     path: builtins.str
     @property
-    def node_info(self) -> Global___NodeInfo: ...
+    def node_info(self) -> global___NodeInfo: ...
     @property
-    def group(self) -> Global___Group: ...
+    def group(self) -> global___Group: ...
     def __init__(
         self,
         *,
         resource_type: builtins.str = ...,
         node_name: builtins.str = ...,
         path: builtins.str = ...,
-        node_info: Global___NodeInfo | None = ...,
-        group: Global___Group | None = ...,
+        node_info: global___NodeInfo | None = ...,
+        group: global___Group | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["group", b"group", "node_info", b"node_info"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["group", b"group", "node_info", b"node_info", "node_name", b"node_name", "path", b"path", "resource_type", b"resource_type"]) -> None: ...
 
-Global___RunResultWarning: typing_extensions.TypeAlias = RunResultWarning
+global___RunResultWarning = RunResultWarning
 
 @typing.final
 class RunResultWarningMsg(google.protobuf.message.Message):
@@ -8539,19 +8533,19 @@ class RunResultWarningMsg(google.protobuf.message.Message):
     INFO_FIELD_NUMBER: builtins.int
     DATA_FIELD_NUMBER: builtins.int
     @property
-    def info(self) -> Global___CoreEventInfo: ...
+    def info(self) -> global___CoreEventInfo: ...
     @property
-    def data(self) -> Global___RunResultWarning: ...
+    def data(self) -> global___RunResultWarning: ...
     def __init__(
         self,
         *,
-        info: Global___CoreEventInfo | None = ...,
-        data: Global___RunResultWarning | None = ...,
+        info: global___CoreEventInfo | None = ...,
+        data: global___RunResultWarning | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> None: ...
 
-Global___RunResultWarningMsg: typing_extensions.TypeAlias = RunResultWarningMsg
+global___RunResultWarningMsg = RunResultWarningMsg
 
 @typing.final
 class RunResultFailure(google.protobuf.message.Message):
@@ -8568,22 +8562,22 @@ class RunResultFailure(google.protobuf.message.Message):
     node_name: builtins.str
     path: builtins.str
     @property
-    def node_info(self) -> Global___NodeInfo: ...
+    def node_info(self) -> global___NodeInfo: ...
     @property
-    def group(self) -> Global___Group: ...
+    def group(self) -> global___Group: ...
     def __init__(
         self,
         *,
         resource_type: builtins.str = ...,
         node_name: builtins.str = ...,
         path: builtins.str = ...,
-        node_info: Global___NodeInfo | None = ...,
-        group: Global___Group | None = ...,
+        node_info: global___NodeInfo | None = ...,
+        group: global___Group | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["group", b"group", "node_info", b"node_info"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["group", b"group", "node_info", b"node_info", "node_name", b"node_name", "path", b"path", "resource_type", b"resource_type"]) -> None: ...
 
-Global___RunResultFailure: typing_extensions.TypeAlias = RunResultFailure
+global___RunResultFailure = RunResultFailure
 
 @typing.final
 class RunResultFailureMsg(google.protobuf.message.Message):
@@ -8592,19 +8586,19 @@ class RunResultFailureMsg(google.protobuf.message.Message):
     INFO_FIELD_NUMBER: builtins.int
     DATA_FIELD_NUMBER: builtins.int
     @property
-    def info(self) -> Global___CoreEventInfo: ...
+    def info(self) -> global___CoreEventInfo: ...
     @property
-    def data(self) -> Global___RunResultFailure: ...
+    def data(self) -> global___RunResultFailure: ...
     def __init__(
         self,
         *,
-        info: Global___CoreEventInfo | None = ...,
-        data: Global___RunResultFailure | None = ...,
+        info: global___CoreEventInfo | None = ...,
+        data: global___RunResultFailure | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> None: ...
 
-Global___RunResultFailureMsg: typing_extensions.TypeAlias = RunResultFailureMsg
+global___RunResultFailureMsg = RunResultFailureMsg
 
 @typing.final
 class StatsLine(google.protobuf.message.Message):
@@ -8638,7 +8632,7 @@ class StatsLine(google.protobuf.message.Message):
     ) -> None: ...
     def ClearField(self, field_name: typing.Literal["stats", b"stats"]) -> None: ...
 
-Global___StatsLine: typing_extensions.TypeAlias = StatsLine
+global___StatsLine = StatsLine
 
 @typing.final
 class StatsLineMsg(google.protobuf.message.Message):
@@ -8647,19 +8641,19 @@ class StatsLineMsg(google.protobuf.message.Message):
     INFO_FIELD_NUMBER: builtins.int
     DATA_FIELD_NUMBER: builtins.int
     @property
-    def info(self) -> Global___CoreEventInfo: ...
+    def info(self) -> global___CoreEventInfo: ...
     @property
-    def data(self) -> Global___StatsLine: ...
+    def data(self) -> global___StatsLine: ...
     def __init__(
         self,
         *,
-        info: Global___CoreEventInfo | None = ...,
-        data: Global___StatsLine | None = ...,
+        info: global___CoreEventInfo | None = ...,
+        data: global___StatsLine | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> None: ...
 
-Global___StatsLineMsg: typing_extensions.TypeAlias = StatsLineMsg
+global___StatsLineMsg = StatsLineMsg
 
 @typing.final
 class RunResultError(google.protobuf.message.Message):
@@ -8672,20 +8666,20 @@ class RunResultError(google.protobuf.message.Message):
     GROUP_FIELD_NUMBER: builtins.int
     msg: builtins.str
     @property
-    def node_info(self) -> Global___NodeInfo: ...
+    def node_info(self) -> global___NodeInfo: ...
     @property
-    def group(self) -> Global___Group: ...
+    def group(self) -> global___Group: ...
     def __init__(
         self,
         *,
         msg: builtins.str = ...,
-        node_info: Global___NodeInfo | None = ...,
-        group: Global___Group | None = ...,
+        node_info: global___NodeInfo | None = ...,
+        group: global___Group | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["group", b"group", "node_info", b"node_info"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["group", b"group", "msg", b"msg", "node_info", b"node_info"]) -> None: ...
 
-Global___RunResultError: typing_extensions.TypeAlias = RunResultError
+global___RunResultError = RunResultError
 
 @typing.final
 class RunResultErrorMsg(google.protobuf.message.Message):
@@ -8694,19 +8688,19 @@ class RunResultErrorMsg(google.protobuf.message.Message):
     INFO_FIELD_NUMBER: builtins.int
     DATA_FIELD_NUMBER: builtins.int
     @property
-    def info(self) -> Global___CoreEventInfo: ...
+    def info(self) -> global___CoreEventInfo: ...
     @property
-    def data(self) -> Global___RunResultError: ...
+    def data(self) -> global___RunResultError: ...
     def __init__(
         self,
         *,
-        info: Global___CoreEventInfo | None = ...,
-        data: Global___RunResultError | None = ...,
+        info: global___CoreEventInfo | None = ...,
+        data: global___RunResultError | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> None: ...
 
-Global___RunResultErrorMsg: typing_extensions.TypeAlias = RunResultErrorMsg
+global___RunResultErrorMsg = RunResultErrorMsg
 
 @typing.final
 class RunResultErrorNoMessage(google.protobuf.message.Message):
@@ -8718,17 +8712,17 @@ class RunResultErrorNoMessage(google.protobuf.message.Message):
     NODE_INFO_FIELD_NUMBER: builtins.int
     status: builtins.str
     @property
-    def node_info(self) -> Global___NodeInfo: ...
+    def node_info(self) -> global___NodeInfo: ...
     def __init__(
         self,
         *,
         status: builtins.str = ...,
-        node_info: Global___NodeInfo | None = ...,
+        node_info: global___NodeInfo | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["node_info", b"node_info"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["node_info", b"node_info", "status", b"status"]) -> None: ...
 
-Global___RunResultErrorNoMessage: typing_extensions.TypeAlias = RunResultErrorNoMessage
+global___RunResultErrorNoMessage = RunResultErrorNoMessage
 
 @typing.final
 class RunResultErrorNoMessageMsg(google.protobuf.message.Message):
@@ -8737,19 +8731,19 @@ class RunResultErrorNoMessageMsg(google.protobuf.message.Message):
     INFO_FIELD_NUMBER: builtins.int
     DATA_FIELD_NUMBER: builtins.int
     @property
-    def info(self) -> Global___CoreEventInfo: ...
+    def info(self) -> global___CoreEventInfo: ...
     @property
-    def data(self) -> Global___RunResultErrorNoMessage: ...
+    def data(self) -> global___RunResultErrorNoMessage: ...
     def __init__(
         self,
         *,
-        info: Global___CoreEventInfo | None = ...,
-        data: Global___RunResultErrorNoMessage | None = ...,
+        info: global___CoreEventInfo | None = ...,
+        data: global___RunResultErrorNoMessage | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> None: ...
 
-Global___RunResultErrorNoMessageMsg: typing_extensions.TypeAlias = RunResultErrorNoMessageMsg
+global___RunResultErrorNoMessageMsg = RunResultErrorNoMessageMsg
 
 @typing.final
 class SQLCompiledPath(google.protobuf.message.Message):
@@ -8761,17 +8755,17 @@ class SQLCompiledPath(google.protobuf.message.Message):
     NODE_INFO_FIELD_NUMBER: builtins.int
     path: builtins.str
     @property
-    def node_info(self) -> Global___NodeInfo: ...
+    def node_info(self) -> global___NodeInfo: ...
     def __init__(
         self,
         *,
         path: builtins.str = ...,
-        node_info: Global___NodeInfo | None = ...,
+        node_info: global___NodeInfo | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["node_info", b"node_info"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["node_info", b"node_info", "path", b"path"]) -> None: ...
 
-Global___SQLCompiledPath: typing_extensions.TypeAlias = SQLCompiledPath
+global___SQLCompiledPath = SQLCompiledPath
 
 @typing.final
 class SQLCompiledPathMsg(google.protobuf.message.Message):
@@ -8780,19 +8774,19 @@ class SQLCompiledPathMsg(google.protobuf.message.Message):
     INFO_FIELD_NUMBER: builtins.int
     DATA_FIELD_NUMBER: builtins.int
     @property
-    def info(self) -> Global___CoreEventInfo: ...
+    def info(self) -> global___CoreEventInfo: ...
     @property
-    def data(self) -> Global___SQLCompiledPath: ...
+    def data(self) -> global___SQLCompiledPath: ...
     def __init__(
         self,
         *,
-        info: Global___CoreEventInfo | None = ...,
-        data: Global___SQLCompiledPath | None = ...,
+        info: global___CoreEventInfo | None = ...,
+        data: global___SQLCompiledPath | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> None: ...
 
-Global___SQLCompiledPathMsg: typing_extensions.TypeAlias = SQLCompiledPathMsg
+global___SQLCompiledPathMsg = SQLCompiledPathMsg
 
 @typing.final
 class CheckNodeTestFailure(google.protobuf.message.Message):
@@ -8804,17 +8798,17 @@ class CheckNodeTestFailure(google.protobuf.message.Message):
     NODE_INFO_FIELD_NUMBER: builtins.int
     relation_name: builtins.str
     @property
-    def node_info(self) -> Global___NodeInfo: ...
+    def node_info(self) -> global___NodeInfo: ...
     def __init__(
         self,
         *,
         relation_name: builtins.str = ...,
-        node_info: Global___NodeInfo | None = ...,
+        node_info: global___NodeInfo | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["node_info", b"node_info"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["node_info", b"node_info", "relation_name", b"relation_name"]) -> None: ...
 
-Global___CheckNodeTestFailure: typing_extensions.TypeAlias = CheckNodeTestFailure
+global___CheckNodeTestFailure = CheckNodeTestFailure
 
 @typing.final
 class CheckNodeTestFailureMsg(google.protobuf.message.Message):
@@ -8823,19 +8817,19 @@ class CheckNodeTestFailureMsg(google.protobuf.message.Message):
     INFO_FIELD_NUMBER: builtins.int
     DATA_FIELD_NUMBER: builtins.int
     @property
-    def info(self) -> Global___CoreEventInfo: ...
+    def info(self) -> global___CoreEventInfo: ...
     @property
-    def data(self) -> Global___CheckNodeTestFailure: ...
+    def data(self) -> global___CheckNodeTestFailure: ...
     def __init__(
         self,
         *,
-        info: Global___CoreEventInfo | None = ...,
-        data: Global___CheckNodeTestFailure | None = ...,
+        info: global___CoreEventInfo | None = ...,
+        data: global___CheckNodeTestFailure | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> None: ...
 
-Global___CheckNodeTestFailureMsg: typing_extensions.TypeAlias = CheckNodeTestFailureMsg
+global___CheckNodeTestFailureMsg = CheckNodeTestFailureMsg
 
 @typing.final
 class EndOfRunSummary(google.protobuf.message.Message):
@@ -8864,7 +8858,7 @@ class EndOfRunSummary(google.protobuf.message.Message):
     ) -> None: ...
     def ClearField(self, field_name: typing.Literal["keyboard_interrupt", b"keyboard_interrupt", "num_errors", b"num_errors", "num_partial_success", b"num_partial_success", "num_warnings", b"num_warnings"]) -> None: ...
 
-Global___EndOfRunSummary: typing_extensions.TypeAlias = EndOfRunSummary
+global___EndOfRunSummary = EndOfRunSummary
 
 @typing.final
 class EndOfRunSummaryMsg(google.protobuf.message.Message):
@@ -8873,19 +8867,19 @@ class EndOfRunSummaryMsg(google.protobuf.message.Message):
     INFO_FIELD_NUMBER: builtins.int
     DATA_FIELD_NUMBER: builtins.int
     @property
-    def info(self) -> Global___CoreEventInfo: ...
+    def info(self) -> global___CoreEventInfo: ...
     @property
-    def data(self) -> Global___EndOfRunSummary: ...
+    def data(self) -> global___EndOfRunSummary: ...
     def __init__(
         self,
         *,
-        info: Global___CoreEventInfo | None = ...,
-        data: Global___EndOfRunSummary | None = ...,
+        info: global___CoreEventInfo | None = ...,
+        data: global___EndOfRunSummary | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> None: ...
 
-Global___EndOfRunSummaryMsg: typing_extensions.TypeAlias = EndOfRunSummaryMsg
+global___EndOfRunSummaryMsg = EndOfRunSummaryMsg
 
 @typing.final
 class MarkSkippedChildren(google.protobuf.message.Message):
@@ -8902,18 +8896,18 @@ class MarkSkippedChildren(google.protobuf.message.Message):
     unique_id: builtins.str
     status: builtins.str
     @property
-    def run_result(self) -> Global___RunResultMsg: ...
+    def run_result(self) -> global___RunResultMsg: ...
     def __init__(
         self,
         *,
         unique_id: builtins.str = ...,
         status: builtins.str = ...,
-        run_result: Global___RunResultMsg | None = ...,
+        run_result: global___RunResultMsg | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["run_result", b"run_result"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["run_result", b"run_result", "status", b"status", "unique_id", b"unique_id"]) -> None: ...
 
-Global___MarkSkippedChildren: typing_extensions.TypeAlias = MarkSkippedChildren
+global___MarkSkippedChildren = MarkSkippedChildren
 
 @typing.final
 class MarkSkippedChildrenMsg(google.protobuf.message.Message):
@@ -8922,19 +8916,19 @@ class MarkSkippedChildrenMsg(google.protobuf.message.Message):
     INFO_FIELD_NUMBER: builtins.int
     DATA_FIELD_NUMBER: builtins.int
     @property
-    def info(self) -> Global___CoreEventInfo: ...
+    def info(self) -> global___CoreEventInfo: ...
     @property
-    def data(self) -> Global___MarkSkippedChildren: ...
+    def data(self) -> global___MarkSkippedChildren: ...
     def __init__(
         self,
         *,
-        info: Global___CoreEventInfo | None = ...,
-        data: Global___MarkSkippedChildren | None = ...,
+        info: global___CoreEventInfo | None = ...,
+        data: global___MarkSkippedChildren | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> None: ...
 
-Global___MarkSkippedChildrenMsg: typing_extensions.TypeAlias = MarkSkippedChildrenMsg
+global___MarkSkippedChildrenMsg = MarkSkippedChildrenMsg
 
 @typing.final
 class LogSkipBecauseError(google.protobuf.message.Message):
@@ -8954,7 +8948,7 @@ class LogSkipBecauseError(google.protobuf.message.Message):
     total: builtins.int
     status: builtins.str
     @property
-    def group(self) -> Global___Group: ...
+    def group(self) -> global___Group: ...
     def __init__(
         self,
         *,
@@ -8963,12 +8957,12 @@ class LogSkipBecauseError(google.protobuf.message.Message):
         index: builtins.int = ...,
         total: builtins.int = ...,
         status: builtins.str = ...,
-        group: Global___Group | None = ...,
+        group: global___Group | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["group", b"group"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["group", b"group", "index", b"index", "relation", b"relation", "schema", b"schema", "status", b"status", "total", b"total"]) -> None: ...
 
-Global___LogSkipBecauseError: typing_extensions.TypeAlias = LogSkipBecauseError
+global___LogSkipBecauseError = LogSkipBecauseError
 
 @typing.final
 class LogSkipBecauseErrorMsg(google.protobuf.message.Message):
@@ -8977,19 +8971,19 @@ class LogSkipBecauseErrorMsg(google.protobuf.message.Message):
     INFO_FIELD_NUMBER: builtins.int
     DATA_FIELD_NUMBER: builtins.int
     @property
-    def info(self) -> Global___CoreEventInfo: ...
+    def info(self) -> global___CoreEventInfo: ...
     @property
-    def data(self) -> Global___LogSkipBecauseError: ...
+    def data(self) -> global___LogSkipBecauseError: ...
     def __init__(
         self,
         *,
-        info: Global___CoreEventInfo | None = ...,
-        data: Global___LogSkipBecauseError | None = ...,
+        info: global___CoreEventInfo | None = ...,
+        data: global___LogSkipBecauseError | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> None: ...
 
-Global___LogSkipBecauseErrorMsg: typing_extensions.TypeAlias = LogSkipBecauseErrorMsg
+global___LogSkipBecauseErrorMsg = LogSkipBecauseErrorMsg
 
 @typing.final
 class EnsureGitInstalled(google.protobuf.message.Message):
@@ -9001,7 +8995,7 @@ class EnsureGitInstalled(google.protobuf.message.Message):
         self,
     ) -> None: ...
 
-Global___EnsureGitInstalled: typing_extensions.TypeAlias = EnsureGitInstalled
+global___EnsureGitInstalled = EnsureGitInstalled
 
 @typing.final
 class EnsureGitInstalledMsg(google.protobuf.message.Message):
@@ -9010,19 +9004,19 @@ class EnsureGitInstalledMsg(google.protobuf.message.Message):
     INFO_FIELD_NUMBER: builtins.int
     DATA_FIELD_NUMBER: builtins.int
     @property
-    def info(self) -> Global___CoreEventInfo: ...
+    def info(self) -> global___CoreEventInfo: ...
     @property
-    def data(self) -> Global___EnsureGitInstalled: ...
+    def data(self) -> global___EnsureGitInstalled: ...
     def __init__(
         self,
         *,
-        info: Global___CoreEventInfo | None = ...,
-        data: Global___EnsureGitInstalled | None = ...,
+        info: global___CoreEventInfo | None = ...,
+        data: global___EnsureGitInstalled | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> None: ...
 
-Global___EnsureGitInstalledMsg: typing_extensions.TypeAlias = EnsureGitInstalledMsg
+global___EnsureGitInstalledMsg = EnsureGitInstalledMsg
 
 @typing.final
 class DepsCreatingLocalSymlink(google.protobuf.message.Message):
@@ -9034,7 +9028,7 @@ class DepsCreatingLocalSymlink(google.protobuf.message.Message):
         self,
     ) -> None: ...
 
-Global___DepsCreatingLocalSymlink: typing_extensions.TypeAlias = DepsCreatingLocalSymlink
+global___DepsCreatingLocalSymlink = DepsCreatingLocalSymlink
 
 @typing.final
 class DepsCreatingLocalSymlinkMsg(google.protobuf.message.Message):
@@ -9043,19 +9037,19 @@ class DepsCreatingLocalSymlinkMsg(google.protobuf.message.Message):
     INFO_FIELD_NUMBER: builtins.int
     DATA_FIELD_NUMBER: builtins.int
     @property
-    def info(self) -> Global___CoreEventInfo: ...
+    def info(self) -> global___CoreEventInfo: ...
     @property
-    def data(self) -> Global___DepsCreatingLocalSymlink: ...
+    def data(self) -> global___DepsCreatingLocalSymlink: ...
     def __init__(
         self,
         *,
-        info: Global___CoreEventInfo | None = ...,
-        data: Global___DepsCreatingLocalSymlink | None = ...,
+        info: global___CoreEventInfo | None = ...,
+        data: global___DepsCreatingLocalSymlink | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> None: ...
 
-Global___DepsCreatingLocalSymlinkMsg: typing_extensions.TypeAlias = DepsCreatingLocalSymlinkMsg
+global___DepsCreatingLocalSymlinkMsg = DepsCreatingLocalSymlinkMsg
 
 @typing.final
 class DepsSymlinkNotAvailable(google.protobuf.message.Message):
@@ -9067,7 +9061,7 @@ class DepsSymlinkNotAvailable(google.protobuf.message.Message):
         self,
     ) -> None: ...
 
-Global___DepsSymlinkNotAvailable: typing_extensions.TypeAlias = DepsSymlinkNotAvailable
+global___DepsSymlinkNotAvailable = DepsSymlinkNotAvailable
 
 @typing.final
 class DepsSymlinkNotAvailableMsg(google.protobuf.message.Message):
@@ -9076,19 +9070,19 @@ class DepsSymlinkNotAvailableMsg(google.protobuf.message.Message):
     INFO_FIELD_NUMBER: builtins.int
     DATA_FIELD_NUMBER: builtins.int
     @property
-    def info(self) -> Global___CoreEventInfo: ...
+    def info(self) -> global___CoreEventInfo: ...
     @property
-    def data(self) -> Global___DepsSymlinkNotAvailable: ...
+    def data(self) -> global___DepsSymlinkNotAvailable: ...
     def __init__(
         self,
         *,
-        info: Global___CoreEventInfo | None = ...,
-        data: Global___DepsSymlinkNotAvailable | None = ...,
+        info: global___CoreEventInfo | None = ...,
+        data: global___DepsSymlinkNotAvailable | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> None: ...
 
-Global___DepsSymlinkNotAvailableMsg: typing_extensions.TypeAlias = DepsSymlinkNotAvailableMsg
+global___DepsSymlinkNotAvailableMsg = DepsSymlinkNotAvailableMsg
 
 @typing.final
 class DisableTracking(google.protobuf.message.Message):
@@ -9100,7 +9094,7 @@ class DisableTracking(google.protobuf.message.Message):
         self,
     ) -> None: ...
 
-Global___DisableTracking: typing_extensions.TypeAlias = DisableTracking
+global___DisableTracking = DisableTracking
 
 @typing.final
 class DisableTrackingMsg(google.protobuf.message.Message):
@@ -9109,19 +9103,19 @@ class DisableTrackingMsg(google.protobuf.message.Message):
     INFO_FIELD_NUMBER: builtins.int
     DATA_FIELD_NUMBER: builtins.int
     @property
-    def info(self) -> Global___CoreEventInfo: ...
+    def info(self) -> global___CoreEventInfo: ...
     @property
-    def data(self) -> Global___DisableTracking: ...
+    def data(self) -> global___DisableTracking: ...
     def __init__(
         self,
         *,
-        info: Global___CoreEventInfo | None = ...,
-        data: Global___DisableTracking | None = ...,
+        info: global___CoreEventInfo | None = ...,
+        data: global___DisableTracking | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> None: ...
 
-Global___DisableTrackingMsg: typing_extensions.TypeAlias = DisableTrackingMsg
+global___DisableTrackingMsg = DisableTrackingMsg
 
 @typing.final
 class SendingEvent(google.protobuf.message.Message):
@@ -9138,7 +9132,7 @@ class SendingEvent(google.protobuf.message.Message):
     ) -> None: ...
     def ClearField(self, field_name: typing.Literal["kwargs", b"kwargs"]) -> None: ...
 
-Global___SendingEvent: typing_extensions.TypeAlias = SendingEvent
+global___SendingEvent = SendingEvent
 
 @typing.final
 class SendingEventMsg(google.protobuf.message.Message):
@@ -9147,19 +9141,19 @@ class SendingEventMsg(google.protobuf.message.Message):
     INFO_FIELD_NUMBER: builtins.int
     DATA_FIELD_NUMBER: builtins.int
     @property
-    def info(self) -> Global___CoreEventInfo: ...
+    def info(self) -> global___CoreEventInfo: ...
     @property
-    def data(self) -> Global___SendingEvent: ...
+    def data(self) -> global___SendingEvent: ...
     def __init__(
         self,
         *,
-        info: Global___CoreEventInfo | None = ...,
-        data: Global___SendingEvent | None = ...,
+        info: global___CoreEventInfo | None = ...,
+        data: global___SendingEvent | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> None: ...
 
-Global___SendingEventMsg: typing_extensions.TypeAlias = SendingEventMsg
+global___SendingEventMsg = SendingEventMsg
 
 @typing.final
 class SendEventFailure(google.protobuf.message.Message):
@@ -9171,7 +9165,7 @@ class SendEventFailure(google.protobuf.message.Message):
         self,
     ) -> None: ...
 
-Global___SendEventFailure: typing_extensions.TypeAlias = SendEventFailure
+global___SendEventFailure = SendEventFailure
 
 @typing.final
 class SendEventFailureMsg(google.protobuf.message.Message):
@@ -9180,19 +9174,19 @@ class SendEventFailureMsg(google.protobuf.message.Message):
     INFO_FIELD_NUMBER: builtins.int
     DATA_FIELD_NUMBER: builtins.int
     @property
-    def info(self) -> Global___CoreEventInfo: ...
+    def info(self) -> global___CoreEventInfo: ...
     @property
-    def data(self) -> Global___SendEventFailure: ...
+    def data(self) -> global___SendEventFailure: ...
     def __init__(
         self,
         *,
-        info: Global___CoreEventInfo | None = ...,
-        data: Global___SendEventFailure | None = ...,
+        info: global___CoreEventInfo | None = ...,
+        data: global___SendEventFailure | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> None: ...
 
-Global___SendEventFailureMsg: typing_extensions.TypeAlias = SendEventFailureMsg
+global___SendEventFailureMsg = SendEventFailureMsg
 
 @typing.final
 class FlushEvents(google.protobuf.message.Message):
@@ -9204,7 +9198,7 @@ class FlushEvents(google.protobuf.message.Message):
         self,
     ) -> None: ...
 
-Global___FlushEvents: typing_extensions.TypeAlias = FlushEvents
+global___FlushEvents = FlushEvents
 
 @typing.final
 class FlushEventsMsg(google.protobuf.message.Message):
@@ -9213,19 +9207,19 @@ class FlushEventsMsg(google.protobuf.message.Message):
     INFO_FIELD_NUMBER: builtins.int
     DATA_FIELD_NUMBER: builtins.int
     @property
-    def info(self) -> Global___CoreEventInfo: ...
+    def info(self) -> global___CoreEventInfo: ...
     @property
-    def data(self) -> Global___FlushEvents: ...
+    def data(self) -> global___FlushEvents: ...
     def __init__(
         self,
         *,
-        info: Global___CoreEventInfo | None = ...,
-        data: Global___FlushEvents | None = ...,
+        info: global___CoreEventInfo | None = ...,
+        data: global___FlushEvents | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> None: ...
 
-Global___FlushEventsMsg: typing_extensions.TypeAlias = FlushEventsMsg
+global___FlushEventsMsg = FlushEventsMsg
 
 @typing.final
 class FlushEventsFailure(google.protobuf.message.Message):
@@ -9237,7 +9231,7 @@ class FlushEventsFailure(google.protobuf.message.Message):
         self,
     ) -> None: ...
 
-Global___FlushEventsFailure: typing_extensions.TypeAlias = FlushEventsFailure
+global___FlushEventsFailure = FlushEventsFailure
 
 @typing.final
 class FlushEventsFailureMsg(google.protobuf.message.Message):
@@ -9246,19 +9240,19 @@ class FlushEventsFailureMsg(google.protobuf.message.Message):
     INFO_FIELD_NUMBER: builtins.int
     DATA_FIELD_NUMBER: builtins.int
     @property
-    def info(self) -> Global___CoreEventInfo: ...
+    def info(self) -> global___CoreEventInfo: ...
     @property
-    def data(self) -> Global___FlushEventsFailure: ...
+    def data(self) -> global___FlushEventsFailure: ...
     def __init__(
         self,
         *,
-        info: Global___CoreEventInfo | None = ...,
-        data: Global___FlushEventsFailure | None = ...,
+        info: global___CoreEventInfo | None = ...,
+        data: global___FlushEventsFailure | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> None: ...
 
-Global___FlushEventsFailureMsg: typing_extensions.TypeAlias = FlushEventsFailureMsg
+global___FlushEventsFailureMsg = FlushEventsFailureMsg
 
 @typing.final
 class TrackingInitializeFailure(google.protobuf.message.Message):
@@ -9275,7 +9269,7 @@ class TrackingInitializeFailure(google.protobuf.message.Message):
     ) -> None: ...
     def ClearField(self, field_name: typing.Literal["exc_info", b"exc_info"]) -> None: ...
 
-Global___TrackingInitializeFailure: typing_extensions.TypeAlias = TrackingInitializeFailure
+global___TrackingInitializeFailure = TrackingInitializeFailure
 
 @typing.final
 class TrackingInitializeFailureMsg(google.protobuf.message.Message):
@@ -9284,19 +9278,19 @@ class TrackingInitializeFailureMsg(google.protobuf.message.Message):
     INFO_FIELD_NUMBER: builtins.int
     DATA_FIELD_NUMBER: builtins.int
     @property
-    def info(self) -> Global___CoreEventInfo: ...
+    def info(self) -> global___CoreEventInfo: ...
     @property
-    def data(self) -> Global___TrackingInitializeFailure: ...
+    def data(self) -> global___TrackingInitializeFailure: ...
     def __init__(
         self,
         *,
-        info: Global___CoreEventInfo | None = ...,
-        data: Global___TrackingInitializeFailure | None = ...,
+        info: global___CoreEventInfo | None = ...,
+        data: global___TrackingInitializeFailure | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> None: ...
 
-Global___TrackingInitializeFailureMsg: typing_extensions.TypeAlias = TrackingInitializeFailureMsg
+global___TrackingInitializeFailureMsg = TrackingInitializeFailureMsg
 
 @typing.final
 class RunResultWarningMessage(google.protobuf.message.Message):
@@ -9311,17 +9305,17 @@ class RunResultWarningMessage(google.protobuf.message.Message):
     NODE_INFO_FIELD_NUMBER: builtins.int
     msg: builtins.str
     @property
-    def node_info(self) -> Global___NodeInfo: ...
+    def node_info(self) -> global___NodeInfo: ...
     def __init__(
         self,
         *,
         msg: builtins.str = ...,
-        node_info: Global___NodeInfo | None = ...,
+        node_info: global___NodeInfo | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["node_info", b"node_info"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["msg", b"msg", "node_info", b"node_info"]) -> None: ...
 
-Global___RunResultWarningMessage: typing_extensions.TypeAlias = RunResultWarningMessage
+global___RunResultWarningMessage = RunResultWarningMessage
 
 @typing.final
 class RunResultWarningMessageMsg(google.protobuf.message.Message):
@@ -9330,19 +9324,19 @@ class RunResultWarningMessageMsg(google.protobuf.message.Message):
     INFO_FIELD_NUMBER: builtins.int
     DATA_FIELD_NUMBER: builtins.int
     @property
-    def info(self) -> Global___CoreEventInfo: ...
+    def info(self) -> global___CoreEventInfo: ...
     @property
-    def data(self) -> Global___RunResultWarningMessage: ...
+    def data(self) -> global___RunResultWarningMessage: ...
     def __init__(
         self,
         *,
-        info: Global___CoreEventInfo | None = ...,
-        data: Global___RunResultWarningMessage | None = ...,
+        info: global___CoreEventInfo | None = ...,
+        data: global___RunResultWarningMessage | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> None: ...
 
-Global___RunResultWarningMessageMsg: typing_extensions.TypeAlias = RunResultWarningMessageMsg
+global___RunResultWarningMessageMsg = RunResultWarningMessageMsg
 
 @typing.final
 class DebugCmdOut(google.protobuf.message.Message):
@@ -9359,7 +9353,7 @@ class DebugCmdOut(google.protobuf.message.Message):
     ) -> None: ...
     def ClearField(self, field_name: typing.Literal["msg", b"msg"]) -> None: ...
 
-Global___DebugCmdOut: typing_extensions.TypeAlias = DebugCmdOut
+global___DebugCmdOut = DebugCmdOut
 
 @typing.final
 class DebugCmdOutMsg(google.protobuf.message.Message):
@@ -9368,19 +9362,19 @@ class DebugCmdOutMsg(google.protobuf.message.Message):
     INFO_FIELD_NUMBER: builtins.int
     DATA_FIELD_NUMBER: builtins.int
     @property
-    def info(self) -> Global___CoreEventInfo: ...
+    def info(self) -> global___CoreEventInfo: ...
     @property
-    def data(self) -> Global___DebugCmdOut: ...
+    def data(self) -> global___DebugCmdOut: ...
     def __init__(
         self,
         *,
-        info: Global___CoreEventInfo | None = ...,
-        data: Global___DebugCmdOut | None = ...,
+        info: global___CoreEventInfo | None = ...,
+        data: global___DebugCmdOut | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> None: ...
 
-Global___DebugCmdOutMsg: typing_extensions.TypeAlias = DebugCmdOutMsg
+global___DebugCmdOutMsg = DebugCmdOutMsg
 
 @typing.final
 class DebugCmdResult(google.protobuf.message.Message):
@@ -9397,7 +9391,7 @@ class DebugCmdResult(google.protobuf.message.Message):
     ) -> None: ...
     def ClearField(self, field_name: typing.Literal["msg", b"msg"]) -> None: ...
 
-Global___DebugCmdResult: typing_extensions.TypeAlias = DebugCmdResult
+global___DebugCmdResult = DebugCmdResult
 
 @typing.final
 class DebugCmdResultMsg(google.protobuf.message.Message):
@@ -9406,19 +9400,19 @@ class DebugCmdResultMsg(google.protobuf.message.Message):
     INFO_FIELD_NUMBER: builtins.int
     DATA_FIELD_NUMBER: builtins.int
     @property
-    def info(self) -> Global___CoreEventInfo: ...
+    def info(self) -> global___CoreEventInfo: ...
     @property
-    def data(self) -> Global___DebugCmdResult: ...
+    def data(self) -> global___DebugCmdResult: ...
     def __init__(
         self,
         *,
-        info: Global___CoreEventInfo | None = ...,
-        data: Global___DebugCmdResult | None = ...,
+        info: global___CoreEventInfo | None = ...,
+        data: global___DebugCmdResult | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> None: ...
 
-Global___DebugCmdResultMsg: typing_extensions.TypeAlias = DebugCmdResultMsg
+global___DebugCmdResultMsg = DebugCmdResultMsg
 
 @typing.final
 class ListCmdOut(google.protobuf.message.Message):
@@ -9435,7 +9429,7 @@ class ListCmdOut(google.protobuf.message.Message):
     ) -> None: ...
     def ClearField(self, field_name: typing.Literal["msg", b"msg"]) -> None: ...
 
-Global___ListCmdOut: typing_extensions.TypeAlias = ListCmdOut
+global___ListCmdOut = ListCmdOut
 
 @typing.final
 class ListCmdOutMsg(google.protobuf.message.Message):
@@ -9444,19 +9438,19 @@ class ListCmdOutMsg(google.protobuf.message.Message):
     INFO_FIELD_NUMBER: builtins.int
     DATA_FIELD_NUMBER: builtins.int
     @property
-    def info(self) -> Global___CoreEventInfo: ...
+    def info(self) -> global___CoreEventInfo: ...
     @property
-    def data(self) -> Global___ListCmdOut: ...
+    def data(self) -> global___ListCmdOut: ...
     def __init__(
         self,
         *,
-        info: Global___CoreEventInfo | None = ...,
-        data: Global___ListCmdOut | None = ...,
+        info: global___CoreEventInfo | None = ...,
+        data: global___ListCmdOut | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> None: ...
 
-Global___ListCmdOutMsg: typing_extensions.TypeAlias = ListCmdOutMsg
+global___ListCmdOutMsg = ListCmdOutMsg
 
 @typing.final
 class ResourceReport(google.protobuf.message.Message):
@@ -9499,7 +9493,7 @@ class ResourceReport(google.protobuf.message.Message):
     ) -> None: ...
     def ClearField(self, field_name: typing.Literal["command_name", b"command_name", "command_success", b"command_success", "command_wall_clock_time", b"command_wall_clock_time", "process_in_blocks", b"process_in_blocks", "process_kernel_time", b"process_kernel_time", "process_mem_max_rss", b"process_mem_max_rss", "process_out_blocks", b"process_out_blocks", "process_user_time", b"process_user_time"]) -> None: ...
 
-Global___ResourceReport: typing_extensions.TypeAlias = ResourceReport
+global___ResourceReport = ResourceReport
 
 @typing.final
 class ResourceReportMsg(google.protobuf.message.Message):
@@ -9508,19 +9502,19 @@ class ResourceReportMsg(google.protobuf.message.Message):
     INFO_FIELD_NUMBER: builtins.int
     DATA_FIELD_NUMBER: builtins.int
     @property
-    def info(self) -> Global___CoreEventInfo: ...
+    def info(self) -> global___CoreEventInfo: ...
     @property
-    def data(self) -> Global___ResourceReport: ...
+    def data(self) -> global___ResourceReport: ...
     def __init__(
         self,
         *,
-        info: Global___CoreEventInfo | None = ...,
-        data: Global___ResourceReport | None = ...,
+        info: global___CoreEventInfo | None = ...,
+        data: global___ResourceReport | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> None: ...
 
-Global___ResourceReportMsg: typing_extensions.TypeAlias = ResourceReportMsg
+global___ResourceReportMsg = ResourceReportMsg
 
 @typing.final
 class ObservabilityMetric(google.protobuf.message.Message):
@@ -9547,7 +9541,7 @@ class ObservabilityMetric(google.protobuf.message.Message):
     ) -> None: ...
     def ClearField(self, field_name: typing.Literal["debug_message", b"debug_message", "label", b"label", "tags", b"tags", "value", b"value"]) -> None: ...
 
-Global___ObservabilityMetric: typing_extensions.TypeAlias = ObservabilityMetric
+global___ObservabilityMetric = ObservabilityMetric
 
 @typing.final
 class ObservabilityMetricMsg(google.protobuf.message.Message):
@@ -9556,19 +9550,19 @@ class ObservabilityMetricMsg(google.protobuf.message.Message):
     INFO_FIELD_NUMBER: builtins.int
     DATA_FIELD_NUMBER: builtins.int
     @property
-    def info(self) -> Global___CoreEventInfo: ...
+    def info(self) -> global___CoreEventInfo: ...
     @property
-    def data(self) -> Global___ObservabilityMetric: ...
+    def data(self) -> global___ObservabilityMetric: ...
     def __init__(
         self,
         *,
-        info: Global___CoreEventInfo | None = ...,
-        data: Global___ObservabilityMetric | None = ...,
+        info: global___CoreEventInfo | None = ...,
+        data: global___ObservabilityMetric | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> None: ...
 
-Global___ObservabilityMetricMsg: typing_extensions.TypeAlias = ObservabilityMetricMsg
+global___ObservabilityMetricMsg = ObservabilityMetricMsg
 
 @typing.final
 class ArtifactUploadError(google.protobuf.message.Message):
@@ -9585,7 +9579,7 @@ class ArtifactUploadError(google.protobuf.message.Message):
     ) -> None: ...
     def ClearField(self, field_name: typing.Literal["msg", b"msg"]) -> None: ...
 
-Global___ArtifactUploadError: typing_extensions.TypeAlias = ArtifactUploadError
+global___ArtifactUploadError = ArtifactUploadError
 
 @typing.final
 class ArtifactUploadErrorMsg(google.protobuf.message.Message):
@@ -9594,19 +9588,19 @@ class ArtifactUploadErrorMsg(google.protobuf.message.Message):
     INFO_FIELD_NUMBER: builtins.int
     DATA_FIELD_NUMBER: builtins.int
     @property
-    def info(self) -> Global___CoreEventInfo: ...
+    def info(self) -> global___CoreEventInfo: ...
     @property
-    def data(self) -> Global___ArtifactUploadError: ...
+    def data(self) -> global___ArtifactUploadError: ...
     def __init__(
         self,
         *,
-        info: Global___CoreEventInfo | None = ...,
-        data: Global___ArtifactUploadError | None = ...,
+        info: global___CoreEventInfo | None = ...,
+        data: global___ArtifactUploadError | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> None: ...
 
-Global___ArtifactUploadErrorMsg: typing_extensions.TypeAlias = ArtifactUploadErrorMsg
+global___ArtifactUploadErrorMsg = ArtifactUploadErrorMsg
 
 @typing.final
 class ArtifactUploadSuccess(google.protobuf.message.Message):
@@ -9623,7 +9617,7 @@ class ArtifactUploadSuccess(google.protobuf.message.Message):
     ) -> None: ...
     def ClearField(self, field_name: typing.Literal["msg", b"msg"]) -> None: ...
 
-Global___ArtifactUploadSuccess: typing_extensions.TypeAlias = ArtifactUploadSuccess
+global___ArtifactUploadSuccess = ArtifactUploadSuccess
 
 @typing.final
 class ArtifactUploadSuccessMsg(google.protobuf.message.Message):
@@ -9632,19 +9626,19 @@ class ArtifactUploadSuccessMsg(google.protobuf.message.Message):
     INFO_FIELD_NUMBER: builtins.int
     DATA_FIELD_NUMBER: builtins.int
     @property
-    def info(self) -> Global___CoreEventInfo: ...
+    def info(self) -> global___CoreEventInfo: ...
     @property
-    def data(self) -> Global___ArtifactUploadSuccess: ...
+    def data(self) -> global___ArtifactUploadSuccess: ...
     def __init__(
         self,
         *,
-        info: Global___CoreEventInfo | None = ...,
-        data: Global___ArtifactUploadSuccess | None = ...,
+        info: global___CoreEventInfo | None = ...,
+        data: global___ArtifactUploadSuccess | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> None: ...
 
-Global___ArtifactUploadSuccessMsg: typing_extensions.TypeAlias = ArtifactUploadSuccessMsg
+global___ArtifactUploadSuccessMsg = ArtifactUploadSuccessMsg
 
 @typing.final
 class ArtifactUploadSkipped(google.protobuf.message.Message):
@@ -9661,7 +9655,7 @@ class ArtifactUploadSkipped(google.protobuf.message.Message):
     ) -> None: ...
     def ClearField(self, field_name: typing.Literal["msg", b"msg"]) -> None: ...
 
-Global___ArtifactUploadSkipped: typing_extensions.TypeAlias = ArtifactUploadSkipped
+global___ArtifactUploadSkipped = ArtifactUploadSkipped
 
 @typing.final
 class ArtifactUploadSkippedMsg(google.protobuf.message.Message):
@@ -9670,19 +9664,19 @@ class ArtifactUploadSkippedMsg(google.protobuf.message.Message):
     INFO_FIELD_NUMBER: builtins.int
     DATA_FIELD_NUMBER: builtins.int
     @property
-    def info(self) -> Global___CoreEventInfo: ...
+    def info(self) -> global___CoreEventInfo: ...
     @property
-    def data(self) -> Global___ArtifactUploadSkipped: ...
+    def data(self) -> global___ArtifactUploadSkipped: ...
     def __init__(
         self,
         *,
-        info: Global___CoreEventInfo | None = ...,
-        data: Global___ArtifactUploadSkipped | None = ...,
+        info: global___CoreEventInfo | None = ...,
+        data: global___ArtifactUploadSkipped | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> None: ...
 
-Global___ArtifactUploadSkippedMsg: typing_extensions.TypeAlias = ArtifactUploadSkippedMsg
+global___ArtifactUploadSkippedMsg = ArtifactUploadSkippedMsg
 
 @typing.final
 class SelectExcludeIgnoredWithSelectorWarning(google.protobuf.message.Message):
@@ -9699,7 +9693,7 @@ class SelectExcludeIgnoredWithSelectorWarning(google.protobuf.message.Message):
     ) -> None: ...
     def ClearField(self, field_name: typing.Literal["msg", b"msg"]) -> None: ...
 
-Global___SelectExcludeIgnoredWithSelectorWarning: typing_extensions.TypeAlias = SelectExcludeIgnoredWithSelectorWarning
+global___SelectExcludeIgnoredWithSelectorWarning = SelectExcludeIgnoredWithSelectorWarning
 
 @typing.final
 class SelectExcludeIgnoredWithSelectorWarningMsg(google.protobuf.message.Message):
@@ -9708,16 +9702,16 @@ class SelectExcludeIgnoredWithSelectorWarningMsg(google.protobuf.message.Message
     INFO_FIELD_NUMBER: builtins.int
     DATA_FIELD_NUMBER: builtins.int
     @property
-    def info(self) -> Global___CoreEventInfo: ...
+    def info(self) -> global___CoreEventInfo: ...
     @property
-    def data(self) -> Global___SelectExcludeIgnoredWithSelectorWarning: ...
+    def data(self) -> global___SelectExcludeIgnoredWithSelectorWarning: ...
     def __init__(
         self,
         *,
-        info: Global___CoreEventInfo | None = ...,
-        data: Global___SelectExcludeIgnoredWithSelectorWarning | None = ...,
+        info: global___CoreEventInfo | None = ...,
+        data: global___SelectExcludeIgnoredWithSelectorWarning | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> None: ...
 
-Global___SelectExcludeIgnoredWithSelectorWarningMsg: typing_extensions.TypeAlias = SelectExcludeIgnoredWithSelectorWarningMsg
+global___SelectExcludeIgnoredWithSelectorWarningMsg = SelectExcludeIgnoredWithSelectorWarningMsg

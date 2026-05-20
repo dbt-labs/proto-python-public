@@ -8,13 +8,7 @@ import dbtlabs.proto.public.v1.common.vortex_telemetry_contexts_pb2
 import dbtlabs.proto.public.v1.events.vortex_pb2
 import google.protobuf.descriptor
 import google.protobuf.message
-import sys
 import typing
-
-if sys.version_info >= (3, 10):
-    import typing as typing_extensions
-else:
-    import typing_extensions
 
 DESCRIPTOR: google.protobuf.descriptor.FileDescriptor
 
@@ -52,4 +46,4 @@ class ReadinessDebugSessionOpened(google.protobuf.message.Message):
     def HasField(self, field_name: typing.Literal["ctx", b"ctx", "enrichment", b"enrichment"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["action", b"action", "ctx", b"ctx", "enrichment", b"enrichment"]) -> None: ...
 
-Global___ReadinessDebugSessionOpened: typing_extensions.TypeAlias = ReadinessDebugSessionOpened
+global___ReadinessDebugSessionOpened = ReadinessDebugSessionOpened

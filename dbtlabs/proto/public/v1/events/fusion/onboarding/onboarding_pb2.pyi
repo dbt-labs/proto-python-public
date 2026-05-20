@@ -66,7 +66,7 @@ ONBOARDING_SCREEN_TRY_AGENTIC_AUTOFIX: OnboardingScreen.ValueType  # 16
 ONBOARDING_SCREEN_DOWNLOAD_AGENTS_MD: OnboardingScreen.ValueType  # 17
 ONBOARDING_SCREEN_COMPILE_SA_BASELINE: OnboardingScreen.ValueType  # 18
 ONBOARDING_SCREEN_COMPILE_SA_BASELINE_SUCCESS: OnboardingScreen.ValueType  # 19
-Global___OnboardingScreen: typing_extensions.TypeAlias = OnboardingScreen
+global___OnboardingScreen = OnboardingScreen
 
 @typing.final
 class OnboardingScreenShown(google.protobuf.message.Message):
@@ -75,13 +75,13 @@ class OnboardingScreenShown(google.protobuf.message.Message):
     DESCRIPTOR: google.protobuf.descriptor.Descriptor
 
     SCREEN_FIELD_NUMBER: builtins.int
-    screen: Global___OnboardingScreen.ValueType
+    screen: global___OnboardingScreen.ValueType
     """Onboarding screen identifier"""
     def __init__(
         self,
         *,
-        screen: Global___OnboardingScreen.ValueType = ...,
+        screen: global___OnboardingScreen.ValueType = ...,
     ) -> None: ...
     def ClearField(self, field_name: typing.Literal["screen", b"screen"]) -> None: ...
 
-Global___OnboardingScreenShown: typing_extensions.TypeAlias = OnboardingScreenShown
+global___OnboardingScreenShown = OnboardingScreenShown

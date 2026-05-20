@@ -37,7 +37,7 @@ class BeaconSplitPaneViewKind(_BeaconSplitPaneViewKind, metaclass=_BeaconSplitPa
 BEACON_SPLIT_PANE_VIEW_KIND_UNSPECIFIED: BeaconSplitPaneViewKind.ValueType  # 0
 BEACON_SPLIT_PANE_VIEW_KIND_DIFF: BeaconSplitPaneViewKind.ValueType  # 1
 BEACON_SPLIT_PANE_VIEW_KIND_CANVAS: BeaconSplitPaneViewKind.ValueType  # 2
-Global___BeaconSplitPaneViewKind: typing_extensions.TypeAlias = BeaconSplitPaneViewKind
+global___BeaconSplitPaneViewKind = BeaconSplitPaneViewKind
 
 class _BeaconSplitPaneOpenSource:
     ValueType = typing.NewType("ValueType", builtins.int)
@@ -59,7 +59,7 @@ BEACON_SPLIT_PANE_OPEN_SOURCE_DIFF_MESSAGE: BeaconSplitPaneOpenSource.ValueType 
 """The "Open" button on the in-chat DiffMessage."""
 BEACON_SPLIT_PANE_OPEN_SOURCE_CANVAS_CTA: BeaconSplitPaneOpenSource.ValueType  # 2
 """An "Open in Canvas" CTA in chat (e.g. on a model preview / handoff card)."""
-Global___BeaconSplitPaneOpenSource: typing_extensions.TypeAlias = BeaconSplitPaneOpenSource
+global___BeaconSplitPaneOpenSource = BeaconSplitPaneOpenSource
 
 @typing.final
 class BeaconSplitPaneOpened(google.protobuf.message.Message):
@@ -74,9 +74,9 @@ class BeaconSplitPaneOpened(google.protobuf.message.Message):
     VIEW_KIND_FIELD_NUMBER: builtins.int
     SOURCE_FIELD_NUMBER: builtins.int
     FILE_PATH_FIELD_NUMBER: builtins.int
-    view_kind: Global___BeaconSplitPaneViewKind.ValueType
+    view_kind: global___BeaconSplitPaneViewKind.ValueType
     """Which view was opened."""
-    source: Global___BeaconSplitPaneOpenSource.ValueType
+    source: global___BeaconSplitPaneOpenSource.ValueType
     """What surface triggered the open."""
     file_path: builtins.str
     """dbt project file path shown in the pane (for diff view; empty for views
@@ -91,14 +91,14 @@ class BeaconSplitPaneOpened(google.protobuf.message.Message):
         *,
         enrichment: dbtlabs.proto.public.v1.events.vortex_pb2.VortexMessageEnrichment | None = ...,
         ctx: dbtlabs.proto.public.v1.common.vortex_telemetry_contexts_pb2.VortexTelemetryDbtCloudContext | None = ...,
-        view_kind: Global___BeaconSplitPaneViewKind.ValueType = ...,
-        source: Global___BeaconSplitPaneOpenSource.ValueType = ...,
+        view_kind: global___BeaconSplitPaneViewKind.ValueType = ...,
+        source: global___BeaconSplitPaneOpenSource.ValueType = ...,
         file_path: builtins.str = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["ctx", b"ctx", "enrichment", b"enrichment"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["ctx", b"ctx", "enrichment", b"enrichment", "file_path", b"file_path", "source", b"source", "view_kind", b"view_kind"]) -> None: ...
 
-Global___BeaconSplitPaneOpened: typing_extensions.TypeAlias = BeaconSplitPaneOpened
+global___BeaconSplitPaneOpened = BeaconSplitPaneOpened
 
 @typing.final
 class BeaconSplitPaneClosed(google.protobuf.message.Message):
@@ -109,7 +109,7 @@ class BeaconSplitPaneClosed(google.protobuf.message.Message):
     ENRICHMENT_FIELD_NUMBER: builtins.int
     CTX_FIELD_NUMBER: builtins.int
     VIEW_KIND_FIELD_NUMBER: builtins.int
-    view_kind: Global___BeaconSplitPaneViewKind.ValueType
+    view_kind: global___BeaconSplitPaneViewKind.ValueType
     """Which view was active when the user closed the pane."""
     @property
     def enrichment(self) -> dbtlabs.proto.public.v1.events.vortex_pb2.VortexMessageEnrichment: ...
@@ -120,12 +120,12 @@ class BeaconSplitPaneClosed(google.protobuf.message.Message):
         *,
         enrichment: dbtlabs.proto.public.v1.events.vortex_pb2.VortexMessageEnrichment | None = ...,
         ctx: dbtlabs.proto.public.v1.common.vortex_telemetry_contexts_pb2.VortexTelemetryDbtCloudContext | None = ...,
-        view_kind: Global___BeaconSplitPaneViewKind.ValueType = ...,
+        view_kind: global___BeaconSplitPaneViewKind.ValueType = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["ctx", b"ctx", "enrichment", b"enrichment"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["ctx", b"ctx", "enrichment", b"enrichment", "view_kind", b"view_kind"]) -> None: ...
 
-Global___BeaconSplitPaneClosed: typing_extensions.TypeAlias = BeaconSplitPaneClosed
+global___BeaconSplitPaneClosed = BeaconSplitPaneClosed
 
 @typing.final
 class BeaconSplitPaneViewToggled(google.protobuf.message.Message):
@@ -139,9 +139,9 @@ class BeaconSplitPaneViewToggled(google.protobuf.message.Message):
     CTX_FIELD_NUMBER: builtins.int
     FROM_VIEW_KIND_FIELD_NUMBER: builtins.int
     TO_VIEW_KIND_FIELD_NUMBER: builtins.int
-    from_view_kind: Global___BeaconSplitPaneViewKind.ValueType
+    from_view_kind: global___BeaconSplitPaneViewKind.ValueType
     """The view that was active before the toggle."""
-    to_view_kind: Global___BeaconSplitPaneViewKind.ValueType
+    to_view_kind: global___BeaconSplitPaneViewKind.ValueType
     """The view the user toggled to."""
     @property
     def enrichment(self) -> dbtlabs.proto.public.v1.events.vortex_pb2.VortexMessageEnrichment: ...
@@ -152,10 +152,10 @@ class BeaconSplitPaneViewToggled(google.protobuf.message.Message):
         *,
         enrichment: dbtlabs.proto.public.v1.events.vortex_pb2.VortexMessageEnrichment | None = ...,
         ctx: dbtlabs.proto.public.v1.common.vortex_telemetry_contexts_pb2.VortexTelemetryDbtCloudContext | None = ...,
-        from_view_kind: Global___BeaconSplitPaneViewKind.ValueType = ...,
-        to_view_kind: Global___BeaconSplitPaneViewKind.ValueType = ...,
+        from_view_kind: global___BeaconSplitPaneViewKind.ValueType = ...,
+        to_view_kind: global___BeaconSplitPaneViewKind.ValueType = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["ctx", b"ctx", "enrichment", b"enrichment"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["ctx", b"ctx", "enrichment", b"enrichment", "from_view_kind", b"from_view_kind", "to_view_kind", b"to_view_kind"]) -> None: ...
 
-Global___BeaconSplitPaneViewToggled: typing_extensions.TypeAlias = BeaconSplitPaneViewToggled
+global___BeaconSplitPaneViewToggled = BeaconSplitPaneViewToggled

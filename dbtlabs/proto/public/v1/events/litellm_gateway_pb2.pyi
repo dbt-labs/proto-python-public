@@ -8,13 +8,7 @@ import dbtlabs.proto.public.v1.events.vortex_pb2
 import google.protobuf.descriptor
 import google.protobuf.message
 import google.protobuf.timestamp_pb2
-import sys
 import typing
-
-if sys.version_info >= (3, 10):
-    import typing as typing_extensions
-else:
-    import typing_extensions
 
 DESCRIPTOR: google.protobuf.descriptor.FileDescriptor
 
@@ -41,40 +35,40 @@ class LiteLlmRequestCompleted(google.protobuf.message.Message):
     @property
     def enrichment(self) -> dbtlabs.proto.public.v1.events.vortex_pb2.VortexMessageEnrichment: ...
     @property
-    def actor(self) -> Global___LiteLlmActor: ...
+    def actor(self) -> global___LiteLlmActor: ...
     @property
     def occurred_at(self) -> google.protobuf.timestamp_pb2.Timestamp: ...
     @property
-    def request(self) -> Global___LiteLlmRequest: ...
+    def request(self) -> global___LiteLlmRequest: ...
     @property
-    def model(self) -> Global___LiteLlmModel: ...
+    def model(self) -> global___LiteLlmModel: ...
     @property
-    def latency(self) -> Global___LiteLlmLatency: ...
+    def latency(self) -> global___LiteLlmLatency: ...
     @property
-    def usage(self) -> Global___LiteLlmUsage: ...
+    def usage(self) -> global___LiteLlmUsage: ...
     @property
-    def error(self) -> Global___LiteLlmError:
+    def error(self) -> global___LiteLlmError:
         """Populated only on failure events."""
 
     def __init__(
         self,
         *,
         enrichment: dbtlabs.proto.public.v1.events.vortex_pb2.VortexMessageEnrichment | None = ...,
-        actor: Global___LiteLlmActor | None = ...,
+        actor: global___LiteLlmActor | None = ...,
         event_type: builtins.str = ...,
         installation_id: builtins.str = ...,
         occurred_at: google.protobuf.timestamp_pb2.Timestamp | None = ...,
-        request: Global___LiteLlmRequest | None = ...,
-        model: Global___LiteLlmModel | None = ...,
-        latency: Global___LiteLlmLatency | None = ...,
-        usage: Global___LiteLlmUsage | None = ...,
-        error: Global___LiteLlmError | None = ...,
+        request: global___LiteLlmRequest | None = ...,
+        model: global___LiteLlmModel | None = ...,
+        latency: global___LiteLlmLatency | None = ...,
+        usage: global___LiteLlmUsage | None = ...,
+        error: global___LiteLlmError | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["_error", b"_error", "actor", b"actor", "enrichment", b"enrichment", "error", b"error", "latency", b"latency", "model", b"model", "occurred_at", b"occurred_at", "request", b"request", "usage", b"usage"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["_error", b"_error", "actor", b"actor", "enrichment", b"enrichment", "error", b"error", "event_type", b"event_type", "installation_id", b"installation_id", "latency", b"latency", "model", b"model", "occurred_at", b"occurred_at", "request", b"request", "usage", b"usage"]) -> None: ...
     def WhichOneof(self, oneof_group: typing.Literal["_error", b"_error"]) -> typing.Literal["error"] | None: ...
 
-Global___LiteLlmRequestCompleted: typing_extensions.TypeAlias = LiteLlmRequestCompleted
+global___LiteLlmRequestCompleted = LiteLlmRequestCompleted
 
 @typing.final
 class LiteLlmActor(google.protobuf.message.Message):
@@ -109,7 +103,7 @@ class LiteLlmActor(google.protobuf.message.Message):
     @typing.overload
     def WhichOneof(self, oneof_group: typing.Literal["_user_id", b"_user_id"]) -> typing.Literal["user_id"] | None: ...
 
-Global___LiteLlmActor: typing_extensions.TypeAlias = LiteLlmActor
+global___LiteLlmActor = LiteLlmActor
 
 @typing.final
 class LiteLlmRequest(google.protobuf.message.Message):
@@ -145,7 +139,7 @@ class LiteLlmRequest(google.protobuf.message.Message):
     ) -> None: ...
     def ClearField(self, field_name: typing.Literal["call_type", b"call_type", "id", b"id", "litellm_call_id", b"litellm_call_id", "status", b"status", "stream", b"stream", "trace_id", b"trace_id"]) -> None: ...
 
-Global___LiteLlmRequest: typing_extensions.TypeAlias = LiteLlmRequest
+global___LiteLlmRequest = LiteLlmRequest
 
 @typing.final
 class LiteLlmModel(google.protobuf.message.Message):
@@ -179,7 +173,7 @@ class LiteLlmModel(google.protobuf.message.Message):
     def ClearField(self, field_name: typing.Literal["_api_base", b"_api_base", "api_base", b"api_base", "model_group", b"model_group", "model_id", b"model_id", "provider", b"provider", "requested_model", b"requested_model"]) -> None: ...
     def WhichOneof(self, oneof_group: typing.Literal["_api_base", b"_api_base"]) -> typing.Literal["api_base"] | None: ...
 
-Global___LiteLlmModel: typing_extensions.TypeAlias = LiteLlmModel
+global___LiteLlmModel = LiteLlmModel
 
 @typing.final
 class LiteLlmLatency(google.protobuf.message.Message):
@@ -203,7 +197,7 @@ class LiteLlmLatency(google.protobuf.message.Message):
     ) -> None: ...
     def ClearField(self, field_name: typing.Literal["end_time", b"end_time", "response_time_seconds", b"response_time_seconds", "start_time", b"start_time"]) -> None: ...
 
-Global___LiteLlmLatency: typing_extensions.TypeAlias = LiteLlmLatency
+global___LiteLlmLatency = LiteLlmLatency
 
 @typing.final
 class LiteLlmUsage(google.protobuf.message.Message):
@@ -236,7 +230,7 @@ class LiteLlmUsage(google.protobuf.message.Message):
     ) -> None: ...
     def ClearField(self, field_name: typing.Literal["cache_creation_input_tokens", b"cache_creation_input_tokens", "cache_read_input_tokens", b"cache_read_input_tokens", "cached_tokens", b"cached_tokens", "completion_tokens", b"completion_tokens", "prompt_tokens", b"prompt_tokens", "total_tokens", b"total_tokens"]) -> None: ...
 
-Global___LiteLlmUsage: typing_extensions.TypeAlias = LiteLlmUsage
+global___LiteLlmUsage = LiteLlmUsage
 
 @typing.final
 class LiteLlmError(google.protobuf.message.Message):
@@ -273,4 +267,4 @@ class LiteLlmError(google.protobuf.message.Message):
     @typing.overload
     def WhichOneof(self, oneof_group: typing.Literal["_llm_provider", b"_llm_provider"]) -> typing.Literal["llm_provider"] | None: ...
 
-Global___LiteLlmError: typing_extensions.TypeAlias = LiteLlmError
+global___LiteLlmError = LiteLlmError

@@ -6,13 +6,7 @@ isort:skip_file
 import builtins
 import google.protobuf.descriptor
 import google.protobuf.message
-import sys
 import typing
-
-if sys.version_info >= (3, 10):
-    import typing as typing_extensions
-else:
-    import typing_extensions
 
 DESCRIPTOR: google.protobuf.descriptor.FileDescriptor
 
@@ -48,7 +42,7 @@ class CompiledCode(google.protobuf.message.Message):
     ) -> None: ...
     def ClearField(self, field_name: typing.Literal["node_name", b"node_name", "relative_path", b"relative_path", "sql", b"sql", "unique_id", b"unique_id"]) -> None: ...
 
-Global___CompiledCode: typing_extensions.TypeAlias = CompiledCode
+global___CompiledCode = CompiledCode
 
 @typing.final
 class CompiledCodeInline(google.protobuf.message.Message):
@@ -65,4 +59,4 @@ class CompiledCodeInline(google.protobuf.message.Message):
     ) -> None: ...
     def ClearField(self, field_name: typing.Literal["sql", b"sql"]) -> None: ...
 
-Global___CompiledCodeInline: typing_extensions.TypeAlias = CompiledCodeInline
+global___CompiledCodeInline = CompiledCodeInline

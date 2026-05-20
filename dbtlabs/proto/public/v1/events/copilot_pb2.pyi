@@ -8,13 +8,7 @@ import dbtlabs.proto.public.v1.common.vortex_telemetry_contexts_pb2
 import dbtlabs.proto.public.v1.events.vortex_pb2
 import google.protobuf.descriptor
 import google.protobuf.message
-import sys
 import typing
-
-if sys.version_info >= (3, 10):
-    import typing as typing_extensions
-else:
-    import typing_extensions
 
 DESCRIPTOR: google.protobuf.descriptor.FileDescriptor
 
@@ -57,6 +51,7 @@ class CopilotGenerationComplete(google.protobuf.message.Message):
     CACHE_CREATION_INPUT_TOKENS_FIELD_NUMBER: builtins.int
     CACHE_READ_INPUT_TOKENS_FIELD_NUMBER: builtins.int
     REASONING_OUTPUT_TOKENS_FIELD_NUMBER: builtins.int
+    FIRST_TOKEN_MS_FIELD_NUMBER: builtins.int
     copilot_request_id: builtins.str
     """Unique identifier for this generation request; natural dedup key"""
     thread_id: builtins.str
@@ -101,6 +96,8 @@ class CopilotGenerationComplete(google.protobuf.message.Message):
     """Input tokens served from prompt cache (cache hit)"""
     reasoning_output_tokens: builtins.int
     """Chain-of-thought tokens not included in the response"""
+    first_token_ms: builtins.int
+    """Time to first token in milliseconds. Null when not streaming."""
     @property
     def enrichment(self) -> dbtlabs.proto.public.v1.events.vortex_pb2.VortexMessageEnrichment:
         """Server enrichment for this event"""
@@ -136,15 +133,18 @@ class CopilotGenerationComplete(google.protobuf.message.Message):
         cache_creation_input_tokens: builtins.int | None = ...,
         cache_read_input_tokens: builtins.int | None = ...,
         reasoning_output_tokens: builtins.int | None = ...,
+        first_token_ms: builtins.int | None = ...,
     ) -> None: ...
-    def HasField(self, field_name: typing.Literal["_cache_creation_input_tokens", b"_cache_creation_input_tokens", "_cache_read_input_tokens", b"_cache_read_input_tokens", "_error_message", b"_error_message", "_ide_session_id", b"_ide_session_id", "_latency_ms", b"_latency_ms", "_reasoning_output_tokens", b"_reasoning_output_tokens", "_tokens_in_prompt", b"_tokens_in_prompt", "_tokens_in_response", b"_tokens_in_response", "_tokens_total", b"_tokens_total", "cache_creation_input_tokens", b"cache_creation_input_tokens", "cache_read_input_tokens", b"cache_read_input_tokens", "ctx", b"ctx", "enrichment", b"enrichment", "error_message", b"error_message", "ide_session_id", b"ide_session_id", "latency_ms", b"latency_ms", "reasoning_output_tokens", b"reasoning_output_tokens", "tokens_in_prompt", b"tokens_in_prompt", "tokens_in_response", b"tokens_in_response", "tokens_total", b"tokens_total"]) -> builtins.bool: ...
-    def ClearField(self, field_name: typing.Literal["_cache_creation_input_tokens", b"_cache_creation_input_tokens", "_cache_read_input_tokens", b"_cache_read_input_tokens", "_error_message", b"_error_message", "_ide_session_id", b"_ide_session_id", "_latency_ms", b"_latency_ms", "_reasoning_output_tokens", b"_reasoning_output_tokens", "_tokens_in_prompt", b"_tokens_in_prompt", "_tokens_in_response", b"_tokens_in_response", "_tokens_total", b"_tokens_total", "app_name", b"app_name", "cache_creation_input_tokens", b"cache_creation_input_tokens", "cache_read_input_tokens", b"cache_read_input_tokens", "copilot_action", b"copilot_action", "copilot_request_id", b"copilot_request_id", "copilot_trigger", b"copilot_trigger", "ctx", b"ctx", "enrichment", b"enrichment", "error_message", b"error_message", "has_custom_styleguide", b"has_custom_styleguide", "has_error", b"has_error", "ide_session_id", b"ide_session_id", "key_type", b"key_type", "latency_ms", b"latency_ms", "model_provider", b"model_provider", "model_version", b"model_version", "prompt_name", b"prompt_name", "prompt_variation", b"prompt_variation", "prompt_version", b"prompt_version", "reasoning_output_tokens", b"reasoning_output_tokens", "thread_id", b"thread_id", "tokens_in_prompt", b"tokens_in_prompt", "tokens_in_response", b"tokens_in_response", "tokens_total", b"tokens_total"]) -> None: ...
+    def HasField(self, field_name: typing.Literal["_cache_creation_input_tokens", b"_cache_creation_input_tokens", "_cache_read_input_tokens", b"_cache_read_input_tokens", "_error_message", b"_error_message", "_first_token_ms", b"_first_token_ms", "_ide_session_id", b"_ide_session_id", "_latency_ms", b"_latency_ms", "_reasoning_output_tokens", b"_reasoning_output_tokens", "_tokens_in_prompt", b"_tokens_in_prompt", "_tokens_in_response", b"_tokens_in_response", "_tokens_total", b"_tokens_total", "cache_creation_input_tokens", b"cache_creation_input_tokens", "cache_read_input_tokens", b"cache_read_input_tokens", "ctx", b"ctx", "enrichment", b"enrichment", "error_message", b"error_message", "first_token_ms", b"first_token_ms", "ide_session_id", b"ide_session_id", "latency_ms", b"latency_ms", "reasoning_output_tokens", b"reasoning_output_tokens", "tokens_in_prompt", b"tokens_in_prompt", "tokens_in_response", b"tokens_in_response", "tokens_total", b"tokens_total"]) -> builtins.bool: ...
+    def ClearField(self, field_name: typing.Literal["_cache_creation_input_tokens", b"_cache_creation_input_tokens", "_cache_read_input_tokens", b"_cache_read_input_tokens", "_error_message", b"_error_message", "_first_token_ms", b"_first_token_ms", "_ide_session_id", b"_ide_session_id", "_latency_ms", b"_latency_ms", "_reasoning_output_tokens", b"_reasoning_output_tokens", "_tokens_in_prompt", b"_tokens_in_prompt", "_tokens_in_response", b"_tokens_in_response", "_tokens_total", b"_tokens_total", "app_name", b"app_name", "cache_creation_input_tokens", b"cache_creation_input_tokens", "cache_read_input_tokens", b"cache_read_input_tokens", "copilot_action", b"copilot_action", "copilot_request_id", b"copilot_request_id", "copilot_trigger", b"copilot_trigger", "ctx", b"ctx", "enrichment", b"enrichment", "error_message", b"error_message", "first_token_ms", b"first_token_ms", "has_custom_styleguide", b"has_custom_styleguide", "has_error", b"has_error", "ide_session_id", b"ide_session_id", "key_type", b"key_type", "latency_ms", b"latency_ms", "model_provider", b"model_provider", "model_version", b"model_version", "prompt_name", b"prompt_name", "prompt_variation", b"prompt_variation", "prompt_version", b"prompt_version", "reasoning_output_tokens", b"reasoning_output_tokens", "thread_id", b"thread_id", "tokens_in_prompt", b"tokens_in_prompt", "tokens_in_response", b"tokens_in_response", "tokens_total", b"tokens_total"]) -> None: ...
     @typing.overload
     def WhichOneof(self, oneof_group: typing.Literal["_cache_creation_input_tokens", b"_cache_creation_input_tokens"]) -> typing.Literal["cache_creation_input_tokens"] | None: ...
     @typing.overload
     def WhichOneof(self, oneof_group: typing.Literal["_cache_read_input_tokens", b"_cache_read_input_tokens"]) -> typing.Literal["cache_read_input_tokens"] | None: ...
     @typing.overload
     def WhichOneof(self, oneof_group: typing.Literal["_error_message", b"_error_message"]) -> typing.Literal["error_message"] | None: ...
+    @typing.overload
+    def WhichOneof(self, oneof_group: typing.Literal["_first_token_ms", b"_first_token_ms"]) -> typing.Literal["first_token_ms"] | None: ...
     @typing.overload
     def WhichOneof(self, oneof_group: typing.Literal["_ide_session_id", b"_ide_session_id"]) -> typing.Literal["ide_session_id"] | None: ...
     @typing.overload
@@ -158,7 +158,7 @@ class CopilotGenerationComplete(google.protobuf.message.Message):
     @typing.overload
     def WhichOneof(self, oneof_group: typing.Literal["_tokens_total", b"_tokens_total"]) -> typing.Literal["tokens_total"] | None: ...
 
-Global___CopilotGenerationComplete: typing_extensions.TypeAlias = CopilotGenerationComplete
+global___CopilotGenerationComplete = CopilotGenerationComplete
 
 @typing.final
 class CopilotLlmCall(google.protobuf.message.Message):
@@ -187,6 +187,7 @@ class CopilotLlmCall(google.protobuf.message.Message):
     CACHE_CREATION_INPUT_TOKENS_FIELD_NUMBER: builtins.int
     CACHE_READ_INPUT_TOKENS_FIELD_NUMBER: builtins.int
     REASONING_OUTPUT_TOKENS_FIELD_NUMBER: builtins.int
+    FIRST_TOKEN_MS_FIELD_NUMBER: builtins.int
     copilot_request_id: builtins.str
     """Identifies the parent agent run; foreign key to CopilotGenerationComplete"""
     thread_id: builtins.str
@@ -222,6 +223,8 @@ class CopilotLlmCall(google.protobuf.message.Message):
     """Input tokens served from prompt cache (cache hit)"""
     reasoning_output_tokens: builtins.int
     """Chain-of-thought tokens not included in the response"""
+    first_token_ms: builtins.int
+    """Time to first token in milliseconds. Null when not streaming."""
     @property
     def enrichment(self) -> dbtlabs.proto.public.v1.events.vortex_pb2.VortexMessageEnrichment:
         """Server enrichment for this event"""
@@ -250,15 +253,18 @@ class CopilotLlmCall(google.protobuf.message.Message):
         cache_creation_input_tokens: builtins.int | None = ...,
         cache_read_input_tokens: builtins.int | None = ...,
         reasoning_output_tokens: builtins.int | None = ...,
+        first_token_ms: builtins.int | None = ...,
     ) -> None: ...
-    def HasField(self, field_name: typing.Literal["_cache_creation_input_tokens", b"_cache_creation_input_tokens", "_cache_read_input_tokens", b"_cache_read_input_tokens", "_call_index", b"_call_index", "_latency_ms", b"_latency_ms", "_reasoning_output_tokens", b"_reasoning_output_tokens", "_tokens_input", b"_tokens_input", "_tokens_output", b"_tokens_output", "_tokens_total", b"_tokens_total", "cache_creation_input_tokens", b"cache_creation_input_tokens", "cache_read_input_tokens", b"cache_read_input_tokens", "call_index", b"call_index", "ctx", b"ctx", "enrichment", b"enrichment", "latency_ms", b"latency_ms", "reasoning_output_tokens", b"reasoning_output_tokens", "tokens_input", b"tokens_input", "tokens_output", b"tokens_output", "tokens_total", b"tokens_total"]) -> builtins.bool: ...
-    def ClearField(self, field_name: typing.Literal["_cache_creation_input_tokens", b"_cache_creation_input_tokens", "_cache_read_input_tokens", b"_cache_read_input_tokens", "_call_index", b"_call_index", "_latency_ms", b"_latency_ms", "_reasoning_output_tokens", b"_reasoning_output_tokens", "_tokens_input", b"_tokens_input", "_tokens_output", b"_tokens_output", "_tokens_total", b"_tokens_total", "app_name", b"app_name", "cache_creation_input_tokens", b"cache_creation_input_tokens", "cache_read_input_tokens", b"cache_read_input_tokens", "call_index", b"call_index", "copilot_action", b"copilot_action", "copilot_request_id", b"copilot_request_id", "ctx", b"ctx", "enrichment", b"enrichment", "key_type", b"key_type", "latency_ms", b"latency_ms", "model_provider", b"model_provider", "model_version", b"model_version", "reasoning_output_tokens", b"reasoning_output_tokens", "thread_id", b"thread_id", "tokens_input", b"tokens_input", "tokens_output", b"tokens_output", "tokens_total", b"tokens_total"]) -> None: ...
+    def HasField(self, field_name: typing.Literal["_cache_creation_input_tokens", b"_cache_creation_input_tokens", "_cache_read_input_tokens", b"_cache_read_input_tokens", "_call_index", b"_call_index", "_first_token_ms", b"_first_token_ms", "_latency_ms", b"_latency_ms", "_reasoning_output_tokens", b"_reasoning_output_tokens", "_tokens_input", b"_tokens_input", "_tokens_output", b"_tokens_output", "_tokens_total", b"_tokens_total", "cache_creation_input_tokens", b"cache_creation_input_tokens", "cache_read_input_tokens", b"cache_read_input_tokens", "call_index", b"call_index", "ctx", b"ctx", "enrichment", b"enrichment", "first_token_ms", b"first_token_ms", "latency_ms", b"latency_ms", "reasoning_output_tokens", b"reasoning_output_tokens", "tokens_input", b"tokens_input", "tokens_output", b"tokens_output", "tokens_total", b"tokens_total"]) -> builtins.bool: ...
+    def ClearField(self, field_name: typing.Literal["_cache_creation_input_tokens", b"_cache_creation_input_tokens", "_cache_read_input_tokens", b"_cache_read_input_tokens", "_call_index", b"_call_index", "_first_token_ms", b"_first_token_ms", "_latency_ms", b"_latency_ms", "_reasoning_output_tokens", b"_reasoning_output_tokens", "_tokens_input", b"_tokens_input", "_tokens_output", b"_tokens_output", "_tokens_total", b"_tokens_total", "app_name", b"app_name", "cache_creation_input_tokens", b"cache_creation_input_tokens", "cache_read_input_tokens", b"cache_read_input_tokens", "call_index", b"call_index", "copilot_action", b"copilot_action", "copilot_request_id", b"copilot_request_id", "ctx", b"ctx", "enrichment", b"enrichment", "first_token_ms", b"first_token_ms", "key_type", b"key_type", "latency_ms", b"latency_ms", "model_provider", b"model_provider", "model_version", b"model_version", "reasoning_output_tokens", b"reasoning_output_tokens", "thread_id", b"thread_id", "tokens_input", b"tokens_input", "tokens_output", b"tokens_output", "tokens_total", b"tokens_total"]) -> None: ...
     @typing.overload
     def WhichOneof(self, oneof_group: typing.Literal["_cache_creation_input_tokens", b"_cache_creation_input_tokens"]) -> typing.Literal["cache_creation_input_tokens"] | None: ...
     @typing.overload
     def WhichOneof(self, oneof_group: typing.Literal["_cache_read_input_tokens", b"_cache_read_input_tokens"]) -> typing.Literal["cache_read_input_tokens"] | None: ...
     @typing.overload
     def WhichOneof(self, oneof_group: typing.Literal["_call_index", b"_call_index"]) -> typing.Literal["call_index"] | None: ...
+    @typing.overload
+    def WhichOneof(self, oneof_group: typing.Literal["_first_token_ms", b"_first_token_ms"]) -> typing.Literal["first_token_ms"] | None: ...
     @typing.overload
     def WhichOneof(self, oneof_group: typing.Literal["_latency_ms", b"_latency_ms"]) -> typing.Literal["latency_ms"] | None: ...
     @typing.overload
@@ -270,7 +276,7 @@ class CopilotLlmCall(google.protobuf.message.Message):
     @typing.overload
     def WhichOneof(self, oneof_group: typing.Literal["_tokens_total", b"_tokens_total"]) -> typing.Literal["tokens_total"] | None: ...
 
-Global___CopilotLlmCall: typing_extensions.TypeAlias = CopilotLlmCall
+global___CopilotLlmCall = CopilotLlmCall
 
 @typing.final
 class CopilotUserAcceptance(google.protobuf.message.Message):
@@ -315,4 +321,4 @@ class CopilotUserAcceptance(google.protobuf.message.Message):
     def HasField(self, field_name: typing.Literal["ctx", b"ctx", "enrichment", b"enrichment"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["copilot_request_id", b"copilot_request_id", "ctx", b"ctx", "enrichment", b"enrichment", "response_type", b"response_type", "thread_id", b"thread_id"]) -> None: ...
 
-Global___CopilotUserAcceptance: typing_extensions.TypeAlias = CopilotUserAcceptance
+global___CopilotUserAcceptance = CopilotUserAcceptance

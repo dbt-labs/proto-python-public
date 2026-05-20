@@ -51,7 +51,7 @@ USER_STATE_VERIFICATION_ERROR: UserState.ValueType  # 4
 """Error occurred during verification"""
 USER_STATE_SESSION_EXPIRED: UserState.ValueType  # 5
 """Error occurred during verification"""
-Global___UserState: typing_extensions.TypeAlias = UserState
+global___UserState = UserState
 
 class _CompileType:
     ValueType = typing.NewType("ValueType", builtins.int)
@@ -71,7 +71,7 @@ FULL: CompileType.ValueType  # 0
 """Full compile"""
 SPECULATIVE: CompileType.ValueType  # 1
 """Speculative compile"""
-Global___CompileType: typing_extensions.TypeAlias = CompileType
+global___CompileType = CompileType
 
 class _CompileCause:
     ValueType = typing.NewType("ValueType", builtins.int)
@@ -94,7 +94,7 @@ COMPILE_CAUSE_COMPILE_LSP_COMMAND: CompileCause.ValueType  # 1
 """Compile was caused by an expliict compile command sent to the LSP"""
 COMPILE_CAUSE_REFRESH_SOURCES: CompileCause.ValueType  # 2
 """Compile was caused by a request to refresh sources for a project"""
-Global___CompileCause: typing_extensions.TypeAlias = CompileCause
+global___CompileCause = CompileCause
 
 class _RegistrationTriggerMethod:
     ValueType = typing.NewType("ValueType", builtins.int)
@@ -116,7 +116,7 @@ REGISTRATION_TRIGGER_METHOD_DBT_CLOUD_YML: RegistrationTriggerMethod.ValueType  
 """Registration will use credentials from dbt_cloud.yml file"""
 REGISTRATION_TRIGGER_METHOD_WEB: RegistrationTriggerMethod.ValueType  # 2
 """Registration will proceed via web browser"""
-Global___RegistrationTriggerMethod: typing_extensions.TypeAlias = RegistrationTriggerMethod
+global___RegistrationTriggerMethod = RegistrationTriggerMethod
 
 class _CompareFailureMode:
     ValueType = typing.NewType("ValueType", builtins.int)
@@ -158,7 +158,7 @@ COMPARE_FAILURE_MODE_EMPTY_RESULTS: CompareFailureMode.ValueType  # 5
 Reported with compare_success = false so analytics can segment empty runs
 from runs that produced actual diffs; user-facing UX shows a friendly empty panel.
 """
-Global___CompareFailureMode: typing_extensions.TypeAlias = CompareFailureMode
+global___CompareFailureMode = CompareFailureMode
 
 class _RegistrationMethod:
     ValueType = typing.NewType("ValueType", builtins.int)
@@ -184,7 +184,7 @@ REGISTRATION_METHOD_OAUTH: RegistrationMethod.ValueType  # 2
 """Registration completed via OAuth flow (web)"""
 REGISTRATION_METHOD_REGISTRATION_CODE: RegistrationMethod.ValueType  # 3
 """Registration completed via registration code flow (web)"""
-Global___RegistrationMethod: typing_extensions.TypeAlias = RegistrationMethod
+global___RegistrationMethod = RegistrationMethod
 
 class _ModelDocsEnrichmentOutcome:
     ValueType = typing.NewType("ValueType", builtins.int)
@@ -210,7 +210,7 @@ MODEL_DOCS_ENRICHMENT_OUTCOME_SKIPPED_NO_MANIFEST: ModelDocsEnrichmentOutcome.Va
 MODEL_DOCS_ENRICHMENT_OUTCOME_SKIPPED_NO_CREDENTIALS: ModelDocsEnrichmentOutcome.ValueType  # 3
 MODEL_DOCS_ENRICHMENT_OUTCOME_FAILED_PROJECT_RESOLUTION: ModelDocsEnrichmentOutcome.ValueType  # 4
 MODEL_DOCS_ENRICHMENT_OUTCOME_FAILED_OTHER: ModelDocsEnrichmentOutcome.ValueType  # 5
-Global___ModelDocsEnrichmentOutcome: typing_extensions.TypeAlias = ModelDocsEnrichmentOutcome
+global___ModelDocsEnrichmentOutcome = ModelDocsEnrichmentOutcome
 
 class _LineageInteractionType:
     ValueType = typing.NewType("ValueType", builtins.int)
@@ -288,7 +288,7 @@ LINEAGE_INTERACTION_TYPE_ZOOM_OUT: LineageInteractionType.ValueType  # 12
 """User zoomed out via the toolbar"""
 LINEAGE_INTERACTION_TYPE_RESET_VIEW: LineageInteractionType.ValueType  # 13
 """User reset the graph view to fit"""
-Global___LineageInteractionType: typing_extensions.TypeAlias = LineageInteractionType
+global___LineageInteractionType = LineageInteractionType
 
 class _LineageGrain:
     ValueType = typing.NewType("ValueType", builtins.int)
@@ -310,7 +310,7 @@ LINEAGE_GRAIN_PROJECT: LineageGrain.ValueType  # 1
 """Project-level lineage (nodes are dbt resources)"""
 LINEAGE_GRAIN_COLUMN: LineageGrain.ValueType  # 2
 """Column-level lineage"""
-Global___LineageGrain: typing_extensions.TypeAlias = LineageGrain
+global___LineageGrain = LineageGrain
 
 class _GetStartedStepId:
     ValueType = typing.NewType("ValueType", builtins.int)
@@ -332,7 +332,7 @@ GET_STARTED_STEP_ID_INSTALL_FUSION: GetStartedStepId.ValueType  # 1
 GET_STARTED_STEP_ID_OPEN_PROJECT: GetStartedStepId.ValueType  # 2
 GET_STARTED_STEP_ID_CHECK_COMPATIBILITY: GetStartedStepId.ValueType  # 3
 GET_STARTED_STEP_ID_REGISTER: GetStartedStepId.ValueType  # 4
-Global___GetStartedStepId: typing_extensions.TypeAlias = GetStartedStepId
+global___GetStartedStepId = GetStartedStepId
 
 class _GetStartedStepStatus:
     ValueType = typing.NewType("ValueType", builtins.int)
@@ -352,7 +352,7 @@ GET_STARTED_STEP_STATUS_UNSPECIFIED: GetStartedStepStatus.ValueType  # 0
 GET_STARTED_STEP_STATUS_PENDING: GetStartedStepStatus.ValueType  # 1
 GET_STARTED_STEP_STATUS_IN_PROGRESS: GetStartedStepStatus.ValueType  # 2
 GET_STARTED_STEP_STATUS_COMPLETED: GetStartedStepStatus.ValueType  # 3
-Global___GetStartedStepStatus: typing_extensions.TypeAlias = GetStartedStepStatus
+global___GetStartedStepStatus = GetStartedStepStatus
 
 class _GetStartedInteractionType:
     ValueType = typing.NewType("ValueType", builtins.int)
@@ -384,7 +384,7 @@ GET_STARTED_INTERACTION_TYPE_MIGRATE_WITH_AGENT_CLICKED: GetStartedInteractionTy
 GET_STARTED_INTERACTION_TYPE_STEP_COMPLETED: GetStartedInteractionType.ValueType  # 6
 """Step state transitions"""
 GET_STARTED_INTERACTION_TYPE_ALL_STEPS_COMPLETED: GetStartedInteractionType.ValueType  # 7
-Global___GetStartedInteractionType: typing_extensions.TypeAlias = GetStartedInteractionType
+global___GetStartedInteractionType = GetStartedInteractionType
 
 class _QueryCompletionStatus:
     ValueType = typing.NewType("ValueType", builtins.int)
@@ -414,7 +414,7 @@ QUERY_COMPLETION_STATUS_CANCELLED: QueryCompletionStatus.ValueType  # 3
 """User cancelled the query before it completed."""
 QUERY_COMPLETION_STATUS_INVALID: QueryCompletionStatus.ValueType  # 4
 """Query never ran because the target file is invalid (e.g., not part of an open dbt project)."""
-Global___QueryCompletionStatus: typing_extensions.TypeAlias = QueryCompletionStatus
+global___QueryCompletionStatus = QueryCompletionStatus
 
 class _QueryOrigin:
     ValueType = typing.NewType("ValueType", builtins.int)
@@ -436,7 +436,7 @@ QUERY_ORIGIN_PREVIEW_FILE: QueryOrigin.ValueType  # 1
 """Triggered by Preview File on a model/SQL file."""
 QUERY_ORIGIN_PREVIEW_CTE: QueryOrigin.ValueType  # 2
 """Triggered by Preview CTE within a model."""
-Global___QueryOrigin: typing_extensions.TypeAlias = QueryOrigin
+global___QueryOrigin = QueryOrigin
 
 class _QueryResultInteractionType:
     ValueType = typing.NewType("ValueType", builtins.int)
@@ -470,7 +470,7 @@ QUERY_RESULT_INTERACTION_TYPE_OPEN_IN_EDITOR: QueryResultInteractionType.ValueTy
 """User opened the result set in a new editor tab."""
 QUERY_RESULT_INTERACTION_TYPE_SCROLL: QueryResultInteractionType.ValueType  # 5
 """First scroll within a single result set (subsequent scrolls are not reported)."""
-Global___QueryResultInteractionType: typing_extensions.TypeAlias = QueryResultInteractionType
+global___QueryResultInteractionType = QueryResultInteractionType
 
 @typing.final
 class User(google.protobuf.message.Message):
@@ -504,7 +504,7 @@ class User(google.protobuf.message.Message):
     ) -> None: ...
     def ClearField(self, field_name: typing.Literal["credentials_source", b"credentials_source", "dbt_cloud_account_identifier", b"dbt_cloud_account_identifier", "dbt_cloud_hostname", b"dbt_cloud_hostname", "dbt_cloud_user_id", b"dbt_cloud_user_id", "registration_state", b"registration_state"]) -> None: ...
 
-Global___User: typing_extensions.TypeAlias = User
+global___User = User
 
 @typing.final
 class Editor(google.protobuf.message.Message):
@@ -542,7 +542,7 @@ class Editor(google.protobuf.message.Message):
     ) -> None: ...
     def ClearField(self, field_name: typing.Literal["editor_name", b"editor_name", "editor_version", b"editor_version", "extension_version", b"extension_version", "mac_machine_id", b"mac_machine_id", "machine_id", b"machine_id", "session_id", b"session_id"]) -> None: ...
 
-Global___Editor: typing_extensions.TypeAlias = Editor
+global___Editor = Editor
 
 @typing.final
 class CompileError(google.protobuf.message.Message):
@@ -562,4 +562,4 @@ class CompileError(google.protobuf.message.Message):
     ) -> None: ...
     def ClearField(self, field_name: typing.Literal["code", b"code", "message", b"message"]) -> None: ...
 
-Global___CompileError: typing_extensions.TypeAlias = CompileError
+global___CompileError = CompileError

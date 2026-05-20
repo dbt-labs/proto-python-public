@@ -46,7 +46,7 @@ HOOK_TYPE_PRE_HOOK: HookType.ValueType  # 3
 """pre-hook executed before a specific node"""
 HOOK_TYPE_POST_HOOK: HookType.ValueType  # 4
 """post-hook executed after a specific node"""
-Global___HookType: typing_extensions.TypeAlias = HookType
+global___HookType = HookType
 
 class _HookOutcome:
     ValueType = typing.NewType("ValueType", builtins.int)
@@ -72,7 +72,7 @@ HOOK_OUTCOME_ERROR: HookOutcome.ValueType  # 2
 """Hook failed with an error"""
 HOOK_OUTCOME_CANCELED: HookOutcome.ValueType  # 3
 """Hook was canceled (e.g. user-initiated cancellation)"""
-Global___HookOutcome: typing_extensions.TypeAlias = HookOutcome
+global___HookOutcome = HookOutcome
 
 @typing.final
 class HookProcessed(google.protobuf.message.Message):
@@ -94,7 +94,7 @@ class HookProcessed(google.protobuf.message.Message):
     """Package name that owns this hook."""
     name: builtins.str
     """Hook name (applicable for on-run-start/on-run-end hooks)"""
-    hook_type: Global___HookType.ValueType
+    hook_type: global___HookType.ValueType
     """Type of hook being executed"""
     hook_index: builtins.int
     """0-based index in the execution order of this hook category (for example, within on-run-start).
@@ -104,7 +104,7 @@ class HookProcessed(google.protobuf.message.Message):
     """unique_id of the associated node (for pre/post hooks)
     unique_id of the hook itself for on-run-start/on-run-end hooks
     """
-    hook_outcome: Global___HookOutcome.ValueType
+    hook_outcome: global___HookOutcome.ValueType
     """Outcome of the hook execution"""
     dbt_core_event_code: builtins.str
     """Legacy dbt core event code. Set to Q032 for start, Q033 for end."""
@@ -115,10 +115,10 @@ class HookProcessed(google.protobuf.message.Message):
         *,
         package_name: builtins.str = ...,
         name: builtins.str | None = ...,
-        hook_type: Global___HookType.ValueType = ...,
+        hook_type: global___HookType.ValueType = ...,
         hook_index: builtins.int = ...,
         unique_id: builtins.str = ...,
-        hook_outcome: Global___HookOutcome.ValueType = ...,
+        hook_outcome: global___HookOutcome.ValueType = ...,
         dbt_core_event_code: builtins.str = ...,
         phase: dbtlabs.proto.public.v1.events.fusion.phase.phase_pb2.ExecutionPhase.ValueType = ...,
     ) -> None: ...
@@ -126,4 +126,4 @@ class HookProcessed(google.protobuf.message.Message):
     def ClearField(self, field_name: typing.Literal["_name", b"_name", "dbt_core_event_code", b"dbt_core_event_code", "hook_index", b"hook_index", "hook_outcome", b"hook_outcome", "hook_type", b"hook_type", "name", b"name", "package_name", b"package_name", "phase", b"phase", "unique_id", b"unique_id"]) -> None: ...
     def WhichOneof(self, oneof_group: typing.Literal["_name", b"_name"]) -> typing.Literal["name"] | None: ...
 
-Global___HookProcessed: typing_extensions.TypeAlias = HookProcessed
+global___HookProcessed = HookProcessed

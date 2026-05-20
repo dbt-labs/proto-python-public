@@ -8,13 +8,7 @@ import dbtlabs.proto.public.v1.common.vortex_telemetry_contexts_pb2
 import dbtlabs.proto.public.v1.events.vortex_pb2
 import google.protobuf.descriptor
 import google.protobuf.message
-import sys
 import typing
-
-if sys.version_info >= (3, 10):
-    import typing as typing_extensions
-else:
-    import typing_extensions
 
 DESCRIPTOR: google.protobuf.descriptor.FileDescriptor
 
@@ -76,4 +70,4 @@ class AgentToolCallPermissionCheck(google.protobuf.message.Message):
     def HasField(self, field_name: typing.Literal["ctx", b"ctx", "enrichment", b"enrichment"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["call_id", b"call_id", "copilot_request_id", b"copilot_request_id", "ctx", b"ctx", "enrichment", b"enrichment", "response_type", b"response_type", "thread_id", b"thread_id", "tool_name", b"tool_name", "tool_parameters", b"tool_parameters"]) -> None: ...
 
-Global___AgentToolCallPermissionCheck: typing_extensions.TypeAlias = AgentToolCallPermissionCheck
+global___AgentToolCallPermissionCheck = AgentToolCallPermissionCheck

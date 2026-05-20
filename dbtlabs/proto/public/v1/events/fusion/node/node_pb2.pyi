@@ -60,7 +60,7 @@ NODE_TYPE_METRIC: NodeType.ValueType  # 12
 NODE_TYPE_SAVED_QUERY: NodeType.ValueType  # 13
 NODE_TYPE_SEMANTIC_MODEL: NodeType.ValueType  # 14
 NODE_TYPE_FUNCTION: NodeType.ValueType  # 15
-Global___NodeType: typing_extensions.TypeAlias = NodeType
+global___NodeType = NodeType
 
 class _NodeOutcome:
     ValueType = typing.NewType("ValueType", builtins.int)
@@ -110,7 +110,7 @@ NODE_OUTCOME_SKIPPED: NodeOutcome.ValueType  # 4
 """Skipped evaluation for a specific reason.
 If set, `node_skip_reason` will also be set to indicate the reason for the skip.
 """
-Global___NodeOutcome: typing_extensions.TypeAlias = NodeOutcome
+global___NodeOutcome = NodeOutcome
 
 class _NodeErrorType:
     ValueType = typing.NewType("ValueType", builtins.int)
@@ -137,7 +137,7 @@ NODE_ERROR_TYPE_EXTERNAL: NodeErrorType.ValueType  # 1
 """External system error (database down, network issue, etc.) – potentially recoverable by retrying."""
 NODE_ERROR_TYPE_USER: NodeErrorType.ValueType  # 2
 """User code error (SQL syntax, compilation error, etc.) that must be fixed by the user."""
-Global___NodeErrorType: typing_extensions.TypeAlias = NodeErrorType
+global___NodeErrorType = NodeErrorType
 
 class _NodeCancelReason:
     ValueType = typing.NewType("ValueType", builtins.int)
@@ -153,7 +153,7 @@ class NodeCancelReason(_NodeCancelReason, metaclass=_NodeCancelReasonEnumTypeWra
 
 NODE_CANCEL_REASON_USER_CANCELLED: NodeCancelReason.ValueType  # 0
 """User explicitly cancelled execution (e.g. ctrl-c)."""
-Global___NodeCancelReason: typing_extensions.TypeAlias = NodeCancelReason
+global___NodeCancelReason = NodeCancelReason
 
 class _NodeSkipReason:
     ValueType = typing.NewType("ValueType", builtins.int)
@@ -187,7 +187,7 @@ NODE_SKIP_REASON_NO_OP: NodeSkipReason.ValueType  # 4
 """Operation had no effect (e.g. ephemeral models)."""
 NODE_SKIP_REASON_PHASE_SKIPPED: NodeSkipReason.ValueType  # 5
 """Current evaluation phase skipped for this node due to previous phase outcome."""
-Global___NodeSkipReason: typing_extensions.TypeAlias = NodeSkipReason
+global___NodeSkipReason = NodeSkipReason
 
 class _NodeCacheReason:
     ValueType = typing.NewType("ValueType", builtins.int)
@@ -211,7 +211,7 @@ NODE_CACHE_REASON_STILL_FRESH: NodeCacheReason.ValueType  # 1
 """Reused from cache - changes detected but still within freshness window."""
 NODE_CACHE_REASON_UPDATE_CRITERIA_NOT_MET: NodeCacheReason.ValueType  # 2
 """Reused from cache - changes detected but update criteria not met."""
-Global___NodeCacheReason: typing_extensions.TypeAlias = NodeCacheReason
+global___NodeCacheReason = NodeCacheReason
 
 class _NodeMaterialization:
     ValueType = typing.NewType("ValueType", builtins.int)
@@ -258,7 +258,7 @@ NODE_MATERIALIZATION_DYNAMIC_TABLE: NodeMaterialization.ValueType  # 13
 """ONLY FOR SNOWFLAKE"""
 NODE_MATERIALIZATION_FUNCTION: NodeMaterialization.ValueType  # 14
 NODE_MATERIALIZATION_CUSTOM: NodeMaterialization.ValueType  # 100
-Global___NodeMaterialization: typing_extensions.TypeAlias = NodeMaterialization
+global___NodeMaterialization = NodeMaterialization
 
 class _TestOutcome:
     ValueType = typing.NewType("ValueType", builtins.int)
@@ -282,7 +282,7 @@ TEST_OUTCOME_WARNED: TestOutcome.ValueType  # 1
 """Failures found between warning and error thresholds."""
 TEST_OUTCOME_FAILED: TestOutcome.ValueType  # 2
 """Failures found above error threshold."""
-Global___TestOutcome: typing_extensions.TypeAlias = TestOutcome
+global___TestOutcome = TestOutcome
 
 class _SourceFreshnessOutcome:
     ValueType = typing.NewType("ValueType", builtins.int)
@@ -306,7 +306,7 @@ SOURCE_FRESHNESS_OUTCOME_OUTCOME_WARNED: SourceFreshnessOutcome.ValueType  # 1
 """Freshness exceeded warning threshold but below error threshold."""
 SOURCE_FRESHNESS_OUTCOME_OUTCOME_FAILED: SourceFreshnessOutcome.ValueType  # 2
 """Freshness exceeded error threshold."""
-Global___SourceFreshnessOutcome: typing_extensions.TypeAlias = SourceFreshnessOutcome
+global___SourceFreshnessOutcome = SourceFreshnessOutcome
 
 class _NodeWarningOutcome:
     ValueType = typing.NewType("ValueType", builtins.int)
@@ -327,7 +327,7 @@ class NodeWarningOutcome(_NodeWarningOutcome, metaclass=_NodeWarningOutcomeEnumT
 NODE_WARNING_OUTCOME_UNSPECIFIED: NodeWarningOutcome.ValueType  # 0
 NODE_WARNING_OUTCOME_NO_WARNINGS: NodeWarningOutcome.ValueType  # 1
 NODE_WARNING_OUTCOME_WITH_WARNINGS: NodeWarningOutcome.ValueType  # 2
-Global___NodeWarningOutcome: typing_extensions.TypeAlias = NodeWarningOutcome
+global___NodeWarningOutcome = NodeWarningOutcome
 
 @typing.final
 class TestEvaluationDetail(google.protobuf.message.Message):
@@ -336,7 +336,7 @@ class TestEvaluationDetail(google.protobuf.message.Message):
     TEST_OUTCOME_FIELD_NUMBER: builtins.int
     FAILING_ROWS_FIELD_NUMBER: builtins.int
     DIFF_TABLE_FIELD_NUMBER: builtins.int
-    test_outcome: Global___TestOutcome.ValueType
+    test_outcome: global___TestOutcome.ValueType
     failing_rows: builtins.int
     """Number of failing rows for this test."""
     diff_table: builtins.str
@@ -344,7 +344,7 @@ class TestEvaluationDetail(google.protobuf.message.Message):
     def __init__(
         self,
         *,
-        test_outcome: Global___TestOutcome.ValueType = ...,
+        test_outcome: global___TestOutcome.ValueType = ...,
         failing_rows: builtins.int = ...,
         diff_table: builtins.str | None = ...,
     ) -> None: ...
@@ -352,7 +352,7 @@ class TestEvaluationDetail(google.protobuf.message.Message):
     def ClearField(self, field_name: typing.Literal["_diff_table", b"_diff_table", "diff_table", b"diff_table", "failing_rows", b"failing_rows", "test_outcome", b"test_outcome"]) -> None: ...
     def WhichOneof(self, oneof_group: typing.Literal["_diff_table", b"_diff_table"]) -> typing.Literal["diff_table"] | None: ...
 
-Global___TestEvaluationDetail: typing_extensions.TypeAlias = TestEvaluationDetail
+global___TestEvaluationDetail = TestEvaluationDetail
 
 @typing.final
 class SourceFreshnessDetail(google.protobuf.message.Message):
@@ -360,20 +360,20 @@ class SourceFreshnessDetail(google.protobuf.message.Message):
 
     NODE_FRESHNESS_OUTCOME_FIELD_NUMBER: builtins.int
     AGE_SECONDS_FIELD_NUMBER: builtins.int
-    node_freshness_outcome: Global___SourceFreshnessOutcome.ValueType
+    node_freshness_outcome: global___SourceFreshnessOutcome.ValueType
     age_seconds: builtins.int
     """Age of the source in seconds (time since last load)"""
     def __init__(
         self,
         *,
-        node_freshness_outcome: Global___SourceFreshnessOutcome.ValueType = ...,
+        node_freshness_outcome: global___SourceFreshnessOutcome.ValueType = ...,
         age_seconds: builtins.int | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["_age_seconds", b"_age_seconds", "age_seconds", b"age_seconds"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["_age_seconds", b"_age_seconds", "age_seconds", b"age_seconds", "node_freshness_outcome", b"node_freshness_outcome"]) -> None: ...
     def WhichOneof(self, oneof_group: typing.Literal["_age_seconds", b"_age_seconds"]) -> typing.Literal["age_seconds"] | None: ...
 
-Global___SourceFreshnessDetail: typing_extensions.TypeAlias = SourceFreshnessDetail
+global___SourceFreshnessDetail = SourceFreshnessDetail
 
 @typing.final
 class NodeCacheDetail(google.protobuf.message.Message):
@@ -382,7 +382,7 @@ class NodeCacheDetail(google.protobuf.message.Message):
     NODE_CACHE_REASON_FIELD_NUMBER: builtins.int
     BUILD_AFTER_SECONDS_FIELD_NUMBER: builtins.int
     LAST_UPDATED_SECONDS_FIELD_NUMBER: builtins.int
-    node_cache_reason: Global___NodeCacheReason.ValueType
+    node_cache_reason: global___NodeCacheReason.ValueType
     build_after_seconds: builtins.int
     """If node_cache_reason == NODE_CACHE_REASON_STILL_FRESH, this field indicates
     freshness period for this node in seconds.
@@ -394,7 +394,7 @@ class NodeCacheDetail(google.protobuf.message.Message):
     def __init__(
         self,
         *,
-        node_cache_reason: Global___NodeCacheReason.ValueType = ...,
+        node_cache_reason: global___NodeCacheReason.ValueType = ...,
         build_after_seconds: builtins.int | None = ...,
         last_updated_seconds: builtins.int | None = ...,
     ) -> None: ...
@@ -405,7 +405,7 @@ class NodeCacheDetail(google.protobuf.message.Message):
     @typing.overload
     def WhichOneof(self, oneof_group: typing.Literal["_last_updated_seconds", b"_last_updated_seconds"]) -> typing.Literal["last_updated_seconds"] | None: ...
 
-Global___NodeCacheDetail: typing_extensions.TypeAlias = NodeCacheDetail
+global___NodeCacheDetail = NodeCacheDetail
 
 @typing.final
 class NodeSkipUpstreamDetail(google.protobuf.message.Message):
@@ -421,7 +421,7 @@ class NodeSkipUpstreamDetail(google.protobuf.message.Message):
     ) -> None: ...
     def ClearField(self, field_name: typing.Literal["upstream_unique_id", b"upstream_unique_id"]) -> None: ...
 
-Global___NodeSkipUpstreamDetail: typing_extensions.TypeAlias = NodeSkipUpstreamDetail
+global___NodeSkipUpstreamDetail = NodeSkipUpstreamDetail
 
 @typing.final
 class NodeEvaluationDetail(google.protobuf.message.Message):
@@ -433,15 +433,15 @@ class NodeEvaluationDetail(google.protobuf.message.Message):
     DESCRIPTOR: google.protobuf.descriptor.Descriptor
 
     NODE_WARNING_OUTCOME_FIELD_NUMBER: builtins.int
-    node_warning_outcome: Global___NodeWarningOutcome.ValueType
+    node_warning_outcome: global___NodeWarningOutcome.ValueType
     def __init__(
         self,
         *,
-        node_warning_outcome: Global___NodeWarningOutcome.ValueType = ...,
+        node_warning_outcome: global___NodeWarningOutcome.ValueType = ...,
     ) -> None: ...
     def ClearField(self, field_name: typing.Literal["node_warning_outcome", b"node_warning_outcome"]) -> None: ...
 
-Global___NodeEvaluationDetail: typing_extensions.TypeAlias = NodeEvaluationDetail
+global___NodeEvaluationDetail = NodeEvaluationDetail
 
 @typing.final
 class NodeEvaluated(google.protobuf.message.Message):
@@ -482,13 +482,13 @@ class NodeEvaluated(google.protobuf.message.Message):
     """Schema where this node will be created if applicable."""
     identifier: builtins.str
     """Name of the relation (table, view, etc.) that will be created for this node if applicable."""
-    materialization: Global___NodeMaterialization.ValueType
+    materialization: global___NodeMaterialization.ValueType
     """How this node is materialized in the data warehouse."""
     custom_materialization: builtins.str
     """If materialization == NODE_MATERIALIZATION_CUSTOM, this field contains the custom materialization name."""
-    node_type: Global___NodeType.ValueType
+    node_type: global___NodeType.ValueType
     """Type of node being evaluated. Known as `resource_type` in dbt core."""
-    node_outcome: Global___NodeOutcome.ValueType
+    node_outcome: global___NodeOutcome.ValueType
     """Core outcome for this evaluation."""
     phase: dbtlabs.proto.public.v1.events.fusion.phase.phase_pb2.ExecutionPhase.ValueType
     """Execution phase during which this node was evaluated."""
@@ -502,17 +502,17 @@ class NodeEvaluated(google.protobuf.message.Message):
     """Checksum of the node definition"""
     sao_enabled: builtins.bool
     """Whether or not SAO was enabled for this node during evaluation. Only set for run phase."""
-    node_error_type: Global___NodeErrorType.ValueType
+    node_error_type: global___NodeErrorType.ValueType
     """Granular reasons for unsuccessful outcomes (error, canceled, skipped).
 
     Categorization of aggregated errors for debugging and retry logic.
     Present when node_outcome == NODE_OUTCOME_ERROR.
     """
-    node_cancel_reason: Global___NodeCancelReason.ValueType
+    node_cancel_reason: global___NodeCancelReason.ValueType
     """Cancellation reason.
     Present when node_outcome == NODE_OUTCOME_CANCELED.
     """
-    node_skip_reason: Global___NodeSkipReason.ValueType
+    node_skip_reason: global___NodeSkipReason.ValueType
     """Detailed reason for skipping this node.
     Present when node_outcome == NODE_OUTCOME_SKIPPED.
     """
@@ -523,31 +523,31 @@ class NodeEvaluated(google.protobuf.message.Message):
     Only set for successful outcomes where row count is known (e.g., models, seeds).
     """
     @property
-    def node_cache_detail(self) -> Global___NodeCacheDetail:
+    def node_cache_detail(self) -> global___NodeCacheDetail:
         """Detailed reason why cache was used.
         Present when node_skip_reason == NODE_SKIP_REASON_CACHED.
         """
 
     @property
-    def node_test_detail(self) -> Global___TestEvaluationDetail:
+    def node_test_detail(self) -> global___TestEvaluationDetail:
         """Test specific outcome details.
         Present for test / unit test node types when node_outcome == NODE_OUTCOME_SUCCESS.
         """
 
     @property
-    def node_freshness_outcome(self) -> Global___SourceFreshnessDetail:
+    def node_freshness_outcome(self) -> global___SourceFreshnessDetail:
         """Source freshness specific outcome details.
         Present for source nodes with freshness checks when node_outcome == NODE_OUTCOME_SUCCESS.
         """
 
     @property
-    def node_skip_upstream_detail(self) -> Global___NodeSkipUpstreamDetail:
+    def node_skip_upstream_detail(self) -> global___NodeSkipUpstreamDetail:
         """Upstream node that caused this node to be skipped.
         Present when node_skip_reason == NODE_SKIP_REASON_UPSTREAM.
         """
 
     @property
-    def node_evaluation_detail(self) -> Global___NodeEvaluationDetail:
+    def node_evaluation_detail(self) -> global___NodeEvaluationDetail:
         """Non-test node specific outcome details.
         Present for non test / unit test / source node types when node_outcome == NODE_OUTCOME_SUCCESS.
         """
@@ -560,24 +560,24 @@ class NodeEvaluated(google.protobuf.message.Message):
         database: builtins.str | None = ...,
         schema: builtins.str | None = ...,
         identifier: builtins.str | None = ...,
-        materialization: Global___NodeMaterialization.ValueType | None = ...,
+        materialization: global___NodeMaterialization.ValueType | None = ...,
         custom_materialization: builtins.str | None = ...,
-        node_type: Global___NodeType.ValueType = ...,
-        node_outcome: Global___NodeOutcome.ValueType = ...,
+        node_type: global___NodeType.ValueType = ...,
+        node_outcome: global___NodeOutcome.ValueType = ...,
         phase: dbtlabs.proto.public.v1.events.fusion.phase.phase_pb2.ExecutionPhase.ValueType = ...,
         relative_path: builtins.str = ...,
         defined_at_line: builtins.int | None = ...,
         defined_at_col: builtins.int | None = ...,
         node_checksum: builtins.str = ...,
         sao_enabled: builtins.bool | None = ...,
-        node_error_type: Global___NodeErrorType.ValueType | None = ...,
-        node_cancel_reason: Global___NodeCancelReason.ValueType | None = ...,
-        node_skip_reason: Global___NodeSkipReason.ValueType | None = ...,
-        node_cache_detail: Global___NodeCacheDetail | None = ...,
-        node_test_detail: Global___TestEvaluationDetail | None = ...,
-        node_freshness_outcome: Global___SourceFreshnessDetail | None = ...,
-        node_skip_upstream_detail: Global___NodeSkipUpstreamDetail | None = ...,
-        node_evaluation_detail: Global___NodeEvaluationDetail | None = ...,
+        node_error_type: global___NodeErrorType.ValueType | None = ...,
+        node_cancel_reason: global___NodeCancelReason.ValueType | None = ...,
+        node_skip_reason: global___NodeSkipReason.ValueType | None = ...,
+        node_cache_detail: global___NodeCacheDetail | None = ...,
+        node_test_detail: global___TestEvaluationDetail | None = ...,
+        node_freshness_outcome: global___SourceFreshnessDetail | None = ...,
+        node_skip_upstream_detail: global___NodeSkipUpstreamDetail | None = ...,
+        node_evaluation_detail: global___NodeEvaluationDetail | None = ...,
         dbt_core_event_code: builtins.str | None = ...,
         rows_affected: builtins.int | None = ...,
     ) -> None: ...
@@ -612,7 +612,7 @@ class NodeEvaluated(google.protobuf.message.Message):
     @typing.overload
     def WhichOneof(self, oneof_group: typing.Literal["node_outcome_detail", b"node_outcome_detail"]) -> typing.Literal["node_cache_detail", "node_test_detail", "node_freshness_outcome", "node_skip_upstream_detail", "node_evaluation_detail"] | None: ...
 
-Global___NodeEvaluated: typing_extensions.TypeAlias = NodeEvaluated
+global___NodeEvaluated = NodeEvaluated
 
 @typing.final
 class NodeProcessed(google.protobuf.message.Message):
@@ -663,13 +663,13 @@ class NodeProcessed(google.protobuf.message.Message):
     """Name of the relation (table, view, etc.) that will be created for this node if applicable."""
     source_name: builtins.str
     """Name of the source for source nodes."""
-    materialization: Global___NodeMaterialization.ValueType
+    materialization: global___NodeMaterialization.ValueType
     """How this node is materialized in the data warehouse."""
     custom_materialization: builtins.str
     """If materialization == NODE_MATERIALIZATION_CUSTOM, this field contains the custom materialization name."""
-    node_type: Global___NodeType.ValueType
+    node_type: global___NodeType.ValueType
     """Type of node being evaluated. Known as `resource_type` in dbt core."""
-    node_outcome: Global___NodeOutcome.ValueType
+    node_outcome: global___NodeOutcome.ValueType
     """Core outcome for this node processing across all phases."""
     last_phase: dbtlabs.proto.public.v1.events.fusion.phase.phase_pb2.ExecutionPhase.ValueType
     """Last execution phase that was reached during processing (or would have been reached if not skipped)."""
@@ -685,17 +685,17 @@ class NodeProcessed(google.protobuf.message.Message):
     """Whether or not SAO was enabled for this node during evaluation. Only set for invocations,
     that include the run phase.
     """
-    node_error_type: Global___NodeErrorType.ValueType
+    node_error_type: global___NodeErrorType.ValueType
     """Granular reasons for unsuccessful outcomes (error, canceled, skipped).
 
     Categorization of aggregated errors for debugging and retry logic.
     Present when node_outcome == NODE_OUTCOME_ERROR.
     """
-    node_cancel_reason: Global___NodeCancelReason.ValueType
+    node_cancel_reason: global___NodeCancelReason.ValueType
     """Cancellation reason.
     Present when node_outcome == NODE_OUTCOME_CANCELED.
     """
-    node_skip_reason: Global___NodeSkipReason.ValueType
+    node_skip_reason: global___NodeSkipReason.ValueType
     """Detailed reason for skipping this node.
     Present when node_outcome == NODE_OUTCOME_SKIPPED.
     """
@@ -717,31 +717,31 @@ class NodeProcessed(google.protobuf.message.Message):
     group: builtins.str
     """Group identifier for model level notifications"""
     @property
-    def node_cache_detail(self) -> Global___NodeCacheDetail:
+    def node_cache_detail(self) -> global___NodeCacheDetail:
         """Detailed reason why cache was used.
         Present when node_skip_reason == NODE_SKIP_REASON_CACHED.
         """
 
     @property
-    def node_test_detail(self) -> Global___TestEvaluationDetail:
+    def node_test_detail(self) -> global___TestEvaluationDetail:
         """Test specific outcome details.
         Present for test / unit test node types when node_outcome == NODE_OUTCOME_SUCCESS.
         """
 
     @property
-    def node_freshness_outcome(self) -> Global___SourceFreshnessDetail:
+    def node_freshness_outcome(self) -> global___SourceFreshnessDetail:
         """Source freshness specific outcome details.
         Present for source nodes with freshness checks when node_outcome == NODE_OUTCOME_SUCCESS.
         """
 
     @property
-    def node_skip_upstream_detail(self) -> Global___NodeSkipUpstreamDetail:
+    def node_skip_upstream_detail(self) -> global___NodeSkipUpstreamDetail:
         """Upstream node that caused this node to be skipped.
         Present when node_skip_reason == NODE_SKIP_REASON_UPSTREAM.
         """
 
     @property
-    def node_evaluation_detail(self) -> Global___NodeEvaluationDetail:
+    def node_evaluation_detail(self) -> global___NodeEvaluationDetail:
         """Non-test node specific outcome details.
         Present for non test / unit test / source node types when node_outcome == NODE_OUTCOME_SUCCESS.
         """
@@ -755,24 +755,24 @@ class NodeProcessed(google.protobuf.message.Message):
         schema: builtins.str | None = ...,
         identifier: builtins.str | None = ...,
         source_name: builtins.str | None = ...,
-        materialization: Global___NodeMaterialization.ValueType | None = ...,
+        materialization: global___NodeMaterialization.ValueType | None = ...,
         custom_materialization: builtins.str | None = ...,
-        node_type: Global___NodeType.ValueType = ...,
-        node_outcome: Global___NodeOutcome.ValueType = ...,
+        node_type: global___NodeType.ValueType = ...,
+        node_outcome: global___NodeOutcome.ValueType = ...,
         last_phase: dbtlabs.proto.public.v1.events.fusion.phase.phase_pb2.ExecutionPhase.ValueType = ...,
         relative_path: builtins.str = ...,
         defined_at_line: builtins.int | None = ...,
         defined_at_col: builtins.int | None = ...,
         node_checksum: builtins.str = ...,
         sao_enabled: builtins.bool | None = ...,
-        node_error_type: Global___NodeErrorType.ValueType | None = ...,
-        node_cancel_reason: Global___NodeCancelReason.ValueType | None = ...,
-        node_skip_reason: Global___NodeSkipReason.ValueType | None = ...,
-        node_cache_detail: Global___NodeCacheDetail | None = ...,
-        node_test_detail: Global___TestEvaluationDetail | None = ...,
-        node_freshness_outcome: Global___SourceFreshnessDetail | None = ...,
-        node_skip_upstream_detail: Global___NodeSkipUpstreamDetail | None = ...,
-        node_evaluation_detail: Global___NodeEvaluationDetail | None = ...,
+        node_error_type: global___NodeErrorType.ValueType | None = ...,
+        node_cancel_reason: global___NodeCancelReason.ValueType | None = ...,
+        node_skip_reason: global___NodeSkipReason.ValueType | None = ...,
+        node_cache_detail: global___NodeCacheDetail | None = ...,
+        node_test_detail: global___TestEvaluationDetail | None = ...,
+        node_freshness_outcome: global___SourceFreshnessDetail | None = ...,
+        node_skip_upstream_detail: global___NodeSkipUpstreamDetail | None = ...,
+        node_evaluation_detail: global___NodeEvaluationDetail | None = ...,
         dbt_core_event_code: builtins.str = ...,
         duration_ms: builtins.int | None = ...,
         in_selection: builtins.bool = ...,
@@ -814,4 +814,4 @@ class NodeProcessed(google.protobuf.message.Message):
     @typing.overload
     def WhichOneof(self, oneof_group: typing.Literal["node_outcome_detail", b"node_outcome_detail"]) -> typing.Literal["node_cache_detail", "node_test_detail", "node_freshness_outcome", "node_skip_upstream_detail", "node_evaluation_detail"] | None: ...
 
-Global___NodeProcessed: typing_extensions.TypeAlias = NodeProcessed
+global___NodeProcessed = NodeProcessed

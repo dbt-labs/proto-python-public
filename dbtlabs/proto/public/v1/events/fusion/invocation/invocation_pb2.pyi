@@ -9,13 +9,7 @@ import dbtlabs.proto.public.v1.events.fusion.process.process_pb2
 import google.protobuf.descriptor
 import google.protobuf.internal.containers
 import google.protobuf.message
-import sys
 import typing
-
-if sys.version_info >= (3, 10):
-    import typing as typing_extensions
-else:
-    import typing_extensions
 
 DESCRIPTOR: google.protobuf.descriptor.FileDescriptor
 
@@ -96,7 +90,7 @@ class InvocationMetrics(google.protobuf.message.Message):
     @typing.overload
     def WhichOneof(self, oneof_group: typing.Literal["_total_warnings", b"_total_warnings"]) -> typing.Literal["total_warnings"] | None: ...
 
-Global___InvocationMetrics: typing_extensions.TypeAlias = InvocationMetrics
+global___InvocationMetrics = InvocationMetrics
 
 @typing.final
 class InvocationEvalArgs(google.protobuf.message.Message):
@@ -254,7 +248,7 @@ class InvocationEvalArgs(google.protobuf.message.Message):
     @typing.overload
     def WhichOneof(self, oneof_group: typing.Literal["_write_json", b"_write_json"]) -> typing.Literal["write_json"] | None: ...
 
-Global___InvocationEvalArgs: typing_extensions.TypeAlias = InvocationEvalArgs
+global___InvocationEvalArgs = InvocationEvalArgs
 
 @typing.final
 class Invocation(google.protobuf.message.Message):
@@ -280,7 +274,7 @@ class Invocation(google.protobuf.message.Message):
     This allows linking this invocation to an external trace.
     """
     @property
-    def eval_args(self) -> Global___InvocationEvalArgs:
+    def eval_args(self) -> global___InvocationEvalArgs:
         """Structured evaluation arguments."""
 
     @property
@@ -288,7 +282,7 @@ class Invocation(google.protobuf.message.Message):
         """Process-wide attributes."""
 
     @property
-    def metrics(self) -> Global___InvocationMetrics:
+    def metrics(self) -> global___InvocationMetrics:
         """Aggregate invocation metrics."""
 
     def __init__(
@@ -296,13 +290,13 @@ class Invocation(google.protobuf.message.Message):
         *,
         invocation_id: builtins.str = ...,
         raw_command: builtins.str = ...,
-        eval_args: Global___InvocationEvalArgs | None = ...,
+        eval_args: global___InvocationEvalArgs | None = ...,
         process_info: dbtlabs.proto.public.v1.events.fusion.process.process_pb2.Process | None = ...,
-        metrics: Global___InvocationMetrics | None = ...,
+        metrics: global___InvocationMetrics | None = ...,
         parent_span_id: builtins.int | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["_parent_span_id", b"_parent_span_id", "eval_args", b"eval_args", "metrics", b"metrics", "parent_span_id", b"parent_span_id", "process_info", b"process_info"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["_parent_span_id", b"_parent_span_id", "eval_args", b"eval_args", "invocation_id", b"invocation_id", "metrics", b"metrics", "parent_span_id", b"parent_span_id", "process_info", b"process_info", "raw_command", b"raw_command"]) -> None: ...
     def WhichOneof(self, oneof_group: typing.Literal["_parent_span_id", b"_parent_span_id"]) -> typing.Literal["parent_span_id"] | None: ...
 
-Global___Invocation: typing_extensions.TypeAlias = Invocation
+global___Invocation = Invocation
