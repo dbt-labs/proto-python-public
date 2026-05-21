@@ -215,3 +215,68 @@ class DbtWizardToolUse(google.protobuf.message.Message):
     def ClearField(self, field_name: typing.Literal["enrichment", b"enrichment", "event_id", b"event_id", "execution_time_ms", b"execution_time_ms", "is_error", b"is_error", "session_id", b"session_id", "tool_name", b"tool_name", "tool_type", b"tool_type", "turn_id", b"turn_id"]) -> None: ...
 
 Global___DbtWizardToolUse: typing_extensions.TypeAlias = DbtWizardToolUse
+
+@typing.final
+class DbtWizardFeedback(google.protobuf.message.Message):
+    """Emitted when a user submits feedback via /feedback."""
+
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
+    ENRICHMENT_FIELD_NUMBER: builtins.int
+    EVENT_ID_FIELD_NUMBER: builtins.int
+    SESSION_ID_FIELD_NUMBER: builtins.int
+    CATEGORY_FIELD_NUMBER: builtins.int
+    REASON_FIELD_NUMBER: builtins.int
+    INCLUDE_LOGS_FIELD_NUMBER: builtins.int
+    USER_ID_FIELD_NUMBER: builtins.int
+    ACCOUNT_ID_FIELD_NUMBER: builtins.int
+    ACCOUNT_IDENTIFIER_FIELD_NUMBER: builtins.int
+    VERSION_FIELD_NUMBER: builtins.int
+    OS_FIELD_NUMBER: builtins.int
+    ARCH_FIELD_NUMBER: builtins.int
+    event_id: builtins.str
+    """Unique identifier for this event."""
+    session_id: builtins.str
+    """Session correlation ID (thread_id)."""
+    category: builtins.str
+    """Feedback category: "bad_result", "good_result", "bug", "safety_check", "other"."""
+    reason: builtins.str
+    """Optional user-provided note describing the feedback."""
+    include_logs: builtins.bool
+    """Whether the user chose to include session logs."""
+    user_id: builtins.str
+    """Authenticated dbt Cloud user ID (JWT sub claim); falls back to anonymous
+    UUID from ~/.dbt/.user.yml when unauthenticated.
+    """
+    account_id: builtins.str
+    """Numeric dbt Cloud account ID (from JWT claims or dbt_cloud.yml)."""
+    account_identifier: builtins.str
+    """Global dbt Cloud account identifier slug (from /api/v2/accounts/{id}/)."""
+    version: builtins.str
+    """dbt-wizard binary version."""
+    os: builtins.str
+    """Operating system: "macos", "linux", "windows"."""
+    arch: builtins.str
+    """CPU architecture: "aarch64", "x86_64"."""
+    @property
+    def enrichment(self) -> dbtlabs.proto.public.v1.events.vortex_pb2.VortexMessageEnrichment: ...
+    def __init__(
+        self,
+        *,
+        enrichment: dbtlabs.proto.public.v1.events.vortex_pb2.VortexMessageEnrichment | None = ...,
+        event_id: builtins.str = ...,
+        session_id: builtins.str = ...,
+        category: builtins.str = ...,
+        reason: builtins.str = ...,
+        include_logs: builtins.bool = ...,
+        user_id: builtins.str = ...,
+        account_id: builtins.str = ...,
+        account_identifier: builtins.str = ...,
+        version: builtins.str = ...,
+        os: builtins.str = ...,
+        arch: builtins.str = ...,
+    ) -> None: ...
+    def HasField(self, field_name: typing.Literal["enrichment", b"enrichment"]) -> builtins.bool: ...
+    def ClearField(self, field_name: typing.Literal["account_id", b"account_id", "account_identifier", b"account_identifier", "arch", b"arch", "category", b"category", "enrichment", b"enrichment", "event_id", b"event_id", "include_logs", b"include_logs", "os", b"os", "reason", b"reason", "session_id", b"session_id", "user_id", b"user_id", "version", b"version"]) -> None: ...
+
+Global___DbtWizardFeedback: typing_extensions.TypeAlias = DbtWizardFeedback
