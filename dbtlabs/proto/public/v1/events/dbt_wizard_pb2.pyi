@@ -234,6 +234,8 @@ class DbtWizardFeedback(google.protobuf.message.Message):
     VERSION_FIELD_NUMBER: builtins.int
     OS_FIELD_NUMBER: builtins.int
     ARCH_FIELD_NUMBER: builtins.int
+    TURN_ID_FIELD_NUMBER: builtins.int
+    MODEL_FIELD_NUMBER: builtins.int
     event_id: builtins.str
     """Unique identifier for this event."""
     session_id: builtins.str
@@ -243,7 +245,7 @@ class DbtWizardFeedback(google.protobuf.message.Message):
     reason: builtins.str
     """Optional user-provided note describing the feedback."""
     include_logs: builtins.bool
-    """Whether the user chose to include session logs."""
+    """Deprecated; feedback no longer uploads logs."""
     user_id: builtins.str
     """Authenticated dbt Cloud user ID (JWT sub claim); falls back to anonymous
     UUID from ~/.dbt/.user.yml when unauthenticated.
@@ -258,6 +260,10 @@ class DbtWizardFeedback(google.protobuf.message.Message):
     """Operating system: "macos", "linux", "windows"."""
     arch: builtins.str
     """CPU architecture: "aarch64", "x86_64"."""
+    turn_id: builtins.str
+    """Turn correlation ID (which turn the feedback is about)."""
+    model: builtins.str
+    """Model slug active during the session (e.g. "claude-sonnet-4-6")."""
     @property
     def enrichment(self) -> dbtlabs.proto.public.v1.events.vortex_pb2.VortexMessageEnrichment: ...
     def __init__(
@@ -275,8 +281,10 @@ class DbtWizardFeedback(google.protobuf.message.Message):
         version: builtins.str = ...,
         os: builtins.str = ...,
         arch: builtins.str = ...,
+        turn_id: builtins.str = ...,
+        model: builtins.str = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["enrichment", b"enrichment"]) -> builtins.bool: ...
-    def ClearField(self, field_name: typing.Literal["account_id", b"account_id", "account_identifier", b"account_identifier", "arch", b"arch", "category", b"category", "enrichment", b"enrichment", "event_id", b"event_id", "include_logs", b"include_logs", "os", b"os", "reason", b"reason", "session_id", b"session_id", "user_id", b"user_id", "version", b"version"]) -> None: ...
+    def ClearField(self, field_name: typing.Literal["account_id", b"account_id", "account_identifier", b"account_identifier", "arch", b"arch", "category", b"category", "enrichment", b"enrichment", "event_id", b"event_id", "include_logs", b"include_logs", "model", b"model", "os", b"os", "reason", b"reason", "session_id", b"session_id", "turn_id", b"turn_id", "user_id", b"user_id", "version", b"version"]) -> None: ...
 
 Global___DbtWizardFeedback: typing_extensions.TypeAlias = DbtWizardFeedback
