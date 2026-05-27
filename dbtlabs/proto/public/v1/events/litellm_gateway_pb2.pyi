@@ -34,10 +34,16 @@ class LiteLlmRequestCompleted(google.protobuf.message.Message):
     LATENCY_FIELD_NUMBER: builtins.int
     USAGE_FIELD_NUMBER: builtins.int
     ERROR_FIELD_NUMBER: builtins.int
+    WIZARD_ATTRIBUTION_FIELD_NUMBER: builtins.int
+    COST_FIELD_NUMBER: builtins.int
+    CLASSIFICATION_FIELD_NUMBER: builtins.int
+    DEPLOYMENT_MODE_FIELD_NUMBER: builtins.int
     event_type: builtins.str
     """"llm_request_completed" or "llm_request_failed"."""
     installation_id: builtins.str
     """Pod/deployment identifier (e.g. "litellm-549bf484d9-cs58d")."""
+    deployment_mode: builtins.str
+    """"local" (BYOK sidecar) or "hosted" (Helm-deployed proxy)."""
     @property
     def enrichment(self) -> dbtlabs.proto.public.v1.events.vortex_pb2.VortexMessageEnrichment: ...
     @property
@@ -56,6 +62,18 @@ class LiteLlmRequestCompleted(google.protobuf.message.Message):
     def error(self) -> Global___LiteLlmError:
         """Populated only on failure events."""
 
+    @property
+    def wizard_attribution(self) -> Global___LiteLlmWizardAttribution:
+        """Wizard session/turn attribution from x-codex-turn-metadata."""
+
+    @property
+    def cost(self) -> Global___LiteLlmCost:
+        """Cost information derived from LiteLLM response_cost."""
+
+    @property
+    def classification(self) -> Global___LiteLlmClassification:
+        """Event classification for billing and analytics."""
+
     def __init__(
         self,
         *,
@@ -69,10 +87,21 @@ class LiteLlmRequestCompleted(google.protobuf.message.Message):
         latency: Global___LiteLlmLatency | None = ...,
         usage: Global___LiteLlmUsage | None = ...,
         error: Global___LiteLlmError | None = ...,
+        wizard_attribution: Global___LiteLlmWizardAttribution | None = ...,
+        cost: Global___LiteLlmCost | None = ...,
+        classification: Global___LiteLlmClassification | None = ...,
+        deployment_mode: builtins.str = ...,
     ) -> None: ...
-    def HasField(self, field_name: typing.Literal["_error", b"_error", "actor", b"actor", "enrichment", b"enrichment", "error", b"error", "latency", b"latency", "model", b"model", "occurred_at", b"occurred_at", "request", b"request", "usage", b"usage"]) -> builtins.bool: ...
-    def ClearField(self, field_name: typing.Literal["_error", b"_error", "actor", b"actor", "enrichment", b"enrichment", "error", b"error", "event_type", b"event_type", "installation_id", b"installation_id", "latency", b"latency", "model", b"model", "occurred_at", b"occurred_at", "request", b"request", "usage", b"usage"]) -> None: ...
+    def HasField(self, field_name: typing.Literal["_classification", b"_classification", "_cost", b"_cost", "_error", b"_error", "_wizard_attribution", b"_wizard_attribution", "actor", b"actor", "classification", b"classification", "cost", b"cost", "enrichment", b"enrichment", "error", b"error", "latency", b"latency", "model", b"model", "occurred_at", b"occurred_at", "request", b"request", "usage", b"usage", "wizard_attribution", b"wizard_attribution"]) -> builtins.bool: ...
+    def ClearField(self, field_name: typing.Literal["_classification", b"_classification", "_cost", b"_cost", "_error", b"_error", "_wizard_attribution", b"_wizard_attribution", "actor", b"actor", "classification", b"classification", "cost", b"cost", "deployment_mode", b"deployment_mode", "enrichment", b"enrichment", "error", b"error", "event_type", b"event_type", "installation_id", b"installation_id", "latency", b"latency", "model", b"model", "occurred_at", b"occurred_at", "request", b"request", "usage", b"usage", "wizard_attribution", b"wizard_attribution"]) -> None: ...
+    @typing.overload
+    def WhichOneof(self, oneof_group: typing.Literal["_classification", b"_classification"]) -> typing.Literal["classification"] | None: ...
+    @typing.overload
+    def WhichOneof(self, oneof_group: typing.Literal["_cost", b"_cost"]) -> typing.Literal["cost"] | None: ...
+    @typing.overload
     def WhichOneof(self, oneof_group: typing.Literal["_error", b"_error"]) -> typing.Literal["error"] | None: ...
+    @typing.overload
+    def WhichOneof(self, oneof_group: typing.Literal["_wizard_attribution", b"_wizard_attribution"]) -> typing.Literal["wizard_attribution"] | None: ...
 
 Global___LiteLlmRequestCompleted: typing_extensions.TypeAlias = LiteLlmRequestCompleted
 
@@ -274,3 +303,82 @@ class LiteLlmError(google.protobuf.message.Message):
     def WhichOneof(self, oneof_group: typing.Literal["_llm_provider", b"_llm_provider"]) -> typing.Literal["llm_provider"] | None: ...
 
 Global___LiteLlmError: typing_extensions.TypeAlias = LiteLlmError
+
+@typing.final
+class LiteLlmWizardAttribution(google.protobuf.message.Message):
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
+    WIZARD_SESSION_ID_FIELD_NUMBER: builtins.int
+    WIZARD_TURN_ID_FIELD_NUMBER: builtins.int
+    WIZARD_THREAD_SOURCE_FIELD_NUMBER: builtins.int
+    WIZARD_TURN_STARTED_AT_UNIX_MS_FIELD_NUMBER: builtins.int
+    wizard_session_id: builtins.str
+    """Wizard session ID from x-codex-turn-metadata."""
+    wizard_turn_id: builtins.str
+    """Wizard turn ID from x-codex-turn-metadata."""
+    wizard_thread_source: builtins.str
+    """Thread source (e.g. "cli", "vscode", "cloud")."""
+    wizard_turn_started_at_unix_ms: builtins.int
+    """Unix timestamp in milliseconds when the turn started."""
+    def __init__(
+        self,
+        *,
+        wizard_session_id: builtins.str = ...,
+        wizard_turn_id: builtins.str = ...,
+        wizard_thread_source: builtins.str | None = ...,
+        wizard_turn_started_at_unix_ms: builtins.int | None = ...,
+    ) -> None: ...
+    def HasField(self, field_name: typing.Literal["_wizard_thread_source", b"_wizard_thread_source", "_wizard_turn_started_at_unix_ms", b"_wizard_turn_started_at_unix_ms", "wizard_thread_source", b"wizard_thread_source", "wizard_turn_started_at_unix_ms", b"wizard_turn_started_at_unix_ms"]) -> builtins.bool: ...
+    def ClearField(self, field_name: typing.Literal["_wizard_thread_source", b"_wizard_thread_source", "_wizard_turn_started_at_unix_ms", b"_wizard_turn_started_at_unix_ms", "wizard_session_id", b"wizard_session_id", "wizard_thread_source", b"wizard_thread_source", "wizard_turn_id", b"wizard_turn_id", "wizard_turn_started_at_unix_ms", b"wizard_turn_started_at_unix_ms"]) -> None: ...
+    @typing.overload
+    def WhichOneof(self, oneof_group: typing.Literal["_wizard_thread_source", b"_wizard_thread_source"]) -> typing.Literal["wizard_thread_source"] | None: ...
+    @typing.overload
+    def WhichOneof(self, oneof_group: typing.Literal["_wizard_turn_started_at_unix_ms", b"_wizard_turn_started_at_unix_ms"]) -> typing.Literal["wizard_turn_started_at_unix_ms"] | None: ...
+
+Global___LiteLlmWizardAttribution: typing_extensions.TypeAlias = LiteLlmWizardAttribution
+
+@typing.final
+class LiteLlmCost(google.protobuf.message.Message):
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
+    RESPONSE_COST_USD_FIELD_NUMBER: builtins.int
+    COST_STATUS_FIELD_NUMBER: builtins.int
+    COST_REASON_FIELD_NUMBER: builtins.int
+    response_cost_usd: builtins.float
+    """Cost in USD as reported by LiteLLM."""
+    cost_status: builtins.str
+    """How the cost was determined: "calculated", "non_billable", "missing_usage", "pricing_failed"."""
+    cost_reason: builtins.str
+    """Explanation when cost_status is not "calculated" (e.g. failure debug info)."""
+    def __init__(
+        self,
+        *,
+        response_cost_usd: builtins.float = ...,
+        cost_status: builtins.str = ...,
+        cost_reason: builtins.str | None = ...,
+    ) -> None: ...
+    def HasField(self, field_name: typing.Literal["_cost_reason", b"_cost_reason", "cost_reason", b"cost_reason"]) -> builtins.bool: ...
+    def ClearField(self, field_name: typing.Literal["_cost_reason", b"_cost_reason", "cost_reason", b"cost_reason", "cost_status", b"cost_status", "response_cost_usd", b"response_cost_usd"]) -> None: ...
+    def WhichOneof(self, oneof_group: typing.Literal["_cost_reason", b"_cost_reason"]) -> typing.Literal["cost_reason"] | None: ...
+
+Global___LiteLlmCost: typing_extensions.TypeAlias = LiteLlmCost
+
+@typing.final
+class LiteLlmClassification(google.protobuf.message.Message):
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
+    IS_BILLABLE_REQUEST_FIELD_NUMBER: builtins.int
+    EVENT_SUBTYPE_FIELD_NUMBER: builtins.int
+    is_billable_request: builtins.bool
+    """Whether this request should be billed."""
+    event_subtype: builtins.str
+    """Event subtype for analytics: "completion", "websocket_lifecycle"."""
+    def __init__(
+        self,
+        *,
+        is_billable_request: builtins.bool = ...,
+        event_subtype: builtins.str = ...,
+    ) -> None: ...
+    def ClearField(self, field_name: typing.Literal["event_subtype", b"event_subtype", "is_billable_request", b"is_billable_request"]) -> None: ...
+
+Global___LiteLlmClassification: typing_extensions.TypeAlias = LiteLlmClassification
