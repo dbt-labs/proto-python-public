@@ -121,3 +121,70 @@ class QueryExecuted(google.protobuf.message.Message):
     def WhichOneof(self, oneof_group: typing.Literal["_unique_id", b"_unique_id"]) -> typing.Literal["unique_id"] | None: ...
 
 Global___QueryExecuted: typing_extensions.TypeAlias = QueryExecuted
+
+@typing.final
+class ConnectionLimitWait(google.protobuf.message.Message):
+    """Time spent waiting for connection concurrency limits to allow a node to proceed."""
+
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
+    ACTIVE_NODES_FIELD_NUMBER: builtins.int
+    ACTIVE_CONNECTIONS_FIELD_NUMBER: builtins.int
+    active_nodes: builtins.int
+    """Number of active nodes in task runner. Empty unless trace log level is set."""
+    active_connections: builtins.int
+    """Number of active adapter connections. Empty unless trace log level is set."""
+    def __init__(
+        self,
+        *,
+        active_nodes: builtins.int | None = ...,
+        active_connections: builtins.int | None = ...,
+    ) -> None: ...
+    def HasField(self, field_name: typing.Literal["_active_connections", b"_active_connections", "_active_nodes", b"_active_nodes", "active_connections", b"active_connections", "active_nodes", b"active_nodes"]) -> builtins.bool: ...
+    def ClearField(self, field_name: typing.Literal["_active_connections", b"_active_connections", "_active_nodes", b"_active_nodes", "active_connections", b"active_connections", "active_nodes", b"active_nodes"]) -> None: ...
+    @typing.overload
+    def WhichOneof(self, oneof_group: typing.Literal["_active_connections", b"_active_connections"]) -> typing.Literal["active_connections"] | None: ...
+    @typing.overload
+    def WhichOneof(self, oneof_group: typing.Literal["_active_nodes", b"_active_nodes"]) -> typing.Literal["active_nodes"] | None: ...
+
+Global___ConnectionLimitWait: typing_extensions.TypeAlias = ConnectionLimitWait
+
+@typing.final
+class AdapterConnectionOpen(google.protobuf.message.Message):
+    """Event emitted when an adapter connection is opened. Only emitted at trace log level."""
+
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
+    ADAPTER_TYPE_FIELD_NUMBER: builtins.int
+    ADAPTER_BACKEND_FIELD_NUMBER: builtins.int
+    adapter_type: builtins.str
+    """Adapter type name"""
+    adapter_backend: builtins.str
+    """Adapter backend (driver) name"""
+    def __init__(
+        self,
+        *,
+        adapter_type: builtins.str = ...,
+        adapter_backend: builtins.str = ...,
+    ) -> None: ...
+    def ClearField(self, field_name: typing.Literal["adapter_backend", b"adapter_backend", "adapter_type", b"adapter_type"]) -> None: ...
+
+Global___AdapterConnectionOpen: typing_extensions.TypeAlias = AdapterConnectionOpen
+
+@typing.final
+class AdapterConnectionClose(google.protobuf.message.Message):
+    """Event emitted when an adapter connection is closed. Only emitted at trace log level."""
+
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
+    REPR_FIELD_NUMBER: builtins.int
+    repr: builtins.str
+    """Debug representation of the adapter connection being closed."""
+    def __init__(
+        self,
+        *,
+        repr: builtins.str = ...,
+    ) -> None: ...
+    def ClearField(self, field_name: typing.Literal["repr", b"repr"]) -> None: ...
+
+Global___AdapterConnectionClose: typing_extensions.TypeAlias = AdapterConnectionClose

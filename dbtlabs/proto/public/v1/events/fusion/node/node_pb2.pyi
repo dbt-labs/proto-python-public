@@ -201,6 +201,10 @@ class _NodeCacheReasonEnumTypeWrapper(google.protobuf.internal.enum_type_wrapper
     """Reused from cache - changes detected but still within freshness window."""
     NODE_CACHE_REASON_UPDATE_CRITERIA_NOT_MET: _NodeCacheReason.ValueType  # 2
     """Reused from cache - changes detected but update criteria not met."""
+    NODE_CACHE_REASON_CLONED_EXISTING: _NodeCacheReason.ValueType  # 3
+    """Reused by cloning an existing relation."""
+    NODE_CACHE_REASON_CLONED_EXISTING_STILL_FRESH: _NodeCacheReason.ValueType  # 4
+    """Reused by cloning an existing relation within freshness tolerance."""
 
 class NodeCacheReason(_NodeCacheReason, metaclass=_NodeCacheReasonEnumTypeWrapper):
     """Cache reuse classification when node_skip_reason == NODE_SKIP_REASON_CACHED."""
@@ -211,6 +215,10 @@ NODE_CACHE_REASON_STILL_FRESH: NodeCacheReason.ValueType  # 1
 """Reused from cache - changes detected but still within freshness window."""
 NODE_CACHE_REASON_UPDATE_CRITERIA_NOT_MET: NodeCacheReason.ValueType  # 2
 """Reused from cache - changes detected but update criteria not met."""
+NODE_CACHE_REASON_CLONED_EXISTING: NodeCacheReason.ValueType  # 3
+"""Reused by cloning an existing relation."""
+NODE_CACHE_REASON_CLONED_EXISTING_STILL_FRESH: NodeCacheReason.ValueType  # 4
+"""Reused by cloning an existing relation within freshness tolerance."""
 Global___NodeCacheReason: typing_extensions.TypeAlias = NodeCacheReason
 
 class _NodeMaterialization:
@@ -336,21 +344,28 @@ class TestEvaluationDetail(google.protobuf.message.Message):
     TEST_OUTCOME_FIELD_NUMBER: builtins.int
     FAILING_ROWS_FIELD_NUMBER: builtins.int
     DIFF_TABLE_FIELD_NUMBER: builtins.int
+    STORE_FAILURES_FIELD_NUMBER: builtins.int
     test_outcome: Global___TestOutcome.ValueType
     failing_rows: builtins.int
     """Number of failing rows for this test."""
     diff_table: builtins.str
     """Pretty printed table diff if available."""
+    store_failures: builtins.bool
+    """Tell consumer whether or not the failure table exists."""
     def __init__(
         self,
         *,
         test_outcome: Global___TestOutcome.ValueType = ...,
         failing_rows: builtins.int = ...,
         diff_table: builtins.str | None = ...,
+        store_failures: builtins.bool | None = ...,
     ) -> None: ...
-    def HasField(self, field_name: typing.Literal["_diff_table", b"_diff_table", "diff_table", b"diff_table"]) -> builtins.bool: ...
-    def ClearField(self, field_name: typing.Literal["_diff_table", b"_diff_table", "diff_table", b"diff_table", "failing_rows", b"failing_rows", "test_outcome", b"test_outcome"]) -> None: ...
+    def HasField(self, field_name: typing.Literal["_diff_table", b"_diff_table", "_store_failures", b"_store_failures", "diff_table", b"diff_table", "store_failures", b"store_failures"]) -> builtins.bool: ...
+    def ClearField(self, field_name: typing.Literal["_diff_table", b"_diff_table", "_store_failures", b"_store_failures", "diff_table", b"diff_table", "failing_rows", b"failing_rows", "store_failures", b"store_failures", "test_outcome", b"test_outcome"]) -> None: ...
+    @typing.overload
     def WhichOneof(self, oneof_group: typing.Literal["_diff_table", b"_diff_table"]) -> typing.Literal["diff_table"] | None: ...
+    @typing.overload
+    def WhichOneof(self, oneof_group: typing.Literal["_store_failures", b"_store_failures"]) -> typing.Literal["store_failures"] | None: ...
 
 Global___TestEvaluationDetail: typing_extensions.TypeAlias = TestEvaluationDetail
 
@@ -472,6 +487,7 @@ class NodeEvaluated(google.protobuf.message.Message):
     NODE_EVALUATION_DETAIL_FIELD_NUMBER: builtins.int
     DBT_CORE_EVENT_CODE_FIELD_NUMBER: builtins.int
     ROWS_AFFECTED_FIELD_NUMBER: builtins.int
+    IDLE_TIME_MS_FIELD_NUMBER: builtins.int
     unique_id: builtins.str
     """unique_id is the globally unique identifier for this node."""
     name: builtins.str
@@ -521,6 +537,10 @@ class NodeEvaluated(google.protobuf.message.Message):
     rows_affected: builtins.int
     """Number of rows affected by this node evaluation, if available.
     Only set for successful outcomes where row count is known (e.g., models, seeds).
+    """
+    idle_time_ms: builtins.int
+    """Total time in milliseconds this node evaluation spent idle.
+    This includes time spent waiting on internal backpressure.
     """
     @property
     def node_cache_detail(self) -> Global___NodeCacheDetail:
@@ -580,9 +600,10 @@ class NodeEvaluated(google.protobuf.message.Message):
         node_evaluation_detail: Global___NodeEvaluationDetail | None = ...,
         dbt_core_event_code: builtins.str | None = ...,
         rows_affected: builtins.int | None = ...,
+        idle_time_ms: builtins.int | None = ...,
     ) -> None: ...
-    def HasField(self, field_name: typing.Literal["_custom_materialization", b"_custom_materialization", "_database", b"_database", "_dbt_core_event_code", b"_dbt_core_event_code", "_defined_at_col", b"_defined_at_col", "_defined_at_line", b"_defined_at_line", "_identifier", b"_identifier", "_materialization", b"_materialization", "_node_cancel_reason", b"_node_cancel_reason", "_node_error_type", b"_node_error_type", "_node_skip_reason", b"_node_skip_reason", "_rows_affected", b"_rows_affected", "_sao_enabled", b"_sao_enabled", "_schema", b"_schema", "custom_materialization", b"custom_materialization", "database", b"database", "dbt_core_event_code", b"dbt_core_event_code", "defined_at_col", b"defined_at_col", "defined_at_line", b"defined_at_line", "identifier", b"identifier", "materialization", b"materialization", "node_cache_detail", b"node_cache_detail", "node_cancel_reason", b"node_cancel_reason", "node_error_type", b"node_error_type", "node_evaluation_detail", b"node_evaluation_detail", "node_freshness_outcome", b"node_freshness_outcome", "node_outcome_detail", b"node_outcome_detail", "node_skip_reason", b"node_skip_reason", "node_skip_upstream_detail", b"node_skip_upstream_detail", "node_test_detail", b"node_test_detail", "rows_affected", b"rows_affected", "sao_enabled", b"sao_enabled", "schema", b"schema"]) -> builtins.bool: ...
-    def ClearField(self, field_name: typing.Literal["_custom_materialization", b"_custom_materialization", "_database", b"_database", "_dbt_core_event_code", b"_dbt_core_event_code", "_defined_at_col", b"_defined_at_col", "_defined_at_line", b"_defined_at_line", "_identifier", b"_identifier", "_materialization", b"_materialization", "_node_cancel_reason", b"_node_cancel_reason", "_node_error_type", b"_node_error_type", "_node_skip_reason", b"_node_skip_reason", "_rows_affected", b"_rows_affected", "_sao_enabled", b"_sao_enabled", "_schema", b"_schema", "custom_materialization", b"custom_materialization", "database", b"database", "dbt_core_event_code", b"dbt_core_event_code", "defined_at_col", b"defined_at_col", "defined_at_line", b"defined_at_line", "identifier", b"identifier", "materialization", b"materialization", "name", b"name", "node_cache_detail", b"node_cache_detail", "node_cancel_reason", b"node_cancel_reason", "node_checksum", b"node_checksum", "node_error_type", b"node_error_type", "node_evaluation_detail", b"node_evaluation_detail", "node_freshness_outcome", b"node_freshness_outcome", "node_outcome", b"node_outcome", "node_outcome_detail", b"node_outcome_detail", "node_skip_reason", b"node_skip_reason", "node_skip_upstream_detail", b"node_skip_upstream_detail", "node_test_detail", b"node_test_detail", "node_type", b"node_type", "phase", b"phase", "relative_path", b"relative_path", "rows_affected", b"rows_affected", "sao_enabled", b"sao_enabled", "schema", b"schema", "unique_id", b"unique_id"]) -> None: ...
+    def HasField(self, field_name: typing.Literal["_custom_materialization", b"_custom_materialization", "_database", b"_database", "_dbt_core_event_code", b"_dbt_core_event_code", "_defined_at_col", b"_defined_at_col", "_defined_at_line", b"_defined_at_line", "_identifier", b"_identifier", "_idle_time_ms", b"_idle_time_ms", "_materialization", b"_materialization", "_node_cancel_reason", b"_node_cancel_reason", "_node_error_type", b"_node_error_type", "_node_skip_reason", b"_node_skip_reason", "_rows_affected", b"_rows_affected", "_sao_enabled", b"_sao_enabled", "_schema", b"_schema", "custom_materialization", b"custom_materialization", "database", b"database", "dbt_core_event_code", b"dbt_core_event_code", "defined_at_col", b"defined_at_col", "defined_at_line", b"defined_at_line", "identifier", b"identifier", "idle_time_ms", b"idle_time_ms", "materialization", b"materialization", "node_cache_detail", b"node_cache_detail", "node_cancel_reason", b"node_cancel_reason", "node_error_type", b"node_error_type", "node_evaluation_detail", b"node_evaluation_detail", "node_freshness_outcome", b"node_freshness_outcome", "node_outcome_detail", b"node_outcome_detail", "node_skip_reason", b"node_skip_reason", "node_skip_upstream_detail", b"node_skip_upstream_detail", "node_test_detail", b"node_test_detail", "rows_affected", b"rows_affected", "sao_enabled", b"sao_enabled", "schema", b"schema"]) -> builtins.bool: ...
+    def ClearField(self, field_name: typing.Literal["_custom_materialization", b"_custom_materialization", "_database", b"_database", "_dbt_core_event_code", b"_dbt_core_event_code", "_defined_at_col", b"_defined_at_col", "_defined_at_line", b"_defined_at_line", "_identifier", b"_identifier", "_idle_time_ms", b"_idle_time_ms", "_materialization", b"_materialization", "_node_cancel_reason", b"_node_cancel_reason", "_node_error_type", b"_node_error_type", "_node_skip_reason", b"_node_skip_reason", "_rows_affected", b"_rows_affected", "_sao_enabled", b"_sao_enabled", "_schema", b"_schema", "custom_materialization", b"custom_materialization", "database", b"database", "dbt_core_event_code", b"dbt_core_event_code", "defined_at_col", b"defined_at_col", "defined_at_line", b"defined_at_line", "identifier", b"identifier", "idle_time_ms", b"idle_time_ms", "materialization", b"materialization", "name", b"name", "node_cache_detail", b"node_cache_detail", "node_cancel_reason", b"node_cancel_reason", "node_checksum", b"node_checksum", "node_error_type", b"node_error_type", "node_evaluation_detail", b"node_evaluation_detail", "node_freshness_outcome", b"node_freshness_outcome", "node_outcome", b"node_outcome", "node_outcome_detail", b"node_outcome_detail", "node_skip_reason", b"node_skip_reason", "node_skip_upstream_detail", b"node_skip_upstream_detail", "node_test_detail", b"node_test_detail", "node_type", b"node_type", "phase", b"phase", "relative_path", b"relative_path", "rows_affected", b"rows_affected", "sao_enabled", b"sao_enabled", "schema", b"schema", "unique_id", b"unique_id"]) -> None: ...
     @typing.overload
     def WhichOneof(self, oneof_group: typing.Literal["_custom_materialization", b"_custom_materialization"]) -> typing.Literal["custom_materialization"] | None: ...
     @typing.overload
@@ -595,6 +616,8 @@ class NodeEvaluated(google.protobuf.message.Message):
     def WhichOneof(self, oneof_group: typing.Literal["_defined_at_line", b"_defined_at_line"]) -> typing.Literal["defined_at_line"] | None: ...
     @typing.overload
     def WhichOneof(self, oneof_group: typing.Literal["_identifier", b"_identifier"]) -> typing.Literal["identifier"] | None: ...
+    @typing.overload
+    def WhichOneof(self, oneof_group: typing.Literal["_idle_time_ms", b"_idle_time_ms"]) -> typing.Literal["idle_time_ms"] | None: ...
     @typing.overload
     def WhichOneof(self, oneof_group: typing.Literal["_materialization", b"_materialization"]) -> typing.Literal["materialization"] | None: ...
     @typing.overload
@@ -651,6 +674,7 @@ class NodeProcessed(google.protobuf.message.Message):
     IN_SELECTION_FIELD_NUMBER: builtins.int
     ROWS_AFFECTED_FIELD_NUMBER: builtins.int
     GROUP_FIELD_NUMBER: builtins.int
+    IDLE_TIME_MS_FIELD_NUMBER: builtins.int
     unique_id: builtins.str
     """unique_id is the globally unique identifier for this node."""
     name: builtins.str
@@ -716,6 +740,10 @@ class NodeProcessed(google.protobuf.message.Message):
     """
     group: builtins.str
     """Group identifier for model level notifications"""
+    idle_time_ms: builtins.int
+    """Total time in milliseconds spent idle across all nested node evaluations.
+    This includes time spent waiting on internal backpressure.
+    """
     @property
     def node_cache_detail(self) -> Global___NodeCacheDetail:
         """Detailed reason why cache was used.
@@ -778,9 +806,10 @@ class NodeProcessed(google.protobuf.message.Message):
         in_selection: builtins.bool = ...,
         rows_affected: builtins.int | None = ...,
         group: builtins.str | None = ...,
+        idle_time_ms: builtins.int | None = ...,
     ) -> None: ...
-    def HasField(self, field_name: typing.Literal["_custom_materialization", b"_custom_materialization", "_database", b"_database", "_defined_at_col", b"_defined_at_col", "_defined_at_line", b"_defined_at_line", "_duration_ms", b"_duration_ms", "_group", b"_group", "_identifier", b"_identifier", "_materialization", b"_materialization", "_node_cancel_reason", b"_node_cancel_reason", "_node_error_type", b"_node_error_type", "_node_skip_reason", b"_node_skip_reason", "_rows_affected", b"_rows_affected", "_sao_enabled", b"_sao_enabled", "_schema", b"_schema", "_source_name", b"_source_name", "custom_materialization", b"custom_materialization", "database", b"database", "defined_at_col", b"defined_at_col", "defined_at_line", b"defined_at_line", "duration_ms", b"duration_ms", "group", b"group", "identifier", b"identifier", "materialization", b"materialization", "node_cache_detail", b"node_cache_detail", "node_cancel_reason", b"node_cancel_reason", "node_error_type", b"node_error_type", "node_evaluation_detail", b"node_evaluation_detail", "node_freshness_outcome", b"node_freshness_outcome", "node_outcome_detail", b"node_outcome_detail", "node_skip_reason", b"node_skip_reason", "node_skip_upstream_detail", b"node_skip_upstream_detail", "node_test_detail", b"node_test_detail", "rows_affected", b"rows_affected", "sao_enabled", b"sao_enabled", "schema", b"schema", "source_name", b"source_name"]) -> builtins.bool: ...
-    def ClearField(self, field_name: typing.Literal["_custom_materialization", b"_custom_materialization", "_database", b"_database", "_defined_at_col", b"_defined_at_col", "_defined_at_line", b"_defined_at_line", "_duration_ms", b"_duration_ms", "_group", b"_group", "_identifier", b"_identifier", "_materialization", b"_materialization", "_node_cancel_reason", b"_node_cancel_reason", "_node_error_type", b"_node_error_type", "_node_skip_reason", b"_node_skip_reason", "_rows_affected", b"_rows_affected", "_sao_enabled", b"_sao_enabled", "_schema", b"_schema", "_source_name", b"_source_name", "custom_materialization", b"custom_materialization", "database", b"database", "dbt_core_event_code", b"dbt_core_event_code", "defined_at_col", b"defined_at_col", "defined_at_line", b"defined_at_line", "duration_ms", b"duration_ms", "group", b"group", "identifier", b"identifier", "in_selection", b"in_selection", "last_phase", b"last_phase", "materialization", b"materialization", "name", b"name", "node_cache_detail", b"node_cache_detail", "node_cancel_reason", b"node_cancel_reason", "node_checksum", b"node_checksum", "node_error_type", b"node_error_type", "node_evaluation_detail", b"node_evaluation_detail", "node_freshness_outcome", b"node_freshness_outcome", "node_outcome", b"node_outcome", "node_outcome_detail", b"node_outcome_detail", "node_skip_reason", b"node_skip_reason", "node_skip_upstream_detail", b"node_skip_upstream_detail", "node_test_detail", b"node_test_detail", "node_type", b"node_type", "relative_path", b"relative_path", "rows_affected", b"rows_affected", "sao_enabled", b"sao_enabled", "schema", b"schema", "source_name", b"source_name", "unique_id", b"unique_id"]) -> None: ...
+    def HasField(self, field_name: typing.Literal["_custom_materialization", b"_custom_materialization", "_database", b"_database", "_defined_at_col", b"_defined_at_col", "_defined_at_line", b"_defined_at_line", "_duration_ms", b"_duration_ms", "_group", b"_group", "_identifier", b"_identifier", "_idle_time_ms", b"_idle_time_ms", "_materialization", b"_materialization", "_node_cancel_reason", b"_node_cancel_reason", "_node_error_type", b"_node_error_type", "_node_skip_reason", b"_node_skip_reason", "_rows_affected", b"_rows_affected", "_sao_enabled", b"_sao_enabled", "_schema", b"_schema", "_source_name", b"_source_name", "custom_materialization", b"custom_materialization", "database", b"database", "defined_at_col", b"defined_at_col", "defined_at_line", b"defined_at_line", "duration_ms", b"duration_ms", "group", b"group", "identifier", b"identifier", "idle_time_ms", b"idle_time_ms", "materialization", b"materialization", "node_cache_detail", b"node_cache_detail", "node_cancel_reason", b"node_cancel_reason", "node_error_type", b"node_error_type", "node_evaluation_detail", b"node_evaluation_detail", "node_freshness_outcome", b"node_freshness_outcome", "node_outcome_detail", b"node_outcome_detail", "node_skip_reason", b"node_skip_reason", "node_skip_upstream_detail", b"node_skip_upstream_detail", "node_test_detail", b"node_test_detail", "rows_affected", b"rows_affected", "sao_enabled", b"sao_enabled", "schema", b"schema", "source_name", b"source_name"]) -> builtins.bool: ...
+    def ClearField(self, field_name: typing.Literal["_custom_materialization", b"_custom_materialization", "_database", b"_database", "_defined_at_col", b"_defined_at_col", "_defined_at_line", b"_defined_at_line", "_duration_ms", b"_duration_ms", "_group", b"_group", "_identifier", b"_identifier", "_idle_time_ms", b"_idle_time_ms", "_materialization", b"_materialization", "_node_cancel_reason", b"_node_cancel_reason", "_node_error_type", b"_node_error_type", "_node_skip_reason", b"_node_skip_reason", "_rows_affected", b"_rows_affected", "_sao_enabled", b"_sao_enabled", "_schema", b"_schema", "_source_name", b"_source_name", "custom_materialization", b"custom_materialization", "database", b"database", "dbt_core_event_code", b"dbt_core_event_code", "defined_at_col", b"defined_at_col", "defined_at_line", b"defined_at_line", "duration_ms", b"duration_ms", "group", b"group", "identifier", b"identifier", "idle_time_ms", b"idle_time_ms", "in_selection", b"in_selection", "last_phase", b"last_phase", "materialization", b"materialization", "name", b"name", "node_cache_detail", b"node_cache_detail", "node_cancel_reason", b"node_cancel_reason", "node_checksum", b"node_checksum", "node_error_type", b"node_error_type", "node_evaluation_detail", b"node_evaluation_detail", "node_freshness_outcome", b"node_freshness_outcome", "node_outcome", b"node_outcome", "node_outcome_detail", b"node_outcome_detail", "node_skip_reason", b"node_skip_reason", "node_skip_upstream_detail", b"node_skip_upstream_detail", "node_test_detail", b"node_test_detail", "node_type", b"node_type", "relative_path", b"relative_path", "rows_affected", b"rows_affected", "sao_enabled", b"sao_enabled", "schema", b"schema", "source_name", b"source_name", "unique_id", b"unique_id"]) -> None: ...
     @typing.overload
     def WhichOneof(self, oneof_group: typing.Literal["_custom_materialization", b"_custom_materialization"]) -> typing.Literal["custom_materialization"] | None: ...
     @typing.overload
@@ -795,6 +824,8 @@ class NodeProcessed(google.protobuf.message.Message):
     def WhichOneof(self, oneof_group: typing.Literal["_group", b"_group"]) -> typing.Literal["group"] | None: ...
     @typing.overload
     def WhichOneof(self, oneof_group: typing.Literal["_identifier", b"_identifier"]) -> typing.Literal["identifier"] | None: ...
+    @typing.overload
+    def WhichOneof(self, oneof_group: typing.Literal["_idle_time_ms", b"_idle_time_ms"]) -> typing.Literal["idle_time_ms"] | None: ...
     @typing.overload
     def WhichOneof(self, oneof_group: typing.Literal["_materialization", b"_materialization"]) -> typing.Literal["materialization"] | None: ...
     @typing.overload

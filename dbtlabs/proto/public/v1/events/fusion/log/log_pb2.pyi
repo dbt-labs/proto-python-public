@@ -27,6 +27,7 @@ class LogMessage(google.protobuf.message.Message):
     DESCRIPTOR: google.protobuf.descriptor.Descriptor
 
     CODE_FIELD_NUMBER: builtins.int
+    CODE_NAME_FIELD_NUMBER: builtins.int
     DBT_CORE_EVENT_CODE_FIELD_NUMBER: builtins.int
     ORIGINAL_SEVERITY_NUMBER_FIELD_NUMBER: builtins.int
     ORIGINAL_SEVERITY_TEXT_FIELD_NUMBER: builtins.int
@@ -43,6 +44,8 @@ class LogMessage(google.protobuf.message.Message):
     EXPANDED_COLUMN_FIELD_NUMBER: builtins.int
     code: builtins.int
     """Optional fusion error/warning code"""
+    code_name: builtins.str
+    """Optional fusion error/warning code variant name (e.g. "Generic")."""
     dbt_core_event_code: builtins.str
     """Optional legacy dbt-core code (e.g. "Z048") if this event has a strict mapping to a dbt core event."""
     original_severity_number: dbtlabs.proto.public.v1.events.fusion.compat.otlp_pb2.SeverityNumber.ValueType
@@ -74,6 +77,7 @@ class LogMessage(google.protobuf.message.Message):
         self,
         *,
         code: builtins.int | None = ...,
+        code_name: builtins.str | None = ...,
         dbt_core_event_code: builtins.str | None = ...,
         original_severity_number: dbtlabs.proto.public.v1.events.fusion.compat.otlp_pb2.SeverityNumber.ValueType = ...,
         original_severity_text: builtins.str = ...,
@@ -89,14 +93,16 @@ class LogMessage(google.protobuf.message.Message):
         expanded_line: builtins.int | None = ...,
         expanded_column: builtins.int | None = ...,
     ) -> None: ...
-    def HasField(self, field_name: typing.Literal["_code", b"_code", "_code_column", b"_code_column", "_code_line", b"_code_line", "_dbt_core_event_code", b"_dbt_core_event_code", "_expanded_column", b"_expanded_column", "_expanded_line", b"_expanded_line", "_expanded_relative_path", b"_expanded_relative_path", "_file", b"_file", "_line", b"_line", "_package_name", b"_package_name", "_phase", b"_phase", "_relative_path", b"_relative_path", "_unique_id", b"_unique_id", "code", b"code", "code_column", b"code_column", "code_line", b"code_line", "dbt_core_event_code", b"dbt_core_event_code", "expanded_column", b"expanded_column", "expanded_line", b"expanded_line", "expanded_relative_path", b"expanded_relative_path", "file", b"file", "line", b"line", "package_name", b"package_name", "phase", b"phase", "relative_path", b"relative_path", "unique_id", b"unique_id"]) -> builtins.bool: ...
-    def ClearField(self, field_name: typing.Literal["_code", b"_code", "_code_column", b"_code_column", "_code_line", b"_code_line", "_dbt_core_event_code", b"_dbt_core_event_code", "_expanded_column", b"_expanded_column", "_expanded_line", b"_expanded_line", "_expanded_relative_path", b"_expanded_relative_path", "_file", b"_file", "_line", b"_line", "_package_name", b"_package_name", "_phase", b"_phase", "_relative_path", b"_relative_path", "_unique_id", b"_unique_id", "code", b"code", "code_column", b"code_column", "code_line", b"code_line", "dbt_core_event_code", b"dbt_core_event_code", "expanded_column", b"expanded_column", "expanded_line", b"expanded_line", "expanded_relative_path", b"expanded_relative_path", "file", b"file", "line", b"line", "original_severity_number", b"original_severity_number", "original_severity_text", b"original_severity_text", "package_name", b"package_name", "phase", b"phase", "relative_path", b"relative_path", "unique_id", b"unique_id"]) -> None: ...
+    def HasField(self, field_name: typing.Literal["_code", b"_code", "_code_column", b"_code_column", "_code_line", b"_code_line", "_code_name", b"_code_name", "_dbt_core_event_code", b"_dbt_core_event_code", "_expanded_column", b"_expanded_column", "_expanded_line", b"_expanded_line", "_expanded_relative_path", b"_expanded_relative_path", "_file", b"_file", "_line", b"_line", "_package_name", b"_package_name", "_phase", b"_phase", "_relative_path", b"_relative_path", "_unique_id", b"_unique_id", "code", b"code", "code_column", b"code_column", "code_line", b"code_line", "code_name", b"code_name", "dbt_core_event_code", b"dbt_core_event_code", "expanded_column", b"expanded_column", "expanded_line", b"expanded_line", "expanded_relative_path", b"expanded_relative_path", "file", b"file", "line", b"line", "package_name", b"package_name", "phase", b"phase", "relative_path", b"relative_path", "unique_id", b"unique_id"]) -> builtins.bool: ...
+    def ClearField(self, field_name: typing.Literal["_code", b"_code", "_code_column", b"_code_column", "_code_line", b"_code_line", "_code_name", b"_code_name", "_dbt_core_event_code", b"_dbt_core_event_code", "_expanded_column", b"_expanded_column", "_expanded_line", b"_expanded_line", "_expanded_relative_path", b"_expanded_relative_path", "_file", b"_file", "_line", b"_line", "_package_name", b"_package_name", "_phase", b"_phase", "_relative_path", b"_relative_path", "_unique_id", b"_unique_id", "code", b"code", "code_column", b"code_column", "code_line", b"code_line", "code_name", b"code_name", "dbt_core_event_code", b"dbt_core_event_code", "expanded_column", b"expanded_column", "expanded_line", b"expanded_line", "expanded_relative_path", b"expanded_relative_path", "file", b"file", "line", b"line", "original_severity_number", b"original_severity_number", "original_severity_text", b"original_severity_text", "package_name", b"package_name", "phase", b"phase", "relative_path", b"relative_path", "unique_id", b"unique_id"]) -> None: ...
     @typing.overload
     def WhichOneof(self, oneof_group: typing.Literal["_code", b"_code"]) -> typing.Literal["code"] | None: ...
     @typing.overload
     def WhichOneof(self, oneof_group: typing.Literal["_code_column", b"_code_column"]) -> typing.Literal["code_column"] | None: ...
     @typing.overload
     def WhichOneof(self, oneof_group: typing.Literal["_code_line", b"_code_line"]) -> typing.Literal["code_line"] | None: ...
+    @typing.overload
+    def WhichOneof(self, oneof_group: typing.Literal["_code_name", b"_code_name"]) -> typing.Literal["code_name"] | None: ...
     @typing.overload
     def WhichOneof(self, oneof_group: typing.Literal["_dbt_core_event_code", b"_dbt_core_event_code"]) -> typing.Literal["dbt_core_event_code"] | None: ...
     @typing.overload
