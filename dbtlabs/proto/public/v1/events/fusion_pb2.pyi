@@ -263,6 +263,7 @@ class Invocation(google.protobuf.message.Message):
     VERSION_FIELD_NUMBER: builtins.int
     RESULT_TYPE_FIELD_NUMBER: builtins.int
     GIT_COMMIT_SHA_FIELD_NUMBER: builtins.int
+    DISTRIBUTION_FIELD_NUMBER: builtins.int
     event_id: builtins.str
     """event_id is the unique identifier for this event. It is a generated UUID.
     Required.
@@ -312,6 +313,8 @@ class Invocation(google.protobuf.message.Message):
     gives a hash of the model being run which may be finer granularity than
     at a project level.
     """
+    distribution: builtins.str
+    """The distribution of dbt that was used to run this command."""
     @property
     def enrichment(self) -> dbtlabs.proto.public.v1.events.vortex_pb2.VortexMessageEnrichment:
         """This field is a toggle to enable enrichment of the message by the Vortex service."""
@@ -329,9 +332,10 @@ class Invocation(google.protobuf.message.Message):
         version: builtins.str = ...,
         result_type: builtins.str = ...,
         git_commit_sha: builtins.str = ...,
+        distribution: builtins.str = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["enrichment", b"enrichment"]) -> builtins.bool: ...
-    def ClearField(self, field_name: typing.Literal["command", b"command", "enrichment", b"enrichment", "event_id", b"event_id", "git_commit_sha", b"git_commit_sha", "invocation_id", b"invocation_id", "progress", b"progress", "project_id", b"project_id", "result_type", b"result_type", "user_id", b"user_id", "version", b"version"]) -> None: ...
+    def ClearField(self, field_name: typing.Literal["command", b"command", "distribution", b"distribution", "enrichment", b"enrichment", "event_id", b"event_id", "git_commit_sha", b"git_commit_sha", "invocation_id", b"invocation_id", "progress", b"progress", "project_id", b"project_id", "result_type", b"result_type", "user_id", b"user_id", "version", b"version"]) -> None: ...
 
 Global___Invocation: typing_extensions.TypeAlias = Invocation
 
