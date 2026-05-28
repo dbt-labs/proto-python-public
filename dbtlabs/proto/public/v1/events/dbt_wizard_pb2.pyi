@@ -217,6 +217,284 @@ class DbtWizardToolUse(google.protobuf.message.Message):
 Global___DbtWizardToolUse: typing_extensions.TypeAlias = DbtWizardToolUse
 
 @typing.final
+class DbtWizardCliStarted(google.protobuf.message.Message):
+    """Emitted immediately at binary launch, before onboarding or thread creation."""
+
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
+    ENRICHMENT_FIELD_NUMBER: builtins.int
+    EVENT_ID_FIELD_NUMBER: builtins.int
+    USER_ID_FIELD_NUMBER: builtins.int
+    ACCOUNT_ID_FIELD_NUMBER: builtins.int
+    ACCOUNT_IDENTIFIER_FIELD_NUMBER: builtins.int
+    VERSION_FIELD_NUMBER: builtins.int
+    OS_FIELD_NUMBER: builtins.int
+    ARCH_FIELD_NUMBER: builtins.int
+    IS_FIRST_RUN_FIELD_NUMBER: builtins.int
+    LAUNCH_SOURCE_FIELD_NUMBER: builtins.int
+    LAUNCHED_AT_FIELD_NUMBER: builtins.int
+    event_id: builtins.str
+    user_id: builtins.str
+    """Anonymous UUID from ~/.dbt/.user.yml (created on first run)."""
+    account_id: builtins.str
+    """dbt Cloud account ID (empty if unauthenticated)."""
+    account_identifier: builtins.str
+    version: builtins.str
+    os: builtins.str
+    arch: builtins.str
+    is_first_run: builtins.bool
+    """Whether this is the first time the binary has run (no .user.yml existed)."""
+    launch_source: builtins.str
+    """How the app was launched: "cli", "vscode", "desktop", "mcp_server"."""
+    launched_at: builtins.int
+    """Unix timestamp of launch."""
+    @property
+    def enrichment(self) -> dbtlabs.proto.public.v1.events.vortex_pb2.VortexMessageEnrichment: ...
+    def __init__(
+        self,
+        *,
+        enrichment: dbtlabs.proto.public.v1.events.vortex_pb2.VortexMessageEnrichment | None = ...,
+        event_id: builtins.str = ...,
+        user_id: builtins.str = ...,
+        account_id: builtins.str = ...,
+        account_identifier: builtins.str = ...,
+        version: builtins.str = ...,
+        os: builtins.str = ...,
+        arch: builtins.str = ...,
+        is_first_run: builtins.bool = ...,
+        launch_source: builtins.str = ...,
+        launched_at: builtins.int = ...,
+    ) -> None: ...
+    def HasField(self, field_name: typing.Literal["enrichment", b"enrichment"]) -> builtins.bool: ...
+    def ClearField(self, field_name: typing.Literal["account_id", b"account_id", "account_identifier", b"account_identifier", "arch", b"arch", "enrichment", b"enrichment", "event_id", b"event_id", "is_first_run", b"is_first_run", "launch_source", b"launch_source", "launched_at", b"launched_at", "os", b"os", "user_id", b"user_id", "version", b"version"]) -> None: ...
+
+Global___DbtWizardCliStarted: typing_extensions.TypeAlias = DbtWizardCliStarted
+
+@typing.final
+class DbtWizardOnboarding(google.protobuf.message.Message):
+    """Emitted once per onboarding step transition."""
+
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
+    ENRICHMENT_FIELD_NUMBER: builtins.int
+    EVENT_ID_FIELD_NUMBER: builtins.int
+    USER_ID_FIELD_NUMBER: builtins.int
+    ACCOUNT_ID_FIELD_NUMBER: builtins.int
+    ACCOUNT_IDENTIFIER_FIELD_NUMBER: builtins.int
+    STEP_FIELD_NUMBER: builtins.int
+    STEP_STATUS_FIELD_NUMBER: builtins.int
+    STEP_DURATION_MS_FIELD_NUMBER: builtins.int
+    IS_FIRST_RUN_FIELD_NUMBER: builtins.int
+    VERSION_FIELD_NUMBER: builtins.int
+    OS_FIELD_NUMBER: builtins.int
+    ARCH_FIELD_NUMBER: builtins.int
+    AUTH_METHOD_FIELD_NUMBER: builtins.int
+    PROVIDER_CONFIGURED_FIELD_NUMBER: builtins.int
+    TRUST_DECISION_FIELD_NUMBER: builtins.int
+    DBT_PROJECT_DETECTED_FIELD_NUMBER: builtins.int
+    STEP_INDEX_FIELD_NUMBER: builtins.int
+    TOTAL_STEPS_SHOWN_FIELD_NUMBER: builtins.int
+    event_id: builtins.str
+    user_id: builtins.str
+    account_id: builtins.str
+    account_identifier: builtins.str
+    step: builtins.str
+    """Step name: "auth", "trust_directory", "dbt_project_setup", "provider_setup"."""
+    step_status: builtins.str
+    """Step outcome: "started", "completed", "skipped", "abandoned"."""
+    step_duration_ms: builtins.int
+    """Time spent on this step."""
+    is_first_run: builtins.bool
+    """First time user ever onboards (no prior .user.yml)."""
+    version: builtins.str
+    os: builtins.str
+    arch: builtins.str
+    auth_method: builtins.str
+    """Auth step: "dbt_platform" | "api_key" | "chatgpt" """
+    provider_configured: builtins.str
+    """Provider step: "anthropic" | "openai" | "bedrock" | "azure" | "snowflake" | "dbt" """
+    trust_decision: builtins.str
+    """Trust step: "trust" | "deny" """
+    dbt_project_detected: builtins.bool
+    """dbt project step: whether a dbt_project.yml was found"""
+    step_index: builtins.int
+    """Position in the flow (0-based)"""
+    total_steps_shown: builtins.int
+    """Total steps shown to this user"""
+    @property
+    def enrichment(self) -> dbtlabs.proto.public.v1.events.vortex_pb2.VortexMessageEnrichment: ...
+    def __init__(
+        self,
+        *,
+        enrichment: dbtlabs.proto.public.v1.events.vortex_pb2.VortexMessageEnrichment | None = ...,
+        event_id: builtins.str = ...,
+        user_id: builtins.str = ...,
+        account_id: builtins.str = ...,
+        account_identifier: builtins.str = ...,
+        step: builtins.str = ...,
+        step_status: builtins.str = ...,
+        step_duration_ms: builtins.int = ...,
+        is_first_run: builtins.bool = ...,
+        version: builtins.str = ...,
+        os: builtins.str = ...,
+        arch: builtins.str = ...,
+        auth_method: builtins.str = ...,
+        provider_configured: builtins.str = ...,
+        trust_decision: builtins.str = ...,
+        dbt_project_detected: builtins.bool = ...,
+        step_index: builtins.int = ...,
+        total_steps_shown: builtins.int = ...,
+    ) -> None: ...
+    def HasField(self, field_name: typing.Literal["enrichment", b"enrichment"]) -> builtins.bool: ...
+    def ClearField(self, field_name: typing.Literal["account_id", b"account_id", "account_identifier", b"account_identifier", "arch", b"arch", "auth_method", b"auth_method", "dbt_project_detected", b"dbt_project_detected", "enrichment", b"enrichment", "event_id", b"event_id", "is_first_run", b"is_first_run", "os", b"os", "provider_configured", b"provider_configured", "step", b"step", "step_duration_ms", b"step_duration_ms", "step_index", b"step_index", "step_status", b"step_status", "total_steps_shown", b"total_steps_shown", "trust_decision", b"trust_decision", "user_id", b"user_id", "version", b"version"]) -> None: ...
+
+Global___DbtWizardOnboarding: typing_extensions.TypeAlias = DbtWizardOnboarding
+
+@typing.final
+class DbtWizardSubAgent(google.protobuf.message.Message):
+    """Emitted at subagent start and end to track full lifecycle."""
+
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
+    ENRICHMENT_FIELD_NUMBER: builtins.int
+    EVENT_ID_FIELD_NUMBER: builtins.int
+    SESSION_ID_FIELD_NUMBER: builtins.int
+    SUBAGENT_THREAD_ID_FIELD_NUMBER: builtins.int
+    SUBAGENT_SOURCE_FIELD_NUMBER: builtins.int
+    MODEL_FIELD_NUMBER: builtins.int
+    PROGRESS_FIELD_NUMBER: builtins.int
+    STATUS_FIELD_NUMBER: builtins.int
+    DURATION_MS_FIELD_NUMBER: builtins.int
+    TURN_COUNT_FIELD_NUMBER: builtins.int
+    TOTAL_TOKENS_FIELD_NUMBER: builtins.int
+    DEPTH_FIELD_NUMBER: builtins.int
+    USER_ID_FIELD_NUMBER: builtins.int
+    ACCOUNT_ID_FIELD_NUMBER: builtins.int
+    ACCOUNT_IDENTIFIER_FIELD_NUMBER: builtins.int
+    event_id: builtins.str
+    session_id: builtins.str
+    """Parent session (the main thread_id)."""
+    subagent_thread_id: builtins.str
+    """The subagent's own thread_id."""
+    subagent_source: builtins.str
+    """"review" | "compact" | "thread_spawn" | "memory_consolidation" | "other" """
+    model: builtins.str
+    progress: builtins.str
+    """"start" | "end" """
+    status: builtins.str
+    """Only on "end": "completed" | "failed" | "interrupted" """
+    duration_ms: builtins.int
+    """0 on start; populated on end."""
+    turn_count: builtins.int
+    total_tokens: builtins.int
+    depth: builtins.int
+    """Nesting depth (0 = direct child of main session)."""
+    user_id: builtins.str
+    account_id: builtins.str
+    account_identifier: builtins.str
+    @property
+    def enrichment(self) -> dbtlabs.proto.public.v1.events.vortex_pb2.VortexMessageEnrichment: ...
+    def __init__(
+        self,
+        *,
+        enrichment: dbtlabs.proto.public.v1.events.vortex_pb2.VortexMessageEnrichment | None = ...,
+        event_id: builtins.str = ...,
+        session_id: builtins.str = ...,
+        subagent_thread_id: builtins.str = ...,
+        subagent_source: builtins.str = ...,
+        model: builtins.str = ...,
+        progress: builtins.str = ...,
+        status: builtins.str = ...,
+        duration_ms: builtins.int = ...,
+        turn_count: builtins.int = ...,
+        total_tokens: builtins.int = ...,
+        depth: builtins.int = ...,
+        user_id: builtins.str = ...,
+        account_id: builtins.str = ...,
+        account_identifier: builtins.str = ...,
+    ) -> None: ...
+    def HasField(self, field_name: typing.Literal["enrichment", b"enrichment"]) -> builtins.bool: ...
+    def ClearField(self, field_name: typing.Literal["account_id", b"account_id", "account_identifier", b"account_identifier", "depth", b"depth", "duration_ms", b"duration_ms", "enrichment", b"enrichment", "event_id", b"event_id", "model", b"model", "progress", b"progress", "session_id", b"session_id", "status", b"status", "subagent_source", b"subagent_source", "subagent_thread_id", b"subagent_thread_id", "total_tokens", b"total_tokens", "turn_count", b"turn_count", "user_id", b"user_id"]) -> None: ...
+
+Global___DbtWizardSubAgent: typing_extensions.TypeAlias = DbtWizardSubAgent
+
+@typing.final
+class DbtWizardError(google.protobuf.message.Message):
+    """Emitted on structured errors (sidecar crashes, provider auth failures, panics)."""
+
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
+    ENRICHMENT_FIELD_NUMBER: builtins.int
+    EVENT_ID_FIELD_NUMBER: builtins.int
+    SESSION_ID_FIELD_NUMBER: builtins.int
+    ERROR_CATEGORY_FIELD_NUMBER: builtins.int
+    ERROR_CODE_FIELD_NUMBER: builtins.int
+    ERROR_CLASS_FIELD_NUMBER: builtins.int
+    COMPONENT_FIELD_NUMBER: builtins.int
+    PROVIDER_FIELD_NUMBER: builtins.int
+    MODEL_FIELD_NUMBER: builtins.int
+    IS_RECOVERABLE_FIELD_NUMBER: builtins.int
+    RETRY_COUNT_FIELD_NUMBER: builtins.int
+    VERSION_FIELD_NUMBER: builtins.int
+    OS_FIELD_NUMBER: builtins.int
+    ARCH_FIELD_NUMBER: builtins.int
+    USER_ID_FIELD_NUMBER: builtins.int
+    ACCOUNT_ID_FIELD_NUMBER: builtins.int
+    ACCOUNT_IDENTIFIER_FIELD_NUMBER: builtins.int
+    OCCURRED_AT_FIELD_NUMBER: builtins.int
+    event_id: builtins.str
+    session_id: builtins.str
+    """Empty if error occurs before session starts."""
+    error_category: builtins.str
+    """"sidecar_startup" | "provider_auth" | "turn_failure" | "panic" | "connection_lost" """
+    error_code: builtins.str
+    """Structured code: "health_timeout", "401", "connection_refused", etc."""
+    error_class: builtins.str
+    """Rust error type name (no message content)."""
+    component: builtins.str
+    """"litellm_sidecar" | "app_server" | "tui" | "core" | "provider" """
+    provider: builtins.str
+    """"anthropic" | "openai" | "bedrock" | "" if not provider-related."""
+    model: builtins.str
+    is_recoverable: builtins.bool
+    retry_count: builtins.int
+    version: builtins.str
+    os: builtins.str
+    arch: builtins.str
+    user_id: builtins.str
+    account_id: builtins.str
+    account_identifier: builtins.str
+    occurred_at: builtins.int
+    @property
+    def enrichment(self) -> dbtlabs.proto.public.v1.events.vortex_pb2.VortexMessageEnrichment: ...
+    def __init__(
+        self,
+        *,
+        enrichment: dbtlabs.proto.public.v1.events.vortex_pb2.VortexMessageEnrichment | None = ...,
+        event_id: builtins.str = ...,
+        session_id: builtins.str = ...,
+        error_category: builtins.str = ...,
+        error_code: builtins.str = ...,
+        error_class: builtins.str = ...,
+        component: builtins.str = ...,
+        provider: builtins.str = ...,
+        model: builtins.str = ...,
+        is_recoverable: builtins.bool = ...,
+        retry_count: builtins.int = ...,
+        version: builtins.str = ...,
+        os: builtins.str = ...,
+        arch: builtins.str = ...,
+        user_id: builtins.str = ...,
+        account_id: builtins.str = ...,
+        account_identifier: builtins.str = ...,
+        occurred_at: builtins.int = ...,
+    ) -> None: ...
+    def HasField(self, field_name: typing.Literal["enrichment", b"enrichment"]) -> builtins.bool: ...
+    def ClearField(self, field_name: typing.Literal["account_id", b"account_id", "account_identifier", b"account_identifier", "arch", b"arch", "component", b"component", "enrichment", b"enrichment", "error_category", b"error_category", "error_class", b"error_class", "error_code", b"error_code", "event_id", b"event_id", "is_recoverable", b"is_recoverable", "model", b"model", "occurred_at", b"occurred_at", "os", b"os", "provider", b"provider", "retry_count", b"retry_count", "session_id", b"session_id", "user_id", b"user_id", "version", b"version"]) -> None: ...
+
+Global___DbtWizardError: typing_extensions.TypeAlias = DbtWizardError
+
+@typing.final
 class DbtWizardFeedback(google.protobuf.message.Message):
     """Emitted when a user submits feedback via /feedback."""
 
