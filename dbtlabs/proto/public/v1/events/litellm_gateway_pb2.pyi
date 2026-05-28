@@ -370,7 +370,9 @@ class LiteLlmClassification(google.protobuf.message.Message):
     IS_BILLABLE_REQUEST_FIELD_NUMBER: builtins.int
     EVENT_SUBTYPE_FIELD_NUMBER: builtins.int
     is_billable_request: builtins.bool
-    """Whether this request should be billed."""
+    """Deprecated: billability should be determined downstream from event_type,
+    deployment_mode, and model metadata. Always sent as false.
+    """
     event_subtype: builtins.str
     """Event subtype for analytics: "completion", "websocket_lifecycle"."""
     def __init__(
