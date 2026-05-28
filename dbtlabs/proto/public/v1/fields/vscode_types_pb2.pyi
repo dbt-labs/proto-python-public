@@ -472,6 +472,110 @@ QUERY_RESULT_INTERACTION_TYPE_SCROLL: QueryResultInteractionType.ValueType  # 5
 """First scroll within a single result set (subsequent scrolls are not reported)."""
 Global___QueryResultInteractionType: typing_extensions.TypeAlias = QueryResultInteractionType
 
+class _TrialLightGateKind:
+    ValueType = typing.NewType("ValueType", builtins.int)
+    V: typing_extensions.TypeAlias = ValueType
+
+class _TrialLightGateKindEnumTypeWrapper(google.protobuf.internal.enum_type_wrapper._EnumTypeWrapper[_TrialLightGateKind.ValueType], builtins.type):
+    DESCRIPTOR: google.protobuf.descriptor.EnumDescriptor
+    TRIAL_LIGHT_GATE_KIND_UNSPECIFIED: _TrialLightGateKind.ValueType  # 0
+    TRIAL_LIGHT_GATE_KIND_CTA_IMPRESSION: _TrialLightGateKind.ValueType  # 1
+    """A CTA/banner was rendered to the user (e.g. compare or catalog panel CTA)."""
+    TRIAL_LIGHT_GATE_KIND_ACTION_BLOCKED: _TrialLightGateKind.ValueType  # 2
+    """The user invoked a gated action that was blocked (e.g. rename, column lineage)."""
+
+class TrialLightGateKind(_TrialLightGateKind, metaclass=_TrialLightGateKindEnumTypeWrapper):
+    """Distinguishes passive impressions of a trial-light CTA from active denials of a gated action."""
+
+TRIAL_LIGHT_GATE_KIND_UNSPECIFIED: TrialLightGateKind.ValueType  # 0
+TRIAL_LIGHT_GATE_KIND_CTA_IMPRESSION: TrialLightGateKind.ValueType  # 1
+"""A CTA/banner was rendered to the user (e.g. compare or catalog panel CTA)."""
+TRIAL_LIGHT_GATE_KIND_ACTION_BLOCKED: TrialLightGateKind.ValueType  # 2
+"""The user invoked a gated action that was blocked (e.g. rename, column lineage)."""
+Global___TrialLightGateKind: typing_extensions.TypeAlias = TrialLightGateKind
+
+class _OAuthSessionAdoptTrigger:
+    ValueType = typing.NewType("ValueType", builtins.int)
+    V: typing_extensions.TypeAlias = ValueType
+
+class _OAuthSessionAdoptTriggerEnumTypeWrapper(google.protobuf.internal.enum_type_wrapper._EnumTypeWrapper[_OAuthSessionAdoptTrigger.ValueType], builtins.type):
+    DESCRIPTOR: google.protobuf.descriptor.EnumDescriptor
+    OAUTH_SESSION_ADOPT_TRIGGER_UNSPECIFIED: _OAuthSessionAdoptTrigger.ValueType  # 0
+    OAUTH_SESSION_ADOPT_TRIGGER_ACTIVATION: _OAuthSessionAdoptTrigger.ValueType  # 1
+    """Adopted during extension activation (loadAndSync)."""
+    OAUTH_SESSION_ADOPT_TRIGGER_REFRESH_SYNC: _OAuthSessionAdoptTrigger.ValueType  # 2
+    """Adopted just before a refresh because the file held a fresher session (syncFromFile)."""
+
+class OAuthSessionAdoptTrigger(_OAuthSessionAdoptTrigger, metaclass=_OAuthSessionAdoptTriggerEnumTypeWrapper):
+    """Why an OAuth session was adopted from the on-disk session file."""
+
+OAUTH_SESSION_ADOPT_TRIGGER_UNSPECIFIED: OAuthSessionAdoptTrigger.ValueType  # 0
+OAUTH_SESSION_ADOPT_TRIGGER_ACTIVATION: OAuthSessionAdoptTrigger.ValueType  # 1
+"""Adopted during extension activation (loadAndSync)."""
+OAUTH_SESSION_ADOPT_TRIGGER_REFRESH_SYNC: OAuthSessionAdoptTrigger.ValueType  # 2
+"""Adopted just before a refresh because the file held a fresher session (syncFromFile)."""
+Global___OAuthSessionAdoptTrigger: typing_extensions.TypeAlias = OAuthSessionAdoptTrigger
+
+class _OAuthSessionPersistTrigger:
+    ValueType = typing.NewType("ValueType", builtins.int)
+    V: typing_extensions.TypeAlias = ValueType
+
+class _OAuthSessionPersistTriggerEnumTypeWrapper(google.protobuf.internal.enum_type_wrapper._EnumTypeWrapper[_OAuthSessionPersistTrigger.ValueType], builtins.type):
+    DESCRIPTOR: google.protobuf.descriptor.EnumDescriptor
+    OAUTH_SESSION_PERSIST_TRIGGER_UNSPECIFIED: _OAuthSessionPersistTrigger.ValueType  # 0
+    OAUTH_SESSION_PERSIST_TRIGGER_CALLBACK: _OAuthSessionPersistTrigger.ValueType  # 1
+    """Persisted after a successful OAuth callback (handleCallback)."""
+    OAUTH_SESSION_PERSIST_TRIGGER_REFRESH: _OAuthSessionPersistTrigger.ValueType  # 2
+    """Persisted after a successful network refresh (refreshAccessToken)."""
+    OAUTH_SESSION_PERSIST_TRIGGER_ACTIVATION_MIGRATION: _OAuthSessionPersistTrigger.ValueType  # 3
+    """Persisted during activation because SecretStorage had tokens but no file slot existed."""
+
+class OAuthSessionPersistTrigger(_OAuthSessionPersistTrigger, metaclass=_OAuthSessionPersistTriggerEnumTypeWrapper):
+    """Why an OAuth session was persisted to the on-disk session file."""
+
+OAUTH_SESSION_PERSIST_TRIGGER_UNSPECIFIED: OAuthSessionPersistTrigger.ValueType  # 0
+OAUTH_SESSION_PERSIST_TRIGGER_CALLBACK: OAuthSessionPersistTrigger.ValueType  # 1
+"""Persisted after a successful OAuth callback (handleCallback)."""
+OAUTH_SESSION_PERSIST_TRIGGER_REFRESH: OAuthSessionPersistTrigger.ValueType  # 2
+"""Persisted after a successful network refresh (refreshAccessToken)."""
+OAUTH_SESSION_PERSIST_TRIGGER_ACTIVATION_MIGRATION: OAuthSessionPersistTrigger.ValueType  # 3
+"""Persisted during activation because SecretStorage had tokens but no file slot existed."""
+Global___OAuthSessionPersistTrigger: typing_extensions.TypeAlias = OAuthSessionPersistTrigger
+
+class _OAuthSessionFileActionAtActivation:
+    ValueType = typing.NewType("ValueType", builtins.int)
+    V: typing_extensions.TypeAlias = ValueType
+
+class _OAuthSessionFileActionAtActivationEnumTypeWrapper(google.protobuf.internal.enum_type_wrapper._EnumTypeWrapper[_OAuthSessionFileActionAtActivation.ValueType], builtins.type):
+    DESCRIPTOR: google.protobuf.descriptor.EnumDescriptor
+    OAUTH_SESSION_FILE_ACTION_AT_ACTIVATION_UNSPECIFIED: _OAuthSessionFileActionAtActivation.ValueType  # 0
+    OAUTH_SESSION_FILE_ACTION_AT_ACTIVATION_NO_FILE: _OAuthSessionFileActionAtActivation.ValueType  # 1
+    """No session file present at activation."""
+    OAUTH_SESSION_FILE_ACTION_AT_ACTIVATION_ADOPTED: _OAuthSessionFileActionAtActivation.ValueType  # 2
+    """File present with our client_id slot; SecretStorage was updated from the file."""
+    OAUTH_SESSION_FILE_ACTION_AT_ACTIVATION_MIGRATED: _OAuthSessionFileActionAtActivation.ValueType  # 3
+    """File present without our slot; SecretStorage tokens were written to the file."""
+    OAUTH_SESSION_FILE_ACTION_AT_ACTIVATION_NO_ACTION: _OAuthSessionFileActionAtActivation.ValueType  # 4
+    """File present without our slot, and no migratable secrets; nothing changed."""
+    OAUTH_SESSION_FILE_ACTION_AT_ACTIVATION_WRONG_VERSION: _OAuthSessionFileActionAtActivation.ValueType  # 5
+    """File present with a newer schema version; we refused to read or overwrite it."""
+
+class OAuthSessionFileActionAtActivation(_OAuthSessionFileActionAtActivation, metaclass=_OAuthSessionFileActionAtActivationEnumTypeWrapper):
+    """Outcome of the OAuth session file load attempt at activation."""
+
+OAUTH_SESSION_FILE_ACTION_AT_ACTIVATION_UNSPECIFIED: OAuthSessionFileActionAtActivation.ValueType  # 0
+OAUTH_SESSION_FILE_ACTION_AT_ACTIVATION_NO_FILE: OAuthSessionFileActionAtActivation.ValueType  # 1
+"""No session file present at activation."""
+OAUTH_SESSION_FILE_ACTION_AT_ACTIVATION_ADOPTED: OAuthSessionFileActionAtActivation.ValueType  # 2
+"""File present with our client_id slot; SecretStorage was updated from the file."""
+OAUTH_SESSION_FILE_ACTION_AT_ACTIVATION_MIGRATED: OAuthSessionFileActionAtActivation.ValueType  # 3
+"""File present without our slot; SecretStorage tokens were written to the file."""
+OAUTH_SESSION_FILE_ACTION_AT_ACTIVATION_NO_ACTION: OAuthSessionFileActionAtActivation.ValueType  # 4
+"""File present without our slot, and no migratable secrets; nothing changed."""
+OAUTH_SESSION_FILE_ACTION_AT_ACTIVATION_WRONG_VERSION: OAuthSessionFileActionAtActivation.ValueType  # 5
+"""File present with a newer schema version; we refused to read or overwrite it."""
+Global___OAuthSessionFileActionAtActivation: typing_extensions.TypeAlias = OAuthSessionFileActionAtActivation
+
 @typing.final
 class User(google.protobuf.message.Message):
     """User information"""

@@ -39,6 +39,7 @@ class ExtensionActivated(google.protobuf.message.Message):
     DBT_LOCAL_COOKIE_USER_ID_FIELD_NUMBER: builtins.int
     MODELS_COUNT_FIELD_NUMBER: builtins.int
     ADAPTER_TYPE_FIELD_NUMBER: builtins.int
+    OAUTH_SESSION_FILE_ACTION_FIELD_NUMBER: builtins.int
     os_name: builtins.str
     """os name"""
     os_version: builtins.str
@@ -63,6 +64,8 @@ class ExtensionActivated(google.protobuf.message.Message):
     """project models count"""
     adapter_type: builtins.str
     """the type of adapter used in the project (snowflake, bigquery, etc)"""
+    oauth_session_file_action: dbtlabs.proto.public.v1.fields.vscode_types_pb2.OAuthSessionFileActionAtActivation.ValueType
+    """Outcome of OAuth session file load at activation."""
     @property
     def enrichment(self) -> dbtlabs.proto.public.v1.events.vortex_pb2.VortexMessageEnrichment: ...
     @property
@@ -87,9 +90,10 @@ class ExtensionActivated(google.protobuf.message.Message):
         dbt_local_cookie_user_id: builtins.str = ...,
         models_count: builtins.int = ...,
         adapter_type: builtins.str = ...,
+        oauth_session_file_action: dbtlabs.proto.public.v1.fields.vscode_types_pb2.OAuthSessionFileActionAtActivation.ValueType = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["editor", b"editor", "enrichment", b"enrichment", "user", b"user"]) -> builtins.bool: ...
-    def ClearField(self, field_name: typing.Literal["adapter_type", b"adapter_type", "dbt_local_cookie_user_id", b"dbt_local_cookie_user_id", "dbt_version", b"dbt_version", "editor", b"editor", "enrichment", b"enrichment", "init_duration_ms", b"init_duration_ms", "init_error", b"init_error", "init_error_detail", b"init_error_detail", "init_success", b"init_success", "is_fusion_installed", b"is_fusion_installed", "is_lsp_installed", b"is_lsp_installed", "models_count", b"models_count", "os_name", b"os_name", "os_version", b"os_version", "user", b"user"]) -> None: ...
+    def ClearField(self, field_name: typing.Literal["adapter_type", b"adapter_type", "dbt_local_cookie_user_id", b"dbt_local_cookie_user_id", "dbt_version", b"dbt_version", "editor", b"editor", "enrichment", b"enrichment", "init_duration_ms", b"init_duration_ms", "init_error", b"init_error", "init_error_detail", b"init_error_detail", "init_success", b"init_success", "is_fusion_installed", b"is_fusion_installed", "is_lsp_installed", b"is_lsp_installed", "models_count", b"models_count", "oauth_session_file_action", b"oauth_session_file_action", "os_name", b"os_name", "os_version", b"os_version", "user", b"user"]) -> None: ...
 
 Global___ExtensionActivated: typing_extensions.TypeAlias = ExtensionActivated
 
@@ -1666,3 +1670,134 @@ class ExtensionQueryResultInteracted(google.protobuf.message.Message):
     def ClearField(self, field_name: typing.Literal["dbt_local_cookie_user_id", b"dbt_local_cookie_user_id", "editor", b"editor", "enrichment", b"enrichment", "interaction_type", b"interaction_type", "query_id", b"query_id", "user", b"user"]) -> None: ...
 
 Global___ExtensionQueryResultInteracted: typing_extensions.TypeAlias = ExtensionQueryResultInteracted
+
+@typing.final
+class ExtensionTrialLightGateFired(google.protobuf.message.Message):
+    """Emitted every time a trial-light gate fires for a user (CTA impression or action denial)."""
+
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
+    ENRICHMENT_FIELD_NUMBER: builtins.int
+    EDITOR_FIELD_NUMBER: builtins.int
+    USER_FIELD_NUMBER: builtins.int
+    DBT_LOCAL_COOKIE_USER_ID_FIELD_NUMBER: builtins.int
+    EVENT_ID_FIELD_NUMBER: builtins.int
+    TARGET_FIELD_NUMBER: builtins.int
+    USER_STATE_FIELD_NUMBER: builtins.int
+    GATE_KIND_FIELD_NUMBER: builtins.int
+    dbt_local_cookie_user_id: builtins.str
+    """the anonymous user id stored at ~/.dbt/.user.yml"""
+    event_id: builtins.str
+    """UUID to uniquely identify the event"""
+    target: builtins.str
+    """UI surface where the gate fired; reuses RegistrationTarget vocabulary
+    (e.g. "compare_cta", "catalog_cta", "column_lineage_cta", "rename_cta").
+    """
+    user_state: dbtlabs.proto.public.v1.fields.vscode_types_pb2.UserState.ValueType
+    """User state at the moment the gate fired."""
+    gate_kind: dbtlabs.proto.public.v1.fields.vscode_types_pb2.TrialLightGateKind.ValueType
+    """Whether this was a passive impression or an active block."""
+    @property
+    def enrichment(self) -> dbtlabs.proto.public.v1.events.vortex_pb2.VortexMessageEnrichment: ...
+    @property
+    def editor(self) -> dbtlabs.proto.public.v1.fields.vscode_types_pb2.Editor: ...
+    @property
+    def user(self) -> dbtlabs.proto.public.v1.fields.vscode_types_pb2.User: ...
+    def __init__(
+        self,
+        *,
+        enrichment: dbtlabs.proto.public.v1.events.vortex_pb2.VortexMessageEnrichment | None = ...,
+        editor: dbtlabs.proto.public.v1.fields.vscode_types_pb2.Editor | None = ...,
+        user: dbtlabs.proto.public.v1.fields.vscode_types_pb2.User | None = ...,
+        dbt_local_cookie_user_id: builtins.str = ...,
+        event_id: builtins.str = ...,
+        target: builtins.str = ...,
+        user_state: dbtlabs.proto.public.v1.fields.vscode_types_pb2.UserState.ValueType = ...,
+        gate_kind: dbtlabs.proto.public.v1.fields.vscode_types_pb2.TrialLightGateKind.ValueType = ...,
+    ) -> None: ...
+    def HasField(self, field_name: typing.Literal["editor", b"editor", "enrichment", b"enrichment", "user", b"user"]) -> builtins.bool: ...
+    def ClearField(self, field_name: typing.Literal["dbt_local_cookie_user_id", b"dbt_local_cookie_user_id", "editor", b"editor", "enrichment", b"enrichment", "event_id", b"event_id", "gate_kind", b"gate_kind", "target", b"target", "user", b"user", "user_state", b"user_state"]) -> None: ...
+
+Global___ExtensionTrialLightGateFired: typing_extensions.TypeAlias = ExtensionTrialLightGateFired
+
+@typing.final
+class ExtensionOAuthSessionAdopted(google.protobuf.message.Message):
+    """Emitted when the extension adopts an OAuth session from the on-disk session file
+    into SecretStorage (cross-process credential sharing).
+    """
+
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
+    ENRICHMENT_FIELD_NUMBER: builtins.int
+    EDITOR_FIELD_NUMBER: builtins.int
+    USER_FIELD_NUMBER: builtins.int
+    DBT_LOCAL_COOKIE_USER_ID_FIELD_NUMBER: builtins.int
+    EVENT_ID_FIELD_NUMBER: builtins.int
+    TRIGGER_FIELD_NUMBER: builtins.int
+    dbt_local_cookie_user_id: builtins.str
+    """the anonymous user id stored at ~/.dbt/.user.yml"""
+    event_id: builtins.str
+    """UUID to uniquely identify the event"""
+    trigger: dbtlabs.proto.public.v1.fields.vscode_types_pb2.OAuthSessionAdoptTrigger.ValueType
+    @property
+    def enrichment(self) -> dbtlabs.proto.public.v1.events.vortex_pb2.VortexMessageEnrichment: ...
+    @property
+    def editor(self) -> dbtlabs.proto.public.v1.fields.vscode_types_pb2.Editor: ...
+    @property
+    def user(self) -> dbtlabs.proto.public.v1.fields.vscode_types_pb2.User: ...
+    def __init__(
+        self,
+        *,
+        enrichment: dbtlabs.proto.public.v1.events.vortex_pb2.VortexMessageEnrichment | None = ...,
+        editor: dbtlabs.proto.public.v1.fields.vscode_types_pb2.Editor | None = ...,
+        user: dbtlabs.proto.public.v1.fields.vscode_types_pb2.User | None = ...,
+        dbt_local_cookie_user_id: builtins.str = ...,
+        event_id: builtins.str = ...,
+        trigger: dbtlabs.proto.public.v1.fields.vscode_types_pb2.OAuthSessionAdoptTrigger.ValueType = ...,
+    ) -> None: ...
+    def HasField(self, field_name: typing.Literal["editor", b"editor", "enrichment", b"enrichment", "user", b"user"]) -> builtins.bool: ...
+    def ClearField(self, field_name: typing.Literal["dbt_local_cookie_user_id", b"dbt_local_cookie_user_id", "editor", b"editor", "enrichment", b"enrichment", "event_id", b"event_id", "trigger", b"trigger", "user", b"user"]) -> None: ...
+
+Global___ExtensionOAuthSessionAdopted: typing_extensions.TypeAlias = ExtensionOAuthSessionAdopted
+
+@typing.final
+class ExtensionOAuthSessionPersisted(google.protobuf.message.Message):
+    """Emitted when the extension persists its OAuth session to the on-disk session file."""
+
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
+    ENRICHMENT_FIELD_NUMBER: builtins.int
+    EDITOR_FIELD_NUMBER: builtins.int
+    USER_FIELD_NUMBER: builtins.int
+    DBT_LOCAL_COOKIE_USER_ID_FIELD_NUMBER: builtins.int
+    EVENT_ID_FIELD_NUMBER: builtins.int
+    TRIGGER_FIELD_NUMBER: builtins.int
+    IS_FIRST_WRITE_FIELD_NUMBER: builtins.int
+    dbt_local_cookie_user_id: builtins.str
+    """the anonymous user id stored at ~/.dbt/.user.yml"""
+    event_id: builtins.str
+    """UUID to uniquely identify the event"""
+    trigger: dbtlabs.proto.public.v1.fields.vscode_types_pb2.OAuthSessionPersistTrigger.ValueType
+    is_first_write: builtins.bool
+    """True when this write created our slot for the first time (no prior slot existed)."""
+    @property
+    def enrichment(self) -> dbtlabs.proto.public.v1.events.vortex_pb2.VortexMessageEnrichment: ...
+    @property
+    def editor(self) -> dbtlabs.proto.public.v1.fields.vscode_types_pb2.Editor: ...
+    @property
+    def user(self) -> dbtlabs.proto.public.v1.fields.vscode_types_pb2.User: ...
+    def __init__(
+        self,
+        *,
+        enrichment: dbtlabs.proto.public.v1.events.vortex_pb2.VortexMessageEnrichment | None = ...,
+        editor: dbtlabs.proto.public.v1.fields.vscode_types_pb2.Editor | None = ...,
+        user: dbtlabs.proto.public.v1.fields.vscode_types_pb2.User | None = ...,
+        dbt_local_cookie_user_id: builtins.str = ...,
+        event_id: builtins.str = ...,
+        trigger: dbtlabs.proto.public.v1.fields.vscode_types_pb2.OAuthSessionPersistTrigger.ValueType = ...,
+        is_first_write: builtins.bool = ...,
+    ) -> None: ...
+    def HasField(self, field_name: typing.Literal["editor", b"editor", "enrichment", b"enrichment", "user", b"user"]) -> builtins.bool: ...
+    def ClearField(self, field_name: typing.Literal["dbt_local_cookie_user_id", b"dbt_local_cookie_user_id", "editor", b"editor", "enrichment", b"enrichment", "event_id", b"event_id", "is_first_write", b"is_first_write", "trigger", b"trigger", "user", b"user"]) -> None: ...
+
+Global___ExtensionOAuthSessionPersisted: typing_extensions.TypeAlias = ExtensionOAuthSessionPersisted
