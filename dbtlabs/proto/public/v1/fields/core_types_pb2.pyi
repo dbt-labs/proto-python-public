@@ -7778,6 +7778,97 @@ class LogOverloadResultMsg(google.protobuf.message.Message):
 Global___LogOverloadResultMsg: typing_extensions.TypeAlias = LogOverloadResultMsg
 
 @typing.final
+class V2ParserStart(google.protobuf.message.Message):
+    """Q050"""
+
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
+    V2_PARSER_COMMAND_FIELD_NUMBER: builtins.int
+    PROJECT_NAME_FIELD_NUMBER: builtins.int
+    v2_parser_command: builtins.str
+    project_name: builtins.str
+    def __init__(
+        self,
+        *,
+        v2_parser_command: builtins.str = ...,
+        project_name: builtins.str = ...,
+    ) -> None: ...
+    def ClearField(self, field_name: typing.Literal["project_name", b"project_name", "v2_parser_command", b"v2_parser_command"]) -> None: ...
+
+Global___V2ParserStart: typing_extensions.TypeAlias = V2ParserStart
+
+@typing.final
+class V2ParserStartMsg(google.protobuf.message.Message):
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
+    INFO_FIELD_NUMBER: builtins.int
+    DATA_FIELD_NUMBER: builtins.int
+    @property
+    def info(self) -> Global___CoreEventInfo: ...
+    @property
+    def data(self) -> Global___V2ParserStart: ...
+    def __init__(
+        self,
+        *,
+        info: Global___CoreEventInfo | None = ...,
+        data: Global___V2ParserStart | None = ...,
+    ) -> None: ...
+    def HasField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> builtins.bool: ...
+    def ClearField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> None: ...
+
+Global___V2ParserStartMsg: typing_extensions.TypeAlias = V2ParserStartMsg
+
+@typing.final
+class V2ParserEnd(google.protobuf.message.Message):
+    """Q051"""
+
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
+    STATUS_FIELD_NUMBER: builtins.int
+    EXECUTION_TIME_FIELD_NUMBER: builtins.int
+    ERROR_CLASS_FIELD_NUMBER: builtins.int
+    EXIT_CODE_FIELD_NUMBER: builtins.int
+    PROJECT_NAME_FIELD_NUMBER: builtins.int
+    status: builtins.str
+    execution_time: builtins.float
+    error_class: builtins.str
+    exit_code: builtins.int
+    project_name: builtins.str
+    def __init__(
+        self,
+        *,
+        status: builtins.str = ...,
+        execution_time: builtins.float = ...,
+        error_class: builtins.str = ...,
+        exit_code: builtins.int = ...,
+        project_name: builtins.str = ...,
+    ) -> None: ...
+    def ClearField(self, field_name: typing.Literal["error_class", b"error_class", "execution_time", b"execution_time", "exit_code", b"exit_code", "project_name", b"project_name", "status", b"status"]) -> None: ...
+
+Global___V2ParserEnd: typing_extensions.TypeAlias = V2ParserEnd
+
+@typing.final
+class V2ParserEndMsg(google.protobuf.message.Message):
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
+    INFO_FIELD_NUMBER: builtins.int
+    DATA_FIELD_NUMBER: builtins.int
+    @property
+    def info(self) -> Global___CoreEventInfo: ...
+    @property
+    def data(self) -> Global___V2ParserEnd: ...
+    def __init__(
+        self,
+        *,
+        info: Global___CoreEventInfo | None = ...,
+        data: Global___V2ParserEnd | None = ...,
+    ) -> None: ...
+    def HasField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> builtins.bool: ...
+    def ClearField(self, field_name: typing.Literal["data", b"data", "info", b"info"]) -> None: ...
+
+Global___V2ParserEndMsg: typing_extensions.TypeAlias = V2ParserEndMsg
+
+@typing.final
 class CatchableExceptionOnRun(google.protobuf.message.Message):
     """Skipped W001
 
