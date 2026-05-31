@@ -312,6 +312,7 @@ class LiteLlmWizardAttribution(google.protobuf.message.Message):
     WIZARD_TURN_ID_FIELD_NUMBER: builtins.int
     WIZARD_THREAD_SOURCE_FIELD_NUMBER: builtins.int
     WIZARD_TURN_STARTED_AT_UNIX_MS_FIELD_NUMBER: builtins.int
+    IS_WIZARD_INTERNAL_FIELD_NUMBER: builtins.int
     wizard_session_id: builtins.str
     """Wizard session ID from x-codex-turn-metadata."""
     wizard_turn_id: builtins.str
@@ -320,6 +321,8 @@ class LiteLlmWizardAttribution(google.protobuf.message.Message):
     """Thread source (e.g. "cli", "vscode", "cloud")."""
     wizard_turn_started_at_unix_ms: builtins.int
     """Unix timestamp in milliseconds when the turn started."""
+    is_wizard_internal: builtins.bool
+    """Whether the WIZARD_INTERNAL env var was set for this session."""
     def __init__(
         self,
         *,
@@ -327,9 +330,10 @@ class LiteLlmWizardAttribution(google.protobuf.message.Message):
         wizard_turn_id: builtins.str = ...,
         wizard_thread_source: builtins.str | None = ...,
         wizard_turn_started_at_unix_ms: builtins.int | None = ...,
+        is_wizard_internal: builtins.bool = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["_wizard_thread_source", b"_wizard_thread_source", "_wizard_turn_started_at_unix_ms", b"_wizard_turn_started_at_unix_ms", "wizard_thread_source", b"wizard_thread_source", "wizard_turn_started_at_unix_ms", b"wizard_turn_started_at_unix_ms"]) -> builtins.bool: ...
-    def ClearField(self, field_name: typing.Literal["_wizard_thread_source", b"_wizard_thread_source", "_wizard_turn_started_at_unix_ms", b"_wizard_turn_started_at_unix_ms", "wizard_session_id", b"wizard_session_id", "wizard_thread_source", b"wizard_thread_source", "wizard_turn_id", b"wizard_turn_id", "wizard_turn_started_at_unix_ms", b"wizard_turn_started_at_unix_ms"]) -> None: ...
+    def ClearField(self, field_name: typing.Literal["_wizard_thread_source", b"_wizard_thread_source", "_wizard_turn_started_at_unix_ms", b"_wizard_turn_started_at_unix_ms", "is_wizard_internal", b"is_wizard_internal", "wizard_session_id", b"wizard_session_id", "wizard_thread_source", b"wizard_thread_source", "wizard_turn_id", b"wizard_turn_id", "wizard_turn_started_at_unix_ms", b"wizard_turn_started_at_unix_ms"]) -> None: ...
     @typing.overload
     def WhichOneof(self, oneof_group: typing.Literal["_wizard_thread_source", b"_wizard_thread_source"]) -> typing.Literal["wizard_thread_source"] | None: ...
     @typing.overload
