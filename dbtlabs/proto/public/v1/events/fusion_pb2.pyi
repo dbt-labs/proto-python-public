@@ -564,6 +564,7 @@ class RunModel(google.protobuf.message.Message):
     RESOURCE_TYPE_FIELD_NUMBER: builtins.int
     TABLE_FORMAT_FIELD_NUMBER: builtins.int
     CATALOG_NAME_FIELD_NUMBER: builtins.int
+    CATALOG_TYPE_FIELD_NUMBER: builtins.int
     event_id: builtins.str
     """event_id is the unique identifier for this event. It is a generated UUID."""
     invocation_id: builtins.str
@@ -626,6 +627,12 @@ class RunModel(google.protobuf.message.Message):
     """the catalog name from catalogs.yml, if the model opted into a write integration.
     empty string when the model does not use catalogs.yml.
     """
+    catalog_type: builtins.str
+    """the catalog type of the model's active write integration in catalogs.yml
+    (ex. "iceberg_rest", "unity", "glue", "built_in", "biglake_metastore").
+    this is the catalog backend kind, distinct from catalog_name (the user-chosen
+    catalog label). empty string when the model does not use catalogs.yml.
+    """
     @property
     def enrichment(self) -> dbtlabs.proto.public.v1.events.vortex_pb2.VortexMessageEnrichment:
         """This field is a toggle to enable enrichment of the message by the Vortex service."""
@@ -655,9 +662,10 @@ class RunModel(google.protobuf.message.Message):
         resource_type: builtins.str = ...,
         table_format: builtins.str = ...,
         catalog_name: builtins.str = ...,
+        catalog_type: builtins.str = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["enrichment", b"enrichment"]) -> builtins.bool: ...
-    def ClearField(self, field_name: typing.Literal["access", b"access", "catalog_name", b"catalog_name", "contract_enforced", b"contract_enforced", "enrichment", b"enrichment", "event_id", b"event_id", "execution_time", b"execution_time", "has_group", b"has_group", "hashed_contents", b"hashed_contents", "index", b"index", "invocation_id", b"invocation_id", "language", b"language", "model_id", b"model_id", "model_incremental_strategy", b"model_incremental_strategy", "model_materialization", b"model_materialization", "resource_type", b"resource_type", "run_model_id", b"run_model_id", "run_skipped", b"run_skipped", "run_skipped_reason", b"run_skipped_reason", "run_status", b"run_status", "table_format", b"table_format", "total", b"total", "versioned", b"versioned"]) -> None: ...
+    def ClearField(self, field_name: typing.Literal["access", b"access", "catalog_name", b"catalog_name", "catalog_type", b"catalog_type", "contract_enforced", b"contract_enforced", "enrichment", b"enrichment", "event_id", b"event_id", "execution_time", b"execution_time", "has_group", b"has_group", "hashed_contents", b"hashed_contents", "index", b"index", "invocation_id", b"invocation_id", "language", b"language", "model_id", b"model_id", "model_incremental_strategy", b"model_incremental_strategy", "model_materialization", b"model_materialization", "resource_type", b"resource_type", "run_model_id", b"run_model_id", "run_skipped", b"run_skipped", "run_skipped_reason", b"run_skipped_reason", "run_status", b"run_status", "table_format", b"table_format", "total", b"total", "versioned", b"versioned"]) -> None: ...
 
 Global___RunModel: typing_extensions.TypeAlias = RunModel
 
