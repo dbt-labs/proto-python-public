@@ -464,6 +464,7 @@ class ResourceCounts(google.protobuf.message.Message):
     UNIT_TESTS_FIELD_NUMBER: builtins.int
     SEMANTIC_MODELS_FIELD_NUMBER: builtins.int
     SAVED_QUERIES_FIELD_NUMBER: builtins.int
+    CATALOGS_FIELD_NUMBER: builtins.int
     event_id: builtins.str
     """event_id is the unique identifier for this event. It is a generated UUID."""
     invocation_id: builtins.str
@@ -498,6 +499,8 @@ class ResourceCounts(google.protobuf.message.Message):
     """total count of semantic models in the project."""
     saved_queries: builtins.int
     """total count of saved queries in the project."""
+    catalogs: builtins.int
+    """total count of catalogs in the project."""
     @property
     def enrichment(self) -> dbtlabs.proto.public.v1.events.vortex_pb2.VortexMessageEnrichment:
         """This field is a toggle to enable enrichment of the message by the Vortex service."""
@@ -522,9 +525,10 @@ class ResourceCounts(google.protobuf.message.Message):
         unit_tests: builtins.int = ...,
         semantic_models: builtins.int = ...,
         saved_queries: builtins.int = ...,
+        catalogs: builtins.int = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["enrichment", b"enrichment"]) -> builtins.bool: ...
-    def ClearField(self, field_name: typing.Literal["analyses", b"analyses", "enrichment", b"enrichment", "event_id", b"event_id", "exposures", b"exposures", "groups", b"groups", "invocation_id", b"invocation_id", "macros", b"macros", "metrics", b"metrics", "models", b"models", "operations", b"operations", "saved_queries", b"saved_queries", "seeds", b"seeds", "semantic_models", b"semantic_models", "snapshots", b"snapshots", "sources", b"sources", "tests", b"tests", "unit_tests", b"unit_tests"]) -> None: ...
+    def ClearField(self, field_name: typing.Literal["analyses", b"analyses", "catalogs", b"catalogs", "enrichment", b"enrichment", "event_id", b"event_id", "exposures", b"exposures", "groups", b"groups", "invocation_id", b"invocation_id", "macros", b"macros", "metrics", b"metrics", "models", b"models", "operations", b"operations", "saved_queries", b"saved_queries", "seeds", b"seeds", "semantic_models", b"semantic_models", "snapshots", b"snapshots", "sources", b"sources", "tests", b"tests", "unit_tests", b"unit_tests"]) -> None: ...
 
 Global___ResourceCounts: typing_extensions.TypeAlias = ResourceCounts
 
