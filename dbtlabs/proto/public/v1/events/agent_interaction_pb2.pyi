@@ -135,12 +135,14 @@ class AgentToolCallStarted(google.protobuf.message.Message):
     CALL_ID_FIELD_NUMBER: builtins.int
     AGENT_MODE_FIELD_NUMBER: builtins.int
     SKILL_NAME_FIELD_NUMBER: builtins.int
+    AUTO_ALLOWED_FIELD_NUMBER: builtins.int
     copilot_request_id: builtins.str
     thread_id: builtins.str
     tool_name: builtins.str
     call_id: builtins.str
     agent_mode: builtins.str
     skill_name: builtins.str
+    auto_allowed: builtins.bool
     @property
     def enrichment(self) -> dbtlabs.proto.public.v1.events.vortex_pb2.VortexMessageEnrichment: ...
     @property
@@ -156,9 +158,10 @@ class AgentToolCallStarted(google.protobuf.message.Message):
         call_id: builtins.str = ...,
         agent_mode: builtins.str = ...,
         skill_name: builtins.str = ...,
+        auto_allowed: builtins.bool = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["ctx", b"ctx", "enrichment", b"enrichment"]) -> builtins.bool: ...
-    def ClearField(self, field_name: typing.Literal["agent_mode", b"agent_mode", "call_id", b"call_id", "copilot_request_id", b"copilot_request_id", "ctx", b"ctx", "enrichment", b"enrichment", "skill_name", b"skill_name", "thread_id", b"thread_id", "tool_name", b"tool_name"]) -> None: ...
+    def ClearField(self, field_name: typing.Literal["agent_mode", b"agent_mode", "auto_allowed", b"auto_allowed", "call_id", b"call_id", "copilot_request_id", b"copilot_request_id", "ctx", b"ctx", "enrichment", b"enrichment", "skill_name", b"skill_name", "thread_id", b"thread_id", "tool_name", b"tool_name"]) -> None: ...
 
 Global___AgentToolCallStarted: typing_extensions.TypeAlias = AgentToolCallStarted
 
@@ -183,6 +186,7 @@ class AgentToolCallCompleted(google.protobuf.message.Message):
     STATUS_FIELD_NUMBER: builtins.int
     OUTPUT_LENGTH_FIELD_NUMBER: builtins.int
     ERROR_MESSAGE_FIELD_NUMBER: builtins.int
+    AUTO_ALLOWED_FIELD_NUMBER: builtins.int
     COMMAND_ID_FIELD_NUMBER: builtins.int
     copilot_request_id: builtins.str
     thread_id: builtins.str
@@ -193,6 +197,7 @@ class AgentToolCallCompleted(google.protobuf.message.Message):
     status: builtins.str
     output_length: builtins.int
     error_message: builtins.str
+    auto_allowed: builtins.bool
     command_id: builtins.str
     """Server-generated id correlating to backend command execution.
     Populated only for invoke_dbt, run_autofix, run_dbt_index.
@@ -215,10 +220,11 @@ class AgentToolCallCompleted(google.protobuf.message.Message):
         status: builtins.str = ...,
         output_length: builtins.int | None = ...,
         error_message: builtins.str | None = ...,
+        auto_allowed: builtins.bool = ...,
         command_id: builtins.str | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["_command_id", b"_command_id", "_error_message", b"_error_message", "_output_length", b"_output_length", "command_id", b"command_id", "ctx", b"ctx", "enrichment", b"enrichment", "error_message", b"error_message", "output_length", b"output_length"]) -> builtins.bool: ...
-    def ClearField(self, field_name: typing.Literal["_command_id", b"_command_id", "_error_message", b"_error_message", "_output_length", b"_output_length", "agent_mode", b"agent_mode", "call_id", b"call_id", "command_id", b"command_id", "copilot_request_id", b"copilot_request_id", "ctx", b"ctx", "enrichment", b"enrichment", "error_message", b"error_message", "output_length", b"output_length", "skill_name", b"skill_name", "status", b"status", "thread_id", b"thread_id", "tool_name", b"tool_name"]) -> None: ...
+    def ClearField(self, field_name: typing.Literal["_command_id", b"_command_id", "_error_message", b"_error_message", "_output_length", b"_output_length", "agent_mode", b"agent_mode", "auto_allowed", b"auto_allowed", "call_id", b"call_id", "command_id", b"command_id", "copilot_request_id", b"copilot_request_id", "ctx", b"ctx", "enrichment", b"enrichment", "error_message", b"error_message", "output_length", b"output_length", "skill_name", b"skill_name", "status", b"status", "thread_id", b"thread_id", "tool_name", b"tool_name"]) -> None: ...
     @typing.overload
     def WhichOneof(self, oneof_group: typing.Literal["_command_id", b"_command_id"]) -> typing.Literal["command_id"] | None: ...
     @typing.overload
