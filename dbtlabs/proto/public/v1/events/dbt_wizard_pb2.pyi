@@ -40,6 +40,7 @@ class DbtWizardSession(google.protobuf.message.Message):
     ACCOUNT_ID_FIELD_NUMBER: builtins.int
     ACCOUNT_IDENTIFIER_FIELD_NUMBER: builtins.int
     IS_WIZARD_INTERNAL_FIELD_NUMBER: builtins.int
+    ANONYMOUS_ID_FIELD_NUMBER: builtins.int
     event_id: builtins.str
     """Unique identifier for this event."""
     session_id: builtins.str
@@ -74,6 +75,10 @@ class DbtWizardSession(google.protobuf.message.Message):
     """Global dbt Cloud account identifier slug (from /api/v2/accounts/{id}/)."""
     is_wizard_internal: builtins.bool
     """Whether the WIZARD_INTERNAL env var was set for this session."""
+    anonymous_id: builtins.str
+    """The anonymous UUID from ~/.dbt/.user.yml. Always populated regardless of
+    auth state, enabling a join between pre-auth and post-auth events.
+    """
     @property
     def enrichment(self) -> dbtlabs.proto.public.v1.events.vortex_pb2.VortexMessageEnrichment: ...
     def __init__(
@@ -96,9 +101,10 @@ class DbtWizardSession(google.protobuf.message.Message):
         account_id: builtins.str = ...,
         account_identifier: builtins.str = ...,
         is_wizard_internal: builtins.bool = ...,
+        anonymous_id: builtins.str = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["enrichment", b"enrichment"]) -> builtins.bool: ...
-    def ClearField(self, field_name: typing.Literal["account_id", b"account_id", "account_identifier", b"account_identifier", "arch", b"arch", "duration_ms", b"duration_ms", "enrichment", b"enrichment", "event_id", b"event_id", "is_wizard_internal", b"is_wizard_internal", "model", b"model", "os", b"os", "progress", b"progress", "result_type", b"result_type", "session_id", b"session_id", "session_source", b"session_source", "total_tokens", b"total_tokens", "turn_count", b"turn_count", "user_id", b"user_id", "version", b"version"]) -> None: ...
+    def ClearField(self, field_name: typing.Literal["account_id", b"account_id", "account_identifier", b"account_identifier", "anonymous_id", b"anonymous_id", "arch", b"arch", "duration_ms", b"duration_ms", "enrichment", b"enrichment", "event_id", b"event_id", "is_wizard_internal", b"is_wizard_internal", "model", b"model", "os", b"os", "progress", b"progress", "result_type", b"result_type", "session_id", b"session_id", "session_source", b"session_source", "total_tokens", b"total_tokens", "turn_count", b"turn_count", "user_id", b"user_id", "version", b"version"]) -> None: ...
 
 Global___DbtWizardSession: typing_extensions.TypeAlias = DbtWizardSession
 
@@ -246,6 +252,7 @@ class DbtWizardCliStarted(google.protobuf.message.Message):
     LAUNCH_SOURCE_FIELD_NUMBER: builtins.int
     LAUNCHED_AT_FIELD_NUMBER: builtins.int
     IS_WIZARD_INTERNAL_FIELD_NUMBER: builtins.int
+    ANONYMOUS_ID_FIELD_NUMBER: builtins.int
     event_id: builtins.str
     user_id: builtins.str
     """Anonymous UUID from ~/.dbt/.user.yml (created on first run)."""
@@ -263,6 +270,10 @@ class DbtWizardCliStarted(google.protobuf.message.Message):
     """Unix timestamp of launch."""
     is_wizard_internal: builtins.bool
     """Whether the WIZARD_INTERNAL env var was set for this session."""
+    anonymous_id: builtins.str
+    """The anonymous UUID from ~/.dbt/.user.yml. Always populated regardless of
+    auth state, enabling a join between pre-auth and post-auth events.
+    """
     @property
     def enrichment(self) -> dbtlabs.proto.public.v1.events.vortex_pb2.VortexMessageEnrichment: ...
     def __init__(
@@ -280,9 +291,10 @@ class DbtWizardCliStarted(google.protobuf.message.Message):
         launch_source: builtins.str = ...,
         launched_at: builtins.int = ...,
         is_wizard_internal: builtins.bool = ...,
+        anonymous_id: builtins.str = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["enrichment", b"enrichment"]) -> builtins.bool: ...
-    def ClearField(self, field_name: typing.Literal["account_id", b"account_id", "account_identifier", b"account_identifier", "arch", b"arch", "enrichment", b"enrichment", "event_id", b"event_id", "is_first_run", b"is_first_run", "is_wizard_internal", b"is_wizard_internal", "launch_source", b"launch_source", "launched_at", b"launched_at", "os", b"os", "user_id", b"user_id", "version", b"version"]) -> None: ...
+    def ClearField(self, field_name: typing.Literal["account_id", b"account_id", "account_identifier", b"account_identifier", "anonymous_id", b"anonymous_id", "arch", b"arch", "enrichment", b"enrichment", "event_id", b"event_id", "is_first_run", b"is_first_run", "is_wizard_internal", b"is_wizard_internal", "launch_source", b"launch_source", "launched_at", b"launched_at", "os", b"os", "user_id", b"user_id", "version", b"version"]) -> None: ...
 
 Global___DbtWizardCliStarted: typing_extensions.TypeAlias = DbtWizardCliStarted
 
@@ -311,6 +323,7 @@ class DbtWizardOnboarding(google.protobuf.message.Message):
     STEP_INDEX_FIELD_NUMBER: builtins.int
     TOTAL_STEPS_SHOWN_FIELD_NUMBER: builtins.int
     IS_WIZARD_INTERNAL_FIELD_NUMBER: builtins.int
+    ANONYMOUS_ID_FIELD_NUMBER: builtins.int
     event_id: builtins.str
     user_id: builtins.str
     account_id: builtins.str
@@ -340,6 +353,10 @@ class DbtWizardOnboarding(google.protobuf.message.Message):
     """Total steps shown to this user"""
     is_wizard_internal: builtins.bool
     """Whether the WIZARD_INTERNAL env var was set for this session."""
+    anonymous_id: builtins.str
+    """The anonymous UUID from ~/.dbt/.user.yml. Always populated regardless of
+    auth state, enabling a join between pre-auth and post-auth events.
+    """
     @property
     def enrichment(self) -> dbtlabs.proto.public.v1.events.vortex_pb2.VortexMessageEnrichment: ...
     def __init__(
@@ -364,9 +381,10 @@ class DbtWizardOnboarding(google.protobuf.message.Message):
         step_index: builtins.int = ...,
         total_steps_shown: builtins.int = ...,
         is_wizard_internal: builtins.bool = ...,
+        anonymous_id: builtins.str = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["enrichment", b"enrichment"]) -> builtins.bool: ...
-    def ClearField(self, field_name: typing.Literal["account_id", b"account_id", "account_identifier", b"account_identifier", "arch", b"arch", "auth_method", b"auth_method", "dbt_project_detected", b"dbt_project_detected", "enrichment", b"enrichment", "event_id", b"event_id", "is_first_run", b"is_first_run", "is_wizard_internal", b"is_wizard_internal", "os", b"os", "provider_configured", b"provider_configured", "step", b"step", "step_duration_ms", b"step_duration_ms", "step_index", b"step_index", "step_status", b"step_status", "total_steps_shown", b"total_steps_shown", "trust_decision", b"trust_decision", "user_id", b"user_id", "version", b"version"]) -> None: ...
+    def ClearField(self, field_name: typing.Literal["account_id", b"account_id", "account_identifier", b"account_identifier", "anonymous_id", b"anonymous_id", "arch", b"arch", "auth_method", b"auth_method", "dbt_project_detected", b"dbt_project_detected", "enrichment", b"enrichment", "event_id", b"event_id", "is_first_run", b"is_first_run", "is_wizard_internal", b"is_wizard_internal", "os", b"os", "provider_configured", b"provider_configured", "step", b"step", "step_duration_ms", b"step_duration_ms", "step_index", b"step_index", "step_status", b"step_status", "total_steps_shown", b"total_steps_shown", "trust_decision", b"trust_decision", "user_id", b"user_id", "version", b"version"]) -> None: ...
 
 Global___DbtWizardOnboarding: typing_extensions.TypeAlias = DbtWizardOnboarding
 
@@ -392,6 +410,7 @@ class DbtWizardSubAgent(google.protobuf.message.Message):
     ACCOUNT_ID_FIELD_NUMBER: builtins.int
     ACCOUNT_IDENTIFIER_FIELD_NUMBER: builtins.int
     IS_WIZARD_INTERNAL_FIELD_NUMBER: builtins.int
+    ANONYMOUS_ID_FIELD_NUMBER: builtins.int
     event_id: builtins.str
     session_id: builtins.str
     """Parent session (the main thread_id)."""
@@ -415,6 +434,10 @@ class DbtWizardSubAgent(google.protobuf.message.Message):
     account_identifier: builtins.str
     is_wizard_internal: builtins.bool
     """Whether the WIZARD_INTERNAL env var was set for this session."""
+    anonymous_id: builtins.str
+    """The anonymous UUID from ~/.dbt/.user.yml. Always populated regardless of
+    auth state, enabling a join between pre-auth and post-auth events.
+    """
     @property
     def enrichment(self) -> dbtlabs.proto.public.v1.events.vortex_pb2.VortexMessageEnrichment: ...
     def __init__(
@@ -436,9 +459,10 @@ class DbtWizardSubAgent(google.protobuf.message.Message):
         account_id: builtins.str = ...,
         account_identifier: builtins.str = ...,
         is_wizard_internal: builtins.bool = ...,
+        anonymous_id: builtins.str = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["enrichment", b"enrichment"]) -> builtins.bool: ...
-    def ClearField(self, field_name: typing.Literal["account_id", b"account_id", "account_identifier", b"account_identifier", "depth", b"depth", "duration_ms", b"duration_ms", "enrichment", b"enrichment", "event_id", b"event_id", "is_wizard_internal", b"is_wizard_internal", "model", b"model", "progress", b"progress", "session_id", b"session_id", "status", b"status", "subagent_source", b"subagent_source", "subagent_thread_id", b"subagent_thread_id", "total_tokens", b"total_tokens", "turn_count", b"turn_count", "user_id", b"user_id"]) -> None: ...
+    def ClearField(self, field_name: typing.Literal["account_id", b"account_id", "account_identifier", b"account_identifier", "anonymous_id", b"anonymous_id", "depth", b"depth", "duration_ms", b"duration_ms", "enrichment", b"enrichment", "event_id", b"event_id", "is_wizard_internal", b"is_wizard_internal", "model", b"model", "progress", b"progress", "session_id", b"session_id", "status", b"status", "subagent_source", b"subagent_source", "subagent_thread_id", b"subagent_thread_id", "total_tokens", b"total_tokens", "turn_count", b"turn_count", "user_id", b"user_id"]) -> None: ...
 
 Global___DbtWizardSubAgent: typing_extensions.TypeAlias = DbtWizardSubAgent
 
@@ -467,6 +491,7 @@ class DbtWizardError(google.protobuf.message.Message):
     ACCOUNT_IDENTIFIER_FIELD_NUMBER: builtins.int
     OCCURRED_AT_FIELD_NUMBER: builtins.int
     IS_WIZARD_INTERNAL_FIELD_NUMBER: builtins.int
+    ANONYMOUS_ID_FIELD_NUMBER: builtins.int
     event_id: builtins.str
     session_id: builtins.str
     """Empty if error occurs before session starts."""
@@ -492,6 +517,10 @@ class DbtWizardError(google.protobuf.message.Message):
     occurred_at: builtins.int
     is_wizard_internal: builtins.bool
     """Whether the WIZARD_INTERNAL env var was set for this session."""
+    anonymous_id: builtins.str
+    """The anonymous UUID from ~/.dbt/.user.yml. Always populated regardless of
+    auth state, enabling a join between pre-auth and post-auth events.
+    """
     @property
     def enrichment(self) -> dbtlabs.proto.public.v1.events.vortex_pb2.VortexMessageEnrichment: ...
     def __init__(
@@ -516,9 +545,10 @@ class DbtWizardError(google.protobuf.message.Message):
         account_identifier: builtins.str = ...,
         occurred_at: builtins.int = ...,
         is_wizard_internal: builtins.bool = ...,
+        anonymous_id: builtins.str = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["enrichment", b"enrichment"]) -> builtins.bool: ...
-    def ClearField(self, field_name: typing.Literal["account_id", b"account_id", "account_identifier", b"account_identifier", "arch", b"arch", "component", b"component", "enrichment", b"enrichment", "error_category", b"error_category", "error_class", b"error_class", "error_code", b"error_code", "event_id", b"event_id", "is_recoverable", b"is_recoverable", "is_wizard_internal", b"is_wizard_internal", "model", b"model", "occurred_at", b"occurred_at", "os", b"os", "provider", b"provider", "retry_count", b"retry_count", "session_id", b"session_id", "user_id", b"user_id", "version", b"version"]) -> None: ...
+    def ClearField(self, field_name: typing.Literal["account_id", b"account_id", "account_identifier", b"account_identifier", "anonymous_id", b"anonymous_id", "arch", b"arch", "component", b"component", "enrichment", b"enrichment", "error_category", b"error_category", "error_class", b"error_class", "error_code", b"error_code", "event_id", b"event_id", "is_recoverable", b"is_recoverable", "is_wizard_internal", b"is_wizard_internal", "model", b"model", "occurred_at", b"occurred_at", "os", b"os", "provider", b"provider", "retry_count", b"retry_count", "session_id", b"session_id", "user_id", b"user_id", "version", b"version"]) -> None: ...
 
 Global___DbtWizardError: typing_extensions.TypeAlias = DbtWizardError
 
@@ -543,6 +573,7 @@ class DbtWizardFeedback(google.protobuf.message.Message):
     TURN_ID_FIELD_NUMBER: builtins.int
     MODEL_FIELD_NUMBER: builtins.int
     IS_WIZARD_INTERNAL_FIELD_NUMBER: builtins.int
+    ANONYMOUS_ID_FIELD_NUMBER: builtins.int
     event_id: builtins.str
     """Unique identifier for this event."""
     session_id: builtins.str
@@ -573,6 +604,10 @@ class DbtWizardFeedback(google.protobuf.message.Message):
     """Model slug active during the session (e.g. "claude-sonnet-4-6")."""
     is_wizard_internal: builtins.bool
     """Whether the WIZARD_INTERNAL env var was set for this session."""
+    anonymous_id: builtins.str
+    """The anonymous UUID from ~/.dbt/.user.yml. Always populated regardless of
+    auth state, enabling a join between pre-auth and post-auth events.
+    """
     @property
     def enrichment(self) -> dbtlabs.proto.public.v1.events.vortex_pb2.VortexMessageEnrichment: ...
     def __init__(
@@ -593,8 +628,9 @@ class DbtWizardFeedback(google.protobuf.message.Message):
         turn_id: builtins.str = ...,
         model: builtins.str = ...,
         is_wizard_internal: builtins.bool = ...,
+        anonymous_id: builtins.str = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["enrichment", b"enrichment"]) -> builtins.bool: ...
-    def ClearField(self, field_name: typing.Literal["account_id", b"account_id", "account_identifier", b"account_identifier", "arch", b"arch", "category", b"category", "enrichment", b"enrichment", "event_id", b"event_id", "include_logs", b"include_logs", "is_wizard_internal", b"is_wizard_internal", "model", b"model", "os", b"os", "reason", b"reason", "session_id", b"session_id", "turn_id", b"turn_id", "user_id", b"user_id", "version", b"version"]) -> None: ...
+    def ClearField(self, field_name: typing.Literal["account_id", b"account_id", "account_identifier", b"account_identifier", "anonymous_id", b"anonymous_id", "arch", b"arch", "category", b"category", "enrichment", b"enrichment", "event_id", b"event_id", "include_logs", b"include_logs", "is_wizard_internal", b"is_wizard_internal", "model", b"model", "os", b"os", "reason", b"reason", "session_id", b"session_id", "turn_id", b"turn_id", "user_id", b"user_id", "version", b"version"]) -> None: ...
 
 Global___DbtWizardFeedback: typing_extensions.TypeAlias = DbtWizardFeedback
