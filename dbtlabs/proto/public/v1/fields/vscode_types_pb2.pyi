@@ -323,6 +323,7 @@ class _GetStartedStepIdEnumTypeWrapper(google.protobuf.internal.enum_type_wrappe
     GET_STARTED_STEP_ID_OPEN_PROJECT: _GetStartedStepId.ValueType  # 2
     GET_STARTED_STEP_ID_CHECK_COMPATIBILITY: _GetStartedStepId.ValueType  # 3
     GET_STARTED_STEP_ID_REGISTER: _GetStartedStepId.ValueType  # 4
+    GET_STARTED_STEP_ID_INSTALL_WIZARD: _GetStartedStepId.ValueType  # 5
 
 class GetStartedStepId(_GetStartedStepId, metaclass=_GetStartedStepIdEnumTypeWrapper):
     """Step in the Get Started onboarding panel"""
@@ -332,6 +333,7 @@ GET_STARTED_STEP_ID_INSTALL_FUSION: GetStartedStepId.ValueType  # 1
 GET_STARTED_STEP_ID_OPEN_PROJECT: GetStartedStepId.ValueType  # 2
 GET_STARTED_STEP_ID_CHECK_COMPATIBILITY: GetStartedStepId.ValueType  # 3
 GET_STARTED_STEP_ID_REGISTER: GetStartedStepId.ValueType  # 4
+GET_STARTED_STEP_ID_INSTALL_WIZARD: GetStartedStepId.ValueType  # 5
 Global___GetStartedStepId: typing_extensions.TypeAlias = GetStartedStepId
 
 class _GetStartedStepStatus:
@@ -370,6 +372,8 @@ class _GetStartedInteractionTypeEnumTypeWrapper(google.protobuf.internal.enum_ty
     GET_STARTED_INTERACTION_TYPE_STEP_COMPLETED: _GetStartedInteractionType.ValueType  # 6
     """Step state transitions"""
     GET_STARTED_INTERACTION_TYPE_ALL_STEPS_COMPLETED: _GetStartedInteractionType.ValueType  # 7
+    GET_STARTED_INTERACTION_TYPE_INSTALL_WIZARD_CLICKED: _GetStartedInteractionType.ValueType  # 8
+    GET_STARTED_INTERACTION_TYPE_SKIP_WIZARD_CLICKED: _GetStartedInteractionType.ValueType  # 9
 
 class GetStartedInteractionType(_GetStartedInteractionType, metaclass=_GetStartedInteractionTypeEnumTypeWrapper):
     """Type of interaction with the Get Started onboarding panel"""
@@ -384,6 +388,8 @@ GET_STARTED_INTERACTION_TYPE_MIGRATE_WITH_AGENT_CLICKED: GetStartedInteractionTy
 GET_STARTED_INTERACTION_TYPE_STEP_COMPLETED: GetStartedInteractionType.ValueType  # 6
 """Step state transitions"""
 GET_STARTED_INTERACTION_TYPE_ALL_STEPS_COMPLETED: GetStartedInteractionType.ValueType  # 7
+GET_STARTED_INTERACTION_TYPE_INSTALL_WIZARD_CLICKED: GetStartedInteractionType.ValueType  # 8
+GET_STARTED_INTERACTION_TYPE_SKIP_WIZARD_CLICKED: GetStartedInteractionType.ValueType  # 9
 Global___GetStartedInteractionType: typing_extensions.TypeAlias = GetStartedInteractionType
 
 class _QueryCompletionStatus:
