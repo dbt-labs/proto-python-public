@@ -73,3 +73,39 @@ class VortexTelemetryDbtCloudContext(google.protobuf.message.Message):
     def ClearField(self, field_name: typing.Literal["dbt_cloud_account_id", b"dbt_cloud_account_id", "dbt_cloud_account_identifier", b"dbt_cloud_account_identifier", "dbt_cloud_environment_id", b"dbt_cloud_environment_id", "dbt_cloud_project_id", b"dbt_cloud_project_id", "dbt_cloud_user_id", b"dbt_cloud_user_id", "event_id", b"event_id", "feature", b"feature", "referrer_url", b"referrer_url", "session_id", b"session_id", "snowplow_domain_session_id", b"snowplow_domain_session_id", "snowplow_domain_user_id", b"snowplow_domain_user_id"]) -> None: ...
 
 Global___VortexTelemetryDbtCloudContext: typing_extensions.TypeAlias = VortexTelemetryDbtCloudContext
+
+@typing.final
+class VortexTelemetryCommonContext(google.protobuf.message.Message):
+    """VortexTelemetryCommonContext is the standard context that must be included in all
+    vortex-enabled events as a field named common_context.
+    It provides a consistent way to identify the account, project,
+    environment, and user across all telemetry events, enabling reliable dashboards
+    and incident investigation. Fields may be empty when they are not applicable (e.g.
+    environment_id for Fusion events that have no dbt platform environment association).
+    """
+
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
+    ACCOUNT_IDENTIFIER_FIELD_NUMBER: builtins.int
+    PROJECT_ID_FIELD_NUMBER: builtins.int
+    ENVIRONMENT_ID_FIELD_NUMBER: builtins.int
+    USER_ID_FIELD_NUMBER: builtins.int
+    account_identifier: builtins.str
+    """account identifier tied to the event"""
+    project_id: builtins.str
+    """project id tied to the event"""
+    environment_id: builtins.str
+    """dbt Cloud environment ID"""
+    user_id: builtins.str
+    """user identifier tied to the event"""
+    def __init__(
+        self,
+        *,
+        account_identifier: builtins.str = ...,
+        project_id: builtins.str = ...,
+        environment_id: builtins.str = ...,
+        user_id: builtins.str = ...,
+    ) -> None: ...
+    def ClearField(self, field_name: typing.Literal["account_identifier", b"account_identifier", "environment_id", b"environment_id", "project_id", b"project_id", "user_id", b"user_id"]) -> None: ...
+
+Global___VortexTelemetryCommonContext: typing_extensions.TypeAlias = VortexTelemetryCommonContext
