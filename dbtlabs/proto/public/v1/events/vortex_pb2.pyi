@@ -29,6 +29,18 @@ class VortexMessage(google.protobuf.message.Message):
     VORTEX_CLIENT_SENT_AT_FIELD_NUMBER: builtins.int
     VORTEX_BACKEND_RECEIVED_AT_FIELD_NUMBER: builtins.int
     VORTEX_BACKEND_PROCESSED_AT_FIELD_NUMBER: builtins.int
+    VORTEX_EVENT_ID_FIELD_NUMBER: builtins.int
+    VORTEX_EVENT_URL_FIELD_NUMBER: builtins.int
+    vortex_event_id: builtins.str
+    """a unique identifier for this event, generated as a UUID by the
+    vortex client library automatically.
+    """
+    vortex_event_url: builtins.str
+    """a stable identifier for the wrapped event's protobuf type, set by
+    the vortex client library automatically. format:
+    "dbt-labs/proto/<package-path>/<Message>", e.g.
+    "dbt-labs/proto/v1/events/fusion/CloudInvocation".
+    """
     @property
     def any(self) -> google.protobuf.any_pb2.Any:
         """this can encapsulate any known protobuf message type.
@@ -65,9 +77,11 @@ class VortexMessage(google.protobuf.message.Message):
         vortex_client_sent_at: google.protobuf.timestamp_pb2.Timestamp | None = ...,
         vortex_backend_received_at: google.protobuf.timestamp_pb2.Timestamp | None = ...,
         vortex_backend_processed_at: google.protobuf.timestamp_pb2.Timestamp | None = ...,
+        vortex_event_id: builtins.str = ...,
+        vortex_event_url: builtins.str = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["any", b"any", "vortex_backend_processed_at", b"vortex_backend_processed_at", "vortex_backend_received_at", b"vortex_backend_received_at", "vortex_client_sent_at", b"vortex_client_sent_at", "vortex_event_created_at", b"vortex_event_created_at"]) -> builtins.bool: ...
-    def ClearField(self, field_name: typing.Literal["any", b"any", "vortex_backend_processed_at", b"vortex_backend_processed_at", "vortex_backend_received_at", b"vortex_backend_received_at", "vortex_client_sent_at", b"vortex_client_sent_at", "vortex_event_created_at", b"vortex_event_created_at"]) -> None: ...
+    def ClearField(self, field_name: typing.Literal["any", b"any", "vortex_backend_processed_at", b"vortex_backend_processed_at", "vortex_backend_received_at", b"vortex_backend_received_at", "vortex_client_sent_at", b"vortex_client_sent_at", "vortex_event_created_at", b"vortex_event_created_at", "vortex_event_id", b"vortex_event_id", "vortex_event_url", b"vortex_event_url"]) -> None: ...
 
 Global___VortexMessage: typing_extensions.TypeAlias = VortexMessage
 
