@@ -813,3 +813,61 @@ class Login(google.protobuf.message.Message):
     def WhichOneof(self, oneof_group: typing.Literal["_project_id", b"_project_id"]) -> typing.Literal["project_id"] | None: ...
 
 Global___Login: typing_extensions.TypeAlias = Login
+
+@typing.final
+class StaticAnalysisInvocation(google.protobuf.message.Message):
+    """StaticAnalysisInvocation is emitted once per invocation when static
+    analysis propagation completes, capturing the maximum SA level in use
+    and per-level node counts.
+    """
+
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
+    ENRICHMENT_FIELD_NUMBER: builtins.int
+    EVENT_ID_FIELD_NUMBER: builtins.int
+    INVOCATION_ID_FIELD_NUMBER: builtins.int
+    PROJECT_ID_FIELD_NUMBER: builtins.int
+    MAX_STATIC_ANALYSIS_LEVEL_FIELD_NUMBER: builtins.int
+    SOURCE_FIELD_NUMBER: builtins.int
+    STRICT_NODE_COUNT_FIELD_NUMBER: builtins.int
+    BASELINE_NODE_COUNT_FIELD_NUMBER: builtins.int
+    OFF_NODE_COUNT_FIELD_NUMBER: builtins.int
+    event_id: builtins.str
+    """Unique identifier for this event (UUID). Required."""
+    invocation_id: builtins.str
+    """Globally unique identifier for the fusion invocation. Required."""
+    project_id: builtins.str
+    """MD5 hash of the project name from dbt_project.yml."""
+    max_static_analysis_level: builtins.str
+    """Maximum static analysis level used across all scheduled nodes:
+    "strict", "baseline", "off", or "" when no nodes were scheduled.
+    """
+    source: builtins.str
+    """Originating caller: "cli" or an extension name (e.g. "lsp")."""
+    strict_node_count: builtins.int
+    """Count of nodes running strict static analysis after propagation."""
+    baseline_node_count: builtins.int
+    """Count of nodes running baseline static analysis after propagation."""
+    off_node_count: builtins.int
+    """Count of nodes with static analysis off after propagation."""
+    @property
+    def enrichment(self) -> dbtlabs.proto.public.v1.events.vortex_pb2.VortexMessageEnrichment:
+        """This field is a toggle to enable enrichment of the message by the Vortex service."""
+
+    def __init__(
+        self,
+        *,
+        enrichment: dbtlabs.proto.public.v1.events.vortex_pb2.VortexMessageEnrichment | None = ...,
+        event_id: builtins.str = ...,
+        invocation_id: builtins.str = ...,
+        project_id: builtins.str = ...,
+        max_static_analysis_level: builtins.str = ...,
+        source: builtins.str = ...,
+        strict_node_count: builtins.int = ...,
+        baseline_node_count: builtins.int = ...,
+        off_node_count: builtins.int = ...,
+    ) -> None: ...
+    def HasField(self, field_name: typing.Literal["enrichment", b"enrichment"]) -> builtins.bool: ...
+    def ClearField(self, field_name: typing.Literal["baseline_node_count", b"baseline_node_count", "enrichment", b"enrichment", "event_id", b"event_id", "invocation_id", b"invocation_id", "max_static_analysis_level", b"max_static_analysis_level", "off_node_count", b"off_node_count", "project_id", b"project_id", "source", b"source", "strict_node_count", b"strict_node_count"]) -> None: ...
+
+Global___StaticAnalysisInvocation: typing_extensions.TypeAlias = StaticAnalysisInvocation
