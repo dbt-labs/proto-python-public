@@ -334,6 +334,7 @@ class DocsSiteOpened(google.protobuf.message.Message):
     IS_LOGGED_IN_FIELD_NUMBER: builtins.int
     DBT_VERSION_FIELD_NUMBER: builtins.int
     PROJECT_RESOURCE_COUNT_FIELD_NUMBER: builtins.int
+    DISTRIBUTION_FIELD_NUMBER: builtins.int
     is_logged_in: builtins.bool
     """whether the viewer is authenticated when the event fires: true once the
     user has run `dbt login` (OSS auth). Distinct from
@@ -347,6 +348,11 @@ class DocsSiteOpened(google.protobuf.message.Message):
     """
     project_resource_count: builtins.int
     """number of resources in the project"""
+    distribution: builtins.str
+    """name of the running dbt distribution serving docs v2 (e.g. "oss").
+    Mirrors DistInfo.name from the docs server GET /api/v1/distribution
+    endpoint. (required: producer must populate)
+    """
     @property
     def enrichment(self) -> dbtlabs.proto.public.v1.events.vortex_pb2.VortexMessageEnrichment:
         """Server enrichment for this event"""
@@ -363,9 +369,10 @@ class DocsSiteOpened(google.protobuf.message.Message):
         is_logged_in: builtins.bool = ...,
         dbt_version: builtins.str = ...,
         project_resource_count: builtins.int = ...,
+        distribution: builtins.str = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["context", b"context", "enrichment", b"enrichment"]) -> builtins.bool: ...
-    def ClearField(self, field_name: typing.Literal["context", b"context", "dbt_version", b"dbt_version", "enrichment", b"enrichment", "is_logged_in", b"is_logged_in", "project_resource_count", b"project_resource_count"]) -> None: ...
+    def ClearField(self, field_name: typing.Literal["context", b"context", "dbt_version", b"dbt_version", "distribution", b"distribution", "enrichment", b"enrichment", "is_logged_in", b"is_logged_in", "project_resource_count", b"project_resource_count"]) -> None: ...
 
 Global___DocsSiteOpened: typing_extensions.TypeAlias = DocsSiteOpened
 
@@ -381,6 +388,7 @@ class ResourceViewed(google.protobuf.message.Message):
     RESOURCE_TYPE_FIELD_NUMBER: builtins.int
     VIEW_LEVEL_FIELD_NUMBER: builtins.int
     RESOURCE_ID_FIELD_NUMBER: builtins.int
+    DISTRIBUTION_FIELD_NUMBER: builtins.int
     is_logged_in: builtins.bool
     """whether the viewer is authenticated when the event fires: true once the
     user has run `dbt login` (OSS auth). Distinct from
@@ -397,6 +405,11 @@ class ResourceViewed(google.protobuf.message.Message):
     """
     resource_id: builtins.str
     """opaque resource identifier (no PII)"""
+    distribution: builtins.str
+    """name of the running dbt distribution serving docs v2 (e.g. "oss").
+    Mirrors DistInfo.name from the docs server GET /api/v1/distribution
+    endpoint. (required: producer must populate)
+    """
     @property
     def enrichment(self) -> dbtlabs.proto.public.v1.events.vortex_pb2.VortexMessageEnrichment:
         """Server enrichment for this event"""
@@ -414,9 +427,10 @@ class ResourceViewed(google.protobuf.message.Message):
         resource_type: builtins.str = ...,
         view_level: builtins.str = ...,
         resource_id: builtins.str = ...,
+        distribution: builtins.str = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["context", b"context", "enrichment", b"enrichment"]) -> builtins.bool: ...
-    def ClearField(self, field_name: typing.Literal["context", b"context", "enrichment", b"enrichment", "is_logged_in", b"is_logged_in", "resource_id", b"resource_id", "resource_type", b"resource_type", "view_level", b"view_level"]) -> None: ...
+    def ClearField(self, field_name: typing.Literal["context", b"context", "distribution", b"distribution", "enrichment", b"enrichment", "is_logged_in", b"is_logged_in", "resource_id", b"resource_id", "resource_type", b"resource_type", "view_level", b"view_level"]) -> None: ...
 
 Global___ResourceViewed: typing_extensions.TypeAlias = ResourceViewed
 
@@ -432,6 +446,7 @@ class LineageViewed(google.protobuf.message.Message):
     LINEAGE_TYPE_FIELD_NUMBER: builtins.int
     RESOURCE_TYPE_FIELD_NUMBER: builtins.int
     RESOURCE_ID_FIELD_NUMBER: builtins.int
+    DISTRIBUTION_FIELD_NUMBER: builtins.int
     is_logged_in: builtins.bool
     """whether the viewer is authenticated when the event fires: true once the
     user has run `dbt login` (OSS auth). Distinct from
@@ -446,6 +461,11 @@ class LineageViewed(google.protobuf.message.Message):
     """type of resource the lineage is rooted at; see ResourceType for possible values"""
     resource_id: builtins.str
     """opaque resource identifier (no PII)"""
+    distribution: builtins.str
+    """name of the running dbt distribution serving docs v2 (e.g. "oss").
+    Mirrors DistInfo.name from the docs server GET /api/v1/distribution
+    endpoint. (required: producer must populate)
+    """
     @property
     def enrichment(self) -> dbtlabs.proto.public.v1.events.vortex_pb2.VortexMessageEnrichment:
         """Server enrichment for this event"""
@@ -463,9 +483,10 @@ class LineageViewed(google.protobuf.message.Message):
         lineage_type: builtins.str = ...,
         resource_type: builtins.str = ...,
         resource_id: builtins.str = ...,
+        distribution: builtins.str = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["context", b"context", "enrichment", b"enrichment"]) -> builtins.bool: ...
-    def ClearField(self, field_name: typing.Literal["context", b"context", "enrichment", b"enrichment", "is_logged_in", b"is_logged_in", "lineage_type", b"lineage_type", "resource_id", b"resource_id", "resource_type", b"resource_type"]) -> None: ...
+    def ClearField(self, field_name: typing.Literal["context", b"context", "distribution", b"distribution", "enrichment", b"enrichment", "is_logged_in", b"is_logged_in", "lineage_type", b"lineage_type", "resource_id", b"resource_id", "resource_type", b"resource_type"]) -> None: ...
 
 Global___LineageViewed: typing_extensions.TypeAlias = LineageViewed
 
@@ -480,6 +501,7 @@ class SearchPerformed(google.protobuf.message.Message):
     IS_LOGGED_IN_FIELD_NUMBER: builtins.int
     SEARCH_QUERY_FIELD_NUMBER: builtins.int
     RESULT_COUNT_FIELD_NUMBER: builtins.int
+    DISTRIBUTION_FIELD_NUMBER: builtins.int
     is_logged_in: builtins.bool
     """whether the viewer is authenticated when the event fires: true once the
     user has run `dbt login` (OSS auth). Distinct from
@@ -492,6 +514,11 @@ class SearchPerformed(google.protobuf.message.Message):
     """
     result_count: builtins.int
     """number of results returned for the query"""
+    distribution: builtins.str
+    """name of the running dbt distribution serving docs v2 (e.g. "oss").
+    Mirrors DistInfo.name from the docs server GET /api/v1/distribution
+    endpoint. (required: producer must populate)
+    """
     @property
     def enrichment(self) -> dbtlabs.proto.public.v1.events.vortex_pb2.VortexMessageEnrichment:
         """Server enrichment for this event"""
@@ -508,9 +535,10 @@ class SearchPerformed(google.protobuf.message.Message):
         is_logged_in: builtins.bool = ...,
         search_query: builtins.str = ...,
         result_count: builtins.int = ...,
+        distribution: builtins.str = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["context", b"context", "enrichment", b"enrichment"]) -> builtins.bool: ...
-    def ClearField(self, field_name: typing.Literal["context", b"context", "enrichment", b"enrichment", "is_logged_in", b"is_logged_in", "result_count", b"result_count", "search_query", b"search_query"]) -> None: ...
+    def ClearField(self, field_name: typing.Literal["context", b"context", "distribution", b"distribution", "enrichment", b"enrichment", "is_logged_in", b"is_logged_in", "result_count", b"result_count", "search_query", b"search_query"]) -> None: ...
 
 Global___SearchPerformed: typing_extensions.TypeAlias = SearchPerformed
 
@@ -526,6 +554,7 @@ class FilterApplied(google.protobuf.message.Message):
     RESOURCE_TYPE_FIELD_NUMBER: builtins.int
     FILTER_TYPE_FIELD_NUMBER: builtins.int
     FILTER_VALUE_FIELD_NUMBER: builtins.int
+    DISTRIBUTION_FIELD_NUMBER: builtins.int
     is_logged_in: builtins.bool
     """whether the viewer is authenticated when the event fires: true once the
     user has run `dbt login` (OSS auth). Distinct from
@@ -538,6 +567,11 @@ class FilterApplied(google.protobuf.message.Message):
     """dimension being filtered on; see FilterType for possible values"""
     filter_value: builtins.str
     """value applied for the filter"""
+    distribution: builtins.str
+    """name of the running dbt distribution serving docs v2 (e.g. "oss").
+    Mirrors DistInfo.name from the docs server GET /api/v1/distribution
+    endpoint. (required: producer must populate)
+    """
     @property
     def enrichment(self) -> dbtlabs.proto.public.v1.events.vortex_pb2.VortexMessageEnrichment:
         """Server enrichment for this event"""
@@ -555,9 +589,10 @@ class FilterApplied(google.protobuf.message.Message):
         resource_type: builtins.str = ...,
         filter_type: builtins.str = ...,
         filter_value: builtins.str = ...,
+        distribution: builtins.str = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["context", b"context", "enrichment", b"enrichment"]) -> builtins.bool: ...
-    def ClearField(self, field_name: typing.Literal["context", b"context", "enrichment", b"enrichment", "filter_type", b"filter_type", "filter_value", b"filter_value", "is_logged_in", b"is_logged_in", "resource_type", b"resource_type"]) -> None: ...
+    def ClearField(self, field_name: typing.Literal["context", b"context", "distribution", b"distribution", "enrichment", b"enrichment", "filter_type", b"filter_type", "filter_value", b"filter_value", "is_logged_in", b"is_logged_in", "resource_type", b"resource_type"]) -> None: ...
 
 Global___FilterApplied: typing_extensions.TypeAlias = FilterApplied
 
@@ -573,6 +608,7 @@ class UpsellPromptDisplayed(google.protobuf.message.Message):
     UPSELL_TRACK_FIELD_NUMBER: builtins.int
     PROMPT_FORMAT_FIELD_NUMBER: builtins.int
     PROMPT_LOCATION_FIELD_NUMBER: builtins.int
+    DISTRIBUTION_FIELD_NUMBER: builtins.int
     is_logged_in: builtins.bool
     """whether the viewer is authenticated when the event fires: true once the
     user has run `dbt login` (OSS auth). Distinct from
@@ -587,6 +623,11 @@ class UpsellPromptDisplayed(google.protobuf.message.Message):
     """presentation format of the prompt; see PromptFormat for possible values"""
     prompt_location: builtins.str
     """location in the UI where the prompt was shown"""
+    distribution: builtins.str
+    """name of the running dbt distribution serving docs v2 (e.g. "oss").
+    Mirrors DistInfo.name from the docs server GET /api/v1/distribution
+    endpoint. (required: producer must populate)
+    """
     @property
     def enrichment(self) -> dbtlabs.proto.public.v1.events.vortex_pb2.VortexMessageEnrichment:
         """Server enrichment for this event"""
@@ -604,9 +645,10 @@ class UpsellPromptDisplayed(google.protobuf.message.Message):
         upsell_track: builtins.str = ...,
         prompt_format: builtins.str = ...,
         prompt_location: builtins.str = ...,
+        distribution: builtins.str = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["context", b"context", "enrichment", b"enrichment"]) -> builtins.bool: ...
-    def ClearField(self, field_name: typing.Literal["context", b"context", "enrichment", b"enrichment", "is_logged_in", b"is_logged_in", "prompt_format", b"prompt_format", "prompt_location", b"prompt_location", "upsell_track", b"upsell_track"]) -> None: ...
+    def ClearField(self, field_name: typing.Literal["context", b"context", "distribution", b"distribution", "enrichment", b"enrichment", "is_logged_in", b"is_logged_in", "prompt_format", b"prompt_format", "prompt_location", b"prompt_location", "upsell_track", b"upsell_track"]) -> None: ...
 
 Global___UpsellPromptDisplayed: typing_extensions.TypeAlias = UpsellPromptDisplayed
 
@@ -622,6 +664,7 @@ class UpsellPromptClicked(google.protobuf.message.Message):
     UPSELL_TRACK_FIELD_NUMBER: builtins.int
     CTA_LABEL_FIELD_NUMBER: builtins.int
     REFERRAL_CODE_FIELD_NUMBER: builtins.int
+    DISTRIBUTION_FIELD_NUMBER: builtins.int
     is_logged_in: builtins.bool
     """whether the viewer is authenticated when the event fires: true once the
     user has run `dbt login` (OSS auth). Distinct from
@@ -636,6 +679,11 @@ class UpsellPromptClicked(google.protobuf.message.Message):
     """CTA button label clicked; see CtaLabel for possible values"""
     referral_code: builtins.str
     """referral code attached to the CTA"""
+    distribution: builtins.str
+    """name of the running dbt distribution serving docs v2 (e.g. "oss").
+    Mirrors DistInfo.name from the docs server GET /api/v1/distribution
+    endpoint. (required: producer must populate)
+    """
     @property
     def enrichment(self) -> dbtlabs.proto.public.v1.events.vortex_pb2.VortexMessageEnrichment:
         """Server enrichment for this event"""
@@ -653,9 +701,10 @@ class UpsellPromptClicked(google.protobuf.message.Message):
         upsell_track: builtins.str = ...,
         cta_label: builtins.str = ...,
         referral_code: builtins.str = ...,
+        distribution: builtins.str = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["context", b"context", "enrichment", b"enrichment"]) -> builtins.bool: ...
-    def ClearField(self, field_name: typing.Literal["context", b"context", "cta_label", b"cta_label", "enrichment", b"enrichment", "is_logged_in", b"is_logged_in", "referral_code", b"referral_code", "upsell_track", b"upsell_track"]) -> None: ...
+    def ClearField(self, field_name: typing.Literal["context", b"context", "cta_label", b"cta_label", "distribution", b"distribution", "enrichment", b"enrichment", "is_logged_in", b"is_logged_in", "referral_code", b"referral_code", "upsell_track", b"upsell_track"]) -> None: ...
 
 Global___UpsellPromptClicked: typing_extensions.TypeAlias = UpsellPromptClicked
 
@@ -670,6 +719,7 @@ class UpsellPromptDismissed(google.protobuf.message.Message):
     IS_LOGGED_IN_FIELD_NUMBER: builtins.int
     UPSELL_TRACK_FIELD_NUMBER: builtins.int
     DISMISS_METHOD_FIELD_NUMBER: builtins.int
+    DISTRIBUTION_FIELD_NUMBER: builtins.int
     is_logged_in: builtins.bool
     """whether the viewer is authenticated when the event fires: true once the
     user has run `dbt login` (OSS auth). Distinct from
@@ -682,6 +732,11 @@ class UpsellPromptDismissed(google.protobuf.message.Message):
     """
     dismiss_method: builtins.str
     """how the prompt was dismissed; see DismissMethod for possible values"""
+    distribution: builtins.str
+    """name of the running dbt distribution serving docs v2 (e.g. "oss").
+    Mirrors DistInfo.name from the docs server GET /api/v1/distribution
+    endpoint. (required: producer must populate)
+    """
     @property
     def enrichment(self) -> dbtlabs.proto.public.v1.events.vortex_pb2.VortexMessageEnrichment:
         """Server enrichment for this event"""
@@ -698,9 +753,10 @@ class UpsellPromptDismissed(google.protobuf.message.Message):
         is_logged_in: builtins.bool = ...,
         upsell_track: builtins.str = ...,
         dismiss_method: builtins.str = ...,
+        distribution: builtins.str = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["context", b"context", "enrichment", b"enrichment"]) -> builtins.bool: ...
-    def ClearField(self, field_name: typing.Literal["context", b"context", "dismiss_method", b"dismiss_method", "enrichment", b"enrichment", "is_logged_in", b"is_logged_in", "upsell_track", b"upsell_track"]) -> None: ...
+    def ClearField(self, field_name: typing.Literal["context", b"context", "dismiss_method", b"dismiss_method", "distribution", b"distribution", "enrichment", b"enrichment", "is_logged_in", b"is_logged_in", "upsell_track", b"upsell_track"]) -> None: ...
 
 Global___UpsellPromptDismissed: typing_extensions.TypeAlias = UpsellPromptDismissed
 
@@ -715,6 +771,7 @@ class ReferralLinkClicked(google.protobuf.message.Message):
     IS_LOGGED_IN_FIELD_NUMBER: builtins.int
     REFERRAL_CODE_FIELD_NUMBER: builtins.int
     LINK_DESTINATION_FIELD_NUMBER: builtins.int
+    DISTRIBUTION_FIELD_NUMBER: builtins.int
     is_logged_in: builtins.bool
     """whether the viewer is authenticated when the event fires: true once the
     user has run `dbt login` (OSS auth). Distinct from
@@ -725,6 +782,11 @@ class ReferralLinkClicked(google.protobuf.message.Message):
     """referral code attached to the link"""
     link_destination: builtins.str
     """destination of the referral link; see LinkDestination for possible values"""
+    distribution: builtins.str
+    """name of the running dbt distribution serving docs v2 (e.g. "oss").
+    Mirrors DistInfo.name from the docs server GET /api/v1/distribution
+    endpoint. (required: producer must populate)
+    """
     @property
     def enrichment(self) -> dbtlabs.proto.public.v1.events.vortex_pb2.VortexMessageEnrichment:
         """Server enrichment for this event"""
@@ -741,9 +803,10 @@ class ReferralLinkClicked(google.protobuf.message.Message):
         is_logged_in: builtins.bool = ...,
         referral_code: builtins.str = ...,
         link_destination: builtins.str = ...,
+        distribution: builtins.str = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["context", b"context", "enrichment", b"enrichment"]) -> builtins.bool: ...
-    def ClearField(self, field_name: typing.Literal["context", b"context", "enrichment", b"enrichment", "is_logged_in", b"is_logged_in", "link_destination", b"link_destination", "referral_code", b"referral_code"]) -> None: ...
+    def ClearField(self, field_name: typing.Literal["context", b"context", "distribution", b"distribution", "enrichment", b"enrichment", "is_logged_in", b"is_logged_in", "link_destination", b"link_destination", "referral_code", b"referral_code"]) -> None: ...
 
 Global___ReferralLinkClicked: typing_extensions.TypeAlias = ReferralLinkClicked
 
@@ -758,6 +821,7 @@ class AccountLoggedIn(google.protobuf.message.Message):
     IS_LOGGED_IN_FIELD_NUMBER: builtins.int
     TRIGGERED_BY_PROMPT_FIELD_NUMBER: builtins.int
     UPSELL_TRACK_FIELD_NUMBER: builtins.int
+    DISTRIBUTION_FIELD_NUMBER: builtins.int
     is_logged_in: builtins.bool
     """whether the viewer is authenticated when the event fires: true once the
     user has run `dbt login` (OSS auth). Distinct from
@@ -768,6 +832,11 @@ class AccountLoggedIn(google.protobuf.message.Message):
     """whether the login was triggered by an upsell prompt"""
     upsell_track: builtins.str
     """upsell campaign track that triggered the login; see UpsellTrack for possible values"""
+    distribution: builtins.str
+    """name of the running dbt distribution serving docs v2 (e.g. "oss").
+    Mirrors DistInfo.name from the docs server GET /api/v1/distribution
+    endpoint. (required: producer must populate)
+    """
     @property
     def enrichment(self) -> dbtlabs.proto.public.v1.events.vortex_pb2.VortexMessageEnrichment:
         """Server enrichment for this event"""
@@ -784,9 +853,10 @@ class AccountLoggedIn(google.protobuf.message.Message):
         is_logged_in: builtins.bool = ...,
         triggered_by_prompt: builtins.bool = ...,
         upsell_track: builtins.str = ...,
+        distribution: builtins.str = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["context", b"context", "enrichment", b"enrichment"]) -> builtins.bool: ...
-    def ClearField(self, field_name: typing.Literal["context", b"context", "enrichment", b"enrichment", "is_logged_in", b"is_logged_in", "triggered_by_prompt", b"triggered_by_prompt", "upsell_track", b"upsell_track"]) -> None: ...
+    def ClearField(self, field_name: typing.Literal["context", b"context", "distribution", b"distribution", "enrichment", b"enrichment", "is_logged_in", b"is_logged_in", "triggered_by_prompt", b"triggered_by_prompt", "upsell_track", b"upsell_track"]) -> None: ...
 
 Global___AccountLoggedIn: typing_extensions.TypeAlias = AccountLoggedIn
 
@@ -802,6 +872,7 @@ class ErrorEncountered(google.protobuf.message.Message):
     ERROR_CATEGORY_FIELD_NUMBER: builtins.int
     ERROR_MESSAGE_FIELD_NUMBER: builtins.int
     FIELD_NAME_FIELD_NUMBER: builtins.int
+    DISTRIBUTION_FIELD_NUMBER: builtins.int
     is_logged_in: builtins.bool
     """whether the viewer is authenticated when the event fires: true once the
     user has run `dbt login` (OSS auth). Distinct from
@@ -816,6 +887,11 @@ class ErrorEncountered(google.protobuf.message.Message):
     """error message (no PII)"""
     field_name: builtins.str
     """name of the field associated with the error, if any"""
+    distribution: builtins.str
+    """name of the running dbt distribution serving docs v2 (e.g. "oss").
+    Mirrors DistInfo.name from the docs server GET /api/v1/distribution
+    endpoint. (required: producer must populate)
+    """
     @property
     def enrichment(self) -> dbtlabs.proto.public.v1.events.vortex_pb2.VortexMessageEnrichment:
         """Server enrichment for this event"""
@@ -833,8 +909,9 @@ class ErrorEncountered(google.protobuf.message.Message):
         error_category: builtins.str = ...,
         error_message: builtins.str = ...,
         field_name: builtins.str = ...,
+        distribution: builtins.str = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["context", b"context", "enrichment", b"enrichment"]) -> builtins.bool: ...
-    def ClearField(self, field_name: typing.Literal["context", b"context", "enrichment", b"enrichment", "error_category", b"error_category", "error_message", b"error_message", "field_name", b"field_name", "is_logged_in", b"is_logged_in"]) -> None: ...
+    def ClearField(self, field_name: typing.Literal["context", b"context", "distribution", b"distribution", "enrichment", b"enrichment", "error_category", b"error_category", "error_message", b"error_message", "field_name", b"field_name", "is_logged_in", b"is_logged_in"]) -> None: ...
 
 Global___ErrorEncountered: typing_extensions.TypeAlias = ErrorEncountered
