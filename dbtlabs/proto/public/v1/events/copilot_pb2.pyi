@@ -194,6 +194,7 @@ class CopilotLlmCall(google.protobuf.message.Message):
     CACHE_READ_INPUT_TOKENS_FIELD_NUMBER: builtins.int
     REASONING_OUTPUT_TOKENS_FIELD_NUMBER: builtins.int
     FIRST_TOKEN_MS_FIELD_NUMBER: builtins.int
+    CALL_PURPOSE_FIELD_NUMBER: builtins.int
     copilot_request_id: builtins.str
     """Identifies the parent agent run; foreign key to CopilotGenerationComplete"""
     thread_id: builtins.str
@@ -231,6 +232,14 @@ class CopilotLlmCall(google.protobuf.message.Message):
     """Chain-of-thought tokens not included in the response"""
     first_token_ms: builtins.int
     """Time to first token in milliseconds. Unset when not streaming."""
+    call_purpose: builtins.str
+    """Purpose of this call within the parent run:
+      "generation"  - user-facing agent/generation turn (default when unset)
+      "compaction"  - context-compaction summarization call
+    Unset is treated as "generation", so calls emitted before this field
+    existed count as generation turns. Lets downstream models keep compaction
+    out of turn counts while still pricing its token cost.
+    """
     @property
     def enrichment(self) -> dbtlabs.proto.public.v1.events.vortex_pb2.VortexMessageEnrichment:
         """Server enrichment for this event"""
@@ -260,15 +269,18 @@ class CopilotLlmCall(google.protobuf.message.Message):
         cache_read_input_tokens: builtins.int | None = ...,
         reasoning_output_tokens: builtins.int | None = ...,
         first_token_ms: builtins.int | None = ...,
+        call_purpose: builtins.str | None = ...,
     ) -> None: ...
-    def HasField(self, field_name: typing.Literal["_cache_creation_input_tokens", b"_cache_creation_input_tokens", "_cache_read_input_tokens", b"_cache_read_input_tokens", "_call_index", b"_call_index", "_first_token_ms", b"_first_token_ms", "_latency_ms", b"_latency_ms", "_reasoning_output_tokens", b"_reasoning_output_tokens", "_tokens_input", b"_tokens_input", "_tokens_output", b"_tokens_output", "_tokens_total", b"_tokens_total", "cache_creation_input_tokens", b"cache_creation_input_tokens", "cache_read_input_tokens", b"cache_read_input_tokens", "call_index", b"call_index", "ctx", b"ctx", "enrichment", b"enrichment", "first_token_ms", b"first_token_ms", "latency_ms", b"latency_ms", "reasoning_output_tokens", b"reasoning_output_tokens", "tokens_input", b"tokens_input", "tokens_output", b"tokens_output", "tokens_total", b"tokens_total"]) -> builtins.bool: ...
-    def ClearField(self, field_name: typing.Literal["_cache_creation_input_tokens", b"_cache_creation_input_tokens", "_cache_read_input_tokens", b"_cache_read_input_tokens", "_call_index", b"_call_index", "_first_token_ms", b"_first_token_ms", "_latency_ms", b"_latency_ms", "_reasoning_output_tokens", b"_reasoning_output_tokens", "_tokens_input", b"_tokens_input", "_tokens_output", b"_tokens_output", "_tokens_total", b"_tokens_total", "app_name", b"app_name", "cache_creation_input_tokens", b"cache_creation_input_tokens", "cache_read_input_tokens", b"cache_read_input_tokens", "call_index", b"call_index", "copilot_action", b"copilot_action", "copilot_request_id", b"copilot_request_id", "ctx", b"ctx", "enrichment", b"enrichment", "first_token_ms", b"first_token_ms", "key_type", b"key_type", "latency_ms", b"latency_ms", "model_provider", b"model_provider", "model_version", b"model_version", "reasoning_output_tokens", b"reasoning_output_tokens", "thread_id", b"thread_id", "tokens_input", b"tokens_input", "tokens_output", b"tokens_output", "tokens_total", b"tokens_total"]) -> None: ...
+    def HasField(self, field_name: typing.Literal["_cache_creation_input_tokens", b"_cache_creation_input_tokens", "_cache_read_input_tokens", b"_cache_read_input_tokens", "_call_index", b"_call_index", "_call_purpose", b"_call_purpose", "_first_token_ms", b"_first_token_ms", "_latency_ms", b"_latency_ms", "_reasoning_output_tokens", b"_reasoning_output_tokens", "_tokens_input", b"_tokens_input", "_tokens_output", b"_tokens_output", "_tokens_total", b"_tokens_total", "cache_creation_input_tokens", b"cache_creation_input_tokens", "cache_read_input_tokens", b"cache_read_input_tokens", "call_index", b"call_index", "call_purpose", b"call_purpose", "ctx", b"ctx", "enrichment", b"enrichment", "first_token_ms", b"first_token_ms", "latency_ms", b"latency_ms", "reasoning_output_tokens", b"reasoning_output_tokens", "tokens_input", b"tokens_input", "tokens_output", b"tokens_output", "tokens_total", b"tokens_total"]) -> builtins.bool: ...
+    def ClearField(self, field_name: typing.Literal["_cache_creation_input_tokens", b"_cache_creation_input_tokens", "_cache_read_input_tokens", b"_cache_read_input_tokens", "_call_index", b"_call_index", "_call_purpose", b"_call_purpose", "_first_token_ms", b"_first_token_ms", "_latency_ms", b"_latency_ms", "_reasoning_output_tokens", b"_reasoning_output_tokens", "_tokens_input", b"_tokens_input", "_tokens_output", b"_tokens_output", "_tokens_total", b"_tokens_total", "app_name", b"app_name", "cache_creation_input_tokens", b"cache_creation_input_tokens", "cache_read_input_tokens", b"cache_read_input_tokens", "call_index", b"call_index", "call_purpose", b"call_purpose", "copilot_action", b"copilot_action", "copilot_request_id", b"copilot_request_id", "ctx", b"ctx", "enrichment", b"enrichment", "first_token_ms", b"first_token_ms", "key_type", b"key_type", "latency_ms", b"latency_ms", "model_provider", b"model_provider", "model_version", b"model_version", "reasoning_output_tokens", b"reasoning_output_tokens", "thread_id", b"thread_id", "tokens_input", b"tokens_input", "tokens_output", b"tokens_output", "tokens_total", b"tokens_total"]) -> None: ...
     @typing.overload
     def WhichOneof(self, oneof_group: typing.Literal["_cache_creation_input_tokens", b"_cache_creation_input_tokens"]) -> typing.Literal["cache_creation_input_tokens"] | None: ...
     @typing.overload
     def WhichOneof(self, oneof_group: typing.Literal["_cache_read_input_tokens", b"_cache_read_input_tokens"]) -> typing.Literal["cache_read_input_tokens"] | None: ...
     @typing.overload
     def WhichOneof(self, oneof_group: typing.Literal["_call_index", b"_call_index"]) -> typing.Literal["call_index"] | None: ...
+    @typing.overload
+    def WhichOneof(self, oneof_group: typing.Literal["_call_purpose", b"_call_purpose"]) -> typing.Literal["call_purpose"] | None: ...
     @typing.overload
     def WhichOneof(self, oneof_group: typing.Literal["_first_token_ms", b"_first_token_ms"]) -> typing.Literal["first_token_ms"] | None: ...
     @typing.overload
@@ -283,6 +295,90 @@ class CopilotLlmCall(google.protobuf.message.Message):
     def WhichOneof(self, oneof_group: typing.Literal["_tokens_total", b"_tokens_total"]) -> typing.Literal["tokens_total"] | None: ...
 
 Global___CopilotLlmCall: typing_extensions.TypeAlias = CopilotLlmCall
+
+@typing.final
+class CompactionApplied(google.protobuf.message.Message):
+    """Possible values for CompactionApplied.trigger:
+      "automatic"    - fired by the context-size threshold
+      "user_forced"  - explicitly requested by the user
+
+    Fired when context compaction runs within an agent run. Emitted for every
+    compaction, including tool_result_clearing which makes no LLM call, so it
+    captures compaction frequency and effectiveness the summarizer's
+    CopilotLlmCall alone cannot. Each strategy fires at most once per run, so
+    copilot_request_id is the key: it identifies the run and joins a
+    "summarization" event to the priced summarizer CopilotLlmCall (the single
+    row tagged call_purpose="compaction" in that run).
+    """
+
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
+    ENRICHMENT_FIELD_NUMBER: builtins.int
+    CTX_FIELD_NUMBER: builtins.int
+    COPILOT_REQUEST_ID_FIELD_NUMBER: builtins.int
+    THREAD_ID_FIELD_NUMBER: builtins.int
+    STRATEGY_FIELD_NUMBER: builtins.int
+    TRIGGER_FIELD_NUMBER: builtins.int
+    TOKENS_BEFORE_FIELD_NUMBER: builtins.int
+    TOKENS_AFTER_FIELD_NUMBER: builtins.int
+    COMPACTION_THRESHOLD_USED_FIELD_NUMBER: builtins.int
+    copilot_request_id: builtins.str
+    """Identifies the parent agent run; foreign key to CopilotGenerationComplete.
+    Also the cost join key: a "summarization" event maps 1:1 to the run's single
+    CopilotLlmCall tagged call_purpose="compaction".
+    """
+    thread_id: builtins.str
+    """Conversation thread for multi-turn correlation"""
+    strategy: builtins.str
+    """Which compaction strategy ran; see strategy values documented above"""
+    trigger: builtins.str
+    """What triggered this compaction; see trigger values documented above"""
+    tokens_before: builtins.int
+    """Approximate context size before compaction, in the middleware's working
+    token estimate (count_tokens_approximately), the same space as
+    compaction_threshold_used. Not provider-billed tokens; the summarizer's real cost is
+    on its CopilotLlmCall.
+    """
+    tokens_after: builtins.int
+    """Approximate context size after compaction, same estimate space as
+    tokens_before. tokens_before minus tokens_after is the context reclaimed.
+    """
+    compaction_threshold_used: builtins.int
+    """Working token limit that triggered automatic compaction, same estimate
+    space as tokens_before/after. Per model (derived from the context window;
+    conservative fallback for opaque/BYOK models). Unset when user_forced.
+    """
+    @property
+    def enrichment(self) -> dbtlabs.proto.public.v1.events.vortex_pb2.VortexMessageEnrichment:
+        """Server enrichment for this event"""
+
+    @property
+    def ctx(self) -> dbtlabs.proto.public.v1.common.vortex_telemetry_contexts_pb2.VortexTelemetryDbtCloudContext:
+        """dbt Cloud context (account_id, user_id, project_id, etc.)"""
+
+    def __init__(
+        self,
+        *,
+        enrichment: dbtlabs.proto.public.v1.events.vortex_pb2.VortexMessageEnrichment | None = ...,
+        ctx: dbtlabs.proto.public.v1.common.vortex_telemetry_contexts_pb2.VortexTelemetryDbtCloudContext | None = ...,
+        copilot_request_id: builtins.str = ...,
+        thread_id: builtins.str = ...,
+        strategy: builtins.str = ...,
+        trigger: builtins.str = ...,
+        tokens_before: builtins.int | None = ...,
+        tokens_after: builtins.int | None = ...,
+        compaction_threshold_used: builtins.int | None = ...,
+    ) -> None: ...
+    def HasField(self, field_name: typing.Literal["_compaction_threshold_used", b"_compaction_threshold_used", "_tokens_after", b"_tokens_after", "_tokens_before", b"_tokens_before", "compaction_threshold_used", b"compaction_threshold_used", "ctx", b"ctx", "enrichment", b"enrichment", "tokens_after", b"tokens_after", "tokens_before", b"tokens_before"]) -> builtins.bool: ...
+    def ClearField(self, field_name: typing.Literal["_compaction_threshold_used", b"_compaction_threshold_used", "_tokens_after", b"_tokens_after", "_tokens_before", b"_tokens_before", "compaction_threshold_used", b"compaction_threshold_used", "copilot_request_id", b"copilot_request_id", "ctx", b"ctx", "enrichment", b"enrichment", "strategy", b"strategy", "thread_id", b"thread_id", "tokens_after", b"tokens_after", "tokens_before", b"tokens_before", "trigger", b"trigger"]) -> None: ...
+    @typing.overload
+    def WhichOneof(self, oneof_group: typing.Literal["_compaction_threshold_used", b"_compaction_threshold_used"]) -> typing.Literal["compaction_threshold_used"] | None: ...
+    @typing.overload
+    def WhichOneof(self, oneof_group: typing.Literal["_tokens_after", b"_tokens_after"]) -> typing.Literal["tokens_after"] | None: ...
+    @typing.overload
+    def WhichOneof(self, oneof_group: typing.Literal["_tokens_before", b"_tokens_before"]) -> typing.Literal["tokens_before"] | None: ...
+
+Global___CompactionApplied: typing_extensions.TypeAlias = CompactionApplied
 
 @typing.final
 class CopilotUserAcceptance(google.protobuf.message.Message):
