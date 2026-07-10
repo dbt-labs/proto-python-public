@@ -61,6 +61,7 @@ class ToolCalled(google.protobuf.message.Message):
     DISABLED_TOOLS_FIELD_NUMBER: builtins.int
     USER_AGENT_FIELD_NUMBER: builtins.int
     ATTRIBUTION_ID_FIELD_NUMBER: builtins.int
+    COMMON_CONTEXT_FIELD_NUMBER: builtins.int
     event_id: builtins.str
     """event_id is the unique identifier for this event. It is a generated UUID."""
     start_time_ms: builtins.int
@@ -111,6 +112,8 @@ class ToolCalled(google.protobuf.message.Message):
     def disabled_tools(self) -> google.protobuf.internal.containers.RepeatedScalarFieldContainer[builtins.str]:
         """This list of disabled tools from the DISABLE_TOOLS environment variable or x-dbt-disable-tools header."""
 
+    @property
+    def common_context(self) -> dbtlabs.proto.public.v1.common.vortex_telemetry_contexts_pb2.VortexTelemetryCommonContext: ...
     def __init__(
         self,
         *,
@@ -135,8 +138,9 @@ class ToolCalled(google.protobuf.message.Message):
         disabled_tools: collections.abc.Iterable[builtins.str] | None = ...,
         user_agent: builtins.str = ...,
         attribution_id: builtins.str = ...,
+        common_context: dbtlabs.proto.public.v1.common.vortex_telemetry_contexts_pb2.VortexTelemetryCommonContext | None = ...,
     ) -> None: ...
-    def HasField(self, field_name: typing.Literal["ctx", b"ctx", "enrichment", b"enrichment"]) -> builtins.bool: ...
-    def ClearField(self, field_name: typing.Literal["arguments", b"arguments", "attribution_id", b"attribution_id", "authentication_method", b"authentication_method", "ctx", b"ctx", "dbt_cloud_environment_id_dev", b"dbt_cloud_environment_id_dev", "dbt_cloud_environment_id_prod", b"dbt_cloud_environment_id_prod", "dbt_cloud_user_id", b"dbt_cloud_user_id", "dbt_mcp_version", b"dbt_mcp_version", "disabled_tools", b"disabled_tools", "disabled_toolsets", b"disabled_toolsets", "end_time_ms", b"end_time_ms", "enrichment", b"enrichment", "error_message", b"error_message", "event_id", b"event_id", "host", b"host", "local_user_id", b"local_user_id", "multicell_account_prefix", b"multicell_account_prefix", "start_time_ms", b"start_time_ms", "tool_name", b"tool_name", "trace_id", b"trace_id", "user_agent", b"user_agent"]) -> None: ...
+    def HasField(self, field_name: typing.Literal["common_context", b"common_context", "ctx", b"ctx", "enrichment", b"enrichment"]) -> builtins.bool: ...
+    def ClearField(self, field_name: typing.Literal["arguments", b"arguments", "attribution_id", b"attribution_id", "authentication_method", b"authentication_method", "common_context", b"common_context", "ctx", b"ctx", "dbt_cloud_environment_id_dev", b"dbt_cloud_environment_id_dev", "dbt_cloud_environment_id_prod", b"dbt_cloud_environment_id_prod", "dbt_cloud_user_id", b"dbt_cloud_user_id", "dbt_mcp_version", b"dbt_mcp_version", "disabled_tools", b"disabled_tools", "disabled_toolsets", b"disabled_toolsets", "end_time_ms", b"end_time_ms", "enrichment", b"enrichment", "error_message", b"error_message", "event_id", b"event_id", "host", b"host", "local_user_id", b"local_user_id", "multicell_account_prefix", b"multicell_account_prefix", "start_time_ms", b"start_time_ms", "tool_name", b"tool_name", "trace_id", b"trace_id", "user_agent", b"user_agent"]) -> None: ...
 
 Global___ToolCalled: typing_extensions.TypeAlias = ToolCalled

@@ -98,6 +98,7 @@ class Handoff(google.protobuf.message.Message):
     IS_FINAL_HANDOFF_ACTION_FIELD_NUMBER: builtins.int
     HANDOFF_ACTION_FIELD_NUMBER: builtins.int
     ASSET_TYPE_FIELD_NUMBER: builtins.int
+    COMMON_CONTEXT_FIELD_NUMBER: builtins.int
     handoff_from: builtins.str
     """There are fields below that would have been defined as enums but Vortex doesn't support enums well
 
@@ -119,6 +120,8 @@ class Handoff(google.protobuf.message.Message):
     def context(self) -> dbtlabs.proto.public.v1.common.vortex_telemetry_contexts_pb2.VortexTelemetryDbtCloudContext:
         """dbt Cloud Context around this request"""
 
+    @property
+    def common_context(self) -> dbtlabs.proto.public.v1.common.vortex_telemetry_contexts_pb2.VortexTelemetryCommonContext: ...
     def __init__(
         self,
         *,
@@ -129,8 +132,9 @@ class Handoff(google.protobuf.message.Message):
         is_final_handoff_action: builtins.bool = ...,
         handoff_action: builtins.str = ...,
         asset_type: builtins.str = ...,
+        common_context: dbtlabs.proto.public.v1.common.vortex_telemetry_contexts_pb2.VortexTelemetryCommonContext | None = ...,
     ) -> None: ...
-    def HasField(self, field_name: typing.Literal["context", b"context", "enrichment", b"enrichment"]) -> builtins.bool: ...
-    def ClearField(self, field_name: typing.Literal["asset_type", b"asset_type", "context", b"context", "enrichment", b"enrichment", "handoff_action", b"handoff_action", "handoff_from", b"handoff_from", "handoff_to", b"handoff_to", "is_final_handoff_action", b"is_final_handoff_action"]) -> None: ...
+    def HasField(self, field_name: typing.Literal["common_context", b"common_context", "context", b"context", "enrichment", b"enrichment"]) -> builtins.bool: ...
+    def ClearField(self, field_name: typing.Literal["asset_type", b"asset_type", "common_context", b"common_context", "context", b"context", "enrichment", b"enrichment", "handoff_action", b"handoff_action", "handoff_from", b"handoff_from", "handoff_to", b"handoff_to", "is_final_handoff_action", b"is_final_handoff_action"]) -> None: ...
 
 Global___Handoff: typing_extensions.TypeAlias = Handoff

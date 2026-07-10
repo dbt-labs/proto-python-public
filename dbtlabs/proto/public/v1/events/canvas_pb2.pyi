@@ -91,6 +91,7 @@ class OpenInCanvasCtaShown(google.protobuf.message.Message):
     CTX_FIELD_NUMBER: builtins.int
     FILE_PATH_FIELD_NUMBER: builtins.int
     PAYLOAD_KIND_FIELD_NUMBER: builtins.int
+    COMMON_CONTEXT_FIELD_NUMBER: builtins.int
     file_path: builtins.str
     """The dbt project file path that triggered the CTA (e.g. "models/foo.sql")."""
     payload_kind: Global___CanvasHandoffPayloadKind.ValueType
@@ -98,6 +99,8 @@ class OpenInCanvasCtaShown(google.protobuf.message.Message):
     def enrichment(self) -> dbtlabs.proto.public.v1.events.vortex_pb2.VortexMessageEnrichment: ...
     @property
     def ctx(self) -> dbtlabs.proto.public.v1.common.vortex_telemetry_contexts_pb2.VortexTelemetryDbtCloudContext: ...
+    @property
+    def common_context(self) -> dbtlabs.proto.public.v1.common.vortex_telemetry_contexts_pb2.VortexTelemetryCommonContext: ...
     def __init__(
         self,
         *,
@@ -105,9 +108,10 @@ class OpenInCanvasCtaShown(google.protobuf.message.Message):
         ctx: dbtlabs.proto.public.v1.common.vortex_telemetry_contexts_pb2.VortexTelemetryDbtCloudContext | None = ...,
         file_path: builtins.str = ...,
         payload_kind: Global___CanvasHandoffPayloadKind.ValueType = ...,
+        common_context: dbtlabs.proto.public.v1.common.vortex_telemetry_contexts_pb2.VortexTelemetryCommonContext | None = ...,
     ) -> None: ...
-    def HasField(self, field_name: typing.Literal["ctx", b"ctx", "enrichment", b"enrichment"]) -> builtins.bool: ...
-    def ClearField(self, field_name: typing.Literal["ctx", b"ctx", "enrichment", b"enrichment", "file_path", b"file_path", "payload_kind", b"payload_kind"]) -> None: ...
+    def HasField(self, field_name: typing.Literal["common_context", b"common_context", "ctx", b"ctx", "enrichment", b"enrichment"]) -> builtins.bool: ...
+    def ClearField(self, field_name: typing.Literal["common_context", b"common_context", "ctx", b"ctx", "enrichment", b"enrichment", "file_path", b"file_path", "payload_kind", b"payload_kind"]) -> None: ...
 
 Global___OpenInCanvasCtaShown: typing_extensions.TypeAlias = OpenInCanvasCtaShown
 
@@ -121,12 +125,15 @@ class OpenInCanvasCtaClicked(google.protobuf.message.Message):
     CTX_FIELD_NUMBER: builtins.int
     FILE_PATH_FIELD_NUMBER: builtins.int
     PAYLOAD_KIND_FIELD_NUMBER: builtins.int
+    COMMON_CONTEXT_FIELD_NUMBER: builtins.int
     file_path: builtins.str
     payload_kind: Global___CanvasHandoffPayloadKind.ValueType
     @property
     def enrichment(self) -> dbtlabs.proto.public.v1.events.vortex_pb2.VortexMessageEnrichment: ...
     @property
     def ctx(self) -> dbtlabs.proto.public.v1.common.vortex_telemetry_contexts_pb2.VortexTelemetryDbtCloudContext: ...
+    @property
+    def common_context(self) -> dbtlabs.proto.public.v1.common.vortex_telemetry_contexts_pb2.VortexTelemetryCommonContext: ...
     def __init__(
         self,
         *,
@@ -134,9 +141,10 @@ class OpenInCanvasCtaClicked(google.protobuf.message.Message):
         ctx: dbtlabs.proto.public.v1.common.vortex_telemetry_contexts_pb2.VortexTelemetryDbtCloudContext | None = ...,
         file_path: builtins.str = ...,
         payload_kind: Global___CanvasHandoffPayloadKind.ValueType = ...,
+        common_context: dbtlabs.proto.public.v1.common.vortex_telemetry_contexts_pb2.VortexTelemetryCommonContext | None = ...,
     ) -> None: ...
-    def HasField(self, field_name: typing.Literal["ctx", b"ctx", "enrichment", b"enrichment"]) -> builtins.bool: ...
-    def ClearField(self, field_name: typing.Literal["ctx", b"ctx", "enrichment", b"enrichment", "file_path", b"file_path", "payload_kind", b"payload_kind"]) -> None: ...
+    def HasField(self, field_name: typing.Literal["common_context", b"common_context", "ctx", b"ctx", "enrichment", b"enrichment"]) -> builtins.bool: ...
+    def ClearField(self, field_name: typing.Literal["common_context", b"common_context", "ctx", b"ctx", "enrichment", b"enrichment", "file_path", b"file_path", "payload_kind", b"payload_kind"]) -> None: ...
 
 Global___OpenInCanvasCtaClicked: typing_extensions.TypeAlias = OpenInCanvasCtaClicked
 
@@ -152,6 +160,7 @@ class OpenInCanvasCtaSuppressed(google.protobuf.message.Message):
     CTX_FIELD_NUMBER: builtins.int
     FILE_PATH_FIELD_NUMBER: builtins.int
     ERROR_MESSAGE_FIELD_NUMBER: builtins.int
+    COMMON_CONTEXT_FIELD_NUMBER: builtins.int
     file_path: builtins.str
     error_message: builtins.str
     """Free-form error returned by validate_sql."""
@@ -159,6 +168,8 @@ class OpenInCanvasCtaSuppressed(google.protobuf.message.Message):
     def enrichment(self) -> dbtlabs.proto.public.v1.events.vortex_pb2.VortexMessageEnrichment: ...
     @property
     def ctx(self) -> dbtlabs.proto.public.v1.common.vortex_telemetry_contexts_pb2.VortexTelemetryDbtCloudContext: ...
+    @property
+    def common_context(self) -> dbtlabs.proto.public.v1.common.vortex_telemetry_contexts_pb2.VortexTelemetryCommonContext: ...
     def __init__(
         self,
         *,
@@ -166,9 +177,10 @@ class OpenInCanvasCtaSuppressed(google.protobuf.message.Message):
         ctx: dbtlabs.proto.public.v1.common.vortex_telemetry_contexts_pb2.VortexTelemetryDbtCloudContext | None = ...,
         file_path: builtins.str = ...,
         error_message: builtins.str = ...,
+        common_context: dbtlabs.proto.public.v1.common.vortex_telemetry_contexts_pb2.VortexTelemetryCommonContext | None = ...,
     ) -> None: ...
-    def HasField(self, field_name: typing.Literal["ctx", b"ctx", "enrichment", b"enrichment"]) -> builtins.bool: ...
-    def ClearField(self, field_name: typing.Literal["ctx", b"ctx", "enrichment", b"enrichment", "error_message", b"error_message", "file_path", b"file_path"]) -> None: ...
+    def HasField(self, field_name: typing.Literal["common_context", b"common_context", "ctx", b"ctx", "enrichment", b"enrichment"]) -> builtins.bool: ...
+    def ClearField(self, field_name: typing.Literal["common_context", b"common_context", "ctx", b"ctx", "enrichment", b"enrichment", "error_message", b"error_message", "file_path", b"file_path"]) -> None: ...
 
 Global___OpenInCanvasCtaSuppressed: typing_extensions.TypeAlias = OpenInCanvasCtaSuppressed
 
@@ -182,12 +194,15 @@ class OpenInCanvasHandoffSucceeded(google.protobuf.message.Message):
     CTX_FIELD_NUMBER: builtins.int
     FILE_PATH_FIELD_NUMBER: builtins.int
     PAYLOAD_KIND_FIELD_NUMBER: builtins.int
+    COMMON_CONTEXT_FIELD_NUMBER: builtins.int
     file_path: builtins.str
     payload_kind: Global___CanvasHandoffPayloadKind.ValueType
     @property
     def enrichment(self) -> dbtlabs.proto.public.v1.events.vortex_pb2.VortexMessageEnrichment: ...
     @property
     def ctx(self) -> dbtlabs.proto.public.v1.common.vortex_telemetry_contexts_pb2.VortexTelemetryDbtCloudContext: ...
+    @property
+    def common_context(self) -> dbtlabs.proto.public.v1.common.vortex_telemetry_contexts_pb2.VortexTelemetryCommonContext: ...
     def __init__(
         self,
         *,
@@ -195,9 +210,10 @@ class OpenInCanvasHandoffSucceeded(google.protobuf.message.Message):
         ctx: dbtlabs.proto.public.v1.common.vortex_telemetry_contexts_pb2.VortexTelemetryDbtCloudContext | None = ...,
         file_path: builtins.str = ...,
         payload_kind: Global___CanvasHandoffPayloadKind.ValueType = ...,
+        common_context: dbtlabs.proto.public.v1.common.vortex_telemetry_contexts_pb2.VortexTelemetryCommonContext | None = ...,
     ) -> None: ...
-    def HasField(self, field_name: typing.Literal["ctx", b"ctx", "enrichment", b"enrichment"]) -> builtins.bool: ...
-    def ClearField(self, field_name: typing.Literal["ctx", b"ctx", "enrichment", b"enrichment", "file_path", b"file_path", "payload_kind", b"payload_kind"]) -> None: ...
+    def HasField(self, field_name: typing.Literal["common_context", b"common_context", "ctx", b"ctx", "enrichment", b"enrichment"]) -> builtins.bool: ...
+    def ClearField(self, field_name: typing.Literal["common_context", b"common_context", "ctx", b"ctx", "enrichment", b"enrichment", "file_path", b"file_path", "payload_kind", b"payload_kind"]) -> None: ...
 
 Global___OpenInCanvasHandoffSucceeded: typing_extensions.TypeAlias = OpenInCanvasHandoffSucceeded
 
@@ -213,6 +229,7 @@ class OpenInCanvasHandoffFailed(google.protobuf.message.Message):
     PAYLOAD_KIND_FIELD_NUMBER: builtins.int
     REASON_FIELD_NUMBER: builtins.int
     ERROR_MESSAGE_FIELD_NUMBER: builtins.int
+    COMMON_CONTEXT_FIELD_NUMBER: builtins.int
     file_path: builtins.str
     payload_kind: Global___CanvasHandoffPayloadKind.ValueType
     reason: Global___CanvasHandoffParseFailureReason.ValueType
@@ -222,6 +239,8 @@ class OpenInCanvasHandoffFailed(google.protobuf.message.Message):
     def enrichment(self) -> dbtlabs.proto.public.v1.events.vortex_pb2.VortexMessageEnrichment: ...
     @property
     def ctx(self) -> dbtlabs.proto.public.v1.common.vortex_telemetry_contexts_pb2.VortexTelemetryDbtCloudContext: ...
+    @property
+    def common_context(self) -> dbtlabs.proto.public.v1.common.vortex_telemetry_contexts_pb2.VortexTelemetryCommonContext: ...
     def __init__(
         self,
         *,
@@ -231,9 +250,10 @@ class OpenInCanvasHandoffFailed(google.protobuf.message.Message):
         payload_kind: Global___CanvasHandoffPayloadKind.ValueType = ...,
         reason: Global___CanvasHandoffParseFailureReason.ValueType = ...,
         error_message: builtins.str = ...,
+        common_context: dbtlabs.proto.public.v1.common.vortex_telemetry_contexts_pb2.VortexTelemetryCommonContext | None = ...,
     ) -> None: ...
-    def HasField(self, field_name: typing.Literal["ctx", b"ctx", "enrichment", b"enrichment"]) -> builtins.bool: ...
-    def ClearField(self, field_name: typing.Literal["ctx", b"ctx", "enrichment", b"enrichment", "error_message", b"error_message", "file_path", b"file_path", "payload_kind", b"payload_kind", "reason", b"reason"]) -> None: ...
+    def HasField(self, field_name: typing.Literal["common_context", b"common_context", "ctx", b"ctx", "enrichment", b"enrichment"]) -> builtins.bool: ...
+    def ClearField(self, field_name: typing.Literal["common_context", b"common_context", "ctx", b"ctx", "enrichment", b"enrichment", "error_message", b"error_message", "file_path", b"file_path", "payload_kind", b"payload_kind", "reason", b"reason"]) -> None: ...
 
 Global___OpenInCanvasHandoffFailed: typing_extensions.TypeAlias = OpenInCanvasHandoffFailed
 
@@ -246,20 +266,24 @@ class DiffCardCanvasTabClicked(google.protobuf.message.Message):
     ENRICHMENT_FIELD_NUMBER: builtins.int
     CTX_FIELD_NUMBER: builtins.int
     FILE_PATH_FIELD_NUMBER: builtins.int
+    COMMON_CONTEXT_FIELD_NUMBER: builtins.int
     file_path: builtins.str
     @property
     def enrichment(self) -> dbtlabs.proto.public.v1.events.vortex_pb2.VortexMessageEnrichment: ...
     @property
     def ctx(self) -> dbtlabs.proto.public.v1.common.vortex_telemetry_contexts_pb2.VortexTelemetryDbtCloudContext: ...
+    @property
+    def common_context(self) -> dbtlabs.proto.public.v1.common.vortex_telemetry_contexts_pb2.VortexTelemetryCommonContext: ...
     def __init__(
         self,
         *,
         enrichment: dbtlabs.proto.public.v1.events.vortex_pb2.VortexMessageEnrichment | None = ...,
         ctx: dbtlabs.proto.public.v1.common.vortex_telemetry_contexts_pb2.VortexTelemetryDbtCloudContext | None = ...,
         file_path: builtins.str = ...,
+        common_context: dbtlabs.proto.public.v1.common.vortex_telemetry_contexts_pb2.VortexTelemetryCommonContext | None = ...,
     ) -> None: ...
-    def HasField(self, field_name: typing.Literal["ctx", b"ctx", "enrichment", b"enrichment"]) -> builtins.bool: ...
-    def ClearField(self, field_name: typing.Literal["ctx", b"ctx", "enrichment", b"enrichment", "file_path", b"file_path"]) -> None: ...
+    def HasField(self, field_name: typing.Literal["common_context", b"common_context", "ctx", b"ctx", "enrichment", b"enrichment"]) -> builtins.bool: ...
+    def ClearField(self, field_name: typing.Literal["common_context", b"common_context", "ctx", b"ctx", "enrichment", b"enrichment", "file_path", b"file_path"]) -> None: ...
 
 Global___DiffCardCanvasTabClicked: typing_extensions.TypeAlias = DiffCardCanvasTabClicked
 
@@ -275,6 +299,7 @@ class DiffCardCanvasParseFailed(google.protobuf.message.Message):
     SIDE_FIELD_NUMBER: builtins.int
     REASON_FIELD_NUMBER: builtins.int
     ERROR_MESSAGE_FIELD_NUMBER: builtins.int
+    COMMON_CONTEXT_FIELD_NUMBER: builtins.int
     file_path: builtins.str
     side: Global___CanvasHandoffDiffSide.ValueType
     reason: Global___CanvasHandoffParseFailureReason.ValueType
@@ -283,6 +308,8 @@ class DiffCardCanvasParseFailed(google.protobuf.message.Message):
     def enrichment(self) -> dbtlabs.proto.public.v1.events.vortex_pb2.VortexMessageEnrichment: ...
     @property
     def ctx(self) -> dbtlabs.proto.public.v1.common.vortex_telemetry_contexts_pb2.VortexTelemetryDbtCloudContext: ...
+    @property
+    def common_context(self) -> dbtlabs.proto.public.v1.common.vortex_telemetry_contexts_pb2.VortexTelemetryCommonContext: ...
     def __init__(
         self,
         *,
@@ -292,8 +319,9 @@ class DiffCardCanvasParseFailed(google.protobuf.message.Message):
         side: Global___CanvasHandoffDiffSide.ValueType = ...,
         reason: Global___CanvasHandoffParseFailureReason.ValueType = ...,
         error_message: builtins.str = ...,
+        common_context: dbtlabs.proto.public.v1.common.vortex_telemetry_contexts_pb2.VortexTelemetryCommonContext | None = ...,
     ) -> None: ...
-    def HasField(self, field_name: typing.Literal["ctx", b"ctx", "enrichment", b"enrichment"]) -> builtins.bool: ...
-    def ClearField(self, field_name: typing.Literal["ctx", b"ctx", "enrichment", b"enrichment", "error_message", b"error_message", "file_path", b"file_path", "reason", b"reason", "side", b"side"]) -> None: ...
+    def HasField(self, field_name: typing.Literal["common_context", b"common_context", "ctx", b"ctx", "enrichment", b"enrichment"]) -> builtins.bool: ...
+    def ClearField(self, field_name: typing.Literal["common_context", b"common_context", "ctx", b"ctx", "enrichment", b"enrichment", "error_message", b"error_message", "file_path", b"file_path", "reason", b"reason", "side", b"side"]) -> None: ...
 
 Global___DiffCardCanvasParseFailed: typing_extensions.TypeAlias = DiffCardCanvasParseFailed

@@ -335,6 +335,7 @@ class DocsSiteOpened(google.protobuf.message.Message):
     DBT_VERSION_FIELD_NUMBER: builtins.int
     PROJECT_RESOURCE_COUNT_FIELD_NUMBER: builtins.int
     DISTRIBUTION_FIELD_NUMBER: builtins.int
+    COMMON_CONTEXT_FIELD_NUMBER: builtins.int
     is_logged_in: builtins.bool
     """whether the viewer is authenticated when the event fires: true once the
     user has run `dbt login` (OSS auth). Distinct from
@@ -361,6 +362,8 @@ class DocsSiteOpened(google.protobuf.message.Message):
     def context(self) -> dbtlabs.proto.public.v1.common.vortex_telemetry_contexts_pb2.VortexTelemetryDbtCloudContext:
         """dbt Cloud Context around this request"""
 
+    @property
+    def common_context(self) -> dbtlabs.proto.public.v1.common.vortex_telemetry_contexts_pb2.VortexTelemetryCommonContext: ...
     def __init__(
         self,
         *,
@@ -370,9 +373,10 @@ class DocsSiteOpened(google.protobuf.message.Message):
         dbt_version: builtins.str = ...,
         project_resource_count: builtins.int = ...,
         distribution: builtins.str = ...,
+        common_context: dbtlabs.proto.public.v1.common.vortex_telemetry_contexts_pb2.VortexTelemetryCommonContext | None = ...,
     ) -> None: ...
-    def HasField(self, field_name: typing.Literal["context", b"context", "enrichment", b"enrichment"]) -> builtins.bool: ...
-    def ClearField(self, field_name: typing.Literal["context", b"context", "dbt_version", b"dbt_version", "distribution", b"distribution", "enrichment", b"enrichment", "is_logged_in", b"is_logged_in", "project_resource_count", b"project_resource_count"]) -> None: ...
+    def HasField(self, field_name: typing.Literal["common_context", b"common_context", "context", b"context", "enrichment", b"enrichment"]) -> builtins.bool: ...
+    def ClearField(self, field_name: typing.Literal["common_context", b"common_context", "context", b"context", "dbt_version", b"dbt_version", "distribution", b"distribution", "enrichment", b"enrichment", "is_logged_in", b"is_logged_in", "project_resource_count", b"project_resource_count"]) -> None: ...
 
 Global___DocsSiteOpened: typing_extensions.TypeAlias = DocsSiteOpened
 
@@ -389,6 +393,7 @@ class ResourceViewed(google.protobuf.message.Message):
     VIEW_LEVEL_FIELD_NUMBER: builtins.int
     RESOURCE_ID_FIELD_NUMBER: builtins.int
     DISTRIBUTION_FIELD_NUMBER: builtins.int
+    COMMON_CONTEXT_FIELD_NUMBER: builtins.int
     is_logged_in: builtins.bool
     """whether the viewer is authenticated when the event fires: true once the
     user has run `dbt login` (OSS auth). Distinct from
@@ -418,6 +423,8 @@ class ResourceViewed(google.protobuf.message.Message):
     def context(self) -> dbtlabs.proto.public.v1.common.vortex_telemetry_contexts_pb2.VortexTelemetryDbtCloudContext:
         """dbt Cloud Context around this request"""
 
+    @property
+    def common_context(self) -> dbtlabs.proto.public.v1.common.vortex_telemetry_contexts_pb2.VortexTelemetryCommonContext: ...
     def __init__(
         self,
         *,
@@ -428,9 +435,10 @@ class ResourceViewed(google.protobuf.message.Message):
         view_level: builtins.str = ...,
         resource_id: builtins.str = ...,
         distribution: builtins.str = ...,
+        common_context: dbtlabs.proto.public.v1.common.vortex_telemetry_contexts_pb2.VortexTelemetryCommonContext | None = ...,
     ) -> None: ...
-    def HasField(self, field_name: typing.Literal["context", b"context", "enrichment", b"enrichment"]) -> builtins.bool: ...
-    def ClearField(self, field_name: typing.Literal["context", b"context", "distribution", b"distribution", "enrichment", b"enrichment", "is_logged_in", b"is_logged_in", "resource_id", b"resource_id", "resource_type", b"resource_type", "view_level", b"view_level"]) -> None: ...
+    def HasField(self, field_name: typing.Literal["common_context", b"common_context", "context", b"context", "enrichment", b"enrichment"]) -> builtins.bool: ...
+    def ClearField(self, field_name: typing.Literal["common_context", b"common_context", "context", b"context", "distribution", b"distribution", "enrichment", b"enrichment", "is_logged_in", b"is_logged_in", "resource_id", b"resource_id", "resource_type", b"resource_type", "view_level", b"view_level"]) -> None: ...
 
 Global___ResourceViewed: typing_extensions.TypeAlias = ResourceViewed
 
@@ -447,6 +455,7 @@ class LineageViewed(google.protobuf.message.Message):
     RESOURCE_TYPE_FIELD_NUMBER: builtins.int
     RESOURCE_ID_FIELD_NUMBER: builtins.int
     DISTRIBUTION_FIELD_NUMBER: builtins.int
+    COMMON_CONTEXT_FIELD_NUMBER: builtins.int
     is_logged_in: builtins.bool
     """whether the viewer is authenticated when the event fires: true once the
     user has run `dbt login` (OSS auth). Distinct from
@@ -474,6 +483,8 @@ class LineageViewed(google.protobuf.message.Message):
     def context(self) -> dbtlabs.proto.public.v1.common.vortex_telemetry_contexts_pb2.VortexTelemetryDbtCloudContext:
         """dbt Cloud Context around this request"""
 
+    @property
+    def common_context(self) -> dbtlabs.proto.public.v1.common.vortex_telemetry_contexts_pb2.VortexTelemetryCommonContext: ...
     def __init__(
         self,
         *,
@@ -484,9 +495,10 @@ class LineageViewed(google.protobuf.message.Message):
         resource_type: builtins.str = ...,
         resource_id: builtins.str = ...,
         distribution: builtins.str = ...,
+        common_context: dbtlabs.proto.public.v1.common.vortex_telemetry_contexts_pb2.VortexTelemetryCommonContext | None = ...,
     ) -> None: ...
-    def HasField(self, field_name: typing.Literal["context", b"context", "enrichment", b"enrichment"]) -> builtins.bool: ...
-    def ClearField(self, field_name: typing.Literal["context", b"context", "distribution", b"distribution", "enrichment", b"enrichment", "is_logged_in", b"is_logged_in", "lineage_type", b"lineage_type", "resource_id", b"resource_id", "resource_type", b"resource_type"]) -> None: ...
+    def HasField(self, field_name: typing.Literal["common_context", b"common_context", "context", b"context", "enrichment", b"enrichment"]) -> builtins.bool: ...
+    def ClearField(self, field_name: typing.Literal["common_context", b"common_context", "context", b"context", "distribution", b"distribution", "enrichment", b"enrichment", "is_logged_in", b"is_logged_in", "lineage_type", b"lineage_type", "resource_id", b"resource_id", "resource_type", b"resource_type"]) -> None: ...
 
 Global___LineageViewed: typing_extensions.TypeAlias = LineageViewed
 
@@ -502,6 +514,7 @@ class SearchPerformed(google.protobuf.message.Message):
     SEARCH_QUERY_FIELD_NUMBER: builtins.int
     RESULT_COUNT_FIELD_NUMBER: builtins.int
     DISTRIBUTION_FIELD_NUMBER: builtins.int
+    COMMON_CONTEXT_FIELD_NUMBER: builtins.int
     is_logged_in: builtins.bool
     """whether the viewer is authenticated when the event fires: true once the
     user has run `dbt login` (OSS auth). Distinct from
@@ -527,6 +540,8 @@ class SearchPerformed(google.protobuf.message.Message):
     def context(self) -> dbtlabs.proto.public.v1.common.vortex_telemetry_contexts_pb2.VortexTelemetryDbtCloudContext:
         """dbt Cloud Context around this request"""
 
+    @property
+    def common_context(self) -> dbtlabs.proto.public.v1.common.vortex_telemetry_contexts_pb2.VortexTelemetryCommonContext: ...
     def __init__(
         self,
         *,
@@ -536,9 +551,10 @@ class SearchPerformed(google.protobuf.message.Message):
         search_query: builtins.str = ...,
         result_count: builtins.int = ...,
         distribution: builtins.str = ...,
+        common_context: dbtlabs.proto.public.v1.common.vortex_telemetry_contexts_pb2.VortexTelemetryCommonContext | None = ...,
     ) -> None: ...
-    def HasField(self, field_name: typing.Literal["context", b"context", "enrichment", b"enrichment"]) -> builtins.bool: ...
-    def ClearField(self, field_name: typing.Literal["context", b"context", "distribution", b"distribution", "enrichment", b"enrichment", "is_logged_in", b"is_logged_in", "result_count", b"result_count", "search_query", b"search_query"]) -> None: ...
+    def HasField(self, field_name: typing.Literal["common_context", b"common_context", "context", b"context", "enrichment", b"enrichment"]) -> builtins.bool: ...
+    def ClearField(self, field_name: typing.Literal["common_context", b"common_context", "context", b"context", "distribution", b"distribution", "enrichment", b"enrichment", "is_logged_in", b"is_logged_in", "result_count", b"result_count", "search_query", b"search_query"]) -> None: ...
 
 Global___SearchPerformed: typing_extensions.TypeAlias = SearchPerformed
 
@@ -555,6 +571,7 @@ class FilterApplied(google.protobuf.message.Message):
     FILTER_TYPE_FIELD_NUMBER: builtins.int
     FILTER_VALUE_FIELD_NUMBER: builtins.int
     DISTRIBUTION_FIELD_NUMBER: builtins.int
+    COMMON_CONTEXT_FIELD_NUMBER: builtins.int
     is_logged_in: builtins.bool
     """whether the viewer is authenticated when the event fires: true once the
     user has run `dbt login` (OSS auth). Distinct from
@@ -580,6 +597,8 @@ class FilterApplied(google.protobuf.message.Message):
     def context(self) -> dbtlabs.proto.public.v1.common.vortex_telemetry_contexts_pb2.VortexTelemetryDbtCloudContext:
         """dbt Cloud Context around this request"""
 
+    @property
+    def common_context(self) -> dbtlabs.proto.public.v1.common.vortex_telemetry_contexts_pb2.VortexTelemetryCommonContext: ...
     def __init__(
         self,
         *,
@@ -590,9 +609,10 @@ class FilterApplied(google.protobuf.message.Message):
         filter_type: builtins.str = ...,
         filter_value: builtins.str = ...,
         distribution: builtins.str = ...,
+        common_context: dbtlabs.proto.public.v1.common.vortex_telemetry_contexts_pb2.VortexTelemetryCommonContext | None = ...,
     ) -> None: ...
-    def HasField(self, field_name: typing.Literal["context", b"context", "enrichment", b"enrichment"]) -> builtins.bool: ...
-    def ClearField(self, field_name: typing.Literal["context", b"context", "distribution", b"distribution", "enrichment", b"enrichment", "filter_type", b"filter_type", "filter_value", b"filter_value", "is_logged_in", b"is_logged_in", "resource_type", b"resource_type"]) -> None: ...
+    def HasField(self, field_name: typing.Literal["common_context", b"common_context", "context", b"context", "enrichment", b"enrichment"]) -> builtins.bool: ...
+    def ClearField(self, field_name: typing.Literal["common_context", b"common_context", "context", b"context", "distribution", b"distribution", "enrichment", b"enrichment", "filter_type", b"filter_type", "filter_value", b"filter_value", "is_logged_in", b"is_logged_in", "resource_type", b"resource_type"]) -> None: ...
 
 Global___FilterApplied: typing_extensions.TypeAlias = FilterApplied
 
@@ -609,6 +629,7 @@ class UpsellPromptDisplayed(google.protobuf.message.Message):
     PROMPT_FORMAT_FIELD_NUMBER: builtins.int
     PROMPT_LOCATION_FIELD_NUMBER: builtins.int
     DISTRIBUTION_FIELD_NUMBER: builtins.int
+    COMMON_CONTEXT_FIELD_NUMBER: builtins.int
     is_logged_in: builtins.bool
     """whether the viewer is authenticated when the event fires: true once the
     user has run `dbt login` (OSS auth). Distinct from
@@ -636,6 +657,8 @@ class UpsellPromptDisplayed(google.protobuf.message.Message):
     def context(self) -> dbtlabs.proto.public.v1.common.vortex_telemetry_contexts_pb2.VortexTelemetryDbtCloudContext:
         """dbt Cloud Context around this request"""
 
+    @property
+    def common_context(self) -> dbtlabs.proto.public.v1.common.vortex_telemetry_contexts_pb2.VortexTelemetryCommonContext: ...
     def __init__(
         self,
         *,
@@ -646,9 +669,10 @@ class UpsellPromptDisplayed(google.protobuf.message.Message):
         prompt_format: builtins.str = ...,
         prompt_location: builtins.str = ...,
         distribution: builtins.str = ...,
+        common_context: dbtlabs.proto.public.v1.common.vortex_telemetry_contexts_pb2.VortexTelemetryCommonContext | None = ...,
     ) -> None: ...
-    def HasField(self, field_name: typing.Literal["context", b"context", "enrichment", b"enrichment"]) -> builtins.bool: ...
-    def ClearField(self, field_name: typing.Literal["context", b"context", "distribution", b"distribution", "enrichment", b"enrichment", "is_logged_in", b"is_logged_in", "prompt_format", b"prompt_format", "prompt_location", b"prompt_location", "upsell_track", b"upsell_track"]) -> None: ...
+    def HasField(self, field_name: typing.Literal["common_context", b"common_context", "context", b"context", "enrichment", b"enrichment"]) -> builtins.bool: ...
+    def ClearField(self, field_name: typing.Literal["common_context", b"common_context", "context", b"context", "distribution", b"distribution", "enrichment", b"enrichment", "is_logged_in", b"is_logged_in", "prompt_format", b"prompt_format", "prompt_location", b"prompt_location", "upsell_track", b"upsell_track"]) -> None: ...
 
 Global___UpsellPromptDisplayed: typing_extensions.TypeAlias = UpsellPromptDisplayed
 
@@ -665,6 +689,7 @@ class UpsellPromptClicked(google.protobuf.message.Message):
     CTA_LABEL_FIELD_NUMBER: builtins.int
     REFERRAL_CODE_FIELD_NUMBER: builtins.int
     DISTRIBUTION_FIELD_NUMBER: builtins.int
+    COMMON_CONTEXT_FIELD_NUMBER: builtins.int
     is_logged_in: builtins.bool
     """whether the viewer is authenticated when the event fires: true once the
     user has run `dbt login` (OSS auth). Distinct from
@@ -692,6 +717,8 @@ class UpsellPromptClicked(google.protobuf.message.Message):
     def context(self) -> dbtlabs.proto.public.v1.common.vortex_telemetry_contexts_pb2.VortexTelemetryDbtCloudContext:
         """dbt Cloud Context around this request"""
 
+    @property
+    def common_context(self) -> dbtlabs.proto.public.v1.common.vortex_telemetry_contexts_pb2.VortexTelemetryCommonContext: ...
     def __init__(
         self,
         *,
@@ -702,9 +729,10 @@ class UpsellPromptClicked(google.protobuf.message.Message):
         cta_label: builtins.str = ...,
         referral_code: builtins.str = ...,
         distribution: builtins.str = ...,
+        common_context: dbtlabs.proto.public.v1.common.vortex_telemetry_contexts_pb2.VortexTelemetryCommonContext | None = ...,
     ) -> None: ...
-    def HasField(self, field_name: typing.Literal["context", b"context", "enrichment", b"enrichment"]) -> builtins.bool: ...
-    def ClearField(self, field_name: typing.Literal["context", b"context", "cta_label", b"cta_label", "distribution", b"distribution", "enrichment", b"enrichment", "is_logged_in", b"is_logged_in", "referral_code", b"referral_code", "upsell_track", b"upsell_track"]) -> None: ...
+    def HasField(self, field_name: typing.Literal["common_context", b"common_context", "context", b"context", "enrichment", b"enrichment"]) -> builtins.bool: ...
+    def ClearField(self, field_name: typing.Literal["common_context", b"common_context", "context", b"context", "cta_label", b"cta_label", "distribution", b"distribution", "enrichment", b"enrichment", "is_logged_in", b"is_logged_in", "referral_code", b"referral_code", "upsell_track", b"upsell_track"]) -> None: ...
 
 Global___UpsellPromptClicked: typing_extensions.TypeAlias = UpsellPromptClicked
 
@@ -720,6 +748,7 @@ class UpsellPromptDismissed(google.protobuf.message.Message):
     UPSELL_TRACK_FIELD_NUMBER: builtins.int
     DISMISS_METHOD_FIELD_NUMBER: builtins.int
     DISTRIBUTION_FIELD_NUMBER: builtins.int
+    COMMON_CONTEXT_FIELD_NUMBER: builtins.int
     is_logged_in: builtins.bool
     """whether the viewer is authenticated when the event fires: true once the
     user has run `dbt login` (OSS auth). Distinct from
@@ -745,6 +774,8 @@ class UpsellPromptDismissed(google.protobuf.message.Message):
     def context(self) -> dbtlabs.proto.public.v1.common.vortex_telemetry_contexts_pb2.VortexTelemetryDbtCloudContext:
         """dbt Cloud Context around this request"""
 
+    @property
+    def common_context(self) -> dbtlabs.proto.public.v1.common.vortex_telemetry_contexts_pb2.VortexTelemetryCommonContext: ...
     def __init__(
         self,
         *,
@@ -754,9 +785,10 @@ class UpsellPromptDismissed(google.protobuf.message.Message):
         upsell_track: builtins.str = ...,
         dismiss_method: builtins.str = ...,
         distribution: builtins.str = ...,
+        common_context: dbtlabs.proto.public.v1.common.vortex_telemetry_contexts_pb2.VortexTelemetryCommonContext | None = ...,
     ) -> None: ...
-    def HasField(self, field_name: typing.Literal["context", b"context", "enrichment", b"enrichment"]) -> builtins.bool: ...
-    def ClearField(self, field_name: typing.Literal["context", b"context", "dismiss_method", b"dismiss_method", "distribution", b"distribution", "enrichment", b"enrichment", "is_logged_in", b"is_logged_in", "upsell_track", b"upsell_track"]) -> None: ...
+    def HasField(self, field_name: typing.Literal["common_context", b"common_context", "context", b"context", "enrichment", b"enrichment"]) -> builtins.bool: ...
+    def ClearField(self, field_name: typing.Literal["common_context", b"common_context", "context", b"context", "dismiss_method", b"dismiss_method", "distribution", b"distribution", "enrichment", b"enrichment", "is_logged_in", b"is_logged_in", "upsell_track", b"upsell_track"]) -> None: ...
 
 Global___UpsellPromptDismissed: typing_extensions.TypeAlias = UpsellPromptDismissed
 
@@ -772,6 +804,7 @@ class ReferralLinkClicked(google.protobuf.message.Message):
     REFERRAL_CODE_FIELD_NUMBER: builtins.int
     LINK_DESTINATION_FIELD_NUMBER: builtins.int
     DISTRIBUTION_FIELD_NUMBER: builtins.int
+    COMMON_CONTEXT_FIELD_NUMBER: builtins.int
     is_logged_in: builtins.bool
     """whether the viewer is authenticated when the event fires: true once the
     user has run `dbt login` (OSS auth). Distinct from
@@ -795,6 +828,8 @@ class ReferralLinkClicked(google.protobuf.message.Message):
     def context(self) -> dbtlabs.proto.public.v1.common.vortex_telemetry_contexts_pb2.VortexTelemetryDbtCloudContext:
         """dbt Cloud Context around this request"""
 
+    @property
+    def common_context(self) -> dbtlabs.proto.public.v1.common.vortex_telemetry_contexts_pb2.VortexTelemetryCommonContext: ...
     def __init__(
         self,
         *,
@@ -804,9 +839,10 @@ class ReferralLinkClicked(google.protobuf.message.Message):
         referral_code: builtins.str = ...,
         link_destination: builtins.str = ...,
         distribution: builtins.str = ...,
+        common_context: dbtlabs.proto.public.v1.common.vortex_telemetry_contexts_pb2.VortexTelemetryCommonContext | None = ...,
     ) -> None: ...
-    def HasField(self, field_name: typing.Literal["context", b"context", "enrichment", b"enrichment"]) -> builtins.bool: ...
-    def ClearField(self, field_name: typing.Literal["context", b"context", "distribution", b"distribution", "enrichment", b"enrichment", "is_logged_in", b"is_logged_in", "link_destination", b"link_destination", "referral_code", b"referral_code"]) -> None: ...
+    def HasField(self, field_name: typing.Literal["common_context", b"common_context", "context", b"context", "enrichment", b"enrichment"]) -> builtins.bool: ...
+    def ClearField(self, field_name: typing.Literal["common_context", b"common_context", "context", b"context", "distribution", b"distribution", "enrichment", b"enrichment", "is_logged_in", b"is_logged_in", "link_destination", b"link_destination", "referral_code", b"referral_code"]) -> None: ...
 
 Global___ReferralLinkClicked: typing_extensions.TypeAlias = ReferralLinkClicked
 
@@ -822,6 +858,7 @@ class AccountLoggedIn(google.protobuf.message.Message):
     TRIGGERED_BY_PROMPT_FIELD_NUMBER: builtins.int
     UPSELL_TRACK_FIELD_NUMBER: builtins.int
     DISTRIBUTION_FIELD_NUMBER: builtins.int
+    COMMON_CONTEXT_FIELD_NUMBER: builtins.int
     is_logged_in: builtins.bool
     """whether the viewer is authenticated when the event fires: true once the
     user has run `dbt login` (OSS auth). Distinct from
@@ -845,6 +882,8 @@ class AccountLoggedIn(google.protobuf.message.Message):
     def context(self) -> dbtlabs.proto.public.v1.common.vortex_telemetry_contexts_pb2.VortexTelemetryDbtCloudContext:
         """dbt Cloud Context around this request"""
 
+    @property
+    def common_context(self) -> dbtlabs.proto.public.v1.common.vortex_telemetry_contexts_pb2.VortexTelemetryCommonContext: ...
     def __init__(
         self,
         *,
@@ -854,9 +893,10 @@ class AccountLoggedIn(google.protobuf.message.Message):
         triggered_by_prompt: builtins.bool = ...,
         upsell_track: builtins.str = ...,
         distribution: builtins.str = ...,
+        common_context: dbtlabs.proto.public.v1.common.vortex_telemetry_contexts_pb2.VortexTelemetryCommonContext | None = ...,
     ) -> None: ...
-    def HasField(self, field_name: typing.Literal["context", b"context", "enrichment", b"enrichment"]) -> builtins.bool: ...
-    def ClearField(self, field_name: typing.Literal["context", b"context", "distribution", b"distribution", "enrichment", b"enrichment", "is_logged_in", b"is_logged_in", "triggered_by_prompt", b"triggered_by_prompt", "upsell_track", b"upsell_track"]) -> None: ...
+    def HasField(self, field_name: typing.Literal["common_context", b"common_context", "context", b"context", "enrichment", b"enrichment"]) -> builtins.bool: ...
+    def ClearField(self, field_name: typing.Literal["common_context", b"common_context", "context", b"context", "distribution", b"distribution", "enrichment", b"enrichment", "is_logged_in", b"is_logged_in", "triggered_by_prompt", b"triggered_by_prompt", "upsell_track", b"upsell_track"]) -> None: ...
 
 Global___AccountLoggedIn: typing_extensions.TypeAlias = AccountLoggedIn
 
@@ -873,6 +913,7 @@ class ErrorEncountered(google.protobuf.message.Message):
     ERROR_MESSAGE_FIELD_NUMBER: builtins.int
     FIELD_NAME_FIELD_NUMBER: builtins.int
     DISTRIBUTION_FIELD_NUMBER: builtins.int
+    COMMON_CONTEXT_FIELD_NUMBER: builtins.int
     is_logged_in: builtins.bool
     """whether the viewer is authenticated when the event fires: true once the
     user has run `dbt login` (OSS auth). Distinct from
@@ -900,6 +941,8 @@ class ErrorEncountered(google.protobuf.message.Message):
     def context(self) -> dbtlabs.proto.public.v1.common.vortex_telemetry_contexts_pb2.VortexTelemetryDbtCloudContext:
         """dbt Cloud Context around this request"""
 
+    @property
+    def common_context(self) -> dbtlabs.proto.public.v1.common.vortex_telemetry_contexts_pb2.VortexTelemetryCommonContext: ...
     def __init__(
         self,
         *,
@@ -910,8 +953,9 @@ class ErrorEncountered(google.protobuf.message.Message):
         error_message: builtins.str = ...,
         field_name: builtins.str = ...,
         distribution: builtins.str = ...,
+        common_context: dbtlabs.proto.public.v1.common.vortex_telemetry_contexts_pb2.VortexTelemetryCommonContext | None = ...,
     ) -> None: ...
-    def HasField(self, field_name: typing.Literal["context", b"context", "enrichment", b"enrichment"]) -> builtins.bool: ...
-    def ClearField(self, field_name: typing.Literal["context", b"context", "distribution", b"distribution", "enrichment", b"enrichment", "error_category", b"error_category", "error_message", b"error_message", "field_name", b"field_name", "is_logged_in", b"is_logged_in"]) -> None: ...
+    def HasField(self, field_name: typing.Literal["common_context", b"common_context", "context", b"context", "enrichment", b"enrichment"]) -> builtins.bool: ...
+    def ClearField(self, field_name: typing.Literal["common_context", b"common_context", "context", b"context", "distribution", b"distribution", "enrichment", b"enrichment", "error_category", b"error_category", "error_message", b"error_message", "field_name", b"field_name", "is_logged_in", b"is_logged_in"]) -> None: ...
 
 Global___ErrorEncountered: typing_extensions.TypeAlias = ErrorEncountered

@@ -4,6 +4,7 @@ isort:skip_file
 """
 
 import builtins
+import dbtlabs.proto.public.v1.common.vortex_telemetry_contexts_pb2
 import dbtlabs.proto.public.v1.events.vortex_pb2
 import google.protobuf.descriptor
 import google.protobuf.message
@@ -38,6 +39,7 @@ class LiteLlmRequestCompleted(google.protobuf.message.Message):
     COST_FIELD_NUMBER: builtins.int
     CLASSIFICATION_FIELD_NUMBER: builtins.int
     DEPLOYMENT_MODE_FIELD_NUMBER: builtins.int
+    COMMON_CONTEXT_FIELD_NUMBER: builtins.int
     event_type: builtins.str
     """"llm_request_completed" or "llm_request_failed"."""
     installation_id: builtins.str
@@ -74,6 +76,8 @@ class LiteLlmRequestCompleted(google.protobuf.message.Message):
     def classification(self) -> Global___LiteLlmClassification:
         """Event classification for billing and analytics."""
 
+    @property
+    def common_context(self) -> dbtlabs.proto.public.v1.common.vortex_telemetry_contexts_pb2.VortexTelemetryCommonContext: ...
     def __init__(
         self,
         *,
@@ -91,9 +95,10 @@ class LiteLlmRequestCompleted(google.protobuf.message.Message):
         cost: Global___LiteLlmCost | None = ...,
         classification: Global___LiteLlmClassification | None = ...,
         deployment_mode: builtins.str = ...,
+        common_context: dbtlabs.proto.public.v1.common.vortex_telemetry_contexts_pb2.VortexTelemetryCommonContext | None = ...,
     ) -> None: ...
-    def HasField(self, field_name: typing.Literal["_classification", b"_classification", "_cost", b"_cost", "_error", b"_error", "_wizard_attribution", b"_wizard_attribution", "actor", b"actor", "classification", b"classification", "cost", b"cost", "enrichment", b"enrichment", "error", b"error", "latency", b"latency", "model", b"model", "occurred_at", b"occurred_at", "request", b"request", "usage", b"usage", "wizard_attribution", b"wizard_attribution"]) -> builtins.bool: ...
-    def ClearField(self, field_name: typing.Literal["_classification", b"_classification", "_cost", b"_cost", "_error", b"_error", "_wizard_attribution", b"_wizard_attribution", "actor", b"actor", "classification", b"classification", "cost", b"cost", "deployment_mode", b"deployment_mode", "enrichment", b"enrichment", "error", b"error", "event_type", b"event_type", "installation_id", b"installation_id", "latency", b"latency", "model", b"model", "occurred_at", b"occurred_at", "request", b"request", "usage", b"usage", "wizard_attribution", b"wizard_attribution"]) -> None: ...
+    def HasField(self, field_name: typing.Literal["_classification", b"_classification", "_cost", b"_cost", "_error", b"_error", "_wizard_attribution", b"_wizard_attribution", "actor", b"actor", "classification", b"classification", "common_context", b"common_context", "cost", b"cost", "enrichment", b"enrichment", "error", b"error", "latency", b"latency", "model", b"model", "occurred_at", b"occurred_at", "request", b"request", "usage", b"usage", "wizard_attribution", b"wizard_attribution"]) -> builtins.bool: ...
+    def ClearField(self, field_name: typing.Literal["_classification", b"_classification", "_cost", b"_cost", "_error", b"_error", "_wizard_attribution", b"_wizard_attribution", "actor", b"actor", "classification", b"classification", "common_context", b"common_context", "cost", b"cost", "deployment_mode", b"deployment_mode", "enrichment", b"enrichment", "error", b"error", "event_type", b"event_type", "installation_id", b"installation_id", "latency", b"latency", "model", b"model", "occurred_at", b"occurred_at", "request", b"request", "usage", b"usage", "wizard_attribution", b"wizard_attribution"]) -> None: ...
     @typing.overload
     def WhichOneof(self, oneof_group: typing.Literal["_classification", b"_classification"]) -> typing.Literal["classification"] | None: ...
     @typing.overload

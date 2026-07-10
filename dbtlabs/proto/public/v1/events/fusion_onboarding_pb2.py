@@ -17,7 +17,7 @@ from dbtlabs.proto.public.v1.common import vortex_telemetry_contexts_pb2 as dbtl
 from dbtlabs.proto.public.v1.events import vortex_pb2 as dbtlabs_dot_proto_dot_public_dot_v1_dot_events_dot_vortex__pb2
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n6dbtlabs/proto/public/v1/events/fusion_onboarding.proto\x12\"v1.public.events.fusion_onboarding\x1a\x33\x64\x62tlabs/proto/public/v1/common/vortex_options.proto\x1a>dbtlabs/proto/public/v1/common/vortex_telemetry_contexts.proto\x1a+dbtlabs/proto/public/v1/events/vortex.proto\"\xcf\x01\n\x1bReadinessDebugSessionOpened\x12=\n\nenrichment\x18\x01 \x01(\x0b\x32).v1.events.vortex.VortexMessageEnrichment\x12W\n\x03\x63tx\x18\x02 \x01(\x0b\x32J.v1.public.common.vortex_telemetry_contexts.VortexTelemetryDbtCloudContext\x12\x0e\n\x06\x61\x63tion\x18\x03 \x01(\t:\x08\xd8\xa6\x1d\x03\x80\xa7\x1d\x01\x42\x45ZCgithub.com/dbt-labs/proto-golang/v1/public/events/fusion_onboardingb\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n6dbtlabs/proto/public/v1/events/fusion_onboarding.proto\x12\"v1.public.events.fusion_onboarding\x1a\x33\x64\x62tlabs/proto/public/v1/common/vortex_options.proto\x1a>dbtlabs/proto/public/v1/common/vortex_telemetry_contexts.proto\x1a+dbtlabs/proto/public/v1/events/vortex.proto\"\xb1\x02\n\x1bReadinessDebugSessionOpened\x12=\n\nenrichment\x18\x01 \x01(\x0b\x32).v1.events.vortex.VortexMessageEnrichment\x12W\n\x03\x63tx\x18\x02 \x01(\x0b\x32J.v1.public.common.vortex_telemetry_contexts.VortexTelemetryDbtCloudContext\x12\x0e\n\x06\x61\x63tion\x18\x03 \x01(\t\x12`\n\x0e\x63ommon_context\x18\x04 \x01(\x0b\x32H.v1.public.common.vortex_telemetry_contexts.VortexTelemetryCommonContext:\x08\xd8\xa6\x1d\x03\x80\xa7\x1d\x01\x42\x45ZCgithub.com/dbt-labs/proto-golang/v1/public/events/fusion_onboardingb\x06proto3')
 
 _globals = globals()
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, _globals)
@@ -28,5 +28,5 @@ if not _descriptor._USE_C_DESCRIPTORS:
   _globals['_READINESSDEBUGSESSIONOPENED']._loaded_options = None
   _globals['_READINESSDEBUGSESSIONOPENED']._serialized_options = b'\330\246\035\003\200\247\035\001'
   _globals['_READINESSDEBUGSESSIONOPENED']._serialized_start=257
-  _globals['_READINESSDEBUGSESSIONOPENED']._serialized_end=464
+  _globals['_READINESSDEBUGSESSIONOPENED']._serialized_end=562
 # @@protoc_insertion_point(module_scope)

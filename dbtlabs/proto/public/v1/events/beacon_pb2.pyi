@@ -219,6 +219,7 @@ class BeaconSplitPaneOpened(google.protobuf.message.Message):
     VIEW_KIND_FIELD_NUMBER: builtins.int
     SOURCE_FIELD_NUMBER: builtins.int
     FILE_PATH_FIELD_NUMBER: builtins.int
+    COMMON_CONTEXT_FIELD_NUMBER: builtins.int
     view_kind: Global___BeaconSplitPaneViewKind.ValueType
     """Which view was opened."""
     source: Global___BeaconSplitPaneOpenSource.ValueType
@@ -231,6 +232,8 @@ class BeaconSplitPaneOpened(google.protobuf.message.Message):
     def enrichment(self) -> dbtlabs.proto.public.v1.events.vortex_pb2.VortexMessageEnrichment: ...
     @property
     def ctx(self) -> dbtlabs.proto.public.v1.common.vortex_telemetry_contexts_pb2.VortexTelemetryDbtCloudContext: ...
+    @property
+    def common_context(self) -> dbtlabs.proto.public.v1.common.vortex_telemetry_contexts_pb2.VortexTelemetryCommonContext: ...
     def __init__(
         self,
         *,
@@ -239,9 +242,10 @@ class BeaconSplitPaneOpened(google.protobuf.message.Message):
         view_kind: Global___BeaconSplitPaneViewKind.ValueType = ...,
         source: Global___BeaconSplitPaneOpenSource.ValueType = ...,
         file_path: builtins.str = ...,
+        common_context: dbtlabs.proto.public.v1.common.vortex_telemetry_contexts_pb2.VortexTelemetryCommonContext | None = ...,
     ) -> None: ...
-    def HasField(self, field_name: typing.Literal["ctx", b"ctx", "enrichment", b"enrichment"]) -> builtins.bool: ...
-    def ClearField(self, field_name: typing.Literal["ctx", b"ctx", "enrichment", b"enrichment", "file_path", b"file_path", "source", b"source", "view_kind", b"view_kind"]) -> None: ...
+    def HasField(self, field_name: typing.Literal["common_context", b"common_context", "ctx", b"ctx", "enrichment", b"enrichment"]) -> builtins.bool: ...
+    def ClearField(self, field_name: typing.Literal["common_context", b"common_context", "ctx", b"ctx", "enrichment", b"enrichment", "file_path", b"file_path", "source", b"source", "view_kind", b"view_kind"]) -> None: ...
 
 Global___BeaconSplitPaneOpened: typing_extensions.TypeAlias = BeaconSplitPaneOpened
 
@@ -255,6 +259,7 @@ class BeaconSplitPaneClosed(google.protobuf.message.Message):
     CTX_FIELD_NUMBER: builtins.int
     VIEW_KIND_FIELD_NUMBER: builtins.int
     CLOSE_REASON_FIELD_NUMBER: builtins.int
+    COMMON_CONTEXT_FIELD_NUMBER: builtins.int
     view_kind: Global___BeaconSplitPaneViewKind.ValueType
     """Which view was active when the user closed the pane."""
     close_reason: Global___BeaconSplitPaneCloseReason.ValueType
@@ -265,6 +270,8 @@ class BeaconSplitPaneClosed(google.protobuf.message.Message):
     def enrichment(self) -> dbtlabs.proto.public.v1.events.vortex_pb2.VortexMessageEnrichment: ...
     @property
     def ctx(self) -> dbtlabs.proto.public.v1.common.vortex_telemetry_contexts_pb2.VortexTelemetryDbtCloudContext: ...
+    @property
+    def common_context(self) -> dbtlabs.proto.public.v1.common.vortex_telemetry_contexts_pb2.VortexTelemetryCommonContext: ...
     def __init__(
         self,
         *,
@@ -272,9 +279,10 @@ class BeaconSplitPaneClosed(google.protobuf.message.Message):
         ctx: dbtlabs.proto.public.v1.common.vortex_telemetry_contexts_pb2.VortexTelemetryDbtCloudContext | None = ...,
         view_kind: Global___BeaconSplitPaneViewKind.ValueType = ...,
         close_reason: Global___BeaconSplitPaneCloseReason.ValueType = ...,
+        common_context: dbtlabs.proto.public.v1.common.vortex_telemetry_contexts_pb2.VortexTelemetryCommonContext | None = ...,
     ) -> None: ...
-    def HasField(self, field_name: typing.Literal["ctx", b"ctx", "enrichment", b"enrichment"]) -> builtins.bool: ...
-    def ClearField(self, field_name: typing.Literal["close_reason", b"close_reason", "ctx", b"ctx", "enrichment", b"enrichment", "view_kind", b"view_kind"]) -> None: ...
+    def HasField(self, field_name: typing.Literal["common_context", b"common_context", "ctx", b"ctx", "enrichment", b"enrichment"]) -> builtins.bool: ...
+    def ClearField(self, field_name: typing.Literal["close_reason", b"close_reason", "common_context", b"common_context", "ctx", b"ctx", "enrichment", b"enrichment", "view_kind", b"view_kind"]) -> None: ...
 
 Global___BeaconSplitPaneClosed: typing_extensions.TypeAlias = BeaconSplitPaneClosed
 
@@ -290,6 +298,7 @@ class BeaconSplitPaneViewToggled(google.protobuf.message.Message):
     CTX_FIELD_NUMBER: builtins.int
     FROM_VIEW_KIND_FIELD_NUMBER: builtins.int
     TO_VIEW_KIND_FIELD_NUMBER: builtins.int
+    COMMON_CONTEXT_FIELD_NUMBER: builtins.int
     from_view_kind: Global___BeaconSplitPaneViewKind.ValueType
     """The view that was active before the toggle."""
     to_view_kind: Global___BeaconSplitPaneViewKind.ValueType
@@ -298,6 +307,8 @@ class BeaconSplitPaneViewToggled(google.protobuf.message.Message):
     def enrichment(self) -> dbtlabs.proto.public.v1.events.vortex_pb2.VortexMessageEnrichment: ...
     @property
     def ctx(self) -> dbtlabs.proto.public.v1.common.vortex_telemetry_contexts_pb2.VortexTelemetryDbtCloudContext: ...
+    @property
+    def common_context(self) -> dbtlabs.proto.public.v1.common.vortex_telemetry_contexts_pb2.VortexTelemetryCommonContext: ...
     def __init__(
         self,
         *,
@@ -305,9 +316,10 @@ class BeaconSplitPaneViewToggled(google.protobuf.message.Message):
         ctx: dbtlabs.proto.public.v1.common.vortex_telemetry_contexts_pb2.VortexTelemetryDbtCloudContext | None = ...,
         from_view_kind: Global___BeaconSplitPaneViewKind.ValueType = ...,
         to_view_kind: Global___BeaconSplitPaneViewKind.ValueType = ...,
+        common_context: dbtlabs.proto.public.v1.common.vortex_telemetry_contexts_pb2.VortexTelemetryCommonContext | None = ...,
     ) -> None: ...
-    def HasField(self, field_name: typing.Literal["ctx", b"ctx", "enrichment", b"enrichment"]) -> builtins.bool: ...
-    def ClearField(self, field_name: typing.Literal["ctx", b"ctx", "enrichment", b"enrichment", "from_view_kind", b"from_view_kind", "to_view_kind", b"to_view_kind"]) -> None: ...
+    def HasField(self, field_name: typing.Literal["common_context", b"common_context", "ctx", b"ctx", "enrichment", b"enrichment"]) -> builtins.bool: ...
+    def ClearField(self, field_name: typing.Literal["common_context", b"common_context", "ctx", b"ctx", "enrichment", b"enrichment", "from_view_kind", b"from_view_kind", "to_view_kind", b"to_view_kind"]) -> None: ...
 
 Global___BeaconSplitPaneViewToggled: typing_extensions.TypeAlias = BeaconSplitPaneViewToggled
 
@@ -331,6 +343,7 @@ class BeaconCanvasParseCompleted(google.protobuf.message.Message):
     AFTER_CHAR_COUNT_FIELD_NUMBER: builtins.int
     PARSED_BEFORE_FIELD_NUMBER: builtins.int
     DURATION_MS_FIELD_NUMBER: builtins.int
+    COMMON_CONTEXT_FIELD_NUMBER: builtins.int
     file_path: builtins.str
     """dbt project file path the parse was run for."""
     status: Global___BeaconCanvasParseStatus.ValueType
@@ -358,6 +371,8 @@ class BeaconCanvasParseCompleted(google.protobuf.message.Message):
     def enrichment(self) -> dbtlabs.proto.public.v1.events.vortex_pb2.VortexMessageEnrichment: ...
     @property
     def ctx(self) -> dbtlabs.proto.public.v1.common.vortex_telemetry_contexts_pb2.VortexTelemetryDbtCloudContext: ...
+    @property
+    def common_context(self) -> dbtlabs.proto.public.v1.common.vortex_telemetry_contexts_pb2.VortexTelemetryCommonContext: ...
     def __init__(
         self,
         *,
@@ -371,9 +386,10 @@ class BeaconCanvasParseCompleted(google.protobuf.message.Message):
         after_char_count: builtins.int = ...,
         parsed_before: builtins.bool = ...,
         duration_ms: builtins.int = ...,
+        common_context: dbtlabs.proto.public.v1.common.vortex_telemetry_contexts_pb2.VortexTelemetryCommonContext | None = ...,
     ) -> None: ...
-    def HasField(self, field_name: typing.Literal["ctx", b"ctx", "enrichment", b"enrichment"]) -> builtins.bool: ...
-    def ClearField(self, field_name: typing.Literal["after_char_count", b"after_char_count", "before_char_count", b"before_char_count", "ctx", b"ctx", "duration_ms", b"duration_ms", "enrichment", b"enrichment", "error_message", b"error_message", "failed_side", b"failed_side", "file_path", b"file_path", "parsed_before", b"parsed_before", "status", b"status"]) -> None: ...
+    def HasField(self, field_name: typing.Literal["common_context", b"common_context", "ctx", b"ctx", "enrichment", b"enrichment"]) -> builtins.bool: ...
+    def ClearField(self, field_name: typing.Literal["after_char_count", b"after_char_count", "before_char_count", b"before_char_count", "common_context", b"common_context", "ctx", b"ctx", "duration_ms", b"duration_ms", "enrichment", b"enrichment", "error_message", b"error_message", "failed_side", b"failed_side", "file_path", b"file_path", "parsed_before", b"parsed_before", "status", b"status"]) -> None: ...
 
 Global___BeaconCanvasParseCompleted: typing_extensions.TypeAlias = BeaconCanvasParseCompleted
 
@@ -393,6 +409,7 @@ class BeaconKickoutClicked(google.protobuf.message.Message):
     TARGET_FIELD_NUMBER: builtins.int
     SURFACE_FIELD_NUMBER: builtins.int
     ACTIVE_VIEW_FIELD_NUMBER: builtins.int
+    COMMON_CONTEXT_FIELD_NUMBER: builtins.int
     file_path: builtins.str
     """dbt project file path the kickout was clicked against."""
     target: Global___BeaconKickoutTarget.ValueType
@@ -408,6 +425,8 @@ class BeaconKickoutClicked(google.protobuf.message.Message):
     def enrichment(self) -> dbtlabs.proto.public.v1.events.vortex_pb2.VortexMessageEnrichment: ...
     @property
     def ctx(self) -> dbtlabs.proto.public.v1.common.vortex_telemetry_contexts_pb2.VortexTelemetryDbtCloudContext: ...
+    @property
+    def common_context(self) -> dbtlabs.proto.public.v1.common.vortex_telemetry_contexts_pb2.VortexTelemetryCommonContext: ...
     def __init__(
         self,
         *,
@@ -417,8 +436,9 @@ class BeaconKickoutClicked(google.protobuf.message.Message):
         target: Global___BeaconKickoutTarget.ValueType = ...,
         surface: Global___BeaconKickoutSurface.ValueType = ...,
         active_view: Global___BeaconSplitPaneViewKind.ValueType = ...,
+        common_context: dbtlabs.proto.public.v1.common.vortex_telemetry_contexts_pb2.VortexTelemetryCommonContext | None = ...,
     ) -> None: ...
-    def HasField(self, field_name: typing.Literal["ctx", b"ctx", "enrichment", b"enrichment"]) -> builtins.bool: ...
-    def ClearField(self, field_name: typing.Literal["active_view", b"active_view", "ctx", b"ctx", "enrichment", b"enrichment", "file_path", b"file_path", "surface", b"surface", "target", b"target"]) -> None: ...
+    def HasField(self, field_name: typing.Literal["common_context", b"common_context", "ctx", b"ctx", "enrichment", b"enrichment"]) -> builtins.bool: ...
+    def ClearField(self, field_name: typing.Literal["active_view", b"active_view", "common_context", b"common_context", "ctx", b"ctx", "enrichment", b"enrichment", "file_path", b"file_path", "surface", b"surface", "target", b"target"]) -> None: ...
 
 Global___BeaconKickoutClicked: typing_extensions.TypeAlias = BeaconKickoutClicked

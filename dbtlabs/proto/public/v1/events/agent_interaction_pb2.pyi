@@ -38,6 +38,7 @@ class AgentToolCallPermissionCheck(google.protobuf.message.Message):
     TOOL_PARAMETERS_FIELD_NUMBER: builtins.int
     RESPONSE_TYPE_FIELD_NUMBER: builtins.int
     CALL_ID_FIELD_NUMBER: builtins.int
+    COMMON_CONTEXT_FIELD_NUMBER: builtins.int
     copilot_request_id: builtins.str
     """Identifies a single agent request/trace (a conversation consists of multiple traces)"""
     thread_id: builtins.str
@@ -61,6 +62,8 @@ class AgentToolCallPermissionCheck(google.protobuf.message.Message):
     def ctx(self) -> dbtlabs.proto.public.v1.common.vortex_telemetry_contexts_pb2.VortexTelemetryDbtCloudContext:
         """dbt Cloud context"""
 
+    @property
+    def common_context(self) -> dbtlabs.proto.public.v1.common.vortex_telemetry_contexts_pb2.VortexTelemetryCommonContext: ...
     def __init__(
         self,
         *,
@@ -72,9 +75,10 @@ class AgentToolCallPermissionCheck(google.protobuf.message.Message):
         tool_parameters: builtins.str = ...,
         response_type: builtins.str = ...,
         call_id: builtins.str = ...,
+        common_context: dbtlabs.proto.public.v1.common.vortex_telemetry_contexts_pb2.VortexTelemetryCommonContext | None = ...,
     ) -> None: ...
-    def HasField(self, field_name: typing.Literal["ctx", b"ctx", "enrichment", b"enrichment"]) -> builtins.bool: ...
-    def ClearField(self, field_name: typing.Literal["call_id", b"call_id", "copilot_request_id", b"copilot_request_id", "ctx", b"ctx", "enrichment", b"enrichment", "response_type", b"response_type", "thread_id", b"thread_id", "tool_name", b"tool_name", "tool_parameters", b"tool_parameters"]) -> None: ...
+    def HasField(self, field_name: typing.Literal["common_context", b"common_context", "ctx", b"ctx", "enrichment", b"enrichment"]) -> builtins.bool: ...
+    def ClearField(self, field_name: typing.Literal["call_id", b"call_id", "common_context", b"common_context", "copilot_request_id", b"copilot_request_id", "ctx", b"ctx", "enrichment", b"enrichment", "response_type", b"response_type", "thread_id", b"thread_id", "tool_name", b"tool_name", "tool_parameters", b"tool_parameters"]) -> None: ...
 
 Global___AgentToolCallPermissionCheck: typing_extensions.TypeAlias = AgentToolCallPermissionCheck
 
@@ -91,6 +95,7 @@ class AgentToolCallPresented(google.protobuf.message.Message):
     AGENT_MODE_FIELD_NUMBER: builtins.int
     SKILL_NAME_FIELD_NUMBER: builtins.int
     SKILLS_AVAILABLE_COUNT_FIELD_NUMBER: builtins.int
+    COMMON_CONTEXT_FIELD_NUMBER: builtins.int
     copilot_request_id: builtins.str
     thread_id: builtins.str
     tool_name: builtins.str
@@ -103,6 +108,8 @@ class AgentToolCallPresented(google.protobuf.message.Message):
     def enrichment(self) -> dbtlabs.proto.public.v1.events.vortex_pb2.VortexMessageEnrichment: ...
     @property
     def ctx(self) -> dbtlabs.proto.public.v1.common.vortex_telemetry_contexts_pb2.VortexTelemetryDbtCloudContext: ...
+    @property
+    def common_context(self) -> dbtlabs.proto.public.v1.common.vortex_telemetry_contexts_pb2.VortexTelemetryCommonContext: ...
     def __init__(
         self,
         *,
@@ -115,9 +122,10 @@ class AgentToolCallPresented(google.protobuf.message.Message):
         agent_mode: builtins.str = ...,
         skill_name: builtins.str = ...,
         skills_available_count: builtins.int = ...,
+        common_context: dbtlabs.proto.public.v1.common.vortex_telemetry_contexts_pb2.VortexTelemetryCommonContext | None = ...,
     ) -> None: ...
-    def HasField(self, field_name: typing.Literal["ctx", b"ctx", "enrichment", b"enrichment"]) -> builtins.bool: ...
-    def ClearField(self, field_name: typing.Literal["agent_mode", b"agent_mode", "call_id", b"call_id", "copilot_request_id", b"copilot_request_id", "ctx", b"ctx", "enrichment", b"enrichment", "skill_name", b"skill_name", "skills_available_count", b"skills_available_count", "thread_id", b"thread_id", "tool_name", b"tool_name"]) -> None: ...
+    def HasField(self, field_name: typing.Literal["common_context", b"common_context", "ctx", b"ctx", "enrichment", b"enrichment"]) -> builtins.bool: ...
+    def ClearField(self, field_name: typing.Literal["agent_mode", b"agent_mode", "call_id", b"call_id", "common_context", b"common_context", "copilot_request_id", b"copilot_request_id", "ctx", b"ctx", "enrichment", b"enrichment", "skill_name", b"skill_name", "skills_available_count", b"skills_available_count", "thread_id", b"thread_id", "tool_name", b"tool_name"]) -> None: ...
 
 Global___AgentToolCallPresented: typing_extensions.TypeAlias = AgentToolCallPresented
 
@@ -136,6 +144,7 @@ class AgentToolCallStarted(google.protobuf.message.Message):
     AGENT_MODE_FIELD_NUMBER: builtins.int
     SKILL_NAME_FIELD_NUMBER: builtins.int
     AUTO_ALLOWED_FIELD_NUMBER: builtins.int
+    COMMON_CONTEXT_FIELD_NUMBER: builtins.int
     copilot_request_id: builtins.str
     thread_id: builtins.str
     tool_name: builtins.str
@@ -147,6 +156,8 @@ class AgentToolCallStarted(google.protobuf.message.Message):
     def enrichment(self) -> dbtlabs.proto.public.v1.events.vortex_pb2.VortexMessageEnrichment: ...
     @property
     def ctx(self) -> dbtlabs.proto.public.v1.common.vortex_telemetry_contexts_pb2.VortexTelemetryDbtCloudContext: ...
+    @property
+    def common_context(self) -> dbtlabs.proto.public.v1.common.vortex_telemetry_contexts_pb2.VortexTelemetryCommonContext: ...
     def __init__(
         self,
         *,
@@ -159,9 +170,10 @@ class AgentToolCallStarted(google.protobuf.message.Message):
         agent_mode: builtins.str = ...,
         skill_name: builtins.str = ...,
         auto_allowed: builtins.bool = ...,
+        common_context: dbtlabs.proto.public.v1.common.vortex_telemetry_contexts_pb2.VortexTelemetryCommonContext | None = ...,
     ) -> None: ...
-    def HasField(self, field_name: typing.Literal["ctx", b"ctx", "enrichment", b"enrichment"]) -> builtins.bool: ...
-    def ClearField(self, field_name: typing.Literal["agent_mode", b"agent_mode", "auto_allowed", b"auto_allowed", "call_id", b"call_id", "copilot_request_id", b"copilot_request_id", "ctx", b"ctx", "enrichment", b"enrichment", "skill_name", b"skill_name", "thread_id", b"thread_id", "tool_name", b"tool_name"]) -> None: ...
+    def HasField(self, field_name: typing.Literal["common_context", b"common_context", "ctx", b"ctx", "enrichment", b"enrichment"]) -> builtins.bool: ...
+    def ClearField(self, field_name: typing.Literal["agent_mode", b"agent_mode", "auto_allowed", b"auto_allowed", "call_id", b"call_id", "common_context", b"common_context", "copilot_request_id", b"copilot_request_id", "ctx", b"ctx", "enrichment", b"enrichment", "skill_name", b"skill_name", "thread_id", b"thread_id", "tool_name", b"tool_name"]) -> None: ...
 
 Global___AgentToolCallStarted: typing_extensions.TypeAlias = AgentToolCallStarted
 
@@ -188,6 +200,7 @@ class AgentToolCallCompleted(google.protobuf.message.Message):
     ERROR_MESSAGE_FIELD_NUMBER: builtins.int
     AUTO_ALLOWED_FIELD_NUMBER: builtins.int
     COMMAND_ID_FIELD_NUMBER: builtins.int
+    COMMON_CONTEXT_FIELD_NUMBER: builtins.int
     copilot_request_id: builtins.str
     thread_id: builtins.str
     tool_name: builtins.str
@@ -206,6 +219,8 @@ class AgentToolCallCompleted(google.protobuf.message.Message):
     def enrichment(self) -> dbtlabs.proto.public.v1.events.vortex_pb2.VortexMessageEnrichment: ...
     @property
     def ctx(self) -> dbtlabs.proto.public.v1.common.vortex_telemetry_contexts_pb2.VortexTelemetryDbtCloudContext: ...
+    @property
+    def common_context(self) -> dbtlabs.proto.public.v1.common.vortex_telemetry_contexts_pb2.VortexTelemetryCommonContext: ...
     def __init__(
         self,
         *,
@@ -222,9 +237,10 @@ class AgentToolCallCompleted(google.protobuf.message.Message):
         error_message: builtins.str | None = ...,
         auto_allowed: builtins.bool = ...,
         command_id: builtins.str | None = ...,
+        common_context: dbtlabs.proto.public.v1.common.vortex_telemetry_contexts_pb2.VortexTelemetryCommonContext | None = ...,
     ) -> None: ...
-    def HasField(self, field_name: typing.Literal["_command_id", b"_command_id", "_error_message", b"_error_message", "_output_length", b"_output_length", "command_id", b"command_id", "ctx", b"ctx", "enrichment", b"enrichment", "error_message", b"error_message", "output_length", b"output_length"]) -> builtins.bool: ...
-    def ClearField(self, field_name: typing.Literal["_command_id", b"_command_id", "_error_message", b"_error_message", "_output_length", b"_output_length", "agent_mode", b"agent_mode", "auto_allowed", b"auto_allowed", "call_id", b"call_id", "command_id", b"command_id", "copilot_request_id", b"copilot_request_id", "ctx", b"ctx", "enrichment", b"enrichment", "error_message", b"error_message", "output_length", b"output_length", "skill_name", b"skill_name", "status", b"status", "thread_id", b"thread_id", "tool_name", b"tool_name"]) -> None: ...
+    def HasField(self, field_name: typing.Literal["_command_id", b"_command_id", "_error_message", b"_error_message", "_output_length", b"_output_length", "command_id", b"command_id", "common_context", b"common_context", "ctx", b"ctx", "enrichment", b"enrichment", "error_message", b"error_message", "output_length", b"output_length"]) -> builtins.bool: ...
+    def ClearField(self, field_name: typing.Literal["_command_id", b"_command_id", "_error_message", b"_error_message", "_output_length", b"_output_length", "agent_mode", b"agent_mode", "auto_allowed", b"auto_allowed", "call_id", b"call_id", "command_id", b"command_id", "common_context", b"common_context", "copilot_request_id", b"copilot_request_id", "ctx", b"ctx", "enrichment", b"enrichment", "error_message", b"error_message", "output_length", b"output_length", "skill_name", b"skill_name", "status", b"status", "thread_id", b"thread_id", "tool_name", b"tool_name"]) -> None: ...
     @typing.overload
     def WhichOneof(self, oneof_group: typing.Literal["_command_id", b"_command_id"]) -> typing.Literal["command_id"] | None: ...
     @typing.overload

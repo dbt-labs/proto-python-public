@@ -4,6 +4,7 @@ isort:skip_file
 """
 
 import builtins
+import dbtlabs.proto.public.v1.common.vortex_telemetry_contexts_pb2
 import dbtlabs.proto.public.v1.events.vortex_pb2
 import google.protobuf.descriptor
 import google.protobuf.message
@@ -44,6 +45,7 @@ class DbtIndexInvocation(google.protobuf.message.Message):
     ACCOUNT_HOST_FIELD_NUMBER: builtins.int
     CLOUD_PROJECT_ID_FIELD_NUMBER: builtins.int
     ACCOUNT_IDENTIFIER_FIELD_NUMBER: builtins.int
+    COMMON_CONTEXT_FIELD_NUMBER: builtins.int
     event_id: builtins.str
     """Unique identifier for this event."""
     invocation_id: builtins.str
@@ -82,6 +84,8 @@ class DbtIndexInvocation(google.protobuf.message.Message):
     def enrichment(self) -> dbtlabs.proto.public.v1.events.vortex_pb2.VortexMessageEnrichment:
         """Server-side enrichment (IP geolocation, client platform)."""
 
+    @property
+    def common_context(self) -> dbtlabs.proto.public.v1.common.vortex_telemetry_contexts_pb2.VortexTelemetryCommonContext: ...
     def __init__(
         self,
         *,
@@ -103,9 +107,10 @@ class DbtIndexInvocation(google.protobuf.message.Message):
         account_host: builtins.str = ...,
         cloud_project_id: builtins.str = ...,
         account_identifier: builtins.str = ...,
+        common_context: dbtlabs.proto.public.v1.common.vortex_telemetry_contexts_pb2.VortexTelemetryCommonContext | None = ...,
     ) -> None: ...
-    def HasField(self, field_name: typing.Literal["enrichment", b"enrichment"]) -> builtins.bool: ...
-    def ClearField(self, field_name: typing.Literal["account_host", b"account_host", "account_id", b"account_id", "account_identifier", b"account_identifier", "adapter_type", b"adapter_type", "cloud_project_id", b"cloud_project_id", "command", b"command", "dbt_version", b"dbt_version", "enrichment", b"enrichment", "event_id", b"event_id", "execution_time_ms", b"execution_time_ms", "invocation_id", b"invocation_id", "os", b"os", "progress", b"progress", "project_id", b"project_id", "project_name", b"project_name", "result_type", b"result_type", "user_id", b"user_id", "version", b"version"]) -> None: ...
+    def HasField(self, field_name: typing.Literal["common_context", b"common_context", "enrichment", b"enrichment"]) -> builtins.bool: ...
+    def ClearField(self, field_name: typing.Literal["account_host", b"account_host", "account_id", b"account_id", "account_identifier", b"account_identifier", "adapter_type", b"adapter_type", "cloud_project_id", b"cloud_project_id", "command", b"command", "common_context", b"common_context", "dbt_version", b"dbt_version", "enrichment", b"enrichment", "event_id", b"event_id", "execution_time_ms", b"execution_time_ms", "invocation_id", b"invocation_id", "os", b"os", "progress", b"progress", "project_id", b"project_id", "project_name", b"project_name", "result_type", b"result_type", "user_id", b"user_id", "version", b"version"]) -> None: ...
 
 Global___DbtIndexInvocation: typing_extensions.TypeAlias = DbtIndexInvocation
 
@@ -131,6 +136,7 @@ class DbtIndexResourceCounts(google.protobuf.message.Message):
     METRICS_FIELD_NUMBER: builtins.int
     GROUPS_FIELD_NUMBER: builtins.int
     SEMANTIC_MODELS_FIELD_NUMBER: builtins.int
+    COMMON_CONTEXT_FIELD_NUMBER: builtins.int
     event_id: builtins.str
     """Unique identifier for this event."""
     invocation_id: builtins.str
@@ -161,6 +167,8 @@ class DbtIndexResourceCounts(google.protobuf.message.Message):
     def enrichment(self) -> dbtlabs.proto.public.v1.events.vortex_pb2.VortexMessageEnrichment:
         """Server-side enrichment (IP geolocation, client platform)."""
 
+    @property
+    def common_context(self) -> dbtlabs.proto.public.v1.common.vortex_telemetry_contexts_pb2.VortexTelemetryCommonContext: ...
     def __init__(
         self,
         *,
@@ -178,9 +186,10 @@ class DbtIndexResourceCounts(google.protobuf.message.Message):
         metrics: builtins.int = ...,
         groups: builtins.int = ...,
         semantic_models: builtins.int = ...,
+        common_context: dbtlabs.proto.public.v1.common.vortex_telemetry_contexts_pb2.VortexTelemetryCommonContext | None = ...,
     ) -> None: ...
-    def HasField(self, field_name: typing.Literal["enrichment", b"enrichment"]) -> builtins.bool: ...
-    def ClearField(self, field_name: typing.Literal["enrichment", b"enrichment", "event_id", b"event_id", "exposures", b"exposures", "groups", b"groups", "has_catalog", b"has_catalog", "has_run_results", b"has_run_results", "invocation_id", b"invocation_id", "metrics", b"metrics", "models", b"models", "seeds", b"seeds", "semantic_models", b"semantic_models", "snapshots", b"snapshots", "sources", b"sources", "tests", b"tests"]) -> None: ...
+    def HasField(self, field_name: typing.Literal["common_context", b"common_context", "enrichment", b"enrichment"]) -> builtins.bool: ...
+    def ClearField(self, field_name: typing.Literal["common_context", b"common_context", "enrichment", b"enrichment", "event_id", b"event_id", "exposures", b"exposures", "groups", b"groups", "has_catalog", b"has_catalog", "has_run_results", b"has_run_results", "invocation_id", b"invocation_id", "metrics", b"metrics", "models", b"models", "seeds", b"seeds", "semantic_models", b"semantic_models", "snapshots", b"snapshots", "sources", b"sources", "tests", b"tests"]) -> None: ...
 
 Global___DbtIndexResourceCounts: typing_extensions.TypeAlias = DbtIndexResourceCounts
 
@@ -198,6 +207,7 @@ class DbtIndexToolCall(google.protobuf.message.Message):
     TOOL_NAME_FIELD_NUMBER: builtins.int
     IS_ERROR_FIELD_NUMBER: builtins.int
     EXECUTION_TIME_MS_FIELD_NUMBER: builtins.int
+    COMMON_CONTEXT_FIELD_NUMBER: builtins.int
     event_id: builtins.str
     """Unique identifier for this event."""
     invocation_id: builtins.str
@@ -212,6 +222,8 @@ class DbtIndexToolCall(google.protobuf.message.Message):
     def enrichment(self) -> dbtlabs.proto.public.v1.events.vortex_pb2.VortexMessageEnrichment:
         """Server-side enrichment (IP geolocation, client platform)."""
 
+    @property
+    def common_context(self) -> dbtlabs.proto.public.v1.common.vortex_telemetry_contexts_pb2.VortexTelemetryCommonContext: ...
     def __init__(
         self,
         *,
@@ -221,8 +233,9 @@ class DbtIndexToolCall(google.protobuf.message.Message):
         tool_name: builtins.str = ...,
         is_error: builtins.bool = ...,
         execution_time_ms: builtins.int = ...,
+        common_context: dbtlabs.proto.public.v1.common.vortex_telemetry_contexts_pb2.VortexTelemetryCommonContext | None = ...,
     ) -> None: ...
-    def HasField(self, field_name: typing.Literal["enrichment", b"enrichment"]) -> builtins.bool: ...
-    def ClearField(self, field_name: typing.Literal["enrichment", b"enrichment", "event_id", b"event_id", "execution_time_ms", b"execution_time_ms", "invocation_id", b"invocation_id", "is_error", b"is_error", "tool_name", b"tool_name"]) -> None: ...
+    def HasField(self, field_name: typing.Literal["common_context", b"common_context", "enrichment", b"enrichment"]) -> builtins.bool: ...
+    def ClearField(self, field_name: typing.Literal["common_context", b"common_context", "enrichment", b"enrichment", "event_id", b"event_id", "execution_time_ms", b"execution_time_ms", "invocation_id", b"invocation_id", "is_error", b"is_error", "tool_name", b"tool_name"]) -> None: ...
 
 Global___DbtIndexToolCall: typing_extensions.TypeAlias = DbtIndexToolCall

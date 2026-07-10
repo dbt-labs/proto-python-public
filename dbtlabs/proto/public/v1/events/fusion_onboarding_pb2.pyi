@@ -32,6 +32,7 @@ class ReadinessDebugSessionOpened(google.protobuf.message.Message):
     ENRICHMENT_FIELD_NUMBER: builtins.int
     CTX_FIELD_NUMBER: builtins.int
     ACTION_FIELD_NUMBER: builtins.int
+    COMMON_CONTEXT_FIELD_NUMBER: builtins.int
     action: builtins.str
     """The debug action the user selected. Known values:
       "debug_in_studio"              — "Debug in Studio" button
@@ -42,14 +43,17 @@ class ReadinessDebugSessionOpened(google.protobuf.message.Message):
     def enrichment(self) -> dbtlabs.proto.public.v1.events.vortex_pb2.VortexMessageEnrichment: ...
     @property
     def ctx(self) -> dbtlabs.proto.public.v1.common.vortex_telemetry_contexts_pb2.VortexTelemetryDbtCloudContext: ...
+    @property
+    def common_context(self) -> dbtlabs.proto.public.v1.common.vortex_telemetry_contexts_pb2.VortexTelemetryCommonContext: ...
     def __init__(
         self,
         *,
         enrichment: dbtlabs.proto.public.v1.events.vortex_pb2.VortexMessageEnrichment | None = ...,
         ctx: dbtlabs.proto.public.v1.common.vortex_telemetry_contexts_pb2.VortexTelemetryDbtCloudContext | None = ...,
         action: builtins.str = ...,
+        common_context: dbtlabs.proto.public.v1.common.vortex_telemetry_contexts_pb2.VortexTelemetryCommonContext | None = ...,
     ) -> None: ...
-    def HasField(self, field_name: typing.Literal["ctx", b"ctx", "enrichment", b"enrichment"]) -> builtins.bool: ...
-    def ClearField(self, field_name: typing.Literal["action", b"action", "ctx", b"ctx", "enrichment", b"enrichment"]) -> None: ...
+    def HasField(self, field_name: typing.Literal["common_context", b"common_context", "ctx", b"ctx", "enrichment", b"enrichment"]) -> builtins.bool: ...
+    def ClearField(self, field_name: typing.Literal["action", b"action", "common_context", b"common_context", "ctx", b"ctx", "enrichment", b"enrichment"]) -> None: ...
 
 Global___ReadinessDebugSessionOpened: typing_extensions.TypeAlias = ReadinessDebugSessionOpened
