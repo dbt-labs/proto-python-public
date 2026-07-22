@@ -128,6 +128,36 @@ PLATFORM: LoginType.ValueType  # 1
 STATE: LoginType.ValueType  # 2
 Global___LoginType: typing_extensions.TypeAlias = LoginType
 
+class _LoginErrorCode:
+    ValueType = typing.NewType("ValueType", builtins.int)
+    V: typing_extensions.TypeAlias = ValueType
+
+class _LoginErrorCodeEnumTypeWrapper(google.protobuf.internal.enum_type_wrapper._EnumTypeWrapper[_LoginErrorCode.ValueType], builtins.type):
+    DESCRIPTOR: google.protobuf.descriptor.EnumDescriptor
+    NOT_AUTHENTICATED: _LoginErrorCode.ValueType  # 0
+    AUTHENTICATION_EXPIRED: _LoginErrorCode.ValueType  # 1
+    INACCESSIBLE_SOURCE: _LoginErrorCode.ValueType  # 2
+    MALFORMED_CONFIG: _LoginErrorCode.ValueType  # 3
+    INTERACTIVE_FAILURE: _LoginErrorCode.ValueType  # 4
+    INADEQUATE_SCOPES: _LoginErrorCode.ValueType  # 5
+    REFRESH_FAILED: _LoginErrorCode.ValueType  # 6
+
+class LoginErrorCode(_LoginErrorCode, metaclass=_LoginErrorCodeEnumTypeWrapper):
+    """LoginErrorCode should mirror dbt_platform_auth::AuthError in the fs codebase.
+    This enum need not track the internal "Aborted" variant of that error enum because
+    it is an internal variant that is only used to signal that either the platform or
+    dbt state login callback was aborted because the other callback completed.
+    """
+
+NOT_AUTHENTICATED: LoginErrorCode.ValueType  # 0
+AUTHENTICATION_EXPIRED: LoginErrorCode.ValueType  # 1
+INACCESSIBLE_SOURCE: LoginErrorCode.ValueType  # 2
+MALFORMED_CONFIG: LoginErrorCode.ValueType  # 3
+INTERACTIVE_FAILURE: LoginErrorCode.ValueType  # 4
+INADEQUATE_SCOPES: LoginErrorCode.ValueType  # 5
+REFRESH_FAILED: LoginErrorCode.ValueType  # 6
+Global___LoginErrorCode: typing_extensions.TypeAlias = LoginErrorCode
+
 @typing.final
 class AdapterInfo(google.protobuf.message.Message):
     """
@@ -791,6 +821,8 @@ class Login(google.protobuf.message.Message):
     PLATFORM_ACCOUNT_ID_FIELD_NUMBER: builtins.int
     PLATFORM_ACCOUNT_IDENTIFIER_FIELD_NUMBER: builtins.int
     COMMON_CONTEXT_FIELD_NUMBER: builtins.int
+    ERROR_CODE_FIELD_NUMBER: builtins.int
+    ERROR_MESSAGE_FIELD_NUMBER: builtins.int
     event_id: builtins.str
     """Unique identifier for this event (UUID). Required."""
     invocation_id: builtins.str
@@ -817,6 +849,8 @@ class Login(google.protobuf.message.Message):
     """Platform account identifier from the "https://dbt.com/account_identifier" JWT claim.
     Absent if no JWT is available or the claim is absent.
     """
+    error_code: Global___LoginErrorCode.ValueType
+    error_message: builtins.str
     @property
     def enrichment(self) -> dbtlabs.proto.public.v1.events.vortex_pb2.VortexMessageEnrichment:
         """This field is a toggle to enable enrichment of the message by the Vortex service."""
@@ -837,9 +871,15 @@ class Login(google.protobuf.message.Message):
         platform_account_id: builtins.int | None = ...,
         platform_account_identifier: builtins.str | None = ...,
         common_context: dbtlabs.proto.public.v1.common.vortex_telemetry_contexts_pb2.VortexTelemetryCommonContext | None = ...,
+        error_code: Global___LoginErrorCode.ValueType | None = ...,
+        error_message: builtins.str | None = ...,
     ) -> None: ...
-    def HasField(self, field_name: typing.Literal["_platform_account_id", b"_platform_account_id", "_platform_account_identifier", b"_platform_account_identifier", "_platform_user_id", b"_platform_user_id", "_project_id", b"_project_id", "common_context", b"common_context", "enrichment", b"enrichment", "platform_account_id", b"platform_account_id", "platform_account_identifier", b"platform_account_identifier", "platform_user_id", b"platform_user_id", "project_id", b"project_id"]) -> builtins.bool: ...
-    def ClearField(self, field_name: typing.Literal["_platform_account_id", b"_platform_account_id", "_platform_account_identifier", b"_platform_account_identifier", "_platform_user_id", b"_platform_user_id", "_project_id", b"_project_id", "common_context", b"common_context", "enrichment", b"enrichment", "event_id", b"event_id", "invocation_id", b"invocation_id", "login_type", b"login_type", "platform_account_id", b"platform_account_id", "platform_account_identifier", b"platform_account_identifier", "platform_user_id", b"platform_user_id", "project_id", b"project_id", "success", b"success", "user_cookie", b"user_cookie"]) -> None: ...
+    def HasField(self, field_name: typing.Literal["_error_code", b"_error_code", "_error_message", b"_error_message", "_platform_account_id", b"_platform_account_id", "_platform_account_identifier", b"_platform_account_identifier", "_platform_user_id", b"_platform_user_id", "_project_id", b"_project_id", "common_context", b"common_context", "enrichment", b"enrichment", "error_code", b"error_code", "error_message", b"error_message", "platform_account_id", b"platform_account_id", "platform_account_identifier", b"platform_account_identifier", "platform_user_id", b"platform_user_id", "project_id", b"project_id"]) -> builtins.bool: ...
+    def ClearField(self, field_name: typing.Literal["_error_code", b"_error_code", "_error_message", b"_error_message", "_platform_account_id", b"_platform_account_id", "_platform_account_identifier", b"_platform_account_identifier", "_platform_user_id", b"_platform_user_id", "_project_id", b"_project_id", "common_context", b"common_context", "enrichment", b"enrichment", "error_code", b"error_code", "error_message", b"error_message", "event_id", b"event_id", "invocation_id", b"invocation_id", "login_type", b"login_type", "platform_account_id", b"platform_account_id", "platform_account_identifier", b"platform_account_identifier", "platform_user_id", b"platform_user_id", "project_id", b"project_id", "success", b"success", "user_cookie", b"user_cookie"]) -> None: ...
+    @typing.overload
+    def WhichOneof(self, oneof_group: typing.Literal["_error_code", b"_error_code"]) -> typing.Literal["error_code"] | None: ...
+    @typing.overload
+    def WhichOneof(self, oneof_group: typing.Literal["_error_message", b"_error_message"]) -> typing.Literal["error_message"] | None: ...
     @typing.overload
     def WhichOneof(self, oneof_group: typing.Literal["_platform_account_id", b"_platform_account_id"]) -> typing.Literal["platform_account_id"] | None: ...
     @typing.overload
