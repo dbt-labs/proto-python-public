@@ -128,6 +128,7 @@ class InvocationEvalArgs(google.protobuf.message.Message):
     QUIET_FIELD_NUMBER: builtins.int
     WRITE_JSON_FIELD_NUMBER: builtins.int
     WRITE_CATALOG_FIELD_NUMBER: builtins.int
+    MANAGE_STATE_FIELD_NUMBER: builtins.int
     command: builtins.str
     """The dbt command executed, e.g. "run", "test", "build"."""
     profiles_dir: builtins.str
@@ -169,6 +170,11 @@ class InvocationEvalArgs(google.protobuf.message.Message):
     """Write JSON artifacts to disk"""
     write_catalog: builtins.bool
     """Write a catalog.json file to the target directory"""
+    manage_state: builtins.bool
+    """Whether dbt State management (auto-deferral) is enabled for this invocation,
+    resolved from --manage-state, DBT_ENGINE_MANAGE_STATE, or `flags.manage_state`
+    in dbt_project.yml / user settings.
+    """
     @property
     def select(self) -> google.protobuf.internal.containers.RepeatedScalarFieldContainer[builtins.str]:
         """Select nodes to operate on"""
@@ -216,9 +222,10 @@ class InvocationEvalArgs(google.protobuf.message.Message):
         quiet: builtins.bool | None = ...,
         write_json: builtins.bool | None = ...,
         write_catalog: builtins.bool | None = ...,
+        manage_state: builtins.bool | None = ...,
     ) -> None: ...
-    def HasField(self, field_name: typing.Literal["_debug", b"_debug", "_indirect_selection", b"_indirect_selection", "_limit", b"_limit", "_log_format", b"_log_format", "_log_level", b"_log_level", "_log_path", b"_log_path", "_num_threads", b"_num_threads", "_packages_install_path", b"_packages_install_path", "_profile", b"_profile", "_profiles_dir", b"_profiles_dir", "_project_dir", b"_project_dir", "_quiet", b"_quiet", "_selector", b"_selector", "_target", b"_target", "_target_path", b"_target_path", "_write_catalog", b"_write_catalog", "_write_json", b"_write_json", "debug", b"debug", "indirect_selection", b"indirect_selection", "limit", b"limit", "log_format", b"log_format", "log_level", b"log_level", "log_path", b"log_path", "num_threads", b"num_threads", "packages_install_path", b"packages_install_path", "profile", b"profile", "profiles_dir", b"profiles_dir", "project_dir", b"project_dir", "quiet", b"quiet", "selector", b"selector", "target", b"target", "target_path", b"target_path", "write_catalog", b"write_catalog", "write_json", b"write_json"]) -> builtins.bool: ...
-    def ClearField(self, field_name: typing.Literal["_debug", b"_debug", "_indirect_selection", b"_indirect_selection", "_limit", b"_limit", "_log_format", b"_log_format", "_log_level", b"_log_level", "_log_path", b"_log_path", "_num_threads", b"_num_threads", "_packages_install_path", b"_packages_install_path", "_profile", b"_profile", "_profiles_dir", b"_profiles_dir", "_project_dir", b"_project_dir", "_quiet", b"_quiet", "_selector", b"_selector", "_target", b"_target", "_target_path", b"_target_path", "_write_catalog", b"_write_catalog", "_write_json", b"_write_json", "command", b"command", "debug", b"debug", "exclude", b"exclude", "exclude_resource_types", b"exclude_resource_types", "indirect_selection", b"indirect_selection", "limit", b"limit", "log_format", b"log_format", "log_level", b"log_level", "log_path", b"log_path", "num_threads", b"num_threads", "output_keys", b"output_keys", "packages_install_path", b"packages_install_path", "profile", b"profile", "profiles_dir", b"profiles_dir", "project_dir", b"project_dir", "quiet", b"quiet", "resource_types", b"resource_types", "select", b"select", "selector", b"selector", "target", b"target", "target_path", b"target_path", "vars", b"vars", "write_catalog", b"write_catalog", "write_json", b"write_json"]) -> None: ...
+    def HasField(self, field_name: typing.Literal["_debug", b"_debug", "_indirect_selection", b"_indirect_selection", "_limit", b"_limit", "_log_format", b"_log_format", "_log_level", b"_log_level", "_log_path", b"_log_path", "_manage_state", b"_manage_state", "_num_threads", b"_num_threads", "_packages_install_path", b"_packages_install_path", "_profile", b"_profile", "_profiles_dir", b"_profiles_dir", "_project_dir", b"_project_dir", "_quiet", b"_quiet", "_selector", b"_selector", "_target", b"_target", "_target_path", b"_target_path", "_write_catalog", b"_write_catalog", "_write_json", b"_write_json", "debug", b"debug", "indirect_selection", b"indirect_selection", "limit", b"limit", "log_format", b"log_format", "log_level", b"log_level", "log_path", b"log_path", "manage_state", b"manage_state", "num_threads", b"num_threads", "packages_install_path", b"packages_install_path", "profile", b"profile", "profiles_dir", b"profiles_dir", "project_dir", b"project_dir", "quiet", b"quiet", "selector", b"selector", "target", b"target", "target_path", b"target_path", "write_catalog", b"write_catalog", "write_json", b"write_json"]) -> builtins.bool: ...
+    def ClearField(self, field_name: typing.Literal["_debug", b"_debug", "_indirect_selection", b"_indirect_selection", "_limit", b"_limit", "_log_format", b"_log_format", "_log_level", b"_log_level", "_log_path", b"_log_path", "_manage_state", b"_manage_state", "_num_threads", b"_num_threads", "_packages_install_path", b"_packages_install_path", "_profile", b"_profile", "_profiles_dir", b"_profiles_dir", "_project_dir", b"_project_dir", "_quiet", b"_quiet", "_selector", b"_selector", "_target", b"_target", "_target_path", b"_target_path", "_write_catalog", b"_write_catalog", "_write_json", b"_write_json", "command", b"command", "debug", b"debug", "exclude", b"exclude", "exclude_resource_types", b"exclude_resource_types", "indirect_selection", b"indirect_selection", "limit", b"limit", "log_format", b"log_format", "log_level", b"log_level", "log_path", b"log_path", "manage_state", b"manage_state", "num_threads", b"num_threads", "output_keys", b"output_keys", "packages_install_path", b"packages_install_path", "profile", b"profile", "profiles_dir", b"profiles_dir", "project_dir", b"project_dir", "quiet", b"quiet", "resource_types", b"resource_types", "select", b"select", "selector", b"selector", "target", b"target", "target_path", b"target_path", "vars", b"vars", "write_catalog", b"write_catalog", "write_json", b"write_json"]) -> None: ...
     @typing.overload
     def WhichOneof(self, oneof_group: typing.Literal["_debug", b"_debug"]) -> typing.Literal["debug"] | None: ...
     @typing.overload
@@ -231,6 +238,8 @@ class InvocationEvalArgs(google.protobuf.message.Message):
     def WhichOneof(self, oneof_group: typing.Literal["_log_level", b"_log_level"]) -> typing.Literal["log_level"] | None: ...
     @typing.overload
     def WhichOneof(self, oneof_group: typing.Literal["_log_path", b"_log_path"]) -> typing.Literal["log_path"] | None: ...
+    @typing.overload
+    def WhichOneof(self, oneof_group: typing.Literal["_manage_state", b"_manage_state"]) -> typing.Literal["manage_state"] | None: ...
     @typing.overload
     def WhichOneof(self, oneof_group: typing.Literal["_num_threads", b"_num_threads"]) -> typing.Literal["num_threads"] | None: ...
     @typing.overload

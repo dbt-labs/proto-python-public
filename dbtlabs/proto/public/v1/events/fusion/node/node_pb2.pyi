@@ -345,6 +345,7 @@ class TestEvaluationDetail(google.protobuf.message.Message):
     FAILING_ROWS_FIELD_NUMBER: builtins.int
     DIFF_TABLE_FIELD_NUMBER: builtins.int
     STORE_FAILURES_FIELD_NUMBER: builtins.int
+    STATICALLY_CHECKED_FIELD_NUMBER: builtins.int
     test_outcome: Global___TestOutcome.ValueType
     failing_rows: builtins.int
     """Number of failing rows for this test."""
@@ -352,6 +353,8 @@ class TestEvaluationDetail(google.protobuf.message.Message):
     """Pretty printed table diff if available."""
     store_failures: builtins.bool
     """Tell consumer whether or not the failure table exists."""
+    statically_checked: builtins.bool
+    """Whether this test passed by static checking instead of execution."""
     def __init__(
         self,
         *,
@@ -359,11 +362,14 @@ class TestEvaluationDetail(google.protobuf.message.Message):
         failing_rows: builtins.int = ...,
         diff_table: builtins.str | None = ...,
         store_failures: builtins.bool | None = ...,
+        statically_checked: builtins.bool | None = ...,
     ) -> None: ...
-    def HasField(self, field_name: typing.Literal["_diff_table", b"_diff_table", "_store_failures", b"_store_failures", "diff_table", b"diff_table", "store_failures", b"store_failures"]) -> builtins.bool: ...
-    def ClearField(self, field_name: typing.Literal["_diff_table", b"_diff_table", "_store_failures", b"_store_failures", "diff_table", b"diff_table", "failing_rows", b"failing_rows", "store_failures", b"store_failures", "test_outcome", b"test_outcome"]) -> None: ...
+    def HasField(self, field_name: typing.Literal["_diff_table", b"_diff_table", "_statically_checked", b"_statically_checked", "_store_failures", b"_store_failures", "diff_table", b"diff_table", "statically_checked", b"statically_checked", "store_failures", b"store_failures"]) -> builtins.bool: ...
+    def ClearField(self, field_name: typing.Literal["_diff_table", b"_diff_table", "_statically_checked", b"_statically_checked", "_store_failures", b"_store_failures", "diff_table", b"diff_table", "failing_rows", b"failing_rows", "statically_checked", b"statically_checked", "store_failures", b"store_failures", "test_outcome", b"test_outcome"]) -> None: ...
     @typing.overload
     def WhichOneof(self, oneof_group: typing.Literal["_diff_table", b"_diff_table"]) -> typing.Literal["diff_table"] | None: ...
+    @typing.overload
+    def WhichOneof(self, oneof_group: typing.Literal["_statically_checked", b"_statically_checked"]) -> typing.Literal["statically_checked"] | None: ...
     @typing.overload
     def WhichOneof(self, oneof_group: typing.Literal["_store_failures", b"_store_failures"]) -> typing.Literal["store_failures"] | None: ...
 
