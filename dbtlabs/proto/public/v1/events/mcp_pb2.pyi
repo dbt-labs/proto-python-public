@@ -62,6 +62,12 @@ class ToolCalled(google.protobuf.message.Message):
     USER_AGENT_FIELD_NUMBER: builtins.int
     ATTRIBUTION_ID_FIELD_NUMBER: builtins.int
     COMMON_CONTEXT_FIELD_NUMBER: builtins.int
+    REQUEST_TOKEN_ESTIMATE_FIELD_NUMBER: builtins.int
+    RESPONSE_TOKEN_ESTIMATE_FIELD_NUMBER: builtins.int
+    TOKEN_ESTIMATION_METHOD_FIELD_NUMBER: builtins.int
+    LLM_MODEL_FIELD_NUMBER: builtins.int
+    REQUEST_CHAR_COUNT_FIELD_NUMBER: builtins.int
+    RESPONSE_CHAR_COUNT_FIELD_NUMBER: builtins.int
     event_id: builtins.str
     """event_id is the unique identifier for this event. It is a generated UUID."""
     start_time_ms: builtins.int
@@ -94,6 +100,33 @@ class ToolCalled(google.protobuf.message.Message):
     """Indicates where this request is coming from with the user_agent header. This is only relevant for remote MCP. For local MCP, the user_agent can be attained from the enrichment field."""
     attribution_id: builtins.str
     """Attribution identifier for tracking. Uses the format "type__value" (e.g. "thread_id__<x-dbt-copilot-thread-id>"). Only applicable to tool calls within an agent run in the dbt Platform."""
+    request_token_estimate: builtins.int
+    """Estimated number of tokens in the serialized tool arguments (the tool call input).
+    Approximate: produced by a single reference tokenizer server-side, not the calling
+    client's actual tokenizer. See token_estimation_method for how it was derived.
+    """
+    response_token_estimate: builtins.int
+    """Estimated number of tokens in the serialized tool response payload (the tool call
+    output). Approximate in the same way as request_token_estimate.
+    """
+    token_estimation_method: builtins.str
+    """How the token estimates were produced, e.g. "tiktoken/o200k_base" or "char_div_4".
+    Lets consumers treat the estimates as approximate and know when the method changed.
+    """
+    llm_model: builtins.str
+    """The LLM model the calling client used, when known (e.g. "claude-sonnet-4-5"). Populated
+    for tool calls within an agent run in the dbt Platform, where the model is resolved
+    server-side. Blank for remote and local MCP, where the client's model is not known to
+    the server.
+    """
+    request_char_count: builtins.int
+    """Exact character count of the serialized tool arguments. Deterministic and
+    tokenizer-independent — the durable primitive behind request_token_estimate.
+    """
+    response_char_count: builtins.int
+    """Exact character count of the serialized tool response payload. Deterministic and
+    tokenizer-independent — the durable primitive behind response_token_estimate.
+    """
     @property
     def enrichment(self) -> dbtlabs.proto.public.v1.events.vortex_pb2.VortexMessageEnrichment: ...
     @property
@@ -139,8 +172,14 @@ class ToolCalled(google.protobuf.message.Message):
         user_agent: builtins.str = ...,
         attribution_id: builtins.str = ...,
         common_context: dbtlabs.proto.public.v1.common.vortex_telemetry_contexts_pb2.VortexTelemetryCommonContext | None = ...,
+        request_token_estimate: builtins.int = ...,
+        response_token_estimate: builtins.int = ...,
+        token_estimation_method: builtins.str = ...,
+        llm_model: builtins.str = ...,
+        request_char_count: builtins.int = ...,
+        response_char_count: builtins.int = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["common_context", b"common_context", "ctx", b"ctx", "enrichment", b"enrichment"]) -> builtins.bool: ...
-    def ClearField(self, field_name: typing.Literal["arguments", b"arguments", "attribution_id", b"attribution_id", "authentication_method", b"authentication_method", "common_context", b"common_context", "ctx", b"ctx", "dbt_cloud_environment_id_dev", b"dbt_cloud_environment_id_dev", "dbt_cloud_environment_id_prod", b"dbt_cloud_environment_id_prod", "dbt_cloud_user_id", b"dbt_cloud_user_id", "dbt_mcp_version", b"dbt_mcp_version", "disabled_tools", b"disabled_tools", "disabled_toolsets", b"disabled_toolsets", "end_time_ms", b"end_time_ms", "enrichment", b"enrichment", "error_message", b"error_message", "event_id", b"event_id", "host", b"host", "local_user_id", b"local_user_id", "multicell_account_prefix", b"multicell_account_prefix", "start_time_ms", b"start_time_ms", "tool_name", b"tool_name", "trace_id", b"trace_id", "user_agent", b"user_agent"]) -> None: ...
+    def ClearField(self, field_name: typing.Literal["arguments", b"arguments", "attribution_id", b"attribution_id", "authentication_method", b"authentication_method", "common_context", b"common_context", "ctx", b"ctx", "dbt_cloud_environment_id_dev", b"dbt_cloud_environment_id_dev", "dbt_cloud_environment_id_prod", b"dbt_cloud_environment_id_prod", "dbt_cloud_user_id", b"dbt_cloud_user_id", "dbt_mcp_version", b"dbt_mcp_version", "disabled_tools", b"disabled_tools", "disabled_toolsets", b"disabled_toolsets", "end_time_ms", b"end_time_ms", "enrichment", b"enrichment", "error_message", b"error_message", "event_id", b"event_id", "host", b"host", "llm_model", b"llm_model", "local_user_id", b"local_user_id", "multicell_account_prefix", b"multicell_account_prefix", "request_char_count", b"request_char_count", "request_token_estimate", b"request_token_estimate", "response_char_count", b"response_char_count", "response_token_estimate", b"response_token_estimate", "start_time_ms", b"start_time_ms", "token_estimation_method", b"token_estimation_method", "tool_name", b"tool_name", "trace_id", b"trace_id", "user_agent", b"user_agent"]) -> None: ...
 
 Global___ToolCalled: typing_extensions.TypeAlias = ToolCalled
