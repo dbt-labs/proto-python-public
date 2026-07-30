@@ -7,6 +7,7 @@ import builtins
 import dbtlabs.proto.public.v1.common.vortex_telemetry_contexts_pb2
 import dbtlabs.proto.public.v1.events.vortex_pb2
 import google.protobuf.descriptor
+import google.protobuf.internal.enum_type_wrapper
 import google.protobuf.message
 import sys
 import typing
@@ -17,6 +18,39 @@ else:
     import typing_extensions
 
 DESCRIPTOR: google.protobuf.descriptor.FileDescriptor
+
+class _DbtWizardToolOutcome:
+    ValueType = typing.NewType("ValueType", builtins.int)
+    V: typing_extensions.TypeAlias = ValueType
+
+class _DbtWizardToolOutcomeEnumTypeWrapper(google.protobuf.internal.enum_type_wrapper._EnumTypeWrapper[_DbtWizardToolOutcome.ValueType], builtins.type):
+    DESCRIPTOR: google.protobuf.descriptor.EnumDescriptor
+    DBT_WIZARD_TOOL_OUTCOME_UNSPECIFIED: _DbtWizardToolOutcome.ValueType  # 0
+    DBT_WIZARD_TOOL_OUTCOME_SUCCEEDED: _DbtWizardToolOutcome.ValueType  # 1
+    """The tool completed successfully."""
+    DBT_WIZARD_TOOL_OUTCOME_REJECTED: _DbtWizardToolOutcome.ValueType  # 2
+    """The invocation could not be constructed or routed."""
+    DBT_WIZARD_TOOL_OUTCOME_BLOCKED: _DbtWizardToolOutcome.ValueType  # 3
+    """Policy or a pre-execution hook prevented execution."""
+    DBT_WIZARD_TOOL_OUTCOME_FAILED: _DbtWizardToolOutcome.ValueType  # 4
+    """Execution was attempted but failed."""
+    DBT_WIZARD_TOOL_OUTCOME_ABORTED: _DbtWizardToolOutcome.ValueType  # 5
+    """The attempt was interrupted or never reached a normal terminal result."""
+
+class DbtWizardToolOutcome(_DbtWizardToolOutcome, metaclass=_DbtWizardToolOutcomeEnumTypeWrapper): ...
+
+DBT_WIZARD_TOOL_OUTCOME_UNSPECIFIED: DbtWizardToolOutcome.ValueType  # 0
+DBT_WIZARD_TOOL_OUTCOME_SUCCEEDED: DbtWizardToolOutcome.ValueType  # 1
+"""The tool completed successfully."""
+DBT_WIZARD_TOOL_OUTCOME_REJECTED: DbtWizardToolOutcome.ValueType  # 2
+"""The invocation could not be constructed or routed."""
+DBT_WIZARD_TOOL_OUTCOME_BLOCKED: DbtWizardToolOutcome.ValueType  # 3
+"""Policy or a pre-execution hook prevented execution."""
+DBT_WIZARD_TOOL_OUTCOME_FAILED: DbtWizardToolOutcome.ValueType  # 4
+"""Execution was attempted but failed."""
+DBT_WIZARD_TOOL_OUTCOME_ABORTED: DbtWizardToolOutcome.ValueType  # 5
+"""The attempt was interrupted or never reached a normal terminal result."""
+Global___DbtWizardToolOutcome: typing_extensions.TypeAlias = DbtWizardToolOutcome
 
 @typing.final
 class DbtWizardSession(google.protobuf.message.Message):
@@ -194,7 +228,9 @@ Global___DbtWizardTurn: typing_extensions.TypeAlias = DbtWizardTurn
 
 @typing.final
 class DbtWizardToolUse(google.protobuf.message.Message):
-    """Emitted once per tool invocation."""
+    """Emitted once per tool attempt after it reaches a terminal outcome.
+    Tool argument names and values are not captured.
+    """
 
     DESCRIPTOR: google.protobuf.descriptor.Descriptor
 
@@ -208,6 +244,11 @@ class DbtWizardToolUse(google.protobuf.message.Message):
     EXECUTION_TIME_MS_FIELD_NUMBER: builtins.int
     IS_WIZARD_INTERNAL_FIELD_NUMBER: builtins.int
     COMMON_CONTEXT_FIELD_NUMBER: builtins.int
+    CALL_ID_FIELD_NUMBER: builtins.int
+    CALL_SOURCE_FIELD_NUMBER: builtins.int
+    CALL_OBSERVED_AT_MS_FIELD_NUMBER: builtins.int
+    OUTCOME_FIELD_NUMBER: builtins.int
+    ATTEMPT_DURATION_MS_FIELD_NUMBER: builtins.int
     event_id: builtins.str
     """Unique identifier for this event."""
     session_id: builtins.str
@@ -215,15 +256,30 @@ class DbtWizardToolUse(google.protobuf.message.Message):
     turn_id: builtins.str
     """Turn correlation ID."""
     tool_type: builtins.str
-    """Tool category: "builtin", "mcp", "shell", "subagent"."""
+    """Tool category: one of "builtin", "mcp", "hosted", or "unknown"."""
     tool_name: builtins.str
-    """Specific tool name (e.g. "dbt_index.search", "apply_patch")."""
+    """Registered canonical flattened tool name (e.g.
+    "mcp__dbt_index__search"); unrecognized model-controlled names are emitted
+    as "<unknown>".
+    """
     is_error: builtins.bool
     """Whether the tool call resulted in an error."""
     execution_time_ms: builtins.int
     """Tool execution wall-clock time."""
     is_wizard_internal: builtins.bool
     """Whether the WIZARD_INTERNAL env var was set for this session."""
+    call_id: builtins.str
+    """Model/provider call correlation identifier."""
+    call_source: builtins.str
+    """Call origin: "direct" or "code_mode"."""
+    call_observed_at_ms: builtins.int
+    """Unix timestamp in milliseconds when the attempt was first observed."""
+    outcome: Global___DbtWizardToolOutcome.ValueType
+    """Terminal outcome of the tool attempt."""
+    attempt_duration_ms: builtins.int
+    """Elapsed wall-clock time from first observing the tool attempt through its
+    terminal outcome, including queueing, hooks, and execution.
+    """
     @property
     def enrichment(self) -> dbtlabs.proto.public.v1.events.vortex_pb2.VortexMessageEnrichment: ...
     @property
@@ -241,9 +297,14 @@ class DbtWizardToolUse(google.protobuf.message.Message):
         execution_time_ms: builtins.int = ...,
         is_wizard_internal: builtins.bool = ...,
         common_context: dbtlabs.proto.public.v1.common.vortex_telemetry_contexts_pb2.VortexTelemetryCommonContext | None = ...,
+        call_id: builtins.str = ...,
+        call_source: builtins.str = ...,
+        call_observed_at_ms: builtins.int = ...,
+        outcome: Global___DbtWizardToolOutcome.ValueType = ...,
+        attempt_duration_ms: builtins.int = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["common_context", b"common_context", "enrichment", b"enrichment"]) -> builtins.bool: ...
-    def ClearField(self, field_name: typing.Literal["common_context", b"common_context", "enrichment", b"enrichment", "event_id", b"event_id", "execution_time_ms", b"execution_time_ms", "is_error", b"is_error", "is_wizard_internal", b"is_wizard_internal", "session_id", b"session_id", "tool_name", b"tool_name", "tool_type", b"tool_type", "turn_id", b"turn_id"]) -> None: ...
+    def ClearField(self, field_name: typing.Literal["attempt_duration_ms", b"attempt_duration_ms", "call_id", b"call_id", "call_observed_at_ms", b"call_observed_at_ms", "call_source", b"call_source", "common_context", b"common_context", "enrichment", b"enrichment", "event_id", b"event_id", "execution_time_ms", b"execution_time_ms", "is_error", b"is_error", "is_wizard_internal", b"is_wizard_internal", "outcome", b"outcome", "session_id", b"session_id", "tool_name", b"tool_name", "tool_type", b"tool_type", "turn_id", b"turn_id"]) -> None: ...
 
 Global___DbtWizardToolUse: typing_extensions.TypeAlias = DbtWizardToolUse
 
