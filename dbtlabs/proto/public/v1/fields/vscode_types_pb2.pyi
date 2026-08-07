@@ -312,6 +312,28 @@ LINEAGE_GRAIN_COLUMN: LineageGrain.ValueType  # 2
 """Column-level lineage"""
 Global___LineageGrain: typing_extensions.TypeAlias = LineageGrain
 
+class _LineageSurface:
+    ValueType = typing.NewType("ValueType", builtins.int)
+    V: typing_extensions.TypeAlias = ValueType
+
+class _LineageSurfaceEnumTypeWrapper(google.protobuf.internal.enum_type_wrapper._EnumTypeWrapper[_LineageSurface.ValueType], builtins.type):
+    DESCRIPTOR: google.protobuf.descriptor.EnumDescriptor
+    LINEAGE_SURFACE_UNSPECIFIED: _LineageSurface.ValueType  # 0
+    LINEAGE_SURFACE_GRAPH_PANEL: _LineageSurface.ValueType  # 1
+    """The full lineage graph panel"""
+    LINEAGE_SURFACE_LAUNCHPAD_TREE: _LineageSurface.ValueType  # 2
+    """A lineage tree view in the launchpad"""
+
+class LineageSurface(_LineageSurface, metaclass=_LineageSurfaceEnumTypeWrapper):
+    """Which lineage UI emitted the event"""
+
+LINEAGE_SURFACE_UNSPECIFIED: LineageSurface.ValueType  # 0
+LINEAGE_SURFACE_GRAPH_PANEL: LineageSurface.ValueType  # 1
+"""The full lineage graph panel"""
+LINEAGE_SURFACE_LAUNCHPAD_TREE: LineageSurface.ValueType  # 2
+"""A lineage tree view in the launchpad"""
+Global___LineageSurface: typing_extensions.TypeAlias = LineageSurface
+
 class _GetStartedStepId:
     ValueType = typing.NewType("ValueType", builtins.int)
     V: typing_extensions.TypeAlias = ValueType

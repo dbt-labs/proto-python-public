@@ -323,8 +323,11 @@ class ExtensionLineageTabClicked(google.protobuf.message.Message):
     USER_FIELD_NUMBER: builtins.int
     DBT_LOCAL_COOKIE_USER_ID_FIELD_NUMBER: builtins.int
     COMMON_CONTEXT_FIELD_NUMBER: builtins.int
+    SURFACE_FIELD_NUMBER: builtins.int
     dbt_local_cookie_user_id: builtins.str
     """the anonymous user id stored at ~/.dbt/.user.yml"""
+    surface: dbtlabs.proto.public.v1.fields.vscode_types_pb2.LineageSurface.ValueType
+    """which lineage UI became visible (graph panel vs. a launchpad tree view)"""
     @property
     def enrichment(self) -> dbtlabs.proto.public.v1.events.vortex_pb2.VortexMessageEnrichment: ...
     @property
@@ -341,9 +344,10 @@ class ExtensionLineageTabClicked(google.protobuf.message.Message):
         user: dbtlabs.proto.public.v1.fields.vscode_types_pb2.User | None = ...,
         dbt_local_cookie_user_id: builtins.str = ...,
         common_context: dbtlabs.proto.public.v1.common.vortex_telemetry_contexts_pb2.VortexTelemetryCommonContext | None = ...,
+        surface: dbtlabs.proto.public.v1.fields.vscode_types_pb2.LineageSurface.ValueType = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["common_context", b"common_context", "editor", b"editor", "enrichment", b"enrichment", "user", b"user"]) -> builtins.bool: ...
-    def ClearField(self, field_name: typing.Literal["common_context", b"common_context", "dbt_local_cookie_user_id", b"dbt_local_cookie_user_id", "editor", b"editor", "enrichment", b"enrichment", "user", b"user"]) -> None: ...
+    def ClearField(self, field_name: typing.Literal["common_context", b"common_context", "dbt_local_cookie_user_id", b"dbt_local_cookie_user_id", "editor", b"editor", "enrichment", b"enrichment", "surface", b"surface", "user", b"user"]) -> None: ...
 
 Global___ExtensionLineageTabClicked: typing_extensions.TypeAlias = ExtensionLineageTabClicked
 
@@ -398,6 +402,7 @@ class ExtensionLineageInteraction(google.protobuf.message.Message):
     RESOURCE_TYPE_FIELD_NUMBER: builtins.int
     LENS_FIELD_NUMBER: builtins.int
     COMMON_CONTEXT_FIELD_NUMBER: builtins.int
+    SURFACE_FIELD_NUMBER: builtins.int
     dbt_local_cookie_user_id: builtins.str
     """the anonymous user id stored at ~/.dbt/.user.yml"""
     interaction_type: dbtlabs.proto.public.v1.fields.vscode_types_pb2.LineageInteractionType.ValueType
@@ -415,6 +420,8 @@ class ExtensionLineageInteraction(google.protobuf.message.Message):
     """
     lens: builtins.str
     """selected lens value; set only when interaction_type == LINEAGE_INTERACTION_TYPE_LENS_CHANGED"""
+    surface: dbtlabs.proto.public.v1.fields.vscode_types_pb2.LineageSurface.ValueType
+    """which lineage UI the interaction occurred in (graph panel vs. a launchpad tree view)"""
     @property
     def enrichment(self) -> dbtlabs.proto.public.v1.events.vortex_pb2.VortexMessageEnrichment: ...
     @property
@@ -435,9 +442,10 @@ class ExtensionLineageInteraction(google.protobuf.message.Message):
         resource_type: builtins.str = ...,
         lens: builtins.str = ...,
         common_context: dbtlabs.proto.public.v1.common.vortex_telemetry_contexts_pb2.VortexTelemetryCommonContext | None = ...,
+        surface: dbtlabs.proto.public.v1.fields.vscode_types_pb2.LineageSurface.ValueType = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["common_context", b"common_context", "editor", b"editor", "enrichment", b"enrichment", "user", b"user"]) -> builtins.bool: ...
-    def ClearField(self, field_name: typing.Literal["common_context", b"common_context", "dbt_local_cookie_user_id", b"dbt_local_cookie_user_id", "editor", b"editor", "enrichment", b"enrichment", "grain", b"grain", "interaction_type", b"interaction_type", "lens", b"lens", "resource_type", b"resource_type", "user", b"user"]) -> None: ...
+    def ClearField(self, field_name: typing.Literal["common_context", b"common_context", "dbt_local_cookie_user_id", b"dbt_local_cookie_user_id", "editor", b"editor", "enrichment", b"enrichment", "grain", b"grain", "interaction_type", b"interaction_type", "lens", b"lens", "resource_type", b"resource_type", "surface", b"surface", "user", b"user"]) -> None: ...
 
 Global___ExtensionLineageInteraction: typing_extensions.TypeAlias = ExtensionLineageInteraction
 
