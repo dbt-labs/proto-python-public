@@ -328,6 +328,9 @@ class DbtWizardCliStarted(google.protobuf.message.Message):
     IS_WIZARD_INTERNAL_FIELD_NUMBER: builtins.int
     ANONYMOUS_ID_FIELD_NUMBER: builtins.int
     COMMON_CONTEXT_FIELD_NUMBER: builtins.int
+    SANDBOX_POLICY_FIELD_NUMBER: builtins.int
+    APPROVAL_POLICY_FIELD_NUMBER: builtins.int
+    MODEL_FIELD_NUMBER: builtins.int
     event_id: builtins.str
     user_id: builtins.str
     """Anonymous UUID from ~/.dbt/.user.yml (created on first run)."""
@@ -349,6 +352,16 @@ class DbtWizardCliStarted(google.protobuf.message.Message):
     """The anonymous UUID from ~/.dbt/.user.yml. Always populated regardless of
     auth state, enabling a join between pre-auth and post-auth events.
     """
+    sandbox_policy: builtins.str
+    """Sandbox mode from the --sandbox flag: "read-only", "workspace-write",
+    "danger-full-access". Empty if the flag was not passed.
+    """
+    approval_policy: builtins.str
+    """Approval policy from CLI flags: "untrusted", "on-failure", "on-request",
+    "granular", "never" (yolo mode). Empty if not specified.
+    """
+    model: builtins.str
+    """Model slug passed via --model flag (empty if not specified)."""
     @property
     def enrichment(self) -> dbtlabs.proto.public.v1.events.vortex_pb2.VortexMessageEnrichment: ...
     @property
@@ -370,9 +383,12 @@ class DbtWizardCliStarted(google.protobuf.message.Message):
         is_wizard_internal: builtins.bool = ...,
         anonymous_id: builtins.str = ...,
         common_context: dbtlabs.proto.public.v1.common.vortex_telemetry_contexts_pb2.VortexTelemetryCommonContext | None = ...,
+        sandbox_policy: builtins.str = ...,
+        approval_policy: builtins.str = ...,
+        model: builtins.str = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["common_context", b"common_context", "enrichment", b"enrichment"]) -> builtins.bool: ...
-    def ClearField(self, field_name: typing.Literal["account_id", b"account_id", "account_identifier", b"account_identifier", "anonymous_id", b"anonymous_id", "arch", b"arch", "common_context", b"common_context", "enrichment", b"enrichment", "event_id", b"event_id", "is_first_run", b"is_first_run", "is_wizard_internal", b"is_wizard_internal", "launch_source", b"launch_source", "launched_at", b"launched_at", "os", b"os", "user_id", b"user_id", "version", b"version"]) -> None: ...
+    def ClearField(self, field_name: typing.Literal["account_id", b"account_id", "account_identifier", b"account_identifier", "anonymous_id", b"anonymous_id", "approval_policy", b"approval_policy", "arch", b"arch", "common_context", b"common_context", "enrichment", b"enrichment", "event_id", b"event_id", "is_first_run", b"is_first_run", "is_wizard_internal", b"is_wizard_internal", "launch_source", b"launch_source", "launched_at", b"launched_at", "model", b"model", "os", b"os", "sandbox_policy", b"sandbox_policy", "user_id", b"user_id", "version", b"version"]) -> None: ...
 
 Global___DbtWizardCliStarted: typing_extensions.TypeAlias = DbtWizardCliStarted
 
@@ -583,13 +599,16 @@ class DbtWizardError(google.protobuf.message.Message):
     session_id: builtins.str
     """Empty if error occurs before session starts."""
     error_category: builtins.str
-    """"sidecar_startup" | "provider_auth" | "turn_failure" | "panic" | "connection_lost" """
+    """"sidecar_startup" | "provider_auth" | "turn_failure" | "panic" | "connection_lost" | "sandbox" """
     error_code: builtins.str
-    """Structured code: "health_timeout", "401", "connection_refused", etc."""
+    """Structured code: "health_timeout", "401", "connection_refused", etc. When
+    error_category is "sandbox": "denied", "timeout", "signal_<N>",
+    "seccomp_install", "seccomp_backend", "landlock_restrict".
+    """
     error_class: builtins.str
     """Rust error type name (no message content)."""
     component: builtins.str
-    """"litellm_sidecar" | "app_server" | "tui" | "core" | "provider" """
+    """"litellm_sidecar" | "app_server" | "tui" | "core" | "provider" | "sandbox" """
     provider: builtins.str
     """"anthropic" | "openai" | "bedrock" | "" if not provider-related."""
     model: builtins.str
@@ -728,3 +747,147 @@ class DbtWizardFeedback(google.protobuf.message.Message):
     def ClearField(self, field_name: typing.Literal["account_id", b"account_id", "account_identifier", b"account_identifier", "anonymous_id", b"anonymous_id", "arch", b"arch", "category", b"category", "common_context", b"common_context", "enrichment", b"enrichment", "event_id", b"event_id", "include_logs", b"include_logs", "is_wizard_internal", b"is_wizard_internal", "model", b"model", "os", b"os", "reason", b"reason", "session_id", b"session_id", "turn_id", b"turn_id", "user_id", b"user_id", "version", b"version"]) -> None: ...
 
 Global___DbtWizardFeedback: typing_extensions.TypeAlias = DbtWizardFeedback
+
+@typing.final
+class DbtWizardPermissionMode(google.protobuf.message.Message):
+    """Emitted whenever a thread's effective permission mode changes: the approval
+    policy, the sandbox/permission profile, or where approvals are routed.
+
+    The first observation for a thread establishes the baseline with
+    change_source = "initial" (emitted when settings are first applied, i.e. the
+    thread's first turn or first explicit override), then one event per
+    subsequent change. This makes in-session permission changes observable,
+    unlike sandbox toggles which are only visible as CLI flags at launch.
+    """
+
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
+    ENRICHMENT_FIELD_NUMBER: builtins.int
+    EVENT_ID_FIELD_NUMBER: builtins.int
+    SESSION_ID_FIELD_NUMBER: builtins.int
+    CHANGE_SOURCE_FIELD_NUMBER: builtins.int
+    APPROVAL_POLICY_FIELD_NUMBER: builtins.int
+    PREVIOUS_APPROVAL_POLICY_FIELD_NUMBER: builtins.int
+    SANDBOX_POLICY_FIELD_NUMBER: builtins.int
+    PREVIOUS_SANDBOX_POLICY_FIELD_NUMBER: builtins.int
+    PERMISSION_PROFILE_FIELD_NUMBER: builtins.int
+    PREVIOUS_PERMISSION_PROFILE_FIELD_NUMBER: builtins.int
+    SANDBOX_NETWORK_ACCESS_FIELD_NUMBER: builtins.int
+    APPROVALS_REVIEWER_FIELD_NUMBER: builtins.int
+    IS_FULL_ACCESS_FIELD_NUMBER: builtins.int
+    MODEL_FIELD_NUMBER: builtins.int
+    SESSION_SOURCE_FIELD_NUMBER: builtins.int
+    CHANGED_AT_MS_FIELD_NUMBER: builtins.int
+    USER_ID_FIELD_NUMBER: builtins.int
+    ACCOUNT_ID_FIELD_NUMBER: builtins.int
+    ACCOUNT_IDENTIFIER_FIELD_NUMBER: builtins.int
+    VERSION_FIELD_NUMBER: builtins.int
+    OS_FIELD_NUMBER: builtins.int
+    ARCH_FIELD_NUMBER: builtins.int
+    IS_WIZARD_INTERNAL_FIELD_NUMBER: builtins.int
+    ANONYMOUS_ID_FIELD_NUMBER: builtins.int
+    COMMON_CONTEXT_FIELD_NUMBER: builtins.int
+    event_id: builtins.str
+    """Unique identifier for this event."""
+    session_id: builtins.str
+    """Session correlation ID (thread_id)."""
+    change_source: builtins.str
+    """What triggered the change: "initial" for the baseline, or
+    "settings_update" for a subsequent change.
+    """
+    approval_policy: builtins.str
+    """Approval policy after the change: "untrusted", "on-failure", "on-request",
+    "granular", "never" (yolo mode).
+    """
+    previous_approval_policy: builtins.str
+    """Approval policy before the change; empty when change_source is
+    "initial".
+    """
+    sandbox_policy: builtins.str
+    """Sandbox mode after the change: "read_only", "workspace_write",
+    "full_access", "external_sandbox".
+    """
+    previous_sandbox_policy: builtins.str
+    """Sandbox mode before the change; empty when change_source is
+    "initial".
+    """
+    permission_profile: builtins.str
+    """Permission profile id after the change, such as ":read-only",
+    ":workspace", ":danger-full-access", or a user-defined profile id.
+    """
+    previous_permission_profile: builtins.str
+    """Permission profile id before the change; empty when change_source is
+    "initial".
+    """
+    sandbox_network_access: builtins.bool
+    """Whether the sandbox permits network access after the change."""
+    approvals_reviewer: builtins.str
+    """Where approval requests are routed: "user" or "guardian_subagent"."""
+    is_full_access: builtins.bool
+    """Whether the mode after the change bypasses all approvals
+    (approval_policy = "never" and sandbox_policy = "full_access"). Convenience
+    flag for measuring yolo-mode adoption.
+    """
+    model: builtins.str
+    """Model slug active on the thread (e.g. "claude-sonnet-4-6")."""
+    session_source: builtins.str
+    """Client name: "cli", "vscode", "desktop", "mcp_server"."""
+    changed_at_ms: builtins.int
+    """Unix timestamp in milliseconds when the change was applied."""
+    user_id: builtins.str
+    """Authenticated dbt Cloud user ID (JWT sub claim); falls back to anonymous
+    UUID from ~/.dbt/.user.yml when unauthenticated.
+    """
+    account_id: builtins.str
+    """Numeric dbt Cloud account ID (from JWT claims or dbt_cloud.yml)."""
+    account_identifier: builtins.str
+    """Global dbt Cloud account identifier slug (from /api/v2/accounts/{id}/)."""
+    version: builtins.str
+    """dbt-wizard binary version."""
+    os: builtins.str
+    """Operating system: "macos", "linux", "windows"."""
+    arch: builtins.str
+    """CPU architecture: "aarch64", "x86_64"."""
+    is_wizard_internal: builtins.bool
+    """Whether the WIZARD_INTERNAL env var was set for this session."""
+    anonymous_id: builtins.str
+    """The anonymous UUID from ~/.dbt/.user.yml. Always populated regardless of
+    auth state, enabling a join between pre-auth and post-auth events.
+    """
+    @property
+    def enrichment(self) -> dbtlabs.proto.public.v1.events.vortex_pb2.VortexMessageEnrichment: ...
+    @property
+    def common_context(self) -> dbtlabs.proto.public.v1.common.vortex_telemetry_contexts_pb2.VortexTelemetryCommonContext: ...
+    def __init__(
+        self,
+        *,
+        enrichment: dbtlabs.proto.public.v1.events.vortex_pb2.VortexMessageEnrichment | None = ...,
+        event_id: builtins.str = ...,
+        session_id: builtins.str = ...,
+        change_source: builtins.str = ...,
+        approval_policy: builtins.str = ...,
+        previous_approval_policy: builtins.str = ...,
+        sandbox_policy: builtins.str = ...,
+        previous_sandbox_policy: builtins.str = ...,
+        permission_profile: builtins.str = ...,
+        previous_permission_profile: builtins.str = ...,
+        sandbox_network_access: builtins.bool = ...,
+        approvals_reviewer: builtins.str = ...,
+        is_full_access: builtins.bool = ...,
+        model: builtins.str = ...,
+        session_source: builtins.str = ...,
+        changed_at_ms: builtins.int = ...,
+        user_id: builtins.str = ...,
+        account_id: builtins.str = ...,
+        account_identifier: builtins.str = ...,
+        version: builtins.str = ...,
+        os: builtins.str = ...,
+        arch: builtins.str = ...,
+        is_wizard_internal: builtins.bool = ...,
+        anonymous_id: builtins.str = ...,
+        common_context: dbtlabs.proto.public.v1.common.vortex_telemetry_contexts_pb2.VortexTelemetryCommonContext | None = ...,
+    ) -> None: ...
+    def HasField(self, field_name: typing.Literal["common_context", b"common_context", "enrichment", b"enrichment"]) -> builtins.bool: ...
+    def ClearField(self, field_name: typing.Literal["account_id", b"account_id", "account_identifier", b"account_identifier", "anonymous_id", b"anonymous_id", "approval_policy", b"approval_policy", "approvals_reviewer", b"approvals_reviewer", "arch", b"arch", "change_source", b"change_source", "changed_at_ms", b"changed_at_ms", "common_context", b"common_context", "enrichment", b"enrichment", "event_id", b"event_id", "is_full_access", b"is_full_access", "is_wizard_internal", b"is_wizard_internal", "model", b"model", "os", b"os", "permission_profile", b"permission_profile", "previous_approval_policy", b"previous_approval_policy", "previous_permission_profile", b"previous_permission_profile", "previous_sandbox_policy", b"previous_sandbox_policy", "sandbox_network_access", b"sandbox_network_access", "sandbox_policy", b"sandbox_policy", "session_id", b"session_id", "session_source", b"session_source", "user_id", b"user_id", "version", b"version"]) -> None: ...
+
+Global___DbtWizardPermissionMode: typing_extensions.TypeAlias = DbtWizardPermissionMode
