@@ -30,6 +30,7 @@ class _BeaconSplitPaneViewKindEnumTypeWrapper(google.protobuf.internal.enum_type
     BEACON_SPLIT_PANE_VIEW_KIND_UNSPECIFIED: _BeaconSplitPaneViewKind.ValueType  # 0
     BEACON_SPLIT_PANE_VIEW_KIND_DIFF: _BeaconSplitPaneViewKind.ValueType  # 1
     BEACON_SPLIT_PANE_VIEW_KIND_CANVAS: _BeaconSplitPaneViewKind.ValueType  # 2
+    BEACON_SPLIT_PANE_VIEW_KIND_INSIGHT: _BeaconSplitPaneViewKind.ValueType  # 3
 
 class BeaconSplitPaneViewKind(_BeaconSplitPaneViewKind, metaclass=_BeaconSplitPaneViewKindEnumTypeWrapper):
     """Which view is active in the Beacon side pane."""
@@ -37,6 +38,7 @@ class BeaconSplitPaneViewKind(_BeaconSplitPaneViewKind, metaclass=_BeaconSplitPa
 BEACON_SPLIT_PANE_VIEW_KIND_UNSPECIFIED: BeaconSplitPaneViewKind.ValueType  # 0
 BEACON_SPLIT_PANE_VIEW_KIND_DIFF: BeaconSplitPaneViewKind.ValueType  # 1
 BEACON_SPLIT_PANE_VIEW_KIND_CANVAS: BeaconSplitPaneViewKind.ValueType  # 2
+BEACON_SPLIT_PANE_VIEW_KIND_INSIGHT: BeaconSplitPaneViewKind.ValueType  # 3
 Global___BeaconSplitPaneViewKind: typing_extensions.TypeAlias = BeaconSplitPaneViewKind
 
 class _BeaconSplitPaneOpenSource:
