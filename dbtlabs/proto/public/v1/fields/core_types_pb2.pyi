@@ -198,11 +198,13 @@ class RunResultMsg(google.protobuf.message.Message):
     EXECUTION_TIME_FIELD_NUMBER: builtins.int
     ADAPTER_RESPONSE_FIELD_NUMBER: builtins.int
     NUM_FAILURES_FIELD_NUMBER: builtins.int
+    STATE_DECISION_ID_FIELD_NUMBER: builtins.int
     status: builtins.str
     message: builtins.str
     thread: builtins.str
     execution_time: builtins.float
     num_failures: builtins.int
+    state_decision_id: builtins.str
     @property
     def timing_info(self) -> google.protobuf.internal.containers.RepeatedCompositeFieldContainer[Global___TimingInfoMsg]: ...
     @property
@@ -217,9 +219,11 @@ class RunResultMsg(google.protobuf.message.Message):
         execution_time: builtins.float = ...,
         adapter_response: google.protobuf.struct_pb2.Struct | None = ...,
         num_failures: builtins.int = ...,
+        state_decision_id: builtins.str | None = ...,
     ) -> None: ...
-    def HasField(self, field_name: typing.Literal["adapter_response", b"adapter_response"]) -> builtins.bool: ...
-    def ClearField(self, field_name: typing.Literal["adapter_response", b"adapter_response", "execution_time", b"execution_time", "message", b"message", "num_failures", b"num_failures", "status", b"status", "thread", b"thread", "timing_info", b"timing_info"]) -> None: ...
+    def HasField(self, field_name: typing.Literal["_state_decision_id", b"_state_decision_id", "adapter_response", b"adapter_response", "state_decision_id", b"state_decision_id"]) -> builtins.bool: ...
+    def ClearField(self, field_name: typing.Literal["_state_decision_id", b"_state_decision_id", "adapter_response", b"adapter_response", "execution_time", b"execution_time", "message", b"message", "num_failures", b"num_failures", "state_decision_id", b"state_decision_id", "status", b"status", "thread", b"thread", "timing_info", b"timing_info"]) -> None: ...
+    def WhichOneof(self, oneof_group: typing.Literal["_state_decision_id", b"_state_decision_id"]) -> typing.Literal["state_decision_id"] | None: ...
 
 Global___RunResultMsg: typing_extensions.TypeAlias = RunResultMsg
 
