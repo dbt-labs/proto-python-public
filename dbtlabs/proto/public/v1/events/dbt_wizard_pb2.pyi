@@ -891,3 +891,286 @@ class DbtWizardPermissionMode(google.protobuf.message.Message):
     def ClearField(self, field_name: typing.Literal["account_id", b"account_id", "account_identifier", b"account_identifier", "anonymous_id", b"anonymous_id", "approval_policy", b"approval_policy", "approvals_reviewer", b"approvals_reviewer", "arch", b"arch", "change_source", b"change_source", "changed_at_ms", b"changed_at_ms", "common_context", b"common_context", "enrichment", b"enrichment", "event_id", b"event_id", "is_full_access", b"is_full_access", "is_wizard_internal", b"is_wizard_internal", "model", b"model", "os", b"os", "permission_profile", b"permission_profile", "previous_approval_policy", b"previous_approval_policy", "previous_permission_profile", b"previous_permission_profile", "previous_sandbox_policy", b"previous_sandbox_policy", "sandbox_network_access", b"sandbox_network_access", "sandbox_policy", b"sandbox_policy", "session_id", b"session_id", "session_source", b"session_source", "user_id", b"user_id", "version", b"version"]) -> None: ...
 
 Global___DbtWizardPermissionMode: typing_extensions.TypeAlias = DbtWizardPermissionMode
+
+@typing.final
+class DbtWizardAppOpened(google.protobuf.message.Message):
+    """Emitted when the Wizard desktop app opens as the anonymous behavioral
+    counterpart of the WizardAppOpened Amplitude event; distinct from the CLI
+    lifecycle telemetry in DbtWizardSession and DbtWizardTurn.
+    """
+
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
+    ENRICHMENT_FIELD_NUMBER: builtins.int
+    EVENT_ID_FIELD_NUMBER: builtins.int
+    ANONYMOUS_ID_FIELD_NUMBER: builtins.int
+    COMMON_CONTEXT_FIELD_NUMBER: builtins.int
+    event_id: builtins.str
+    anonymous_id: builtins.str
+    @property
+    def enrichment(self) -> dbtlabs.proto.public.v1.events.vortex_pb2.VortexMessageEnrichment: ...
+    @property
+    def common_context(self) -> dbtlabs.proto.public.v1.common.vortex_telemetry_contexts_pb2.VortexTelemetryCommonContext: ...
+    def __init__(
+        self,
+        *,
+        enrichment: dbtlabs.proto.public.v1.events.vortex_pb2.VortexMessageEnrichment | None = ...,
+        event_id: builtins.str = ...,
+        anonymous_id: builtins.str = ...,
+        common_context: dbtlabs.proto.public.v1.common.vortex_telemetry_contexts_pb2.VortexTelemetryCommonContext | None = ...,
+    ) -> None: ...
+    def HasField(self, field_name: typing.Literal["common_context", b"common_context", "enrichment", b"enrichment"]) -> builtins.bool: ...
+    def ClearField(self, field_name: typing.Literal["anonymous_id", b"anonymous_id", "common_context", b"common_context", "enrichment", b"enrichment", "event_id", b"event_id"]) -> None: ...
+
+Global___DbtWizardAppOpened: typing_extensions.TypeAlias = DbtWizardAppOpened
+
+@typing.final
+class DbtWizardAppRouteViewed(google.protobuf.message.Message):
+    """Emitted when the Wizard desktop app resolves a route as the anonymous
+    behavioral counterpart of the WizardRouteViewed Amplitude event; distinct
+    from the CLI lifecycle telemetry in DbtWizardSession and DbtWizardTurn.
+    """
+
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
+    ENRICHMENT_FIELD_NUMBER: builtins.int
+    EVENT_ID_FIELD_NUMBER: builtins.int
+    ANONYMOUS_ID_FIELD_NUMBER: builtins.int
+    ROUTE_FIELD_NUMBER: builtins.int
+    COMMON_CONTEXT_FIELD_NUMBER: builtins.int
+    event_id: builtins.str
+    anonymous_id: builtins.str
+    route: builtins.str
+    @property
+    def enrichment(self) -> dbtlabs.proto.public.v1.events.vortex_pb2.VortexMessageEnrichment: ...
+    @property
+    def common_context(self) -> dbtlabs.proto.public.v1.common.vortex_telemetry_contexts_pb2.VortexTelemetryCommonContext: ...
+    def __init__(
+        self,
+        *,
+        enrichment: dbtlabs.proto.public.v1.events.vortex_pb2.VortexMessageEnrichment | None = ...,
+        event_id: builtins.str = ...,
+        anonymous_id: builtins.str = ...,
+        route: builtins.str = ...,
+        common_context: dbtlabs.proto.public.v1.common.vortex_telemetry_contexts_pb2.VortexTelemetryCommonContext | None = ...,
+    ) -> None: ...
+    def HasField(self, field_name: typing.Literal["common_context", b"common_context", "enrichment", b"enrichment"]) -> builtins.bool: ...
+    def ClearField(self, field_name: typing.Literal["anonymous_id", b"anonymous_id", "common_context", b"common_context", "enrichment", b"enrichment", "event_id", b"event_id", "route", b"route"]) -> None: ...
+
+Global___DbtWizardAppRouteViewed: typing_extensions.TypeAlias = DbtWizardAppRouteViewed
+
+@typing.final
+class DbtWizardAppPanelOpened(google.protobuf.message.Message):
+    """Emitted when the Wizard desktop app opens a panel as the anonymous
+    behavioral counterpart of the WizardPanelOpened Amplitude event; distinct
+    from the CLI lifecycle telemetry in DbtWizardSession and DbtWizardTurn.
+    """
+
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
+    ENRICHMENT_FIELD_NUMBER: builtins.int
+    EVENT_ID_FIELD_NUMBER: builtins.int
+    ANONYMOUS_ID_FIELD_NUMBER: builtins.int
+    SURFACE_FIELD_NUMBER: builtins.int
+    PANEL_FIELD_NUMBER: builtins.int
+    COMMON_CONTEXT_FIELD_NUMBER: builtins.int
+    event_id: builtins.str
+    anonymous_id: builtins.str
+    surface: builtins.str
+    panel: builtins.str
+    @property
+    def enrichment(self) -> dbtlabs.proto.public.v1.events.vortex_pb2.VortexMessageEnrichment: ...
+    @property
+    def common_context(self) -> dbtlabs.proto.public.v1.common.vortex_telemetry_contexts_pb2.VortexTelemetryCommonContext: ...
+    def __init__(
+        self,
+        *,
+        enrichment: dbtlabs.proto.public.v1.events.vortex_pb2.VortexMessageEnrichment | None = ...,
+        event_id: builtins.str = ...,
+        anonymous_id: builtins.str = ...,
+        surface: builtins.str = ...,
+        panel: builtins.str = ...,
+        common_context: dbtlabs.proto.public.v1.common.vortex_telemetry_contexts_pb2.VortexTelemetryCommonContext | None = ...,
+    ) -> None: ...
+    def HasField(self, field_name: typing.Literal["common_context", b"common_context", "enrichment", b"enrichment"]) -> builtins.bool: ...
+    def ClearField(self, field_name: typing.Literal["anonymous_id", b"anonymous_id", "common_context", b"common_context", "enrichment", b"enrichment", "event_id", b"event_id", "panel", b"panel", "surface", b"surface"]) -> None: ...
+
+Global___DbtWizardAppPanelOpened: typing_extensions.TypeAlias = DbtWizardAppPanelOpened
+
+@typing.final
+class DbtWizardAppWorktreeCreated(google.protobuf.message.Message):
+    """Emitted after the Wizard desktop app creates a worktree as the anonymous
+    behavioral counterpart of the WizardWorktreeCreated Amplitude event;
+    distinct from the CLI lifecycle telemetry in DbtWizardSession and
+    DbtWizardTurn.
+    """
+
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
+    ENRICHMENT_FIELD_NUMBER: builtins.int
+    EVENT_ID_FIELD_NUMBER: builtins.int
+    ANONYMOUS_ID_FIELD_NUMBER: builtins.int
+    COMMON_CONTEXT_FIELD_NUMBER: builtins.int
+    event_id: builtins.str
+    anonymous_id: builtins.str
+    @property
+    def enrichment(self) -> dbtlabs.proto.public.v1.events.vortex_pb2.VortexMessageEnrichment: ...
+    @property
+    def common_context(self) -> dbtlabs.proto.public.v1.common.vortex_telemetry_contexts_pb2.VortexTelemetryCommonContext: ...
+    def __init__(
+        self,
+        *,
+        enrichment: dbtlabs.proto.public.v1.events.vortex_pb2.VortexMessageEnrichment | None = ...,
+        event_id: builtins.str = ...,
+        anonymous_id: builtins.str = ...,
+        common_context: dbtlabs.proto.public.v1.common.vortex_telemetry_contexts_pb2.VortexTelemetryCommonContext | None = ...,
+    ) -> None: ...
+    def HasField(self, field_name: typing.Literal["common_context", b"common_context", "enrichment", b"enrichment"]) -> builtins.bool: ...
+    def ClearField(self, field_name: typing.Literal["anonymous_id", b"anonymous_id", "common_context", b"common_context", "enrichment", b"enrichment", "event_id", b"event_id"]) -> None: ...
+
+Global___DbtWizardAppWorktreeCreated: typing_extensions.TypeAlias = DbtWizardAppWorktreeCreated
+
+@typing.final
+class DbtWizardAppPrCreated(google.protobuf.message.Message):
+    """Emitted after the Wizard desktop app creates a pull request as the anonymous
+    behavioral counterpart of the WizardPrCreated Amplitude event; distinct
+    from the CLI lifecycle telemetry in DbtWizardSession and DbtWizardTurn.
+    """
+
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
+    ENRICHMENT_FIELD_NUMBER: builtins.int
+    EVENT_ID_FIELD_NUMBER: builtins.int
+    ANONYMOUS_ID_FIELD_NUMBER: builtins.int
+    DRAFT_FIELD_NUMBER: builtins.int
+    COMMON_CONTEXT_FIELD_NUMBER: builtins.int
+    event_id: builtins.str
+    anonymous_id: builtins.str
+    draft: builtins.bool
+    @property
+    def enrichment(self) -> dbtlabs.proto.public.v1.events.vortex_pb2.VortexMessageEnrichment: ...
+    @property
+    def common_context(self) -> dbtlabs.proto.public.v1.common.vortex_telemetry_contexts_pb2.VortexTelemetryCommonContext: ...
+    def __init__(
+        self,
+        *,
+        enrichment: dbtlabs.proto.public.v1.events.vortex_pb2.VortexMessageEnrichment | None = ...,
+        event_id: builtins.str = ...,
+        anonymous_id: builtins.str = ...,
+        draft: builtins.bool = ...,
+        common_context: dbtlabs.proto.public.v1.common.vortex_telemetry_contexts_pb2.VortexTelemetryCommonContext | None = ...,
+    ) -> None: ...
+    def HasField(self, field_name: typing.Literal["common_context", b"common_context", "enrichment", b"enrichment"]) -> builtins.bool: ...
+    def ClearField(self, field_name: typing.Literal["anonymous_id", b"anonymous_id", "common_context", b"common_context", "draft", b"draft", "enrichment", b"enrichment", "event_id", b"event_id"]) -> None: ...
+
+Global___DbtWizardAppPrCreated: typing_extensions.TypeAlias = DbtWizardAppPrCreated
+
+@typing.final
+class DbtWizardAppSettingChanged(google.protobuf.message.Message):
+    """Emitted when the Wizard desktop app changes a setting as the anonymous
+    behavioral counterpart of the WizardSettingChanged Amplitude event;
+    distinct from the CLI lifecycle telemetry in DbtWizardSession and
+    DbtWizardTurn.
+    """
+
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
+    ENRICHMENT_FIELD_NUMBER: builtins.int
+    EVENT_ID_FIELD_NUMBER: builtins.int
+    ANONYMOUS_ID_FIELD_NUMBER: builtins.int
+    SETTING_FIELD_NUMBER: builtins.int
+    COMMON_CONTEXT_FIELD_NUMBER: builtins.int
+    event_id: builtins.str
+    anonymous_id: builtins.str
+    setting: builtins.str
+    @property
+    def enrichment(self) -> dbtlabs.proto.public.v1.events.vortex_pb2.VortexMessageEnrichment: ...
+    @property
+    def common_context(self) -> dbtlabs.proto.public.v1.common.vortex_telemetry_contexts_pb2.VortexTelemetryCommonContext: ...
+    def __init__(
+        self,
+        *,
+        enrichment: dbtlabs.proto.public.v1.events.vortex_pb2.VortexMessageEnrichment | None = ...,
+        event_id: builtins.str = ...,
+        anonymous_id: builtins.str = ...,
+        setting: builtins.str = ...,
+        common_context: dbtlabs.proto.public.v1.common.vortex_telemetry_contexts_pb2.VortexTelemetryCommonContext | None = ...,
+    ) -> None: ...
+    def HasField(self, field_name: typing.Literal["common_context", b"common_context", "enrichment", b"enrichment"]) -> builtins.bool: ...
+    def ClearField(self, field_name: typing.Literal["anonymous_id", b"anonymous_id", "common_context", b"common_context", "enrichment", b"enrichment", "event_id", b"event_id", "setting", b"setting"]) -> None: ...
+
+Global___DbtWizardAppSettingChanged: typing_extensions.TypeAlias = DbtWizardAppSettingChanged
+
+@typing.final
+class DbtWizardAppSessionStarted(google.protobuf.message.Message):
+    """Emitted when the Wizard desktop app starts a user-visible session as the
+    anonymous behavioral counterpart of the WizardSessionStarted Amplitude
+    event; distinct from the CLI lifecycle telemetry in DbtWizardSession and
+    DbtWizardTurn.
+    """
+
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
+    ENRICHMENT_FIELD_NUMBER: builtins.int
+    EVENT_ID_FIELD_NUMBER: builtins.int
+    ANONYMOUS_ID_FIELD_NUMBER: builtins.int
+    MODE_FIELD_NUMBER: builtins.int
+    PROVIDER_FIELD_NUMBER: builtins.int
+    MODEL_FIELD_NUMBER: builtins.int
+    COMMON_CONTEXT_FIELD_NUMBER: builtins.int
+    event_id: builtins.str
+    anonymous_id: builtins.str
+    mode: builtins.str
+    provider: builtins.str
+    model: builtins.str
+    @property
+    def enrichment(self) -> dbtlabs.proto.public.v1.events.vortex_pb2.VortexMessageEnrichment: ...
+    @property
+    def common_context(self) -> dbtlabs.proto.public.v1.common.vortex_telemetry_contexts_pb2.VortexTelemetryCommonContext: ...
+    def __init__(
+        self,
+        *,
+        enrichment: dbtlabs.proto.public.v1.events.vortex_pb2.VortexMessageEnrichment | None = ...,
+        event_id: builtins.str = ...,
+        anonymous_id: builtins.str = ...,
+        mode: builtins.str = ...,
+        provider: builtins.str = ...,
+        model: builtins.str = ...,
+        common_context: dbtlabs.proto.public.v1.common.vortex_telemetry_contexts_pb2.VortexTelemetryCommonContext | None = ...,
+    ) -> None: ...
+    def HasField(self, field_name: typing.Literal["common_context", b"common_context", "enrichment", b"enrichment"]) -> builtins.bool: ...
+    def ClearField(self, field_name: typing.Literal["anonymous_id", b"anonymous_id", "common_context", b"common_context", "enrichment", b"enrichment", "event_id", b"event_id", "mode", b"mode", "model", b"model", "provider", b"provider"]) -> None: ...
+
+Global___DbtWizardAppSessionStarted: typing_extensions.TypeAlias = DbtWizardAppSessionStarted
+
+@typing.final
+class DbtWizardAppMessageSent(google.protobuf.message.Message):
+    """Emitted when the Wizard desktop app accepts a user message as the anonymous
+    behavioral counterpart of the WizardMessageSent Amplitude event; distinct
+    from the CLI lifecycle telemetry in DbtWizardSession and DbtWizardTurn.
+    """
+
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
+    ENRICHMENT_FIELD_NUMBER: builtins.int
+    EVENT_ID_FIELD_NUMBER: builtins.int
+    ANONYMOUS_ID_FIELD_NUMBER: builtins.int
+    COMMON_CONTEXT_FIELD_NUMBER: builtins.int
+    event_id: builtins.str
+    anonymous_id: builtins.str
+    @property
+    def enrichment(self) -> dbtlabs.proto.public.v1.events.vortex_pb2.VortexMessageEnrichment: ...
+    @property
+    def common_context(self) -> dbtlabs.proto.public.v1.common.vortex_telemetry_contexts_pb2.VortexTelemetryCommonContext: ...
+    def __init__(
+        self,
+        *,
+        enrichment: dbtlabs.proto.public.v1.events.vortex_pb2.VortexMessageEnrichment | None = ...,
+        event_id: builtins.str = ...,
+        anonymous_id: builtins.str = ...,
+        common_context: dbtlabs.proto.public.v1.common.vortex_telemetry_contexts_pb2.VortexTelemetryCommonContext | None = ...,
+    ) -> None: ...
+    def HasField(self, field_name: typing.Literal["common_context", b"common_context", "enrichment", b"enrichment"]) -> builtins.bool: ...
+    def ClearField(self, field_name: typing.Literal["anonymous_id", b"anonymous_id", "common_context", b"common_context", "enrichment", b"enrichment", "event_id", b"event_id"]) -> None: ...
+
+Global___DbtWizardAppMessageSent: typing_extensions.TypeAlias = DbtWizardAppMessageSent
