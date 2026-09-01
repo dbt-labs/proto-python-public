@@ -893,6 +893,99 @@ class DbtWizardPermissionMode(google.protobuf.message.Message):
 Global___DbtWizardPermissionMode: typing_extensions.TypeAlias = DbtWizardPermissionMode
 
 @typing.final
+class DbtWizardProviderValidation(google.protobuf.message.Message):
+    """Emitted on every model-provider credential validation probe, from both the
+    onboarding flow and the settings flow, plus a follow-up event when the user
+    dismisses a failure and proceeds anyway.
+    """
+
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
+    ENRICHMENT_FIELD_NUMBER: builtins.int
+    EVENT_ID_FIELD_NUMBER: builtins.int
+    USER_ID_FIELD_NUMBER: builtins.int
+    ACCOUNT_ID_FIELD_NUMBER: builtins.int
+    ACCOUNT_IDENTIFIER_FIELD_NUMBER: builtins.int
+    PROVIDER_FIELD_NUMBER: builtins.int
+    OUTCOME_FIELD_NUMBER: builtins.int
+    ERROR_CATEGORY_FIELD_NUMBER: builtins.int
+    FLOW_FIELD_NUMBER: builtins.int
+    CONTINUED_ANYWAY_FIELD_NUMBER: builtins.int
+    VERSION_FIELD_NUMBER: builtins.int
+    OS_FIELD_NUMBER: builtins.int
+    ARCH_FIELD_NUMBER: builtins.int
+    IS_WIZARD_INTERNAL_FIELD_NUMBER: builtins.int
+    ANONYMOUS_ID_FIELD_NUMBER: builtins.int
+    COMMON_CONTEXT_FIELD_NUMBER: builtins.int
+    event_id: builtins.str
+    """Unique identifier for this event."""
+    user_id: builtins.str
+    """Authenticated dbt Cloud user ID (JWT sub claim); falls back to anonymous
+    UUID from ~/.dbt/.user.yml when unauthenticated.
+    """
+    account_id: builtins.str
+    """Numeric dbt Cloud account ID (from JWT claims or dbt_cloud.yml)."""
+    account_identifier: builtins.str
+    """Global dbt Cloud account identifier slug (from /api/v2/accounts/{id}/)."""
+    provider: builtins.str
+    """Provider id: "anthropic", "openai", "azure", "bedrock", "gemini",
+    "snowflake", "databricks", "dbt".
+    """
+    outcome: builtins.str
+    """Validation outcome: "success" or "failure"."""
+    error_category: builtins.str
+    """On failure: "auth_invalid", "network_error", "rate_limited",
+    "endpoint_invalid", "model_not_available", or "unknown". Empty on success.
+    """
+    flow: builtins.str
+    """Which UI surface fired the validation: "onboarding" or "settings"."""
+    continued_anyway: builtins.bool
+    """True when the user dismissed the failure inline and proceeded anyway.
+    Always false on success and on the initial failure event; the follow-up
+    event with continued_anyway = true is what signals the user's choice.
+    """
+    version: builtins.str
+    """dbt-wizard binary version."""
+    os: builtins.str
+    """Operating system: "macos", "linux", "windows"."""
+    arch: builtins.str
+    """CPU architecture: "aarch64", "x86_64"."""
+    is_wizard_internal: builtins.bool
+    """Whether the WIZARD_INTERNAL env var was set for this session."""
+    anonymous_id: builtins.str
+    """The anonymous UUID from ~/.dbt/.user.yml. Always populated regardless of
+    auth state, enabling a join between pre-auth and post-auth events.
+    """
+    @property
+    def enrichment(self) -> dbtlabs.proto.public.v1.events.vortex_pb2.VortexMessageEnrichment: ...
+    @property
+    def common_context(self) -> dbtlabs.proto.public.v1.common.vortex_telemetry_contexts_pb2.VortexTelemetryCommonContext: ...
+    def __init__(
+        self,
+        *,
+        enrichment: dbtlabs.proto.public.v1.events.vortex_pb2.VortexMessageEnrichment | None = ...,
+        event_id: builtins.str = ...,
+        user_id: builtins.str = ...,
+        account_id: builtins.str = ...,
+        account_identifier: builtins.str = ...,
+        provider: builtins.str = ...,
+        outcome: builtins.str = ...,
+        error_category: builtins.str = ...,
+        flow: builtins.str = ...,
+        continued_anyway: builtins.bool = ...,
+        version: builtins.str = ...,
+        os: builtins.str = ...,
+        arch: builtins.str = ...,
+        is_wizard_internal: builtins.bool = ...,
+        anonymous_id: builtins.str = ...,
+        common_context: dbtlabs.proto.public.v1.common.vortex_telemetry_contexts_pb2.VortexTelemetryCommonContext | None = ...,
+    ) -> None: ...
+    def HasField(self, field_name: typing.Literal["common_context", b"common_context", "enrichment", b"enrichment"]) -> builtins.bool: ...
+    def ClearField(self, field_name: typing.Literal["account_id", b"account_id", "account_identifier", b"account_identifier", "anonymous_id", b"anonymous_id", "arch", b"arch", "common_context", b"common_context", "continued_anyway", b"continued_anyway", "enrichment", b"enrichment", "error_category", b"error_category", "event_id", b"event_id", "flow", b"flow", "is_wizard_internal", b"is_wizard_internal", "os", b"os", "outcome", b"outcome", "provider", b"provider", "user_id", b"user_id", "version", b"version"]) -> None: ...
+
+Global___DbtWizardProviderValidation: typing_extensions.TypeAlias = DbtWizardProviderValidation
+
+@typing.final
 class DbtWizardAppOpened(google.protobuf.message.Message):
     """Emitted when the Wizard desktop app opens as the anonymous behavioral
     counterpart of the WizardAppOpened Amplitude event; distinct from the CLI
