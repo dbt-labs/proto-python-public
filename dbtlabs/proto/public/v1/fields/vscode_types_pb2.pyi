@@ -455,6 +455,10 @@ class _QueryOriginEnumTypeWrapper(google.protobuf.internal.enum_type_wrapper._En
     """Triggered by Preview File on a model/SQL file."""
     QUERY_ORIGIN_PREVIEW_CTE: _QueryOrigin.ValueType  # 2
     """Triggered by Preview CTE within a model."""
+    QUERY_ORIGIN_PREVIEW_SELECTION: _QueryOrigin.ValueType  # 3
+    """Triggered by Preview on a user-selected SQL fragment rather than the
+    whole file. Both paths run through the single dbt.previewFile command.
+    """
 
 class QueryOrigin(_QueryOrigin, metaclass=_QueryOriginEnumTypeWrapper):
     """Which entry point initiated a Query Results panel query."""
@@ -464,6 +468,10 @@ QUERY_ORIGIN_PREVIEW_FILE: QueryOrigin.ValueType  # 1
 """Triggered by Preview File on a model/SQL file."""
 QUERY_ORIGIN_PREVIEW_CTE: QueryOrigin.ValueType  # 2
 """Triggered by Preview CTE within a model."""
+QUERY_ORIGIN_PREVIEW_SELECTION: QueryOrigin.ValueType  # 3
+"""Triggered by Preview on a user-selected SQL fragment rather than the
+whole file. Both paths run through the single dbt.previewFile command.
+"""
 Global___QueryOrigin: typing_extensions.TypeAlias = QueryOrigin
 
 class _QueryResultInteractionType:
@@ -603,6 +611,155 @@ OAUTH_SESSION_FILE_ACTION_AT_ACTIVATION_NO_ACTION: OAuthSessionFileActionAtActiv
 OAUTH_SESSION_FILE_ACTION_AT_ACTIVATION_WRONG_VERSION: OAuthSessionFileActionAtActivation.ValueType  # 5
 """File present with a newer schema version; we refused to read or overwrite it."""
 Global___OAuthSessionFileActionAtActivation: typing_extensions.TypeAlias = OAuthSessionFileActionAtActivation
+
+class _LspResourceType:
+    ValueType = typing.NewType("ValueType", builtins.int)
+    V: typing_extensions.TypeAlias = ValueType
+
+class _LspResourceTypeEnumTypeWrapper(google.protobuf.internal.enum_type_wrapper._EnumTypeWrapper[_LspResourceType.ValueType], builtins.type):
+    DESCRIPTOR: google.protobuf.descriptor.EnumDescriptor
+    LSP_RESOURCE_TYPE_UNSPECIFIED: _LspResourceType.ValueType  # 0
+    LSP_RESOURCE_TYPE_MODEL: _LspResourceType.ValueType  # 1
+    LSP_RESOURCE_TYPE_SOURCE: _LspResourceType.ValueType  # 2
+    LSP_RESOURCE_TYPE_MACRO: _LspResourceType.ValueType  # 3
+    LSP_RESOURCE_TYPE_DOC_BLOCK: _LspResourceType.ValueType  # 4
+    LSP_RESOURCE_TYPE_SEED: _LspResourceType.ValueType  # 5
+    LSP_RESOURCE_TYPE_SNAPSHOT: _LspResourceType.ValueType  # 6
+    LSP_RESOURCE_TYPE_TEST: _LspResourceType.ValueType  # 7
+    LSP_RESOURCE_TYPE_UNKNOWN: _LspResourceType.ValueType  # 8
+    """Target did not match any known convention."""
+
+class LspResourceType(_LspResourceType, metaclass=_LspResourceTypeEnumTypeWrapper):
+    """What a language-feature request resolved to. Classified on the client from
+    the target file path, because getProjectInfo does not expose model-paths or
+    macro-paths. Projects that rename the conventional directories land in
+    LSP_RESOURCE_TYPE_UNKNOWN.
+    """
+
+LSP_RESOURCE_TYPE_UNSPECIFIED: LspResourceType.ValueType  # 0
+LSP_RESOURCE_TYPE_MODEL: LspResourceType.ValueType  # 1
+LSP_RESOURCE_TYPE_SOURCE: LspResourceType.ValueType  # 2
+LSP_RESOURCE_TYPE_MACRO: LspResourceType.ValueType  # 3
+LSP_RESOURCE_TYPE_DOC_BLOCK: LspResourceType.ValueType  # 4
+LSP_RESOURCE_TYPE_SEED: LspResourceType.ValueType  # 5
+LSP_RESOURCE_TYPE_SNAPSHOT: LspResourceType.ValueType  # 6
+LSP_RESOURCE_TYPE_TEST: LspResourceType.ValueType  # 7
+LSP_RESOURCE_TYPE_UNKNOWN: LspResourceType.ValueType  # 8
+"""Target did not match any known convention."""
+Global___LspResourceType: typing_extensions.TypeAlias = LspResourceType
+
+class _CompletionCategory:
+    ValueType = typing.NewType("ValueType", builtins.int)
+    V: typing_extensions.TypeAlias = ValueType
+
+class _CompletionCategoryEnumTypeWrapper(google.protobuf.internal.enum_type_wrapper._EnumTypeWrapper[_CompletionCategory.ValueType], builtins.type):
+    DESCRIPTOR: google.protobuf.descriptor.EnumDescriptor
+    COMPLETION_CATEGORY_UNSPECIFIED: _CompletionCategory.ValueType  # 0
+    COMPLETION_CATEGORY_MODEL_REF: _CompletionCategory.ValueType  # 1
+    COMPLETION_CATEGORY_SOURCE: _CompletionCategory.ValueType  # 2
+    COMPLETION_CATEGORY_MACRO: _CompletionCategory.ValueType  # 3
+    COMPLETION_CATEGORY_DOC_BLOCK: _CompletionCategory.ValueType  # 4
+    COMPLETION_CATEGORY_WAREHOUSE_FUNCTION: _CompletionCategory.ValueType  # 5
+    COMPLETION_CATEGORY_JINJA_SNIPPET: _CompletionCategory.ValueType  # 6
+    COMPLETION_CATEGORY_COLUMN_FIELD: _CompletionCategory.ValueType  # 7
+    COMPLETION_CATEGORY_OTHER: _CompletionCategory.ValueType  # 8
+
+class CompletionCategory(_CompletionCategory, metaclass=_CompletionCategoryEnumTypeWrapper):
+    """Which kind of completion the user accepted. Derived on the client from the
+    CompletionItemKind plus the item's `detail`; the raw `detail` string is never
+    transmitted because it embeds source names.
+    """
+
+COMPLETION_CATEGORY_UNSPECIFIED: CompletionCategory.ValueType  # 0
+COMPLETION_CATEGORY_MODEL_REF: CompletionCategory.ValueType  # 1
+COMPLETION_CATEGORY_SOURCE: CompletionCategory.ValueType  # 2
+COMPLETION_CATEGORY_MACRO: CompletionCategory.ValueType  # 3
+COMPLETION_CATEGORY_DOC_BLOCK: CompletionCategory.ValueType  # 4
+COMPLETION_CATEGORY_WAREHOUSE_FUNCTION: CompletionCategory.ValueType  # 5
+COMPLETION_CATEGORY_JINJA_SNIPPET: CompletionCategory.ValueType  # 6
+COMPLETION_CATEGORY_COLUMN_FIELD: CompletionCategory.ValueType  # 7
+COMPLETION_CATEGORY_OTHER: CompletionCategory.ValueType  # 8
+Global___CompletionCategory: typing_extensions.TypeAlias = CompletionCategory
+
+class _DbtCommandKind:
+    ValueType = typing.NewType("ValueType", builtins.int)
+    V: typing_extensions.TypeAlias = ValueType
+
+class _DbtCommandKindEnumTypeWrapper(google.protobuf.internal.enum_type_wrapper._EnumTypeWrapper[_DbtCommandKind.ValueType], builtins.type):
+    DESCRIPTOR: google.protobuf.descriptor.EnumDescriptor
+    DBT_COMMAND_KIND_UNSPECIFIED: _DbtCommandKind.ValueType  # 0
+    DBT_COMMAND_KIND_RUN: _DbtCommandKind.ValueType  # 1
+    DBT_COMMAND_KIND_BUILD: _DbtCommandKind.ValueType  # 2
+    DBT_COMMAND_KIND_TEST: _DbtCommandKind.ValueType  # 3
+    DBT_COMMAND_KIND_CLEAN: _DbtCommandKind.ValueType  # 4
+    DBT_COMMAND_KIND_DEPS: _DbtCommandKind.ValueType  # 5
+
+class DbtCommandKind(_DbtCommandKind, metaclass=_DbtCommandKindEnumTypeWrapper):
+    """Which dbt sub-command a run/build/test invocation launched."""
+
+DBT_COMMAND_KIND_UNSPECIFIED: DbtCommandKind.ValueType  # 0
+DBT_COMMAND_KIND_RUN: DbtCommandKind.ValueType  # 1
+DBT_COMMAND_KIND_BUILD: DbtCommandKind.ValueType  # 2
+DBT_COMMAND_KIND_TEST: DbtCommandKind.ValueType  # 3
+DBT_COMMAND_KIND_CLEAN: DbtCommandKind.ValueType  # 4
+DBT_COMMAND_KIND_DEPS: DbtCommandKind.ValueType  # 5
+Global___DbtCommandKind: typing_extensions.TypeAlias = DbtCommandKind
+
+class _DbtCommandOutcome:
+    ValueType = typing.NewType("ValueType", builtins.int)
+    V: typing_extensions.TypeAlias = ValueType
+
+class _DbtCommandOutcomeEnumTypeWrapper(google.protobuf.internal.enum_type_wrapper._EnumTypeWrapper[_DbtCommandOutcome.ValueType], builtins.type):
+    DESCRIPTOR: google.protobuf.descriptor.EnumDescriptor
+    DBT_COMMAND_OUTCOME_UNSPECIFIED: _DbtCommandOutcome.ValueType  # 0
+    DBT_COMMAND_OUTCOME_SUCCEEDED: _DbtCommandOutcome.ValueType  # 1
+    DBT_COMMAND_OUTCOME_FAILED: _DbtCommandOutcome.ValueType  # 2
+    DBT_COMMAND_OUTCOME_CANCELLED: _DbtCommandOutcome.ValueType  # 3
+    """The user abandoned a task that had already launched."""
+    DBT_COMMAND_OUTCOME_SKIPPED: _DbtCommandOutcome.ValueType  # 4
+    """The task layer refused the invocation and nothing ever launched -- e.g.
+    no active editor, or a file outside any dbt project. Distinct from
+    CANCELLED: this is the extension declining, not the user abandoning, and
+    conflating them would make "how often do users abandon runs"
+    indistinguishable from "how often did we fail to resolve a project".
+    """
+
+class DbtCommandOutcome(_DbtCommandOutcome, metaclass=_DbtCommandOutcomeEnumTypeWrapper):
+    """How a dbt command invocation ended. CANCELLED corresponds to an undefined
+    exit code (cancelled or never launched), which has no int32 representation.
+    """
+
+DBT_COMMAND_OUTCOME_UNSPECIFIED: DbtCommandOutcome.ValueType  # 0
+DBT_COMMAND_OUTCOME_SUCCEEDED: DbtCommandOutcome.ValueType  # 1
+DBT_COMMAND_OUTCOME_FAILED: DbtCommandOutcome.ValueType  # 2
+DBT_COMMAND_OUTCOME_CANCELLED: DbtCommandOutcome.ValueType  # 3
+"""The user abandoned a task that had already launched."""
+DBT_COMMAND_OUTCOME_SKIPPED: DbtCommandOutcome.ValueType  # 4
+"""The task layer refused the invocation and nothing ever launched -- e.g.
+no active editor, or a file outside any dbt project. Distinct from
+CANCELLED: this is the extension declining, not the user abandoning, and
+conflating them would make "how often do users abandon runs"
+indistinguishable from "how often did we fail to resolve a project".
+"""
+Global___DbtCommandOutcome: typing_extensions.TypeAlias = DbtCommandOutcome
+
+class _DbtCommandScope:
+    ValueType = typing.NewType("ValueType", builtins.int)
+    V: typing_extensions.TypeAlias = ValueType
+
+class _DbtCommandScopeEnumTypeWrapper(google.protobuf.internal.enum_type_wrapper._EnumTypeWrapper[_DbtCommandScope.ValueType], builtins.type):
+    DESCRIPTOR: google.protobuf.descriptor.EnumDescriptor
+    DBT_COMMAND_SCOPE_UNSPECIFIED: _DbtCommandScope.ValueType  # 0
+    DBT_COMMAND_SCOPE_MODEL: _DbtCommandScope.ValueType  # 1
+    DBT_COMMAND_SCOPE_PROJECT: _DbtCommandScope.ValueType  # 2
+
+class DbtCommandScope(_DbtCommandScope, metaclass=_DbtCommandScopeEnumTypeWrapper):
+    """Whether a dbt command targeted a single model or the whole project."""
+
+DBT_COMMAND_SCOPE_UNSPECIFIED: DbtCommandScope.ValueType  # 0
+DBT_COMMAND_SCOPE_MODEL: DbtCommandScope.ValueType  # 1
+DBT_COMMAND_SCOPE_PROJECT: DbtCommandScope.ValueType  # 2
+Global___DbtCommandScope: typing_extensions.TypeAlias = DbtCommandScope
 
 @typing.final
 class User(google.protobuf.message.Message):

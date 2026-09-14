@@ -42,6 +42,7 @@ class ExtensionActivated(google.protobuf.message.Message):
     ADAPTER_TYPE_FIELD_NUMBER: builtins.int
     OAUTH_SESSION_FILE_ACTION_FIELD_NUMBER: builtins.int
     COMMON_CONTEXT_FIELD_NUMBER: builtins.int
+    V1_COMPAT_ACTIVE_FIELD_NUMBER: builtins.int
     os_name: builtins.str
     """os name"""
     os_version: builtins.str
@@ -68,6 +69,11 @@ class ExtensionActivated(google.protobuf.message.Message):
     """the type of adapter used in the project (snowflake, bigquery, etc)"""
     oauth_session_file_action: dbtlabs.proto.public.v1.fields.vscode_types_pb2.OAuthSessionFileActionAtActivation.ValueType
     """Outcome of OAuth session file load at activation."""
+    v1_compat_active: builtins.bool
+    """True when this workspace is running in dbt v1 compatibility mode. The
+    V1CompatPrompt* events only fire at detection time, so without this the
+    in-mode population is uncountable after the first session.
+    """
     @property
     def enrichment(self) -> dbtlabs.proto.public.v1.events.vortex_pb2.VortexMessageEnrichment: ...
     @property
@@ -96,9 +102,10 @@ class ExtensionActivated(google.protobuf.message.Message):
         adapter_type: builtins.str = ...,
         oauth_session_file_action: dbtlabs.proto.public.v1.fields.vscode_types_pb2.OAuthSessionFileActionAtActivation.ValueType = ...,
         common_context: dbtlabs.proto.public.v1.common.vortex_telemetry_contexts_pb2.VortexTelemetryCommonContext | None = ...,
+        v1_compat_active: builtins.bool = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["common_context", b"common_context", "editor", b"editor", "enrichment", b"enrichment", "user", b"user"]) -> builtins.bool: ...
-    def ClearField(self, field_name: typing.Literal["adapter_type", b"adapter_type", "common_context", b"common_context", "dbt_local_cookie_user_id", b"dbt_local_cookie_user_id", "dbt_version", b"dbt_version", "editor", b"editor", "enrichment", b"enrichment", "init_duration_ms", b"init_duration_ms", "init_error", b"init_error", "init_error_detail", b"init_error_detail", "init_success", b"init_success", "is_fusion_installed", b"is_fusion_installed", "is_lsp_installed", b"is_lsp_installed", "models_count", b"models_count", "oauth_session_file_action", b"oauth_session_file_action", "os_name", b"os_name", "os_version", b"os_version", "user", b"user"]) -> None: ...
+    def ClearField(self, field_name: typing.Literal["adapter_type", b"adapter_type", "common_context", b"common_context", "dbt_local_cookie_user_id", b"dbt_local_cookie_user_id", "dbt_version", b"dbt_version", "editor", b"editor", "enrichment", b"enrichment", "init_duration_ms", b"init_duration_ms", "init_error", b"init_error", "init_error_detail", b"init_error_detail", "init_success", b"init_success", "is_fusion_installed", b"is_fusion_installed", "is_lsp_installed", b"is_lsp_installed", "models_count", b"models_count", "oauth_session_file_action", b"oauth_session_file_action", "os_name", b"os_name", "os_version", b"os_version", "user", b"user", "v1_compat_active", b"v1_compat_active"]) -> None: ...
 
 Global___ExtensionActivated: typing_extensions.TypeAlias = ExtensionActivated
 
@@ -1974,3 +1981,808 @@ class ExtensionOAuthSessionPersisted(google.protobuf.message.Message):
     def ClearField(self, field_name: typing.Literal["common_context", b"common_context", "dbt_local_cookie_user_id", b"dbt_local_cookie_user_id", "editor", b"editor", "enrichment", b"enrichment", "event_id", b"event_id", "is_first_write", b"is_first_write", "trigger", b"trigger", "user", b"user"]) -> None: ...
 
 Global___ExtensionOAuthSessionPersisted: typing_extensions.TypeAlias = ExtensionOAuthSessionPersisted
+
+@typing.final
+class ExtensionDefinitionResolved(google.protobuf.message.Message):
+    """The server resolved a definition request to a non-empty result. The emit seam
+    is the provideDefinition middleware, which cannot observe navigation: Peek
+    Definition, the hover card's definition link and the ctrl/cmd-hover underline
+    preview all resolve a definition without the user going anywhere. So this
+    counts delivered definition resolutions, not F12 navigations.
+    """
+
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
+    ENRICHMENT_FIELD_NUMBER: builtins.int
+    EDITOR_FIELD_NUMBER: builtins.int
+    USER_FIELD_NUMBER: builtins.int
+    DBT_LOCAL_COOKIE_USER_ID_FIELD_NUMBER: builtins.int
+    PROJECT_ID_FIELD_NUMBER: builtins.int
+    ADAPTER_TYPE_FIELD_NUMBER: builtins.int
+    TARGET_RESOURCE_TYPE_FIELD_NUMBER: builtins.int
+    COMMON_CONTEXT_FIELD_NUMBER: builtins.int
+    dbt_local_cookie_user_id: builtins.str
+    """the anonymous user id stored at ~/.dbt/.user.yml"""
+    project_id: builtins.str
+    """md5 hash of the dbt project name (anonymized); identifies which project in
+    a multi-root workspace this event came from
+    """
+    adapter_type: builtins.str
+    """the type of adapter used in the project (snowflake, bigquery, etc)"""
+    target_resource_type: dbtlabs.proto.public.v1.fields.vscode_types_pb2.LspResourceType.ValueType
+    @property
+    def enrichment(self) -> dbtlabs.proto.public.v1.events.vortex_pb2.VortexMessageEnrichment: ...
+    @property
+    def editor(self) -> dbtlabs.proto.public.v1.fields.vscode_types_pb2.Editor: ...
+    @property
+    def user(self) -> dbtlabs.proto.public.v1.fields.vscode_types_pb2.User: ...
+    @property
+    def common_context(self) -> dbtlabs.proto.public.v1.common.vortex_telemetry_contexts_pb2.VortexTelemetryCommonContext: ...
+    def __init__(
+        self,
+        *,
+        enrichment: dbtlabs.proto.public.v1.events.vortex_pb2.VortexMessageEnrichment | None = ...,
+        editor: dbtlabs.proto.public.v1.fields.vscode_types_pb2.Editor | None = ...,
+        user: dbtlabs.proto.public.v1.fields.vscode_types_pb2.User | None = ...,
+        dbt_local_cookie_user_id: builtins.str = ...,
+        project_id: builtins.str = ...,
+        adapter_type: builtins.str = ...,
+        target_resource_type: dbtlabs.proto.public.v1.fields.vscode_types_pb2.LspResourceType.ValueType = ...,
+        common_context: dbtlabs.proto.public.v1.common.vortex_telemetry_contexts_pb2.VortexTelemetryCommonContext | None = ...,
+    ) -> None: ...
+    def HasField(self, field_name: typing.Literal["common_context", b"common_context", "editor", b"editor", "enrichment", b"enrichment", "user", b"user"]) -> builtins.bool: ...
+    def ClearField(self, field_name: typing.Literal["adapter_type", b"adapter_type", "common_context", b"common_context", "dbt_local_cookie_user_id", b"dbt_local_cookie_user_id", "editor", b"editor", "enrichment", b"enrichment", "project_id", b"project_id", "target_resource_type", b"target_resource_type", "user", b"user"]) -> None: ...
+
+Global___ExtensionDefinitionResolved: typing_extensions.TypeAlias = ExtensionDefinitionResolved
+
+@typing.final
+class ExtensionReferencesViewed(google.protobuf.message.Message):
+    """User ran Find References and got at least one result."""
+
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
+    ENRICHMENT_FIELD_NUMBER: builtins.int
+    EDITOR_FIELD_NUMBER: builtins.int
+    USER_FIELD_NUMBER: builtins.int
+    DBT_LOCAL_COOKIE_USER_ID_FIELD_NUMBER: builtins.int
+    PROJECT_ID_FIELD_NUMBER: builtins.int
+    ADAPTER_TYPE_FIELD_NUMBER: builtins.int
+    TARGET_RESOURCE_TYPE_FIELD_NUMBER: builtins.int
+    REFERENCE_COUNT_FIELD_NUMBER: builtins.int
+    COMMON_CONTEXT_FIELD_NUMBER: builtins.int
+    dbt_local_cookie_user_id: builtins.str
+    """the anonymous user id stored at ~/.dbt/.user.yml"""
+    project_id: builtins.str
+    """md5 hash of the dbt project name (anonymized); identifies which project in
+    a multi-root workspace this event came from
+    """
+    adapter_type: builtins.str
+    """the type of adapter used in the project (snowflake, bigquery, etc)"""
+    target_resource_type: dbtlabs.proto.public.v1.fields.vscode_types_pb2.LspResourceType.ValueType
+    reference_count: builtins.int
+    """How many references were returned. A count, never the reference targets."""
+    @property
+    def enrichment(self) -> dbtlabs.proto.public.v1.events.vortex_pb2.VortexMessageEnrichment: ...
+    @property
+    def editor(self) -> dbtlabs.proto.public.v1.fields.vscode_types_pb2.Editor: ...
+    @property
+    def user(self) -> dbtlabs.proto.public.v1.fields.vscode_types_pb2.User: ...
+    @property
+    def common_context(self) -> dbtlabs.proto.public.v1.common.vortex_telemetry_contexts_pb2.VortexTelemetryCommonContext: ...
+    def __init__(
+        self,
+        *,
+        enrichment: dbtlabs.proto.public.v1.events.vortex_pb2.VortexMessageEnrichment | None = ...,
+        editor: dbtlabs.proto.public.v1.fields.vscode_types_pb2.Editor | None = ...,
+        user: dbtlabs.proto.public.v1.fields.vscode_types_pb2.User | None = ...,
+        dbt_local_cookie_user_id: builtins.str = ...,
+        project_id: builtins.str = ...,
+        adapter_type: builtins.str = ...,
+        target_resource_type: dbtlabs.proto.public.v1.fields.vscode_types_pb2.LspResourceType.ValueType = ...,
+        reference_count: builtins.int = ...,
+        common_context: dbtlabs.proto.public.v1.common.vortex_telemetry_contexts_pb2.VortexTelemetryCommonContext | None = ...,
+    ) -> None: ...
+    def HasField(self, field_name: typing.Literal["common_context", b"common_context", "editor", b"editor", "enrichment", b"enrichment", "user", b"user"]) -> builtins.bool: ...
+    def ClearField(self, field_name: typing.Literal["adapter_type", b"adapter_type", "common_context", b"common_context", "dbt_local_cookie_user_id", b"dbt_local_cookie_user_id", "editor", b"editor", "enrichment", b"enrichment", "project_id", b"project_id", "reference_count", b"reference_count", "target_resource_type", b"target_resource_type", "user", b"user"]) -> None: ...
+
+Global___ExtensionReferencesViewed: typing_extensions.TypeAlias = ExtensionReferencesViewed
+
+@typing.final
+class ExtensionHoverShown(google.protobuf.message.Message):
+    """The server returned hover content and the user saw it. Throttled client-side
+    to at most one event per document per 60 seconds, so this measures hover
+    sessions rather than raw hover count and its rate is NOT comparable to the
+    unthrottled definition/references events.
+    """
+
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
+    ENRICHMENT_FIELD_NUMBER: builtins.int
+    EDITOR_FIELD_NUMBER: builtins.int
+    USER_FIELD_NUMBER: builtins.int
+    DBT_LOCAL_COOKIE_USER_ID_FIELD_NUMBER: builtins.int
+    PROJECT_ID_FIELD_NUMBER: builtins.int
+    ADAPTER_TYPE_FIELD_NUMBER: builtins.int
+    DOCUMENT_RESOURCE_TYPE_FIELD_NUMBER: builtins.int
+    COMMON_CONTEXT_FIELD_NUMBER: builtins.int
+    dbt_local_cookie_user_id: builtins.str
+    """the anonymous user id stored at ~/.dbt/.user.yml"""
+    project_id: builtins.str
+    """md5 hash of the dbt project name (anonymized); identifies which project in
+    a multi-root workspace this event came from
+    """
+    adapter_type: builtins.str
+    """the type of adapter used in the project (snowflake, bigquery, etc)"""
+    document_resource_type: dbtlabs.proto.public.v1.fields.vscode_types_pb2.LspResourceType.ValueType
+    """The resource type of the DOCUMENT the user hovered in -- NOT of whatever
+    they hovered over. A `Hover` response carries no target location, so the
+    hovered symbol is unknowable at this seam. Deliberately named differently
+    from `target_resource_type` on ExtensionDefinitionResolved and
+    ExtensionReferencesViewed: those describe a navigation target, this
+    describes the file the cursor was in. Charting them together would
+    silently mix two meanings. Expect this to be dominated by MODEL.
+    """
+    @property
+    def enrichment(self) -> dbtlabs.proto.public.v1.events.vortex_pb2.VortexMessageEnrichment: ...
+    @property
+    def editor(self) -> dbtlabs.proto.public.v1.fields.vscode_types_pb2.Editor: ...
+    @property
+    def user(self) -> dbtlabs.proto.public.v1.fields.vscode_types_pb2.User: ...
+    @property
+    def common_context(self) -> dbtlabs.proto.public.v1.common.vortex_telemetry_contexts_pb2.VortexTelemetryCommonContext: ...
+    def __init__(
+        self,
+        *,
+        enrichment: dbtlabs.proto.public.v1.events.vortex_pb2.VortexMessageEnrichment | None = ...,
+        editor: dbtlabs.proto.public.v1.fields.vscode_types_pb2.Editor | None = ...,
+        user: dbtlabs.proto.public.v1.fields.vscode_types_pb2.User | None = ...,
+        dbt_local_cookie_user_id: builtins.str = ...,
+        project_id: builtins.str = ...,
+        adapter_type: builtins.str = ...,
+        document_resource_type: dbtlabs.proto.public.v1.fields.vscode_types_pb2.LspResourceType.ValueType = ...,
+        common_context: dbtlabs.proto.public.v1.common.vortex_telemetry_contexts_pb2.VortexTelemetryCommonContext | None = ...,
+    ) -> None: ...
+    def HasField(self, field_name: typing.Literal["common_context", b"common_context", "editor", b"editor", "enrichment", b"enrichment", "user", b"user"]) -> builtins.bool: ...
+    def ClearField(self, field_name: typing.Literal["adapter_type", b"adapter_type", "common_context", b"common_context", "dbt_local_cookie_user_id", b"dbt_local_cookie_user_id", "document_resource_type", b"document_resource_type", "editor", b"editor", "enrichment", b"enrichment", "project_id", b"project_id", "user", b"user"]) -> None: ...
+
+Global___ExtensionHoverShown: typing_extensions.TypeAlias = ExtensionHoverShown
+
+@typing.final
+class ExtensionCompletionAccepted(google.protobuf.message.Message):
+    """User accepted a completion item. Counted on acceptance, not on every
+    suggestion list, so this measures value delivered rather than keystrokes.
+    """
+
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
+    ENRICHMENT_FIELD_NUMBER: builtins.int
+    EDITOR_FIELD_NUMBER: builtins.int
+    USER_FIELD_NUMBER: builtins.int
+    DBT_LOCAL_COOKIE_USER_ID_FIELD_NUMBER: builtins.int
+    PROJECT_ID_FIELD_NUMBER: builtins.int
+    ADAPTER_TYPE_FIELD_NUMBER: builtins.int
+    COMPLETION_CATEGORY_FIELD_NUMBER: builtins.int
+    COMMON_CONTEXT_FIELD_NUMBER: builtins.int
+    dbt_local_cookie_user_id: builtins.str
+    """the anonymous user id stored at ~/.dbt/.user.yml"""
+    project_id: builtins.str
+    """md5 hash of the dbt project name (anonymized); identifies which project in
+    a multi-root workspace this event came from
+    """
+    adapter_type: builtins.str
+    """the type of adapter used in the project (snowflake, bigquery, etc)"""
+    completion_category: dbtlabs.proto.public.v1.fields.vscode_types_pb2.CompletionCategory.ValueType
+    @property
+    def enrichment(self) -> dbtlabs.proto.public.v1.events.vortex_pb2.VortexMessageEnrichment: ...
+    @property
+    def editor(self) -> dbtlabs.proto.public.v1.fields.vscode_types_pb2.Editor: ...
+    @property
+    def user(self) -> dbtlabs.proto.public.v1.fields.vscode_types_pb2.User: ...
+    @property
+    def common_context(self) -> dbtlabs.proto.public.v1.common.vortex_telemetry_contexts_pb2.VortexTelemetryCommonContext: ...
+    def __init__(
+        self,
+        *,
+        enrichment: dbtlabs.proto.public.v1.events.vortex_pb2.VortexMessageEnrichment | None = ...,
+        editor: dbtlabs.proto.public.v1.fields.vscode_types_pb2.Editor | None = ...,
+        user: dbtlabs.proto.public.v1.fields.vscode_types_pb2.User | None = ...,
+        dbt_local_cookie_user_id: builtins.str = ...,
+        project_id: builtins.str = ...,
+        adapter_type: builtins.str = ...,
+        completion_category: dbtlabs.proto.public.v1.fields.vscode_types_pb2.CompletionCategory.ValueType = ...,
+        common_context: dbtlabs.proto.public.v1.common.vortex_telemetry_contexts_pb2.VortexTelemetryCommonContext | None = ...,
+    ) -> None: ...
+    def HasField(self, field_name: typing.Literal["common_context", b"common_context", "editor", b"editor", "enrichment", b"enrichment", "user", b"user"]) -> builtins.bool: ...
+    def ClearField(self, field_name: typing.Literal["adapter_type", b"adapter_type", "common_context", b"common_context", "completion_category", b"completion_category", "dbt_local_cookie_user_id", b"dbt_local_cookie_user_id", "editor", b"editor", "enrichment", b"enrichment", "project_id", b"project_id", "user", b"user"]) -> None: ...
+
+Global___ExtensionCompletionAccepted: typing_extensions.TypeAlias = ExtensionCompletionAccepted
+
+@typing.final
+class ExtensionDiagnosticsChanged(google.protobuf.message.Message):
+    """The set of diagnostics for a file changed. Emitted on a change of the count
+    signature, not once per publish and not once per diagnostic, and emitted on
+    clear as well as on appear so time-to-resolve is answerable. A row with all
+    four counts at zero means diagnostics were resolved for that file, so rows are
+    not a count of users hitting errors. Counts are bucketed from the numeric dbt
+    error code; no diagnostic message is ever sent. The four counts partition, so
+    each diagnostic increments exactly one and they can be summed without
+    double-counting.
+    """
+
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
+    ENRICHMENT_FIELD_NUMBER: builtins.int
+    EDITOR_FIELD_NUMBER: builtins.int
+    USER_FIELD_NUMBER: builtins.int
+    DBT_LOCAL_COOKIE_USER_ID_FIELD_NUMBER: builtins.int
+    PROJECT_ID_FIELD_NUMBER: builtins.int
+    ADAPTER_TYPE_FIELD_NUMBER: builtins.int
+    SQL_SYNTAX_ERROR_COUNT_FIELD_NUMBER: builtins.int
+    JINJA_ERROR_COUNT_FIELD_NUMBER: builtins.int
+    OTHER_ERROR_COUNT_FIELD_NUMBER: builtins.int
+    WARNING_COUNT_FIELD_NUMBER: builtins.int
+    COMMON_CONTEXT_FIELD_NUMBER: builtins.int
+    dbt_local_cookie_user_id: builtins.str
+    """the anonymous user id stored at ~/.dbt/.user.yml"""
+    project_id: builtins.str
+    """md5 hash of the dbt project name (anonymized); identifies which project in
+    a multi-root workspace this event came from
+    """
+    adapter_type: builtins.str
+    """the type of adapter used in the project (snowflake, bigquery, etc)"""
+    sql_syntax_error_count: builtins.int
+    """Error-severity diagnostics carrying dbt code 1302 (DbSyntaxInvalid) or
+    1070 (BaselineIntrospectionSyntaxInvalid).
+    """
+    jinja_error_count: builtins.int
+    """Error-severity diagnostics carrying a Jinja dbt code: 1501 (JinjaError),
+    1502 (MacroSyntaxInvalid), 1507 (JinjaTypeCheckFailed), 1508
+    (JinjaTopLevelReturn), 1074 (JinjaWarnUpgradedToError). Codes are consulted
+    only at error severity, so a plain Jinja warning (1071 JinjaWarn) is
+    counted in warning_count, not here.
+    """
+    other_error_count: builtins.int
+    """Error-severity diagnostics carrying any other dbt code."""
+    warning_count: builtins.int
+    """Warning-severity diagnostics whatever their code, including Jinja and SQL
+    warnings.
+    """
+    @property
+    def enrichment(self) -> dbtlabs.proto.public.v1.events.vortex_pb2.VortexMessageEnrichment: ...
+    @property
+    def editor(self) -> dbtlabs.proto.public.v1.fields.vscode_types_pb2.Editor: ...
+    @property
+    def user(self) -> dbtlabs.proto.public.v1.fields.vscode_types_pb2.User: ...
+    @property
+    def common_context(self) -> dbtlabs.proto.public.v1.common.vortex_telemetry_contexts_pb2.VortexTelemetryCommonContext: ...
+    def __init__(
+        self,
+        *,
+        enrichment: dbtlabs.proto.public.v1.events.vortex_pb2.VortexMessageEnrichment | None = ...,
+        editor: dbtlabs.proto.public.v1.fields.vscode_types_pb2.Editor | None = ...,
+        user: dbtlabs.proto.public.v1.fields.vscode_types_pb2.User | None = ...,
+        dbt_local_cookie_user_id: builtins.str = ...,
+        project_id: builtins.str = ...,
+        adapter_type: builtins.str = ...,
+        sql_syntax_error_count: builtins.int = ...,
+        jinja_error_count: builtins.int = ...,
+        other_error_count: builtins.int = ...,
+        warning_count: builtins.int = ...,
+        common_context: dbtlabs.proto.public.v1.common.vortex_telemetry_contexts_pb2.VortexTelemetryCommonContext | None = ...,
+    ) -> None: ...
+    def HasField(self, field_name: typing.Literal["common_context", b"common_context", "editor", b"editor", "enrichment", b"enrichment", "user", b"user"]) -> builtins.bool: ...
+    def ClearField(self, field_name: typing.Literal["adapter_type", b"adapter_type", "common_context", b"common_context", "dbt_local_cookie_user_id", b"dbt_local_cookie_user_id", "editor", b"editor", "enrichment", b"enrichment", "jinja_error_count", b"jinja_error_count", "other_error_count", b"other_error_count", "project_id", b"project_id", "sql_syntax_error_count", b"sql_syntax_error_count", "user", b"user", "warning_count", b"warning_count"]) -> None: ...
+
+Global___ExtensionDiagnosticsChanged: typing_extensions.TypeAlias = ExtensionDiagnosticsChanged
+
+@typing.final
+class ExtensionRestartLsp(google.protobuf.message.Message):
+    """User restarted the dbt LSP for a specific project (dbt.restartLsp)."""
+
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
+    ENRICHMENT_FIELD_NUMBER: builtins.int
+    EDITOR_FIELD_NUMBER: builtins.int
+    USER_FIELD_NUMBER: builtins.int
+    DBT_LOCAL_COOKIE_USER_ID_FIELD_NUMBER: builtins.int
+    PROJECT_ID_FIELD_NUMBER: builtins.int
+    ADAPTER_TYPE_FIELD_NUMBER: builtins.int
+    COMMON_CONTEXT_FIELD_NUMBER: builtins.int
+    dbt_local_cookie_user_id: builtins.str
+    """the anonymous user id stored at ~/.dbt/.user.yml"""
+    project_id: builtins.str
+    """md5 hash of the dbt project name (anonymized); identifies which project in
+    a multi-root workspace this event came from
+    """
+    adapter_type: builtins.str
+    """the type of adapter used in the project (snowflake, bigquery, etc)"""
+    @property
+    def enrichment(self) -> dbtlabs.proto.public.v1.events.vortex_pb2.VortexMessageEnrichment: ...
+    @property
+    def editor(self) -> dbtlabs.proto.public.v1.fields.vscode_types_pb2.Editor: ...
+    @property
+    def user(self) -> dbtlabs.proto.public.v1.fields.vscode_types_pb2.User: ...
+    @property
+    def common_context(self) -> dbtlabs.proto.public.v1.common.vortex_telemetry_contexts_pb2.VortexTelemetryCommonContext: ...
+    def __init__(
+        self,
+        *,
+        enrichment: dbtlabs.proto.public.v1.events.vortex_pb2.VortexMessageEnrichment | None = ...,
+        editor: dbtlabs.proto.public.v1.fields.vscode_types_pb2.Editor | None = ...,
+        user: dbtlabs.proto.public.v1.fields.vscode_types_pb2.User | None = ...,
+        dbt_local_cookie_user_id: builtins.str = ...,
+        project_id: builtins.str = ...,
+        adapter_type: builtins.str = ...,
+        common_context: dbtlabs.proto.public.v1.common.vortex_telemetry_contexts_pb2.VortexTelemetryCommonContext | None = ...,
+    ) -> None: ...
+    def HasField(self, field_name: typing.Literal["common_context", b"common_context", "editor", b"editor", "enrichment", b"enrichment", "user", b"user"]) -> builtins.bool: ...
+    def ClearField(self, field_name: typing.Literal["adapter_type", b"adapter_type", "common_context", b"common_context", "dbt_local_cookie_user_id", b"dbt_local_cookie_user_id", "editor", b"editor", "enrichment", b"enrichment", "project_id", b"project_id", "user", b"user"]) -> None: ...
+
+Global___ExtensionRestartLsp: typing_extensions.TypeAlias = ExtensionRestartLsp
+
+@typing.final
+class ExtensionRestartActiveLsp(google.protobuf.message.Message):
+    """User restarted the dbt LSP for the active editor's project
+    (dbt.restartActiveLsp).
+    """
+
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
+    ENRICHMENT_FIELD_NUMBER: builtins.int
+    EDITOR_FIELD_NUMBER: builtins.int
+    USER_FIELD_NUMBER: builtins.int
+    DBT_LOCAL_COOKIE_USER_ID_FIELD_NUMBER: builtins.int
+    PROJECT_ID_FIELD_NUMBER: builtins.int
+    ADAPTER_TYPE_FIELD_NUMBER: builtins.int
+    COMMON_CONTEXT_FIELD_NUMBER: builtins.int
+    dbt_local_cookie_user_id: builtins.str
+    """the anonymous user id stored at ~/.dbt/.user.yml"""
+    project_id: builtins.str
+    """md5 hash of the dbt project name (anonymized); identifies which project in
+    a multi-root workspace this event came from
+    """
+    adapter_type: builtins.str
+    """the type of adapter used in the project (snowflake, bigquery, etc)"""
+    @property
+    def enrichment(self) -> dbtlabs.proto.public.v1.events.vortex_pb2.VortexMessageEnrichment: ...
+    @property
+    def editor(self) -> dbtlabs.proto.public.v1.fields.vscode_types_pb2.Editor: ...
+    @property
+    def user(self) -> dbtlabs.proto.public.v1.fields.vscode_types_pb2.User: ...
+    @property
+    def common_context(self) -> dbtlabs.proto.public.v1.common.vortex_telemetry_contexts_pb2.VortexTelemetryCommonContext: ...
+    def __init__(
+        self,
+        *,
+        enrichment: dbtlabs.proto.public.v1.events.vortex_pb2.VortexMessageEnrichment | None = ...,
+        editor: dbtlabs.proto.public.v1.fields.vscode_types_pb2.Editor | None = ...,
+        user: dbtlabs.proto.public.v1.fields.vscode_types_pb2.User | None = ...,
+        dbt_local_cookie_user_id: builtins.str = ...,
+        project_id: builtins.str = ...,
+        adapter_type: builtins.str = ...,
+        common_context: dbtlabs.proto.public.v1.common.vortex_telemetry_contexts_pb2.VortexTelemetryCommonContext | None = ...,
+    ) -> None: ...
+    def HasField(self, field_name: typing.Literal["common_context", b"common_context", "editor", b"editor", "enrichment", b"enrichment", "user", b"user"]) -> builtins.bool: ...
+    def ClearField(self, field_name: typing.Literal["adapter_type", b"adapter_type", "common_context", b"common_context", "dbt_local_cookie_user_id", b"dbt_local_cookie_user_id", "editor", b"editor", "enrichment", b"enrichment", "project_id", b"project_id", "user", b"user"]) -> None: ...
+
+Global___ExtensionRestartActiveLsp: typing_extensions.TypeAlias = ExtensionRestartActiveLsp
+
+@typing.final
+class ExtensionClearTarget(google.protobuf.message.Message):
+    """User cleared the dbt target cache for the active editor's project
+    (dbt.clearTarget).
+    """
+
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
+    ENRICHMENT_FIELD_NUMBER: builtins.int
+    EDITOR_FIELD_NUMBER: builtins.int
+    USER_FIELD_NUMBER: builtins.int
+    DBT_LOCAL_COOKIE_USER_ID_FIELD_NUMBER: builtins.int
+    PROJECT_ID_FIELD_NUMBER: builtins.int
+    ADAPTER_TYPE_FIELD_NUMBER: builtins.int
+    COMMON_CONTEXT_FIELD_NUMBER: builtins.int
+    dbt_local_cookie_user_id: builtins.str
+    """the anonymous user id stored at ~/.dbt/.user.yml"""
+    project_id: builtins.str
+    """md5 hash of the dbt project name (anonymized); identifies which project in
+    a multi-root workspace this event came from
+    """
+    adapter_type: builtins.str
+    """the type of adapter used in the project (snowflake, bigquery, etc)"""
+    @property
+    def enrichment(self) -> dbtlabs.proto.public.v1.events.vortex_pb2.VortexMessageEnrichment: ...
+    @property
+    def editor(self) -> dbtlabs.proto.public.v1.fields.vscode_types_pb2.Editor: ...
+    @property
+    def user(self) -> dbtlabs.proto.public.v1.fields.vscode_types_pb2.User: ...
+    @property
+    def common_context(self) -> dbtlabs.proto.public.v1.common.vortex_telemetry_contexts_pb2.VortexTelemetryCommonContext: ...
+    def __init__(
+        self,
+        *,
+        enrichment: dbtlabs.proto.public.v1.events.vortex_pb2.VortexMessageEnrichment | None = ...,
+        editor: dbtlabs.proto.public.v1.fields.vscode_types_pb2.Editor | None = ...,
+        user: dbtlabs.proto.public.v1.fields.vscode_types_pb2.User | None = ...,
+        dbt_local_cookie_user_id: builtins.str = ...,
+        project_id: builtins.str = ...,
+        adapter_type: builtins.str = ...,
+        common_context: dbtlabs.proto.public.v1.common.vortex_telemetry_contexts_pb2.VortexTelemetryCommonContext | None = ...,
+    ) -> None: ...
+    def HasField(self, field_name: typing.Literal["common_context", b"common_context", "editor", b"editor", "enrichment", b"enrichment", "user", b"user"]) -> builtins.bool: ...
+    def ClearField(self, field_name: typing.Literal["adapter_type", b"adapter_type", "common_context", b"common_context", "dbt_local_cookie_user_id", b"dbt_local_cookie_user_id", "editor", b"editor", "enrichment", b"enrichment", "project_id", b"project_id", "user", b"user"]) -> None: ...
+
+Global___ExtensionClearTarget: typing_extensions.TypeAlias = ExtensionClearTarget
+
+@typing.final
+class ExtensionClearTargetForProject(google.protobuf.message.Message):
+    """User cleared the dbt target cache for a specific project
+    (dbt.clearTargetForProject).
+    """
+
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
+    ENRICHMENT_FIELD_NUMBER: builtins.int
+    EDITOR_FIELD_NUMBER: builtins.int
+    USER_FIELD_NUMBER: builtins.int
+    DBT_LOCAL_COOKIE_USER_ID_FIELD_NUMBER: builtins.int
+    PROJECT_ID_FIELD_NUMBER: builtins.int
+    ADAPTER_TYPE_FIELD_NUMBER: builtins.int
+    COMMON_CONTEXT_FIELD_NUMBER: builtins.int
+    dbt_local_cookie_user_id: builtins.str
+    """the anonymous user id stored at ~/.dbt/.user.yml"""
+    project_id: builtins.str
+    """md5 hash of the dbt project name (anonymized); identifies which project in
+    a multi-root workspace this event came from
+    """
+    adapter_type: builtins.str
+    """the type of adapter used in the project (snowflake, bigquery, etc)"""
+    @property
+    def enrichment(self) -> dbtlabs.proto.public.v1.events.vortex_pb2.VortexMessageEnrichment: ...
+    @property
+    def editor(self) -> dbtlabs.proto.public.v1.fields.vscode_types_pb2.Editor: ...
+    @property
+    def user(self) -> dbtlabs.proto.public.v1.fields.vscode_types_pb2.User: ...
+    @property
+    def common_context(self) -> dbtlabs.proto.public.v1.common.vortex_telemetry_contexts_pb2.VortexTelemetryCommonContext: ...
+    def __init__(
+        self,
+        *,
+        enrichment: dbtlabs.proto.public.v1.events.vortex_pb2.VortexMessageEnrichment | None = ...,
+        editor: dbtlabs.proto.public.v1.fields.vscode_types_pb2.Editor | None = ...,
+        user: dbtlabs.proto.public.v1.fields.vscode_types_pb2.User | None = ...,
+        dbt_local_cookie_user_id: builtins.str = ...,
+        project_id: builtins.str = ...,
+        adapter_type: builtins.str = ...,
+        common_context: dbtlabs.proto.public.v1.common.vortex_telemetry_contexts_pb2.VortexTelemetryCommonContext | None = ...,
+    ) -> None: ...
+    def HasField(self, field_name: typing.Literal["common_context", b"common_context", "editor", b"editor", "enrichment", b"enrichment", "user", b"user"]) -> builtins.bool: ...
+    def ClearField(self, field_name: typing.Literal["adapter_type", b"adapter_type", "common_context", b"common_context", "dbt_local_cookie_user_id", b"dbt_local_cookie_user_id", "editor", b"editor", "enrichment", b"enrichment", "project_id", b"project_id", "user", b"user"]) -> None: ...
+
+Global___ExtensionClearTargetForProject: typing_extensions.TypeAlias = ExtensionClearTargetForProject
+
+@typing.final
+class ExtensionV1CompatPromptShown(google.protobuf.message.Message):
+    """The dbt v1 compatibility mode prompt was shown. The `evidence` prop carried
+    by the legacy Amplitude-only event is intentionally not reproduced here: it
+    is free text containing source names.
+    """
+
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
+    ENRICHMENT_FIELD_NUMBER: builtins.int
+    EDITOR_FIELD_NUMBER: builtins.int
+    USER_FIELD_NUMBER: builtins.int
+    DBT_LOCAL_COOKIE_USER_ID_FIELD_NUMBER: builtins.int
+    PROJECT_ID_FIELD_NUMBER: builtins.int
+    ADAPTER_TYPE_FIELD_NUMBER: builtins.int
+    COMMON_CONTEXT_FIELD_NUMBER: builtins.int
+    dbt_local_cookie_user_id: builtins.str
+    """the anonymous user id stored at ~/.dbt/.user.yml"""
+    project_id: builtins.str
+    """md5 hash of the dbt project name (anonymized); identifies which project in
+    a multi-root workspace this event came from
+    """
+    adapter_type: builtins.str
+    """the type of adapter used in the project (snowflake, bigquery, etc)"""
+    @property
+    def enrichment(self) -> dbtlabs.proto.public.v1.events.vortex_pb2.VortexMessageEnrichment: ...
+    @property
+    def editor(self) -> dbtlabs.proto.public.v1.fields.vscode_types_pb2.Editor: ...
+    @property
+    def user(self) -> dbtlabs.proto.public.v1.fields.vscode_types_pb2.User: ...
+    @property
+    def common_context(self) -> dbtlabs.proto.public.v1.common.vortex_telemetry_contexts_pb2.VortexTelemetryCommonContext: ...
+    def __init__(
+        self,
+        *,
+        enrichment: dbtlabs.proto.public.v1.events.vortex_pb2.VortexMessageEnrichment | None = ...,
+        editor: dbtlabs.proto.public.v1.fields.vscode_types_pb2.Editor | None = ...,
+        user: dbtlabs.proto.public.v1.fields.vscode_types_pb2.User | None = ...,
+        dbt_local_cookie_user_id: builtins.str = ...,
+        project_id: builtins.str = ...,
+        adapter_type: builtins.str = ...,
+        common_context: dbtlabs.proto.public.v1.common.vortex_telemetry_contexts_pb2.VortexTelemetryCommonContext | None = ...,
+    ) -> None: ...
+    def HasField(self, field_name: typing.Literal["common_context", b"common_context", "editor", b"editor", "enrichment", b"enrichment", "user", b"user"]) -> builtins.bool: ...
+    def ClearField(self, field_name: typing.Literal["adapter_type", b"adapter_type", "common_context", b"common_context", "dbt_local_cookie_user_id", b"dbt_local_cookie_user_id", "editor", b"editor", "enrichment", b"enrichment", "project_id", b"project_id", "user", b"user"]) -> None: ...
+
+Global___ExtensionV1CompatPromptShown: typing_extensions.TypeAlias = ExtensionV1CompatPromptShown
+
+@typing.final
+class ExtensionV1CompatPromptAccepted(google.protobuf.message.Message):
+    """User accepted the dbt v1 compatibility mode prompt."""
+
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
+    ENRICHMENT_FIELD_NUMBER: builtins.int
+    EDITOR_FIELD_NUMBER: builtins.int
+    USER_FIELD_NUMBER: builtins.int
+    DBT_LOCAL_COOKIE_USER_ID_FIELD_NUMBER: builtins.int
+    PROJECT_ID_FIELD_NUMBER: builtins.int
+    ADAPTER_TYPE_FIELD_NUMBER: builtins.int
+    COMMON_CONTEXT_FIELD_NUMBER: builtins.int
+    dbt_local_cookie_user_id: builtins.str
+    """the anonymous user id stored at ~/.dbt/.user.yml"""
+    project_id: builtins.str
+    """md5 hash of the dbt project name (anonymized); identifies which project in
+    a multi-root workspace this event came from
+    """
+    adapter_type: builtins.str
+    """the type of adapter used in the project (snowflake, bigquery, etc)"""
+    @property
+    def enrichment(self) -> dbtlabs.proto.public.v1.events.vortex_pb2.VortexMessageEnrichment: ...
+    @property
+    def editor(self) -> dbtlabs.proto.public.v1.fields.vscode_types_pb2.Editor: ...
+    @property
+    def user(self) -> dbtlabs.proto.public.v1.fields.vscode_types_pb2.User: ...
+    @property
+    def common_context(self) -> dbtlabs.proto.public.v1.common.vortex_telemetry_contexts_pb2.VortexTelemetryCommonContext: ...
+    def __init__(
+        self,
+        *,
+        enrichment: dbtlabs.proto.public.v1.events.vortex_pb2.VortexMessageEnrichment | None = ...,
+        editor: dbtlabs.proto.public.v1.fields.vscode_types_pb2.Editor | None = ...,
+        user: dbtlabs.proto.public.v1.fields.vscode_types_pb2.User | None = ...,
+        dbt_local_cookie_user_id: builtins.str = ...,
+        project_id: builtins.str = ...,
+        adapter_type: builtins.str = ...,
+        common_context: dbtlabs.proto.public.v1.common.vortex_telemetry_contexts_pb2.VortexTelemetryCommonContext | None = ...,
+    ) -> None: ...
+    def HasField(self, field_name: typing.Literal["common_context", b"common_context", "editor", b"editor", "enrichment", b"enrichment", "user", b"user"]) -> builtins.bool: ...
+    def ClearField(self, field_name: typing.Literal["adapter_type", b"adapter_type", "common_context", b"common_context", "dbt_local_cookie_user_id", b"dbt_local_cookie_user_id", "editor", b"editor", "enrichment", b"enrichment", "project_id", b"project_id", "user", b"user"]) -> None: ...
+
+Global___ExtensionV1CompatPromptAccepted: typing_extensions.TypeAlias = ExtensionV1CompatPromptAccepted
+
+@typing.final
+class ExtensionV1CompatPromptDeclined(google.protobuf.message.Message):
+    """User declined the dbt v1 compatibility mode prompt."""
+
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
+    ENRICHMENT_FIELD_NUMBER: builtins.int
+    EDITOR_FIELD_NUMBER: builtins.int
+    USER_FIELD_NUMBER: builtins.int
+    DBT_LOCAL_COOKIE_USER_ID_FIELD_NUMBER: builtins.int
+    PROJECT_ID_FIELD_NUMBER: builtins.int
+    ADAPTER_TYPE_FIELD_NUMBER: builtins.int
+    COMMON_CONTEXT_FIELD_NUMBER: builtins.int
+    dbt_local_cookie_user_id: builtins.str
+    """the anonymous user id stored at ~/.dbt/.user.yml"""
+    project_id: builtins.str
+    """md5 hash of the dbt project name (anonymized); identifies which project in
+    a multi-root workspace this event came from
+    """
+    adapter_type: builtins.str
+    """the type of adapter used in the project (snowflake, bigquery, etc)"""
+    @property
+    def enrichment(self) -> dbtlabs.proto.public.v1.events.vortex_pb2.VortexMessageEnrichment: ...
+    @property
+    def editor(self) -> dbtlabs.proto.public.v1.fields.vscode_types_pb2.Editor: ...
+    @property
+    def user(self) -> dbtlabs.proto.public.v1.fields.vscode_types_pb2.User: ...
+    @property
+    def common_context(self) -> dbtlabs.proto.public.v1.common.vortex_telemetry_contexts_pb2.VortexTelemetryCommonContext: ...
+    def __init__(
+        self,
+        *,
+        enrichment: dbtlabs.proto.public.v1.events.vortex_pb2.VortexMessageEnrichment | None = ...,
+        editor: dbtlabs.proto.public.v1.fields.vscode_types_pb2.Editor | None = ...,
+        user: dbtlabs.proto.public.v1.fields.vscode_types_pb2.User | None = ...,
+        dbt_local_cookie_user_id: builtins.str = ...,
+        project_id: builtins.str = ...,
+        adapter_type: builtins.str = ...,
+        common_context: dbtlabs.proto.public.v1.common.vortex_telemetry_contexts_pb2.VortexTelemetryCommonContext | None = ...,
+    ) -> None: ...
+    def HasField(self, field_name: typing.Literal["common_context", b"common_context", "editor", b"editor", "enrichment", b"enrichment", "user", b"user"]) -> builtins.bool: ...
+    def ClearField(self, field_name: typing.Literal["adapter_type", b"adapter_type", "common_context", b"common_context", "dbt_local_cookie_user_id", b"dbt_local_cookie_user_id", "editor", b"editor", "enrichment", b"enrichment", "project_id", b"project_id", "user", b"user"]) -> None: ...
+
+Global___ExtensionV1CompatPromptDeclined: typing_extensions.TypeAlias = ExtensionV1CompatPromptDeclined
+
+@typing.final
+class ExtensionBinaryReinstalled(google.protobuf.message.Message):
+    """User ran dbt.reinstallBinary, which clean-installs the dbt binary and
+    reloads the window. This is the only whole-extension restart; the Extension
+    Info "Restart" row is per-project and emits ExtensionRestartLsp instead.
+    """
+
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
+    ENRICHMENT_FIELD_NUMBER: builtins.int
+    EDITOR_FIELD_NUMBER: builtins.int
+    USER_FIELD_NUMBER: builtins.int
+    DBT_LOCAL_COOKIE_USER_ID_FIELD_NUMBER: builtins.int
+    PROJECT_ID_FIELD_NUMBER: builtins.int
+    ADAPTER_TYPE_FIELD_NUMBER: builtins.int
+    SUCCEEDED_FIELD_NUMBER: builtins.int
+    COMMON_CONTEXT_FIELD_NUMBER: builtins.int
+    dbt_local_cookie_user_id: builtins.str
+    """the anonymous user id stored at ~/.dbt/.user.yml"""
+    project_id: builtins.str
+    """md5 hash of the dbt project name (anonymized); identifies which project in
+    a multi-root workspace this event came from
+    """
+    adapter_type: builtins.str
+    """the type of adapter used in the project (snowflake, bigquery, etc)"""
+    succeeded: builtins.bool
+    """False when cleanInstall() threw. The window still reloads either way."""
+    @property
+    def enrichment(self) -> dbtlabs.proto.public.v1.events.vortex_pb2.VortexMessageEnrichment: ...
+    @property
+    def editor(self) -> dbtlabs.proto.public.v1.fields.vscode_types_pb2.Editor: ...
+    @property
+    def user(self) -> dbtlabs.proto.public.v1.fields.vscode_types_pb2.User: ...
+    @property
+    def common_context(self) -> dbtlabs.proto.public.v1.common.vortex_telemetry_contexts_pb2.VortexTelemetryCommonContext: ...
+    def __init__(
+        self,
+        *,
+        enrichment: dbtlabs.proto.public.v1.events.vortex_pb2.VortexMessageEnrichment | None = ...,
+        editor: dbtlabs.proto.public.v1.fields.vscode_types_pb2.Editor | None = ...,
+        user: dbtlabs.proto.public.v1.fields.vscode_types_pb2.User | None = ...,
+        dbt_local_cookie_user_id: builtins.str = ...,
+        project_id: builtins.str = ...,
+        adapter_type: builtins.str = ...,
+        succeeded: builtins.bool = ...,
+        common_context: dbtlabs.proto.public.v1.common.vortex_telemetry_contexts_pb2.VortexTelemetryCommonContext | None = ...,
+    ) -> None: ...
+    def HasField(self, field_name: typing.Literal["common_context", b"common_context", "editor", b"editor", "enrichment", b"enrichment", "user", b"user"]) -> builtins.bool: ...
+    def ClearField(self, field_name: typing.Literal["adapter_type", b"adapter_type", "common_context", b"common_context", "dbt_local_cookie_user_id", b"dbt_local_cookie_user_id", "editor", b"editor", "enrichment", b"enrichment", "project_id", b"project_id", "succeeded", b"succeeded", "user", b"user"]) -> None: ...
+
+Global___ExtensionBinaryReinstalled: typing_extensions.TypeAlias = ExtensionBinaryReinstalled
+
+@typing.final
+class ExtensionDbtCommandStarted(google.protobuf.message.Message):
+    """A dbt run/build/test/clean/deps invocation started. Pairs with
+    ExtensionDbtCommandFinished via command_id.
+
+    The dbt selector is deliberately absent: it is a path relative to the project
+    root and therefore contains customer directory structure and model names. The
+    two boolean graph-operator flags capture the analytic question ("do people
+    use +model+") without transmitting any identifier.
+    """
+
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
+    ENRICHMENT_FIELD_NUMBER: builtins.int
+    EDITOR_FIELD_NUMBER: builtins.int
+    USER_FIELD_NUMBER: builtins.int
+    DBT_LOCAL_COOKIE_USER_ID_FIELD_NUMBER: builtins.int
+    PROJECT_ID_FIELD_NUMBER: builtins.int
+    ADAPTER_TYPE_FIELD_NUMBER: builtins.int
+    COMMAND_ID_FIELD_NUMBER: builtins.int
+    DBT_COMMAND_FIELD_NUMBER: builtins.int
+    SCOPE_FIELD_NUMBER: builtins.int
+    SELECT_PARENTS_FIELD_NUMBER: builtins.int
+    SELECT_CHILDREN_FIELD_NUMBER: builtins.int
+    COMMON_CONTEXT_FIELD_NUMBER: builtins.int
+    dbt_local_cookie_user_id: builtins.str
+    """the anonymous user id stored at ~/.dbt/.user.yml"""
+    project_id: builtins.str
+    """md5 hash of the dbt project name (anonymized); identifies which project in
+    a multi-root workspace this event came from
+    """
+    adapter_type: builtins.str
+    """the type of adapter used in the project (snowflake, bigquery, etc)"""
+    command_id: builtins.str
+    """Correlates with the matching ExtensionDbtCommandFinished."""
+    dbt_command: dbtlabs.proto.public.v1.fields.vscode_types_pb2.DbtCommandKind.ValueType
+    scope: dbtlabs.proto.public.v1.fields.vscode_types_pb2.DbtCommandScope.ValueType
+    select_parents: builtins.bool
+    """True when the selector was prefixed with '+' (include parents)."""
+    select_children: builtins.bool
+    """True when the selector was suffixed with '+' (include children)."""
+    @property
+    def enrichment(self) -> dbtlabs.proto.public.v1.events.vortex_pb2.VortexMessageEnrichment: ...
+    @property
+    def editor(self) -> dbtlabs.proto.public.v1.fields.vscode_types_pb2.Editor: ...
+    @property
+    def user(self) -> dbtlabs.proto.public.v1.fields.vscode_types_pb2.User: ...
+    @property
+    def common_context(self) -> dbtlabs.proto.public.v1.common.vortex_telemetry_contexts_pb2.VortexTelemetryCommonContext: ...
+    def __init__(
+        self,
+        *,
+        enrichment: dbtlabs.proto.public.v1.events.vortex_pb2.VortexMessageEnrichment | None = ...,
+        editor: dbtlabs.proto.public.v1.fields.vscode_types_pb2.Editor | None = ...,
+        user: dbtlabs.proto.public.v1.fields.vscode_types_pb2.User | None = ...,
+        dbt_local_cookie_user_id: builtins.str = ...,
+        project_id: builtins.str = ...,
+        adapter_type: builtins.str = ...,
+        command_id: builtins.str = ...,
+        dbt_command: dbtlabs.proto.public.v1.fields.vscode_types_pb2.DbtCommandKind.ValueType = ...,
+        scope: dbtlabs.proto.public.v1.fields.vscode_types_pb2.DbtCommandScope.ValueType = ...,
+        select_parents: builtins.bool = ...,
+        select_children: builtins.bool = ...,
+        common_context: dbtlabs.proto.public.v1.common.vortex_telemetry_contexts_pb2.VortexTelemetryCommonContext | None = ...,
+    ) -> None: ...
+    def HasField(self, field_name: typing.Literal["common_context", b"common_context", "editor", b"editor", "enrichment", b"enrichment", "user", b"user"]) -> builtins.bool: ...
+    def ClearField(self, field_name: typing.Literal["adapter_type", b"adapter_type", "command_id", b"command_id", "common_context", b"common_context", "dbt_command", b"dbt_command", "dbt_local_cookie_user_id", b"dbt_local_cookie_user_id", "editor", b"editor", "enrichment", b"enrichment", "project_id", b"project_id", "scope", b"scope", "select_children", b"select_children", "select_parents", b"select_parents", "user", b"user"]) -> None: ...
+
+Global___ExtensionDbtCommandStarted: typing_extensions.TypeAlias = ExtensionDbtCommandStarted
+
+@typing.final
+class ExtensionDbtCommandFinished(google.protobuf.message.Message):
+    """A dbt run/build/test/clean/deps invocation ended."""
+
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
+    ENRICHMENT_FIELD_NUMBER: builtins.int
+    EDITOR_FIELD_NUMBER: builtins.int
+    USER_FIELD_NUMBER: builtins.int
+    DBT_LOCAL_COOKIE_USER_ID_FIELD_NUMBER: builtins.int
+    PROJECT_ID_FIELD_NUMBER: builtins.int
+    ADAPTER_TYPE_FIELD_NUMBER: builtins.int
+    COMMAND_ID_FIELD_NUMBER: builtins.int
+    DBT_COMMAND_FIELD_NUMBER: builtins.int
+    OUTCOME_FIELD_NUMBER: builtins.int
+    EXIT_CODE_FIELD_NUMBER: builtins.int
+    DURATION_MS_FIELD_NUMBER: builtins.int
+    COMMON_CONTEXT_FIELD_NUMBER: builtins.int
+    dbt_local_cookie_user_id: builtins.str
+    """the anonymous user id stored at ~/.dbt/.user.yml"""
+    project_id: builtins.str
+    """md5 hash of the dbt project name (anonymized); identifies which project in
+    a multi-root workspace this event came from
+    """
+    adapter_type: builtins.str
+    """the type of adapter used in the project (snowflake, bigquery, etc)"""
+    command_id: builtins.str
+    """Correlates with the matching ExtensionDbtCommandStarted."""
+    dbt_command: dbtlabs.proto.public.v1.fields.vscode_types_pb2.DbtCommandKind.ValueType
+    outcome: dbtlabs.proto.public.v1.fields.vscode_types_pb2.DbtCommandOutcome.ValueType
+    exit_code: builtins.int
+    """ONLY MEANINGFUL WHEN outcome != DBT_COMMAND_OUTCOME_CANCELLED. The
+    cancelled case is an undefined exit code, which has no int32
+    representation and serialises as 0 -- indistinguishable from success.
+    Filter on `outcome`, not on `exit_code == 0`.
+    """
+    duration_ms: builtins.int
+    @property
+    def enrichment(self) -> dbtlabs.proto.public.v1.events.vortex_pb2.VortexMessageEnrichment: ...
+    @property
+    def editor(self) -> dbtlabs.proto.public.v1.fields.vscode_types_pb2.Editor: ...
+    @property
+    def user(self) -> dbtlabs.proto.public.v1.fields.vscode_types_pb2.User: ...
+    @property
+    def common_context(self) -> dbtlabs.proto.public.v1.common.vortex_telemetry_contexts_pb2.VortexTelemetryCommonContext: ...
+    def __init__(
+        self,
+        *,
+        enrichment: dbtlabs.proto.public.v1.events.vortex_pb2.VortexMessageEnrichment | None = ...,
+        editor: dbtlabs.proto.public.v1.fields.vscode_types_pb2.Editor | None = ...,
+        user: dbtlabs.proto.public.v1.fields.vscode_types_pb2.User | None = ...,
+        dbt_local_cookie_user_id: builtins.str = ...,
+        project_id: builtins.str = ...,
+        adapter_type: builtins.str = ...,
+        command_id: builtins.str = ...,
+        dbt_command: dbtlabs.proto.public.v1.fields.vscode_types_pb2.DbtCommandKind.ValueType = ...,
+        outcome: dbtlabs.proto.public.v1.fields.vscode_types_pb2.DbtCommandOutcome.ValueType = ...,
+        exit_code: builtins.int = ...,
+        duration_ms: builtins.int = ...,
+        common_context: dbtlabs.proto.public.v1.common.vortex_telemetry_contexts_pb2.VortexTelemetryCommonContext | None = ...,
+    ) -> None: ...
+    def HasField(self, field_name: typing.Literal["common_context", b"common_context", "editor", b"editor", "enrichment", b"enrichment", "user", b"user"]) -> builtins.bool: ...
+    def ClearField(self, field_name: typing.Literal["adapter_type", b"adapter_type", "command_id", b"command_id", "common_context", b"common_context", "dbt_command", b"dbt_command", "dbt_local_cookie_user_id", b"dbt_local_cookie_user_id", "duration_ms", b"duration_ms", "editor", b"editor", "enrichment", b"enrichment", "exit_code", b"exit_code", "outcome", b"outcome", "project_id", b"project_id", "user", b"user"]) -> None: ...
+
+Global___ExtensionDbtCommandFinished: typing_extensions.TypeAlias = ExtensionDbtCommandFinished
