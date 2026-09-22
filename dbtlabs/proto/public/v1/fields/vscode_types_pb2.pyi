@@ -96,6 +96,52 @@ COMPILE_CAUSE_REFRESH_SOURCES: CompileCause.ValueType  # 2
 """Compile was caused by a request to refresh sources for a project"""
 Global___CompileCause: typing_extensions.TypeAlias = CompileCause
 
+class _LspParseOutcome:
+    ValueType = typing.NewType("ValueType", builtins.int)
+    V: typing_extensions.TypeAlias = ValueType
+
+class _LspParseOutcomeEnumTypeWrapper(google.protobuf.internal.enum_type_wrapper._EnumTypeWrapper[_LspParseOutcome.ValueType], builtins.type):
+    DESCRIPTOR: google.protobuf.descriptor.EnumDescriptor
+    LSP_PARSE_OUTCOME_UNSPECIFIED: _LspParseOutcome.ValueType  # 0
+    LSP_PARSE_OUTCOME_SUCCEEDED: _LspParseOutcome.ValueType  # 1
+    LSP_PARSE_OUTCOME_FAILED: _LspParseOutcome.ValueType  # 2
+    LSP_PARSE_OUTCOME_CANCELLED: _LspParseOutcome.ValueType  # 3
+
+class LspParseOutcome(_LspParseOutcome, metaclass=_LspParseOutcomeEnumTypeWrapper):
+    """Outcome of a single LSP parse phase."""
+
+LSP_PARSE_OUTCOME_UNSPECIFIED: LspParseOutcome.ValueType  # 0
+LSP_PARSE_OUTCOME_SUCCEEDED: LspParseOutcome.ValueType  # 1
+LSP_PARSE_OUTCOME_FAILED: LspParseOutcome.ValueType  # 2
+LSP_PARSE_OUTCOME_CANCELLED: LspParseOutcome.ValueType  # 3
+Global___LspParseOutcome: typing_extensions.TypeAlias = LspParseOutcome
+
+class _LspParseInvocationKind:
+    ValueType = typing.NewType("ValueType", builtins.int)
+    V: typing_extensions.TypeAlias = ValueType
+
+class _LspParseInvocationKindEnumTypeWrapper(google.protobuf.internal.enum_type_wrapper._EnumTypeWrapper[_LspParseInvocationKind.ValueType], builtins.type):
+    DESCRIPTOR: google.protobuf.descriptor.EnumDescriptor
+    LSP_PARSE_INVOCATION_KIND_UNSPECIFIED: _LspParseInvocationKind.ValueType  # 0
+    LSP_PARSE_INVOCATION_KIND_PARSE: _LspParseInvocationKind.ValueType  # 1
+    """Project DAG parse, used for initialization and explicit compile commands."""
+    LSP_PARSE_INVOCATION_KIND_COMPILE_FILES: _LspParseInvocationKind.ValueType  # 2
+    """Parse for a didSave file-scoped compile."""
+    LSP_PARSE_INVOCATION_KIND_BACKGROUND_COMPILE: _LspParseInvocationKind.ValueType  # 3
+    """Parse for the follow-up full background compile."""
+
+class LspParseInvocationKind(_LspParseInvocationKind, metaclass=_LspParseInvocationKindEnumTypeWrapper):
+    """Which compile invocation the parse ran under."""
+
+LSP_PARSE_INVOCATION_KIND_UNSPECIFIED: LspParseInvocationKind.ValueType  # 0
+LSP_PARSE_INVOCATION_KIND_PARSE: LspParseInvocationKind.ValueType  # 1
+"""Project DAG parse, used for initialization and explicit compile commands."""
+LSP_PARSE_INVOCATION_KIND_COMPILE_FILES: LspParseInvocationKind.ValueType  # 2
+"""Parse for a didSave file-scoped compile."""
+LSP_PARSE_INVOCATION_KIND_BACKGROUND_COMPILE: LspParseInvocationKind.ValueType  # 3
+"""Parse for the follow-up full background compile."""
+Global___LspParseInvocationKind: typing_extensions.TypeAlias = LspParseInvocationKind
+
 class _RegistrationTriggerMethod:
     ValueType = typing.NewType("ValueType", builtins.int)
     V: typing_extensions.TypeAlias = ValueType

@@ -252,6 +252,116 @@ class ExtensionLspCompile(google.protobuf.message.Message):
 Global___ExtensionLspCompile: typing_extensions.TypeAlias = ExtensionLspCompile
 
 @typing.final
+class ExtensionLspParse(google.protobuf.message.Message):
+    """Emitted by the VS Code extension when the LSP's parse phase (load, parse,
+    resolve) completes, once per parse invocation.
+    """
+
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
+    ENRICHMENT_FIELD_NUMBER: builtins.int
+    EDITOR_FIELD_NUMBER: builtins.int
+    USER_FIELD_NUMBER: builtins.int
+    PROJECT_ID_FIELD_NUMBER: builtins.int
+    ADAPTER_TYPE_FIELD_NUMBER: builtins.int
+    ADAPTER_UNIQUE_ID_FIELD_NUMBER: builtins.int
+    DBT_VERSION_FIELD_NUMBER: builtins.int
+    DURATION_MS_FIELD_NUMBER: builtins.int
+    OUTCOME_FIELD_NUMBER: builtins.int
+    INVOCATION_KIND_FIELD_NUMBER: builtins.int
+    COMPILE_CAUSE_FIELD_NUMBER: builtins.int
+    CACHE_REUSED_FIELD_NUMBER: builtins.int
+    ERROR_CODE_FIELD_NUMBER: builtins.int
+    MODELS_COUNT_FIELD_NUMBER: builtins.int
+    NODE_COUNT_FIELD_NUMBER: builtins.int
+    CHANGED_FILE_COUNT_FIELD_NUMBER: builtins.int
+    DBT_LOCAL_COOKIE_USER_ID_FIELD_NUMBER: builtins.int
+    COMMON_CONTEXT_FIELD_NUMBER: builtins.int
+    project_id: builtins.str
+    """this is the hash of the project's name, used for anonymized telemetry"""
+    adapter_type: builtins.str
+    """the type of adapter used in the project (snowflake, bigquery, etc)"""
+    adapter_unique_id: builtins.str
+    """the unique id of the adapter used in the active profile eg. md5(hostname)"""
+    dbt_version: builtins.str
+    """the version of dbt used in the project"""
+    duration_ms: builtins.int
+    """duration of the parse phase in milliseconds, excluding render and analyze"""
+    outcome: dbtlabs.proto.public.v1.fields.vscode_types_pb2.LspParseOutcome.ValueType
+    invocation_kind: dbtlabs.proto.public.v1.fields.vscode_types_pb2.LspParseInvocationKind.ValueType
+    compile_cause: dbtlabs.proto.public.v1.fields.vscode_types_pb2.CompileCause.ValueType
+    """The event that triggered the compile the parse ran under.
+
+    Note CompileCause's zero value is COMPILE_CAUSE_DID_SAVE, not an
+    UNSPECIFIED, so a cause the extension could not recognise arrives
+    indistinguishable from a genuine save. Treat DID_SAVE as "save or
+    unknown" rather than as a confirmed save.
+    """
+    cache_reused: builtins.bool
+    """True when an unchanged project let the previous compilation be reused, so
+    no parsing work was done. Only meaningful when outcome is SUCCEEDED.
+    """
+    error_code: builtins.int
+    """Numeric dbt error code, never a message. Set on every non-success outcome,
+    so a CANCELLED parse carries a cancellation code that only restates the
+    outcome; filter on outcome = FAILED before reading it. proto3 emits 0 for
+    an absent value, so 0 means unknown here and must not be read as success.
+    """
+    models_count: builtins.int
+    """project models count"""
+    node_count: builtins.int
+    """Node count across models, seeds, tests, unit tests, sources, snapshots,
+    analyses, exposures, functions, checks, semantic models, metrics and
+    saved queries. Excludes macros and groups, so this is not a count of
+    every object in the project.
+    """
+    changed_file_count: builtins.int
+    """Number of files in the incremental change set.
+
+    0 is ambiguous and filtering on outcome does not resolve it: a cold parse
+    with no previous state carries no count while still reporting
+    outcome = SUCCEEDED, so "first parse of the session" and "warm parse where
+    nothing changed" both arrive as 0. cache_reused = true identifies genuine
+    no-op reuses; a 0 with cache_reused = false may be either.
+    """
+    dbt_local_cookie_user_id: builtins.str
+    """the anonymous user id stored at ~/.dbt/.user.yml"""
+    @property
+    def enrichment(self) -> dbtlabs.proto.public.v1.events.vortex_pb2.VortexMessageEnrichment: ...
+    @property
+    def editor(self) -> dbtlabs.proto.public.v1.fields.vscode_types_pb2.Editor: ...
+    @property
+    def user(self) -> dbtlabs.proto.public.v1.fields.vscode_types_pb2.User: ...
+    @property
+    def common_context(self) -> dbtlabs.proto.public.v1.common.vortex_telemetry_contexts_pb2.VortexTelemetryCommonContext: ...
+    def __init__(
+        self,
+        *,
+        enrichment: dbtlabs.proto.public.v1.events.vortex_pb2.VortexMessageEnrichment | None = ...,
+        editor: dbtlabs.proto.public.v1.fields.vscode_types_pb2.Editor | None = ...,
+        user: dbtlabs.proto.public.v1.fields.vscode_types_pb2.User | None = ...,
+        project_id: builtins.str = ...,
+        adapter_type: builtins.str = ...,
+        adapter_unique_id: builtins.str = ...,
+        dbt_version: builtins.str = ...,
+        duration_ms: builtins.int = ...,
+        outcome: dbtlabs.proto.public.v1.fields.vscode_types_pb2.LspParseOutcome.ValueType = ...,
+        invocation_kind: dbtlabs.proto.public.v1.fields.vscode_types_pb2.LspParseInvocationKind.ValueType = ...,
+        compile_cause: dbtlabs.proto.public.v1.fields.vscode_types_pb2.CompileCause.ValueType = ...,
+        cache_reused: builtins.bool = ...,
+        error_code: builtins.int = ...,
+        models_count: builtins.int = ...,
+        node_count: builtins.int = ...,
+        changed_file_count: builtins.int = ...,
+        dbt_local_cookie_user_id: builtins.str = ...,
+        common_context: dbtlabs.proto.public.v1.common.vortex_telemetry_contexts_pb2.VortexTelemetryCommonContext | None = ...,
+    ) -> None: ...
+    def HasField(self, field_name: typing.Literal["common_context", b"common_context", "editor", b"editor", "enrichment", b"enrichment", "user", b"user"]) -> builtins.bool: ...
+    def ClearField(self, field_name: typing.Literal["adapter_type", b"adapter_type", "adapter_unique_id", b"adapter_unique_id", "cache_reused", b"cache_reused", "changed_file_count", b"changed_file_count", "common_context", b"common_context", "compile_cause", b"compile_cause", "dbt_local_cookie_user_id", b"dbt_local_cookie_user_id", "dbt_version", b"dbt_version", "duration_ms", b"duration_ms", "editor", b"editor", "enrichment", b"enrichment", "error_code", b"error_code", "invocation_kind", b"invocation_kind", "models_count", b"models_count", "node_count", b"node_count", "outcome", b"outcome", "project_id", b"project_id", "user", b"user"]) -> None: ...
+
+Global___ExtensionLspParse: typing_extensions.TypeAlias = ExtensionLspParse
+
+@typing.final
 class ExtensionUserStateChange(google.protobuf.message.Message):
     DESCRIPTOR: google.protobuf.descriptor.Descriptor
 
