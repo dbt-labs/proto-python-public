@@ -2896,3 +2896,69 @@ class ExtensionDbtCommandFinished(google.protobuf.message.Message):
     def ClearField(self, field_name: typing.Literal["adapter_type", b"adapter_type", "command_id", b"command_id", "common_context", b"common_context", "dbt_command", b"dbt_command", "dbt_local_cookie_user_id", b"dbt_local_cookie_user_id", "duration_ms", b"duration_ms", "editor", b"editor", "enrichment", b"enrichment", "exit_code", b"exit_code", "outcome", b"outcome", "project_id", b"project_id", "user", b"user"]) -> None: ...
 
 Global___ExtensionDbtCommandFinished: typing_extensions.TypeAlias = ExtensionDbtCommandFinished
+
+@typing.final
+class ExtensionFirstInteraction(google.protobuf.message.Message):
+    """The first deliberate, extension-provided interaction in an activation.
+    Fires at most once per extension host; a window reload starts a new one.
+    The qualifying event set lives in lsp/src/telemetry/firstInteraction.ts in
+    the dbt-labs/fs repo.
+    """
+
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
+    ENRICHMENT_FIELD_NUMBER: builtins.int
+    EDITOR_FIELD_NUMBER: builtins.int
+    USER_FIELD_NUMBER: builtins.int
+    DBT_LOCAL_COOKIE_USER_ID_FIELD_NUMBER: builtins.int
+    PROJECT_ID_FIELD_NUMBER: builtins.int
+    ADAPTER_TYPE_FIELD_NUMBER: builtins.int
+    INTERACTION_ID_FIELD_NUMBER: builtins.int
+    MS_SINCE_ACTIVATION_FIELD_NUMBER: builtins.int
+    COMMON_CONTEXT_FIELD_NUMBER: builtins.int
+    dbt_local_cookie_user_id: builtins.str
+    """the anonymous user id stored at ~/.dbt/.user.yml"""
+    project_id: builtins.str
+    """md5 hash of the dbt project name (anonymized); identifies which project in
+    a multi-root workspace this event came from. Empty when no dbt file was
+    active, or when the interaction preceded the LSP starting for that project.
+    """
+    adapter_type: builtins.str
+    """the type of adapter used in the project (snowflake, bigquery, etc)"""
+    interaction_id: builtins.str
+    """The vsce event name of the qualifying interaction, e.g.
+    "ExtensionQueryStarted". A closed set of extension-authored event names,
+    never user content. Intentionally a string, not an enum: an enum would
+    make every newly instrumented feature a proto round trip.
+    """
+    ms_since_activation: builtins.int
+    """Milliseconds from extension activation start to the interaction. This
+    INCLUDES activation initialisation, which a slow binary download can
+    dominate; it is not pure think-time. Join
+    ExtensionActivated.init_duration_ms on the editor session_id to net it out.
+    """
+    @property
+    def enrichment(self) -> dbtlabs.proto.public.v1.events.vortex_pb2.VortexMessageEnrichment: ...
+    @property
+    def editor(self) -> dbtlabs.proto.public.v1.fields.vscode_types_pb2.Editor: ...
+    @property
+    def user(self) -> dbtlabs.proto.public.v1.fields.vscode_types_pb2.User: ...
+    @property
+    def common_context(self) -> dbtlabs.proto.public.v1.common.vortex_telemetry_contexts_pb2.VortexTelemetryCommonContext: ...
+    def __init__(
+        self,
+        *,
+        enrichment: dbtlabs.proto.public.v1.events.vortex_pb2.VortexMessageEnrichment | None = ...,
+        editor: dbtlabs.proto.public.v1.fields.vscode_types_pb2.Editor | None = ...,
+        user: dbtlabs.proto.public.v1.fields.vscode_types_pb2.User | None = ...,
+        dbt_local_cookie_user_id: builtins.str = ...,
+        project_id: builtins.str = ...,
+        adapter_type: builtins.str = ...,
+        interaction_id: builtins.str = ...,
+        ms_since_activation: builtins.int = ...,
+        common_context: dbtlabs.proto.public.v1.common.vortex_telemetry_contexts_pb2.VortexTelemetryCommonContext | None = ...,
+    ) -> None: ...
+    def HasField(self, field_name: typing.Literal["common_context", b"common_context", "editor", b"editor", "enrichment", b"enrichment", "user", b"user"]) -> builtins.bool: ...
+    def ClearField(self, field_name: typing.Literal["adapter_type", b"adapter_type", "common_context", b"common_context", "dbt_local_cookie_user_id", b"dbt_local_cookie_user_id", "editor", b"editor", "enrichment", b"enrichment", "interaction_id", b"interaction_id", "ms_since_activation", b"ms_since_activation", "project_id", b"project_id", "user", b"user"]) -> None: ...
+
+Global___ExtensionFirstInteraction: typing_extensions.TypeAlias = ExtensionFirstInteraction
