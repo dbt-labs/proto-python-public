@@ -1553,6 +1553,7 @@ class ExtensionModelDocsPanelOpened(google.protobuf.message.Message):
     PROJECT_ID_FIELD_NUMBER: builtins.int
     CLOUD_CONFIGURED_FIELD_NUMBER: builtins.int
     COMMON_CONTEXT_FIELD_NUMBER: builtins.int
+    RENDER_SOURCE_FIELD_NUMBER: builtins.int
     dbt_local_cookie_user_id: builtins.str
     """the anonymous user id stored at ~/.dbt/.user.yml"""
     correlation_id: builtins.str
@@ -1561,6 +1562,10 @@ class ExtensionModelDocsPanelOpened(google.protobuf.message.Message):
     """md5 hash of the dbt project name (anonymized) — same hash as ExtensionLspCompileStart.project_id"""
     cloud_configured: builtins.bool
     """true if dbt Cloud credentials were available at panel-open time"""
+    render_source: dbtlabs.proto.public.v1.fields.vscode_types_pb2.ModelDocsRenderSource.ValueType
+    """what caused this render; separates a deliberate open from a passive
+    re-render caused by an active-editor or manifest change.
+    """
     @property
     def enrichment(self) -> dbtlabs.proto.public.v1.events.vortex_pb2.VortexMessageEnrichment: ...
     @property
@@ -1580,9 +1585,10 @@ class ExtensionModelDocsPanelOpened(google.protobuf.message.Message):
         project_id: builtins.str = ...,
         cloud_configured: builtins.bool = ...,
         common_context: dbtlabs.proto.public.v1.common.vortex_telemetry_contexts_pb2.VortexTelemetryCommonContext | None = ...,
+        render_source: dbtlabs.proto.public.v1.fields.vscode_types_pb2.ModelDocsRenderSource.ValueType = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["common_context", b"common_context", "editor", b"editor", "enrichment", b"enrichment", "user", b"user"]) -> builtins.bool: ...
-    def ClearField(self, field_name: typing.Literal["cloud_configured", b"cloud_configured", "common_context", b"common_context", "correlation_id", b"correlation_id", "dbt_local_cookie_user_id", b"dbt_local_cookie_user_id", "editor", b"editor", "enrichment", b"enrichment", "project_id", b"project_id", "user", b"user"]) -> None: ...
+    def ClearField(self, field_name: typing.Literal["cloud_configured", b"cloud_configured", "common_context", b"common_context", "correlation_id", b"correlation_id", "dbt_local_cookie_user_id", b"dbt_local_cookie_user_id", "editor", b"editor", "enrichment", b"enrichment", "project_id", b"project_id", "render_source", b"render_source", "user", b"user"]) -> None: ...
 
 Global___ExtensionModelDocsPanelOpened: typing_extensions.TypeAlias = ExtensionModelDocsPanelOpened
 
@@ -1691,12 +1697,17 @@ class ExtensionModelDocsViewInDbtClicked(google.protobuf.message.Message):
     CORRELATION_ID_FIELD_NUMBER: builtins.int
     PROJECT_ID_FIELD_NUMBER: builtins.int
     COMMON_CONTEXT_FIELD_NUMBER: builtins.int
+    LINK_TARGET_FIELD_NUMBER: builtins.int
     dbt_local_cookie_user_id: builtins.str
     """the anonymous user id stored at ~/.dbt/.user.yml"""
     correlation_id: builtins.str
     """UUID generated per panel render; matches ExtensionModelDocsPanelOpened.correlation_id"""
     project_id: builtins.str
     """md5 hash of the dbt project name (anonymized)"""
+    link_target: dbtlabs.proto.public.v1.fields.vscode_types_pb2.ModelDocsLinkTarget.ValueType
+    """which platform link was followed. Rows predating this field read
+    UNSPECIFIED: they were platform clicks of unrecorded target.
+    """
     @property
     def enrichment(self) -> dbtlabs.proto.public.v1.events.vortex_pb2.VortexMessageEnrichment: ...
     @property
@@ -1715,11 +1726,64 @@ class ExtensionModelDocsViewInDbtClicked(google.protobuf.message.Message):
         correlation_id: builtins.str = ...,
         project_id: builtins.str = ...,
         common_context: dbtlabs.proto.public.v1.common.vortex_telemetry_contexts_pb2.VortexTelemetryCommonContext | None = ...,
+        link_target: dbtlabs.proto.public.v1.fields.vscode_types_pb2.ModelDocsLinkTarget.ValueType = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["common_context", b"common_context", "editor", b"editor", "enrichment", b"enrichment", "user", b"user"]) -> builtins.bool: ...
-    def ClearField(self, field_name: typing.Literal["common_context", b"common_context", "correlation_id", b"correlation_id", "dbt_local_cookie_user_id", b"dbt_local_cookie_user_id", "editor", b"editor", "enrichment", b"enrichment", "project_id", b"project_id", "user", b"user"]) -> None: ...
+    def ClearField(self, field_name: typing.Literal["common_context", b"common_context", "correlation_id", b"correlation_id", "dbt_local_cookie_user_id", b"dbt_local_cookie_user_id", "editor", b"editor", "enrichment", b"enrichment", "link_target", b"link_target", "project_id", b"project_id", "user", b"user"]) -> None: ...
 
 Global___ExtensionModelDocsViewInDbtClicked: typing_extensions.TypeAlias = ExtensionModelDocsViewInDbtClicked
+
+@typing.final
+class ExtensionModelDocsInteraction(google.protobuf.message.Message):
+    """Emitted when the user performs a non-navigation action in the Catalog panel.
+    Platform link-outs stay on ExtensionModelDocsViewInDbtClicked.
+    """
+
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
+    ENRICHMENT_FIELD_NUMBER: builtins.int
+    EDITOR_FIELD_NUMBER: builtins.int
+    USER_FIELD_NUMBER: builtins.int
+    DBT_LOCAL_COOKIE_USER_ID_FIELD_NUMBER: builtins.int
+    CORRELATION_ID_FIELD_NUMBER: builtins.int
+    PROJECT_ID_FIELD_NUMBER: builtins.int
+    INTERACTION_TYPE_FIELD_NUMBER: builtins.int
+    COMMON_CONTEXT_FIELD_NUMBER: builtins.int
+    dbt_local_cookie_user_id: builtins.str
+    """the anonymous user id stored at ~/.dbt/.user.yml"""
+    correlation_id: builtins.str
+    """UUID of the render visible when the interaction happened; matches
+    ExtensionModelDocsPanelOpened.correlation_id. Empty when no render has
+    happened yet, which is reachable for the FEEDBACK interaction.
+    """
+    project_id: builtins.str
+    """md5 hash of the dbt project name (anonymized)"""
+    interaction_type: dbtlabs.proto.public.v1.fields.vscode_types_pb2.ModelDocsInteractionType.ValueType
+    """which kind of interaction the user performed"""
+    @property
+    def enrichment(self) -> dbtlabs.proto.public.v1.events.vortex_pb2.VortexMessageEnrichment: ...
+    @property
+    def editor(self) -> dbtlabs.proto.public.v1.fields.vscode_types_pb2.Editor: ...
+    @property
+    def user(self) -> dbtlabs.proto.public.v1.fields.vscode_types_pb2.User: ...
+    @property
+    def common_context(self) -> dbtlabs.proto.public.v1.common.vortex_telemetry_contexts_pb2.VortexTelemetryCommonContext: ...
+    def __init__(
+        self,
+        *,
+        enrichment: dbtlabs.proto.public.v1.events.vortex_pb2.VortexMessageEnrichment | None = ...,
+        editor: dbtlabs.proto.public.v1.fields.vscode_types_pb2.Editor | None = ...,
+        user: dbtlabs.proto.public.v1.fields.vscode_types_pb2.User | None = ...,
+        dbt_local_cookie_user_id: builtins.str = ...,
+        correlation_id: builtins.str = ...,
+        project_id: builtins.str = ...,
+        interaction_type: dbtlabs.proto.public.v1.fields.vscode_types_pb2.ModelDocsInteractionType.ValueType = ...,
+        common_context: dbtlabs.proto.public.v1.common.vortex_telemetry_contexts_pb2.VortexTelemetryCommonContext | None = ...,
+    ) -> None: ...
+    def HasField(self, field_name: typing.Literal["common_context", b"common_context", "editor", b"editor", "enrichment", b"enrichment", "user", b"user"]) -> builtins.bool: ...
+    def ClearField(self, field_name: typing.Literal["common_context", b"common_context", "correlation_id", b"correlation_id", "dbt_local_cookie_user_id", b"dbt_local_cookie_user_id", "editor", b"editor", "enrichment", b"enrichment", "interaction_type", b"interaction_type", "project_id", b"project_id", "user", b"user"]) -> None: ...
+
+Global___ExtensionModelDocsInteraction: typing_extensions.TypeAlias = ExtensionModelDocsInteraction
 
 @typing.final
 class ExtensionGetStartedInteraction(google.protobuf.message.Message):

@@ -258,6 +258,88 @@ MODEL_DOCS_ENRICHMENT_OUTCOME_FAILED_PROJECT_RESOLUTION: ModelDocsEnrichmentOutc
 MODEL_DOCS_ENRICHMENT_OUTCOME_FAILED_OTHER: ModelDocsEnrichmentOutcome.ValueType  # 5
 Global___ModelDocsEnrichmentOutcome: typing_extensions.TypeAlias = ModelDocsEnrichmentOutcome
 
+class _ModelDocsRenderSource:
+    ValueType = typing.NewType("ValueType", builtins.int)
+    V: typing_extensions.TypeAlias = ValueType
+
+class _ModelDocsRenderSourceEnumTypeWrapper(google.protobuf.internal.enum_type_wrapper._EnumTypeWrapper[_ModelDocsRenderSource.ValueType], builtins.type):
+    DESCRIPTOR: google.protobuf.descriptor.EnumDescriptor
+    MODEL_DOCS_RENDER_SOURCE_UNSPECIFIED: _ModelDocsRenderSource.ValueType  # 0
+    MODEL_DOCS_RENDER_SOURCE_COMMAND: _ModelDocsRenderSource.ValueType  # 1
+    """dbt.showModelDocs invoked explicitly."""
+    MODEL_DOCS_RENDER_SOURCE_EDITOR_CHANGE: _ModelDocsRenderSource.ValueType  # 2
+    """Active editor changed while the Catalog view was already open."""
+    MODEL_DOCS_RENDER_SOURCE_WEBVIEW_LOAD: _ModelDocsRenderSource.ValueType  # 3
+    """Webview signalled load: the user revealed the view, or VS Code restored
+    it at window start. These two are not separable today.
+    """
+    MODEL_DOCS_RENDER_SOURCE_MANIFEST_WATCHER: _ModelDocsRenderSource.ValueType  # 4
+    """target/manifest.json changed on disk and the open view re-rendered."""
+
+class ModelDocsRenderSource(_ModelDocsRenderSource, metaclass=_ModelDocsRenderSourceEnumTypeWrapper):
+    """What caused the Catalog panel to render. Distinguishes a deliberate open
+    from a passive re-render, so adoption can be counted separately from churn.
+    Each render call site reports this explicitly rather than deriving it from
+    another field; collapsing these into fewer values loses that separation.
+    """
+
+MODEL_DOCS_RENDER_SOURCE_UNSPECIFIED: ModelDocsRenderSource.ValueType  # 0
+MODEL_DOCS_RENDER_SOURCE_COMMAND: ModelDocsRenderSource.ValueType  # 1
+"""dbt.showModelDocs invoked explicitly."""
+MODEL_DOCS_RENDER_SOURCE_EDITOR_CHANGE: ModelDocsRenderSource.ValueType  # 2
+"""Active editor changed while the Catalog view was already open."""
+MODEL_DOCS_RENDER_SOURCE_WEBVIEW_LOAD: ModelDocsRenderSource.ValueType  # 3
+"""Webview signalled load: the user revealed the view, or VS Code restored
+it at window start. These two are not separable today.
+"""
+MODEL_DOCS_RENDER_SOURCE_MANIFEST_WATCHER: ModelDocsRenderSource.ValueType  # 4
+"""target/manifest.json changed on disk and the open view re-rendered."""
+Global___ModelDocsRenderSource: typing_extensions.TypeAlias = ModelDocsRenderSource
+
+class _ModelDocsLinkTarget:
+    ValueType = typing.NewType("ValueType", builtins.int)
+    V: typing_extensions.TypeAlias = ValueType
+
+class _ModelDocsLinkTargetEnumTypeWrapper(google.protobuf.internal.enum_type_wrapper._EnumTypeWrapper[_ModelDocsLinkTarget.ValueType], builtins.type):
+    DESCRIPTOR: google.protobuf.descriptor.EnumDescriptor
+    MODEL_DOCS_LINK_TARGET_UNSPECIFIED: _ModelDocsLinkTarget.ValueType  # 0
+    MODEL_DOCS_LINK_TARGET_VIEW_IN_PLATFORM: _ModelDocsLinkTarget.ValueType  # 1
+    MODEL_DOCS_LINK_TARGET_ADD_PROJECT: _ModelDocsLinkTarget.ValueType  # 2
+    MODEL_DOCS_LINK_TARGET_VIEW_RUNS: _ModelDocsLinkTarget.ValueType  # 3
+    MODEL_DOCS_LINK_TARGET_VIEW_TESTS: _ModelDocsLinkTarget.ValueType  # 4
+
+class ModelDocsLinkTarget(_ModelDocsLinkTarget, metaclass=_ModelDocsLinkTargetEnumTypeWrapper):
+    """Which dbt platform link the user followed from the Catalog panel."""
+
+MODEL_DOCS_LINK_TARGET_UNSPECIFIED: ModelDocsLinkTarget.ValueType  # 0
+MODEL_DOCS_LINK_TARGET_VIEW_IN_PLATFORM: ModelDocsLinkTarget.ValueType  # 1
+MODEL_DOCS_LINK_TARGET_ADD_PROJECT: ModelDocsLinkTarget.ValueType  # 2
+MODEL_DOCS_LINK_TARGET_VIEW_RUNS: ModelDocsLinkTarget.ValueType  # 3
+MODEL_DOCS_LINK_TARGET_VIEW_TESTS: ModelDocsLinkTarget.ValueType  # 4
+Global___ModelDocsLinkTarget: typing_extensions.TypeAlias = ModelDocsLinkTarget
+
+class _ModelDocsInteractionType:
+    ValueType = typing.NewType("ValueType", builtins.int)
+    V: typing_extensions.TypeAlias = ValueType
+
+class _ModelDocsInteractionTypeEnumTypeWrapper(google.protobuf.internal.enum_type_wrapper._EnumTypeWrapper[_ModelDocsInteractionType.ValueType], builtins.type):
+    DESCRIPTOR: google.protobuf.descriptor.EnumDescriptor
+    MODEL_DOCS_INTERACTION_TYPE_UNSPECIFIED: _ModelDocsInteractionType.ValueType  # 0
+    MODEL_DOCS_INTERACTION_TYPE_ADD_TO_CHAT: _ModelDocsInteractionType.ValueType  # 1
+    MODEL_DOCS_INTERACTION_TYPE_ADD_TAG: _ModelDocsInteractionType.ValueType  # 2
+    MODEL_DOCS_INTERACTION_TYPE_FEEDBACK: _ModelDocsInteractionType.ValueType  # 3
+
+class ModelDocsInteractionType(_ModelDocsInteractionType, metaclass=_ModelDocsInteractionTypeEnumTypeWrapper):
+    """Non-navigation interactions within the Catalog panel. Platform link-outs
+    stay on ExtensionModelDocsViewInDbtClicked.
+    """
+
+MODEL_DOCS_INTERACTION_TYPE_UNSPECIFIED: ModelDocsInteractionType.ValueType  # 0
+MODEL_DOCS_INTERACTION_TYPE_ADD_TO_CHAT: ModelDocsInteractionType.ValueType  # 1
+MODEL_DOCS_INTERACTION_TYPE_ADD_TAG: ModelDocsInteractionType.ValueType  # 2
+MODEL_DOCS_INTERACTION_TYPE_FEEDBACK: ModelDocsInteractionType.ValueType  # 3
+Global___ModelDocsInteractionType: typing_extensions.TypeAlias = ModelDocsInteractionType
+
 class _LineageInteractionType:
     ValueType = typing.NewType("ValueType", builtins.int)
     V: typing_extensions.TypeAlias = ValueType
