@@ -43,6 +43,7 @@ class ExtensionActivated(google.protobuf.message.Message):
     OAUTH_SESSION_FILE_ACTION_FIELD_NUMBER: builtins.int
     COMMON_CONTEXT_FIELD_NUMBER: builtins.int
     V1_COMPAT_ACTIVE_FIELD_NUMBER: builtins.int
+    INFERRED_DBT_CORE_VERSION_FIELD_NUMBER: builtins.int
     os_name: builtins.str
     """os name"""
     os_version: builtins.str
@@ -74,6 +75,15 @@ class ExtensionActivated(google.protobuf.message.Message):
     V1CompatPrompt* events only fire at detection time, so without this the
     in-mode population is uncountable after the first session.
     """
+    inferred_dbt_core_version: builtins.str
+    """Inferred dbt-core major.minor for this project, e.g. "1.11". Empty when
+    no source yielded one. Distinct from `dbt_version` above, which is the
+    Fusion binary's own version and is never a dbt-core v1 version.
+
+    Inferred from the `logs/dbt.log` banner (an actual run, preferred) or a
+    `uv.lock` pin (a declared intention). The two are not distinguished on
+    the wire.
+    """
     @property
     def enrichment(self) -> dbtlabs.proto.public.v1.events.vortex_pb2.VortexMessageEnrichment: ...
     @property
@@ -103,9 +113,10 @@ class ExtensionActivated(google.protobuf.message.Message):
         oauth_session_file_action: dbtlabs.proto.public.v1.fields.vscode_types_pb2.OAuthSessionFileActionAtActivation.ValueType = ...,
         common_context: dbtlabs.proto.public.v1.common.vortex_telemetry_contexts_pb2.VortexTelemetryCommonContext | None = ...,
         v1_compat_active: builtins.bool = ...,
+        inferred_dbt_core_version: builtins.str = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["common_context", b"common_context", "editor", b"editor", "enrichment", b"enrichment", "user", b"user"]) -> builtins.bool: ...
-    def ClearField(self, field_name: typing.Literal["adapter_type", b"adapter_type", "common_context", b"common_context", "dbt_local_cookie_user_id", b"dbt_local_cookie_user_id", "dbt_version", b"dbt_version", "editor", b"editor", "enrichment", b"enrichment", "init_duration_ms", b"init_duration_ms", "init_error", b"init_error", "init_error_detail", b"init_error_detail", "init_success", b"init_success", "is_fusion_installed", b"is_fusion_installed", "is_lsp_installed", b"is_lsp_installed", "models_count", b"models_count", "oauth_session_file_action", b"oauth_session_file_action", "os_name", b"os_name", "os_version", b"os_version", "user", b"user", "v1_compat_active", b"v1_compat_active"]) -> None: ...
+    def ClearField(self, field_name: typing.Literal["adapter_type", b"adapter_type", "common_context", b"common_context", "dbt_local_cookie_user_id", b"dbt_local_cookie_user_id", "dbt_version", b"dbt_version", "editor", b"editor", "enrichment", b"enrichment", "inferred_dbt_core_version", b"inferred_dbt_core_version", "init_duration_ms", b"init_duration_ms", "init_error", b"init_error", "init_error_detail", b"init_error_detail", "init_success", b"init_success", "is_fusion_installed", b"is_fusion_installed", "is_lsp_installed", b"is_lsp_installed", "models_count", b"models_count", "oauth_session_file_action", b"oauth_session_file_action", "os_name", b"os_name", "os_version", b"os_version", "user", b"user", "v1_compat_active", b"v1_compat_active"]) -> None: ...
 
 Global___ExtensionActivated: typing_extensions.TypeAlias = ExtensionActivated
 
@@ -126,6 +137,7 @@ class ExtensionLspCompileStart(google.protobuf.message.Message):
     DBT_LOCAL_COOKIE_USER_ID_FIELD_NUMBER: builtins.int
     EVENT_ID_FIELD_NUMBER: builtins.int
     COMMON_CONTEXT_FIELD_NUMBER: builtins.int
+    V1_COMPAT_ACTIVE_FIELD_NUMBER: builtins.int
     project_id: builtins.str
     """this is the hash of the project's name, used for anonymized telemetry"""
     adapter_type: builtins.str
@@ -144,6 +156,12 @@ class ExtensionLspCompileStart(google.protobuf.message.Message):
     """the anonymous user id stored at ~/.dbt/.user.yml"""
     event_id: builtins.str
     """UUID to uniquely identify the event"""
+    v1_compat_active: builtins.bool
+    """True when the project this compile belongs to is running in dbt v1
+    compatibility mode (`dbt.dbtMajorVersion` = `v1`). Read per LSP client,
+    so in a multi-root workspace each event reports its own project rather
+    than a single workspace-wide guess.
+    """
     @property
     def enrichment(self) -> dbtlabs.proto.public.v1.events.vortex_pb2.VortexMessageEnrichment: ...
     @property
@@ -168,9 +186,10 @@ class ExtensionLspCompileStart(google.protobuf.message.Message):
         dbt_local_cookie_user_id: builtins.str = ...,
         event_id: builtins.str = ...,
         common_context: dbtlabs.proto.public.v1.common.vortex_telemetry_contexts_pb2.VortexTelemetryCommonContext | None = ...,
+        v1_compat_active: builtins.bool = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["common_context", b"common_context", "editor", b"editor", "enrichment", b"enrichment", "user", b"user"]) -> builtins.bool: ...
-    def ClearField(self, field_name: typing.Literal["adapter_type", b"adapter_type", "adapter_unique_id", b"adapter_unique_id", "common_context", b"common_context", "compile_cause", b"compile_cause", "compile_type", b"compile_type", "dbt_local_cookie_user_id", b"dbt_local_cookie_user_id", "dbt_version", b"dbt_version", "editor", b"editor", "enrichment", b"enrichment", "event_id", b"event_id", "project_id", b"project_id", "user", b"user", "user_initiated", b"user_initiated"]) -> None: ...
+    def ClearField(self, field_name: typing.Literal["adapter_type", b"adapter_type", "adapter_unique_id", b"adapter_unique_id", "common_context", b"common_context", "compile_cause", b"compile_cause", "compile_type", b"compile_type", "dbt_local_cookie_user_id", b"dbt_local_cookie_user_id", "dbt_version", b"dbt_version", "editor", b"editor", "enrichment", b"enrichment", "event_id", b"event_id", "project_id", b"project_id", "user", b"user", "user_initiated", b"user_initiated", "v1_compat_active", b"v1_compat_active"]) -> None: ...
 
 Global___ExtensionLspCompileStart: typing_extensions.TypeAlias = ExtensionLspCompileStart
 
@@ -194,6 +213,7 @@ class ExtensionLspCompile(google.protobuf.message.Message):
     COMPILE_CAUSE_FIELD_NUMBER: builtins.int
     DBT_LOCAL_COOKIE_USER_ID_FIELD_NUMBER: builtins.int
     COMMON_CONTEXT_FIELD_NUMBER: builtins.int
+    V1_COMPAT_ACTIVE_FIELD_NUMBER: builtins.int
     project_id: builtins.str
     """this is the hash of the project's name, used for anonymized telemetry"""
     adapter_type: builtins.str
@@ -216,6 +236,12 @@ class ExtensionLspCompile(google.protobuf.message.Message):
     """The event that triggered the compile"""
     dbt_local_cookie_user_id: builtins.str
     """the anonymous user id stored at ~/.dbt/.user.yml"""
+    v1_compat_active: builtins.bool
+    """True when the project this compile belongs to is running in dbt v1
+    compatibility mode (`dbt.dbtMajorVersion` = `v1`). Read per LSP client,
+    so in a multi-root workspace each event reports its own project rather
+    than a single workspace-wide guess.
+    """
     @property
     def enrichment(self) -> dbtlabs.proto.public.v1.events.vortex_pb2.VortexMessageEnrichment: ...
     @property
@@ -245,9 +271,10 @@ class ExtensionLspCompile(google.protobuf.message.Message):
         compile_cause: dbtlabs.proto.public.v1.fields.vscode_types_pb2.CompileCause.ValueType = ...,
         dbt_local_cookie_user_id: builtins.str = ...,
         common_context: dbtlabs.proto.public.v1.common.vortex_telemetry_contexts_pb2.VortexTelemetryCommonContext | None = ...,
+        v1_compat_active: builtins.bool = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["common_context", b"common_context", "editor", b"editor", "enrichment", b"enrichment", "user", b"user"]) -> builtins.bool: ...
-    def ClearField(self, field_name: typing.Literal["adapter_type", b"adapter_type", "adapter_unique_id", b"adapter_unique_id", "common_context", b"common_context", "compile_cause", b"compile_cause", "compile_success", b"compile_success", "compile_type", b"compile_type", "dbt_local_cookie_user_id", b"dbt_local_cookie_user_id", "dbt_version", b"dbt_version", "duration_ms", b"duration_ms", "editor", b"editor", "enrichment", b"enrichment", "errors", b"errors", "models_count", b"models_count", "project_id", b"project_id", "user", b"user", "user_initiated", b"user_initiated"]) -> None: ...
+    def ClearField(self, field_name: typing.Literal["adapter_type", b"adapter_type", "adapter_unique_id", b"adapter_unique_id", "common_context", b"common_context", "compile_cause", b"compile_cause", "compile_success", b"compile_success", "compile_type", b"compile_type", "dbt_local_cookie_user_id", b"dbt_local_cookie_user_id", "dbt_version", b"dbt_version", "duration_ms", b"duration_ms", "editor", b"editor", "enrichment", b"enrichment", "errors", b"errors", "models_count", b"models_count", "project_id", b"project_id", "user", b"user", "user_initiated", b"user_initiated", "v1_compat_active", b"v1_compat_active"]) -> None: ...
 
 Global___ExtensionLspCompile: typing_extensions.TypeAlias = ExtensionLspCompile
 
