@@ -1267,3 +1267,217 @@ class DbtWizardAppMessageSent(google.protobuf.message.Message):
     def ClearField(self, field_name: typing.Literal["anonymous_id", b"anonymous_id", "common_context", b"common_context", "enrichment", b"enrichment", "event_id", b"event_id"]) -> None: ...
 
 Global___DbtWizardAppMessageSent: typing_extensions.TypeAlias = DbtWizardAppMessageSent
+
+@typing.final
+class DbtWizardAppOnboardingStarted(google.protobuf.message.Message):
+    """Emitted when the Wizard desktop app begins onboarding as the anonymous
+    behavioral counterpart of the WizardOnboardingStarted Amplitude event;
+    distinct from the CLI onboarding telemetry in DbtWizardOnboarding.
+    """
+
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
+    ENRICHMENT_FIELD_NUMBER: builtins.int
+    EVENT_ID_FIELD_NUMBER: builtins.int
+    ANONYMOUS_ID_FIELD_NUMBER: builtins.int
+    COMMON_CONTEXT_FIELD_NUMBER: builtins.int
+    event_id: builtins.str
+    anonymous_id: builtins.str
+    @property
+    def enrichment(self) -> dbtlabs.proto.public.v1.events.vortex_pb2.VortexMessageEnrichment: ...
+    @property
+    def common_context(self) -> dbtlabs.proto.public.v1.common.vortex_telemetry_contexts_pb2.VortexTelemetryCommonContext: ...
+    def __init__(
+        self,
+        *,
+        enrichment: dbtlabs.proto.public.v1.events.vortex_pb2.VortexMessageEnrichment | None = ...,
+        event_id: builtins.str = ...,
+        anonymous_id: builtins.str = ...,
+        common_context: dbtlabs.proto.public.v1.common.vortex_telemetry_contexts_pb2.VortexTelemetryCommonContext | None = ...,
+    ) -> None: ...
+    def HasField(self, field_name: typing.Literal["common_context", b"common_context", "enrichment", b"enrichment"]) -> builtins.bool: ...
+    def ClearField(self, field_name: typing.Literal["anonymous_id", b"anonymous_id", "common_context", b"common_context", "enrichment", b"enrichment", "event_id", b"event_id"]) -> None: ...
+
+Global___DbtWizardAppOnboardingStarted: typing_extensions.TypeAlias = DbtWizardAppOnboardingStarted
+
+@typing.final
+class DbtWizardAppOnboardingStepViewed(google.protobuf.message.Message):
+    """Emitted when the Wizard desktop app views an onboarding step as the
+    anonymous behavioral counterpart of the WizardOnboardingStepViewed
+    Amplitude event; distinct from the CLI onboarding telemetry in
+    DbtWizardOnboarding.
+    """
+
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
+    ENRICHMENT_FIELD_NUMBER: builtins.int
+    EVENT_ID_FIELD_NUMBER: builtins.int
+    ANONYMOUS_ID_FIELD_NUMBER: builtins.int
+    STEP_FIELD_NUMBER: builtins.int
+    COMMON_CONTEXT_FIELD_NUMBER: builtins.int
+    event_id: builtins.str
+    anonymous_id: builtins.str
+    step: builtins.str
+    @property
+    def enrichment(self) -> dbtlabs.proto.public.v1.events.vortex_pb2.VortexMessageEnrichment: ...
+    @property
+    def common_context(self) -> dbtlabs.proto.public.v1.common.vortex_telemetry_contexts_pb2.VortexTelemetryCommonContext: ...
+    def __init__(
+        self,
+        *,
+        enrichment: dbtlabs.proto.public.v1.events.vortex_pb2.VortexMessageEnrichment | None = ...,
+        event_id: builtins.str = ...,
+        anonymous_id: builtins.str = ...,
+        step: builtins.str = ...,
+        common_context: dbtlabs.proto.public.v1.common.vortex_telemetry_contexts_pb2.VortexTelemetryCommonContext | None = ...,
+    ) -> None: ...
+    def HasField(self, field_name: typing.Literal["common_context", b"common_context", "enrichment", b"enrichment"]) -> builtins.bool: ...
+    def ClearField(self, field_name: typing.Literal["anonymous_id", b"anonymous_id", "common_context", b"common_context", "enrichment", b"enrichment", "event_id", b"event_id", "step", b"step"]) -> None: ...
+
+Global___DbtWizardAppOnboardingStepViewed: typing_extensions.TypeAlias = DbtWizardAppOnboardingStepViewed
+
+@typing.final
+class DbtWizardAppOnboardingStepCompleted(google.protobuf.message.Message):
+    """Emitted when the Wizard desktop app completes an onboarding step as the
+    anonymous behavioral counterpart of the WizardOnboardingStepCompleted
+    Amplitude event; distinct from the CLI onboarding telemetry in
+    DbtWizardOnboarding.
+    """
+
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
+    ENRICHMENT_FIELD_NUMBER: builtins.int
+    EVENT_ID_FIELD_NUMBER: builtins.int
+    ANONYMOUS_ID_FIELD_NUMBER: builtins.int
+    STEP_FIELD_NUMBER: builtins.int
+    ACTION_FIELD_NUMBER: builtins.int
+    COMMON_CONTEXT_FIELD_NUMBER: builtins.int
+    event_id: builtins.str
+    anonymous_id: builtins.str
+    step: builtins.str
+    action: builtins.str
+    @property
+    def enrichment(self) -> dbtlabs.proto.public.v1.events.vortex_pb2.VortexMessageEnrichment: ...
+    @property
+    def common_context(self) -> dbtlabs.proto.public.v1.common.vortex_telemetry_contexts_pb2.VortexTelemetryCommonContext: ...
+    def __init__(
+        self,
+        *,
+        enrichment: dbtlabs.proto.public.v1.events.vortex_pb2.VortexMessageEnrichment | None = ...,
+        event_id: builtins.str = ...,
+        anonymous_id: builtins.str = ...,
+        step: builtins.str = ...,
+        action: builtins.str = ...,
+        common_context: dbtlabs.proto.public.v1.common.vortex_telemetry_contexts_pb2.VortexTelemetryCommonContext | None = ...,
+    ) -> None: ...
+    def HasField(self, field_name: typing.Literal["common_context", b"common_context", "enrichment", b"enrichment"]) -> builtins.bool: ...
+    def ClearField(self, field_name: typing.Literal["action", b"action", "anonymous_id", b"anonymous_id", "common_context", b"common_context", "enrichment", b"enrichment", "event_id", b"event_id", "step", b"step"]) -> None: ...
+
+Global___DbtWizardAppOnboardingStepCompleted: typing_extensions.TypeAlias = DbtWizardAppOnboardingStepCompleted
+
+@typing.final
+class DbtWizardAppOnboardingProjectAdded(google.protobuf.message.Message):
+    """Emitted after the Wizard desktop app adds a project during onboarding as
+    the anonymous behavioral counterpart of the WizardOnboardingProjectAdded
+    Amplitude event; distinct from the CLI onboarding telemetry in
+    DbtWizardOnboarding.
+    """
+
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
+    ENRICHMENT_FIELD_NUMBER: builtins.int
+    EVENT_ID_FIELD_NUMBER: builtins.int
+    ANONYMOUS_ID_FIELD_NUMBER: builtins.int
+    SOURCE_FIELD_NUMBER: builtins.int
+    COMMON_CONTEXT_FIELD_NUMBER: builtins.int
+    event_id: builtins.str
+    anonymous_id: builtins.str
+    source: builtins.str
+    @property
+    def enrichment(self) -> dbtlabs.proto.public.v1.events.vortex_pb2.VortexMessageEnrichment: ...
+    @property
+    def common_context(self) -> dbtlabs.proto.public.v1.common.vortex_telemetry_contexts_pb2.VortexTelemetryCommonContext: ...
+    def __init__(
+        self,
+        *,
+        enrichment: dbtlabs.proto.public.v1.events.vortex_pb2.VortexMessageEnrichment | None = ...,
+        event_id: builtins.str = ...,
+        anonymous_id: builtins.str = ...,
+        source: builtins.str = ...,
+        common_context: dbtlabs.proto.public.v1.common.vortex_telemetry_contexts_pb2.VortexTelemetryCommonContext | None = ...,
+    ) -> None: ...
+    def HasField(self, field_name: typing.Literal["common_context", b"common_context", "enrichment", b"enrichment"]) -> builtins.bool: ...
+    def ClearField(self, field_name: typing.Literal["anonymous_id", b"anonymous_id", "common_context", b"common_context", "enrichment", b"enrichment", "event_id", b"event_id", "source", b"source"]) -> None: ...
+
+Global___DbtWizardAppOnboardingProjectAdded: typing_extensions.TypeAlias = DbtWizardAppOnboardingProjectAdded
+
+@typing.final
+class DbtWizardAppOnboardingProviderConfigured(google.protobuf.message.Message):
+    """Emitted after the Wizard desktop app configures a model provider during
+    onboarding as the anonymous behavioral counterpart of the
+    WizardOnboardingProviderConfigured Amplitude event; distinct from the CLI
+    onboarding telemetry in DbtWizardOnboarding.
+    """
+
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
+    ENRICHMENT_FIELD_NUMBER: builtins.int
+    EVENT_ID_FIELD_NUMBER: builtins.int
+    ANONYMOUS_ID_FIELD_NUMBER: builtins.int
+    PROVIDER_FIELD_NUMBER: builtins.int
+    COMMON_CONTEXT_FIELD_NUMBER: builtins.int
+    event_id: builtins.str
+    anonymous_id: builtins.str
+    provider: builtins.str
+    @property
+    def enrichment(self) -> dbtlabs.proto.public.v1.events.vortex_pb2.VortexMessageEnrichment: ...
+    @property
+    def common_context(self) -> dbtlabs.proto.public.v1.common.vortex_telemetry_contexts_pb2.VortexTelemetryCommonContext: ...
+    def __init__(
+        self,
+        *,
+        enrichment: dbtlabs.proto.public.v1.events.vortex_pb2.VortexMessageEnrichment | None = ...,
+        event_id: builtins.str = ...,
+        anonymous_id: builtins.str = ...,
+        provider: builtins.str = ...,
+        common_context: dbtlabs.proto.public.v1.common.vortex_telemetry_contexts_pb2.VortexTelemetryCommonContext | None = ...,
+    ) -> None: ...
+    def HasField(self, field_name: typing.Literal["common_context", b"common_context", "enrichment", b"enrichment"]) -> builtins.bool: ...
+    def ClearField(self, field_name: typing.Literal["anonymous_id", b"anonymous_id", "common_context", b"common_context", "enrichment", b"enrichment", "event_id", b"event_id", "provider", b"provider"]) -> None: ...
+
+Global___DbtWizardAppOnboardingProviderConfigured: typing_extensions.TypeAlias = DbtWizardAppOnboardingProviderConfigured
+
+@typing.final
+class DbtWizardAppOnboardingCompleted(google.protobuf.message.Message):
+    """Emitted when the Wizard desktop app completes onboarding as the anonymous
+    behavioral counterpart of the WizardOnboardingCompleted Amplitude event;
+    distinct from the CLI onboarding telemetry in DbtWizardOnboarding.
+    """
+
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
+    ENRICHMENT_FIELD_NUMBER: builtins.int
+    EVENT_ID_FIELD_NUMBER: builtins.int
+    ANONYMOUS_ID_FIELD_NUMBER: builtins.int
+    EXIT_FIELD_NUMBER: builtins.int
+    COMMON_CONTEXT_FIELD_NUMBER: builtins.int
+    event_id: builtins.str
+    anonymous_id: builtins.str
+    exit: builtins.str
+    @property
+    def enrichment(self) -> dbtlabs.proto.public.v1.events.vortex_pb2.VortexMessageEnrichment: ...
+    @property
+    def common_context(self) -> dbtlabs.proto.public.v1.common.vortex_telemetry_contexts_pb2.VortexTelemetryCommonContext: ...
+    def __init__(
+        self,
+        *,
+        enrichment: dbtlabs.proto.public.v1.events.vortex_pb2.VortexMessageEnrichment | None = ...,
+        event_id: builtins.str = ...,
+        anonymous_id: builtins.str = ...,
+        exit: builtins.str = ...,
+        common_context: dbtlabs.proto.public.v1.common.vortex_telemetry_contexts_pb2.VortexTelemetryCommonContext | None = ...,
+    ) -> None: ...
+    def HasField(self, field_name: typing.Literal["common_context", b"common_context", "enrichment", b"enrichment"]) -> builtins.bool: ...
+    def ClearField(self, field_name: typing.Literal["anonymous_id", b"anonymous_id", "common_context", b"common_context", "enrichment", b"enrichment", "event_id", b"event_id", "exit", b"exit"]) -> None: ...
+
+Global___DbtWizardAppOnboardingCompleted: typing_extensions.TypeAlias = DbtWizardAppOnboardingCompleted
