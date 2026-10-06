@@ -4,7 +4,7 @@ with open("README.md", "r") as fh:
     long_description = fh.read()
 
 package_name = "dbt-protos"
-package_version = "v1.0.595"
+package_version = "v1.0.596"
 
 setuptools.setup(
     name=package_name,
