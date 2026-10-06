@@ -638,6 +638,11 @@ class RunModel(google.protobuf.message.Message):
     CATALOG_NAME_FIELD_NUMBER: builtins.int
     CATALOG_TYPE_FIELD_NUMBER: builtins.int
     COMMON_CONTEXT_FIELD_NUMBER: builtins.int
+    ROWS_AFFECTED_FIELD_NUMBER: builtins.int
+    SNAPSHOT_STRATEGY_FIELD_NUMBER: builtins.int
+    BYTES_PROCESSED_FIELD_NUMBER: builtins.int
+    BYTES_BILLED_FIELD_NUMBER: builtins.int
+    SLOT_MS_FIELD_NUMBER: builtins.int
     event_id: builtins.str
     """event_id is the unique identifier for this event. It is a generated UUID."""
     invocation_id: builtins.str
@@ -706,6 +711,20 @@ class RunModel(google.protobuf.message.Message):
     this is the catalog backend kind, distinct from catalog_name (the user-chosen
     catalog label). empty string when the model does not use catalogs.yml.
     """
+    rows_affected: builtins.int
+    """number of rows affected by the model's main statement. Unset when unknown
+    (distinct from 0).
+    """
+    snapshot_strategy: builtins.str
+    """the snapshot config strategy (ex. "timestamp", "check"). empty string for
+    non-snapshot nodes.
+    """
+    bytes_processed: builtins.int
+    """bytes processed, per the BigQuery adapter response. Unset for other adapters."""
+    bytes_billed: builtins.int
+    """bytes billed, per the BigQuery adapter response. Unset for other adapters."""
+    slot_ms: builtins.int
+    """slot milliseconds used, per the BigQuery adapter response. Unset for other adapters."""
     @property
     def enrichment(self) -> dbtlabs.proto.public.v1.events.vortex_pb2.VortexMessageEnrichment:
         """This field is a toggle to enable enrichment of the message by the Vortex service."""
@@ -739,9 +758,22 @@ class RunModel(google.protobuf.message.Message):
         catalog_name: builtins.str = ...,
         catalog_type: builtins.str = ...,
         common_context: dbtlabs.proto.public.v1.common.vortex_telemetry_contexts_pb2.VortexTelemetryCommonContext | None = ...,
+        rows_affected: builtins.int | None = ...,
+        snapshot_strategy: builtins.str = ...,
+        bytes_processed: builtins.int | None = ...,
+        bytes_billed: builtins.int | None = ...,
+        slot_ms: builtins.int | None = ...,
     ) -> None: ...
-    def HasField(self, field_name: typing.Literal["common_context", b"common_context", "enrichment", b"enrichment"]) -> builtins.bool: ...
-    def ClearField(self, field_name: typing.Literal["access", b"access", "catalog_name", b"catalog_name", "catalog_type", b"catalog_type", "common_context", b"common_context", "contract_enforced", b"contract_enforced", "enrichment", b"enrichment", "event_id", b"event_id", "execution_time", b"execution_time", "has_group", b"has_group", "hashed_contents", b"hashed_contents", "index", b"index", "invocation_id", b"invocation_id", "language", b"language", "model_id", b"model_id", "model_incremental_strategy", b"model_incremental_strategy", "model_materialization", b"model_materialization", "resource_type", b"resource_type", "run_model_id", b"run_model_id", "run_skipped", b"run_skipped", "run_skipped_reason", b"run_skipped_reason", "run_status", b"run_status", "table_format", b"table_format", "total", b"total", "versioned", b"versioned"]) -> None: ...
+    def HasField(self, field_name: typing.Literal["_bytes_billed", b"_bytes_billed", "_bytes_processed", b"_bytes_processed", "_rows_affected", b"_rows_affected", "_slot_ms", b"_slot_ms", "bytes_billed", b"bytes_billed", "bytes_processed", b"bytes_processed", "common_context", b"common_context", "enrichment", b"enrichment", "rows_affected", b"rows_affected", "slot_ms", b"slot_ms"]) -> builtins.bool: ...
+    def ClearField(self, field_name: typing.Literal["_bytes_billed", b"_bytes_billed", "_bytes_processed", b"_bytes_processed", "_rows_affected", b"_rows_affected", "_slot_ms", b"_slot_ms", "access", b"access", "bytes_billed", b"bytes_billed", "bytes_processed", b"bytes_processed", "catalog_name", b"catalog_name", "catalog_type", b"catalog_type", "common_context", b"common_context", "contract_enforced", b"contract_enforced", "enrichment", b"enrichment", "event_id", b"event_id", "execution_time", b"execution_time", "has_group", b"has_group", "hashed_contents", b"hashed_contents", "index", b"index", "invocation_id", b"invocation_id", "language", b"language", "model_id", b"model_id", "model_incremental_strategy", b"model_incremental_strategy", "model_materialization", b"model_materialization", "resource_type", b"resource_type", "rows_affected", b"rows_affected", "run_model_id", b"run_model_id", "run_skipped", b"run_skipped", "run_skipped_reason", b"run_skipped_reason", "run_status", b"run_status", "slot_ms", b"slot_ms", "snapshot_strategy", b"snapshot_strategy", "table_format", b"table_format", "total", b"total", "versioned", b"versioned"]) -> None: ...
+    @typing.overload
+    def WhichOneof(self, oneof_group: typing.Literal["_bytes_billed", b"_bytes_billed"]) -> typing.Literal["bytes_billed"] | None: ...
+    @typing.overload
+    def WhichOneof(self, oneof_group: typing.Literal["_bytes_processed", b"_bytes_processed"]) -> typing.Literal["bytes_processed"] | None: ...
+    @typing.overload
+    def WhichOneof(self, oneof_group: typing.Literal["_rows_affected", b"_rows_affected"]) -> typing.Literal["rows_affected"] | None: ...
+    @typing.overload
+    def WhichOneof(self, oneof_group: typing.Literal["_slot_ms", b"_slot_ms"]) -> typing.Literal["slot_ms"] | None: ...
 
 Global___RunModel: typing_extensions.TypeAlias = RunModel
 
