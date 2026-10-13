@@ -889,6 +889,188 @@ DBT_COMMAND_SCOPE_MODEL: DbtCommandScope.ValueType  # 1
 DBT_COMMAND_SCOPE_PROJECT: DbtCommandScope.ValueType  # 2
 Global___DbtCommandScope: typing_extensions.TypeAlias = DbtCommandScope
 
+class _DbtInstallSource:
+    ValueType = typing.NewType("ValueType", builtins.int)
+    V: typing_extensions.TypeAlias = ValueType
+
+class _DbtInstallSourceEnumTypeWrapper(google.protobuf.internal.enum_type_wrapper._EnumTypeWrapper[_DbtInstallSource.ValueType], builtins.type):
+    DESCRIPTOR: google.protobuf.descriptor.EnumDescriptor
+    DBT_INSTALL_SOURCE_UNSPECIFIED: _DbtInstallSource.ValueType  # 0
+    DBT_INSTALL_SOURCE_VENV: _DbtInstallSource.ValueType  # 1
+    """A Python virtual environment belonging to the project."""
+    DBT_INSTALL_SOURCE_PATH: _DbtInstallSource.ValueType  # 2
+    """Found on PATH or in a common install location."""
+    DBT_INSTALL_SOURCE_MANAGED: _DbtInstallSource.ValueType  # 3
+    """The dbt Fusion binary the extension runs (installed by the extension, or
+    set with the dbt.dbtPath setting).
+    """
+    DBT_INSTALL_SOURCE_MANUAL: _DbtInstallSource.ValueType  # 4
+    """An executable the user chose by file path."""
+
+class DbtInstallSource(_DbtInstallSource, metaclass=_DbtInstallSourceEnumTypeWrapper):
+    """Where a detected dbt install came from."""
+
+DBT_INSTALL_SOURCE_UNSPECIFIED: DbtInstallSource.ValueType  # 0
+DBT_INSTALL_SOURCE_VENV: DbtInstallSource.ValueType  # 1
+"""A Python virtual environment belonging to the project."""
+DBT_INSTALL_SOURCE_PATH: DbtInstallSource.ValueType  # 2
+"""Found on PATH or in a common install location."""
+DBT_INSTALL_SOURCE_MANAGED: DbtInstallSource.ValueType  # 3
+"""The dbt Fusion binary the extension runs (installed by the extension, or
+set with the dbt.dbtPath setting).
+"""
+DBT_INSTALL_SOURCE_MANUAL: DbtInstallSource.ValueType  # 4
+"""An executable the user chose by file path."""
+Global___DbtInstallSource: typing_extensions.TypeAlias = DbtInstallSource
+
+class _DbtVersionSource:
+    ValueType = typing.NewType("ValueType", builtins.int)
+    V: typing_extensions.TypeAlias = ValueType
+
+class _DbtVersionSourceEnumTypeWrapper(google.protobuf.internal.enum_type_wrapper._EnumTypeWrapper[_DbtVersionSource.ValueType], builtins.type):
+    DESCRIPTOR: google.protobuf.descriptor.EnumDescriptor
+    DBT_VERSION_SOURCE_UNSPECIFIED: _DbtVersionSource.ValueType  # 0
+    DBT_VERSION_SOURCE_DEFAULT: _DbtVersionSource.ValueType  # 1
+    """Nothing chosen: the dbt Fusion binary."""
+    DBT_VERSION_SOURCE_STORED: _DbtVersionSource.ValueType  # 2
+    """The user's choice for this project."""
+    DBT_VERSION_SOURCE_V1_SETTING: _DbtVersionSource.ValueType  # 3
+    """Nothing chosen and dbt.dbtMajorVersion is v1: the best detected dbt Core."""
+
+class DbtVersionSource(_DbtVersionSource, metaclass=_DbtVersionSourceEnumTypeWrapper):
+    """Why the dbt version in effect for a project is in effect."""
+
+DBT_VERSION_SOURCE_UNSPECIFIED: DbtVersionSource.ValueType  # 0
+DBT_VERSION_SOURCE_DEFAULT: DbtVersionSource.ValueType  # 1
+"""Nothing chosen: the dbt Fusion binary."""
+DBT_VERSION_SOURCE_STORED: DbtVersionSource.ValueType  # 2
+"""The user's choice for this project."""
+DBT_VERSION_SOURCE_V1_SETTING: DbtVersionSource.ValueType  # 3
+"""Nothing chosen and dbt.dbtMajorVersion is v1: the best detected dbt Core."""
+Global___DbtVersionSource: typing_extensions.TypeAlias = DbtVersionSource
+
+class _DbtVersionRecommendationSource:
+    ValueType = typing.NewType("ValueType", builtins.int)
+    V: typing_extensions.TypeAlias = ValueType
+
+class _DbtVersionRecommendationSourceEnumTypeWrapper(google.protobuf.internal.enum_type_wrapper._EnumTypeWrapper[_DbtVersionRecommendationSource.ValueType], builtins.type):
+    DESCRIPTOR: google.protobuf.descriptor.EnumDescriptor
+    DBT_VERSION_RECOMMENDATION_SOURCE_UNSPECIFIED: _DbtVersionRecommendationSource.ValueType  # 0
+    DBT_VERSION_RECOMMENDATION_SOURCE_NONE: _DbtVersionRecommendationSource.ValueType  # 1
+    """Detection ran and there was nothing to recommend."""
+    DBT_VERSION_RECOMMENDATION_SOURCE_REQUIRE_DBT_VERSION: _DbtVersionRecommendationSource.ValueType  # 2
+    """The project's require-dbt-version."""
+    DBT_VERSION_RECOMMENDATION_SOURCE_LOCKFILE: _DbtVersionRecommendationSource.ValueType  # 3
+    """A dependency lockfile pinning dbt-core."""
+    DBT_VERSION_RECOMMENDATION_SOURCE_DBT_LOG: _DbtVersionRecommendationSource.ValueType  # 4
+    """The dbt version of the project's last run, from logs/dbt.log."""
+    DBT_VERSION_RECOMMENDATION_SOURCE_VENV: _DbtVersionRecommendationSource.ValueType  # 5
+    """A dbt install in the project's virtual environment."""
+
+class DbtVersionRecommendationSource(_DbtVersionRecommendationSource, metaclass=_DbtVersionRecommendationSourceEnumTypeWrapper):
+    """What a dbt version recommendation was based on."""
+
+DBT_VERSION_RECOMMENDATION_SOURCE_UNSPECIFIED: DbtVersionRecommendationSource.ValueType  # 0
+DBT_VERSION_RECOMMENDATION_SOURCE_NONE: DbtVersionRecommendationSource.ValueType  # 1
+"""Detection ran and there was nothing to recommend."""
+DBT_VERSION_RECOMMENDATION_SOURCE_REQUIRE_DBT_VERSION: DbtVersionRecommendationSource.ValueType  # 2
+"""The project's require-dbt-version."""
+DBT_VERSION_RECOMMENDATION_SOURCE_LOCKFILE: DbtVersionRecommendationSource.ValueType  # 3
+"""A dependency lockfile pinning dbt-core."""
+DBT_VERSION_RECOMMENDATION_SOURCE_DBT_LOG: DbtVersionRecommendationSource.ValueType  # 4
+"""The dbt version of the project's last run, from logs/dbt.log."""
+DBT_VERSION_RECOMMENDATION_SOURCE_VENV: DbtVersionRecommendationSource.ValueType  # 5
+"""A dbt install in the project's virtual environment."""
+Global___DbtVersionRecommendationSource: typing_extensions.TypeAlias = DbtVersionRecommendationSource
+
+class _DbtVersionRecommendationKind:
+    ValueType = typing.NewType("ValueType", builtins.int)
+    V: typing_extensions.TypeAlias = ValueType
+
+class _DbtVersionRecommendationKindEnumTypeWrapper(google.protobuf.internal.enum_type_wrapper._EnumTypeWrapper[_DbtVersionRecommendationKind.ValueType], builtins.type):
+    DESCRIPTOR: google.protobuf.descriptor.EnumDescriptor
+    DBT_VERSION_RECOMMENDATION_KIND_UNSPECIFIED: _DbtVersionRecommendationKind.ValueType  # 0
+    DBT_VERSION_RECOMMENDATION_KIND_INSTALL: _DbtVersionRecommendationKind.ValueType  # 1
+    """An installed dbt was recommended."""
+    DBT_VERSION_RECOMMENDATION_KIND_MISSING: _DbtVersionRecommendationKind.ValueType  # 2
+    """The recommended dbt version is not installed."""
+
+class DbtVersionRecommendationKind(_DbtVersionRecommendationKind, metaclass=_DbtVersionRecommendationKindEnumTypeWrapper): ...
+
+DBT_VERSION_RECOMMENDATION_KIND_UNSPECIFIED: DbtVersionRecommendationKind.ValueType  # 0
+DBT_VERSION_RECOMMENDATION_KIND_INSTALL: DbtVersionRecommendationKind.ValueType  # 1
+"""An installed dbt was recommended."""
+DBT_VERSION_RECOMMENDATION_KIND_MISSING: DbtVersionRecommendationKind.ValueType  # 2
+"""The recommended dbt version is not installed."""
+Global___DbtVersionRecommendationKind: typing_extensions.TypeAlias = DbtVersionRecommendationKind
+
+class _PanelLayout:
+    ValueType = typing.NewType("ValueType", builtins.int)
+    V: typing_extensions.TypeAlias = ValueType
+
+class _PanelLayoutEnumTypeWrapper(google.protobuf.internal.enum_type_wrapper._EnumTypeWrapper[_PanelLayout.ValueType], builtins.type):
+    DESCRIPTOR: google.protobuf.descriptor.EnumDescriptor
+    PANEL_LAYOUT_UNSPECIFIED: _PanelLayout.ValueType  # 0
+    PANEL_LAYOUT_UNIFIED: _PanelLayout.ValueType  # 1
+    PANEL_LAYOUT_STANDALONE: _PanelLayout.ValueType  # 2
+
+class PanelLayout(_PanelLayout, metaclass=_PanelLayoutEnumTypeWrapper):
+    """Which panel layout a session uses: the tabbed unified panel, or one panel
+    per view.
+    """
+
+PANEL_LAYOUT_UNSPECIFIED: PanelLayout.ValueType  # 0
+PANEL_LAYOUT_UNIFIED: PanelLayout.ValueType  # 1
+PANEL_LAYOUT_STANDALONE: PanelLayout.ValueType  # 2
+Global___PanelLayout: typing_extensions.TypeAlias = PanelLayout
+
+class _PanelTab:
+    ValueType = typing.NewType("ValueType", builtins.int)
+    V: typing_extensions.TypeAlias = ValueType
+
+class _PanelTabEnumTypeWrapper(google.protobuf.internal.enum_type_wrapper._EnumTypeWrapper[_PanelTab.ValueType], builtins.type):
+    DESCRIPTOR: google.protobuf.descriptor.EnumDescriptor
+    PANEL_TAB_UNSPECIFIED: _PanelTab.ValueType  # 0
+    PANEL_TAB_LINEAGE: _PanelTab.ValueType  # 1
+    PANEL_TAB_CATALOG: _PanelTab.ValueType  # 2
+    PANEL_TAB_PREVIEW: _PanelTab.ValueType  # 3
+    PANEL_TAB_COMPARE: _PanelTab.ValueType  # 4
+
+class PanelTab(_PanelTab, metaclass=_PanelTabEnumTypeWrapper): ...
+
+PANEL_TAB_UNSPECIFIED: PanelTab.ValueType  # 0
+PANEL_TAB_LINEAGE: PanelTab.ValueType  # 1
+PANEL_TAB_CATALOG: PanelTab.ValueType  # 2
+PANEL_TAB_PREVIEW: PanelTab.ValueType  # 3
+PANEL_TAB_COMPARE: PanelTab.ValueType  # 4
+Global___PanelTab: typing_extensions.TypeAlias = PanelTab
+
+class _PanelTabTrigger:
+    ValueType = typing.NewType("ValueType", builtins.int)
+    V: typing_extensions.TypeAlias = ValueType
+
+class _PanelTabTriggerEnumTypeWrapper(google.protobuf.internal.enum_type_wrapper._EnumTypeWrapper[_PanelTabTrigger.ValueType], builtins.type):
+    DESCRIPTOR: google.protobuf.descriptor.EnumDescriptor
+    PANEL_TAB_TRIGGER_UNSPECIFIED: _PanelTabTrigger.ValueType  # 0
+    PANEL_TAB_TRIGGER_CLICK: _PanelTabTrigger.ValueType  # 1
+    """Clicking the tab."""
+    PANEL_TAB_TRIGGER_KEYBOARD: _PanelTabTrigger.ValueType  # 2
+    """Keyboard navigation in the tab strip."""
+    PANEL_TAB_TRIGGER_COMMAND: _PanelTabTrigger.ValueType  # 3
+    """A command or action that opens a view in the panel."""
+
+class PanelTabTrigger(_PanelTabTrigger, metaclass=_PanelTabTriggerEnumTypeWrapper):
+    """How the unified panel's active tab was changed."""
+
+PANEL_TAB_TRIGGER_UNSPECIFIED: PanelTabTrigger.ValueType  # 0
+PANEL_TAB_TRIGGER_CLICK: PanelTabTrigger.ValueType  # 1
+"""Clicking the tab."""
+PANEL_TAB_TRIGGER_KEYBOARD: PanelTabTrigger.ValueType  # 2
+"""Keyboard navigation in the tab strip."""
+PANEL_TAB_TRIGGER_COMMAND: PanelTabTrigger.ValueType  # 3
+"""A command or action that opens a view in the panel."""
+Global___PanelTabTrigger: typing_extensions.TypeAlias = PanelTabTrigger
+
 @typing.final
 class User(google.protobuf.message.Message):
     """User information"""
@@ -980,3 +1162,24 @@ class CompileError(google.protobuf.message.Message):
     def ClearField(self, field_name: typing.Literal["code", b"code", "message", b"message"]) -> None: ...
 
 Global___CompileError: typing_extensions.TypeAlias = CompileError
+
+@typing.final
+class InstalledDbtVersion(google.protobuf.message.Message):
+    """An installed dbt, as listed by version detection."""
+
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
+    VERSION_FIELD_NUMBER: builtins.int
+    SOURCE_FIELD_NUMBER: builtins.int
+    version: builtins.str
+    """Full version, e.g. "1.10.3" or "2.0.0-preview.154"."""
+    source: Global___DbtInstallSource.ValueType
+    def __init__(
+        self,
+        *,
+        version: builtins.str = ...,
+        source: Global___DbtInstallSource.ValueType = ...,
+    ) -> None: ...
+    def ClearField(self, field_name: typing.Literal["source", b"source", "version", b"version"]) -> None: ...
+
+Global___InstalledDbtVersion: typing_extensions.TypeAlias = InstalledDbtVersion
