@@ -45,3 +45,40 @@ class Process(google.protobuf.message.Message):
     def ClearField(self, field_name: typing.Literal["host_arch", b"host_arch", "host_os", b"host_os", "package", b"package", "version", b"version"]) -> None: ...
 
 Global___Process: typing_extensions.TypeAlias = Process
+
+@typing.final
+class ThreadPoolWait(google.protobuf.message.Message):
+    """Time some work spent queued for a worker of a bounded thread pool, e.g. a
+    node evaluation waiting to run. The work makes no progress during this time.
+    It may occur multiple times for the same work, and short waits below an
+    internal threshold are not reported.
+
+    Each span is a single pool wait of the operation it is nested under. Waits
+    of the same operation never overlap, so how the operation accounts them,
+    e.g. as idle time, is defined by the operation's own event.
+    """
+
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
+    UNIQUE_ID_FIELD_NUMBER: builtins.int
+    BATCH_ID_FIELD_NUMBER: builtins.int
+    unique_id: builtins.str
+    """Unique id of the node whose work is waiting, if attributable to one."""
+    batch_id: builtins.str
+    """Id of the microbatch whose work is waiting. Unset for waits of a node
+    evaluation as a whole.
+    """
+    def __init__(
+        self,
+        *,
+        unique_id: builtins.str | None = ...,
+        batch_id: builtins.str | None = ...,
+    ) -> None: ...
+    def HasField(self, field_name: typing.Literal["_batch_id", b"_batch_id", "_unique_id", b"_unique_id", "batch_id", b"batch_id", "unique_id", b"unique_id"]) -> builtins.bool: ...
+    def ClearField(self, field_name: typing.Literal["_batch_id", b"_batch_id", "_unique_id", b"_unique_id", "batch_id", b"batch_id", "unique_id", b"unique_id"]) -> None: ...
+    @typing.overload
+    def WhichOneof(self, oneof_group: typing.Literal["_batch_id", b"_batch_id"]) -> typing.Literal["batch_id"] | None: ...
+    @typing.overload
+    def WhichOneof(self, oneof_group: typing.Literal["_unique_id", b"_unique_id"]) -> typing.Literal["unique_id"] | None: ...
+
+Global___ThreadPoolWait: typing_extensions.TypeAlias = ThreadPoolWait

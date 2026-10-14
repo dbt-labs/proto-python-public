@@ -124,7 +124,9 @@ Global___QueryExecuted: typing_extensions.TypeAlias = QueryExecuted
 
 @typing.final
 class ConnectionLimitWait(google.protobuf.message.Message):
-    """Time spent waiting for connection concurrency limits to allow a node to proceed."""
+    """Time spent waiting for connection concurrency limits to allow a node to proceed.
+    Superseded by `v1.public.events.fusion.process.ThreadPoolWait` and no longer emitted.
+    """
 
     DESCRIPTOR: google.protobuf.descriptor.Descriptor
 

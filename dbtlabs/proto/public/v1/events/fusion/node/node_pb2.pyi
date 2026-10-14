@@ -347,6 +347,28 @@ NODE_WARNING_OUTCOME_NO_WARNINGS: NodeWarningOutcome.ValueType  # 1
 NODE_WARNING_OUTCOME_WITH_WARNINGS: NodeWarningOutcome.ValueType  # 2
 Global___NodeWarningOutcome: typing_extensions.TypeAlias = NodeWarningOutcome
 
+class _MicrobatchBatchSize:
+    ValueType = typing.NewType("ValueType", builtins.int)
+    V: typing_extensions.TypeAlias = ValueType
+
+class _MicrobatchBatchSizeEnumTypeWrapper(google.protobuf.internal.enum_type_wrapper._EnumTypeWrapper[_MicrobatchBatchSize.ValueType], builtins.type):
+    DESCRIPTOR: google.protobuf.descriptor.EnumDescriptor
+    MICROBATCH_BATCH_SIZE_UNSPECIFIED: _MicrobatchBatchSize.ValueType  # 0
+    MICROBATCH_BATCH_SIZE_HOUR: _MicrobatchBatchSize.ValueType  # 1
+    MICROBATCH_BATCH_SIZE_DAY: _MicrobatchBatchSize.ValueType  # 2
+    MICROBATCH_BATCH_SIZE_MONTH: _MicrobatchBatchSize.ValueType  # 3
+    MICROBATCH_BATCH_SIZE_YEAR: _MicrobatchBatchSize.ValueType  # 4
+
+class MicrobatchBatchSize(_MicrobatchBatchSize, metaclass=_MicrobatchBatchSizeEnumTypeWrapper):
+    """Time grain of a microbatch model's batches."""
+
+MICROBATCH_BATCH_SIZE_UNSPECIFIED: MicrobatchBatchSize.ValueType  # 0
+MICROBATCH_BATCH_SIZE_HOUR: MicrobatchBatchSize.ValueType  # 1
+MICROBATCH_BATCH_SIZE_DAY: MicrobatchBatchSize.ValueType  # 2
+MICROBATCH_BATCH_SIZE_MONTH: MicrobatchBatchSize.ValueType  # 3
+MICROBATCH_BATCH_SIZE_YEAR: MicrobatchBatchSize.ValueType  # 4
+Global___MicrobatchBatchSize: typing_extensions.TypeAlias = MicrobatchBatchSize
+
 @typing.final
 class TestEvaluationDetail(google.protobuf.message.Message):
     DESCRIPTOR: google.protobuf.descriptor.Descriptor
@@ -483,6 +505,71 @@ class NodeEvaluationDetail(google.protobuf.message.Message):
 Global___NodeEvaluationDetail: typing_extensions.TypeAlias = NodeEvaluationDetail
 
 @typing.final
+class MicrobatchEvaluated(google.protobuf.message.Message):
+    """Evaluation of one time window within a microbatch model's run phase.
+    Maps to dbt-core's LogStartBatch (Q045) and LogBatchResult (Q046).
+    """
+
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
+    UNIQUE_ID_FIELD_NUMBER: builtins.int
+    SCHEMA_FIELD_NUMBER: builtins.int
+    IDENTIFIER_FIELD_NUMBER: builtins.int
+    BATCH_ID_FIELD_NUMBER: builtins.int
+    BATCH_SIZE_FIELD_NUMBER: builtins.int
+    BATCH_INDEX_FIELD_NUMBER: builtins.int
+    TOTAL_BATCHES_FIELD_NUMBER: builtins.int
+    EVENT_TIME_START_FIELD_NUMBER: builtins.int
+    EVENT_TIME_END_FIELD_NUMBER: builtins.int
+    NODE_OUTCOME_FIELD_NUMBER: builtins.int
+    IDLE_TIME_MS_FIELD_NUMBER: builtins.int
+    DBT_CORE_EVENT_CODE_FIELD_NUMBER: builtins.int
+    unique_id: builtins.str
+    """Unique id of the model owning this batch."""
+    schema: builtins.str
+    """Schema and identifier of the owning model's relation."""
+    identifier: builtins.str
+    batch_id: builtins.str
+    """Stable batch id: YYYY, YYYYMM, YYYYMMDD, or YYYYMMDDHH."""
+    batch_size: Global___MicrobatchBatchSize.ValueType
+    """Time grain of the event-time window."""
+    batch_index: builtins.int
+    """1-based index within this execution window."""
+    total_batches: builtins.int
+    event_time_start: builtins.str
+    """Inclusive start and exclusive end of the event-time window, in UTC RFC 3339."""
+    event_time_end: builtins.str
+    node_outcome: Global___NodeOutcome.ValueType
+    idle_time_ms: builtins.int
+    """Total time in milliseconds this batch evaluation spent idle: the summed
+    duration of `ThreadPoolWait` spans with this `batch_id`. It does not count
+    toward the owning `NodeEvaluated.idle_time_ms`.
+    """
+    dbt_core_event_code: builtins.str
+    """Optional legacy dbt core event code (Q045 at start, Q046 at completion)."""
+    def __init__(
+        self,
+        *,
+        unique_id: builtins.str = ...,
+        schema: builtins.str = ...,
+        identifier: builtins.str = ...,
+        batch_id: builtins.str = ...,
+        batch_size: Global___MicrobatchBatchSize.ValueType = ...,
+        batch_index: builtins.int = ...,
+        total_batches: builtins.int = ...,
+        event_time_start: builtins.str = ...,
+        event_time_end: builtins.str = ...,
+        node_outcome: Global___NodeOutcome.ValueType = ...,
+        idle_time_ms: builtins.int = ...,
+        dbt_core_event_code: builtins.str | None = ...,
+    ) -> None: ...
+    def HasField(self, field_name: typing.Literal["_dbt_core_event_code", b"_dbt_core_event_code", "dbt_core_event_code", b"dbt_core_event_code"]) -> builtins.bool: ...
+    def ClearField(self, field_name: typing.Literal["_dbt_core_event_code", b"_dbt_core_event_code", "batch_id", b"batch_id", "batch_index", b"batch_index", "batch_size", b"batch_size", "dbt_core_event_code", b"dbt_core_event_code", "event_time_end", b"event_time_end", "event_time_start", b"event_time_start", "identifier", b"identifier", "idle_time_ms", b"idle_time_ms", "node_outcome", b"node_outcome", "schema", b"schema", "total_batches", b"total_batches", "unique_id", b"unique_id"]) -> None: ...
+    def WhichOneof(self, oneof_group: typing.Literal["_dbt_core_event_code", b"_dbt_core_event_code"]) -> typing.Literal["dbt_core_event_code"] | None: ...
+
+Global___MicrobatchEvaluated: typing_extensions.TypeAlias = MicrobatchEvaluated
+
+@typing.final
 class NodeEvaluated(google.protobuf.message.Message):
     DESCRIPTOR: google.protobuf.descriptor.Descriptor
 
@@ -565,7 +652,10 @@ class NodeEvaluated(google.protobuf.message.Message):
     """
     idle_time_ms: builtins.int
     """Total time in milliseconds this node evaluation spent idle.
-    This includes time spent waiting on internal backpressure.
+    This includes time spent waiting on internal backpressure: the summed
+    duration of `ThreadPoolWait` spans of this node without a `batch_id`.
+    When the evaluation runs work concurrently, e.g. microbatches, those waits
+    cover only the time when all of that work is queued and none of it runs.
     """
     state_decision_id: builtins.str
     """Identifier of the dbt State execution decision that governed this node's

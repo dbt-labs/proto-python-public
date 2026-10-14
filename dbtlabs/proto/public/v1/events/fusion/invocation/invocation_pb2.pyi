@@ -129,6 +129,8 @@ class InvocationEvalArgs(google.protobuf.message.Message):
     WRITE_JSON_FIELD_NUMBER: builtins.int
     WRITE_CATALOG_FIELD_NUMBER: builtins.int
     MANAGE_STATE_FIELD_NUMBER: builtins.int
+    WARN_ERROR_FIELD_NUMBER: builtins.int
+    WARN_ERROR_OPTIONS_FIELD_NUMBER: builtins.int
     command: builtins.str
     """The dbt command executed, e.g. "run", "test", "build"."""
     profiles_dir: builtins.str
@@ -175,6 +177,11 @@ class InvocationEvalArgs(google.protobuf.message.Message):
     resolved from --manage-state, DBT_ENGINE_MANAGE_STATE, or `flags.manage_state`
     in dbt_project.yml / user settings.
     """
+    warn_error: builtins.bool
+    """Whether all warnings are upgraded to errors, resolved from --warn-error,
+    DBT_WARN_ERROR, or `flags.warn_error` in dbt_project.yml. Unset if the
+    invocation ends before the project is loaded.
+    """
     @property
     def select(self) -> google.protobuf.internal.containers.RepeatedScalarFieldContainer[builtins.str]:
         """Select nodes to operate on"""
@@ -194,6 +201,13 @@ class InvocationEvalArgs(google.protobuf.message.Message):
     @property
     def exclude_resource_types(self) -> google.protobuf.internal.containers.RepeatedScalarFieldContainer[builtins.str]:
         """Exclude nodes of a specific type"""
+
+    @property
+    def warn_error_options(self) -> Global___InvocationWarnErrorOptions:
+        """Resolved --warn-error-options, DBT_WARN_ERROR_OPTIONS, or
+        `flags.warn_error_options` in dbt_project.yml. Unset if the invocation ends
+        before the project is loaded.
+        """
 
     def __init__(
         self,
@@ -223,9 +237,11 @@ class InvocationEvalArgs(google.protobuf.message.Message):
         write_json: builtins.bool | None = ...,
         write_catalog: builtins.bool | None = ...,
         manage_state: builtins.bool | None = ...,
+        warn_error: builtins.bool | None = ...,
+        warn_error_options: Global___InvocationWarnErrorOptions | None = ...,
     ) -> None: ...
-    def HasField(self, field_name: typing.Literal["_debug", b"_debug", "_indirect_selection", b"_indirect_selection", "_limit", b"_limit", "_log_format", b"_log_format", "_log_level", b"_log_level", "_log_path", b"_log_path", "_manage_state", b"_manage_state", "_num_threads", b"_num_threads", "_packages_install_path", b"_packages_install_path", "_profile", b"_profile", "_profiles_dir", b"_profiles_dir", "_project_dir", b"_project_dir", "_quiet", b"_quiet", "_selector", b"_selector", "_target", b"_target", "_target_path", b"_target_path", "_write_catalog", b"_write_catalog", "_write_json", b"_write_json", "debug", b"debug", "indirect_selection", b"indirect_selection", "limit", b"limit", "log_format", b"log_format", "log_level", b"log_level", "log_path", b"log_path", "manage_state", b"manage_state", "num_threads", b"num_threads", "packages_install_path", b"packages_install_path", "profile", b"profile", "profiles_dir", b"profiles_dir", "project_dir", b"project_dir", "quiet", b"quiet", "selector", b"selector", "target", b"target", "target_path", b"target_path", "write_catalog", b"write_catalog", "write_json", b"write_json"]) -> builtins.bool: ...
-    def ClearField(self, field_name: typing.Literal["_debug", b"_debug", "_indirect_selection", b"_indirect_selection", "_limit", b"_limit", "_log_format", b"_log_format", "_log_level", b"_log_level", "_log_path", b"_log_path", "_manage_state", b"_manage_state", "_num_threads", b"_num_threads", "_packages_install_path", b"_packages_install_path", "_profile", b"_profile", "_profiles_dir", b"_profiles_dir", "_project_dir", b"_project_dir", "_quiet", b"_quiet", "_selector", b"_selector", "_target", b"_target", "_target_path", b"_target_path", "_write_catalog", b"_write_catalog", "_write_json", b"_write_json", "command", b"command", "debug", b"debug", "exclude", b"exclude", "exclude_resource_types", b"exclude_resource_types", "indirect_selection", b"indirect_selection", "limit", b"limit", "log_format", b"log_format", "log_level", b"log_level", "log_path", b"log_path", "manage_state", b"manage_state", "num_threads", b"num_threads", "output_keys", b"output_keys", "packages_install_path", b"packages_install_path", "profile", b"profile", "profiles_dir", b"profiles_dir", "project_dir", b"project_dir", "quiet", b"quiet", "resource_types", b"resource_types", "select", b"select", "selector", b"selector", "target", b"target", "target_path", b"target_path", "vars", b"vars", "write_catalog", b"write_catalog", "write_json", b"write_json"]) -> None: ...
+    def HasField(self, field_name: typing.Literal["_debug", b"_debug", "_indirect_selection", b"_indirect_selection", "_limit", b"_limit", "_log_format", b"_log_format", "_log_level", b"_log_level", "_log_path", b"_log_path", "_manage_state", b"_manage_state", "_num_threads", b"_num_threads", "_packages_install_path", b"_packages_install_path", "_profile", b"_profile", "_profiles_dir", b"_profiles_dir", "_project_dir", b"_project_dir", "_quiet", b"_quiet", "_selector", b"_selector", "_target", b"_target", "_target_path", b"_target_path", "_warn_error", b"_warn_error", "_warn_error_options", b"_warn_error_options", "_write_catalog", b"_write_catalog", "_write_json", b"_write_json", "debug", b"debug", "indirect_selection", b"indirect_selection", "limit", b"limit", "log_format", b"log_format", "log_level", b"log_level", "log_path", b"log_path", "manage_state", b"manage_state", "num_threads", b"num_threads", "packages_install_path", b"packages_install_path", "profile", b"profile", "profiles_dir", b"profiles_dir", "project_dir", b"project_dir", "quiet", b"quiet", "selector", b"selector", "target", b"target", "target_path", b"target_path", "warn_error", b"warn_error", "warn_error_options", b"warn_error_options", "write_catalog", b"write_catalog", "write_json", b"write_json"]) -> builtins.bool: ...
+    def ClearField(self, field_name: typing.Literal["_debug", b"_debug", "_indirect_selection", b"_indirect_selection", "_limit", b"_limit", "_log_format", b"_log_format", "_log_level", b"_log_level", "_log_path", b"_log_path", "_manage_state", b"_manage_state", "_num_threads", b"_num_threads", "_packages_install_path", b"_packages_install_path", "_profile", b"_profile", "_profiles_dir", b"_profiles_dir", "_project_dir", b"_project_dir", "_quiet", b"_quiet", "_selector", b"_selector", "_target", b"_target", "_target_path", b"_target_path", "_warn_error", b"_warn_error", "_warn_error_options", b"_warn_error_options", "_write_catalog", b"_write_catalog", "_write_json", b"_write_json", "command", b"command", "debug", b"debug", "exclude", b"exclude", "exclude_resource_types", b"exclude_resource_types", "indirect_selection", b"indirect_selection", "limit", b"limit", "log_format", b"log_format", "log_level", b"log_level", "log_path", b"log_path", "manage_state", b"manage_state", "num_threads", b"num_threads", "output_keys", b"output_keys", "packages_install_path", b"packages_install_path", "profile", b"profile", "profiles_dir", b"profiles_dir", "project_dir", b"project_dir", "quiet", b"quiet", "resource_types", b"resource_types", "select", b"select", "selector", b"selector", "target", b"target", "target_path", b"target_path", "vars", b"vars", "warn_error", b"warn_error", "warn_error_options", b"warn_error_options", "write_catalog", b"write_catalog", "write_json", b"write_json"]) -> None: ...
     @typing.overload
     def WhichOneof(self, oneof_group: typing.Literal["_debug", b"_debug"]) -> typing.Literal["debug"] | None: ...
     @typing.overload
@@ -259,11 +275,49 @@ class InvocationEvalArgs(google.protobuf.message.Message):
     @typing.overload
     def WhichOneof(self, oneof_group: typing.Literal["_target_path", b"_target_path"]) -> typing.Literal["target_path"] | None: ...
     @typing.overload
+    def WhichOneof(self, oneof_group: typing.Literal["_warn_error", b"_warn_error"]) -> typing.Literal["warn_error"] | None: ...
+    @typing.overload
+    def WhichOneof(self, oneof_group: typing.Literal["_warn_error_options", b"_warn_error_options"]) -> typing.Literal["warn_error_options"] | None: ...
+    @typing.overload
     def WhichOneof(self, oneof_group: typing.Literal["_write_catalog", b"_write_catalog"]) -> typing.Literal["write_catalog"] | None: ...
     @typing.overload
     def WhichOneof(self, oneof_group: typing.Literal["_write_json", b"_write_json"]) -> typing.Literal["write_json"] | None: ...
 
 Global___InvocationEvalArgs: typing_extensions.TypeAlias = InvocationEvalArgs
+
+@typing.final
+class InvocationWarnErrorOptions(google.protobuf.message.Message):
+    """Resolved warn-error options. Entries use the canonical config spelling
+    (e.g. `all`, `Deprecations`, event names); `*` and `ALL` normalize to `all`.
+    """
+
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
+    ERROR_FIELD_NUMBER: builtins.int
+    WARN_FIELD_NUMBER: builtins.int
+    SILENCE_FIELD_NUMBER: builtins.int
+    @property
+    def error(self) -> google.protobuf.internal.containers.RepeatedScalarFieldContainer[builtins.str]:
+        """Events or groups upgraded to errors"""
+
+    @property
+    def warn(self) -> google.protobuf.internal.containers.RepeatedScalarFieldContainer[builtins.str]:
+        """Events or groups kept as warnings"""
+
+    @property
+    def silence(self) -> google.protobuf.internal.containers.RepeatedScalarFieldContainer[builtins.str]:
+        """Events or groups silenced"""
+
+    def __init__(
+        self,
+        *,
+        error: collections.abc.Iterable[builtins.str] | None = ...,
+        warn: collections.abc.Iterable[builtins.str] | None = ...,
+        silence: collections.abc.Iterable[builtins.str] | None = ...,
+    ) -> None: ...
+    def ClearField(self, field_name: typing.Literal["error", b"error", "silence", b"silence", "warn", b"warn"]) -> None: ...
+
+Global___InvocationWarnErrorOptions: typing_extensions.TypeAlias = InvocationWarnErrorOptions
 
 @typing.final
 class Invocation(google.protobuf.message.Message):
