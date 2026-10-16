@@ -1481,3 +1481,145 @@ class DbtWizardAppOnboardingCompleted(google.protobuf.message.Message):
     def ClearField(self, field_name: typing.Literal["anonymous_id", b"anonymous_id", "common_context", b"common_context", "enrichment", b"enrichment", "event_id", b"event_id", "exit", b"exit"]) -> None: ...
 
 Global___DbtWizardAppOnboardingCompleted: typing_extensions.TypeAlias = DbtWizardAppOnboardingCompleted
+
+@typing.final
+class DbtWizardAppTurnErrorBannerShown(google.protobuf.message.Message):
+    """Emitted when the Wizard desktop app shows a turn-error banner as the
+    anonymous behavioral counterpart of the WizardTurnErrorBannerShown
+    Amplitude event.
+    """
+
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
+    ENRICHMENT_FIELD_NUMBER: builtins.int
+    EVENT_ID_FIELD_NUMBER: builtins.int
+    ANONYMOUS_ID_FIELD_NUMBER: builtins.int
+    CATEGORY_FIELD_NUMBER: builtins.int
+    COMMON_CONTEXT_FIELD_NUMBER: builtins.int
+    event_id: builtins.str
+    anonymous_id: builtins.str
+    category: builtins.str
+    @property
+    def enrichment(self) -> dbtlabs.proto.public.v1.events.vortex_pb2.VortexMessageEnrichment: ...
+    @property
+    def common_context(self) -> dbtlabs.proto.public.v1.common.vortex_telemetry_contexts_pb2.VortexTelemetryCommonContext: ...
+    def __init__(
+        self,
+        *,
+        enrichment: dbtlabs.proto.public.v1.events.vortex_pb2.VortexMessageEnrichment | None = ...,
+        event_id: builtins.str = ...,
+        anonymous_id: builtins.str = ...,
+        category: builtins.str = ...,
+        common_context: dbtlabs.proto.public.v1.common.vortex_telemetry_contexts_pb2.VortexTelemetryCommonContext | None = ...,
+    ) -> None: ...
+    def HasField(self, field_name: typing.Literal["common_context", b"common_context", "enrichment", b"enrichment"]) -> builtins.bool: ...
+    def ClearField(self, field_name: typing.Literal["anonymous_id", b"anonymous_id", "category", b"category", "common_context", b"common_context", "enrichment", b"enrichment", "event_id", b"event_id"]) -> None: ...
+
+Global___DbtWizardAppTurnErrorBannerShown: typing_extensions.TypeAlias = DbtWizardAppTurnErrorBannerShown
+
+@typing.final
+class DbtWizardAppTurnErrorBannerActionClicked(google.protobuf.message.Message):
+    """Emitted when the Wizard desktop app activates a turn-error banner action as
+    the anonymous behavioral counterpart of the
+    WizardTurnErrorBannerActionClicked Amplitude event.
+    """
+
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
+    ENRICHMENT_FIELD_NUMBER: builtins.int
+    EVENT_ID_FIELD_NUMBER: builtins.int
+    ANONYMOUS_ID_FIELD_NUMBER: builtins.int
+    CATEGORY_FIELD_NUMBER: builtins.int
+    TARGET_FIELD_NUMBER: builtins.int
+    COMMON_CONTEXT_FIELD_NUMBER: builtins.int
+    event_id: builtins.str
+    anonymous_id: builtins.str
+    category: builtins.str
+    target: builtins.str
+    @property
+    def enrichment(self) -> dbtlabs.proto.public.v1.events.vortex_pb2.VortexMessageEnrichment: ...
+    @property
+    def common_context(self) -> dbtlabs.proto.public.v1.common.vortex_telemetry_contexts_pb2.VortexTelemetryCommonContext: ...
+    def __init__(
+        self,
+        *,
+        enrichment: dbtlabs.proto.public.v1.events.vortex_pb2.VortexMessageEnrichment | None = ...,
+        event_id: builtins.str = ...,
+        anonymous_id: builtins.str = ...,
+        category: builtins.str = ...,
+        target: builtins.str = ...,
+        common_context: dbtlabs.proto.public.v1.common.vortex_telemetry_contexts_pb2.VortexTelemetryCommonContext | None = ...,
+    ) -> None: ...
+    def HasField(self, field_name: typing.Literal["common_context", b"common_context", "enrichment", b"enrichment"]) -> builtins.bool: ...
+    def ClearField(self, field_name: typing.Literal["anonymous_id", b"anonymous_id", "category", b"category", "common_context", b"common_context", "enrichment", b"enrichment", "event_id", b"event_id", "target", b"target"]) -> None: ...
+
+Global___DbtWizardAppTurnErrorBannerActionClicked: typing_extensions.TypeAlias = DbtWizardAppTurnErrorBannerActionClicked
+
+@typing.final
+class DbtWizardAppUpdateChecked(google.protobuf.message.Message):
+    """Emitted when the Wizard desktop app finishes an update check as the
+    anonymous behavioral counterpart of the WizardUpdateChecked Amplitude event.
+    """
+
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
+    ENRICHMENT_FIELD_NUMBER: builtins.int
+    EVENT_ID_FIELD_NUMBER: builtins.int
+    ANONYMOUS_ID_FIELD_NUMBER: builtins.int
+    SOURCE_FIELD_NUMBER: builtins.int
+    OUTCOME_FIELD_NUMBER: builtins.int
+    COMMON_CONTEXT_FIELD_NUMBER: builtins.int
+    event_id: builtins.str
+    anonymous_id: builtins.str
+    source: builtins.str
+    outcome: builtins.str
+    @property
+    def enrichment(self) -> dbtlabs.proto.public.v1.events.vortex_pb2.VortexMessageEnrichment: ...
+    @property
+    def common_context(self) -> dbtlabs.proto.public.v1.common.vortex_telemetry_contexts_pb2.VortexTelemetryCommonContext: ...
+    def __init__(
+        self,
+        *,
+        enrichment: dbtlabs.proto.public.v1.events.vortex_pb2.VortexMessageEnrichment | None = ...,
+        event_id: builtins.str = ...,
+        anonymous_id: builtins.str = ...,
+        source: builtins.str = ...,
+        outcome: builtins.str = ...,
+        common_context: dbtlabs.proto.public.v1.common.vortex_telemetry_contexts_pb2.VortexTelemetryCommonContext | None = ...,
+    ) -> None: ...
+    def HasField(self, field_name: typing.Literal["common_context", b"common_context", "enrichment", b"enrichment"]) -> builtins.bool: ...
+    def ClearField(self, field_name: typing.Literal["anonymous_id", b"anonymous_id", "common_context", b"common_context", "enrichment", b"enrichment", "event_id", b"event_id", "outcome", b"outcome", "source", b"source"]) -> None: ...
+
+Global___DbtWizardAppUpdateChecked: typing_extensions.TypeAlias = DbtWizardAppUpdateChecked
+
+@typing.final
+class DbtWizardAppUpdateInstallStarted(google.protobuf.message.Message):
+    """Emitted when the Wizard desktop app starts installing an update as the
+    anonymous behavioral counterpart of the WizardUpdateInstallStarted Amplitude
+    event.
+    """
+
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
+    ENRICHMENT_FIELD_NUMBER: builtins.int
+    EVENT_ID_FIELD_NUMBER: builtins.int
+    ANONYMOUS_ID_FIELD_NUMBER: builtins.int
+    COMMON_CONTEXT_FIELD_NUMBER: builtins.int
+    event_id: builtins.str
+    anonymous_id: builtins.str
+    @property
+    def enrichment(self) -> dbtlabs.proto.public.v1.events.vortex_pb2.VortexMessageEnrichment: ...
+    @property
+    def common_context(self) -> dbtlabs.proto.public.v1.common.vortex_telemetry_contexts_pb2.VortexTelemetryCommonContext: ...
+    def __init__(
+        self,
+        *,
+        enrichment: dbtlabs.proto.public.v1.events.vortex_pb2.VortexMessageEnrichment | None = ...,
+        event_id: builtins.str = ...,
+        anonymous_id: builtins.str = ...,
+        common_context: dbtlabs.proto.public.v1.common.vortex_telemetry_contexts_pb2.VortexTelemetryCommonContext | None = ...,
+    ) -> None: ...
+    def HasField(self, field_name: typing.Literal["common_context", b"common_context", "enrichment", b"enrichment"]) -> builtins.bool: ...
+    def ClearField(self, field_name: typing.Literal["anonymous_id", b"anonymous_id", "common_context", b"common_context", "enrichment", b"enrichment", "event_id", b"event_id"]) -> None: ...
+
+Global___DbtWizardAppUpdateInstallStarted: typing_extensions.TypeAlias = DbtWizardAppUpdateInstallStarted
