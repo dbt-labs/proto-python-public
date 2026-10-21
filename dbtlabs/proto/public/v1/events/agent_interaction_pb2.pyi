@@ -249,3 +249,49 @@ class AgentToolCallCompleted(google.protobuf.message.Message):
     def WhichOneof(self, oneof_group: typing.Literal["_output_length", b"_output_length"]) -> typing.Literal["output_length"] | None: ...
 
 Global___AgentToolCallCompleted: typing_extensions.TypeAlias = AgentToolCallCompleted
+
+@typing.final
+class AgentRunStarted(google.protobuf.message.Message):
+    """Emitted by the agent backend once per agent run request, for any kind of task."""
+
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
+    ENRICHMENT_FIELD_NUMBER: builtins.int
+    CTX_FIELD_NUMBER: builtins.int
+    COMMON_CONTEXT_FIELD_NUMBER: builtins.int
+    THREAD_ID_FIELD_NUMBER: builtins.int
+    AGENT_NAME_FIELD_NUMBER: builtins.int
+    TASK_TYPE_FIELD_NUMBER: builtins.int
+    TASK_CORRELATION_ID_FIELD_NUMBER: builtins.int
+    thread_id: builtins.str
+    """Agent thread; empty if the thread does not exist yet."""
+    agent_name: builtins.str
+    """e.g. "wizard"."""
+    task_type: builtins.str
+    """Kind of task the client tagged the run with (e.g. "mantle-migration"); empty if untagged."""
+    task_correlation_id: builtins.str
+    """Correlates the runs, and the Admin API calls (x-dbt-task-correlation-id), of one
+    long-running task; empty if the client sent none. For a mantle migration this is
+    the migration attempt ID.
+    """
+    @property
+    def enrichment(self) -> dbtlabs.proto.public.v1.events.vortex_pb2.VortexMessageEnrichment: ...
+    @property
+    def ctx(self) -> dbtlabs.proto.public.v1.common.vortex_telemetry_contexts_pb2.VortexTelemetryDbtCloudContext: ...
+    @property
+    def common_context(self) -> dbtlabs.proto.public.v1.common.vortex_telemetry_contexts_pb2.VortexTelemetryCommonContext: ...
+    def __init__(
+        self,
+        *,
+        enrichment: dbtlabs.proto.public.v1.events.vortex_pb2.VortexMessageEnrichment | None = ...,
+        ctx: dbtlabs.proto.public.v1.common.vortex_telemetry_contexts_pb2.VortexTelemetryDbtCloudContext | None = ...,
+        common_context: dbtlabs.proto.public.v1.common.vortex_telemetry_contexts_pb2.VortexTelemetryCommonContext | None = ...,
+        thread_id: builtins.str = ...,
+        agent_name: builtins.str = ...,
+        task_type: builtins.str = ...,
+        task_correlation_id: builtins.str = ...,
+    ) -> None: ...
+    def HasField(self, field_name: typing.Literal["common_context", b"common_context", "ctx", b"ctx", "enrichment", b"enrichment"]) -> builtins.bool: ...
+    def ClearField(self, field_name: typing.Literal["agent_name", b"agent_name", "common_context", b"common_context", "ctx", b"ctx", "enrichment", b"enrichment", "task_correlation_id", b"task_correlation_id", "task_type", b"task_type", "thread_id", b"thread_id"]) -> None: ...
+
+Global___AgentRunStarted: typing_extensions.TypeAlias = AgentRunStarted

@@ -159,7 +159,10 @@ Global___FunnelStep: typing_extensions.TypeAlias = FunnelStep
 
 @typing.final
 class AgentRunStarted(google.protobuf.message.Message):
-    """Emitted by ai-codegen-api when an agent run starts with task_type = "mantle-migration"."""
+    """Deprecated: use v1.public.events.agent_interaction.AgentRunStarted, which every task
+    type shares. Kept because merged field numbers are immutable; no longer emitted.
+    Emitted by ai-codegen-api when an agent run starts with task_type = "mantle-migration".
+    """
 
     DESCRIPTOR: google.protobuf.descriptor.Descriptor
 
