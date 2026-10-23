@@ -96,7 +96,8 @@ class ModelBuilt(google.protobuf.message.Message):
     "ephemeral").
     """
     status: builtins.str
-    """Node result status from run_results.json: "success" | "partial_success" | "warn".
+    """Node result status from run_results.json: "success" | "partial_success" | "warn" |
+    "reused". A "reused" node was not rebuilt in the run: its existing relation was reused.
     An ephemeral model is included when a dependent of it was selected and compiled in
     the run, and its status is "success", which means it compiled, not that the
     dependent succeeded.
