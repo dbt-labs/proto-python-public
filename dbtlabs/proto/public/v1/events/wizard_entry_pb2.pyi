@@ -4,11 +4,9 @@ isort:skip_file
 """
 
 import builtins
-import collections.abc
 import dbtlabs.proto.public.v1.common.vortex_telemetry_contexts_pb2
 import dbtlabs.proto.public.v1.events.vortex_pb2
 import google.protobuf.descriptor
-import google.protobuf.internal.containers
 import google.protobuf.message
 import sys
 import typing
@@ -60,7 +58,6 @@ class WizardEntryViewed(google.protobuf.message.Message):
     SOURCE_FIELD_NUMBER: builtins.int
     SHOWN_FIELD_NUMBER: builtins.int
     HAS_DEVELOP_ACCESS_FIELD_NUMBER: builtins.int
-    STARTER_IDS_FIELD_NUMBER: builtins.int
     AGENT_MODE_LOCK_FIELD_NUMBER: builtins.int
     PROD_ENVIRONMENT_ID_FIELD_NUMBER: builtins.int
     DEV_ENVIRONMENT_ID_FIELD_NUMBER: builtins.int
@@ -86,10 +83,6 @@ class WizardEntryViewed(google.protobuf.message.Message):
 
     @property
     def common_context(self) -> dbtlabs.proto.public.v1.common.vortex_telemetry_contexts_pb2.VortexTelemetryCommonContext: ...
-    @property
-    def starter_ids(self) -> google.protobuf.internal.containers.RepeatedScalarFieldContainer[builtins.str]:
-        """Not sent: which starters were shown isn't tracked (the set changes over time)."""
-
     def __init__(
         self,
         *,
@@ -99,7 +92,6 @@ class WizardEntryViewed(google.protobuf.message.Message):
         source: builtins.str = ...,
         shown: builtins.bool = ...,
         has_develop_access: builtins.bool = ...,
-        starter_ids: collections.abc.Iterable[builtins.str] | None = ...,
         agent_mode_lock: builtins.str = ...,
         prod_environment_id: builtins.str = ...,
         dev_environment_id: builtins.str = ...,
@@ -107,7 +99,7 @@ class WizardEntryViewed(google.protobuf.message.Message):
         has_dev_credentials: builtins.bool = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["common_context", b"common_context", "ctx", b"ctx", "enrichment", b"enrichment"]) -> builtins.bool: ...
-    def ClearField(self, field_name: typing.Literal["agent_mode_lock", b"agent_mode_lock", "common_context", b"common_context", "ctx", b"ctx", "dev_environment_id", b"dev_environment_id", "enrichment", b"enrichment", "has_dev_credentials", b"has_dev_credentials", "has_develop_access", b"has_develop_access", "has_prod_build", b"has_prod_build", "prod_environment_id", b"prod_environment_id", "shown", b"shown", "source", b"source", "starter_ids", b"starter_ids"]) -> None: ...
+    def ClearField(self, field_name: typing.Literal["agent_mode_lock", b"agent_mode_lock", "common_context", b"common_context", "ctx", b"ctx", "dev_environment_id", b"dev_environment_id", "enrichment", b"enrichment", "has_dev_credentials", b"has_dev_credentials", "has_develop_access", b"has_develop_access", "has_prod_build", b"has_prod_build", "prod_environment_id", b"prod_environment_id", "shown", b"shown", "source", b"source"]) -> None: ...
 
 Global___WizardEntryViewed: typing_extensions.TypeAlias = WizardEntryViewed
 
@@ -271,15 +263,12 @@ class WizardHandoffLinked(google.protobuf.message.Message):
     SOURCE_FIELD_NUMBER: builtins.int
     HANDOFF_ID_FIELD_NUMBER: builtins.int
     THREAD_ID_FIELD_NUMBER: builtins.int
-    STARTER_ID_FIELD_NUMBER: builtins.int
     AGENT_MODE_REQUESTED_FIELD_NUMBER: builtins.int
     AGENT_MODE_FIELD_NUMBER: builtins.int
     source: builtins.str
     handoff_id: builtins.str
     thread_id: builtins.str
     """Agent conversation thread the prompt started."""
-    starter_id: builtins.str
-    """Not sent: join to WizardEntryInteracted on handoff_id for the starter."""
     agent_mode_requested: builtins.str
     """Mode picked in the entry."""
     agent_mode: builtins.str
@@ -301,12 +290,11 @@ class WizardHandoffLinked(google.protobuf.message.Message):
         source: builtins.str = ...,
         handoff_id: builtins.str = ...,
         thread_id: builtins.str = ...,
-        starter_id: builtins.str = ...,
         agent_mode_requested: builtins.str = ...,
         agent_mode: builtins.str = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["common_context", b"common_context", "ctx", b"ctx", "enrichment", b"enrichment"]) -> builtins.bool: ...
-    def ClearField(self, field_name: typing.Literal["agent_mode", b"agent_mode", "agent_mode_requested", b"agent_mode_requested", "common_context", b"common_context", "ctx", b"ctx", "enrichment", b"enrichment", "handoff_id", b"handoff_id", "source", b"source", "starter_id", b"starter_id", "thread_id", b"thread_id"]) -> None: ...
+    def ClearField(self, field_name: typing.Literal["agent_mode", b"agent_mode", "agent_mode_requested", b"agent_mode_requested", "common_context", b"common_context", "ctx", b"ctx", "enrichment", b"enrichment", "handoff_id", b"handoff_id", "source", b"source", "thread_id", b"thread_id"]) -> None: ...
 
 Global___WizardHandoffLinked: typing_extensions.TypeAlias = WizardHandoffLinked
 
