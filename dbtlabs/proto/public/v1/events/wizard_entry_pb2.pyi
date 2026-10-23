@@ -36,6 +36,13 @@ class WizardEntryViewed(google.protobuf.message.Message):
                    WizardHandoffLinked then joins it to thread_id, and through that to
                    CopilotGenerationComplete.
       agent_mode - "explore" | "ask" | "code".
+      prod_environment_id / dev_environment_id - the project's production
+                   (deployment_type "production") and development environments;
+                   empty when the project has none.
+      has_prod_build      - the production environment has applied state in the
+                   Discovery API (a successful build). Without it the Wizard's
+                   Discovery tools return nothing.
+      has_dev_credentials - the user has development credentials for the project.
 
     No prompt text is sent, only its length.
 
@@ -55,6 +62,10 @@ class WizardEntryViewed(google.protobuf.message.Message):
     HAS_DEVELOP_ACCESS_FIELD_NUMBER: builtins.int
     STARTER_IDS_FIELD_NUMBER: builtins.int
     AGENT_MODE_LOCK_FIELD_NUMBER: builtins.int
+    PROD_ENVIRONMENT_ID_FIELD_NUMBER: builtins.int
+    DEV_ENVIRONMENT_ID_FIELD_NUMBER: builtins.int
+    HAS_PROD_BUILD_FIELD_NUMBER: builtins.int
+    HAS_DEV_CREDENTIALS_FIELD_NUMBER: builtins.int
     source: builtins.str
     shown: builtins.bool
     """Whether the entry was rendered."""
@@ -63,6 +74,10 @@ class WizardEntryViewed(google.protobuf.message.Message):
     """Why the agent mode picker is locked to Explore, if it is:
       "" | "no_develop_access" | "dbt_version".
     """
+    prod_environment_id: builtins.str
+    dev_environment_id: builtins.str
+    has_prod_build: builtins.bool
+    has_dev_credentials: builtins.bool
     @property
     def enrichment(self) -> dbtlabs.proto.public.v1.events.vortex_pb2.VortexMessageEnrichment: ...
     @property
@@ -73,7 +88,7 @@ class WizardEntryViewed(google.protobuf.message.Message):
     def common_context(self) -> dbtlabs.proto.public.v1.common.vortex_telemetry_contexts_pb2.VortexTelemetryCommonContext: ...
     @property
     def starter_ids(self) -> google.protobuf.internal.containers.RepeatedScalarFieldContainer[builtins.str]:
-        """Stable ids of the starter chips shown, in order. Empty when not shown."""
+        """Not sent: which starters were shown isn't tracked (the set changes over time)."""
 
     def __init__(
         self,
@@ -86,11 +101,70 @@ class WizardEntryViewed(google.protobuf.message.Message):
         has_develop_access: builtins.bool = ...,
         starter_ids: collections.abc.Iterable[builtins.str] | None = ...,
         agent_mode_lock: builtins.str = ...,
+        prod_environment_id: builtins.str = ...,
+        dev_environment_id: builtins.str = ...,
+        has_prod_build: builtins.bool = ...,
+        has_dev_credentials: builtins.bool = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["common_context", b"common_context", "ctx", b"ctx", "enrichment", b"enrichment"]) -> builtins.bool: ...
-    def ClearField(self, field_name: typing.Literal["agent_mode_lock", b"agent_mode_lock", "common_context", b"common_context", "ctx", b"ctx", "enrichment", b"enrichment", "has_develop_access", b"has_develop_access", "shown", b"shown", "source", b"source", "starter_ids", b"starter_ids"]) -> None: ...
+    def ClearField(self, field_name: typing.Literal["agent_mode_lock", b"agent_mode_lock", "common_context", b"common_context", "ctx", b"ctx", "dev_environment_id", b"dev_environment_id", "enrichment", b"enrichment", "has_dev_credentials", b"has_dev_credentials", "has_develop_access", b"has_develop_access", "has_prod_build", b"has_prod_build", "prod_environment_id", b"prod_environment_id", "shown", b"shown", "source", b"source", "starter_ids", b"starter_ids"]) -> None: ...
 
 Global___WizardEntryViewed: typing_extensions.TypeAlias = WizardEntryViewed
+
+@typing.final
+class WizardEntryIneligible(google.protobuf.message.Message):
+    """Emitted once per page view when the entry can't show, whatever the rollout flag
+    says: the Wizard isn't enabled for the account, or the project has no development
+    environment. Kept apart from WizardEntryViewed so its `shown = false` stays the
+    rollout holdout. Each page view sends one of the two.
+    """
+
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
+    ENRICHMENT_FIELD_NUMBER: builtins.int
+    CTX_FIELD_NUMBER: builtins.int
+    COMMON_CONTEXT_FIELD_NUMBER: builtins.int
+    SOURCE_FIELD_NUMBER: builtins.int
+    REASON_FIELD_NUMBER: builtins.int
+    HAS_DEVELOP_ACCESS_FIELD_NUMBER: builtins.int
+    PROD_ENVIRONMENT_ID_FIELD_NUMBER: builtins.int
+    DEV_ENVIRONMENT_ID_FIELD_NUMBER: builtins.int
+    HAS_PROD_BUILD_FIELD_NUMBER: builtins.int
+    HAS_DEV_CREDENTIALS_FIELD_NUMBER: builtins.int
+    source: builtins.str
+    reason: builtins.str
+    """The first reason it can't show: "wizard_not_enabled" | "no_dev_environment"."""
+    has_develop_access: builtins.bool
+    prod_environment_id: builtins.str
+    dev_environment_id: builtins.str
+    has_prod_build: builtins.bool
+    has_dev_credentials: builtins.bool
+    @property
+    def enrichment(self) -> dbtlabs.proto.public.v1.events.vortex_pb2.VortexMessageEnrichment: ...
+    @property
+    def ctx(self) -> dbtlabs.proto.public.v1.common.vortex_telemetry_contexts_pb2.VortexTelemetryDbtCloudContext:
+        """dbt Cloud context. feature = "COPILOT"."""
+
+    @property
+    def common_context(self) -> dbtlabs.proto.public.v1.common.vortex_telemetry_contexts_pb2.VortexTelemetryCommonContext: ...
+    def __init__(
+        self,
+        *,
+        enrichment: dbtlabs.proto.public.v1.events.vortex_pb2.VortexMessageEnrichment | None = ...,
+        ctx: dbtlabs.proto.public.v1.common.vortex_telemetry_contexts_pb2.VortexTelemetryDbtCloudContext | None = ...,
+        common_context: dbtlabs.proto.public.v1.common.vortex_telemetry_contexts_pb2.VortexTelemetryCommonContext | None = ...,
+        source: builtins.str = ...,
+        reason: builtins.str = ...,
+        has_develop_access: builtins.bool = ...,
+        prod_environment_id: builtins.str = ...,
+        dev_environment_id: builtins.str = ...,
+        has_prod_build: builtins.bool = ...,
+        has_dev_credentials: builtins.bool = ...,
+    ) -> None: ...
+    def HasField(self, field_name: typing.Literal["common_context", b"common_context", "ctx", b"ctx", "enrichment", b"enrichment"]) -> builtins.bool: ...
+    def ClearField(self, field_name: typing.Literal["common_context", b"common_context", "ctx", b"ctx", "dev_environment_id", b"dev_environment_id", "enrichment", b"enrichment", "has_dev_credentials", b"has_dev_credentials", "has_develop_access", b"has_develop_access", "has_prod_build", b"has_prod_build", "prod_environment_id", b"prod_environment_id", "reason", b"reason", "source", b"source"]) -> None: ...
+
+Global___WizardEntryIneligible: typing_extensions.TypeAlias = WizardEntryIneligible
 
 @typing.final
 class WizardEntryInteracted(google.protobuf.message.Message):
@@ -114,7 +188,9 @@ class WizardEntryInteracted(google.protobuf.message.Message):
     interaction: builtins.str
     """"starter" | "typed"."""
     starter_id: builtins.str
-    """Id of the starter chip; empty for typed prompts."""
+    """Topic id of the clicked starter chip (e.g. "ask-about-data"); empty for typed
+    prompts. Kept stable when the starter's copy changes.
+    """
     agent_mode: builtins.str
     """Mode picked in the entry."""
     prompt_char_count: builtins.int
@@ -203,6 +279,7 @@ class WizardHandoffLinked(google.protobuf.message.Message):
     thread_id: builtins.str
     """Agent conversation thread the prompt started."""
     starter_id: builtins.str
+    """Not sent: join to WizardEntryInteracted on handoff_id for the starter."""
     agent_mode_requested: builtins.str
     """Mode picked in the entry."""
     agent_mode: builtins.str
