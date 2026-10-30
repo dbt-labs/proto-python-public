@@ -34,6 +34,9 @@ class WizardSurfaceOpened(google.protobuf.message.Message):
       page    - where the surface opened. full-screen: "home" | "thread";
                 catalog: the page type ("model", "source", "search", ...);
                 empty where it doesn't apply.
+      source  - how the user got there, when the link says: "nav" (the main nav's Wizard
+                item). Empty when unknown: a bookmark, a typed URL, or a link with no
+                source. More may follow.
 
     Emitted once each time a Wizard surface opens (becomes visible), whether or not the
     user goes on to send a prompt. Not re-sent on re-render.
@@ -47,12 +50,14 @@ class WizardSurfaceOpened(google.protobuf.message.Message):
     SURFACE_FIELD_NUMBER: builtins.int
     PAGE_FIELD_NUMBER: builtins.int
     THREAD_ID_FIELD_NUMBER: builtins.int
+    SOURCE_FIELD_NUMBER: builtins.int
     surface: builtins.str
     page: builtins.str
     thread_id: builtins.str
     """The thread open on the surface, when there is one (e.g. page "thread"). Empty
     otherwise.
     """
+    source: builtins.str
     @property
     def enrichment(self) -> dbtlabs.proto.public.v1.events.vortex_pb2.VortexMessageEnrichment: ...
     @property
@@ -70,8 +75,9 @@ class WizardSurfaceOpened(google.protobuf.message.Message):
         surface: builtins.str = ...,
         page: builtins.str = ...,
         thread_id: builtins.str = ...,
+        source: builtins.str = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["common_context", b"common_context", "ctx", b"ctx", "enrichment", b"enrichment"]) -> builtins.bool: ...
-    def ClearField(self, field_name: typing.Literal["common_context", b"common_context", "ctx", b"ctx", "enrichment", b"enrichment", "page", b"page", "surface", b"surface", "thread_id", b"thread_id"]) -> None: ...
+    def ClearField(self, field_name: typing.Literal["common_context", b"common_context", "ctx", b"ctx", "enrichment", b"enrichment", "page", b"page", "source", b"source", "surface", b"surface", "thread_id", b"thread_id"]) -> None: ...
 
 Global___WizardSurfaceOpened: typing_extensions.TypeAlias = WizardSurfaceOpened
