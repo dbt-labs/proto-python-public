@@ -648,6 +648,7 @@ class RunModel(google.protobuf.message.Message):
     BYTES_PROCESSED_FIELD_NUMBER: builtins.int
     BYTES_BILLED_FIELD_NUMBER: builtins.int
     SLOT_MS_FIELD_NUMBER: builtins.int
+    ADAPTER_TYPE_FIELD_NUMBER: builtins.int
     event_id: builtins.str
     """event_id is the unique identifier for this event. It is a generated UUID."""
     invocation_id: builtins.str
@@ -732,6 +733,10 @@ class RunModel(google.protobuf.message.Message):
     """bytes billed, per the BigQuery adapter response. Unset for other adapters."""
     slot_ms: builtins.int
     """slot milliseconds used, per the BigQuery adapter response. Unset for other adapters."""
+    adapter_type: builtins.str
+    """the adapter type the node ran on (ex. "snowflake", "databricks"). this is
+    the node's +adapter config if it sets one, else the target's adapter type.
+    """
     @property
     def enrichment(self) -> dbtlabs.proto.public.v1.events.vortex_pb2.VortexMessageEnrichment:
         """This field is a toggle to enable enrichment of the message by the Vortex service."""
@@ -771,9 +776,10 @@ class RunModel(google.protobuf.message.Message):
         bytes_processed: builtins.int | None = ...,
         bytes_billed: builtins.int | None = ...,
         slot_ms: builtins.int | None = ...,
+        adapter_type: builtins.str = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["_bytes_billed", b"_bytes_billed", "_bytes_processed", b"_bytes_processed", "_rows_affected", b"_rows_affected", "_slot_ms", b"_slot_ms", "bytes_billed", b"bytes_billed", "bytes_processed", b"bytes_processed", "common_context", b"common_context", "enrichment", b"enrichment", "rows_affected", b"rows_affected", "slot_ms", b"slot_ms"]) -> builtins.bool: ...
-    def ClearField(self, field_name: typing.Literal["_bytes_billed", b"_bytes_billed", "_bytes_processed", b"_bytes_processed", "_rows_affected", b"_rows_affected", "_slot_ms", b"_slot_ms", "access", b"access", "bytes_billed", b"bytes_billed", "bytes_processed", b"bytes_processed", "catalog_name", b"catalog_name", "catalog_type", b"catalog_type", "common_context", b"common_context", "compute_mode", b"compute_mode", "contract_enforced", b"contract_enforced", "enrichment", b"enrichment", "event_id", b"event_id", "execution_time", b"execution_time", "has_group", b"has_group", "hashed_contents", b"hashed_contents", "index", b"index", "invocation_id", b"invocation_id", "language", b"language", "model_id", b"model_id", "model_incremental_strategy", b"model_incremental_strategy", "model_materialization", b"model_materialization", "resource_type", b"resource_type", "rows_affected", b"rows_affected", "run_model_id", b"run_model_id", "run_skipped", b"run_skipped", "run_skipped_reason", b"run_skipped_reason", "run_status", b"run_status", "slot_ms", b"slot_ms", "snapshot_strategy", b"snapshot_strategy", "table_format", b"table_format", "total", b"total", "versioned", b"versioned"]) -> None: ...
+    def ClearField(self, field_name: typing.Literal["_bytes_billed", b"_bytes_billed", "_bytes_processed", b"_bytes_processed", "_rows_affected", b"_rows_affected", "_slot_ms", b"_slot_ms", "access", b"access", "adapter_type", b"adapter_type", "bytes_billed", b"bytes_billed", "bytes_processed", b"bytes_processed", "catalog_name", b"catalog_name", "catalog_type", b"catalog_type", "common_context", b"common_context", "compute_mode", b"compute_mode", "contract_enforced", b"contract_enforced", "enrichment", b"enrichment", "event_id", b"event_id", "execution_time", b"execution_time", "has_group", b"has_group", "hashed_contents", b"hashed_contents", "index", b"index", "invocation_id", b"invocation_id", "language", b"language", "model_id", b"model_id", "model_incremental_strategy", b"model_incremental_strategy", "model_materialization", b"model_materialization", "resource_type", b"resource_type", "rows_affected", b"rows_affected", "run_model_id", b"run_model_id", "run_skipped", b"run_skipped", "run_skipped_reason", b"run_skipped_reason", "run_status", b"run_status", "slot_ms", b"slot_ms", "snapshot_strategy", b"snapshot_strategy", "table_format", b"table_format", "total", b"total", "versioned", b"versioned"]) -> None: ...
     @typing.overload
     def WhichOneof(self, oneof_group: typing.Literal["_bytes_billed", b"_bytes_billed"]) -> typing.Literal["bytes_billed"] | None: ...
     @typing.overload
