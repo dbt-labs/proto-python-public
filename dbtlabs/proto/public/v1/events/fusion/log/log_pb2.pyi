@@ -214,6 +214,7 @@ class ProgressMessage(google.protobuf.message.Message):
     FILE_FIELD_NUMBER: builtins.int
     LINE_FIELD_NUMBER: builtins.int
     PHASE_FIELD_NUMBER: builtins.int
+    BLOCKING_RUN_ID_FIELD_NUMBER: builtins.int
     dbt_core_event_code: builtins.str
     """Optional legacy dbt-core code (e.g. "Z047" for DebugCmdOut) if this event has a strict mapping to a dbt core event."""
     action: builtins.str
@@ -232,6 +233,11 @@ class ProgressMessage(google.protobuf.message.Message):
     """Fusion source code file line number where the log was created. Only available in debug builds."""
     phase: dbtlabs.proto.public.v1.events.fusion.phase.phase_pb2.ExecutionPhase.ValueType
     """Execution phase (if known) during which this log was emitted."""
+    blocking_run_id: builtins.str
+    """Run ID of the worker currently blocking this action, if this message
+    reports contention on a resource (e.g. a dbt State per-node lock) held by
+    another run.
+    """
     def __init__(
         self,
         *,
@@ -243,9 +249,12 @@ class ProgressMessage(google.protobuf.message.Message):
         file: builtins.str | None = ...,
         line: builtins.int | None = ...,
         phase: dbtlabs.proto.public.v1.events.fusion.phase.phase_pb2.ExecutionPhase.ValueType | None = ...,
+        blocking_run_id: builtins.str | None = ...,
     ) -> None: ...
-    def HasField(self, field_name: typing.Literal["_dbt_core_event_code", b"_dbt_core_event_code", "_description", b"_description", "_file", b"_file", "_line", b"_line", "_phase", b"_phase", "_unique_id", b"_unique_id", "dbt_core_event_code", b"dbt_core_event_code", "description", b"description", "file", b"file", "line", b"line", "phase", b"phase", "unique_id", b"unique_id"]) -> builtins.bool: ...
-    def ClearField(self, field_name: typing.Literal["_dbt_core_event_code", b"_dbt_core_event_code", "_description", b"_description", "_file", b"_file", "_line", b"_line", "_phase", b"_phase", "_unique_id", b"_unique_id", "action", b"action", "dbt_core_event_code", b"dbt_core_event_code", "description", b"description", "file", b"file", "line", b"line", "phase", b"phase", "target", b"target", "unique_id", b"unique_id"]) -> None: ...
+    def HasField(self, field_name: typing.Literal["_blocking_run_id", b"_blocking_run_id", "_dbt_core_event_code", b"_dbt_core_event_code", "_description", b"_description", "_file", b"_file", "_line", b"_line", "_phase", b"_phase", "_unique_id", b"_unique_id", "blocking_run_id", b"blocking_run_id", "dbt_core_event_code", b"dbt_core_event_code", "description", b"description", "file", b"file", "line", b"line", "phase", b"phase", "unique_id", b"unique_id"]) -> builtins.bool: ...
+    def ClearField(self, field_name: typing.Literal["_blocking_run_id", b"_blocking_run_id", "_dbt_core_event_code", b"_dbt_core_event_code", "_description", b"_description", "_file", b"_file", "_line", b"_line", "_phase", b"_phase", "_unique_id", b"_unique_id", "action", b"action", "blocking_run_id", b"blocking_run_id", "dbt_core_event_code", b"dbt_core_event_code", "description", b"description", "file", b"file", "line", b"line", "phase", b"phase", "target", b"target", "unique_id", b"unique_id"]) -> None: ...
+    @typing.overload
+    def WhichOneof(self, oneof_group: typing.Literal["_blocking_run_id", b"_blocking_run_id"]) -> typing.Literal["blocking_run_id"] | None: ...
     @typing.overload
     def WhichOneof(self, oneof_group: typing.Literal["_dbt_core_event_code", b"_dbt_core_event_code"]) -> typing.Literal["dbt_core_event_code"] | None: ...
     @typing.overload
