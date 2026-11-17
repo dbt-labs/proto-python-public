@@ -307,6 +307,8 @@ class _ModelDocsLinkTargetEnumTypeWrapper(google.protobuf.internal.enum_type_wra
     MODEL_DOCS_LINK_TARGET_ADD_PROJECT: _ModelDocsLinkTarget.ValueType  # 2
     MODEL_DOCS_LINK_TARGET_VIEW_RUNS: _ModelDocsLinkTarget.ValueType  # 3
     MODEL_DOCS_LINK_TARGET_VIEW_TESTS: _ModelDocsLinkTarget.ValueType  # 4
+    MODEL_DOCS_LINK_TARGET_SET_UP_ENVIRONMENT: _ModelDocsLinkTarget.ValueType  # 5
+    """Set up a deployment environment for a project that has none."""
 
 class ModelDocsLinkTarget(_ModelDocsLinkTarget, metaclass=_ModelDocsLinkTargetEnumTypeWrapper):
     """Which dbt platform link the user followed from the Catalog panel."""
@@ -316,6 +318,8 @@ MODEL_DOCS_LINK_TARGET_VIEW_IN_PLATFORM: ModelDocsLinkTarget.ValueType  # 1
 MODEL_DOCS_LINK_TARGET_ADD_PROJECT: ModelDocsLinkTarget.ValueType  # 2
 MODEL_DOCS_LINK_TARGET_VIEW_RUNS: ModelDocsLinkTarget.ValueType  # 3
 MODEL_DOCS_LINK_TARGET_VIEW_TESTS: ModelDocsLinkTarget.ValueType  # 4
+MODEL_DOCS_LINK_TARGET_SET_UP_ENVIRONMENT: ModelDocsLinkTarget.ValueType  # 5
+"""Set up a deployment environment for a project that has none."""
 Global___ModelDocsLinkTarget: typing_extensions.TypeAlias = ModelDocsLinkTarget
 
 class _ModelDocsInteractionType:
@@ -328,6 +332,28 @@ class _ModelDocsInteractionTypeEnumTypeWrapper(google.protobuf.internal.enum_typ
     MODEL_DOCS_INTERACTION_TYPE_ADD_TO_CHAT: _ModelDocsInteractionType.ValueType  # 1
     MODEL_DOCS_INTERACTION_TYPE_ADD_TAG: _ModelDocsInteractionType.ValueType  # 2
     MODEL_DOCS_INTERACTION_TYPE_FEEDBACK: _ModelDocsInteractionType.ValueType  # 3
+    MODEL_DOCS_INTERACTION_TYPE_TAB_PREVIEW: _ModelDocsInteractionType.ValueType  # 4
+    """Switched tabs. Selecting the tab already shown is not reported."""
+    MODEL_DOCS_INTERACTION_TYPE_TAB_COLUMNS: _ModelDocsInteractionType.ValueType  # 5
+    MODEL_DOCS_INTERACTION_TYPE_SORT_BY_NAME: _ModelDocsInteractionType.ValueType  # 6
+    """Changed the column sort order. Selecting the current order is not reported."""
+    MODEL_DOCS_INTERACTION_TYPE_SORT_BY_TESTS: _ModelDocsInteractionType.ValueType  # 7
+    MODEL_DOCS_INTERACTION_TYPE_COLUMN_RESIZED: _ModelDocsInteractionType.ValueType  # 8
+    """Resized a column of the columns table; once per drag."""
+    MODEL_DOCS_INTERACTION_TYPE_COLUMN_LINEAGE: _ModelDocsInteractionType.ValueType  # 9
+    """Opened column-level lineage for a column."""
+    MODEL_DOCS_INTERACTION_TYPE_COLUMN_LINEAGE_UNAVAILABLE: _ModelDocsInteractionType.ValueType  # 10
+    """Clicked the column lineage control while column lineage was unavailable."""
+    MODEL_DOCS_INTERACTION_TYPE_TAG_INPUT_OPENED: _ModelDocsInteractionType.ValueType  # 11
+    """Opened the tag input. Submitting a tag is ADD_TAG."""
+    MODEL_DOCS_INTERACTION_TYPE_TAG_INPUT_CANCELLED: _ModelDocsInteractionType.ValueType  # 12
+    """Closed the tag input without adding a tag."""
+    MODEL_DOCS_INTERACTION_TYPE_MARKDOWN_LINK: _ModelDocsInteractionType.ValueType  # 13
+    """Followed a link inside a rendered description."""
+    MODEL_DOCS_INTERACTION_TYPE_BUILD_FROM_EMPTY_STATE: _ModelDocsInteractionType.ValueType  # 14
+    """Started a build of the model. The values say which control started it."""
+    MODEL_DOCS_INTERACTION_TYPE_REBUILD_FROM_FRESHNESS: _ModelDocsInteractionType.ValueType  # 15
+    MODEL_DOCS_INTERACTION_TYPE_REBUILD_FROM_HEADING: _ModelDocsInteractionType.ValueType  # 16
 
 class ModelDocsInteractionType(_ModelDocsInteractionType, metaclass=_ModelDocsInteractionTypeEnumTypeWrapper):
     """Non-navigation interactions within the Catalog panel. Platform link-outs
@@ -338,6 +364,28 @@ MODEL_DOCS_INTERACTION_TYPE_UNSPECIFIED: ModelDocsInteractionType.ValueType  # 0
 MODEL_DOCS_INTERACTION_TYPE_ADD_TO_CHAT: ModelDocsInteractionType.ValueType  # 1
 MODEL_DOCS_INTERACTION_TYPE_ADD_TAG: ModelDocsInteractionType.ValueType  # 2
 MODEL_DOCS_INTERACTION_TYPE_FEEDBACK: ModelDocsInteractionType.ValueType  # 3
+MODEL_DOCS_INTERACTION_TYPE_TAB_PREVIEW: ModelDocsInteractionType.ValueType  # 4
+"""Switched tabs. Selecting the tab already shown is not reported."""
+MODEL_DOCS_INTERACTION_TYPE_TAB_COLUMNS: ModelDocsInteractionType.ValueType  # 5
+MODEL_DOCS_INTERACTION_TYPE_SORT_BY_NAME: ModelDocsInteractionType.ValueType  # 6
+"""Changed the column sort order. Selecting the current order is not reported."""
+MODEL_DOCS_INTERACTION_TYPE_SORT_BY_TESTS: ModelDocsInteractionType.ValueType  # 7
+MODEL_DOCS_INTERACTION_TYPE_COLUMN_RESIZED: ModelDocsInteractionType.ValueType  # 8
+"""Resized a column of the columns table; once per drag."""
+MODEL_DOCS_INTERACTION_TYPE_COLUMN_LINEAGE: ModelDocsInteractionType.ValueType  # 9
+"""Opened column-level lineage for a column."""
+MODEL_DOCS_INTERACTION_TYPE_COLUMN_LINEAGE_UNAVAILABLE: ModelDocsInteractionType.ValueType  # 10
+"""Clicked the column lineage control while column lineage was unavailable."""
+MODEL_DOCS_INTERACTION_TYPE_TAG_INPUT_OPENED: ModelDocsInteractionType.ValueType  # 11
+"""Opened the tag input. Submitting a tag is ADD_TAG."""
+MODEL_DOCS_INTERACTION_TYPE_TAG_INPUT_CANCELLED: ModelDocsInteractionType.ValueType  # 12
+"""Closed the tag input without adding a tag."""
+MODEL_DOCS_INTERACTION_TYPE_MARKDOWN_LINK: ModelDocsInteractionType.ValueType  # 13
+"""Followed a link inside a rendered description."""
+MODEL_DOCS_INTERACTION_TYPE_BUILD_FROM_EMPTY_STATE: ModelDocsInteractionType.ValueType  # 14
+"""Started a build of the model. The values say which control started it."""
+MODEL_DOCS_INTERACTION_TYPE_REBUILD_FROM_FRESHNESS: ModelDocsInteractionType.ValueType  # 15
+MODEL_DOCS_INTERACTION_TYPE_REBUILD_FROM_HEADING: ModelDocsInteractionType.ValueType  # 16
 Global___ModelDocsInteractionType: typing_extensions.TypeAlias = ModelDocsInteractionType
 
 class _LineageInteractionType:
