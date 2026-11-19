@@ -85,6 +85,22 @@ class _CompileCauseEnumTypeWrapper(google.protobuf.internal.enum_type_wrapper._E
     """Compile was caused by an expliict compile command sent to the LSP"""
     COMPILE_CAUSE_REFRESH_SOURCES: _CompileCause.ValueType  # 2
     """Compile was caused by a request to refresh sources for a project"""
+    COMPILE_CAUSE_DID_OPEN: _CompileCause.ValueType  # 3
+    """Compile was caused by a user opening a file"""
+    COMPILE_CAUSE_FILE_SYSTEM_CHANGE: _CompileCause.ValueType  # 4
+    """Compile was caused by files changing on disk outside the editor"""
+    COMPILE_CAUSE_PROJECT_CONFIG_CHANGE: _CompileCause.ValueType  # 5
+    """Compile was caused by a change to project, profile, ignore, vars, or lint configuration"""
+    COMPILE_CAUSE_FILE_REQUEST: _CompileCause.ValueType  # 6
+    """Compile was caused by a request that needs one file's result, such as hover or go to definition"""
+    COMPILE_CAUSE_LINEAGE: _CompileCause.ValueType  # 7
+    """Compile was caused by a lineage request"""
+    COMPILE_CAUSE_SHOW: _CompileCause.ValueType  # 8
+    """Compile was caused by a query preview request"""
+    COMPILE_CAUSE_PROJECT_LOAD_RETRY: _CompileCause.ValueType  # 9
+    """Compile was caused by a retry after the project failed to load"""
+    COMPILE_CAUSE_UNKNOWN: _CompileCause.ValueType  # 10
+    """The client could not map the cause reported by the language server"""
 
 class CompileCause(_CompileCause, metaclass=_CompileCauseEnumTypeWrapper): ...
 
@@ -94,6 +110,22 @@ COMPILE_CAUSE_COMPILE_LSP_COMMAND: CompileCause.ValueType  # 1
 """Compile was caused by an expliict compile command sent to the LSP"""
 COMPILE_CAUSE_REFRESH_SOURCES: CompileCause.ValueType  # 2
 """Compile was caused by a request to refresh sources for a project"""
+COMPILE_CAUSE_DID_OPEN: CompileCause.ValueType  # 3
+"""Compile was caused by a user opening a file"""
+COMPILE_CAUSE_FILE_SYSTEM_CHANGE: CompileCause.ValueType  # 4
+"""Compile was caused by files changing on disk outside the editor"""
+COMPILE_CAUSE_PROJECT_CONFIG_CHANGE: CompileCause.ValueType  # 5
+"""Compile was caused by a change to project, profile, ignore, vars, or lint configuration"""
+COMPILE_CAUSE_FILE_REQUEST: CompileCause.ValueType  # 6
+"""Compile was caused by a request that needs one file's result, such as hover or go to definition"""
+COMPILE_CAUSE_LINEAGE: CompileCause.ValueType  # 7
+"""Compile was caused by a lineage request"""
+COMPILE_CAUSE_SHOW: CompileCause.ValueType  # 8
+"""Compile was caused by a query preview request"""
+COMPILE_CAUSE_PROJECT_LOAD_RETRY: CompileCause.ValueType  # 9
+"""Compile was caused by a retry after the project failed to load"""
+COMPILE_CAUSE_UNKNOWN: CompileCause.ValueType  # 10
+"""The client could not map the cause reported by the language server"""
 Global___CompileCause: typing_extensions.TypeAlias = CompileCause
 
 class _LspParseOutcome:
