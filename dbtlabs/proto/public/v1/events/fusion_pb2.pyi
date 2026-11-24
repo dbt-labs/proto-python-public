@@ -535,6 +535,7 @@ class ResourceCounts(google.protobuf.message.Message):
     CATALOGS_FIELD_NUMBER: builtins.int
     COMMON_CONTEXT_FIELD_NUMBER: builtins.int
     CHECKS_FIELD_NUMBER: builtins.int
+    FUNCTIONS_FIELD_NUMBER: builtins.int
     event_id: builtins.str
     """event_id is the unique identifier for this event. It is a generated UUID."""
     invocation_id: builtins.str
@@ -573,6 +574,8 @@ class ResourceCounts(google.protobuf.message.Message):
     """total count of catalogs in the project."""
     checks: builtins.int
     """total count of checks (project quality checks under `checks/`) in the project."""
+    functions: builtins.int
+    """total count of enabled functions (user-defined functions) in the project."""
     @property
     def enrichment(self) -> dbtlabs.proto.public.v1.events.vortex_pb2.VortexMessageEnrichment:
         """This field is a toggle to enable enrichment of the message by the Vortex service."""
@@ -602,9 +605,10 @@ class ResourceCounts(google.protobuf.message.Message):
         catalogs: builtins.int = ...,
         common_context: dbtlabs.proto.public.v1.common.vortex_telemetry_contexts_pb2.VortexTelemetryCommonContext | None = ...,
         checks: builtins.int = ...,
+        functions: builtins.int = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["common_context", b"common_context", "enrichment", b"enrichment"]) -> builtins.bool: ...
-    def ClearField(self, field_name: typing.Literal["analyses", b"analyses", "catalogs", b"catalogs", "checks", b"checks", "common_context", b"common_context", "enrichment", b"enrichment", "event_id", b"event_id", "exposures", b"exposures", "groups", b"groups", "invocation_id", b"invocation_id", "macros", b"macros", "metrics", b"metrics", "models", b"models", "operations", b"operations", "saved_queries", b"saved_queries", "seeds", b"seeds", "semantic_models", b"semantic_models", "snapshots", b"snapshots", "sources", b"sources", "tests", b"tests", "unit_tests", b"unit_tests"]) -> None: ...
+    def ClearField(self, field_name: typing.Literal["analyses", b"analyses", "catalogs", b"catalogs", "checks", b"checks", "common_context", b"common_context", "enrichment", b"enrichment", "event_id", b"event_id", "exposures", b"exposures", "functions", b"functions", "groups", b"groups", "invocation_id", b"invocation_id", "macros", b"macros", "metrics", b"metrics", "models", b"models", "operations", b"operations", "saved_queries", b"saved_queries", "seeds", b"seeds", "semantic_models", b"semantic_models", "snapshots", b"snapshots", "sources", b"sources", "tests", b"tests", "unit_tests", b"unit_tests"]) -> None: ...
 
 Global___ResourceCounts: typing_extensions.TypeAlias = ResourceCounts
 
