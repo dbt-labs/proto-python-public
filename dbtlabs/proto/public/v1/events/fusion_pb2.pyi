@@ -1095,3 +1095,81 @@ class RunCheck(google.protobuf.message.Message):
     def WhichOneof(self, oneof_group: typing.Literal["_violations", b"_violations"]) -> typing.Literal["violations"] | None: ...
 
 Global___RunCheck: typing_extensions.TypeAlias = RunCheck
+
+@typing.final
+class InvocationUsage(google.protobuf.message.Message):
+    """InvocationUsage is emitted once per invocation that loads a project, after the
+    project resolves. It reports the resolved flags of the run. The command and
+    version can be found by joining this message on the Invocation message
+    specified in the invocation_id field.
+
+    Values that can name a customer (selectors, paths, target and profile names,
+    var values, SQL) are never sent. See FlagUsage.value.
+    """
+
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
+    EVENT_ID_FIELD_NUMBER: builtins.int
+    INVOCATION_ID_FIELD_NUMBER: builtins.int
+    FLAGS_FIELD_NUMBER: builtins.int
+    COMMON_CONTEXT_FIELD_NUMBER: builtins.int
+    event_id: builtins.str
+    """Unique identifier for this event (UUID). Required."""
+    invocation_id: builtins.str
+    """A foreign key to the Invocation message that was emitted at the
+    start of the fusion process. Required.
+    """
+    @property
+    def flags(self) -> google.protobuf.internal.containers.RepeatedCompositeFieldContainer[Global___FlagUsage]:
+        """CLI flags and dbt_project.yml `flags:` entries that have a value, with
+        defaults and behavior change flags included. One entry per flag.
+        """
+
+    @property
+    def common_context(self) -> dbtlabs.proto.public.v1.common.vortex_telemetry_contexts_pb2.VortexTelemetryCommonContext: ...
+    def __init__(
+        self,
+        *,
+        event_id: builtins.str = ...,
+        invocation_id: builtins.str = ...,
+        flags: collections.abc.Iterable[Global___FlagUsage] | None = ...,
+        common_context: dbtlabs.proto.public.v1.common.vortex_telemetry_contexts_pb2.VortexTelemetryCommonContext | None = ...,
+    ) -> None: ...
+    def HasField(self, field_name: typing.Literal["common_context", b"common_context"]) -> builtins.bool: ...
+    def ClearField(self, field_name: typing.Literal["common_context", b"common_context", "event_id", b"event_id", "flags", b"flags", "invocation_id", b"invocation_id"]) -> None: ...
+
+Global___InvocationUsage: typing_extensions.TypeAlias = InvocationUsage
+
+@typing.final
+class FlagUsage(google.protobuf.message.Message):
+    """One resolved flag in an InvocationUsage event."""
+
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
+    NAME_FIELD_NUMBER: builtins.int
+    VALUE_FIELD_NUMBER: builtins.int
+    USER_SET_FIELD_NUMBER: builtins.int
+    name: builtins.str
+    """The flag name: the CLI arg id (e.g. "fail_fast", "static_analysis") or the
+    dbt_project.yml `flags:` key. Required.
+    """
+    value: builtins.str
+    """The resolved value as text, e.g. "true", "4" or "strict". For list and map
+    flags such as `--vars` and `--warn-error-options`, the number of entries.
+    Empty for free-form values such as selectors, paths, and target and
+    profile names, which are never sent.
+    """
+    user_set: builtins.bool
+    """True when the flag was set on the command line, in an environment variable
+    or in dbt_project.yml. False when the default applies.
+    """
+    def __init__(
+        self,
+        *,
+        name: builtins.str = ...,
+        value: builtins.str = ...,
+        user_set: builtins.bool = ...,
+    ) -> None: ...
+    def ClearField(self, field_name: typing.Literal["name", b"name", "user_set", b"user_set", "value", b"value"]) -> None: ...
+
+Global___FlagUsage: typing_extensions.TypeAlias = FlagUsage
